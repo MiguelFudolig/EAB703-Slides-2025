@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "EAB 703-1002: Biostatistical Methods for the Health Sciences"
+  navbar: 
+    logo: "UNLV-186.jpg"
+  sidebar:
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: lecture1.qmd
+        text: Lecture 1- Intro to Biostatistics and R
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

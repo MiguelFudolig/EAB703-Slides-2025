@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: c704ae5c-0885-4efb-8150-59ee76418bea
+      url: https://madfudolig.quarto.pub/introtobiostats

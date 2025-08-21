@@ -1,0 +1,11 @@
+---
+title: "EAB 703-1002: Biostatistical Methods for the Health Sciences"
+---
+
+This website provides the slides for EAB 703-1002 for Dr. Miguel Fudolig. Content is mainly based on the following books:
+
+- Daniel, W. W., & Cross, C. L. (2018). *Biostatistics: a foundation for analysis in the health sciences*. John Wiley & Sons.
+
+- Rigdon, S. E., Fricker Jr, R. D., & Montgomery, D. C. (2024). *Introduction to Probability and Statistics for Data Science: with R*. Cambridge University Press.
+
+- Ismay, C., Kim, A.Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546

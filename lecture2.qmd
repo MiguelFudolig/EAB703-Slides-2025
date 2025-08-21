@@ -1,0 +1,387 @@
+---
+title: "Descriptive Statistics"
+subtitle: Lecture 2
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 2 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: true
+    
+  pdf: 
+    number-sections: true
+---
+
+
+# Outline
+
+- Data Organization
+- Measures of Central Tendency
+- Measures of Dispersion
+- Basic Data Visualization using R
+
+# Data Organization
+
+## Data Exploration
+
+In order to explore the underlying nature of the provided information, we need to explore the data. This exploration is made much easier if the data are organized and summarized.
+
+::: {.callout-note title="Raw Data"}
+Raw data are measurements that have not been organized, summarized, or otherwise manipulated. As a biostatistician, it is common to be provided the raw data for any analysis.
+:::
+
+## Ordered Lists
+
+The easiest step in organizing data is simply to order the data. 
+
+:::{.callout-note title="Ordered Lists/Arrays"}
+An ordered list is a list of values that are arranged from the smallest to largest value (or largest to smallest).
+:::
+
+## Ordered Lists in `R` {.scrollable}
+
+There are different ways to create an ordered list in `R`. Let us use the `iris` dataset in `R` and the `tidyverse()` package.
+
+```{r}
+library(tidyverse)
+glimpse(iris)
+```
+
+
+
+
+:::{.panel-tabset}
+
+### `sort()`
+
+`sort(vector)` can arrange a vector in ascending or descending order. This works for both numeric and character vectors.
+
+```{r}
+#| code-fold: false
+sort(iris$Sepal.Length)
+sort(iris$Sepal.Length,decreasing = TRUE)
+```
+### `arrange()`
+
+`arrange(dataframe,variable)` can sort a column in a data frame. This function is from the `dplyr` package, which is a part of tidyverse.
+
+```{r}
+df <- arrange(iris,Sepal.Length)
+glimpse(df)
+df$Sepal.Length
+```
+
+```{r}
+df <- arrange(iris,desc(Sepal.Length))
+glimpse(df)
+df$Sepal.Length
+```
+:::
+
+## Ordered Lists: Pros and Cons
+
+The ordered list makes it easier to see the data sorted by a specific variable. However, it may be impractical to use for large data sets. 
+
+## Exercise
+
+The data set `USArrests` contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973.
+
+:::{.panel-tabset}
+
+### Exercise
+
+Create an ordered list for the `Assault` variable in `USArrests`. Which state had the highest rate for assault per 100,000 residents?
+
+### Answer
+
+```{r}
+sort(USArrests$Assault,decreasing = T)
+
+arrange(USArrests,desc(Assault))
+```
+
+North Carolina had the highest rate of Assault arrests per 100,000 residents with 337.
+:::
+
+## Frequency Tables: Categorical Variables
+
+One way to summarize a data set is through frequency tables, which counts the frequency of occurrence of values in the data set. To group a set of observations, we select a set of contiguous, nonoverlapping intervals such that each value in the set of observations can be placed in one, and only one, of the intervals. 
+
+::: callout-note
+For categorical variables, these intervals can be defined by the categories in the variable.
+:::
+
+::: callout-important
+Frequency tables are also referred to as frequency distributions.
+:::
+## Frequency Tables: Categorical Variables {.scrollable}
+
+Here is an example of a frequency table. The data set `flights` in the `nycflights23` package includes data for all flights that departed from airports in New York city. Recall that this data set has 435,452 rows. If we wished to determine where most flights originated from (column `origin`), we can count the number of rows that mentioned each of the airports.
+
+To create a basic frequency table, we can use the function `count(dataframe,variable)` in the `dplyr` package.
+
+```{r}
+library(nycflights23)
+count(flights,origin)
+```
+
+## Exercise
+
+For the following exercise, use the `infert` data set, which has data on education level, age, parity (previous pregnancies), and the incidence of infertility after spontaneous and induced abortion.
+
+:::{.panel-tabset}
+### Exercise
+
+After examining the data set using `glimpse`, create a frequency table for the education level of the subjects given by the variable `education`.
+
+### Answer
+
+```{r}
+#| code-fold: false
+count(infert,education)
+```
+:::
+
+## Relative Frequency
+
+It may be useful at times to know the proportion, rather than the number, of values falling within a particular class interval. We obtain this information by dividing the number of values in the particular class interval by the total number of values. For an interval with $k$ occurrences out of a total of $N$ events, the relative frequency can be calculated by:
+
+$$
+Rel. Freq. = n/N
+$$
+
+::: callout-note
+The relative frequency can be reported as a decimal or as a percentage ($\times 100\%$).
+:::
+
+## Cumulative Relative Frequency
+
+We may sum, or cumulate, the relative frequencies to facilitate obtaining information regarding the relative frequency of values within two or more contiguous class intervals.
+
+::: callout-note
+The sum of *relative* frequencies is referred to as the **cumulative relative frequency**
+:::
+
+## Calculating Relative and Cumulative Frequencies {.scrollable}
+
+Let's try to calculate these frequencies by hand using the `origin` frequency distribution example from `nycflights`.
+
+```{r}
+#| echo: false
+count(flights,origin) |> gt::gt()
+```
+
+:::{.panel-tabset}
+
+### Relative Freq.
+
+For EWR: $\frac{138578}{(138578 + 133048 + 163726)}=$ `r 138578/(138578 + 133048 + 163726)`
+
+For JFK: $\frac{133048}{(138578 + 133048 + 163726)}=$ `r 133048/(138578 + 133048 + 163726)`
+
+For LGA: $\frac{163726}{(138578 + 133048 + 163726)}=$ `r 163726/(138578 + 133048 + 163726)`
+
+### Cumulative Freq.
+
+For EWR:  `r format(138578, scientific=F)`
+
+For EWR + JFK: $138578+133048=$ `r format(133048+138578,scientific=F)`
+
+For EWR+JFK + LGA: $(138578 + 133048 + 163726)=$ `r format(163726+133048+138578,scientific=F)`
+
+### Cumulative Rel. Freq.
+
+For EWR: $\frac{138578}{(138578 + 133048 + 163726)}=$ `r 138578/(138578 + 133048 + 163726)`
+
+For EWR + JFK: $\frac{138578+133048}{(138578 + 133048 + 163726)}=$ `r (133048+138578)/(138578 + 133048 + 163726)`
+
+For EWR+JFK + LGA: $\frac{133048+138578 + 163726}{(138578 + 133048 + 163726)}=$ `r (163726+133048+138578)/(138578 + 133048 + 163726)`
+:::
+
+## Frequency Tables in `R`
+
+There are a lot of ways to create frequency tables in `R`. One of the easiest and most complete ways is to use the  function `freq` in the package `summarytools`.
+
+```{r}
+# install.packages("summarytools") # if you have not installed summarytools yet.
+
+library(summarytools)
+freq(flights$origin)
+
+```
+
+::: callout-important
+The `<NA>` row also counts rows that have missing values. The `%Valid` column only counts non-missing data, while the `% Total` column counts non-missing data in calculating relative and cumulative frequencies. In this example, there are no missing rows, hence the columns are the same.
+
+The function also does not output cumulative frequencies, but usually cumulative relative frequencies suffice.
+:::
+
+## Frequency Tables: Quantitative Variables
+
+These intervals are usually referred to as **class intervals**.
+
+::: callout-important
+Too few intervals are undesirable because of the resulting loss of information. On the other hand, if too many intervals are used, the objective of summarization will not be met. 
+
+A commonly followed rule of thumb states that there should be no fewer than 5 intervals and no more than 15. However, if the number of intervals fall outside this range, it should be based on theoretical/foundational concepts that could justify the choice of intervals. 
+:::
+
+## Frequency Tables in `R`: QV
+
+Like categorical variables, there are a lot of ways to create a frequency tables for quantitative variables. However, using `freq()` directly on a quantitative variable could lead to trivial frequency tables.
+
+::: callout-warning
+What happens if you run the following code?
+
+```{.r}
+freq(iris$Sepal.Length)
+```
+
+:::
+
+
+## Frequency Tables in `R`: `hist()`
+
+
+### `hist(vector)`
+
+The function `hist()` creates both a histogram or a vector of frequencies. To show the vector of frequencies, the plotting mechanism must be turned off. This can be done by setting `plot=F`. For example,
+
+```{r}
+hist(iris$Sepal.Length,plot=F)
+```
+::: callout-note
+In this output:
+
+- `Breaks` are the endpoints of the intervals used to create the frequency table. 
+- `counts` are the frequencies for each interval.
+- `mids` are the midpoints of each interval, which is commonly used as the representative numbers of each interval.
+
+:::
+
+## Frequency Tables in `R`:`cut(vector,breaks)` and `freq(vector)`
+
+`cut()` creates a factor including the intervals for the quantitative variable based on the breaks you provide it. You can provide the breaks using the `seq()` function or the `c()` function. 
+
+```{r}
+#| code-fold: false
+# We must first create a vector of intervals for our frequency table.
+ranges <- cut(iris$Sepal.Length,breaks=seq(from=4,to=8,by=0.5)) # <1>
+head(ranges) # <2>
+```
+
+1. `seq(from=4,to=8,by=0.5)` provides a vector of numbers from 4 to 8 in increments of 0.5.
+2. The "(x,y]" notation in the output means that the interval includes y, but not x. The `head()` function only shows the first 6 elements of ranges.
+
+
+We can now make a frequency table out of the intervals provided by `cut()`.
+
+```{r}
+#| code-fold: false
+
+freq(ranges)
+```
+
+## Exercise
+
+Use the `infert` data set, which has data on education level, age, parity (previous pregnancies), and the incidence of infertility after spontaneous and induced abortion.
+
+:::{.panel-tabset}
+### Exercise
+
+Create a frequency distribution table with relative and cumulative relative frequencies for the education level of the subjects given by the variable `education`.
+
+### Answer
+
+```{r}
+#| code-fold: false
+freq(infert$education)
+```
+:::
+
+# Measures of Central Tendency
+
+## Descriptive Measures
+
+Although frequency distributions serve useful purposes, there are many situations that require other types of data summarization. What we need in many instances is the ability to summarize the data by means of a single number called a **descriptive measure**. Descriptive measures may be computed from the data of a sample or the data of a population.
+
+::: {.callout-note title="Statistic vs. Parameter"}
+
+**Statistics** are descriptive measures computed from a sample. Statistics are typically represented by standard alphabet symbols ($\bar{x},p,r$).
+
+**Parameters** are descriptive measures computed from a population. Parameters are typically represented by Greek letters ($\mu,\pi,\rho$).
+
+:::
+
+## Measures of Central Tendency
+
+Measures of central tendency provides information on where the central point of the data is. The most common measures of central tendency are:
+
+- Mean
+- Median
+- Mode
+
+## Mean
+
+The mean, specifically the *arithmetic mean*, is the most familiar measure of central tendency.
+
+::: {.panel-tabset}
+
+### Population Mean
+::: {.callout-note title="Population Mean"}
+The population mean is calculated by adding all the values in the population and dividing by the population size $N$. Formally, for a vector of values given by $(X_1,X_2,X_3,..., X_N)$ defining the population, the mean $\mu$ can be calculated using the following equation:
+
+$$
+\mu = \frac{(X_1+X_2+X_3+...+X_N)}{N} = \frac{\sum_{i=1}^N X_i}{N}
+$$
+:::
+
+### Sample Mean
+::: {.callout-note title="Sample Mean"}
+The sample mean is calculated by adding all the values in the sample and dividing by the sample size $k$. Formally, for a vector of values given by $(X_1,X_2,X_3,..., X_k)$ defining the population, the mean $\bar{x}$ can be calculated using the following equation:
+
+$$
+\bar{x} = \frac{(X_1+X_2+X_3+...+X_k)}{k} = \frac{\sum_{i=1}^k X_i}{k}
+$$
+:::
+:::
+
+## Mean: Example
+
+What is the mean of the following numbers: 5, 27, 26, 30, 31?
+
+
+:::{.panel-tabset}
+### Math Method
+
+The mean can be calculated using the formula $(5+27+26+30+31)/5=$ `r mean(c(5,27,26,30,31))`
+
+### `R` method
+
+The function `mean()` outputs the mean of a vector of numbers. Remember to always put the numbers inside the `c()` function to form a vector.
+
+```{r}
+#| code-fold: false
+mean(c(5,27,26,30,31))
+```
+
+:::
+
+## Mean: Example
+
+The function `mean()` can also be used to calculate means of quantitative variables in data frames.
+
+```{r}
+#| code-fold: false
+
+mean(iris$Sepal.Length)
+```
+
