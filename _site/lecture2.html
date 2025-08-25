@@ -258,11 +258,8 @@
 <h2>Ordered Lists in <code>R</code></h2>
 <p>There are different ways to create an ordered list in <code>R</code>. Let us use the <code>iris</code> dataset in <code>R</code> and the <code>tidyverse()</code> package.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a><span class="fu">glimpse</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
@@ -308,11 +305,8 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <div id="tabset-1-2">
 <p><code>arrange(dataframe,variable)</code> can sort a column in a data frame. This function is from the <code>dplyr</code> package, which is a part of tidyverse.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">arrange</span>(iris,Sepal.Length)</span>
 <span id="cb7-2"><a></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
@@ -322,10 +316,7 @@ $ Petal.Length &lt;dbl&gt; 1.1, 1.4, 1.3, 1.3, 1.3, 1.5, 1.4, 1.0, 1.4, 1.3, 1.6
 $ Petal.Width  &lt;dbl&gt; 0.1, 0.2, 0.2, 0.2, 0.3, 0.2, 0.3, 0.2, 0.2, 0.2, 0.2, 0.…
 $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>df<span class="sc">$</span>Sepal.Length</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9 4.9
  [19] 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1 5.1 5.1
@@ -339,11 +330,8 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 </div>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">arrange</span>(iris,<span class="fu">desc</span>(Sepal.Length))</span>
 <span id="cb11-2"><a></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
@@ -353,10 +341,7 @@ $ Petal.Length &lt;dbl&gt; 6.4, 6.7, 6.9, 6.7, 6.1, 6.6, 6.1, 6.3, 6.1, 6.0, 5.8
 $ Petal.Width  &lt;dbl&gt; 2.0, 2.2, 2.3, 2.0, 2.3, 2.1, 1.9, 1.8, 2.5, 1.8, 1.6, 2.…
 $ Species      &lt;fct&gt; virginica, virginica, virginica, virginica, virginica, vi…</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>df<span class="sc">$</span>Sepal.Length</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] 7.9 7.7 7.7 7.7 7.7 7.6 7.4 7.3 7.2 7.2 7.2 7.1 7.0 6.9 6.9 6.9 6.9 6.8
  [19] 6.8 6.8 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.6 6.6 6.5 6.5 6.5 6.5 6.5 6.4
@@ -388,19 +373,13 @@ $ Species      &lt;fct&gt; virginica, virginica, virginica, virginica, virginica
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">sort</span>(USArrests<span class="sc">$</span>Assault,<span class="at">decreasing =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 337 335 300 294 285 279 276 263 259 255 254 252 249 249 238 236 211 204 201
 [20] 190 188 178 174 161 159 159 156 151 149 145 120 120 120 115 113 110 109 109
 [39] 106 102  86  83  81  72  57  56  53  48  46  45</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">arrange</span>(USArrests,<span class="fu">desc</span>(Assault))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Murder Assault UrbanPop Rape
 North Carolina   13.0     337       45 16.1
@@ -495,11 +474,8 @@ North Dakota      0.8      45       44  7.3</code></pre>
 <p>Here is an example of a frequency table. The data set <code>flights</code> in the <code>nycflights23</code> package includes data for all flights that departed from airports in New York city. Recall that this data set has 435,452 rows. If we wished to determine where most flights originated from (column <code>origin</code>), we can count the number of rows that mentioned each of the airports.</p>
 <p>To create a basic frequency table, we can use the function <code>count(dataframe,variable)</code> in the <code>dplyr</code> package.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">library</span>(nycflights23)</span>
 <span id="cb19-2"><a></a><span class="fu">count</span>(flights,origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   origin      n
@@ -575,23 +551,23 @@ Rel. Freq. = n/N
 <p>Let’s try to calculate these frequencies by hand using the <code>origin</code> frequency distribution example from <code>nycflights</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="gfkosjyyau" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gfkosjyyau table {
+<div id="sqeyxnjxma" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sqeyxnjxma table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gfkosjyyau thead, #gfkosjyyau tbody, #gfkosjyyau tfoot, #gfkosjyyau tr, #gfkosjyyau td, #gfkosjyyau th {
+#sqeyxnjxma thead, #sqeyxnjxma tbody, #sqeyxnjxma tfoot, #sqeyxnjxma tr, #sqeyxnjxma td, #sqeyxnjxma th {
   border-style: none;
 }
 
-#gfkosjyyau p {
+#sqeyxnjxma p {
   margin: 0;
   padding: 0;
 }
 
-#gfkosjyyau .gt_table {
+#sqeyxnjxma .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -617,12 +593,12 @@ Rel. Freq. = n/N
   border-left-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_caption {
+#sqeyxnjxma .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gfkosjyyau .gt_title {
+#sqeyxnjxma .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -634,7 +610,7 @@ Rel. Freq. = n/N
   border-bottom-width: 0;
 }
 
-#gfkosjyyau .gt_subtitle {
+#sqeyxnjxma .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -646,7 +622,7 @@ Rel. Freq. = n/N
   border-top-width: 0;
 }
 
-#gfkosjyyau .gt_heading {
+#sqeyxnjxma .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -658,13 +634,13 @@ Rel. Freq. = n/N
   border-right-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_bottom_border {
+#sqeyxnjxma .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_col_headings {
+#sqeyxnjxma .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -679,7 +655,7 @@ Rel. Freq. = n/N
   border-right-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_col_heading {
+#sqeyxnjxma .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -699,7 +675,7 @@ Rel. Freq. = n/N
   overflow-x: hidden;
 }
 
-#gfkosjyyau .gt_column_spanner_outer {
+#sqeyxnjxma .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -711,15 +687,15 @@ Rel. Freq. = n/N
   padding-right: 4px;
 }
 
-#gfkosjyyau .gt_column_spanner_outer:first-child {
+#sqeyxnjxma .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gfkosjyyau .gt_column_spanner_outer:last-child {
+#sqeyxnjxma .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gfkosjyyau .gt_column_spanner {
+#sqeyxnjxma .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -731,11 +707,11 @@ Rel. Freq. = n/N
   width: 100%;
 }
 
-#gfkosjyyau .gt_spanner_row {
+#sqeyxnjxma .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gfkosjyyau .gt_group_heading {
+#sqeyxnjxma .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -761,7 +737,7 @@ Rel. Freq. = n/N
   text-align: left;
 }
 
-#gfkosjyyau .gt_empty_group_heading {
+#sqeyxnjxma .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -776,15 +752,15 @@ Rel. Freq. = n/N
   vertical-align: middle;
 }
 
-#gfkosjyyau .gt_from_md > :first-child {
+#sqeyxnjxma .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gfkosjyyau .gt_from_md > :last-child {
+#sqeyxnjxma .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gfkosjyyau .gt_row {
+#sqeyxnjxma .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -803,7 +779,7 @@ Rel. Freq. = n/N
   overflow-x: hidden;
 }
 
-#gfkosjyyau .gt_stub {
+#sqeyxnjxma .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -816,7 +792,7 @@ Rel. Freq. = n/N
   padding-right: 5px;
 }
 
-#gfkosjyyau .gt_stub_row_group {
+#sqeyxnjxma .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -830,15 +806,15 @@ Rel. Freq. = n/N
   vertical-align: top;
 }
 
-#gfkosjyyau .gt_row_group_first td {
+#sqeyxnjxma .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gfkosjyyau .gt_row_group_first th {
+#sqeyxnjxma .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gfkosjyyau .gt_summary_row {
+#sqeyxnjxma .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -848,16 +824,16 @@ Rel. Freq. = n/N
   padding-right: 5px;
 }
 
-#gfkosjyyau .gt_first_summary_row {
+#sqeyxnjxma .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_first_summary_row.thick {
+#sqeyxnjxma .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gfkosjyyau .gt_last_summary_row {
+#sqeyxnjxma .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -867,7 +843,7 @@ Rel. Freq. = n/N
   border-bottom-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_grand_summary_row {
+#sqeyxnjxma .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -877,7 +853,7 @@ Rel. Freq. = n/N
   padding-right: 5px;
 }
 
-#gfkosjyyau .gt_first_grand_summary_row {
+#sqeyxnjxma .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -887,7 +863,7 @@ Rel. Freq. = n/N
   border-top-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_last_grand_summary_row_top {
+#sqeyxnjxma .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -897,11 +873,11 @@ Rel. Freq. = n/N
   border-bottom-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_striped {
+#sqeyxnjxma .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gfkosjyyau .gt_table_body {
+#sqeyxnjxma .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -910,7 +886,7 @@ Rel. Freq. = n/N
   border-bottom-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_footnotes {
+#sqeyxnjxma .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -924,7 +900,7 @@ Rel. Freq. = n/N
   border-right-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_footnote {
+#sqeyxnjxma .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -933,7 +909,7 @@ Rel. Freq. = n/N
   padding-right: 5px;
 }
 
-#gfkosjyyau .gt_sourcenotes {
+#sqeyxnjxma .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -947,7 +923,7 @@ Rel. Freq. = n/N
   border-right-color: #D3D3D3;
 }
 
-#gfkosjyyau .gt_sourcenote {
+#sqeyxnjxma .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -955,72 +931,72 @@ Rel. Freq. = n/N
   padding-right: 5px;
 }
 
-#gfkosjyyau .gt_left {
+#sqeyxnjxma .gt_left {
   text-align: left;
 }
 
-#gfkosjyyau .gt_center {
+#sqeyxnjxma .gt_center {
   text-align: center;
 }
 
-#gfkosjyyau .gt_right {
+#sqeyxnjxma .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gfkosjyyau .gt_font_normal {
+#sqeyxnjxma .gt_font_normal {
   font-weight: normal;
 }
 
-#gfkosjyyau .gt_font_bold {
+#sqeyxnjxma .gt_font_bold {
   font-weight: bold;
 }
 
-#gfkosjyyau .gt_font_italic {
+#sqeyxnjxma .gt_font_italic {
   font-style: italic;
 }
 
-#gfkosjyyau .gt_super {
+#sqeyxnjxma .gt_super {
   font-size: 65%;
 }
 
-#gfkosjyyau .gt_footnote_marks {
+#sqeyxnjxma .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gfkosjyyau .gt_asterisk {
+#sqeyxnjxma .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gfkosjyyau .gt_indent_1 {
+#sqeyxnjxma .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gfkosjyyau .gt_indent_2 {
+#sqeyxnjxma .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gfkosjyyau .gt_indent_3 {
+#sqeyxnjxma .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gfkosjyyau .gt_indent_4 {
+#sqeyxnjxma .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gfkosjyyau .gt_indent_5 {
+#sqeyxnjxma .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gfkosjyyau .katex-display {
+#sqeyxnjxma .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gfkosjyyau div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sqeyxnjxma div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1076,13 +1052,10 @@ Rel. Freq. = n/N
 <h2>Frequency Tables in <code>R</code></h2>
 <p>There are a lot of ways to create frequency tables in <code>R</code>. One of the easiest and most complete ways is to use the function <code>freq</code> in the package <code>summarytools</code>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># install.packages("summarytools") # if you have not installed summarytools yet.</span></span>
 <span id="cb23-2"><a></a></span>
 <span id="cb23-3"><a></a><span class="fu">library</span>(summarytools)</span>
 <span id="cb23-4"><a></a><span class="fu">freq</span>(flights<span class="sc">$</span>origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 flights$origin  
@@ -1153,10 +1126,7 @@ Type: Character
 <h3 id="histvector"><code>hist(vector)</code></h3>
 <p>The function <code>hist()</code> creates both a histogram or a vector of frequencies. To show the vector of frequencies, the plotting mechanism must be turned off. This can be done by setting <code>plot=F</code>. For example,</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">hist</span>(iris<span class="sc">$</span>Sepal.Length,<span class="at">plot=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>$breaks
 [1] 4.0 4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0
@@ -1390,6 +1360,261 @@ Type: Factor
 <pre><code>[1] 5.843333</code></pre>
 </div>
 </div>
+</section>
+<section id="mean-exercise" class="slide level2">
+<h2>Mean: Exercise</h2>
+<p>The data set <code>cars</code> include the speed (<code>speed</code>,in mph) and stopping distance (<code>dist</code>,in ft) of 50 cars recorded in the 1920s.</p>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Exercise</a></li><li><a href="#tabset-8-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<p>Find the mean stopping distance for these 50 cars.</p>
+</div>
+<div id="tabset-8-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">mean</span>(cars<span class="sc">$</span>dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42.98</code></pre>
+</div>
+</div>
+<p>The mean stopping distance is 42.98 ft.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-advantages-and-disadvantages" class="slide level2">
+<h2>Mean: Advantages and Disadvantages</h2>
+<div title="Advantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The mean is unique to a specific set of values, i.e.&nbsp;there is only one mean for every data set. The mean is also relatively easy to calculate and is a well-known summary statistic.</p>
+</div>
+</div>
+</div>
+</div>
+<div title="Disadvantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Disadvantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The mean is easily influenced by extreme values. As an example. recall the mean of the following numbers:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">31</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.8</code></pre>
+</div>
+</div>
+<p>Now, if 31 was replaced by an extreme number, say 310, the new mean would be very different.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">310</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 79.6</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="median" class="slide level2">
+<h2>Median</h2>
+<p>The median is the middle value of ordered data.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>If there is an odd number of observations, the median is a value in the middle of the data.</p>
+<p>If there is an even number of observations, the median is the average of the two middle values.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="median-example" class="slide level2">
+<h2>Median: Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Example 1: Odd</a></li><li><a href="#tabset-9-2">Example 2: Even</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<p>What is the median of the following numbers? 83.07 72.15 89.61 81.68 87.26</p>
+<ul>
+<li>Sort the values first in ascending order: 72.15, 81.68, 83.07, 87.26, 89.61</li>
+<li>There are five values, which means there is a middle value (83.07). Hence, the median is <strong>83.07</strong>.</li>
+</ul>
+</div>
+<div id="tabset-9-2">
+<p>What is the median of the following numbers? 100 3 7 5 8 2</p>
+<ul>
+<li>Sort the values first in ascending order: 2 3 5 7 8 100</li>
+<li>There are six values, which means there is no middle value. We need to take the average of the two middle values (5,7). Hence, the median is (5+7)/2 = <strong>6</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="median-r" class="slide level2">
+<h2>Median: <code>R</code></h2>
+<p>In <code>R</code>, we can use the <code>median(vector)</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="fl">83.07</span>, <span class="fl">72.15</span>, <span class="fl">89.61</span>, <span class="fl">81.68</span>, <span class="fl">87.26</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 83.07</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>This works for variables in data frames.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.8</code></pre>
+</div>
+</div>
+</section>
+<section id="median-exercise-in-r." class="slide level2">
+<h2>Median: Exercise in <code>R</code>.</h2>
+</section>
+<section id="exercise-7" class="slide level2">
+<h2>Exercise</h2>
+<p>The data set <code>USArrests</code> contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973.</p>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Exercise</a></li><li><a href="#tabset-10-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<p>Create an ordered list for the <code>Assault</code> variable in <code>USArrests</code>. What is the median rate for assault per 100,000 residents?</p>
+</div>
+<div id="tabset-10-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">median</span>(USArrests<span class="sc">$</span>Assault)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 159</code></pre>
+</div>
+</div>
+<p>The median arrest rate per 100,000 residents in the US in 1973 was 159.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="median-advantages-and-disadvantages" class="slide level2">
+<h2>Median: Advantages and Disadvantages</h2>
+<div title="Advantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The median is unique to a specific set of values, i.e.&nbsp;there is only one median for every data set. The median is also relatively easy to calculate once the data is ordered. Unlike the mean, the median is <strong>NOT</strong> influenced by extreme values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">31</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27</code></pre>
+</div>
+</div>
+<p>Now, if 31 was replaced by an extreme number, say 310, the new median would be the same because the middle part of the data did not change.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">310</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="Disadvantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Disadvantages</strong></p>
+</div>
+<div class="callout-content">
+<p>While the median is a well-known summary statistic, it is limited in the area of inferential statistics. The mean is more versatile as an estimator when it comes to statistical tests compared to the median.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mode" class="slide level2">
+<h2>Mode</h2>
+<p>For a sample of quantitative/qualitative data, the mode is the value that occurs most frequently.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>If all values occurred with the same frequency, then the data does not have a mode.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="mode-example" class="slide level2">
+<h2>Mode: Example</h2>
+<p>What is the mode of the following values? 33, 35, 35, 46, 21, 56, 390.</p>
+<ul>
+<li>The mode is 35 because it occurred the most times.</li>
+</ul>
+<p>What is the mode of the following values? 21, 35, 35, 46, 21, 56, 390.</p>
+<ul>
+<li>The modes are 21 and 35 because these values occurred twice, which was the highest frequency across the values.</li>
+</ul>
+<p>What is the mode of the following values? 33, 34, 35, 46, 21, 56, 390.</p>
+<ul>
+<li>There is <strong>NO</strong> mode because all values occurred only once.</li>
+</ul>
+</section>
+<section id="mode-r" class="slide level2">
+<h2>Mode: <code>R</code></h2>
+<p>We can use the <code>freq()</code> or <code>hist()</code> functions in <code>R</code> to create a frequency table for the data set, but we often only need the frequency distribution. One function that we can use is the <code>table</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>freq_table <span class="ot">&lt;-</span> <span class="fu">table</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb55-2"><a></a><span class="fu">sort</span>(freq_table,<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  5 5.1 6.3 5.7 6.7 5.5 5.8 6.4 4.9 5.4 5.6   6 6.1 4.8 6.5 4.6 5.2 6.2 6.9 7.7 
+ 10   9   9   8   8   7   7   7   6   6   6   6   6   5   5   4   4   4   4   4 
+4.4 5.9 6.8 7.2 4.7 6.6 4.3 4.5 5.3   7 7.1 7.3 7.4 7.6 7.9 
+  3   3   3   3   2   2   1   1   1   1   1   1   1   1   1 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>freq_table <span class="ot">&lt;-</span> <span class="fu">table</span>(iris<span class="sc">$</span>Species)</span>
+<span id="cb57-2"><a></a><span class="fu">sort</span>(freq_table,<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    setosa versicolor  virginica 
+        50         50         50 </code></pre>
+</div>
+</div>
+<p>The mode sepal length in the <code>iris</code> data set is 5. There is no mode for the species variable as all species occurred 50 times.</p>
 
 
 </section></section>

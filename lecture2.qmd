@@ -14,7 +14,7 @@ format:
     chalkboard: true
     engine: knitr
     echo: true
-    code-fold: true
+    code-fold: false
     
   pdf: 
     number-sections: true
@@ -384,4 +384,167 @@ The function `mean()` can also be used to calculate means of quantitative variab
 
 mean(iris$Sepal.Length)
 ```
+## Mean: Exercise
+
+The data set `cars` include the speed (`speed`,in mph) and stopping distance (`dist`,in ft) of 50 cars recorded in the 1920s. 
+
+::: {.panel-tabset}
+### Exercise
+
+Find the mean stopping distance for these 50 cars.
+
+### Answer
+
+```{r}
+#| code-fold: false
+
+mean(cars$dist)
+```
+The mean stopping distance is 42.98 ft.
+:::
+
+## Mean: Advantages and Disadvantages
+
+::: {.callout-note title="Advantages"}
+The mean is unique to a specific set of values, i.e. there is only one mean for every data set. The mean is also relatively easy to calculate and is a well-known summary statistic.
+:::
+
+::: {.callout-note title="Disadvantages"}
+The mean is easily influenced by extreme values. As an example. recall the mean of the following numbers:
+
+```{r}
+#| code-fold: false
+mean(c(5,27,26,30,31))
+```
+
+Now, if 31 was replaced by an extreme number, say 310, the new mean would be very different.
+
+```{r}
+#| code-fold: false
+mean(c(5,27,26,30,310))
+```
+
+:::
+## Median
+
+The median is the middle value of ordered data.
+
+::: callout-important
+If there is an odd number of observations, the median is a value in the middle of the data.
+
+If there is an even number of observations, the median is the average of the two middle values. 
+:::
+
+## Median: Example
+
+:::{.panel-tabset}
+### Example 1: Odd
+
+What is the median of the following numbers? 83.07 72.15 89.61 81.68 87.26
+
+- Sort the values first in ascending order: 72.15, 81.68, 83.07, 87.26, 89.61
+- There are five values, which means there is a middle value (83.07). Hence, the median is **83.07**.
+
+### Example 2: Even
+
+What is the median of the following numbers? 100 3 7 5 8 2
+
+- Sort the values first in ascending order: 2 3 5 7 8 100
+- There are six values, which means there is no middle value. We need to take the average of the two middle values (5,7). Hence, the median is (5+7)/2 = **6**.
+:::
+
+## Median: `R`
+
+In `R`, we can use the `median(vector)` function.
+
+
+```{r}
+median(c(83.07, 72.15, 89.61, 81.68, 87.26))
+median(c(100, 3, 7, 5, 8, 2))
+```
+
+This works for variables in data frames.
+
+```{r}
+median(iris$Sepal.Length)
+```
+## Median: Exercise in `R`.
+
+## Exercise
+
+The data set `USArrests` contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973.
+
+:::{.panel-tabset}
+
+### Exercise
+
+Create an ordered list for the `Assault` variable in `USArrests`. What is the median rate for assault per 100,000 residents?
+
+### Answer
+
+```{r}
+median(USArrests$Assault)
+```
+
+The median arrest rate per 100,000 residents in the US in 1973 was 159.
+:::
+
+
+## Median: Advantages and Disadvantages
+
+::: {.callout-note title="Advantages"}
+The median is unique to a specific set of values, i.e. there is only one median for every data set. The median is also relatively easy to calculate once the data is ordered. Unlike the mean, the median is **NOT** influenced by extreme values.
+
+```{r}
+#| code-fold: false
+median(c(5,27,26,30,31))
+```
+
+Now, if 31 was replaced by an extreme number, say 310, the new median would be the same because the middle part of the data did not change.
+
+```{r}
+#| code-fold: false
+median(c(5,27,26,30,310))
+```
+:::
+
+::: {.callout-note title="Disadvantages"}
+While the median is a well-known summary statistic, it is limited in the area of inferential statistics. The mean is more versatile as an estimator when it comes to statistical tests compared to the median.
+:::
+
+## Mode
+
+For a sample of quantitative/qualitative data, the mode is the value that occurs most frequently.
+
+::: callout-important
+If all values occurred with the same frequency, then the data does not have a mode.
+:::
+
+## Mode: Example
+
+What is the mode of the following values? 33, 35, 35, 46, 21, 56, 390.
+
+- The mode is 35 because it occurred the most times.
+
+What is the mode of the following values? 21, 35, 35, 46, 21, 56, 390.
+
+- The modes are 21 and 35 because these values occurred twice, which was the highest frequency across the values.
+
+What is the mode of the following values? 33, 34, 35, 46, 21, 56, 390.
+
+- There is **NO** mode because all values occurred only once.
+
+## Mode: `R`
+
+We can use the `freq()` or `hist()` functions in `R` to create a frequency table for the data set, but we often only need the frequency distribution. One function that we can use is the `table` function.
+
+```{r}
+freq_table <- table(iris$Sepal.Length)
+sort(freq_table,decreasing = TRUE)
+```
+```{r}
+freq_table <- table(iris$Species)
+sort(freq_table,decreasing = TRUE)
+```
+The mode sepal length in the `iris` data set is 5. There is no mode for the species variable as all species occurred 50 times.
 
