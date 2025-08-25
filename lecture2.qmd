@@ -548,3 +548,5 @@ sort(freq_table,decreasing = TRUE)
 ```
 The mode sepal length in the `iris` data set is 5. There is no mode for the species variable as all species occurred 50 times.
 
+# Measures of Dispersion
+
