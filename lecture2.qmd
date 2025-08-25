@@ -26,6 +26,8 @@ format:
 - Data Organization
 - Measures of Central Tendency
 - Measures of Dispersion
+- Measure of Location
+- Skewness and Kurtosis
 - Basic Data Visualization using R
 
 # Data Organization
@@ -548,5 +550,134 @@ sort(freq_table,decreasing = TRUE)
 ```
 The mode sepal length in the `iris` data set is 5. There is no mode for the species variable as all species occurred 50 times.
 
+## Mode: Advantages and Disadvantages
+
+::: {.callout-note title="Advantages"}
+The mode is easily calculable using frequency tables. Unlike the mean and median, it can be calculated for qualitative variables. 
+:::
+
+::: {.callout-note title="Disadvantages"}
+The mode is not unique as data sets can have more than one mode. Modes are not used in inferential statistics for quantitative variables. 
+:::
+
 # Measures of Dispersion
+
+## Dispersion
+
+The dispersion of a set of observations refers to the variability they exhibit. Measures of dispersion convey information on the spread of a data set.
+
+::: callout-note
+Smaller values of measures of dispersion indicate lower amount of dispersion.
+:::
+
+
+## Dispersion Example
+
+Consider populations A and B shown below.
+
+
+```{r}
+#| echo: false
+
+df <- data.frame(x=c(rnorm(1000,0,2),rnorm(1000,0,10)),
+                 y=c(rep("A",1000),rep("B",1000))
+)
+library(tidyverse)
+df |> ggplot(aes(x=x, group=y, color=y)) +
+  geom_density(size=2) + 
+  theme_bw() + 
+  xlim(c(-50,50)) +  
+  labs(x="Values", 
+       y="",
+       color="Population")
+```
+
+Where are the population of values centered? Which population of values has a higher amount of dispersion?
+
+## Measures of Dispersion
+
+Commonly used measures of dispersion include:
+
+- Range
+- Variance
+- Standard Deviation
+- Coefficient of Variation
+- Interquartile Range
+
+## Range
+
+The range is the difference between the largest and smallest values in a set of observations.
+
+$$
+R = x_L - x_S
+$$
+
+where $x_L$ and $x_S$ are the largest and smallest values, respectively.
+
+## Range: Example
+
+What is the range of the following values: 254, 281, 192, 260, 212, 179?
+
+- The maximum value is 281, minimum value is 179. The range can be calculated as 281-179 = `r 281-179`.
+
+## Range: `R`
+
+The `diff(range(vector))` function calculates the range of a set of values.
+
+```{r}
+range(c(254, 281, 192, 260, 212, 179))
+diff(range(c(254, 281, 192, 260, 212, 179)))
+```
+
+We can also use `max()` and `min()` to identify the maximum and minimum values. We can take the difference between the two values to calculate the range.
+
+```{r}
+max(c(254, 281, 192, 260, 212, 179))-min(c(254, 281, 192, 260, 212, 179))
+```
+
+## Range: `R` Example
+
+Consider the `flights` data set from the package `nycflights23`. The `distance` column contains the distance in miles between origin and destination airport for each flight. Calculate the range of the distances between origin and destination airports.
+
+```{r}
+max(flights$distance)
+min(flights$distance)
+max(flights$distance) - min(flights$distance)
+```
+The range is 4,903 miles.
+
+## Exercise
+
+Consider the `iris` data set that gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris.  
+
+::: {.panel-tabset}
+### Exercise
+
+- What is the longest petal length in this data set?
+- What is the shortest petal length in this data set?
+- What is the range of the petal lengths?
+
+### Answer
+
+```{r}
+max(iris$Petal.Length)
+min(iris$Petal.Length)
+max(iris$Petal.Length)-min(iris$Petal.Length)
+```
+
+:::
+
+## Range: Advantages and Disadvantages
+
+
+::: {.callout-note title="Advantages"}
+The main advantage in using the range is the simplicity of its computation. It also provides information on the span of the set of values.
+:::
+
+::: {.callout-note title="Disadvantages"}
+The usefulness of the range is limited. The fact that it takes into account only two values causes it to be a poor measure of dispersion. It is often preferable to express the range as a number pair $[x_S,x_L]$, as is seen in some demographic tables in research papers.
+:::
+
+
+## Variance
 

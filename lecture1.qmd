@@ -14,7 +14,7 @@ format:
     chalkboard: true
     engine: knitr
     echo: true
-    code-fold: true
+    code-fold: false
     
   pdf: 
     number-sections: true
@@ -207,7 +207,7 @@ An exact value calculated from a population is referred to as a **parameter**.
 ::: {.callout-note title="Sample"}
 A sample is a part of the population.
 
-An exact value calculated from a population is referred to as a **parameter**.
+An exact value calculated from a sample is referred to as a **statistic**.
 :::
 
 ## Population vs. Sample {.smaller}
