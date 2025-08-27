@@ -479,14 +479,6 @@ The `glimpse()` function from the package `dplyr` (part of `tidyverse`) provides
 glimpse(flights)
 ```
 
-### `$`
-
-The `$` operator allows us to extract and then explore a single variable within a data frame. 
-
-```{r}
-flights$origin
-```
-
 
 ### `kable()`
 
@@ -496,6 +488,13 @@ The `kable()` function is part of the package `knitr`. In this example, we will 
 kable(airlines)
 ```
 
+### `$`
+
+The `$` operator allows us to extract and then explore a single variable within a data frame. 
+
+```{r}
+airlines$name
+```
 :::
 
 ## Exercise

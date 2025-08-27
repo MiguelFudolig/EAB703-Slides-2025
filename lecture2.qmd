@@ -681,3 +681,225 @@ The usefulness of the range is limited. The fact that it takes into account only
 
 ## Variance
 
+The variance is a measure of how far the values are from the mean. 
+
+::: callout-important
+The calculation for *population* and *sample* variances are slightly different. However, both involve taking the **squared difference** of each value and the mean of the data set.
+:::
+
+:::{.panel-tabset}
+### Sample Variance
+
+The sample variance is denoted by $s^2$. 
+
+$$
+s^2 = \frac{1}{(n-1)}\sum_{i=1}^n (x_i-\bar{x})^2
+$$
+
+### Population Variance
+
+The population variance is denoted by $\sigma^2$.For a population of size $N$ 
+
+$$
+\sigma^2 = \frac{1}{(N)}\sum_{i=1}^N (x_i-\mu)^2
+$$
+
+### $s^2$ vs. $\sigma^2$
+
+The main difference between these two expressions is the denominator term ($n-1$ vs. $N$). This discrepancy is due to a concept of *degrees of freedom*.
+
+The assumption is that if the sample mean is known, we only need to know $n-1$ values to fully define all the values in the data set. Hence, the denominator for the sample variance is $n-1$.
+
+::: callout-note
+In most realistic situations, we work with samples. Thus, we usually work with the sample variance.
+:::
+:::
+
+## Standard Deviation
+
+Since the variance involves squared differences, it does not have the same unit as the actual measurements. Hence, we typically use the **standard deviation** to measure the variability in a data set.
+
+The standard deviation can be calculated by taking the square root of the variance.
+
+$$
+s = \sqrt{s^2}~~; ~~ \sigma = \sqrt{\sigma^2}
+$$
+## Standard Deviation and Variance: `R`
+
+The respective functions `sd(vector)` and `var(vector)` calculates the sample standard deviation and variance for a set of values.
+
+:::{.panel-tabset}
+### Example 1 (Manual)
+
+Calculate the sample variance and standard deviation for the following numbers: 16, 10, 49, 15, 6.
+
+Note that the mean of the numbers is ` r mean(c(16, 10, 49, 15, 6))`
+
+$$
+s^2 = \frac{1}{5-1}[(16-16)^2 + (10-16)^2 + (49-16)^2 + (15-16)^2 + (6-16)^2] = 293.7
+$$
+
+$$
+s = \sqrt{s^2} = 17.1
+$$
+
+### Example 2 (R)
+
+Using R functions, calculate the sample variance and standard deviation for the following numbers: 16, 10, 49, 15, 6.
+
+```{r}
+var(c(16, 10, 49, 15, 6))
+sd(c(16, 10, 49, 15, 6))
+```
+
+### Example 3
+
+Using R functions, calculate the standard deviation and variance of the murder rates across the 50 US states in 1973. The rates are found in the dataset `USArrests` under the column `Murder`.
+
+```{r}
+sd(USArrests$Murder)
+var(USArrests$Murder)
+```
+:::
+
+## Exercise
+
+The `faithful` data set includes data on a sample of 272 eruptions of the Old Faithful geyser in Yellowstone National Park. The column `eruptions` contains the eruption time in minutes. 
+
+:::{.panel-tabset}
+
+### Exercise
+Calculate the following using `R` functions:
+
+- Mean eruption time
+- Eruption time variance
+- Eruption time standard deviation
+
+### Answer
+
+Mean:
+```{r}
+mean(faithful$eruptions)
+```
+
+Standard Deviation:
+
+```{r}
+sd(faithful$eruptions)
+```
+
+Variance:
+
+```{r}
+var(faithful$eruptions)
+```
+
+:::
+
+# Measure of Location
+
+## Percentiles 
+
+::: {.callout-note title="Percentiles"}
+The $p$th percentile is the value $x$ such that $p$% of the data are less than $x$. For example, the 10th percentile is the value such that 10% of the data is below this number.
+:::
+
+::: callout-note
+The 50th percentile is the median because half of the data (50%) is below the median. The maximum value is the 100th percentile, while the minimum value is the 0th percentile.
+:::
+
+::: {.callout-note title="Quartiles"}
+
+The 25th percentile is also known as the first quartile and denoted as $Q_1$. The 75th percentile is known as the third quartile ($Q_3$). The median is also known as the middle/second quartile ($Q_2$). These numbers are important in describing the variability and skewness in the data.
+:::
+
+
+## Interquartile Range (Measure of Dispersion)
+
+The interquartile range (IQR) is a measure of variation based on the measures of location. The IQR can be calculated by taking the difference between $Q_3$ and $Q_1$.
+
+$$
+IQR = Q_3 - Q_1
+$$
+
+::: callout-note
+The main advantage of using IQR is its robustness to extreme values.
+:::
+
+## Percentiles and IQR: `R`
+
+You can calculate the $p$th percentile of a set of values using the `quantile(vector,p/100)` function. The IQR can be calculated using the `IQR(vector)` function.
+
+::: {.panel-tabset}
+### Example 1
+
+calculate the 25th percentile and 75th percentile of the eruption times (`eruptions`) of Old Faithful using the `faithful` data set.
+
+```{r}
+quantile(faithful$eruptions,0.25)
+quantile(faithful$eruptions,0.75)
+
+```
+
+### Example 2
+
+Calculate the IQR of the eruption times (`eruptions`) of Old Faithful using the `faithful` data set.
+
+```{r}
+
+IQR(faithful$eruptions)
+```
+:::
+
+## Exercise
+
+The `infert` data set includes data from a case-control study that investigates infertillity after spontaneous and induced abortion. 
+
+:::{.panel-tabset}
+
+### Exercise
+
+- Use `glimpse()` to determine the variables in the data set.
+- Calculate the mean age for the entire sample.
+- Calculate the standard deviation of the age for the entire sample.
+- Calculate the variance of the age for the entire sample.
+- Calculate the 90th percentile of the age for the entire sample.
+- Calculate the IQR of the age for the entire sample.
+
+### Answers
+
+```{r}
+glimpse(infert)
+mean(infert$age)
+sd(infert$age)
+var(infert$age)
+quantile(infert$age,0.9)
+IQR(infert$age)
+```
+Mean: `r mean(infert$age) |> round(2)`, Standard Deviation: `r sd(infert$age) |> round(2)`, Variance: `r var(infert$age) |> round(2)`, 90th percentile: `r quantile(infert$age,0.9)`, IQR: `r IQR(infert$age) |> round(2)`
+:::
+
+# Skewness
+
+## Skewness
+The skewness provides information on the symmetry of data. If asymmetric, the data is said to be skewed.
+
+::: callout-important
+The direction of skewness depends on where the “tail” of the data is located.
+:::
+
+![](figs/2-skewness.png)
+
+## Kurtosis
+
+Measures how flat/peaked a distribution is compared to a bell-shaped curve.
+
+::: callout-important
+Bell-shaped distributions are referred to as mesokurtic. Peaked distributions are referred to as leptokurtic. Flatter distributions are referred to as platykurtic.
+:::
+
+![](figs/2-kurtosis.jpg){fig-align="center"}
+
+# Data Visualization
+
+
