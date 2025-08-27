@@ -902,4 +902,49 @@ Bell-shaped distributions are referred to as mesokurtic. Peaked distributions ar
 
 # Data Visualization
 
+## Grammar of Graphics
+
+The "grammar of graphics" defines a set of rules for constructing statistical graphics by combining different types of layers.
+
+We can break a graphic into the following essential components:
+
+1. `data`: dataset containing the variables of interest
+2. `geom`: the geometric object in question, related to the type of plot we want to make
+3. `aes`: the aesthetic attributes of the geometric object, such as color, shape, size, fill, etc.
+4. `facet`: breaks up a plot into subplots as defined by the values of another variable
+
+
+
+## `ggplot2` package 
+
+The `ggplot2` package includes the various components of the grammar of graphics. 
+
+::: callout-note
+The `ggplot()` function is used to create a base for the plot which includes the following:
+
+- The data frame where the variables to be plotted belong (`data`)
+- The mapping of the `aes`thetic attributes of the plot.
+
+The geometry and type of plot will be added as layers to the `ggplot()` function using the `+` symbol.
+:::
+
+## Common Graphs
+
+Here are common plots used in exploring data:
+
+- histograms
+- boxplots
+- bar plots
+
+## Histograms
+
+Histograms are plots that visualize the distribution of a numerical value.
+
+::: callout-note
+Histograms are graphical representations of the frequency table/distribution.
+:::
+
+## Histograms in `ggplot()`
+
+Consider the `infert` data set in `R`.
 
