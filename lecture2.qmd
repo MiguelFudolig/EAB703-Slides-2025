@@ -472,7 +472,6 @@ median(iris$Sepal.Length)
 ```
 ## Median: Exercise in `R`.
 
-## Exercise
 
 The data set `USArrests` contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973.
 
@@ -724,6 +723,8 @@ The standard deviation can be calculated by taking the square root of the varian
 $$
 s = \sqrt{s^2}~~; ~~ \sigma = \sqrt{\sigma^2}
 $$
+
+
 ## Standard Deviation and Variance: `R`
 
 The respective functions `sd(vector)` and `var(vector)` calculates the sample standard deviation and variance for a set of values.
@@ -933,8 +934,9 @@ The geometry and type of plot will be added as layers to the `ggplot()` function
 Here are common plots used in exploring data:
 
 - histograms
-- boxplots
 - bar plots
+- boxplots
+
 
 ## Histograms
 
@@ -946,5 +948,171 @@ Histograms are graphical representations of the frequency table/distribution.
 
 ## Histograms in `ggplot()`
 
-Consider the `infert` data set in `R`.
+:::{.panel-tabset}
+
+### Example
+
+Consider the `infert` data set in `R`. Suppose we want to visualize the distribution of the participant age in the case-control study.
+
+```{r}
+library(tidyverse) #includes ggplot2
+ggplot(data=infert, aes(x=age)) + # <1>
+  geom_histogram(bins=40) # <2>
+```
+
+1. Base layer defining what the source data set is (`data=infert`) and the aesthetic `aes(x=age)`.
+2. `geom_histogram()` adds the layer of a histogram on the base layer, using 40 bins.
+
+### Notes
+
+::: callout-note
+The `geom_histogram()` function creates a histogram layer on top of the base created by `ggplot()`. You can add other modifications to the histogram (e.g. color, fill, etc.) in the `geom_histogram()` function.
+:::
+
+```{r}
+ggplot(data=infert, aes(x=age)) +
+  geom_histogram(bins=40, color="white", fill="blue") 
+```
+
+
+:::
+
+## Bar plots in `ggplot()`
+
+Bar plots are typically used to visualize the frequency distribution for a categorical variable.
+
+::: callout-important
+`geom_bar()` is used to create bar plots in the `ggplot2` package.
+:::
+
+
+## Bar plots in `ggplot()`
+
+
+:::{.panel-tabset}
+
+### Example
+
+Consider the `infert` data set in `R`. Suppose we want to visualize the distribution of the education level (in years) in the case-control study.
+
+```{r}
+library(tidyverse) #includes ggplot2
+ggplot(data=infert, aes(x=education)) + # <1>
+  geom_bar() # <2>
+```
+
+1. Base layer defining what the source data set is (`data=infert`) and the aesthetic `aes(x=education)`.
+2. `geom_bar()` adds the layer of a bar plot on the base layer.
+
+### Notes 1
+
+::: callout-note
+Like `geom_histogram()`, you can add other modifications to the histogram (e.g. color, fill, etc.) in the `geom_bar()` function.
+:::
+
+```{r}
+ggplot(data=infert, aes(x=education)) + 
+  geom_bar(color="white", fill="blue", width=0.5)
+```
+
+### Notes 2
+
+You can create side-by-side bar plots by facetting. `facet_wrap` allows you to create bar plots across the levels of another variable of interest. Suppose we want to visualize the distribution of education level for the case (1) and control (0) groups.
+
+```{r}
+ggplot(data=infert, aes(x=education)) + 
+  geom_bar(color="white", fill="blue", width=0.5) + 
+  facet_wrap(~case)
+```
+:::
+
+
+## Boxplots
+
+Boxplots are another way to visualize the distribution of a numerical value. Boxplots are constructed from the information provided in the five-number summary.
+
+::: {.callout-note title="Five-Number Summary"}
+The five-number summary of a set of values include the following statistics:
+
+- Minimum
+- First Quartile
+- Median
+- Third Quartile
+- Maximum
+:::
+
+
+
+## Boxplots in `ggplot()`
+
+::: callout-note
+The function `geom_boxplot()` is used to create boxplots in the `ggplot2` package.
+:::
+
+Boxplots can also provide information on how skewed the data distribution is by the location of the mediam with respect to the "box". 
+
+::: callout-important
+If the median is closer to the first quartile, the data is right-skewed. If the median is closer to the third quartile, the data is left-skewed. If the median is in the middle, then the data is symmetric/unskewed.
+:::
+
+## Boxplots in `ggplot()`
+
+:::{.panel-tabset}
+### Example
+
+Consider the `USArrests` data set. Create a box plot for the arrest rate for assault as given by the `Assault` variable.
+
+```{r}
+ggplot(data=USArrests, aes(x="Assault",y=Assault)) + geom_boxplot()
+```
+
+The data appears to be slightly right-skewed because the median is closer to $Q_1$ than $Q_3$.
+
+### Notes 1
+
+You can also orient boxplots horizontally and overlay the data points using `geom_point()`.
+
+```{r}
+ggplot(data=USArrests, aes(y="Assault",x=Assault)) + geom_boxplot() + geom_point()
+```
+### Notes 2
+
+You can also create separate boxplots for different groups as dictated by a separate variable. Consider the `iris` data set. I can create side-by-side boxplots of petal lengths corresponding to each species.
+
+```{r}
+ggplot(data=iris,aes(x=Species,y=Petal.Length)) + geom_boxplot() + geom_point()
+```
+
+:::
+
+## Importing files
+
+There are multiple ways to import files into `R`. The most common data set format is the `.csv` file. You can import CSV files using the `read.csv(filename)` function. 
+
+First, download the file `SleepHealthData.csv` from Canvas in the same folder as your R source code.
+
+```{r}
+setwd(getwd())
+sleep <- read.csv("SleepHealthData.csv")
+glimpse(sleep)
+```
+
+
+## Exercise
+
+We will use the `sleep` data set we just imported into `R` from the `csv` file.
+
+:::{.panel-tabset}
+
+### Exercise
+
+Create a plot that shows the distribution of sleep duration (`sleep_duration`) for different sleep disorders (`sleep_disorder`).
+
+### Answer
+
+```{r}
+ggplot(data=sleep,aes(x=sleep_disorder,y=sleep_duration)) + geom_boxplot() + geom_point()
+```
+
+
 
