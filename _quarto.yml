@@ -9,10 +9,20 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: lecture1.qmd
-        text: Lecture 1- Intro to Biostatistics and R
-      - href: lecture2.qmd
-        text: Lecture 2- Descriptive Statistics
+      - section: "Lectures"
+        href: lectures.qmd
+        contents:
+          - href: lecture1.qmd
+            text: Lecture 1- Intro to Biostatistics and R
+          - href: lecture2.qmd
+            text: Lecture 2- Descriptive Statistics
+          - href: lecture3.qmd
+            text: Lecture 3- Intro to Probability
+      - section: "Problem Sets"
+        href: problemsets.qmd
+        contents:
+          # - href: PS1_key.qmd
+          #   text: Problem Set 1 Key
 
 format:
   html:

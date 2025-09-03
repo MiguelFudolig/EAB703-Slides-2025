@@ -1,0 +1,31 @@
+---
+title: "Introduction to Probability"
+subtitle: Lecture 3
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 3 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+---
+
+# Outline
+
+- Views of Probability
+- Elementary Properties of Probability
+- Calculating Probabilities
+- Bayes' Theorem
+- Screening Tests
+
+# Views of Probability

@@ -1,11 +1,29 @@
 [
   {
+    "objectID": "PS1_key.html",
+    "href": "PS1_key.html",
+    "title": "Problem Set 1 Key",
+    "section": "",
+    "text": "The data set Arrests can be accessed through the package car inR. The data set includes data on police treatment of individuals arrested in Toronto for simple possession of small quantities of marijuana. The data are part of a larger data set featured in a series of articles in the Toronto Star newspaper.\n\n\nProvide the relevant R code to install the car package in R.\n\ninstall.packages(\"car\")\n\nProvide the relevant R code to load the car package.\n\n\nlibrary(car)\n\nLoading required package: carData\n\n\n\nExplore the Arrests data set using glimpse() to show the different variables available in the data set. What are the different variables in the Arrests data set? Show your code. [4pts.]\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n✖ dplyr::recode() masks car::recode()\n✖ purrr::some()   masks car::some()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nglimpse(Arrests)\n\nRows: 5,226\nColumns: 8\n$ released &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes…\n$ colour   &lt;fct&gt; White, Black, White, Black, Black, Black, White, White, Black…\n$ year     &lt;int&gt; 2002, 1999, 2000, 2000, 1999, 1998, 1999, 1998, 2000, 2001, 1…\n$ age      &lt;int&gt; 21, 17, 24, 46, 27, 16, 40, 34, 23, 30, 18, 18, 17, 42, 26, 2…\n$ sex      &lt;fct&gt; Male, Male, Male, Male, Female, Female, Male, Female, Male, M…\n$ employed &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Ye…\n$ citizen  &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Ye…\n$ checks   &lt;int&gt; 3, 3, 3, 1, 1, 0, 0, 1, 4, 3, 0, 3, 1, 0, 2, 3, 4, 5, 3, 0, 0…\n\n\n\nCreate a frequency table for the year of arrests (year variable). Which year had the most arrests? Show your code. [2pts.]\n\n\nlibrary(summarytools)\n\n\nAttaching package: 'summarytools'\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\nfreq(Arrests$year)\n\nError in match(x, table, nomatch = 0L): 'match' requires vector arguments\n\n\nWarning in parse_call(mc = match.call(), caller = \"freq\"): metadata extraction\nterminated unexpectedly; inspect results carefully\n\n\nFrequencies  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n       1997    492      9.41           9.41      9.41           9.41\n       1998    877     16.78          26.20     16.78          26.20\n       1999   1099     21.03          47.23     21.03          47.23\n       2000   1270     24.30          71.53     24.30          71.53\n       2001   1211     23.17          94.70     23.17          94.70\n       2002    277      5.30         100.00      5.30         100.00\n       &lt;NA&gt;      0                               0.00         100.00\n      Total   5226    100.00         100.00    100.00         100.00\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe year with the most arrests was 2000.\n\n\n\nCreate a bar plot to visualize the frequencies of arrests for each year using ggplot() and geom_bar(). Show your code. [2pts.]\n\nAcceptable solution (full credit):\n\nggplot(data=Arrests,aes(x=year)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nBetter solution:\n\nggplot(data=Arrests,aes(x=as.factor(year))) +\n  geom_bar(color=\"black\") + \n  theme_bw() + \n  labs(x=\"Year\", y=\"Frequency\")\n\n\n\n\n\n\n\n\n\nThe file SleepHealthData.csv comprises 400 rows and 13 columns, covering a wide range of variables related to sleep and daily habits. It includes details such as gender, age, occupation, sleep duration, quality of sleep, physical activity level, stress levels, BMI category, blood pressure, heart rate, daily steps, and the presence or absence of sleep disorders.\n\n\nProvide the relevant R code to import SleepHealthData.csv into R and assign it to the variable sleep.\n\n\n\n\n\n\n\nImportant\n\n\n\nSave the CSV file in the same folder as your Rscript!\n\n\nsetwd(getwd())\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nComplete the following table for the recorded heart rate of the participants. Show your code.\n\nMean:\n\nmean(sleep$heart_rate)\n\n[1] 70.16578\n\n\nMedian:\n\nmedian(sleep$heart_rate)\n\n[1] 70\n\n\nRange:\n\nmax(sleep$heart_rate)-min(sleep$heart_rate)\n\n[1] 21\n\n\nVariance and Standard Deviation:\n\nvar(sleep$heart_rate)\n\n[1] 17.10381\n\nsd(sleep$heart_rate)\n\n[1] 4.135676\n\n\nMinimum and Maximum:\n\nmin(sleep$heart_rate)\n\n[1] 65\n\nmax(sleep$heart_rate)\n\n[1] 86\n\n\n\\(Q_1\\), \\(Q_3\\), and IQR:\n\nquantile(sleep$heart_rate,0.25)\n\n25% \n 68 \n\nquantile(sleep$heart_rate,0.75)\n\n75% \n 72 \n\nIQR(sleep$heart_rate)\n\n[1] 4\n\n\n\nCreate a histogram for the recorded heart rate of all the participants using ggplot() and geom_histogram(). Show your code.\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram(color=\"white\", binwidth=2.5, fill=\"black\") + \n  theme_bw() +\n  labs(x=\"Heart Rate Measurement\")\n\n\n\n\n\n\n\n\n\nCreate a boxplot for the recorded heart rate of all the participants grouped by gender using ggplot() and geom_boxplot(). Show your code. (Hint: Use x=gender in the aes() function.)\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=gender,y=heart_rate)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=gender, y=heart_rate)) + \n  geom_boxplot() + \n  theme_bw() + \n  labs(x=\"Gender\",y=\"Heart Rate Measurement\")"
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "EAB 703 Lectures",
+    "section": "",
+    "text": "This website provides the slides for EAB 703-1002 for Dr. Miguel Fudolig. Content is mainly based on the following books:\n\nDaniel, W. W., & Cross, C. L. (2018). Biostatistics: a foundation for analysis in the health sciences. John Wiley & Sons.\nRigdon, S. E., Fricker Jr, R. D., & Montgomery, D. C. (2024). Introduction to Probability and Statistics for Data Science: with R. Cambridge University Press.\nIsmay, C., Kim, A.Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546",
+    "crumbs": [
+      "Lectures"
+    ]
+  },
+  {
     "objectID": "lecture2.html#data-exploration",
     "href": "lecture2.html#data-exploration",
     "title": "Descriptive Statistics",
     "section": "Data Exploration",
     "text": "Data Exploration\nIn order to explore the underlying nature of the provided information, we need to explore the data. This exploration is made much easier if the data are organized and summarized.\n\n\n\n\n\n\n\nRaw Data\n\n\nRaw data are measurements that have not been organized, summarized, or otherwise manipulated. As a biostatistician, it is common to be provided the raw data for any analysis.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -16,6 +34,7 @@
     "section": "Ordered Lists",
     "text": "Ordered Lists\nThe easiest step in organizing data is simply to order the data.\n\n\n\n\n\n\n\nOrdered Lists/Arrays\n\n\nAn ordered list is a list of values that are arranged from the smallest to largest value (or largest to smallest).",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -26,6 +45,7 @@
     "section": "Ordered Lists in R",
     "text": "Ordered Lists in R\nThere are different ways to create an ordered list in R. Let us use the iris dataset in R and the tidyverse() package.\n\nlibrary(tidyverse)\nglimpse(iris)\n\nRows: 150\nColumns: 5\n$ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…\n$ Sepal.Width  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…\n$ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…\n$ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…\n$ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…\n\n\n\nsort()arrange()\n\n\nsort(vector) can arrange a vector in ascending or descending order. This works for both numeric and character vectors.\n\nsort(iris$Sepal.Length)\n\n  [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9 4.9\n [19] 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1 5.1 5.1\n [37] 5.1 5.1 5.1 5.1 5.1 5.2 5.2 5.2 5.2 5.3 5.4 5.4 5.4 5.4 5.4 5.4 5.5 5.5\n [55] 5.5 5.5 5.5 5.5 5.5 5.6 5.6 5.6 5.6 5.6 5.6 5.7 5.7 5.7 5.7 5.7 5.7 5.7\n [73] 5.7 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.9 5.9 5.9 6.0 6.0 6.0 6.0 6.0 6.0 6.1\n [91] 6.1 6.1 6.1 6.1 6.1 6.2 6.2 6.2 6.2 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3\n[109] 6.4 6.4 6.4 6.4 6.4 6.4 6.4 6.5 6.5 6.5 6.5 6.5 6.6 6.6 6.7 6.7 6.7 6.7\n[127] 6.7 6.7 6.7 6.7 6.8 6.8 6.8 6.9 6.9 6.9 6.9 7.0 7.1 7.2 7.2 7.2 7.3 7.4\n[145] 7.6 7.7 7.7 7.7 7.7 7.9\n\nsort(iris$Sepal.Length,decreasing = TRUE)\n\n  [1] 7.9 7.7 7.7 7.7 7.7 7.6 7.4 7.3 7.2 7.2 7.2 7.1 7.0 6.9 6.9 6.9 6.9 6.8\n [19] 6.8 6.8 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.6 6.6 6.5 6.5 6.5 6.5 6.5 6.4\n [37] 6.4 6.4 6.4 6.4 6.4 6.4 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.2 6.2 6.2\n [55] 6.2 6.1 6.1 6.1 6.1 6.1 6.1 6.0 6.0 6.0 6.0 6.0 6.0 5.9 5.9 5.9 5.8 5.8\n [73] 5.8 5.8 5.8 5.8 5.8 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.6 5.6 5.6 5.6 5.6\n [91] 5.6 5.5 5.5 5.5 5.5 5.5 5.5 5.5 5.4 5.4 5.4 5.4 5.4 5.4 5.3 5.2 5.2 5.2\n[109] 5.2 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0\n[127] 5.0 5.0 4.9 4.9 4.9 4.9 4.9 4.9 4.8 4.8 4.8 4.8 4.8 4.7 4.7 4.6 4.6 4.6\n[145] 4.6 4.5 4.4 4.4 4.4 4.3\n\n\n\n\narrange(dataframe,variable) can sort a column in a data frame. This function is from the dplyr package, which is a part of tidyverse.\n\ndf &lt;- arrange(iris,Sepal.Length)\nglimpse(df)\n\nRows: 150\nColumns: 5\n$ Sepal.Length &lt;dbl&gt; 4.3, 4.4, 4.4, 4.4, 4.5, 4.6, 4.6, 4.6, 4.6, 4.7, 4.7, 4.…\n$ Sepal.Width  &lt;dbl&gt; 3.0, 2.9, 3.0, 3.2, 2.3, 3.1, 3.4, 3.6, 3.2, 3.2, 3.2, 3.…\n$ Petal.Length &lt;dbl&gt; 1.1, 1.4, 1.3, 1.3, 1.3, 1.5, 1.4, 1.0, 1.4, 1.3, 1.6, 1.…\n$ Petal.Width  &lt;dbl&gt; 0.1, 0.2, 0.2, 0.2, 0.3, 0.2, 0.3, 0.2, 0.2, 0.2, 0.2, 0.…\n$ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…\n\ndf$Sepal.Length\n\n  [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9 4.9\n [19] 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1 5.1 5.1\n [37] 5.1 5.1 5.1 5.1 5.1 5.2 5.2 5.2 5.2 5.3 5.4 5.4 5.4 5.4 5.4 5.4 5.5 5.5\n [55] 5.5 5.5 5.5 5.5 5.5 5.6 5.6 5.6 5.6 5.6 5.6 5.7 5.7 5.7 5.7 5.7 5.7 5.7\n [73] 5.7 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.9 5.9 5.9 6.0 6.0 6.0 6.0 6.0 6.0 6.1\n [91] 6.1 6.1 6.1 6.1 6.1 6.2 6.2 6.2 6.2 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3\n[109] 6.4 6.4 6.4 6.4 6.4 6.4 6.4 6.5 6.5 6.5 6.5 6.5 6.6 6.6 6.7 6.7 6.7 6.7\n[127] 6.7 6.7 6.7 6.7 6.8 6.8 6.8 6.9 6.9 6.9 6.9 7.0 7.1 7.2 7.2 7.2 7.3 7.4\n[145] 7.6 7.7 7.7 7.7 7.7 7.9\n\n\n\ndf &lt;- arrange(iris,desc(Sepal.Length))\nglimpse(df)\n\nRows: 150\nColumns: 5\n$ Sepal.Length &lt;dbl&gt; 7.9, 7.7, 7.7, 7.7, 7.7, 7.6, 7.4, 7.3, 7.2, 7.2, 7.2, 7.…\n$ Sepal.Width  &lt;dbl&gt; 3.8, 3.8, 2.6, 2.8, 3.0, 3.0, 2.8, 2.9, 3.6, 3.2, 3.0, 3.…\n$ Petal.Length &lt;dbl&gt; 6.4, 6.7, 6.9, 6.7, 6.1, 6.6, 6.1, 6.3, 6.1, 6.0, 5.8, 5.…\n$ Petal.Width  &lt;dbl&gt; 2.0, 2.2, 2.3, 2.0, 2.3, 2.1, 1.9, 1.8, 2.5, 1.8, 1.6, 2.…\n$ Species      &lt;fct&gt; virginica, virginica, virginica, virginica, virginica, vi…\n\ndf$Sepal.Length\n\n  [1] 7.9 7.7 7.7 7.7 7.7 7.6 7.4 7.3 7.2 7.2 7.2 7.1 7.0 6.9 6.9 6.9 6.9 6.8\n [19] 6.8 6.8 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.6 6.6 6.5 6.5 6.5 6.5 6.5 6.4\n [37] 6.4 6.4 6.4 6.4 6.4 6.4 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.2 6.2 6.2\n [55] 6.2 6.1 6.1 6.1 6.1 6.1 6.1 6.0 6.0 6.0 6.0 6.0 6.0 5.9 5.9 5.9 5.8 5.8\n [73] 5.8 5.8 5.8 5.8 5.8 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.6 5.6 5.6 5.6 5.6\n [91] 5.6 5.5 5.5 5.5 5.5 5.5 5.5 5.5 5.4 5.4 5.4 5.4 5.4 5.4 5.3 5.2 5.2 5.2\n[109] 5.2 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0\n[127] 5.0 5.0 4.9 4.9 4.9 4.9 4.9 4.9 4.8 4.8 4.8 4.8 4.8 4.7 4.7 4.6 4.6 4.6\n[145] 4.6 4.5 4.4 4.4 4.4 4.3",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -36,6 +56,7 @@
     "section": "Ordered Lists: Pros and Cons",
     "text": "Ordered Lists: Pros and Cons\nThe ordered list makes it easier to see the data sorted by a specific variable. However, it may be impractical to use for large data sets.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -46,6 +67,7 @@
     "section": "Exercise",
     "text": "Exercise\nThe data set USArrests contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973.\n\nExerciseAnswer\n\n\nCreate an ordered list for the Assault variable in USArrests. Which state had the highest rate for assault per 100,000 residents?\n\n\n\nsort(USArrests$Assault,decreasing = T)\n\n [1] 337 335 300 294 285 279 276 263 259 255 254 252 249 249 238 236 211 204 201\n[20] 190 188 178 174 161 159 159 156 151 149 145 120 120 120 115 113 110 109 109\n[39] 106 102  86  83  81  72  57  56  53  48  46  45\n\narrange(USArrests,desc(Assault))\n\n               Murder Assault UrbanPop Rape\nNorth Carolina   13.0     337       45 16.1\nFlorida          15.4     335       80 31.9\nMaryland         11.3     300       67 27.8\nArizona           8.1     294       80 31.0\nNew Mexico       11.4     285       70 32.1\nSouth Carolina   14.4     279       48 22.5\nCalifornia        9.0     276       91 40.6\nAlaska           10.0     263       48 44.5\nMississippi      16.1     259       44 17.1\nMichigan         12.1     255       74 35.1\nNew York         11.1     254       86 26.1\nNevada           12.2     252       81 46.0\nIllinois         10.4     249       83 24.0\nLouisiana        15.4     249       66 22.2\nDelaware          5.9     238       72 15.8\nAlabama          13.2     236       58 21.2\nGeorgia          17.4     211       60 25.8\nColorado          7.9     204       78 38.7\nTexas            12.7     201       80 25.5\nArkansas          8.8     190       50 19.5\nTennessee        13.2     188       59 26.9\nMissouri          9.0     178       70 28.2\nRhode Island      3.4     174       87  8.3\nWyoming           6.8     161       60 15.6\nNew Jersey        7.4     159       89 18.8\nOregon            4.9     159       67 29.3\nVirginia          8.5     156       63 20.7\nOklahoma          6.6     151       68 20.0\nMassachusetts     4.4     149       85 16.3\nWashington        4.0     145       73 26.2\nIdaho             2.6     120       54 14.2\nOhio              7.3     120       75 21.4\nUtah              3.2     120       80 22.9\nKansas            6.0     115       66 18.0\nIndiana           7.2     113       65 21.0\nConnecticut       3.3     110       77 11.1\nKentucky          9.7     109       52 16.3\nMontana           6.0     109       53 16.4\nPennsylvania      6.3     106       72 14.9\nNebraska          4.3     102       62 16.5\nSouth Dakota      3.8      86       45 12.8\nMaine             2.1      83       51  7.8\nWest Virginia     5.7      81       39  9.3\nMinnesota         2.7      72       66 14.9\nNew Hampshire     2.1      57       56  9.5\nIowa              2.2      56       57 11.3\nWisconsin         2.6      53       66 10.8\nVermont           2.2      48       32 11.2\nHawaii            5.3      46       83 20.2\nNorth Dakota      0.8      45       44  7.3\n\n\nNorth Carolina had the highest rate of Assault arrests per 100,000 residents with 337.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -56,6 +78,7 @@
     "section": "Frequency Tables: Categorical Variables",
     "text": "Frequency Tables: Categorical Variables\nOne way to summarize a data set is through frequency tables, which counts the frequency of occurrence of values in the data set. To group a set of observations, we select a set of contiguous, nonoverlapping intervals such that each value in the set of observations can be placed in one, and only one, of the intervals.\n\n\n\n\n\n\nNote\n\n\nFor categorical variables, these intervals can be defined by the categories in the variable.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nFrequency tables are also referred to as frequency distributions.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -66,6 +89,7 @@
     "section": "Frequency Tables: Categorical Variables",
     "text": "Frequency Tables: Categorical Variables\nHere is an example of a frequency table. The data set flights in the nycflights23 package includes data for all flights that departed from airports in New York city. Recall that this data set has 435,452 rows. If we wished to determine where most flights originated from (column origin), we can count the number of rows that mentioned each of the airports.\nTo create a basic frequency table, we can use the function count(dataframe,variable) in the dplyr package.\n\nlibrary(nycflights23)\ncount(flights,origin)\n\n# A tibble: 3 × 2\n  origin      n\n  &lt;chr&gt;   &lt;int&gt;\n1 EWR    138578\n2 JFK    133048\n3 LGA    163726",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -76,6 +100,7 @@
     "section": "Exercise",
     "text": "Exercise\nFor the following exercise, use the infert data set, which has data on education level, age, parity (previous pregnancies), and the incidence of infertility after spontaneous and induced abortion.\n\nExerciseAnswer\n\n\nAfter examining the data set using glimpse, create a frequency table for the education level of the subjects given by the variable education.\n\n\n\ncount(infert,education)\n\n  education   n\n1    0-5yrs  12\n2   6-11yrs 120\n3   12+ yrs 116",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -86,6 +111,7 @@
     "section": "Relative Frequency",
     "text": "Relative Frequency\nIt may be useful at times to know the proportion, rather than the number, of values falling within a particular class interval. We obtain this information by dividing the number of values in the particular class interval by the total number of values. For an interval with \\(k\\) occurrences out of a total of \\(N\\) events, the relative frequency can be calculated by:\n\\[\nRel. Freq. = n/N\n\\]\n\n\n\n\n\n\nNote\n\n\nThe relative frequency can be reported as a decimal or as a percentage (\\(\\times 100\\%\\)).",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -96,6 +122,7 @@
     "section": "Cumulative Relative Frequency",
     "text": "Cumulative Relative Frequency\nWe may sum, or cumulate, the relative frequencies to facilitate obtaining information regarding the relative frequency of values within two or more contiguous class intervals.\n\n\n\n\n\n\nNote\n\n\nThe sum of relative frequencies is referred to as the cumulative relative frequency",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -106,6 +133,7 @@
     "section": "Calculating Relative and Cumulative Frequencies",
     "text": "Calculating Relative and Cumulative Frequencies\nLet’s try to calculate these frequencies by hand using the origin frequency distribution example from nycflights.\n\n\n\n\n\n\n\n\norigin\nn\n\n\n\n\nEWR\n138578\n\n\nJFK\n133048\n\n\nLGA\n163726\n\n\n\n\n\n\n\n\nRelative Freq.Cumulative Freq.Cumulative Rel. Freq.\n\n\nFor EWR: \\(\\frac{138578}{(138578 + 133048 + 163726)}=\\) 0.3183125\nFor JFK: \\(\\frac{133048}{(138578 + 133048 + 163726)}=\\) 0.3056102\nFor LGA: \\(\\frac{163726}{(138578 + 133048 + 163726)}=\\) 0.3760773\n\n\nFor EWR: 138578\nFor EWR + JFK: \\(138578+133048=\\) 271626\nFor EWR+JFK + LGA: \\((138578 + 133048 + 163726)=\\) 435352\n\n\nFor EWR: \\(\\frac{138578}{(138578 + 133048 + 163726)}=\\) 0.3183125\nFor EWR + JFK: \\(\\frac{138578+133048}{(138578 + 133048 + 163726)}=\\) 0.6239227\nFor EWR+JFK + LGA: \\(\\frac{133048+138578 + 163726}{(138578 + 133048 + 163726)}=\\) 1",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -116,6 +144,7 @@
     "section": "Frequency Tables in R",
     "text": "Frequency Tables in R\nThere are a lot of ways to create frequency tables in R. One of the easiest and most complete ways is to use the function freq in the package summarytools.\n\n# install.packages(\"summarytools\") # if you have not installed summarytools yet.\n\nlibrary(summarytools)\nfreq(flights$origin)\n\nFrequencies  \nflights$origin  \nType: Character  \n\n                Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- -------- --------- -------------- --------- --------------\n        EWR   138578     31.83          31.83     31.83          31.83\n        JFK   133048     30.56          62.39     30.56          62.39\n        LGA   163726     37.61         100.00     37.61         100.00\n       &lt;NA&gt;        0                               0.00         100.00\n      Total   435352    100.00         100.00    100.00         100.00\n\n\n\n\n\n\n\n\nImportant\n\n\nThe &lt;NA&gt; row also counts rows that have missing values. The %Valid column only counts non-missing data, while the % Total column counts non-missing data in calculating relative and cumulative frequencies. In this example, there are no missing rows, hence the columns are the same.\nThe function also does not output cumulative frequencies, but usually cumulative relative frequencies suffice.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -126,6 +155,7 @@
     "section": "Frequency Tables: Quantitative Variables",
     "text": "Frequency Tables: Quantitative Variables\nThese intervals are usually referred to as class intervals.\n\n\n\n\n\n\nImportant\n\n\nToo few intervals are undesirable because of the resulting loss of information. On the other hand, if too many intervals are used, the objective of summarization will not be met.\nA commonly followed rule of thumb states that there should be no fewer than 5 intervals and no more than 15. However, if the number of intervals fall outside this range, it should be based on theoretical/foundational concepts that could justify the choice of intervals.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -136,6 +166,7 @@
     "section": "Frequency Tables in R: QV",
     "text": "Frequency Tables in R: QV\nLike categorical variables, there are a lot of ways to create a frequency tables for quantitative variables. However, using freq() directly on a quantitative variable could lead to trivial frequency tables.\n\n\n\n\n\n\nWarning\n\n\nWhat happens if you run the following code?\nfreq(iris$Sepal.Length)",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -146,6 +177,7 @@
     "section": "Frequency Tables in R: hist()",
     "text": "Frequency Tables in R: hist()\nhist(vector)\nThe function hist() creates both a histogram or a vector of frequencies. To show the vector of frequencies, the plotting mechanism must be turned off. This can be done by setting plot=F. For example,\n\nhist(iris$Sepal.Length,plot=F)\n\n$breaks\n[1] 4.0 4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0\n\n$counts\n[1]  5 27 27 30 31 18  6  6\n\n$density\n[1] 0.06666667 0.36000000 0.36000000 0.40000000 0.41333333 0.24000000 0.08000000\n[8] 0.08000000\n\n$mids\n[1] 4.25 4.75 5.25 5.75 6.25 6.75 7.25 7.75\n\n$xname\n[1] \"iris$Sepal.Length\"\n\n$equidist\n[1] TRUE\n\nattr(,\"class\")\n[1] \"histogram\"\n\n\n\n\n\n\n\n\nNote\n\n\nIn this output:\n\nBreaks are the endpoints of the intervals used to create the frequency table.\ncounts are the frequencies for each interval.\nmids are the midpoints of each interval, which is commonly used as the representative numbers of each interval.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -156,6 +188,7 @@
     "section": "Frequency Tables in R:cut(vector,breaks) and freq(vector)",
     "text": "Frequency Tables in R:cut(vector,breaks) and freq(vector)\ncut() creates a factor including the intervals for the quantitative variable based on the breaks you provide it. You can provide the breaks using the seq() function or the c() function.\n\n# We must first create a vector of intervals for our frequency table.\n1ranges &lt;- cut(iris$Sepal.Length,breaks=seq(from=4,to=8,by=0.5))\n2head(ranges)\n\n\n1\n\nseq(from=4,to=8,by=0.5) provides a vector of numbers from 4 to 8 in increments of 0.5.\n\n2\n\nThe “(x,y]” notation in the output means that the interval includes y, but not x. The head() function only shows the first 6 elements of ranges.\n\n\n\n\n[1] (5,5.5] (4.5,5] (4.5,5] (4.5,5] (4.5,5] (5,5.5]\nLevels: (4,4.5] (4.5,5] (5,5.5] (5.5,6] (6,6.5] (6.5,7] (7,7.5] (7.5,8]\n\n\nWe can now make a frequency table out of the intervals provided by cut().\n\nfreq(ranges)\n\nFrequencies  \nranges  \nType: Factor  \n\n                Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n------------- ------ --------- -------------- --------- --------------\n      (4,4.5]      5      3.33           3.33      3.33           3.33\n      (4.5,5]     27     18.00          21.33     18.00          21.33\n      (5,5.5]     27     18.00          39.33     18.00          39.33\n      (5.5,6]     30     20.00          59.33     20.00          59.33\n      (6,6.5]     31     20.67          80.00     20.67          80.00\n      (6.5,7]     18     12.00          92.00     12.00          92.00\n      (7,7.5]      6      4.00          96.00      4.00          96.00\n      (7.5,8]      6      4.00         100.00      4.00         100.00\n         &lt;NA&gt;      0                               0.00         100.00\n        Total    150    100.00         100.00    100.00         100.00",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -166,6 +199,7 @@
     "section": "Exercise",
     "text": "Exercise\nUse the infert data set, which has data on education level, age, parity (previous pregnancies), and the incidence of infertility after spontaneous and induced abortion.\n\nExerciseAnswer\n\n\nCreate a frequency distribution table with relative and cumulative relative frequencies for the education level of the subjects given by the variable education.\n\n\n\nfreq(infert$education)\n\nFrequencies  \ninfert$education  \nType: Factor  \n\n                Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n------------- ------ --------- -------------- --------- --------------\n       0-5yrs     12      4.84           4.84      4.84           4.84\n      6-11yrs    120     48.39          53.23     48.39          53.23\n      12+ yrs    116     46.77         100.00     46.77         100.00\n         &lt;NA&gt;      0                               0.00         100.00\n        Total    248    100.00         100.00    100.00         100.00",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -176,6 +210,7 @@
     "section": "Descriptive Measures",
     "text": "Descriptive Measures\nAlthough frequency distributions serve useful purposes, there are many situations that require other types of data summarization. What we need in many instances is the ability to summarize the data by means of a single number called a descriptive measure. Descriptive measures may be computed from the data of a sample or the data of a population.\n\n\n\n\n\n\n\nStatistic vs. Parameter\n\n\nStatistics are descriptive measures computed from a sample. Statistics are typically represented by standard alphabet symbols (\\(\\bar{x},p,r\\)).\nParameters are descriptive measures computed from a population. Parameters are typically represented by Greek letters (\\(\\mu,\\pi,\\rho\\)).",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -186,6 +221,7 @@
     "section": "Measures of Central Tendency",
     "text": "Measures of Central Tendency\nMeasures of central tendency provides information on where the central point of the data is. The most common measures of central tendency are:\n\nMean\nMedian\nMode",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -196,6 +232,7 @@
     "section": "Mean",
     "text": "Mean\nThe mean, specifically the arithmetic mean, is the most familiar measure of central tendency.\n\nPopulation MeanSample Mean\n\n\n\n\n\n\n\n\n\nPopulation Mean\n\n\nThe population mean is calculated by adding all the values in the population and dividing by the population size \\(N\\). Formally, for a vector of values given by \\((X_1,X_2,X_3,..., X_N)\\) defining the population, the mean \\(\\mu\\) can be calculated using the following equation:\n\\[\n\\mu = \\frac{(X_1+X_2+X_3+...+X_N)}{N} = \\frac{\\sum_{i=1}^N X_i}{N}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSample Mean\n\n\nThe sample mean is calculated by adding all the values in the sample and dividing by the sample size \\(k\\). Formally, for a vector of values given by \\((X_1,X_2,X_3,..., X_k)\\) defining the population, the mean \\(\\bar{x}\\) can be calculated using the following equation:\n\\[\n\\bar{x} = \\frac{(X_1+X_2+X_3+...+X_k)}{k} = \\frac{\\sum_{i=1}^k X_i}{k}\n\\]",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -206,6 +243,7 @@
     "section": "Mean: Example",
     "text": "Mean: Example\nWhat is the mean of the following numbers: 5, 27, 26, 30, 31?\n\nMath MethodR method\n\n\nThe mean can be calculated using the formula \\((5+27+26+30+31)/5=\\) 23.8\n\n\nThe function mean() outputs the mean of a vector of numbers. Remember to always put the numbers inside the c() function to form a vector.\n\nmean(c(5,27,26,30,31))\n\n[1] 23.8",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -216,6 +254,7 @@
     "section": "Mean: Example",
     "text": "Mean: Example\nThe function mean() can also be used to calculate means of quantitative variables in data frames.\n\nmean(iris$Sepal.Length)\n\n[1] 5.843333",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -226,6 +265,7 @@
     "section": "Mean: Exercise",
     "text": "Mean: Exercise\nThe data set cars include the speed (speed,in mph) and stopping distance (dist,in ft) of 50 cars recorded in the 1920s.\n\nExerciseAnswer\n\n\nFind the mean stopping distance for these 50 cars.\n\n\n\nmean(cars$dist)\n\n[1] 42.98\n\n\nThe mean stopping distance is 42.98 ft.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -236,6 +276,7 @@
     "section": "Mean: Advantages and Disadvantages",
     "text": "Mean: Advantages and Disadvantages\n\n\n\n\n\n\n\nAdvantages\n\n\nThe mean is unique to a specific set of values, i.e. there is only one mean for every data set. The mean is also relatively easy to calculate and is a well-known summary statistic.\n\n\n\n\n\n\n\n\n\n\n\nDisadvantages\n\n\nThe mean is easily influenced by extreme values. As an example. recall the mean of the following numbers:\n\nmean(c(5,27,26,30,31))\n\n[1] 23.8\n\n\nNow, if 31 was replaced by an extreme number, say 310, the new mean would be very different.\n\nmean(c(5,27,26,30,310))\n\n[1] 79.6",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -246,6 +287,7 @@
     "section": "Median",
     "text": "Median\nThe median is the middle value of ordered data.\n\n\n\n\n\n\nImportant\n\n\nIf there is an odd number of observations, the median is a value in the middle of the data.\nIf there is an even number of observations, the median is the average of the two middle values.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -256,6 +298,7 @@
     "section": "Median: Example",
     "text": "Median: Example\n\nExample 1: OddExample 2: Even\n\n\nWhat is the median of the following numbers? 83.07 72.15 89.61 81.68 87.26\n\nSort the values first in ascending order: 72.15, 81.68, 83.07, 87.26, 89.61\nThere are five values, which means there is a middle value (83.07). Hence, the median is 83.07.\n\n\n\nWhat is the median of the following numbers? 100 3 7 5 8 2\n\nSort the values first in ascending order: 2 3 5 7 8 100\nThere are six values, which means there is no middle value. We need to take the average of the two middle values (5,7). Hence, the median is (5+7)/2 = 6.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -266,6 +309,7 @@
     "section": "Median: R",
     "text": "Median: R\nIn R, we can use the median(vector) function.\n\nmedian(c(83.07, 72.15, 89.61, 81.68, 87.26))\n\n[1] 83.07\n\nmedian(c(100, 3, 7, 5, 8, 2))\n\n[1] 6\n\n\nThis works for variables in data frames.\n\nmedian(iris$Sepal.Length)\n\n[1] 5.8",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -276,6 +320,7 @@
     "section": "Median: Exercise in R.",
     "text": "Median: Exercise in R.\nThe data set USArrests contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973.\n\nExerciseAnswer\n\n\nCreate an ordered list for the Assault variable in USArrests. What is the median rate for assault per 100,000 residents?\n\n\n\nmedian(USArrests$Assault)\n\n[1] 159\n\n\nThe median arrest rate per 100,000 residents in the US in 1973 was 159.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -286,6 +331,7 @@
     "section": "Median: Advantages and Disadvantages",
     "text": "Median: Advantages and Disadvantages\n\n\n\n\n\n\n\nAdvantages\n\n\nThe median is unique to a specific set of values, i.e. there is only one median for every data set. The median is also relatively easy to calculate once the data is ordered. Unlike the mean, the median is NOT influenced by extreme values.\n\nmedian(c(5,27,26,30,31))\n\n[1] 27\n\n\nNow, if 31 was replaced by an extreme number, say 310, the new median would be the same because the middle part of the data did not change.\n\nmedian(c(5,27,26,30,310))\n\n[1] 27\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisadvantages\n\n\nWhile the median is a well-known summary statistic, it is limited in the area of inferential statistics. The mean is more versatile as an estimator when it comes to statistical tests compared to the median.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -296,6 +342,7 @@
     "section": "Mode",
     "text": "Mode\nFor a sample of quantitative/qualitative data, the mode is the value that occurs most frequently.\n\n\n\n\n\n\nImportant\n\n\nIf all values occurred with the same frequency, then the data does not have a mode.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -306,6 +353,7 @@
     "section": "Mode: Example",
     "text": "Mode: Example\nWhat is the mode of the following values? 33, 35, 35, 46, 21, 56, 390.\n\nThe mode is 35 because it occurred the most times.\n\nWhat is the mode of the following values? 21, 35, 35, 46, 21, 56, 390.\n\nThe modes are 21 and 35 because these values occurred twice, which was the highest frequency across the values.\n\nWhat is the mode of the following values? 33, 34, 35, 46, 21, 56, 390.\n\nThere is NO mode because all values occurred only once.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -316,6 +364,7 @@
     "section": "Mode: R",
     "text": "Mode: R\nWe can use the freq() or hist() functions in R to create a frequency table for the data set, but we often only need the frequency distribution. One function that we can use is the table function.\n\nfreq_table &lt;- table(iris$Sepal.Length)\nsort(freq_table,decreasing = TRUE)\n\n\n  5 5.1 6.3 5.7 6.7 5.5 5.8 6.4 4.9 5.4 5.6   6 6.1 4.8 6.5 4.6 5.2 6.2 6.9 7.7 \n 10   9   9   8   8   7   7   7   6   6   6   6   6   5   5   4   4   4   4   4 \n4.4 5.9 6.8 7.2 4.7 6.6 4.3 4.5 5.3   7 7.1 7.3 7.4 7.6 7.9 \n  3   3   3   3   2   2   1   1   1   1   1   1   1   1   1 \n\n\n\nfreq_table &lt;- table(iris$Species)\nsort(freq_table,decreasing = TRUE)\n\n\n    setosa versicolor  virginica \n        50         50         50 \n\n\nThe mode sepal length in the iris data set is 5. There is no mode for the species variable as all species occurred 50 times.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -326,6 +375,7 @@
     "section": "Mode: Advantages and Disadvantages",
     "text": "Mode: Advantages and Disadvantages\n\n\n\n\n\n\n\nAdvantages\n\n\nThe mode is easily calculable using frequency tables. Unlike the mean and median, it can be calculated for qualitative variables.\n\n\n\n\n\n\n\n\n\n\n\nDisadvantages\n\n\nThe mode is not unique as data sets can have more than one mode. Modes are not used in inferential statistics for quantitative variables.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -336,6 +386,7 @@
     "section": "Dispersion",
     "text": "Dispersion\nThe dispersion of a set of observations refers to the variability they exhibit. Measures of dispersion convey information on the spread of a data set.\n\n\n\n\n\n\nNote\n\n\nSmaller values of measures of dispersion indicate lower amount of dispersion.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -346,6 +397,7 @@
     "section": "Dispersion Example",
     "text": "Dispersion Example\nConsider populations A and B shown below.\n\nWhere are the population of values centered? Which population of values has a higher amount of dispersion?",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -356,6 +408,7 @@
     "section": "Measures of Dispersion",
     "text": "Measures of Dispersion\nCommonly used measures of dispersion include:\n\nRange\nVariance\nStandard Deviation\nCoefficient of Variation\nInterquartile Range",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -366,6 +419,7 @@
     "section": "Range",
     "text": "Range\nThe range is the difference between the largest and smallest values in a set of observations.\n\\[\nR = x_L - x_S\n\\]\nwhere \\(x_L\\) and \\(x_S\\) are the largest and smallest values, respectively.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -376,6 +430,7 @@
     "section": "Range: Example",
     "text": "Range: Example\nWhat is the range of the following values: 254, 281, 192, 260, 212, 179?\n\nThe maximum value is 281, minimum value is 179. The range can be calculated as 281-179 = 102.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -386,6 +441,7 @@
     "section": "Range: R",
     "text": "Range: R\nThe diff(range(vector)) function calculates the range of a set of values.\n\nrange(c(254, 281, 192, 260, 212, 179))\n\n[1] 179 281\n\ndiff(range(c(254, 281, 192, 260, 212, 179)))\n\n[1] 102\n\n\nWe can also use max() and min() to identify the maximum and minimum values. We can take the difference between the two values to calculate the range.\n\nmax(c(254, 281, 192, 260, 212, 179))-min(c(254, 281, 192, 260, 212, 179))\n\n[1] 102",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -396,6 +452,7 @@
     "section": "Range: R Example",
     "text": "Range: R Example\nConsider the flights data set from the package nycflights23. The distance column contains the distance in miles between origin and destination airport for each flight. Calculate the range of the distances between origin and destination airports.\n\nmax(flights$distance)\n\n[1] 4983\n\nmin(flights$distance)\n\n[1] 80\n\nmax(flights$distance) - min(flights$distance)\n\n[1] 4903\n\n\nThe range is 4,903 miles.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -406,6 +463,7 @@
     "section": "Exercise",
     "text": "Exercise\nConsider the iris data set that gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris.\n\nExerciseAnswer\n\n\n\nWhat is the longest petal length in this data set?\nWhat is the shortest petal length in this data set?\nWhat is the range of the petal lengths?\n\n\n\n\nmax(iris$Petal.Length)\n\n[1] 6.9\n\nmin(iris$Petal.Length)\n\n[1] 1\n\nmax(iris$Petal.Length)-min(iris$Petal.Length)\n\n[1] 5.9",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -416,6 +474,7 @@
     "section": "Range: Advantages and Disadvantages",
     "text": "Range: Advantages and Disadvantages\n\n\n\n\n\n\n\nAdvantages\n\n\nThe main advantage in using the range is the simplicity of its computation. It also provides information on the span of the set of values.\n\n\n\n\n\n\n\n\n\n\n\nDisadvantages\n\n\nThe usefulness of the range is limited. The fact that it takes into account only two values causes it to be a poor measure of dispersion. It is often preferable to express the range as a number pair \\([x_S,x_L]\\), as is seen in some demographic tables in research papers.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -426,6 +485,7 @@
     "section": "Variance",
     "text": "Variance\nThe variance is a measure of how far the values are from the mean.\n\n\n\n\n\n\nImportant\n\n\nThe calculation for population and sample variances are slightly different. However, both involve taking the squared difference of each value and the mean of the data set.\n\n\n\n\nSample VariancePopulation Variance\\(s^2\\) vs. \\(\\sigma^2\\)\n\n\nThe sample variance is denoted by \\(s^2\\).\n\\[\ns^2 = \\frac{1}{(n-1)}\\sum_{i=1}^n (x_i-\\bar{x})^2\n\\]\n\n\nThe population variance is denoted by \\(\\sigma^2\\).For a population of size \\(N\\)\n\\[\n\\sigma^2 = \\frac{1}{(N)}\\sum_{i=1}^N (x_i-\\mu)^2\n\\]\n\n\nThe main difference between these two expressions is the denominator term (\\(n-1\\) vs. \\(N\\)). This discrepancy is due to a concept of degrees of freedom.\nThe assumption is that if the sample mean is known, we only need to know \\(n-1\\) values to fully define all the values in the data set. Hence, the denominator for the sample variance is \\(n-1\\).\n\n\n\n\n\n\nNote\n\n\nIn most realistic situations, we work with samples. Thus, we usually work with the sample variance.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -436,6 +496,7 @@
     "section": "Standard Deviation",
     "text": "Standard Deviation\nSince the variance involves squared differences, it does not have the same unit as the actual measurements. Hence, we typically use the standard deviation to measure the variability in a data set.\nThe standard deviation can be calculated by taking the square root of the variance.\n\\[\ns = \\sqrt{s^2}~~; ~~ \\sigma = \\sqrt{\\sigma^2}\n\\]",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -446,6 +507,7 @@
     "section": "Standard Deviation and Variance: R",
     "text": "Standard Deviation and Variance: R\nThe respective functions sd(vector) and var(vector) calculates the sample standard deviation and variance for a set of values.\n\nExample 1 (Manual)Example 2 (R)Example 3\n\n\nCalculate the sample variance and standard deviation for the following numbers: 16, 10, 49, 15, 6.\nNote that the mean of the numbers is r mean(c(16, 10, 49, 15, 6))\n\\[\ns^2 = \\frac{1}{5-1}[(16-16)^2 + (10-16)^2 + (49-16)^2 + (15-16)^2 + (6-16)^2] = 293.7\n\\]\n\\[\ns = \\sqrt{s^2} = 17.1\n\\]\n\n\nUsing R functions, calculate the sample variance and standard deviation for the following numbers: 16, 10, 49, 15, 6.\n\nvar(c(16, 10, 49, 15, 6))\n\n[1] 293.7\n\nsd(c(16, 10, 49, 15, 6))\n\n[1] 17.13768\n\n\n\n\nUsing R functions, calculate the standard deviation and variance of the murder rates across the 50 US states in 1973. The rates are found in the dataset USArrests under the column Murder.\n\nsd(USArrests$Murder)\n\n[1] 4.35551\n\nvar(USArrests$Murder)\n\n[1] 18.97047",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -456,6 +518,7 @@
     "section": "Exercise",
     "text": "Exercise\nThe faithful data set includes data on a sample of 272 eruptions of the Old Faithful geyser in Yellowstone National Park. The column eruptions contains the eruption time in minutes.\n\nExerciseAnswer\n\n\nCalculate the following using R functions:\n\nMean eruption time\nEruption time variance\nEruption time standard deviation\n\n\n\nMean:\n\nmean(faithful$eruptions)\n\n[1] 3.487783\n\n\nStandard Deviation:\n\nsd(faithful$eruptions)\n\n[1] 1.141371\n\n\nVariance:\n\nvar(faithful$eruptions)\n\n[1] 1.302728",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -466,6 +529,7 @@
     "section": "Percentiles",
     "text": "Percentiles\n\n\n\n\n\n\n\nPercentiles\n\n\nThe \\(p\\)th percentile is the value \\(x\\) such that \\(p\\)% of the data are less than \\(x\\). For example, the 10th percentile is the value such that 10% of the data is below this number.\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe 50th percentile is the median because half of the data (50%) is below the median. The maximum value is the 100th percentile, while the minimum value is the 0th percentile.\n\n\n\n\n\n\n\n\n\n\nQuartiles\n\n\nThe 25th percentile is also known as the first quartile and denoted as \\(Q_1\\). The 75th percentile is known as the third quartile (\\(Q_3\\)). The median is also known as the middle/second quartile (\\(Q_2\\)). These numbers are important in describing the variability and skewness in the data.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -476,6 +540,7 @@
     "section": "Interquartile Range (Measure of Dispersion)",
     "text": "Interquartile Range (Measure of Dispersion)\nThe interquartile range (IQR) is a measure of variation based on the measures of location. The IQR can be calculated by taking the difference between \\(Q_3\\) and \\(Q_1\\).\n\\[\nIQR = Q_3 - Q_1\n\\]\n\n\n\n\n\n\nNote\n\n\nThe main advantage of using IQR is its robustness to extreme values.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -486,6 +551,7 @@
     "section": "Percentiles and IQR: R",
     "text": "Percentiles and IQR: R\nYou can calculate the \\(p\\)th percentile of a set of values using the quantile(vector,p/100) function. The IQR can be calculated using the IQR(vector) function.\n\nExample 1Example 2\n\n\ncalculate the 25th percentile and 75th percentile of the eruption times (eruptions) of Old Faithful using the faithful data set.\n\nquantile(faithful$eruptions,0.25)\n\n    25% \n2.16275 \n\nquantile(faithful$eruptions,0.75)\n\n    75% \n4.45425 \n\n\n\n\nCalculate the IQR of the eruption times (eruptions) of Old Faithful using the faithful data set.\n\nIQR(faithful$eruptions)\n\n[1] 2.2915",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -496,6 +562,7 @@
     "section": "Exercise",
     "text": "Exercise\nThe infert data set includes data from a case-control study that investigates infertillity after spontaneous and induced abortion.\n\nExerciseAnswers\n\n\n\nUse glimpse() to determine the variables in the data set.\nCalculate the mean age for the entire sample.\nCalculate the standard deviation of the age for the entire sample.\nCalculate the variance of the age for the entire sample.\nCalculate the 90th percentile of the age for the entire sample.\nCalculate the IQR of the age for the entire sample.\n\n\n\n\nglimpse(infert)\n\nRows: 248\nColumns: 8\n$ education      &lt;fct&gt; 0-5yrs, 0-5yrs, 0-5yrs, 0-5yrs, 6-11yrs, 6-11yrs, 6-11y…\n$ age            &lt;dbl&gt; 26, 42, 39, 34, 35, 36, 23, 32, 21, 28, 29, 37, 31, 29,…\n$ parity         &lt;dbl&gt; 6, 1, 6, 4, 3, 4, 1, 2, 1, 2, 2, 4, 1, 3, 2, 2, 5, 1, 3…\n$ induced        &lt;dbl&gt; 1, 1, 2, 2, 1, 2, 0, 0, 0, 0, 1, 2, 1, 2, 1, 2, 2, 0, 2…\n$ case           &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ spontaneous    &lt;dbl&gt; 2, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1…\n$ stratum        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ pooled.stratum &lt;dbl&gt; 3, 1, 4, 2, 32, 36, 6, 22, 5, 19, 20, 37, 9, 29, 21, 18…\n\nmean(infert$age)\n\n[1] 31.50403\n\nsd(infert$age)\n\n[1] 5.251565\n\nvar(infert$age)\n\n[1] 27.57893\n\nquantile(infert$age,0.9)\n\n90% \n 39 \n\nIQR(infert$age)\n\n[1] 7.25\n\n\nMean: 31.5, Standard Deviation: 5.25, Variance: 27.58, 90th percentile: 39, IQR: 7.25",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -506,6 +573,7 @@
     "section": "Skewness",
     "text": "Skewness\nThe skewness provides information on the symmetry of data. If asymmetric, the data is said to be skewed.\n\n\n\n\n\n\nImportant\n\n\nThe direction of skewness depends on where the “tail” of the data is located.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -516,6 +584,7 @@
     "section": "Kurtosis",
     "text": "Kurtosis\nMeasures how flat/peaked a distribution is compared to a bell-shaped curve.\n\n\n\n\n\n\nImportant\n\n\nBell-shaped distributions are referred to as mesokurtic. Peaked distributions are referred to as leptokurtic. Flatter distributions are referred to as platykurtic.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -526,6 +595,7 @@
     "section": "Grammar of Graphics",
     "text": "Grammar of Graphics\nThe “grammar of graphics” defines a set of rules for constructing statistical graphics by combining different types of layers.\nWe can break a graphic into the following essential components:\n\ndata: dataset containing the variables of interest\ngeom: the geometric object in question, related to the type of plot we want to make\naes: the aesthetic attributes of the geometric object, such as color, shape, size, fill, etc.\nfacet: breaks up a plot into subplots as defined by the values of another variable",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -536,6 +606,7 @@
     "section": "ggplot2 package",
     "text": "ggplot2 package\nThe ggplot2 package includes the various components of the grammar of graphics.\n\n\n\n\n\n\nNote\n\n\nThe ggplot() function is used to create a base for the plot which includes the following:\n\nThe data frame where the variables to be plotted belong (data)\nThe mapping of the aesthetic attributes of the plot.\n\nThe geometry and type of plot will be added as layers to the ggplot() function using the + symbol.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -546,6 +617,7 @@
     "section": "Common Graphs",
     "text": "Common Graphs\nHere are common plots used in exploring data:\n\nhistograms\nbar plots\nboxplots",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -556,6 +628,7 @@
     "section": "Histograms",
     "text": "Histograms\nHistograms are plots that visualize the distribution of a numerical value.\n\n\n\n\n\n\nNote\n\n\nHistograms are graphical representations of the frequency table/distribution.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -566,6 +639,7 @@
     "section": "Histograms in ggplot()",
     "text": "Histograms in ggplot()\n\nExampleNotes\n\n\nConsider the infert data set in R. Suppose we want to visualize the distribution of the participant age in the case-control study.\n\nlibrary(tidyverse) #includes ggplot2\n1ggplot(data=infert, aes(x=age)) +\n2  geom_histogram(bins=40)\n\n\n1\n\nBase layer defining what the source data set is (data=infert) and the aesthetic aes(x=age).\n\n2\n\ngeom_histogram() adds the layer of a histogram on the base layer, using 40 bins.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe geom_histogram() function creates a histogram layer on top of the base created by ggplot(). You can add other modifications to the histogram (e.g. color, fill, etc.) in the geom_histogram() function.\n\n\n\n\nggplot(data=infert, aes(x=age)) +\n  geom_histogram(bins=40, color=\"white\", fill=\"blue\")",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -576,6 +650,7 @@
     "section": "Bar plots in ggplot()",
     "text": "Bar plots in ggplot()\nBar plots are typically used to visualize the frequency distribution for a categorical variable.\n\n\n\n\n\n\nImportant\n\n\ngeom_bar() is used to create bar plots in the ggplot2 package.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -586,6 +661,7 @@
     "section": "Bar plots in ggplot()",
     "text": "Bar plots in ggplot()\n\nExampleNotes 1Notes 2\n\n\nConsider the infert data set in R. Suppose we want to visualize the distribution of the education level (in years) in the case-control study.\n\nlibrary(tidyverse) #includes ggplot2\n1ggplot(data=infert, aes(x=education)) +\n2  geom_bar()\n\n\n1\n\nBase layer defining what the source data set is (data=infert) and the aesthetic aes(x=education).\n\n2\n\ngeom_bar() adds the layer of a bar plot on the base layer.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nLike geom_histogram(), you can add other modifications to the histogram (e.g. color, fill, etc.) in the geom_bar() function.\n\n\n\n\nggplot(data=infert, aes(x=education)) + \n  geom_bar(color=\"white\", fill=\"blue\", width=0.5)\n\n\n\n\n\n\n\n\n\n\nYou can create side-by-side bar plots by facetting. facet_wrap allows you to create bar plots across the levels of another variable of interest. Suppose we want to visualize the distribution of education level for the case (1) and control (0) groups.\n\nggplot(data=infert, aes(x=education)) + \n  geom_bar(color=\"white\", fill=\"blue\", width=0.5) + \n  facet_wrap(~case)",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -596,6 +672,7 @@
     "section": "Boxplots",
     "text": "Boxplots\nBoxplots are another way to visualize the distribution of a numerical value. Boxplots are constructed from the information provided in the five-number summary.\n\n\n\n\n\n\n\nFive-Number Summary\n\n\nThe five-number summary of a set of values include the following statistics:\n\nMinimum\nFirst Quartile\nMedian\nThird Quartile\nMaximum",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -606,6 +683,7 @@
     "section": "Boxplots in ggplot()",
     "text": "Boxplots in ggplot()\n\n\n\n\n\n\nNote\n\n\nThe function geom_boxplot() is used to create boxplots in the ggplot2 package.\n\n\n\nBoxplots can also provide information on how skewed the data distribution is by the location of the mediam with respect to the “box”.\n\n\n\n\n\n\nImportant\n\n\nIf the median is closer to the first quartile, the data is right-skewed. If the median is closer to the third quartile, the data is left-skewed. If the median is in the middle, then the data is symmetric/unskewed.",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -616,6 +694,7 @@
     "section": "Boxplots in ggplot()",
     "text": "Boxplots in ggplot()\n\nExampleNotes 1Notes 2\n\n\nConsider the USArrests data set. Create a box plot for the arrest rate for assault as given by the Assault variable.\n\nggplot(data=USArrests, aes(x=\"Assault\",y=Assault)) + geom_boxplot()\n\n\n\n\n\n\n\n\nThe data appears to be slightly right-skewed because the median is closer to \\(Q_1\\) than \\(Q_3\\).\n\n\nYou can also orient boxplots horizontally and overlay the data points using geom_point().\n\nggplot(data=USArrests, aes(y=\"Assault\",x=Assault)) + geom_boxplot() + geom_point()\n\n\n\n\n\n\n\n\n\n\nYou can also create separate boxplots for different groups as dictated by a separate variable. Consider the iris data set. I can create side-by-side boxplots of petal lengths corresponding to each species.\n\nggplot(data=iris,aes(x=Species,y=Petal.Length)) + geom_boxplot() + geom_point()",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -626,6 +705,7 @@
     "section": "Importing files",
     "text": "Importing files\nThere are multiple ways to import files into R. The most common data set format is the .csv file. You can import CSV files using the read.csv(filename) function.\nFirst, download the file SleepHealthData.csv from Canvas in the same folder as your R source code.\n\nsetwd(getwd())\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\nglimpse(sleep)\n\nRows: 374\nColumns: 13\n$ person_id               &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…\n$ gender                  &lt;chr&gt; \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Male\"…\n$ age                     &lt;int&gt; 27, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29…\n$ occupation              &lt;chr&gt; \"Software Engineer\", \"Doctor\", \"Doctor\", \"Sale…\n$ sleep_duration          &lt;dbl&gt; 6.1, 6.2, 6.2, 5.9, 5.9, 5.9, 6.3, 7.8, 7.8, 7…\n$ quality_of_sleep        &lt;int&gt; 6, 6, 6, 4, 4, 4, 6, 7, 7, 7, 6, 7, 6, 6, 6, 6…\n$ physical_activity_level &lt;int&gt; 42, 60, 60, 30, 30, 30, 40, 75, 75, 75, 30, 75…\n$ stress_level            &lt;int&gt; 6, 8, 8, 8, 8, 8, 7, 6, 6, 6, 8, 6, 8, 8, 8, 8…\n$ bmi_category            &lt;chr&gt; \"Overweight\", \"Normal\", \"Normal\", \"Obese\", \"Ob…\n$ blood_pressure          &lt;chr&gt; \"126/83\", \"125/80\", \"125/80\", \"140/90\", \"140/9…\n$ heart_rate              &lt;int&gt; 77, 75, 75, 85, 85, 85, 82, 70, 70, 70, 70, 70…\n$ daily_steps             &lt;int&gt; 4200, 10000, 10000, 3000, 3000, 3000, 3500, 80…\n$ sleep_disorder          &lt;chr&gt; \"None\", \"None\", \"None\", \"Sleep Apnea\", \"Sleep …",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -636,6 +716,7 @@
     "section": "Exercise",
     "text": "Exercise\nWe will use the sleep data set we just imported into R from the csv file.\n\nExerciseAnswer\n\n\nCreate a plot that shows the distribution of sleep duration (sleep_duration) for different sleep disorders (sleep_disorder).\n\n\n\nggplot(data=sleep,aes(x=sleep_disorder,y=sleep_duration)) + geom_boxplot() + geom_point()",
     "crumbs": [
+      "Lectures",
       "Lecture 2- Descriptive Statistics"
     ]
   },
@@ -644,7 +725,7 @@
     "href": "index.html",
     "title": "EAB 703-1002: Biostatistical Methods for the Health Sciences",
     "section": "",
-    "text": "This website provides the slides for EAB 703-1002 for Dr. Miguel Fudolig. Content is mainly based on the following books:\n\nDaniel, W. W., & Cross, C. L. (2018). Biostatistics: a foundation for analysis in the health sciences. John Wiley & Sons.\nRigdon, S. E., Fricker Jr, R. D., & Montgomery, D. C. (2024). Introduction to Probability and Statistics for Data Science: with R. Cambridge University Press.\nIsmay, C., Kim, A.Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546",
+    "text": "This website provides the slides and problem set keys for EAB 703-1002 for Dr. Miguel Fudolig. Content is mainly based on the following books:\n\nDaniel, W. W., & Cross, C. L. (2018). Biostatistics: a foundation for analysis in the health sciences. John Wiley & Sons.\nRigdon, S. E., Fricker Jr, R. D., & Montgomery, D. C. (2024). Introduction to Probability and Statistics for Data Science: with R. Cambridge University Press.\nIsmay, C., Kim, A.Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546",
     "crumbs": [
       "Home"
     ]
@@ -663,6 +744,7 @@
     "section": "Datafication",
     "text": "Datafication\nThe field of statistics has grown in recent years primarily due to the datafication of the world.\n\n\n\n\n\n\nImportant\n\n\n98% of all stored information is digital. Collected data is increasing even at this very moment.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -673,6 +755,7 @@
     "section": "Why statistics?",
     "text": "Why statistics?\n\n\n\n\n\n\n\nStatistics\n\n\nStatistics is a field of study concerned with:\n\nThe collection, organization, summarization, and analysis of data\nThe drawing of inferences about a body of data when only a part of the data is observed.\n\n\n\n\n\nData \\(\\to\\) Numbers \\(\\to\\) Information \\(\\to\\) Investigation \\(\\to\\) Communication",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -683,6 +766,7 @@
     "section": "Statistical Thinking",
     "text": "Statistical Thinking\nHow is statistical thinking different from mathematical thinking?\n\n\n\n\n\n\n\nStatistical Thinking\n\n\nStatistical thinking involves understanding and analyzing data while accounting for uncertainty!",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -693,6 +777,7 @@
     "section": "Activity",
     "text": "Activity\nFlip a coin 10 times. If you don’t have a coin, search “coin flip” on Google.\n\n\n\n\n\n\nNote\n\n\nHow many times did you get heads? Do you think the coin you flipped was fair?",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -703,6 +788,7 @@
     "section": "Extensions of Statistics",
     "text": "Extensions of Statistics\n\nBiostatisticsData Science\n\n\nBiostatistics involves applying statistical concepts to data from the biological sciences, health sciences, and medicine.\n\n\nData science is the study of how to extract useful information from data using quantitative methods and theories from many fields. The field focuses on large data sets that were not originally designed or collected to address the question of interest.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -713,6 +799,7 @@
     "section": "Sources of Data",
     "text": "Sources of Data\nAvailable data usually come from the following sources:\n\nRecords\nSurveys\nExperiments\nData Banks\nPrior Literature",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -723,6 +810,7 @@
     "section": "Categories of Statistics",
     "text": "Categories of Statistics\n\nDescriptive StatisticsInferential Statistics\n\n\nDescriptive statistics are used to describe properties of complex sets of numbers. Summary statistics are a good example of descriptive statistics.\n\n\nInferential statistics are used to infer information from a smaller group (sample) to a more general group (population).",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -733,6 +821,7 @@
     "section": "Random Variables",
     "text": "Random Variables\nRandom variables have values obtained arise as a result of chance factors, so that they cannot be exactly predicted in advance. Values of random variables resulting from measurement procedures are referred to as observations/measurements.\n\n\n\n\n\n\nNote\n\n\nRandom variables could be classified as qualitative or quantitative.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -743,6 +832,7 @@
     "section": "Random Variable Types",
     "text": "Random Variable Types\n\nQuantitative VariablesQualitative Variables\n\n\nQuantitative variables are variables that can be measured or characterized with a numerical value.\n\n\n\n\n\n\n\nDiscrete Random Variables\n\n\nA discrete variable is characterized by gaps or interruptions in the values that it can assume.\nExample: Customer counts at Cafe Rio, Number of missing teeth, Likert Scale scores\n\n\n\n\n\n\n\n\n\n\n\nContinuous Random Variables\n\n\nA continuous variable is characterized by gaps or interruptions in the values that it can assume.\nExample: Speed, Weight, Time\n\n\n\n\n\n\nQualitative variables cannot be measured numerically, but can be described categorically. Discrete and qualitative variables are also known as categorical variables.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -753,6 +843,7 @@
     "section": "Data Types",
     "text": "Data Types\n\nNominal DataOrdinal DataInterval DataRatio Data\n\n\nAs the name implies, nominal data consist of “naming” observations or classifying them into various mutually exclusive and collectively exhaustive categories.\nExamples: Assigned sex at birth (male,female); HHS Regions (HHS Regions 1-10)\n\n\n\n\n\n\nImportant\n\n\nNominal data are typically qualitative in nature and does not account for any ordering in variable levels.\n\n\n\n\n\nOrdinal data are for variables with values with inherent ordering.\nExamples: Shirt size (Small, Medium, Large, XL); Socioeconomic status (Low, Medium, High)\n\n\n\n\n\n\nImportant\n\n\nOrdinal data can include discrete variables and some qualitative variables.\n\n\n\n\n\nInterval data includes measurements that can be ordered and a distance metric can be defined between two measurements. Interval scales have equal intervals between values with arbitrary zero points.\nExamples: Temperature, IQ\n\n\nRatio data is similar to interval data, but with an absolute zero measurement defined as the “absence” of the variable being measured.\nExamples: Weight, Height",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -763,6 +854,7 @@
     "section": "Exercise",
     "text": "Exercise\n\nQuestionAnswers\n\n\nIdentify the type of data/variable for the following:\n\nBMI\nSatisfaction Scale (Unsatisfied, Moderately Satisfied, Satisfied, Very Satisfied)\nEye Color\nCredit Rating\n\n\n\n\nBMI (ratio)\nSatisfaction Scale (Unsatisfied, Moderately Satisfied, Satisfied, Very Satisfied) (ordinal)\nEye Color (nominal)\nCredit Score (interval)",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -773,6 +865,7 @@
     "section": "Population vs. Sample",
     "text": "Population vs. Sample\n\n\n\n\n\n\n\nPopulation\n\n\nA population is the largest collection of entities for which we have an interest at a particular time. Measurements of some variable from these entities would generate a population of values for that variable.\nAn exact value calculated from a population is referred to as a parameter.\n\n\n\n\n\n\n\n\n\n\n\nSample\n\n\nA sample is a part of the population.\nAn exact value calculated from a sample is referred to as a statistic.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -783,6 +876,7 @@
     "section": "Population vs. Sample",
     "text": "Population vs. Sample\n\n\n\nTaken from: https://medium.com/@ritusantra/population-v-s-sample-f17c40967257",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -793,6 +887,7 @@
     "section": "How to Sample",
     "text": "How to Sample\nSampling can be grouped into two broad categories: probability-based/random sampling and convenience sampling.\n\nRandom SamplesConvenience Samples\n\n\nA sample is a random sample when the probability with which every respondent was sampled is known. These probabilities are not necessarily equal. Types of random sampling include:\n\nSimple random sampling\nStratified random sampling\nCluster sampling\n\n\n\nA sample is a convenience sample when the respondents are selected based on ease of access or availability. This could be a potential source of bias.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -803,6 +898,7 @@
     "section": "Scientific Method",
     "text": "Scientific Method\nThe scientific method is a process by which scientific information is collected, analyzed, and reported in order to produce unbiased and replicable results in an effort to provide an accurate representation of observable phenomena.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -813,6 +909,7 @@
     "section": "Installation",
     "text": "Installation\nYou can install R and RStudio on your personal computers and laptops by following the instructions on this page: https://posit.co/download/rstudio-desktop/\nRStudio is currently installed on the classroom computers.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -823,6 +920,7 @@
     "section": "Basic Programming Terminology",
     "text": "Basic Programming Terminology\n\nSource Code: A text listing of commands to be compiled or assembled into an executable computer program.\nRunning Code: The act of telling R to perform an act by giving it commands through source code.\nConsole Pane: Where R commands are entered\n\n\n\n\n\n\n\nImportant\n\n\nThere are different types of programming data types such as integers, doubles/numerics, logicals, and characters.\n\nIntegers (int) have values like -1,0,2\nNumerics (dbl, num) are numbers including integers and decimals,\nLogicals (logi) are either TRUE or FALSE\nCharacters (chr)are text variables such as “Hello, World”, “Female”, “Yes”",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -833,6 +931,7 @@
     "section": "Basic Programming Terminology",
     "text": "Basic Programming Terminology\n\nVectorsVariablesFactors\n\n\nVectors are a series of values. These can be created using the c() function, known as the combine/concatenate function.\n\nc(1,2,3)\n\n[1] 1 2 3\n\nc(\"A\",\"B\",\"C\")\n\n[1] \"A\" \"B\" \"C\"\n\n\n\n\nYou can store different data types to variables using the &lt;- sign.\n\nvar1 &lt;- c(1,2,3)\nvar1\n\n[1] 1 2 3\n\nvar1+2\n\n[1] 3 4 5\n\nvar2 &lt;- c(\"A\",\"B\",\"C\")\nvar2\n\n[1] \"A\" \"B\" \"C\"\n\n\n\n\nCategorical data are commonly represented in R as factors.\n\nfactor(c(\"18-39\",\"40-59\",\"60+\"), levels=c(\"18-39\",\"40-59\",\"60+\"))\n\n[1] 18-39 40-59 60+  \nLevels: 18-39 40-59 60+\n\nlikert &lt;- c(\"Disagree\", \"Strongly Disagree\",\"Agree\",\"Neutral\",\"Strongly Agree\")\nlikert\n\n[1] \"Disagree\"          \"Strongly Disagree\" \"Agree\"            \n[4] \"Neutral\"           \"Strongly Agree\"   \n\nfactor(likert, levels=c(\"Strongly Disagree\",\"Disagree\", \"Neutral\",\"Agree\",\"Strongly Agree\"))\n\n[1] Disagree          Strongly Disagree Agree             Neutral          \n[5] Strongly Agree   \nLevels: Strongly Disagree Disagree Neutral Agree Strongly Agree",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -843,6 +942,7 @@
     "section": "Basic Programming Technology",
     "text": "Basic Programming Technology\n\nData FramesConditionalsFunctions\n\n\nData frames are rectangular spreadsheets. Data are typically imported as data frames.\n\n\n\n\n\n\nNote\n\n\nRows correspond to observations and the columns correspond to variables.\n\n\n\nExample:\n\nhead(mtcars)\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\nYou can test for mathematical relations such as equality/inequality, resulting in a TRUE or FALSE value.\n\n2+1==3\n\n[1] TRUE\n\n3+5 &lt;=1\n\n[1] FALSE\n\nx &lt;- c(1,2,3,4,5)\nx &lt; 3\n\n[1]  TRUE  TRUE FALSE FALSE FALSE\n\n\n\n\nFunctions are commands in R. c() is a function that combines different values. You can create a function or use functions built for R.\nExample: seq() is a function that generates a sequence of numbers. The resulting sequence of numbers can be changed by changing the attributes of the function\n\nseq(1,5)\n\n[1] 1 2 3 4 5\n\nseq(1,5,by=2)\n\n[1] 1 3 5\n\nseq(1,5,length.out=10)\n\n [1] 1.000000 1.444444 1.888889 2.333333 2.777778 3.222222 3.666667 4.111111\n [9] 4.555556 5.000000\n\n\nTo learn more about what a specific R function does, type ?function_name in the console. (Ex:?seq, ?c)",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -853,6 +953,7 @@
     "section": "Errors, Warnings, and Messages",
     "text": "Errors, Warnings, and Messages\n\nErrorsWarningsMessages\n\n\nWhen you input a legitimate error, R will warn you using a sentence starting with “Error in” and includes a sentence explaining what went wrong.\n\nadd(1,2,3)\n\nError in add(1, 2, 3): could not find function \"add\"\n\nc(\"A\",\"B\")+1\n\nError in c(\"A\", \"B\") + 1: non-numeric argument to binary operator\n\n\n\n\n\n\n\n\nNote\n\n\nIf the text starts with “Error”, figure out what’s causing it. Think of errors as a red traffic light: stop and assess for anything wrong in the code (missing parenthesis, adding characters to numbers, non-existent functions, etc.)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nEncountering errors in your code is normal even for an experienced coder. Don’t be afraid to review your code if you made an error! This process is called “debuggging”.\n\n\n\n\n\nWhen R produces a warning, your code will still be implemented albeit with some caveats.\n\nfor_plotting &lt;- data.frame(x=c(1,2,3,4,5), y=c(2,4,5,NA,1))\nlibrary(ggplot2)\nggplot(data=for_plotting,aes(x=x,y=y)) + geom_point()\n\n\n\n\n\n\n\n\nThe plot is displayed, but a warning was raised regarding a missing value. Note that the data frame for_plotting has a missing value for y denoted by NA.\n\n\nIf the output text does not start with an error or a warning, it’s just a friendly message from R telling you about the output. These messages are typically seen when loading R packages or data sets from external sources.\n\nlibrary(tidyverse)",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -863,6 +964,7 @@
     "section": "R packages",
     "text": "R packages\nR packages extend the functionality of R by providing additional functions, data, and documentation. These packages are written by R users around the world and can be downloaded for free!\n\n\n\n\n\n\nNote\n\n\nThink of R as a new phone. R packages are apps that you can download to use your phone in many different ways.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -873,6 +975,7 @@
     "section": "Installing and Loading R Packages",
     "text": "Installing and Loading R Packages\nLike apps on a phone, R packages also need to be installed. These packages can be installed by running the following code snippet install.packages(\"PackageName\"). For example, to install the package tidyverse used for data manipulation and cleaning, you can run the following code:\ninstall.packages(\"tidyverse\")\nTo load this package in R, you can use the following syntax:\n\nlibrary(tidyverse)\n\n\n\n\n\n\n\nImportant\n\n\nYou must have an active internet connection to install R packages to your device.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -883,6 +986,7 @@
     "section": "Exercise",
     "text": "Exercise\n\nExerciseAnswer\n\n\nInstall and load the following packages: readxl, nycflights23 and knitr.\n\n\ninstall.packages(\"readxl\")\ninstall.packages(\"nycflights23\")\ninstall.packages(\"knitr\")\n\nlibrary(readxl)\nlibrary(nycflights23)\nlibrary(knitr)",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -893,6 +997,7 @@
     "section": "Exploring Data Sets",
     "text": "Exploring Data Sets\nThe nycflights23 package includes some data sets saved as data frames. These data sets are related to all domestic flights departing from one of New York City’s three main airports in 2023: Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia Airport (LGA).\nOne of the data sets in this package is the flights data set.\n\nflights\n\n# A tibble: 435,352 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2023     1     1        1           2038       203      328              3\n 2  2023     1     1       18           2300        78      228            135\n 3  2023     1     1       31           2344        47      500            426\n 4  2023     1     1       33           2140       173      238           2352\n 5  2023     1     1       36           2048       228      223           2252\n 6  2023     1     1      503            500         3      808            815\n 7  2023     1     1      520            510        10      948            949\n 8  2023     1     1      524            530        -6      645            710\n 9  2023     1     1      537            520        17      926            818\n10  2023     1     1      547            545         2      845            852\n# ℹ 435,342 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n\n\n\n\nNote\n\n\nA tibble is a special type of data frame! The dimensions show the number of rows x number of columns. Each row corresponds to an observation, while each column corresponds to the variables describing each observation.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -903,6 +1008,7 @@
     "section": "Exploring the flights data set.",
     "text": "Exploring the flights data set.\nYou can use the following functions to explore a data set.\n\nView()glimpse()kable()$\n\n\nView() brings up RStudio’s built in data viewer. That is, if you want to view data like an Excel sheet.\nView(flights)\n\n\nThe glimpse() function from the package dplyr (part of tidyverse) provides us with a different view of the data set. It includes the data type of each variable defined by the columns of the data frame.\n\nglimpse(flights)\n\nRows: 435,352\nColumns: 19\n$ year           &lt;int&gt; 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 1, 18, 31, 33, 36, 503, 520, 524, 537, 547, 549, 551, 5…\n$ sched_dep_time &lt;int&gt; 2038, 2300, 2344, 2140, 2048, 500, 510, 530, 520, 545, …\n$ dep_delay      &lt;dbl&gt; 203, 78, 47, 173, 228, 3, 10, -6, 17, 2, -10, -9, -7, -…\n$ arr_time       &lt;int&gt; 328, 228, 500, 238, 223, 808, 948, 645, 926, 845, 905, …\n$ sched_arr_time &lt;int&gt; 3, 135, 426, 2352, 2252, 815, 949, 710, 818, 852, 901, …\n$ arr_delay      &lt;dbl&gt; 205, 53, 34, 166, 211, -7, -1, -25, 68, -7, 4, -13, -14…\n$ carrier        &lt;chr&gt; \"UA\", \"DL\", \"B6\", \"B6\", \"UA\", \"AA\", \"B6\", \"AA\", \"UA\", \"…\n$ flight         &lt;int&gt; 628, 393, 371, 1053, 219, 499, 996, 981, 206, 225, 800,…\n$ tailnum        &lt;chr&gt; \"N25201\", \"N830DN\", \"N807JB\", \"N265JB\", \"N17730\", \"N925…\n$ origin         &lt;chr&gt; \"EWR\", \"JFK\", \"JFK\", \"JFK\", \"EWR\", \"EWR\", \"JFK\", \"EWR\",…\n$ dest           &lt;chr&gt; \"SMF\", \"ATL\", \"BQN\", \"CHS\", \"DTW\", \"MIA\", \"BQN\", \"ORD\",…\n$ air_time       &lt;dbl&gt; 367, 108, 190, 108, 80, 154, 192, 119, 258, 157, 164, 1…\n$ distance       &lt;dbl&gt; 2500, 760, 1576, 636, 488, 1085, 1576, 719, 1400, 1065,…\n$ hour           &lt;dbl&gt; 20, 23, 23, 21, 20, 5, 5, 5, 5, 5, 5, 6, 5, 6, 6, 6, 6,…\n$ minute         &lt;dbl&gt; 38, 0, 44, 40, 48, 0, 10, 30, 20, 45, 59, 0, 59, 0, 0, …\n$ time_hour      &lt;dttm&gt; 2023-01-01 20:00:00, 2023-01-01 23:00:00, 2023-01-01 2…\n\n\n\n\nThe kable() function is part of the package knitr. In this example, we will use another data set in the nycflights23 package: the airlines data set.\n\nkable(airlines)\n\n\n\n\ncarrier\nname\n\n\n\n\n9E\nEndeavor Air Inc.\n\n\nAA\nAmerican Airlines Inc.\n\n\nAS\nAlaska Airlines Inc.\n\n\nB6\nJetBlue Airways\n\n\nDL\nDelta Air Lines Inc.\n\n\nF9\nFrontier Airlines Inc.\n\n\nG4\nAllegiant Air\n\n\nHA\nHawaiian Airlines Inc.\n\n\nMQ\nEnvoy Air\n\n\nNK\nSpirit Air Lines\n\n\nOO\nSkyWest Airlines Inc.\n\n\nUA\nUnited Air Lines Inc.\n\n\nWN\nSouthwest Airlines Co.\n\n\nYX\nRepublic Airline\n\n\n\n\n\n\n\nThe $ operator allows us to extract and then explore a single variable within a data frame.\n\nairlines$name\n\n [1] \"Endeavor Air Inc.\"      \"American Airlines Inc.\" \"Alaska Airlines Inc.\"  \n [4] \"JetBlue Airways\"        \"Delta Air Lines Inc.\"   \"Frontier Airlines Inc.\"\n [7] \"Allegiant Air\"          \"Hawaiian Airlines Inc.\" \"Envoy Air\"             \n[10] \"Spirit Air Lines\"       \"SkyWest Airlines Inc.\"  \"United Air Lines Inc.\" \n[13] \"Southwest Airlines Co.\" \"Republic Airline\"",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -913,6 +1019,7 @@
     "section": "Exercise",
     "text": "Exercise\n\nExerciseAnswer\n\n\nCan you provide me with two qualitative variables and two quantitative variables in the dataset planes in the nycflights23 package?\n\n\n\nglimpse(planes)\n\nRows: 4,840\nColumns: 9\n$ tailnum      &lt;chr&gt; \"N101DQ\", \"N101DU\", \"N101HQ\", \"N101NN\", \"N102DN\", \"N102DU…\n$ year         &lt;int&gt; 2020, 2018, 2007, 2013, 2020, NA, 2007, 2013, 1998, NA, 2…\n$ type         &lt;chr&gt; \"Fixed wing multi engine\", \"Fixed wing multi engine\", \"Fi…\n$ manufacturer &lt;chr&gt; \"AIRBUS\", \"C SERIES AIRCRAFT LTD PTNRSP\", \"EMBRAER-EMPRES…\n$ model        &lt;chr&gt; \"A321-211\", \"BD-500-1A10\", \"ERJ 170-200 LR\", \"A321-231\", …\n$ engines      &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ seats        &lt;int&gt; 199, 133, 80, 379, 199, 133, 80, 379, 182, 133, 199, 80, …\n$ speed        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ engine       &lt;chr&gt; \"Turbo-fan\", \"Turbo-fan\", \"Turbo-fan\", \"Turbo-fan\", \"Turb…\n\n\nColumns made up of characters are categorical variables. Quantitative variables are those marked as integers.\n\n\n\n\n\n\nImportant\n\n\nNA means that the data point is missing. This is not the same as “NA”, which is a character.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -923,6 +1030,7 @@
     "section": "Exercise",
     "text": "Exercise\n\nExerciseAnswer\n\n\nExplore the data set iris.\n\nHow many observations does iris have?\nHow many variables does iris have?\nUse glimpse() to determine the type of data of each column of iris.\nUse the $ operator to extract the species variable in iris\n\n\n\n\nglimpse(iris)\n\nRows: 150\nColumns: 5\n$ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…\n$ Sepal.Width  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…\n$ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…\n$ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…\n$ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…\n\niris$Species\n\n  [1] setosa     setosa     setosa     setosa     setosa     setosa    \n  [7] setosa     setosa     setosa     setosa     setosa     setosa    \n [13] setosa     setosa     setosa     setosa     setosa     setosa    \n [19] setosa     setosa     setosa     setosa     setosa     setosa    \n [25] setosa     setosa     setosa     setosa     setosa     setosa    \n [31] setosa     setosa     setosa     setosa     setosa     setosa    \n [37] setosa     setosa     setosa     setosa     setosa     setosa    \n [43] setosa     setosa     setosa     setosa     setosa     setosa    \n [49] setosa     setosa     versicolor versicolor versicolor versicolor\n [55] versicolor versicolor versicolor versicolor versicolor versicolor\n [61] versicolor versicolor versicolor versicolor versicolor versicolor\n [67] versicolor versicolor versicolor versicolor versicolor versicolor\n [73] versicolor versicolor versicolor versicolor versicolor versicolor\n [79] versicolor versicolor versicolor versicolor versicolor versicolor\n [85] versicolor versicolor versicolor versicolor versicolor versicolor\n [91] versicolor versicolor versicolor versicolor versicolor versicolor\n [97] versicolor versicolor versicolor versicolor virginica  virginica \n[103] virginica  virginica  virginica  virginica  virginica  virginica \n[109] virginica  virginica  virginica  virginica  virginica  virginica \n[115] virginica  virginica  virginica  virginica  virginica  virginica \n[121] virginica  virginica  virginica  virginica  virginica  virginica \n[127] virginica  virginica  virginica  virginica  virginica  virginica \n[133] virginica  virginica  virginica  virginica  virginica  virginica \n[139] virginica  virginica  virginica  virginica  virginica  virginica \n[145] virginica  virginica  virginica  virginica  virginica  virginica \nLevels: setosa versicolor virginica\n\n\niris has 150 observations and 5 variables: Sepal Length, Sepal Width, Petal Length, Petal Width, and Species. Species is a factor, while all the other variables are numeric (dbl) in nature.",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -933,6 +1041,7 @@
     "section": "Summary",
     "text": "Summary\n\nIntroduced biostatistics and its importance\nIntroduced R\nExplored data sets",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
     ]
   },
@@ -943,7 +1052,18 @@
     "section": "What’s next?",
     "text": "What’s next?\nWe will be using R to work with data and perform statistical analysis. We will also explore how to use R to explore and describe data from external sources (.csv files).",
     "crumbs": [
+      "Lectures",
       "Lecture 1- Intro to Biostatistics and R"
+    ]
+  },
+  {
+    "objectID": "problemsets.html",
+    "href": "problemsets.html",
+    "title": "EAB 703 Problem Set Keys",
+    "section": "",
+    "text": "This website provides the answer keys for the Problem Sets given in EAB 703-1002 taught by Dr. Miguel Fudolig.",
+    "crumbs": [
+      "Problem Sets"
     ]
   }
 ]

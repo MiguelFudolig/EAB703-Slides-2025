@@ -1,0 +1,157 @@
+---
+title: "Problem Set 1 Key"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+
+
+1. The data set `Arrests` can be accessed through the package `car` in` R`. The data set includes data on police treatment of individuals arrested in Toronto for simple possession of small quantities of marijuana. The data are part of a larger data set featured in a series of articles in the Toronto Star newspaper.
+
+- Provide the relevant `R` code to install the `car` package in `R`. 
+
+```{.r}
+install.packages("car")
+```
+
+- Provide the relevant `R` code to load the `car` package. 
+```{r}
+library(car)
+```
+
+- Explore the `Arrests` data set using `glimpse()` to show the different variables available in the data set. What are the different variables in the `Arrests` data set? Show your code. [4pts.]
+
+```{r}
+library(tidyverse)
+glimpse(Arrests)
+```
+
+
+- Create a frequency table for the year of arrests (year variable). Which year had the most arrests? Show your code. [2pts.]
+
+```{r}
+library(summarytools)
+freq(Arrests$year)
+```
+::: callout-note
+The year with the most arrests was 2000.
+:::
+
+- Create a bar plot to visualize the frequencies of arrests for each year using ggplot() and geom_bar(). Show your code. [2pts.]
+
+Acceptable solution (full credit):
+
+```{r}
+ggplot(data=Arrests,aes(x=year)) +
+  geom_bar()
+```
+
+Better solution:
+
+```{r}
+ggplot(data=Arrests,aes(x=as.factor(year))) +
+  geom_bar(color="black") + 
+  theme_bw() + 
+  labs(x="Year", y="Frequency")
+```
+
+
+2. The file `SleepHealthData.csv` comprises 400 rows and 13 columns, covering a wide range of variables related to sleep and daily habits. It includes details such as gender, age, occupation, sleep duration, quality of sleep, physical activity level, stress levels, BMI category, blood pressure, heart rate, daily steps, and the presence or absence of sleep disorders.
+
+- Provide the relevant `R` code to import `SleepHealthData.csv` into `R` and assign it to the variable `sleep`. 
+
+::: callout-important
+Save the CSV file in the same folder as your `R `script!
+:::
+
+```{.r}
+setwd(getwd())
+```
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+```
+
+- Complete the following table for the recorded heart rate of the participants. Show your code. 
+
+Mean:
+
+```{r}
+mean(sleep$heart_rate)
+```
+
+Median:
+
+```{r}
+median(sleep$heart_rate)
+```
+
+Range:
+
+```{r}
+max(sleep$heart_rate)-min(sleep$heart_rate)
+```
+
+Variance and Standard Deviation:
+
+```{r}
+var(sleep$heart_rate)
+sd(sleep$heart_rate)
+```
+
+Minimum and Maximum:
+
+```{r}
+min(sleep$heart_rate)
+max(sleep$heart_rate)
+```
+
+$Q_1$, $Q_3$, and IQR:
+
+```{r}
+quantile(sleep$heart_rate,0.25)
+quantile(sleep$heart_rate,0.75)
+IQR(sleep$heart_rate)
+```
+
+
+- Create a histogram for the recorded heart rate of all the participants using `ggplot()` and `geom_histogram()`. Show your code. 
+
+Acceptable (full credit):
+
+```{r}
+ggplot(data=sleep, aes(x=heart_rate)) + 
+  geom_histogram()
+```
+
+Better version:
+
+```{r}
+ggplot(data=sleep, aes(x=heart_rate)) + 
+  geom_histogram(color="white", binwidth=2.5, fill="black") + 
+  theme_bw() +
+  labs(x="Heart Rate Measurement")
+```
+
+- Create a boxplot for the recorded heart rate of all the participants grouped by gender using ggplot() and geom_boxplot(). Show your code. (Hint: Use x=gender in the aes() function.) 
+
+Acceptable (full credit):
+
+```{r}
+ggplot(data=sleep, aes(x=gender,y=heart_rate)) +
+  geom_boxplot()
+```
+
+Better version:
+
+```{r}
+ggplot(data=sleep, aes(x=gender, y=heart_rate)) + 
+  geom_boxplot() + 
+  theme_bw() + 
+  labs(x="Gender",y="Heart Rate Measurement")
+```
+
