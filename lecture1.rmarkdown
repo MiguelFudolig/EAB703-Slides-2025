@@ -1,0 +1,731 @@
+---
+title: "Introduction to Biostatistics and R"
+subtitle: Lecture 1
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 1 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: true
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+---
+
+
+
+
+
+
+# Outline
+
+- Introduction to Biostatistics
+- Introduction to `R`
+
+
+# Introduction to Biostatistics
+
+## *Datafication*
+
+The field of statistics has grown in recent years primarily due to the *datafication* of the world.
+
+::: callout-important
+98% of all stored information is digital. Collected data is increasing even at this very moment.
+:::
+
+## Why statistics?
+
+::: {.callout-note title="Statistics"}
+Statistics is a field of study concerned with:
+
+- The collection, organization, summarization, and analysis of data
+- The drawing of inferences about a body of data when only a part of the data is observed.
+:::
+
+Data $\to$ Numbers $\to$ Information $\to$ Investigation $\to$ Communication
+
+## Statistical Thinking
+
+How is statistical thinking different from mathematical thinking?
+
+
+::: {.callout-note title="Statistical Thinking"}
+Statistical thinking involves understanding and analyzing data while accounting for uncertainty!
+:::
+
+## Activity
+
+Flip a coin 10 times. If you don't have a coin, search "coin flip" on Google.
+
+::: callout-note
+How many times did you get heads? Do you think the coin you flipped was fair?
+:::
+
+## Extensions of Statistics
+
+:::{.panel-tabset}
+
+### Biostatistics
+
+Biostatistics involves applying statistical concepts to data from the biological sciences, health sciences, and medicine.
+
+### Data Science
+
+Data science is the study of how to extract useful information from data using quantitative methods and theories from many fields. The field focuses on large data sets that were not originally designed or collected to address the question of interest.
+
+:::
+
+## Sources of Data
+
+Available data usually come from the following sources:
+
+- Records
+- Surveys
+- Experiments
+- Data Banks
+- Prior Literature
+
+## Categories of Statistics
+
+:::{.panel-tabset}
+
+### Descriptive Statistics
+
+Descriptive statistics are used to describe properties of complex sets of numbers. Summary statistics are a good example of descriptive statistics.
+
+### Inferential Statistics
+
+Inferential statistics are used to infer information from a smaller group (sample) to a more general group (population). 
+:::
+
+## Random Variables
+
+Random variables have values obtained arise as a result of chance factors, so that they cannot be exactly predicted in advance. Values of random variables resulting from measurement procedures are referred to as *observations/measurements*.
+
+::: callout-note
+Random variables could be classified as qualitative or quantitative.
+:::
+
+## Random Variable Types
+:::{.panel-tabset}
+
+### Quantitative Variables
+
+Quantitative variables are variables that can be measured or characterized with a numerical value.
+
+::: {.callout-note title="Discrete Random Variables"}
+A **discrete variable** is characterized by gaps or interruptions in the values that it can assume. 
+
+Example: Customer counts at Cafe Rio, Number of missing teeth, Likert Scale scores
+:::
+
+::: {.callout-note title="Continuous Random Variables"}
+A **continuous variable** is characterized by gaps or interruptions in the values that it can assume.
+
+Example: Speed, Weight, Time
+:::
+
+### Qualitative Variables
+
+Qualitative variables cannot be measured numerically, but can be described categorically. Discrete and qualitative variables are also known as *categorical variables*.
+
+
+:::
+
+## Data Types {.scrollable}
+
+:::{.panel-tabset}
+
+### Nominal Data
+
+As the name implies, nominal data consist of “naming” observations or classifying them into various mutually exclusive and collectively exhaustive categories. 
+
+Examples: Assigned sex at birth (male,female); HHS Regions (HHS Regions 1-10)
+
+::: callout-important
+Nominal data are typically qualitative in nature and does not account for any ordering in variable levels.
+:::
+
+### Ordinal Data
+
+Ordinal data are for variables with values with inherent ordering.
+
+Examples: Shirt size (Small, Medium, Large, XL); Socioeconomic status (Low, Medium, High)
+
+::: callout-important
+Ordinal data can include discrete variables and some qualitative variables. 
+:::
+
+### Interval Data
+
+Interval data includes measurements that can be ordered and a distance metric can be defined between two measurements. Interval scales have equal intervals between values with arbitrary zero points.
+
+Examples: Temperature, IQ
+
+### Ratio Data
+
+Ratio data is similar to interval data, but with an absolute zero measurement defined as the "absence" of the variable being measured.
+
+Examples: Weight, Height
+:::
+
+## Exercise
+
+
+:::{.panel-tabset}
+
+### Question 
+
+Identify the type of data/variable for the following:
+
+- BMI
+- Satisfaction Scale (Unsatisfied, Moderately Satisfied, Satisfied, Very Satisfied)
+- Eye Color
+- Credit Rating
+
+### Answers
+
+- BMI (**ratio**)
+- Satisfaction Scale (Unsatisfied, Moderately Satisfied, Satisfied, Very Satisfied) (**ordinal**)
+- Eye Color (**nominal**)
+- Credit Score (**interval**)
+
+:::
+
+
+## Population vs. Sample
+
+::: {.callout-note title="Population"}
+A population is the largest collection of entities for which we have an interest at a particular time. Measurements of some variable from these entities would generate a population of values for that variable.
+
+An exact value calculated from a population is referred to as a **parameter**.
+:::
+
+::: {.callout-note title="Sample"}
+A sample is a part of the population.
+
+An exact value calculated from a sample is referred to as a **statistic**.
+:::
+
+## Population vs. Sample {.smaller}
+
+![Taken from: <https://medium.com/@ritusantra/population-v-s-sample-f17c40967257>](figs/1-sample.png){height=5in}
+
+
+## How to Sample
+
+Sampling can be grouped into two broad categories: probability-based/random sampling and convenience sampling.
+
+::: {.panel-tabset}
+
+### Random Samples
+
+A sample is a random sample when the probability with which every respondent was sampled is known. These probabilities are not necessarily equal. Types of random sampling include:
+
+- Simple random sampling
+- Stratified random sampling
+- Cluster sampling
+
+### Convenience Samples
+
+A sample is a convenience sample when the respondents are selected based on ease of access or availability. This could be a potential source of bias.
+:::
+
+## Scientific Method
+
+The scientific method is a process by which scientific information is collected, analyzed, and reported in order to produce unbiased and replicable results in an effort to provide an accurate representation of observable phenomena.
+
+![](figs/1-scimethod.jpg){height=3in fig-align="center"}
+
+
+# Introduction to `R`
+
+## Installation
+
+You can install `R` and `RStudio` on your personal computers and laptops by following the instructions on this page: <https://posit.co/download/rstudio-desktop/>
+
+`RStudio` is currently installed on the classroom computers.
+
+## Basic Programming Terminology
+
+- Source Code: A text listing of commands to be compiled or assembled into an executable computer program.
+- Running Code: The act of telling `R` to perform an act by giving it commands through source code.
+- Console Pane: Where `R` commands are entered
+
+::: callout-important
+There are different types of programming data types such as integers, doubles/numerics, logicals, and characters.
+
+- Integers (int) have values like -1,0,2
+- Numerics (dbl, num) are numbers including integers and decimals,
+- Logicals (logi) are either `TRUE` or `FALSE`
+- Characters (chr)are text variables such as "Hello, World", "Female", "Yes"
+:::
+
+## Basic Programming Terminology
+
+::: {.panel-tabset}
+
+### Vectors
+
+Vectors are a series of values. These can be created using the `c()` function, known as the combine/concatenate function.
+
+
+
+
+
+
+```{r}
+c(1,2,3)
+
+c("A","B","C")
+
+```
+
+
+
+
+
+
+### Variables
+
+You can store different data types to variables using the `<-` sign.
+
+
+
+
+
+
+```{r}
+var1 <- c(1,2,3)
+var1
+var1+2
+
+var2 <- c("A","B","C")
+var2
+```
+
+
+
+
+
+
+### Factors
+
+Categorical data are commonly represented in `R` as factors.
+
+
+
+
+
+
+```{r}
+factor(c("18-39","40-59","60+"), levels=c("18-39","40-59","60+"))
+
+likert <- c("Disagree", "Strongly Disagree","Agree","Neutral","Strongly Agree")
+likert
+
+factor(likert, levels=c("Strongly Disagree","Disagree", "Neutral","Agree","Strongly Agree"))
+```
+
+
+
+
+
+:::
+
+## Basic Programming Technology {.scrollable}
+
+::: {.panel-tabset}
+
+### Data Frames
+
+Data frames are rectangular spreadsheets. Data are typically imported as data frames.
+
+::: callout-note
+Rows correspond to observations and the columns correspond to variables.
+:::
+
+Example:
+
+
+
+
+
+```{r}
+head(mtcars)
+```
+
+
+
+
+
+
+### Conditionals
+
+You can test for mathematical relations such as equality/inequality, resulting in a `TRUE` or `FALSE` value.
+
+
+
+
+
+
+```{r}
+2+1==3
+
+3+5 <=1
+
+x <- c(1,2,3,4,5)
+x < 3
+```
+
+
+
+
+
+### Functions
+
+Functions are commands in `R`. `c()` is a function that combines different values. You can create a function or use functions built for `R`.
+
+Example: `seq()` is a function that generates a sequence of numbers. The resulting sequence of numbers can be changed by changing the attributes of the function
+
+
+
+
+
+
+```{r}
+seq(1,5)
+
+seq(1,5,by=2)
+
+seq(1,5,length.out=10)
+```
+
+
+
+
+
+To learn more about what a specific `R` function does, type `?function_name` in the console. (Ex:`?seq`, `?c`)
+:::
+
+## Errors, Warnings, and Messages
+
+:::{.panel-tabset}
+
+### Errors
+
+When you input a legitimate error, `R` will warn you using a sentence starting with "Error in" and includes a sentence explaining what went wrong.
+
+
+
+
+
+
+```{r}
+#| error: true
+add(1,2,3)
+c("A","B")+1
+```
+
+
+
+
+
+
+::: callout-note
+If the text starts with "Error", figure out what's causing it. Think of errors as a red traffic light: stop and assess for anything wrong in the code (missing parenthesis, adding characters to numbers, non-existent functions, etc.)
+:::
+
+::: callout-important
+Encountering errors in your code is normal even for an experienced coder. Don't be afraid to review your code if you made an error! This process is called "debuggging".
+:::
+
+### Warnings
+
+When `R` produces a warning, your code will still be implemented albeit with some caveats.
+
+
+
+
+
+
+```{r}
+for_plotting <- data.frame(x=c(1,2,3,4,5), y=c(2,4,5,NA,1))
+library(ggplot2)
+ggplot(data=for_plotting,aes(x=x,y=y)) + geom_point()
+```
+
+
+
+
+
+
+The plot is displayed, but a warning was raised regarding a missing value. Note that the data frame `for_plotting` has a missing value for `y` denoted by `NA`.
+
+### Messages
+
+If the output text does not start with an error or a warning, it's just a friendly message from `R` telling you about the output. These messages are typically seen when loading `R` packages or data sets from external sources.
+
+
+
+
+
+
+```{r}
+library(tidyverse)
+```
+
+
+
+
+
+
+:::
+
+## `R` packages
+
+`R` packages extend the functionality of `R` by providing additional functions, data, and documentation. These packages are written by `R` users around the world and can be downloaded for free!
+
+::: callout-note
+Think of `R` as a new phone. `R` packages are apps that you can download to use your phone in many different ways.
+:::
+
+## Installing and Loading `R` Packages
+
+Like apps on a phone, `R` packages also need to be installed. These packages can be installed by running the following code snippet `install.packages("PackageName")`. For example, to install the package `tidyverse` used for data manipulation and cleaning, you can run the following code:
+
+```{.r}
+install.packages("tidyverse")
+```
+
+To load this package in `R`, you can use the following syntax:
+
+
+
+
+
+
+```{r}
+library(tidyverse)
+```
+
+
+
+
+
+
+::: callout-important
+You must have an active internet connection to install `R` packages to your device.
+:::
+
+## Exercise
+
+::: {.panel-tabset}
+
+### Exercise
+Install and load the following packages: `readxl`, `nycflights23` and `knitr`.
+
+### Answer
+
+```{.r}
+install.packages("readxl")
+install.packages("nycflights23")
+install.packages("knitr")
+```
+
+
+
+
+
+
+```{r}
+library(readxl)
+library(nycflights23)
+library(knitr)
+```
+
+
+
+
+
+
+:::
+
+## Exploring Data Sets {.scrollable}
+
+The `nycflights23` package includes some data sets saved as data frames. These data sets are related to all domestic flights departing from one of New York City’s three main airports in 2023: Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia Airport (LGA).
+
+One of the data sets in this package is the `flights` data set.
+
+
+
+
+
+
+```{r}
+flights
+```
+
+
+
+
+
+
+::: callout-note
+A tibble is a special type of data frame! The dimensions show the `number of rows x number of columns`. Each row corresponds to an observation, while each column corresponds to the variables describing each observation.
+:::
+
+## Exploring the `flights` data set.
+
+You can use the following functions to explore a data set.
+
+::: {.panel-tabset}
+### `View()`
+
+`View()` brings up RStudio's built in data viewer. That is, if you want to view data like an Excel sheet.
+
+```{.r}
+View(flights)
+```
+
+### `glimpse()`
+
+The `glimpse()` function from the package `dplyr` (part of `tidyverse`) provides us with a different view of the data set. It includes the *data type* of each variable defined by the columns of the data frame.
+
+
+
+
+
+
+```{r}
+glimpse(flights)
+```
+
+
+
+
+
+
+
+### `kable()`
+
+The `kable()` function is part of the package `knitr`. In this example, we will use another data set in the `nycflights23` package: the `airlines` data set.
+
+
+
+
+
+
+```{r}
+kable(airlines)
+```
+
+
+
+
+
+
+### `$`
+
+The `$` operator allows us to extract and then explore a single variable within a data frame. 
+
+
+
+
+
+
+```{r}
+airlines$name
+```
+
+
+
+
+
+:::
+
+## Exercise
+
+::: {.panel-tabset}
+
+### Exercise
+
+Can you provide me with two qualitative variables and two quantitative variables in the dataset `planes` in the `nycflights23` package?
+
+### Answer
+
+
+
+
+
+
+```{r}
+glimpse(planes)
+```
+
+
+
+
+
+
+Columns made up of characters are categorical variables. Quantitative variables are those marked as integers.
+
+::: callout-important
+`NA` means that the data point is missing. This is not the same as "NA", which is a character.
+:::
+
+:::
+
+
+## Exercise
+
+::: {.panel-tabset}
+
+### Exercise
+
+Explore the data set `iris`.
+
+- How many observations does `iris` have?
+- How many variables does `iris` have?
+- Use `glimpse()` to determine the type of data of each column of `iris`.
+- Use the `$` operator to extract the species variable in `iris`
+
+### Answer
+
+
+
+
+
+
+```{r}
+glimpse(iris)
+iris$Species
+```
+
+
+
+
+
+
+`iris` has 150 observations and 5 variables: Sepal Length, Sepal Width, Petal Length, Petal Width, and Species. Species is a **factor**, while all the other variables are numeric (dbl) in nature.
+:::
+
+# Summary
+
+## Summary 
+
+- Introduced biostatistics and its importance
+- Introduced `R`
+- Explored data sets
+
+## What's next?
+
+We will be using `R` to work with data and perform statistical analysis. We will also explore how to use `R` to explore and describe data from external sources (.csv files).
