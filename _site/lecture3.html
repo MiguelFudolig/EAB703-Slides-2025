@@ -27,6 +27,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5225a0b03738627c8390147651eb7bbf.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -223,7 +288,7 @@ P(E)= m/N
 <p><strong>Frequentist/A Posteriori Probability</strong></p>
 </div>
 <div class="callout-content">
-<p>Probability is defined as follows: If some process is repeated a large number of times, <span class="math inline">\(n\)</span>, and if some resulting event with the characteristic <span class="math inline">\(E\)</span> occurs <span class="math inline">\(m\)</span> times, the relative frequency of occurrence of <span class="math inline">\(E\)</span>, <span class="math inline">\(m/n\)</span>, will be <em>approximately equal</em> to the probability of E.</p>
+<p>Probability is defined as follows: If some process is repeated a large number of times, <span class="math inline">\(n\)</span>, and if some resulting event with the characteristic <span class="math inline">\(E\)</span> occurs <span class="math inline">\(m\)</span> times, the relative frequency of occurrence of <span class="math inline">\(E\)</span>, <span class="math inline">\(m/n\)</span>, will be <em>approximately equal</em> to the probability of <span class="math inline">\(E\)</span>.</p>
 <p><span class="math display">\[
 P(E) = m/n
 \]</span></p>
@@ -364,7 +429,67 @@ P(E) = m/n
 <p><span class="math display">\[
 P(E) = \frac{532}{1325}
 \]</span></p>
-<p>The resulting probability is 0.40.</p>
+<p>The resulting probability is 0.402.</p>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example 2</h2>
+<p>Consider the <code>AMSSurvey</code> data in the package <code>carData</code>. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status. You can learn more about the data set by typing <code>?carData::AMSsurvey</code> after installing the <code>car</code> package.</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Question + Data</a></li><li><a href="#tabset-1-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>What is the probability of selecting a participant of the survey at random who is not a US citizen in 2008? Use the <code>count</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(carData)</span>
+<span id="cb1-2"><a></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    type    sex citizen count count11
+1  I(Pu)   Male      US   132     148
+2  I(Pu) Female      US    35      40
+3  I(Pr)   Male      US    87      63
+4  I(Pr) Female      US    20      22
+5     II   Male      US    96     161
+6     II Female      US    47      53
+7    III   Male      US    47      71
+8    III Female      US    32      28
+9     IV   Male      US    71      89
+10    IV Female      US    54      55
+11    Va   Male      US    34      42
+12    Va Female      US    14      21
+13 I(Pu)   Male  Non-US   130     136
+14 I(Pu) Female  Non-US    29      32
+15 I(Pr)   Male  Non-US    79      82
+16 I(Pr) Female  Non-US    25      26
+17    II   Male  Non-US    89     116
+18    II Female  Non-US    50      56
+19   III   Male  Non-US    53      61
+20   III Female  Non-US    39      30
+21    IV   Male  Non-US   122     153
+22    IV Female  Non-US   105     115
+23    Va   Male  Non-US    28      27
+24    Va Female  Non-US    12      17</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<p>The total counts can be calculated using the <code>sum</code> function. Or simple addition.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sum</span>(AMSsurvey<span class="sc">$</span>count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1430</code></pre>
+</div>
+</div>
+<p>We can also count the total number of non-US citizens in the data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">130</span><span class="sc">+</span><span class="dv">29</span><span class="sc">+</span><span class="dv">79</span><span class="sc">+</span><span class="dv">25</span><span class="sc">+</span><span class="dv">89</span><span class="sc">+</span><span class="dv">50</span><span class="sc">+</span><span class="dv">53</span><span class="sc">+</span><span class="dv">39</span><span class="sc">+</span><span class="dv">122</span><span class="sc">+</span><span class="dv">105</span><span class="sc">+</span><span class="dv">28</span><span class="sc">+</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 761</code></pre>
+</div>
+</div>
+<p>Thus, the probability can be calculated as 761/ 1430 = 0.532</p>
+</div>
+</div>
+</div>
 
 
 </section></section>
@@ -585,6 +710,82 @@ P(E) = \frac{532}{1325}
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

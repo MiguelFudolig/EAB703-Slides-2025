@@ -1057,16 +1057,6 @@
     ]
   },
   {
-    "objectID": "problemsets.html",
-    "href": "problemsets.html",
-    "title": "EAB 703 Problem Set Keys",
-    "section": "",
-    "text": "This website provides the answer keys for the Problem Sets given in EAB 703-1002 taught by Dr. Miguel Fudolig.",
-    "crumbs": [
-      "Problem Sets"
-    ]
-  },
-  {
     "objectID": "lecture3.html#objective-probability",
     "href": "lecture3.html#objective-probability",
     "title": "Introduction to Probability",
@@ -1093,7 +1083,7 @@
     "href": "lecture3.html#frequentist-probability",
     "title": "Introduction to Probability",
     "section": "Frequentist Probability",
-    "text": "Frequentist Probability\nThe frequentist approach to probability depends on the repeatability of some process and the ability to count the number of repetitions, as well as the number of times that some event of interest occurs. The probability describes the long-run relative frequency of occurrences from the process.\n\n\n\n\n\n\n\nFrequentist/A Posteriori Probability\n\n\nProbability is defined as follows: If some process is repeated a large number of times, \\(n\\), and if some resulting event with the characteristic \\(E\\) occurs \\(m\\) times, the relative frequency of occurrence of \\(E\\), \\(m/n\\), will be approximately equal to the probability of E.\n\\[\nP(E) = m/n\n\\]\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nNote that \\(m/n\\) is only an estimate of the probability, and that \\(n\\) should be large to have a better estimate of \\(P(E)\\).\nExample: Monty-Hall Problem",
+    "text": "Frequentist Probability\nThe frequentist approach to probability depends on the repeatability of some process and the ability to count the number of repetitions, as well as the number of times that some event of interest occurs. The probability describes the long-run relative frequency of occurrences from the process.\n\n\n\n\n\n\n\nFrequentist/A Posteriori Probability\n\n\nProbability is defined as follows: If some process is repeated a large number of times, \\(n\\), and if some resulting event with the characteristic \\(E\\) occurs \\(m\\) times, the relative frequency of occurrence of \\(E\\), \\(m/n\\), will be approximately equal to the probability of \\(E\\).\n\\[\nP(E) = m/n\n\\]\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nNote that \\(m/n\\) is only an estimate of the probability, and that \\(n\\) should be large to have a better estimate of \\(P(E)\\).\nExample: Monty-Hall Problem",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1148,7 +1138,28 @@
     "href": "lecture3.html#example",
     "title": "Introduction to Probability",
     "section": "Example",
-    "text": "Example\nOut of 1,325 university students, 532 of them reported to consume caffeine through coffee. What is the marginal probability of selecting a university student who consumes coffee?\n\\[\nP(E) = \\frac{532}{1325}\n\\]\nThe resulting probability is 0.40.",
+    "text": "Example\nOut of 1,325 university students, 532 of them reported to consume caffeine through coffee. What is the marginal probability of selecting a university student who consumes coffee?\n\\[\nP(E) = \\frac{532}{1325}\n\\]\nThe resulting probability is 0.402.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "problemsets.html",
+    "href": "problemsets.html",
+    "title": "EAB 703 Problem Set Keys",
+    "section": "",
+    "text": "This website provides the answer keys for the Problem Sets given in EAB 703-1002 taught by Dr. Miguel Fudolig.",
+    "crumbs": [
+      "Problem Sets"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-2",
+    "href": "lecture3.html#example-2",
+    "title": "Introduction to Probability",
+    "section": "Example 2",
+    "text": "Example 2\nConsider the AMSSurvey data in the package carData. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status. You can learn more about the data set by typing ?carData::AMSsurvey after installing the car package.\n\nQuestion + DataAnswer\n\n\nWhat is the probability of selecting a participant of the survey at random who is not a US citizen in 2008? Use the count variable.\n\nlibrary(carData)\nAMSsurvey\n\n    type    sex citizen count count11\n1  I(Pu)   Male      US   132     148\n2  I(Pu) Female      US    35      40\n3  I(Pr)   Male      US    87      63\n4  I(Pr) Female      US    20      22\n5     II   Male      US    96     161\n6     II Female      US    47      53\n7    III   Male      US    47      71\n8    III Female      US    32      28\n9     IV   Male      US    71      89\n10    IV Female      US    54      55\n11    Va   Male      US    34      42\n12    Va Female      US    14      21\n13 I(Pu)   Male  Non-US   130     136\n14 I(Pu) Female  Non-US    29      32\n15 I(Pr)   Male  Non-US    79      82\n16 I(Pr) Female  Non-US    25      26\n17    II   Male  Non-US    89     116\n18    II Female  Non-US    50      56\n19   III   Male  Non-US    53      61\n20   III Female  Non-US    39      30\n21    IV   Male  Non-US   122     153\n22    IV Female  Non-US   105     115\n23    Va   Male  Non-US    28      27\n24    Va Female  Non-US    12      17\n\n\n\n\nThe total counts can be calculated using the sum function. Or simple addition.\n\nsum(AMSsurvey$count)\n\n[1] 1430\n\n\nWe can also count the total number of non-US citizens in the data set.\n\n130+29+79+25+89+50+53+39+122+105+28+12\n\n[1] 761\n\n\nThus, the probability can be calculated as 761/ 1430 = 0.532",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"

@@ -18,7 +18,16 @@ format:
     
   pdf: 
     number-sections: true
+    engine: knitr
 ---
+
+
+```{r setup}
+#| echo: false
+
+library(carData)
+library(tidyverse)
+```
 
 # Outline
 
@@ -71,7 +80,7 @@ Hence, the probability is 1/6.
 The frequentist approach to probability depends on the repeatability of some process and the ability to count the number of repetitions, as well as the number of times that some event of interest occurs. The probability describes the long-run relative frequency of occurrences from the process.
 
 :::{.callout-note title="Frequentist/A Posteriori Probability"}
-Probability is defined as follows: If some process is repeated a large number of times, $n$, and if some resulting event with the characteristic $E$ occurs $m$ times, the relative frequency of occurrence of $E$, $m/n$, will be *approximately equal* to the probability of E.
+Probability is defined as follows: If some process is repeated a large number of times, $n$, and if some resulting event with the characteristic $E$ occurs $m$ times, the relative frequency of occurrence of $E$, $m/n$, will be *approximately equal* to the probability of $E$.
 
 $$
 P(E) = m/n
@@ -142,4 +151,44 @@ $$
 P(E) = \frac{532}{1325}
 $$
 
-The resulting probability is 0.40.
+The resulting probability is `r round(532/1325,3)`. 
+
+
+## Example 2
+
+Consider the `AMSSurvey` data in the package `carData`. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status. You can learn more about the data set by typing `?carData::AMSsurvey` after installing the `car` package.
+
+::: {.panel-tabset}
+
+### Question + Data
+What is the probability of selecting a participant of the survey at random who is not a US citizen in 2008? Use the `count` variable.
+
+```{r}
+library(carData)
+AMSsurvey
+```
+
+### Answer
+
+The total counts can be calculated using the `sum` function. Or simple addition.
+
+```{r}
+sum(AMSsurvey$count)
+```
+We can also count the total number of non-US citizens in the data set.
+
+```{r}
+130+29+79+25+89+50+53+39+122+105+28+12
+```
+
+Thus, the probability can be calculated as `r 130+29+79+25+89+50+53+39+122+105+28+12`/ `r sum(AMSsurvey$count)` = `r round((130+29+79+25+89+50+53+39+122+105+28+12)/ sum(AMSsurvey$count),3)`
+
+:::
+
+
+
+
+
+
+
+
