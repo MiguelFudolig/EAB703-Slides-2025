@@ -1269,7 +1269,7 @@
     "href": "lecture3.html#independent-events",
     "title": "Introduction to Probability",
     "section": "Independent Events",
-    "text": "Independent Events\nTwo events are independent if knowing the outcome for one of the events provides no information about the outcome of the other event. Mathematically,\n\n\n\n\n\n\n\nIndependent Events\n\n\nTwo events \\(A\\) and \\(B\\) are independent if \\(P(A \\cap B) = P(A)P(B)\\).",
+    "text": "Independent Events\nTwo events are independent if knowing the outcome for one of the events provides no information about the outcome of the other event. Mathematically,\n\n\n\n\n\n\n\nIndependent Events\n\n\nTwo events \\(A\\) and \\(B\\) are independent if \\(P(A \\cap B) = P(A)P(B)\\).\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe probability \\(P(A \\cap B)\\) is also referred to as the joint probability of \\(A\\) and \\(B\\).",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1291,7 +1291,150 @@
     "href": "lecture3.html#exercise-3",
     "title": "Introduction to Probability",
     "section": "Exercise",
-    "text": "Exercise\nAccording to the National Down Syndrome Society, the probability that a 35-year-old woman conceives a child with Down syndrome is approximately 0.28%.\n\nExerciseAnswer\n\n\nWhat is the probability that two independently sampled 35-year-old women will both conceive children with Down syndrome?\n\n\n\\[\nP(C1Down \\cap C2Down) = P(C1Down)P(C2Down) = (0.0028)(0.0028)\n\\] \\(P(C1Down \\cap C2Down)\\) = 0.000784%",
+    "text": "Exercise\nAccording to the National Down Syndrome Society, the probability that a 35-year-old woman conceives a child with Down syndrome is approximately 0.28%.\n\nExerciseAnswer\n\n\nWhat is the probability that two independently sampled 35-year-old women will both conceive children with Down syndrome?\n\n\n\\[\nP(C1Down \\cap C2Down) = P(C1Down)P(C2Down) = (0.0028)(0.0028)\n\\]\n\\(P(C1Down \\cap C2Down)\\) = 0.000784%",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#complementary-events",
+    "href": "lecture3.html#complementary-events",
+    "title": "Introduction to Probability",
+    "section": "Complementary Events",
+    "text": "Complementary Events\nThe complement of an event \\(A\\) is defined to be the set of all elements in the sample space that are NOT A.\n\n\n\n\n\n\nTip\n\n\nThe complement of \\(A\\) is denoted by \\(\\bar{A}\\) or \\(A^C\\).\n\n\n\n\n\n\n\n\n\nNote\n\n\nFor any event \\(A\\) and its complement \\(A^C\\),\n\\[\nP(A^C) = 1-P(A)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-4",
+    "href": "lecture3.html#example-4",
+    "title": "Introduction to Probability",
+    "section": "Example",
+    "text": "Example\nWhat is the probability of NOT getting a 1 after rolling a fair six-sided die?\n\\[\nP([roll 1]^C) = 1 - P(roll 1) = 1-\\frac{1}{6} = \\frac{5}{6}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#exercise-5",
+    "href": "lecture3.html#exercise-5",
+    "title": "Introduction to Probability",
+    "section": "Exercise",
+    "text": "Exercise\nIn a survey study, 10.7% reported to have taken undergraduate courses, 23.4% reported to have finished an undergraduate (Bachelor’s/Associates) degree, 15.2% reported to have taken postgraduate credits, and 3.9% reported to have finished a graduate degree.\n\nQuestionAnswer\n\n\nWhat is the probability of randomly sampling a participant who had not received any college-level education?\n\n\nEducational attainment are assumed to be disjoint because respondents cannot be in multiple levels. Hence,\n\\[\nP(College) = 0.107+0.234+0.152+0.039\n\\]\nThe complement is what we’re interested in.\n\\[\nP(NoCollege) = 1-(0.107+0.234+0.152+0.039)\n\\]\nThe resulting probability is 0.468",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#conditional-probability",
+    "href": "lecture3.html#conditional-probability",
+    "title": "Introduction to Probability",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability\nIf two events are dependent, then knowing the outcome of one event provides information about the probability of the other event.\n\n\n\n\n\n\nNote\n\n\nIn screening tests, the probability of a positive test depends on whether the subject has the condition or not.\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe notation for conditional probabilities is \\(P(A|B)\\), which is read as the “probability of \\(A\\) given \\(B\\)”.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nConditional probabilities are order-specific, i.e. \\(P(A|B) \\neq P(B|A)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-5",
+    "href": "lecture3.html#example-5",
+    "title": "Introduction to Probability",
+    "section": "Example",
+    "text": "Example\nConsider the AMSSurvey data in the package carData. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status.\n\nQuestion + DataAnswer\n\n\nWhat is the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(type=IV) in 2008 (count variable) given that they are known to be a US citizen?\n\nlibrary(carData)\nAMSsurvey\n\n    type    sex citizen count count11\n1  I(Pu)   Male      US   132     148\n2  I(Pu) Female      US    35      40\n3  I(Pr)   Male      US    87      63\n4  I(Pr) Female      US    20      22\n5     II   Male      US    96     161\n6     II Female      US    47      53\n7    III   Male      US    47      71\n8    III Female      US    32      28\n9     IV   Male      US    71      89\n10    IV Female      US    54      55\n11    Va   Male      US    34      42\n12    Va Female      US    14      21\n13 I(Pu)   Male  Non-US   130     136\n14 I(Pu) Female  Non-US    29      32\n15 I(Pr)   Male  Non-US    79      82\n16 I(Pr) Female  Non-US    25      26\n17    II   Male  Non-US    89     116\n18    II Female  Non-US    50      56\n19   III   Male  Non-US    53      61\n20   III Female  Non-US    39      30\n21    IV   Male  Non-US   122     153\n22    IV Female  Non-US   105     115\n23    Va   Male  Non-US    28      27\n24    Va Female  Non-US    12      17\n\n\n\n\nIn total, there are 669 US citizens in the data set. Among them, there are 71+54 = 125 enrolled in statistics/biostatistics program (type=IV).\nTherefore, the probability that a participant who is a known US citizen is enrolled in a statistics/biostatistics program is \\(\\frac{71+54}{132+35+87+20+96+47+47+32+71+54+34+14}\\) = 0.186846",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#multiplicative-law-of-probability",
+    "href": "lecture3.html#multiplicative-law-of-probability",
+    "title": "Introduction to Probability",
+    "section": "Multiplicative Law of Probability",
+    "text": "Multiplicative Law of Probability\nLet \\(A\\) and \\(B\\) be events, and suppose \\(P(B) \\neq 0\\). Then, the joint, marginal, and conditional probabilities can be related by the following equation.\n\\[\nP(A \\cap B) = P(B) P(A|B)\n\\]\nUsing basic algebra, we can derive an expression for the conditional probability.\n\\[\nP(A|B) = \\frac{P(A \\cap B)}{P(B)}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-6",
+    "href": "lecture3.html#example-6",
+    "title": "Introduction to Probability",
+    "section": "Example",
+    "text": "Example\nSuppose the probability of traffic light failure is 0.0002. A local transportation office calculated that when there is a traffic light failure, there is a 20% chance of a vehicular accident occurring. What is the probability of a vehicular accident and a traffic light failure occurring at the same time?\n\n\\(P(Fail) = 0.0002\\)\n\\(P(Acc|Fail) = 0.20\\)\n\n\\[\nP(Acc \\cap Fail) = P(Acc|Fail) P(Fail)\n\\] \\(P(Acc \\cap Fail) = 0.0002 * 0.20\\) = 0.00004",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-2-2",
+    "href": "lecture3.html#example-2-2",
+    "title": "Introduction to Probability",
+    "section": "Example 2",
+    "text": "Example 2\nConsider the AMSSurvey data in the package carData. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status.\n\nQuestion + DataAnswer\n\n\nUse the multiplication rule to calculate the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(type=IV) in 2008 (count variable) given that they are known to be a US citizen.\n\nlibrary(carData)\nAMSsurvey\n\n    type    sex citizen count count11\n1  I(Pu)   Male      US   132     148\n2  I(Pu) Female      US    35      40\n3  I(Pr)   Male      US    87      63\n4  I(Pr) Female      US    20      22\n5     II   Male      US    96     161\n6     II Female      US    47      53\n7    III   Male      US    47      71\n8    III Female      US    32      28\n9     IV   Male      US    71      89\n10    IV Female      US    54      55\n11    Va   Male      US    34      42\n12    Va Female      US    14      21\n13 I(Pu)   Male  Non-US   130     136\n14 I(Pu) Female  Non-US    29      32\n15 I(Pr)   Male  Non-US    79      82\n16 I(Pr) Female  Non-US    25      26\n17    II   Male  Non-US    89     116\n18    II Female  Non-US    50      56\n19   III   Male  Non-US    53      61\n20   III Female  Non-US    39      30\n21    IV   Male  Non-US   122     153\n22    IV Female  Non-US   105     115\n23    Va   Male  Non-US    28      27\n24    Va Female  Non-US    12      17\n\n\n\n\nThe marginal probability of selecting a US citizen is $=$0.4678.\nThe probability of selecting a US citizen and type=IV is \\(\\frac{(71+54)}{(669+761)}=\\) 0.0874\nTherefore, the probability of selecting a participant in type=IV given that they are a US citizen is:\n\\[\nP(IV|US) = \\frac{P(IV \\cap US)}{P(US)} = \\frac{\\frac{(71+54)}{(669+761)}}{\\frac{669}{669+761}}\n\\]\nResulting in the following value: 0.1868, which was the same value as in the previous example.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#exercise-6",
+    "href": "lecture3.html#exercise-6",
+    "title": "Introduction to Probability",
+    "section": "Exercise",
+    "text": "Exercise\nIn 2016, the global incidence rate of the Zika virus is 0.0017. Suppose a screening test was developed such that the probability of a positive test result given that the participant had the Zika virus is 0.90.\n\nQuestionAnswer\n\n\nWhat is the probability that a randomly selected individual tested positive and had Zika virus?\n\n\n\n\\(P(Z) =0.0017\\)\n\\(P(PT|Z) = 0.90\\)\n\\(P(PT \\cap Z) = P(PT|Z)P(Z) = (0.90)(0.0017)\\) = 0.0015",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#law-of-total-probability",
+    "href": "lecture3.html#law-of-total-probability",
+    "title": "Introduction to Probability",
+    "section": "Law of Total Probability",
+    "text": "Law of Total Probability\nThe law of probability states that for events \\({B_1,B_2,...,B_n}\\) that are disjoint outcomes that span the sample space, and with \\(P(B_j) \\neq 0\\) for all \\(j\\), then for any event \\(A\\),\n\\[\nP(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + ... = \\sum_{i=1}^n P(A|B_i)P(B_i)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#bayes-theorem-1",
+    "href": "lecture3.html#bayes-theorem-1",
+    "title": "Introduction to Probability",
+    "section": "Bayes’ Theorem",
+    "text": "Bayes’ Theorem\nRecall that \\(P(B|A) \\neq P(A|B)\\). Bayes’ theorem provides a way to invert conditional probabilities.\n\n\n\n\n\n\n\nBayes’ Theorem\n\n\nLet \\(A\\) and \\(B_1, B_2,...,B_n\\) be disjoint events that span the whole sample space, and with \\(P(B_j) \\neq 0\\) for all \\(j\\),\n\\[\nP(B_j|A) = \\frac{P(A|B_j) P(B_j)}{\\sum_{i=1}^n P(A|B_i)P(B_i)}\n\\]\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIf we know the marginal probability of \\(A\\),\n\\[\nP(B_j|A) = \\frac{P(A|B_j) P(B_j)}{P(A)}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#screening-tests-1",
+    "href": "lecture3.html#screening-tests-1",
+    "title": "Introduction to Probability",
+    "section": "Screening Tests",
+    "text": "Screening Tests\nWhen screening for diseases, we are interested in the true positive (positive tests for people who have the disease) and true negative rates (negative tests for people who do not have the disease).\n\nSensitivitySpecificityBase Rate\n\n\n\n\n\n\n\n\n\nSensitivity\n\n\nThe probability that a person randomly selected from the population tests positive given that they have the disease is called the sensitivity of a test.\n\\[\nSens = P(PT|D) = \\frac{TP}{TP+FN}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpecificity\n\n\nThe probability that a person randomly selected from the population tests negative given that they do not have the disease is called the specificity of a test.\n\\[\nSpec = P(NT|ND) = 1-P(PT|ND) =  \\frac{TN}{TN+FP}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nBase Rate\n\n\nThe probability that a person randomly selected from the population has the disease is called the base rate of a test.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#predictive-values",
+    "href": "lecture3.html#predictive-values",
+    "title": "Introduction to Probability",
+    "section": "Predictive Values",
+    "text": "Predictive Values\nWe are also interested in the conditional probabilities of having the disease based on the test for a random member of the population.\n\n\n\n\n\n\n\nPositive Predictive Value\n\n\nThe probability of having the disease given a positive test (P(D|PT)) is called the positive predictive value (PPV).\n\\[\nP(D|PT) = \\frac{P(PT|D)P(D)}{P(PT)} = \\frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nNegative Predictive Value\n\n\nThe probability of not having the disease given a negative test (P(ND|NT)) is called the negative predictive value (NPV).\n\\[\nP(ND|NT) = \\frac{P(NT|ND)P(ND)}{P(NT)} = \\frac{spec*(1-BR)}{spec*(1-BR) + (1-sens)*(BR)}\n\\]",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"

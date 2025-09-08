@@ -121,6 +121,8 @@ The properties of probability was mathematically formalized by Russian mathemati
 2.  The sum of the probabilities of the mutually exclusive events is equal to 1.
 3.  Consider any two mutually exclusive events, $E_i$ and $E_j$. The probability of occurrence of either $E_i$ or $E_j$ is equal to the sum of their individual probabilities.
 
+# Calculating Probabilities 
+
 ## Calculating Marginal Probabilities
 
 We can calculate the probability of occurrence for events using the sample point method.
@@ -217,6 +219,7 @@ The intersection of events is mathematically denoted by $\cap$ or "AND".
 As an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The intersection of events A and B can be interpreted as "the event where we draw an ace AND a diamond card" or in mathematical terms $Ace \cap Diamond$. This simplifies to drawing of a specific card: the ace of diamonds.
 :::
 
+
 ## Union vs. Intersection
 
 ![Or vs. And](figs/3-venn.png)
@@ -300,6 +303,10 @@ Two events are independent if knowing the outcome for one of the events provides
 Two events $A$ and $B$ are independent if $P(A \cap B) = P(A)P(B)$.
 :::
 
+::: callout-important
+The probability $P(A \cap B)$ is also referred to as the **joint probability** of $A$ and $B$.
+:::
+
 ## Example
 
 What is the probability of getting two heads from two independent coin tosses?
@@ -323,9 +330,260 @@ What is the probability that two independently sampled 35-year-old women will bo
 $$
 P(C1Down \cap C2Down) = P(C1Down)P(C2Down) = (0.0028)(0.0028)
 $$
+
 $P(C1Down \cap C2Down)$ = `r format(0.0028^2*100,scientific=F)`%
 
 :::
 
+## Complementary Events
+
+The **complement** of an event $A$ is defined to be the set of all elements in the sample space that are **NOT** A.
+
+::: callout-tip
+The complement of $A$ is denoted by $\bar{A}$ or $A^C$.
+:::
+
+::: callout-note
+For any event $A$ and its complement $A^C$, 
+
+$$
+P(A^C) = 1-P(A)
+$$
+:::
+
+## Example
+
+What is the probability of *NOT* getting a 1 after rolling a fair six-sided die?
+
+$$
+P([roll 1]^C) = 1 - P(roll 1) = 1-\frac{1}{6} = \frac{5}{6}
+$$
+
+## Exercise
+
+In a survey study, 10.7% reported to have taken undergraduate courses, 23.4% reported to have finished an undergraduate (Bachelor's/Associates) degree, 15.2% reported to have taken postgraduate credits, and 3.9% reported to have finished a graduate degree. 
+
+:::{.panel-tabset}
+
+### Question
+What is the probability of randomly sampling a participant who had not received any college-level education?
+
+### Answer
+
+Educational attainment are assumed to be disjoint because respondents cannot be in multiple levels. Hence, 
+
+$$
+P(College) = 0.107+0.234+0.152+0.039
+$$
+
+The complement is what we're interested in. 
+
+$$
+P(NoCollege) = 1-(0.107+0.234+0.152+0.039)
+$$
+
+The resulting probability is `r round(1-(0.107+0.234+0.152+0.039),4)`
+:::
+
+## Conditional Probability
+
+If two events are dependent, then knowing the outcome of one event provides information about the probability of the other event. 
+
+::: callout-note
+In screening tests, the probability of a positive test depends on whether the subject has the condition or not.
+:::
+
+::: callout-tip
+The notation for conditional probabilities is $P(A|B)$, which is read as the "probability of $A$ given $B$".
+:::
+
+::: callout-important
+Conditional probabilities are order-specific, i.e. $P(A|B) \neq P(B|A)$.
+:::
+
+## Example
+
+Consider the `AMSSurvey` data in the package `carData`. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status. 
+
+::: panel-tabset
+
+### Question + Data
+
+What is the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(`type=IV`) in 2008 (`count` variable) given that they are known to be a US citizen?
+
+```{r}
+library(carData)
+AMSsurvey
+```
+
+
+### Answer
+
+In total, there are `r 132+35+87+20+96+47+47+32+71+54+34+14` US citizens in the data set. Among them, there are 71+54 = `r 71+54` enrolled in statistics/biostatistics program (`type=IV`).
+
+Therefore, the probability that a participant who is a known US citizen is enrolled in a statistics/biostatistics program is $\frac{71+54}{132+35+87+20+96+47+47+32+71+54+34+14}$ = `r (71+54)/(132+35+87+20+96+47+47+32+71+54+34+14)`
+
+:::
+
+## Multiplicative Law of Probability
+
+Let $A$ and $B$ be events, and suppose $P(B) \neq 0$. Then, the joint, marginal, and conditional probabilities can be related by the following equation.
+
+$$
+P(A \cap B) = P(B) P(A|B)
+$$
+
+Using basic algebra, we can derive an expression for the conditional probability.
+
+$$
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+$$
+
+## Example
+
+Suppose the probability of traffic light failure is 0.0002. A local transportation office calculated that when there is a traffic light failure, there is a 20% chance of a vehicular accident occurring. What is the probability of a vehicular accident and a traffic light failure occurring at the same time?
+
+- $P(Fail) = 0.0002$
+- $P(Acc|Fail) = 0.20$
+
+$$
+P(Acc \cap Fail) = P(Acc|Fail) P(Fail)
+$$
+$P(Acc \cap Fail) = 0.0002 * 0.20$ = `r format(0.0002*0.2,scientific=F)`
+
+## Example 2
+
+Consider the `AMSSurvey` data in the package `carData`. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status. 
+
+::: panel-tabset
+
+### Question + Data
+
+Use the multiplication rule to calculate the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(`type=IV`) in 2008 (`count` variable) given that they are known to be a US citizen.
+
+```{r}
+library(carData)
+AMSsurvey
+```
+
+
+### Answer
+
+The marginal probability of selecting a US citizen is $\frac{669}{669+761}=$`r round(669/(669+761),4)`.
+
+The probability of selecting a US citizen and `type=IV` is $\frac{(71+54)}{(669+761)}=$ `r round((71+54)/(669+761),4)`
+
+Therefore, the probability of selecting a participant in `type=IV` given that they are a US citizen is:
+
+$$
+P(IV|US) = \frac{P(IV \cap US)}{P(US)} = \frac{\frac{(71+54)}{(669+761)}}{\frac{669}{669+761}}
+$$
+
+Resulting in the following value: `r round((71+54)/(669),4)`, which was the same value as in the previous example.
+:::
+
+## Exercise
+
+In 2016, the global incidence rate of the Zika virus is 0.0017. Suppose a screening test was developed such that the probability of a positive test result given that the participant had the Zika virus is 0.90. 
+
+::: panel-tabset
+
+### Question
+What is the probability that a randomly selected individual tested positive and had Zika virus?
+
+### Answer
+
+- $P(Z) =0.0017$
+- $P(PT|Z) = 0.90$
+- $P(PT \cap Z) = P(PT|Z)P(Z) = (0.90)(0.0017)$ = `r round(0.90*0.0017,4)`
+
+:::
+
+## Law of Total Probability
+
+The law of probability states that for events ${B_1,B_2,...,B_n}$ that are disjoint outcomes that span the sample space, and with $P(B_j) \neq 0$ for all $j$, then for any event $A$,
+
+$$
+P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + ... = \sum_{i=1}^n P(A|B_i)P(B_i)
+$$
+
+# Bayes' Theorem
+
+## Bayes' Theorem
+
+Recall that $P(B|A) \neq P(A|B)$. Bayes' theorem provides a way to invert conditional probabilities.
+
+::: {.callout-note title="Bayes' Theorem"}
+
+Let $A$ and $B_1, B_2,...,B_n$ be disjoint events that span the whole sample space, and with $P(B_j) \neq 0$ for all $j$,
+
+$$
+P(B_j|A) = \frac{P(A|B_j) P(B_j)}{\sum_{i=1}^n P(A|B_i)P(B_i)}
+$$
+:::
+
+::: callout-tip
+If we know the marginal probability of $A$,
+
+$$
+P(B_j|A) = \frac{P(A|B_j) P(B_j)}{P(A)}
+$$
+:::
+
+# Screening Tests
+
+## Screening Tests
+
+When screening for diseases, we are interested in the true positive (positive tests for people who have the disease) and true negative rates (negative tests for people who do not have the disease).
+
+::: panel-tabset
+
+### Sensitivity
+
+::: {.callout-note title="Sensitivity"}
+The probability that a person randomly selected from the population tests positive given that they have the disease is called the *sensitivity* of a test.
+
+$$
+Sens = P(PT|D) = \frac{TP}{TP+FN}
+$$
+:::
+
+### Specificity
+
+::: {.callout-note title="Specificity"}
+The probability that a person randomly selected from the population tests negative given that they do not have the disease is called the *specificity* of a test.
+
+$$
+Spec = P(NT|ND) = 1-P(PT|ND) =  \frac{TN}{TN+FP}
+$$
+:::
+
+### Base Rate
+
+::: {.callout-note title="Base Rate"}
+The probability that a person randomly selected from the population has the disease is called the *base rate* of a test.
+:::
+
+:::
+
+## Predictive Values
+
+We are also interested in the conditional probabilities of having the disease based on the test for a random member of the population. 
+
+::: {.callout-note title="Positive Predictive Value"}
+The probability of having the disease given a positive test (P(D|PT)) is called the positive predictive value (PPV).
+
+$$
+P(D|PT) = \frac{P(PT|D)P(D)}{P(PT)} = \frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}
+$$
+:::
+
+::: {.callout-note title="Negative Predictive Value"}
+The probability of not having the disease given a negative test (P(ND|NT)) is called the negative predictive value (NPV).
+
+$$
+P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sens)*(BR)}
+$$
+:::
 
 ## References
