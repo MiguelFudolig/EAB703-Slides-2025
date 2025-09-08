@@ -1164,5 +1164,137 @@
       "Lectures",
       "Lecture 3- Intro to Probability"
     ]
+  },
+  {
+    "objectID": "lecture3.html#exercise",
+    "href": "lecture3.html#exercise",
+    "title": "Introduction to Probability",
+    "section": "Exercise",
+    "text": "Exercise\nThe “COVID-19 Effects on the Mental and Physical Health of Asian Americans & Pacific Islanders Survey Study II” (COMPASS II) data set is from a follow-up survey implemented from 12/2021 to 05/2022. The data set is composed of responses from 3,411 participants. (Do et al. 2025)\n\nExerciseAnswer\n\n\nThe table below shows the breakdown of the census region reported by the participants. What is the probability that a randomly selected participant was from the Northeast census region?\n\n\n\nCensus Region\nFrequency\n\n\n\n\nMidwest\n289\n\n\nNortheast\n344\n\n\nSouth\n472\n\n\nWest\n2,303\n\n\n\n\n\nThe marginal probability is 344/3411 = 0.101",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#references",
+    "href": "lecture3.html#references",
+    "title": "Introduction to Probability",
+    "section": "References",
+    "text": "References\n\n\n\n\nDo, Vuong Van, Van My Ta Park, Nhung Nguyen, Pamela May Ling, Marian Tzuang, Bora Nam, Marcelle M. Dougan, Oanh L. Meyer, and Janice Y. Tsoh. 2025. “Use of Cigarettes, Cannabis, and Alcohol Among Asian American, Native Hawaiian, and Pacific Islander Adults: Community-Based National Survey Analysis.” JMIR Public Health and Surveillance 11 (1): e76465. https://doi.org/10.2196/76465.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#union-of-events",
+    "href": "lecture3.html#union-of-events",
+    "title": "Introduction to Probability",
+    "section": "Union of Events",
+    "text": "Union of Events\nUnion means “together”: the union of events \\(A\\) and \\(B\\) consists of all outcomes that are either in event A, event B, or both.\n\n\n\n\n\n\nNote\n\n\nThe union of events is mathematically denoted by \\(\\cup\\) or “OR”.\nAs an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The union of events A and B can be interpreted as “the event where we draw an ace or a diamond card” or in mathematical terms \\(Ace \\cup Diamond\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#intersection-of-events",
+    "href": "lecture3.html#intersection-of-events",
+    "title": "Introduction to Probability",
+    "section": "Intersection of Events",
+    "text": "Intersection of Events\nThe intersection of events \\(A\\) and \\(B\\) consists of all outcomes that are in event A AND event B.\n\n\n\n\n\n\nNote\n\n\nThe intersection of events is mathematically denoted by \\(\\cap\\) or “AND”.\nAs an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The intersection of events A and B can be interpreted as “the event where we draw an ace AND a diamond card” or in mathematical terms \\(Ace \\cap Diamond\\). This simplifies to drawing of a specific card: the ace of diamonds.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#union-vs.-intersection",
+    "href": "lecture3.html#union-vs.-intersection",
+    "title": "Introduction to Probability",
+    "section": "Union vs. Intersection",
+    "text": "Union vs. Intersection\n\nOr vs. And",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#additive-law-of-probability",
+    "href": "lecture3.html#additive-law-of-probability",
+    "title": "Introduction to Probability",
+    "section": "Additive Law of Probability",
+    "text": "Additive Law of Probability\nFor any two events \\(A\\) and \\(B\\), the probability of \\(A\\) or \\(B\\) occurring is equal to:\n\\[\nP(A \\cup B) = P(A)+P(B) - P(A \\cap B)\n\\]\n\n\n\n\n\n\nImportant\n\n\nDisjoint events cannot happen at the same time. For disjoint events \\(C\\) and \\(D\\), \\(P(C \\cap D) = 0\\). Therefore, \\(P(C \\cup D) = P(C)+P(D)\\) is consistent with Axiom 3.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-1",
+    "href": "lecture3.html#example-1",
+    "title": "Introduction to Probability",
+    "section": "Example",
+    "text": "Example\nWhat is the probability of rolling a 1 or 3 on a single roll of a fair six-sided die?\n\n\n\n\n\n\nImportant\n\n\nRolling a 1 and a 3 is not possible. Thus, \\(P(roll 1 \\cap roll 3) = 0\\).\n\n\n\n\\[\nP(roll 1 \\cup roll 3) = P(roll 1) + P(roll 3) - P (roll 1 \\cap roll 3)\n\\] \\[\nP(roll 1 \\cup roll 3) = 1/6+1/6-0 = 1/3\n\\]\nThus, \\(P(roll 1 \\cup roll 3)=\\) 0.3333",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-2-1",
+    "href": "lecture3.html#example-2-1",
+    "title": "Introduction to Probability",
+    "section": "Example 2",
+    "text": "Example 2\nConsider a standard deck of playing cards. What is the probability of drawing an ace or a diamond card?\n\n\n\n\n\n\nImportant\n\n\nDrawing an ace AND a diamond card is possible. This event corresponds to drawing the ace of diamonds. The probability of drawing the ace of diamonds from a standard deck of playing cards is 1/52. Hence, \\(P(A \\cap D) = 1/52\\).\n\n\n\n\\[\nP(A \\cup D) = P(A) + P(D) - P (A \\cap D)\n\\]\n\\[\nP(Ace \\cup Diamond) = 4/52 + 13/52 - 1/52 = 16/52\n\\] Thus, \\(P(Ace \\cup Diamond)\\) = 0.3077",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#exercise-2",
+    "href": "lecture3.html#exercise-2",
+    "title": "Introduction to Probability",
+    "section": "Exercise",
+    "text": "Exercise\nFrom a sample of 30 adults, nine reported cannabis use, eight reported cigarette use, and two reported both cigarette and cannabis use.\n\nQuestionAnswer\n\n\nWhat is the probability that a randomly selected adult from the sample reported cannabis or cigarette use?\n\n\n\\(P(Cannabis)=9/30\\), \\(P(Cigarette)=8/30\\), \\(P(Cannabis\\cap Cigarettes) = 2/30\\). Therefore,\n\\[\nP(Cannabis \\cup Cigarettes) = P(Can) + P(Cig) - P(Can\\cap Cig)\n\\]\n\\[\nP(Cannabis \\cup Cigarettes) = 9/30 + 8/30 - 2/30 = 15/30\n\\]\n\\(P(Cannabis \\cup Cigarettes)\\) = 0.5",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#independent-events",
+    "href": "lecture3.html#independent-events",
+    "title": "Introduction to Probability",
+    "section": "Independent Events",
+    "text": "Independent Events\nTwo events are independent if knowing the outcome for one of the events provides no information about the outcome of the other event. Mathematically,\n\n\n\n\n\n\n\nIndependent Events\n\n\nTwo events \\(A\\) and \\(B\\) are independent if \\(P(A \\cap B) = P(A)P(B)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-3",
+    "href": "lecture3.html#example-3",
+    "title": "Introduction to Probability",
+    "section": "Example",
+    "text": "Example\nWhat is the probability of getting two heads from two independent coin tosses?\n\\[\nP(H1 \\cap H2) = P(H1)P(H2) = (1/2)(1/2)\n\\] \\(P(H1 \\cap H2)\\) = 0.25",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#exercise-3",
+    "href": "lecture3.html#exercise-3",
+    "title": "Introduction to Probability",
+    "section": "Exercise",
+    "text": "Exercise\nAccording to the National Down Syndrome Society, the probability that a 35-year-old woman conceives a child with Down syndrome is approximately 0.28%.\n\nExerciseAnswer\n\n\nWhat is the probability that two independently sampled 35-year-old women will both conceive children with Down syndrome?\n\n\n\\[\nP(C1Down \\cap C2Down) = P(C1Down)P(C2Down) = (0.0028)(0.0028)\n\\] \\(P(C1Down \\cap C2Down)\\) = 0.000784%",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
   }
 ]

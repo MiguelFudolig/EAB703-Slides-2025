@@ -92,7 +92,27 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5225a0b03738627c8390147651eb7bbf.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -490,8 +510,228 @@ P(E) = \frac{532}{1325}
 </div>
 </div>
 </div>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<p>The “COVID-19 Effects on the Mental and Physical Health of Asian Americans &amp; Pacific Islanders Survey Study II” (COMPASS II) data set is from a follow-up survey implemented from 12/2021 to 05/2022. The data set is composed of responses from 3,411 participants. <span class="citation" data-cites="do2025">(<a href="#/references" role="doc-biblioref" onclick="">Do et al. 2025</a>)</span></p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Exercise</a></li><li><a href="#tabset-2-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>The table below shows the breakdown of the census region reported by the participants. What is the probability that a randomly selected participant was from the Northeast census region?</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Census Region</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Midwest</td>
+<td>289</td>
+</tr>
+<tr class="even">
+<td>Northeast</td>
+<td>344</td>
+</tr>
+<tr class="odd">
+<td>South</td>
+<td>472</td>
+</tr>
+<tr class="even">
+<td>West</td>
+<td>2,303</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-2-2">
+<p>The marginal probability is 344/3411 = 0.101</p>
+</div>
+</div>
+</div>
+</section>
+<section id="union-of-events" class="slide level2">
+<h2>Union of Events</h2>
+<p>Union means “together”: the union of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> consists of all outcomes that are either in event A, event B, or both.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The union of events is mathematically denoted by <span class="math inline">\(\cup\)</span> or “OR”.</p>
+<p>As an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The union of events A and B can be interpreted as “the event where we draw an ace or a diamond card” or in mathematical terms <span class="math inline">\(Ace \cup Diamond\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="intersection-of-events" class="slide level2">
+<h2>Intersection of Events</h2>
+<p>The intersection of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> consists of all outcomes that are in event A <strong>AND</strong> event B.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The intersection of events is mathematically denoted by <span class="math inline">\(\cap\)</span> or “AND”.</p>
+<p>As an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The intersection of events A and B can be interpreted as “the event where we draw an ace AND a diamond card” or in mathematical terms <span class="math inline">\(Ace \cap Diamond\)</span>. This simplifies to drawing of a specific card: the ace of diamonds.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="union-vs.-intersection" class="slide level2">
+<h2>Union vs.&nbsp;Intersection</h2>
+
+<img data-src="figs/3-venn.png" class="r-stretch quarto-figure-center"><p class="caption">Or vs.&nbsp;And</p></section>
+<section id="additive-law-of-probability" class="slide level2">
+<h2>Additive Law of Probability</h2>
+<p>For any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, the probability of <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> occurring is equal to:</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A)+P(B) - P(A \cap B)
+\]</span></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Disjoint events cannot happen at the same time. For disjoint events <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span>, <span class="math inline">\(P(C \cap D) = 0\)</span>. Therefore, <span class="math inline">\(P(C \cup D) = P(C)+P(D)\)</span> is consistent with Axiom 3.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>What is the probability of rolling a 1 or 3 on a single roll of a fair six-sided die?</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Rolling a 1 and a 3 is not possible. Thus, <span class="math inline">\(P(roll 1 \cap roll 3) = 0\)</span>.</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+P(roll 1 \cup roll 3) = P(roll 1) + P(roll 3) - P (roll 1 \cap roll 3)
+\]</span> <span class="math display">\[
+P(roll 1 \cup roll 3) = 1/6+1/6-0 = 1/3
+\]</span></p>
+<p>Thus, <span class="math inline">\(P(roll 1 \cup roll 3)=\)</span> 0.3333</p>
+</section>
+<section id="example-2-1" class="slide level2">
+<h2>Example 2</h2>
+<p>Consider a standard deck of playing cards. What is the probability of drawing an ace or a diamond card?</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Drawing an ace AND a diamond card is possible. This event corresponds to drawing the ace of diamonds. The probability of drawing the ace of diamonds from a standard deck of playing cards is 1/52. Hence, <span class="math inline">\(P(A \cap D) = 1/52\)</span>.</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+P(A \cup D) = P(A) + P(D) - P (A \cap D)
+\]</span></p>
+<p><span class="math display">\[
+P(Ace \cup Diamond) = 4/52 + 13/52 - 1/52 = 16/52
+\]</span> Thus, <span class="math inline">\(P(Ace \cup Diamond)\)</span> = 0.3077</p>
+</section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise</h2>
+<p>From a sample of 30 adults, nine reported cannabis use, eight reported cigarette use, and two reported both cigarette and cannabis use.</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Question</a></li><li><a href="#tabset-3-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>What is the probability that a randomly selected adult from the sample reported cannabis or cigarette use?</p>
+</div>
+<div id="tabset-3-2">
+<p><span class="math inline">\(P(Cannabis)=9/30\)</span>, <span class="math inline">\(P(Cigarette)=8/30\)</span>, <span class="math inline">\(P(Cannabis\cap Cigarettes) = 2/30\)</span>. Therefore,</p>
+<p><span class="math display">\[
+P(Cannabis \cup Cigarettes) = P(Can) + P(Cig) - P(Can\cap Cig)
+\]</span></p>
+<p><span class="math display">\[
+P(Cannabis \cup Cigarettes) = 9/30 + 8/30 - 2/30 = 15/30
+\]</span></p>
+<p><span class="math inline">\(P(Cannabis \cup Cigarettes)\)</span> = 0.5</p>
+</div>
+</div>
+</div>
+</section>
+<section id="independent-events" class="slide level2">
+<h2>Independent Events</h2>
+<p>Two events are independent if knowing the outcome for one of the events provides no information about the outcome of the other event. Mathematically,</p>
+<div title="Independent Events">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Independent Events</strong></p>
+</div>
+<div class="callout-content">
+<p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A \cap B) = P(A)P(B)\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-3" class="slide level2">
+<h2>Example</h2>
+<p>What is the probability of getting two heads from two independent coin tosses?</p>
+<p><span class="math display">\[
+P(H1 \cap H2) = P(H1)P(H2) = (1/2)(1/2)
+\]</span> <span class="math inline">\(P(H1 \cap H2)\)</span> = 0.25</p>
+</section>
+<section id="exercise-3" class="slide level2">
+<h2>Exercise</h2>
+<p>According to the <a href="https://ndss.org/about">National Down Syndrome Society</a>, the probability that a 35-year-old woman conceives a child with Down syndrome is approximately 0.28%.</p>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Exercise</a></li><li><a href="#tabset-4-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>What is the probability that two independently sampled 35-year-old women will both conceive children with Down syndrome?</p>
+</div>
+<div id="tabset-4-2">
+<p><span class="math display">\[
+P(C1Down \cap C2Down) = P(C1Down)P(C2Down) = (0.0028)(0.0028)
+\]</span> <span class="math inline">\(P(C1Down \cap C2Down)\)</span> = 0.000784%</p>
+</div>
+</div>
+</div>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-do2025" class="csl-entry" role="listitem">
+Do, Vuong Van, Van My Ta Park, Nhung Nguyen, Pamela May Ling, Marian Tzuang, Bora Nam, Marcelle M. Dougan, Oanh L. Meyer, and Janice Y. Tsoh. 2025. <span>“Use of Cigarettes, Cannabis, and Alcohol Among Asian American, Native Hawaiian, and Pacific Islander Adults: Community-Based National Survey Analysis.”</span> <em>JMIR Public Health and Surveillance</em> 11 (1): e76465. <a href="https://doi.org/10.2196/76465">https://doi.org/10.2196/76465</a>.
+</div>
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
