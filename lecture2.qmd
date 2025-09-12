@@ -221,7 +221,7 @@ freq(flights$origin)
 ```
 
 ::: callout-important
-The `<NA>` row also counts rows that have missing values. The `%Valid` column only counts non-missing data, while the `% Total` column counts non-missing data in calculating relative and cumulative frequencies. In this example, there are no missing rows, hence the columns are the same.
+The `<NA>` row also counts rows that have missing values. The `%Valid` column only counts non-missing data, while the `% Total` column counts missing data in calculating relative and cumulative frequencies. In this example, there are no missing rows, hence the columns are the same.
 
 The function also does not output cumulative frequencies, but usually cumulative relative frequencies suffice.
 :::

@@ -958,7 +958,7 @@ P(Acc \cap Fail) = P(Acc|Fail) P(Fail)
 </div>
 </div>
 <div id="tabset-7-2">
-<p>The marginal probability of selecting a US citizen is $=$0.4678.</p>
+<p>The marginal probability of selecting a US citizen is <span class="math inline">\(\frac{669}{669+761}=\)</span> 0.4678.</p>
 <p>The probability of selecting a US citizen and <code>type=IV</code> is <span class="math inline">\(\frac{(71+54)}{(669+761)}=\)</span> 0.0874</p>
 <p>Therefore, the probability of selecting a participant in <code>type=IV</code> given that they are a US citizen is:</p>
 <p><span class="math display">\[
@@ -1046,6 +1046,25 @@ P(B_j|A) = \frac{P(A|B_j) P(B_j)}{P(A)}
 <section id="screening-tests-1" class="slide level2">
 <h2>Screening Tests</h2>
 <p>When screening for diseases, we are interested in the true positive (positive tests for people who have the disease) and true negative rates (negative tests for people who do not have the disease).</p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td></td>
+<td>AN (+)</td>
+<td>AN(-)</td>
+</tr>
+<tr class="even">
+<td>Test (+)</td>
+<td>TP</td>
+<td>FP</td>
+</tr>
+<tr class="odd">
+<td>Test (-)</td>
+<td>FN</td>
+<td>TN</td>
+</tr>
+</tbody>
+</table>
 <div class="panel-tabset">
 <ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Sensitivity</a></li><li><a href="#tabset-9-2">Specificity</a></li><li><a href="#tabset-9-3">Base Rate</a></li></ul>
 <div class="tab-content">
@@ -1109,17 +1128,17 @@ Spec = P(NT|ND) = 1-P(PT|ND) =  \frac{TN}{TN+FP}
 </div>
 </div>
 </section>
-<section id="predictive-values" class="slide level2">
-<h2>Predictive Values</h2>
+<section id="positive-predictive-value" class="slide level2">
+<h2>Positive Predictive Value</h2>
 <p>We are also interested in the conditional probabilities of having the disease based on the test for a random member of the population.</p>
-<div title="Positive Predictive Value">
+<div title="Positive Predictive Value (PPV)">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Positive Predictive Value</strong></p>
+<p><strong>Positive Predictive Value (PPV)</strong></p>
 </div>
 <div class="callout-content">
 <p>The probability of having the disease given a positive test (P(D|PT)) is called the positive predictive value (PPV).</p>
@@ -1130,14 +1149,30 @@ P(D|PT) = \frac{P(PT|D)P(D)}{P(PT)} = \frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}
 </div>
 </div>
 </div>
-<div title="Negative Predictive Value">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>The positive predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="negative-predictive-value" class="slide level2">
+<h2>Negative Predictive Value</h2>
+<div title="Negative Predictive Value (NPV)">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Negative Predictive Value</strong></p>
+<p><strong>Negative Predictive Value (NPV)</strong></p>
 </div>
 <div class="callout-content">
 <p>The probability of not having the disease given a negative test (P(ND|NT)) is called the negative predictive value (NPV).</p>
@@ -1145,6 +1180,210 @@ P(D|PT) = \frac{P(PT|D)P(D)}{P(PT)} = \frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}
 P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sens)*(BR)}
 \]</span></p>
 </div>
+</div>
+</div>
+</div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>The negative predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-7" class="slide level2">
+<h2>Example</h2>
+<p>Suppose a screening test designed for virus X has a sensitivity of 0.64 and a specificity of 0.98.</p>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Question</a></li><li><a href="#tabset-10-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<p>If the base rate of virus X is 0.002,</p>
+<ul>
+<li>What is the negative predictive value of the test?</li>
+<li>What is the positive predictive value of the test?</li>
+</ul>
+</div>
+<div id="tabset-10-2">
+<ul>
+<li>NPV</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
+<span id="cb11-2"><a></a>spec <span class="ot">&lt;-</span> <span class="fl">0.98</span></span>
+<span id="cb11-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9992644</code></pre>
+</div>
+</div>
+<ul>
+<li>PPV</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06026365</code></pre>
+</div>
+</div>
+<p>A negative test would most likely mean the subject does not have the disease, but a positive test will most likely need other confirmatory tests to confirm if the subject has the disease.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-8" class="slide level2">
+<h2>Example</h2>
+<p>Suppose a screening test designed for virus X has a sensitivity of 0.64 and a specificity of 0.98.</p>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Question</a></li><li><a href="#tabset-11-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<p>If the base rate of virus X is 0.002,</p>
+<ul>
+<li>What is the negative predictive value of the test?</li>
+<li>What is the positive predictive value of the test?</li>
+</ul>
+</div>
+<div id="tabset-11-2">
+<ul>
+<li>NPV</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
+<span id="cb15-2"><a></a>spec <span class="ot">&lt;-</span> <span class="fl">0.98</span></span>
+<span id="cb15-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
+<span id="cb15-4"><a></a></span>
+<span id="cb15-5"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9992644</code></pre>
+</div>
+</div>
+<ul>
+<li>PPV</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06026365</code></pre>
+</div>
+</div>
+<p>A negative test would most likely mean the subject does not have the disease, but a positive test will most likely need other confirmatory tests to confirm if the subject has the disease.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-7" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider a screening instrument developed to detect symptoms of anorexia nervosa in adolescents. The instrument was validated against the Eating Attitudes Test (EAT) results. The results are shown below.</p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td></td>
+<td>AN (+)</td>
+<td>AN(-)</td>
+</tr>
+<tr class="even">
+<td>Test (+)</td>
+<td>250</td>
+<td>32</td>
+</tr>
+<tr class="odd">
+<td>Test (-)</td>
+<td>68</td>
+<td>784</td>
+</tr>
+</tbody>
+</table>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Question</a></li><li><a href="#tabset-12-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
+<p>Assuming the prevalence rate of anorexia nervosa in adolescents is 7%,</p>
+<ul>
+<li><p>What is the sensitivity of the test?</p></li>
+<li><p>What is the specificity of the test?</p></li>
+<li><p>What is the probability that a randomly screened adolescent has anorexia nervosa given they tested positive?</p></li>
+<li><p>What is the probability that a randomly screened adolescent does not have anorexia nervosa given they tested negative?</p></li>
+</ul>
+</div>
+<div id="tabset-12-2">
+<ul>
+<li>What is the sensitivity of the test?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7861635</code></pre>
+</div>
+</div>
+<ul>
+<li>What is the specificity of the test?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9607843</code></pre>
+</div>
+</div>
+<ul>
+<li>What is the probability that a randomly screened adolescent has anorexia nervosa given they tested positive? <span class="math inline">\(\to\)</span> PPV</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sens <span class="ot">&lt;-</span> <span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span>
+<span id="cb23-2"><a></a>spec <span class="ot">&lt;-</span> <span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span>
+<span id="cb23-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.07</span></span>
+<span id="cb23-4"><a></a></span>
+<span id="cb23-5"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6014232</code></pre>
+</div>
+</div>
+<ul>
+<li>What is the probability that a randomly screened adolescent does not have anorexia nervosa given they tested negative? <span class="math inline">\(\to\)</span> NPV</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9835238</code></pre>
+</div>
+</div>
+<p>A positive test has a moderate likelihood that the subject has the disease, and a negative test has a high likelihood that the subject does not have the disease.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="notes-on-screening-tests" class="slide level2">
+<h2>Notes on Screening Tests</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>There are a lot of available functions in <code>R</code> that calculate sensitivity, specificity, NPV, and PPV. However, you need to be careful about interpreting the PPV and NPV values provided. Sometimes, these values do not account for the base rate.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Packages like <code>yardstick</code> and <code>epiR</code> calculate screening test characteristics and relevant confidence intervals.</p>
 </div>
 </div>
 </div>
@@ -1539,7 +1778,7 @@ Do, Vuong Van, Van My Ta Park, Nhung Nguyen, Pamela May Ling, Marian Tzuang, Bor
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/madfudolig\.quarto\.pub\/introtobiostats");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

@@ -142,7 +142,7 @@
     "href": "lecture2.html#frequency-tables-in-r",
     "title": "Descriptive Statistics",
     "section": "Frequency Tables in R",
-    "text": "Frequency Tables in R\nThere are a lot of ways to create frequency tables in R. One of the easiest and most complete ways is to use the function freq in the package summarytools.\n\n# install.packages(\"summarytools\") # if you have not installed summarytools yet.\n\nlibrary(summarytools)\nfreq(flights$origin)\n\nFrequencies  \nflights$origin  \nType: Character  \n\n                Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- -------- --------- -------------- --------- --------------\n        EWR   138578     31.83          31.83     31.83          31.83\n        JFK   133048     30.56          62.39     30.56          62.39\n        LGA   163726     37.61         100.00     37.61         100.00\n       &lt;NA&gt;        0                               0.00         100.00\n      Total   435352    100.00         100.00    100.00         100.00\n\n\n\n\n\n\n\n\nImportant\n\n\nThe &lt;NA&gt; row also counts rows that have missing values. The %Valid column only counts non-missing data, while the % Total column counts non-missing data in calculating relative and cumulative frequencies. In this example, there are no missing rows, hence the columns are the same.\nThe function also does not output cumulative frequencies, but usually cumulative relative frequencies suffice.",
+    "text": "Frequency Tables in R\nThere are a lot of ways to create frequency tables in R. One of the easiest and most complete ways is to use the function freq in the package summarytools.\n\n# install.packages(\"summarytools\") # if you have not installed summarytools yet.\n\nlibrary(summarytools)\nfreq(flights$origin)\n\nFrequencies  \nflights$origin  \nType: Character  \n\n                Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- -------- --------- -------------- --------- --------------\n        EWR   138578     31.83          31.83     31.83          31.83\n        JFK   133048     30.56          62.39     30.56          62.39\n        LGA   163726     37.61         100.00     37.61         100.00\n       &lt;NA&gt;        0                               0.00         100.00\n      Total   435352    100.00         100.00    100.00         100.00\n\n\n\n\n\n\n\n\nImportant\n\n\nThe &lt;NA&gt; row also counts rows that have missing values. The %Valid column only counts non-missing data, while the % Total column counts missing data in calculating relative and cumulative frequencies. In this example, there are no missing rows, hence the columns are the same.\nThe function also does not output cumulative frequencies, but usually cumulative relative frequencies suffice.",
     "crumbs": [
       "Lectures",
       "Lecture 2- Descriptive Statistics"
@@ -1145,16 +1145,6 @@
     ]
   },
   {
-    "objectID": "problemsets.html",
-    "href": "problemsets.html",
-    "title": "EAB 703 Problem Set Keys",
-    "section": "",
-    "text": "This website provides the answer keys for the Problem Sets given in EAB 703-1002 taught by Dr. Miguel Fudolig.",
-    "crumbs": [
-      "Problem Sets"
-    ]
-  },
-  {
     "objectID": "lecture3.html#example-2",
     "href": "lecture3.html#example-2",
     "title": "Introduction to Probability",
@@ -1171,17 +1161,6 @@
     "title": "Introduction to Probability",
     "section": "Exercise",
     "text": "Exercise\nThe “COVID-19 Effects on the Mental and Physical Health of Asian Americans & Pacific Islanders Survey Study II” (COMPASS II) data set is from a follow-up survey implemented from 12/2021 to 05/2022. The data set is composed of responses from 3,411 participants. (Do et al. 2025)\n\nExerciseAnswer\n\n\nThe table below shows the breakdown of the census region reported by the participants. What is the probability that a randomly selected participant was from the Northeast census region?\n\n\n\nCensus Region\nFrequency\n\n\n\n\nMidwest\n289\n\n\nNortheast\n344\n\n\nSouth\n472\n\n\nWest\n2,303\n\n\n\n\n\nThe marginal probability is 344/3411 = 0.101",
-    "crumbs": [
-      "Lectures",
-      "Lecture 3- Intro to Probability"
-    ]
-  },
-  {
-    "objectID": "lecture3.html#references",
-    "href": "lecture3.html#references",
-    "title": "Introduction to Probability",
-    "section": "References",
-    "text": "References\n\n\n\n\nDo, Vuong Van, Van My Ta Park, Nhung Nguyen, Pamela May Ling, Marian Tzuang, Bora Nam, Marcelle M. Dougan, Oanh L. Meyer, and Janice Y. Tsoh. 2025. “Use of Cigarettes, Cannabis, and Alcohol Among Asian American, Native Hawaiian, and Pacific Islander Adults: Community-Based National Survey Analysis.” JMIR Public Health and Surveillance 11 (1): e76465. https://doi.org/10.2196/76465.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1379,7 +1358,7 @@
     "href": "lecture3.html#example-2-2",
     "title": "Introduction to Probability",
     "section": "Example 2",
-    "text": "Example 2\nConsider the AMSSurvey data in the package carData. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status.\n\nQuestion + DataAnswer\n\n\nUse the multiplication rule to calculate the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(type=IV) in 2008 (count variable) given that they are known to be a US citizen.\n\nlibrary(carData)\nAMSsurvey\n\n    type    sex citizen count count11\n1  I(Pu)   Male      US   132     148\n2  I(Pu) Female      US    35      40\n3  I(Pr)   Male      US    87      63\n4  I(Pr) Female      US    20      22\n5     II   Male      US    96     161\n6     II Female      US    47      53\n7    III   Male      US    47      71\n8    III Female      US    32      28\n9     IV   Male      US    71      89\n10    IV Female      US    54      55\n11    Va   Male      US    34      42\n12    Va Female      US    14      21\n13 I(Pu)   Male  Non-US   130     136\n14 I(Pu) Female  Non-US    29      32\n15 I(Pr)   Male  Non-US    79      82\n16 I(Pr) Female  Non-US    25      26\n17    II   Male  Non-US    89     116\n18    II Female  Non-US    50      56\n19   III   Male  Non-US    53      61\n20   III Female  Non-US    39      30\n21    IV   Male  Non-US   122     153\n22    IV Female  Non-US   105     115\n23    Va   Male  Non-US    28      27\n24    Va Female  Non-US    12      17\n\n\n\n\nThe marginal probability of selecting a US citizen is $=$0.4678.\nThe probability of selecting a US citizen and type=IV is \\(\\frac{(71+54)}{(669+761)}=\\) 0.0874\nTherefore, the probability of selecting a participant in type=IV given that they are a US citizen is:\n\\[\nP(IV|US) = \\frac{P(IV \\cap US)}{P(US)} = \\frac{\\frac{(71+54)}{(669+761)}}{\\frac{669}{669+761}}\n\\]\nResulting in the following value: 0.1868, which was the same value as in the previous example.",
+    "text": "Example 2\nConsider the AMSSurvey data in the package carData. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status.\n\nQuestion + DataAnswer\n\n\nUse the multiplication rule to calculate the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(type=IV) in 2008 (count variable) given that they are known to be a US citizen.\n\nlibrary(carData)\nAMSsurvey\n\n    type    sex citizen count count11\n1  I(Pu)   Male      US   132     148\n2  I(Pu) Female      US    35      40\n3  I(Pr)   Male      US    87      63\n4  I(Pr) Female      US    20      22\n5     II   Male      US    96     161\n6     II Female      US    47      53\n7    III   Male      US    47      71\n8    III Female      US    32      28\n9     IV   Male      US    71      89\n10    IV Female      US    54      55\n11    Va   Male      US    34      42\n12    Va Female      US    14      21\n13 I(Pu)   Male  Non-US   130     136\n14 I(Pu) Female  Non-US    29      32\n15 I(Pr)   Male  Non-US    79      82\n16 I(Pr) Female  Non-US    25      26\n17    II   Male  Non-US    89     116\n18    II Female  Non-US    50      56\n19   III   Male  Non-US    53      61\n20   III Female  Non-US    39      30\n21    IV   Male  Non-US   122     153\n22    IV Female  Non-US   105     115\n23    Va   Male  Non-US    28      27\n24    Va Female  Non-US    12      17\n\n\n\n\nThe marginal probability of selecting a US citizen is \\(\\frac{669}{669+761}=\\) 0.4678.\nThe probability of selecting a US citizen and type=IV is \\(\\frac{(71+54)}{(669+761)}=\\) 0.0874\nTherefore, the probability of selecting a participant in type=IV given that they are a US citizen is:\n\\[\nP(IV|US) = \\frac{P(IV \\cap US)}{P(US)} = \\frac{\\frac{(71+54)}{(669+761)}}{\\frac{669}{669+761}}\n\\]\nResulting in the following value: 0.1868, which was the same value as in the previous example.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1423,21 +1402,97 @@
     "href": "lecture3.html#screening-tests-1",
     "title": "Introduction to Probability",
     "section": "Screening Tests",
-    "text": "Screening Tests\nWhen screening for diseases, we are interested in the true positive (positive tests for people who have the disease) and true negative rates (negative tests for people who do not have the disease).\n\nSensitivitySpecificityBase Rate\n\n\n\n\n\n\n\n\n\nSensitivity\n\n\nThe probability that a person randomly selected from the population tests positive given that they have the disease is called the sensitivity of a test.\n\\[\nSens = P(PT|D) = \\frac{TP}{TP+FN}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpecificity\n\n\nThe probability that a person randomly selected from the population tests negative given that they do not have the disease is called the specificity of a test.\n\\[\nSpec = P(NT|ND) = 1-P(PT|ND) =  \\frac{TN}{TN+FP}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nBase Rate\n\n\nThe probability that a person randomly selected from the population has the disease is called the base rate of a test.",
+    "text": "Screening Tests\nWhen screening for diseases, we are interested in the true positive (positive tests for people who have the disease) and true negative rates (negative tests for people who do not have the disease).\n\n\n\n\nAN (+)\nAN(-)\n\n\nTest (+)\nTP\nFP\n\n\nTest (-)\nFN\nTN\n\n\n\n\nSensitivitySpecificityBase Rate\n\n\n\n\n\n\n\n\n\nSensitivity\n\n\nThe probability that a person randomly selected from the population tests positive given that they have the disease is called the sensitivity of a test.\n\\[\nSens = P(PT|D) = \\frac{TP}{TP+FN}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpecificity\n\n\nThe probability that a person randomly selected from the population tests negative given that they do not have the disease is called the specificity of a test.\n\\[\nSpec = P(NT|ND) = 1-P(PT|ND) =  \\frac{TN}{TN+FP}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nBase Rate\n\n\nThe probability that a person randomly selected from the population has the disease is called the base rate of a test.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
     ]
   },
   {
-    "objectID": "lecture3.html#predictive-values",
-    "href": "lecture3.html#predictive-values",
+    "objectID": "lecture3.html#positive-predictive-value",
+    "href": "lecture3.html#positive-predictive-value",
     "title": "Introduction to Probability",
-    "section": "Predictive Values",
-    "text": "Predictive Values\nWe are also interested in the conditional probabilities of having the disease based on the test for a random member of the population.\n\n\n\n\n\n\n\nPositive Predictive Value\n\n\nThe probability of having the disease given a positive test (P(D|PT)) is called the positive predictive value (PPV).\n\\[\nP(D|PT) = \\frac{P(PT|D)P(D)}{P(PT)} = \\frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nNegative Predictive Value\n\n\nThe probability of not having the disease given a negative test (P(ND|NT)) is called the negative predictive value (NPV).\n\\[\nP(ND|NT) = \\frac{P(NT|ND)P(ND)}{P(NT)} = \\frac{spec*(1-BR)}{spec*(1-BR) + (1-sens)*(BR)}\n\\]",
+    "section": "Positive Predictive Value",
+    "text": "Positive Predictive Value\nWe are also interested in the conditional probabilities of having the disease based on the test for a random member of the population.\n\n\n\n\n\n\n\nPositive Predictive Value (PPV)\n\n\nThe probability of having the disease given a positive test (P(D|PT)) is called the positive predictive value (PPV).\n\\[\nP(D|PT) = \\frac{P(PT|D)P(D)}{P(PT)} = \\frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}\n\\]\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nThe positive predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#negative-predictive-value",
+    "href": "lecture3.html#negative-predictive-value",
+    "title": "Introduction to Probability",
+    "section": "Negative Predictive Value",
+    "text": "Negative Predictive Value\n\n\n\n\n\n\n\nNegative Predictive Value (NPV)\n\n\nThe probability of not having the disease given a negative test (P(ND|NT)) is called the negative predictive value (NPV).\n\\[\nP(ND|NT) = \\frac{P(NT|ND)P(ND)}{P(NT)} = \\frac{spec*(1-BR)}{spec*(1-BR) + (1-sens)*(BR)}\n\\]\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nThe negative predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-7",
+    "href": "lecture3.html#example-7",
+    "title": "Introduction to Probability",
+    "section": "Example",
+    "text": "Example\nSuppose a screening test designed for virus X has a sensitivity of 0.64 and a specificity of 0.98.\n\nQuestionAnswer\n\n\nIf the base rate of virus X is 0.002,\n\nWhat is the negative predictive value of the test?\nWhat is the positive predictive value of the test?\n\n\n\n\nNPV\n\n\nsens &lt;- 0.64\nspec &lt;- 0.98\nbr &lt;- 0.002\n\n(spec*(1-br))/(spec*(1-br) + (1-sens)*br)\n\n[1] 0.9992644\n\n\n\nPPV\n\n\n(sens*br)/(sens*br + (1-spec)*(1-br))\n\n[1] 0.06026365\n\n\nA negative test would most likely mean the subject does not have the disease, but a positive test will most likely need other confirmatory tests to confirm if the subject has the disease.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#example-8",
+    "href": "lecture3.html#example-8",
+    "title": "Introduction to Probability",
+    "section": "Example",
+    "text": "Example\nSuppose a screening test designed for virus X has a sensitivity of 0.64 and a specificity of 0.98.\n\nQuestionAnswer\n\n\nIf the base rate of virus X is 0.002,\n\nWhat is the negative predictive value of the test?\nWhat is the positive predictive value of the test?\n\n\n\n\nNPV\n\n\nsens &lt;- 0.64\nspec &lt;- 0.98\nbr &lt;- 0.002\n\n(spec*(1-br))/(spec*(1-br) + (1-sens)*br)\n\n[1] 0.9992644\n\n\n\nPPV\n\n\n(sens*br)/(sens*br + (1-spec)*(1-br))\n\n[1] 0.06026365\n\n\nA negative test would most likely mean the subject does not have the disease, but a positive test will most likely need other confirmatory tests to confirm if the subject has the disease.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#exercise-7",
+    "href": "lecture3.html#exercise-7",
+    "title": "Introduction to Probability",
+    "section": "Exercise",
+    "text": "Exercise\nConsider a screening instrument developed to detect symptoms of anorexia nervosa in adolescents. The instrument was validated against the Eating Attitudes Test (EAT) results. The results are shown below.\n\n\n\n\nAN (+)\nAN(-)\n\n\nTest (+)\n250\n32\n\n\nTest (-)\n68\n784\n\n\n\n\nQuestionAnswer\n\n\nAssuming the prevalence rate of anorexia nervosa in adolescents is 7%,\n\nWhat is the sensitivity of the test?\nWhat is the specificity of the test?\nWhat is the probability that a randomly screened adolescent has anorexia nervosa given they tested positive?\nWhat is the probability that a randomly screened adolescent does not have anorexia nervosa given they tested negative?\n\n\n\n\nWhat is the sensitivity of the test?\n\n\n250/(250+68)\n\n[1] 0.7861635\n\n\n\nWhat is the specificity of the test?\n\n\n784/(784+32)\n\n[1] 0.9607843\n\n\n\nWhat is the probability that a randomly screened adolescent has anorexia nervosa given they tested positive? \\(\\to\\) PPV\n\n\nsens &lt;- 250/(250+68)\nspec &lt;- 784/(784+32)\nbr &lt;- 0.07\n\n(sens*br)/(sens*br + (1-spec)*(1-br))\n\n[1] 0.6014232\n\n\n\nWhat is the probability that a randomly screened adolescent does not have anorexia nervosa given they tested negative? \\(\\to\\) NPV\n\n\n(spec*(1-br))/(spec*(1-br) + (1-sens)*br)\n\n[1] 0.9835238\n\n\nA positive test has a moderate likelihood that the subject has the disease, and a negative test has a high likelihood that the subject does not have the disease.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#notes-on-screening-tests",
+    "href": "lecture3.html#notes-on-screening-tests",
+    "title": "Introduction to Probability",
+    "section": "Notes on Screening Tests",
+    "text": "Notes on Screening Tests\n\n\n\n\n\n\nImportant\n\n\nThere are a lot of available functions in R that calculate sensitivity, specificity, NPV, and PPV. However, you need to be careful about interpreting the PPV and NPV values provided. Sometimes, these values do not account for the base rate.\n\n\n\n\n\n\n\n\n\nTip\n\n\nPackages like yardstick and epiR calculate screening test characteristics and relevant confidence intervals.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#references",
+    "href": "lecture3.html#references",
+    "title": "Introduction to Probability",
+    "section": "References",
+    "text": "References\n\n\n\n\nDo, Vuong Van, Van My Ta Park, Nhung Nguyen, Pamela May Ling, Marian Tzuang, Bora Nam, Marcelle M. Dougan, Oanh L. Meyer, and Janice Y. Tsoh. 2025. “Use of Cigarettes, Cannabis, and Alcohol Among Asian American, Native Hawaiian, and Pacific Islander Adults: Community-Based National Survey Analysis.” JMIR Public Health and Surveillance 11 (1): e76465. https://doi.org/10.2196/76465.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3- Intro to Probability"
+    ]
+  },
+  {
+    "objectID": "problemsets.html",
+    "href": "problemsets.html",
+    "title": "EAB 703 Problem Set Keys",
+    "section": "",
+    "text": "This website provides the answer keys for the Problem Sets given in EAB 703-1002 taught by Dr. Miguel Fudolig.",
+    "crumbs": [
+      "Problem Sets"
     ]
   }
 ]
