@@ -317,7 +317,7 @@ $$
 :::
 
 ::: callout-important
-$E(X)$ is also the **mean** of the discrete probability distribution.
+$E(X)$ is also the **mean** of the discrete probability distribution, $\mu$.
 :::
 
 ## Example
@@ -378,3 +378,61 @@ E(X) = 1(0.2087)+2(0.1582) + 3(0.1313) + 4(0.1313) + 5(0.1953) + 6(0.1246) + 7(0
 This results to $E(X)=$ `r round(sum(df$Number.of.Programs * df$Relative.Frequency),3)`
 
 :::
+
+## Expectation Value of Functions
+
+Expectation values can also be calculated for functions. 
+
+::: callout-tip
+The expected value of a function $g(X)$, denoted by $E[g(X)]$, can be calculated by taking the sum of the products of each function evaluated at the outcome \{$g(x_1),g(x_2),...,$\} and their corresponding probabilities \{$p(x_1),p(x_2),...$\}. In mathematical terms,
+
+$$
+E[g(X)]= \sum_i g(x_i) p(x_i)
+$$
+:::
+
+## Variance and Standard Deviation
+
+The variance of the discrete probability distribution can be calculated using expectation values as well. The variance $\sigma^2$ can be expressed as $E[(X-\mu)^2]$. 
+
+$$
+\sigma^2 = E[(X-\mu)^2] = \sum_i (x_i-\mu)^2 p(x_i)
+$$
+
+The standard deviation can be calculated by taking taking the square root of the variance.
+
+$$
+\sigma = \sqrt{\sigma^2}
+$$
+
+## Example
+
+What is the variance and standard deviation of the probability distribution for rolling a fair six-sided die?
+
+::: panel-tabset
+### Notes
+
+In calculating the variance, it would be easier to use `R`. First, we would need to create a data frame for the probability distribution:
+
+```{r}
+df <- data.frame(Outcome = 1:6,
+                 Prob = rep(1/6,6))
+
+df
+```
+
+### Answer
+
+```{r}
+mu <- sum(df$Outcome*df$Prob)
+mu
+sigma_2 <- sum((df$Outcome-mu)^2*df$Prob)
+sigma_2
+```
+
+The variance is `r sigma_2`
+
+:::
+
+
+
