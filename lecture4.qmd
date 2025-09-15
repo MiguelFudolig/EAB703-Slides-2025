@@ -1,0 +1,380 @@
+---
+title: "Probability Distributions"
+subtitle: Lecture 4
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 4 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+```{r setup }
+library(tidyverse)
+```
+
+# Outline
+
+-   Probability Distributions of Discrete Random Variables
+
+    -   Binomial Distribution
+    -   Poisson Distribution
+    -   Other Distributions
+
+-   Probability Distributions of Continuous Random Variables
+
+    -   Uniform Distribution
+    -   Gaussian (Normal) Distribution
+    -   Other Distributions
+
+-   Applications of the Gaussian Distribution
+
+# Probability Distributions of Discrete Random Variables
+
+## Discrete Random Variables
+
+::: {.callout-note title="Discrete Random Variable"}
+A random variable is discrete if it can only take on a finite or countably infinite number of values.
+:::
+
+::: callout-tip
+Integers are countably infinite, hence counts are considered discrete.
+
+Qualitative variables often take on a finite number of values.
+:::
+
+## Discrete Probability Distribution
+
+The probability distribution of a discrete random variable is a **table, graph, formula, or other device** used to specify all possible values of a discrete random variable along with their respective probabilities.
+
+::: callout-tip
+Formulas that describe discrete probability distributions are also known as the probability mass function (pmf). The function is often denoted as $P(X=x)$, $p_X(x)$, or simply $p(x)$.
+:::
+
+::: callout-important
+Notation is important here. $X$ is the random variable, $x$ is the outcome/realization. $X=x$ is the event that the random variable is equal to the outcome $x$.
+:::
+
+## Example 1
+
+Consider a random variable $X$ that represents the outcome of a fair six-sided die. Prior to rolling the die, $X$ can take on any one of the six values: {1,2,3,4,5,6}. The discrete probability distribution can be expressed in the following forms:
+
+:::: panel-tabset
+### Table
+
+| Outcome of $X$ | p(x) |
+|----------------|------|
+| 1              | 1/6  |
+| 2              | 1/6  |
+| 3              | 1/6  |
+| 4              | 1/6  |
+| 5              | 1/6  |
+| 6              | 1/6  |
+
+### Formula
+
+$$
+p(x) = \begin{cases} 
+      1/6,~ if~x=1,2,...,6 \\
+      0, ~ otherwise
+   \end{cases}
+$$
+
+### Graph
+
+```{r}
+#| echo: false
+
+df <- data.frame(x=as.factor(1:6),y=rep(1/6,6))
+
+df |> 
+ggplot(aes(x=x,y=y)) + 
+geom_col(fill="gray",color="black") + 
+theme_bw() + 
+labs(x="Outcome", y="p(x)")
+```
+
+### Notes
+
+::: callout-important
+Here, $X$ is the result of rolling the die, $x$ is the outcome measured after rolling the die which can be any of the following numbers: {1,2,3,4,5,6}.
+:::
+
+This PMF is also referred to as a **uniform discrete distribution** because the probability is uniformly distributed across the sample space.
+::::
+
+## Example 2.1
+
+The frequency table below shows the results of a survey in which participants residing in the Appalachian region of southern Ohio were asked how many food assistance programs they had used in the last 12 months.
+
+::: panel-tabset
+### Frequency Table
+
+| Number of Programs | Frequency |
+|--------------------|-----------|
+| 1                  | 62        |
+| 2                  | 47        |
+| 3                  | 39        |
+| 4                  | 39        |
+| 5                  | 58        |
+| 6                  | 37        |
+| 7                  | 4         |
+| 8                  | 11        |
+| Total              | 297       |
+
+### Probability Distribution
+
+We can calculate the probability distribution by calculating the relative frequency of each outcome. This can be done by dividing the frequencies by the total (297).
+
+```{r}
+df <- data.frame(`Number of Programs`=factor(c(1:8), levels=c(1:8)),
+Frequency = c(62,47,39,39,58,37,4,11),
+Relative.Frequency = c(62,47,39,39,58,37,4,11)/297) 
+
+df
+```
+
+### Graph
+
+```{r}
+library(ggplot2)
+ggplot(df, aes(x=Number.of.Programs,y=Relative.Frequency)) + 
+  geom_col(fill="gray",color="black") + # <1>
+  theme_bw() + # <2>
+  labs(x="Number of Programs",y="p(x)") # <3>
+```
+
+1.  Formatting the bar plot with a gray fill and black outline
+2.  `theme_bw` using a black and white theme, which looks good aesthetically
+3.  Axes labels were changed.
+:::
+
+## Example 2.2
+
+Consider the probability distribution in Example 2.1.
+
+-   What is the probability of randomly selecting a family who used four assistance programs?
+
+$p(4) = 0.1313$
+
+-   What is the probability of randomly selecting a family who used one or three assistance programs?
+
+::: callout-important
+These events are disjoint, hence P(one AP AND three AP 0) = 0. Using the addition rule,
+
+$P(one~ \cup~ three) = P(one) + P(three) =$ `r 0.2087+0.1313`
+:::
+
+## PMF: Properties
+
+The discrete probability distribution should satisfy the following properties:
+
+1.  $0 \leq p(x) \leq 1$ for all $x$.
+2.  $\sum_{all~x} p(x) = 1$ (The sum of the probabilities of all disjoint outcomes in the sample space is $1$.)
+
+## Cumulative Distributions
+
+In addition to discrete probability distributions, discrete variables also have cumulative distribution functions (CDF)
+
+::: callout-tip
+The CDF for a discrete variable can be calculated by successively adding the probabilities of the outcome of interest and others before it.
+:::
+
+::: callout-note
+The CDF is often referred to as $F_X(x)$ or $F(x)$ to signify $P(X \leq x)$.
+:::
+
+## Example 1
+
+Consider the PMF of the fair six-sided die. The cumulative distribution can be calculated using the cumulative relative frequency.
+
+| Outcome of $X$ | p(x) | F(x) = P(X$\leq$x) |
+|----------------|------|-----------------------|
+| 1              | 1/6  | 1/6                   |
+| 2              | 1/6  | 2/6                   |
+| 3              | 1/6  | 3/6                   |
+| 4              | 1/6  | 4/6                   |
+| 5              | 1/6  | 5/6                   |
+| 6              | 1/6  | 6/6                   |
+
+## Example 2
+
+Consider the PMF for the food assistance example. We can calculate and visualize the cumulative relative frequency using `R`.
+
+::: panel-tabset
+
+### Table
+To create a separate table as a function of existing tables, we use the `mutate(data_frame,expr)` function in the `dplyr` package available in `tidyverse`. The cumulative sum can also be calculated automatically using the `cumsum(column_name)` function
+
+```{r}
+df <- data.frame(`Number of Programs`=1:8,
+Frequency = c(62,47,39,39,58,37,4,11),
+Relative.Frequency = c(62,47,39,39,58,37,4,11)/297) 
+
+mutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))
+```
+### Graph
+
+The plot of the cumulative distribution function is called an *ogive*. The option `stat_ecdf` provides us with a way to create ogives based on frequency values.
+
+```{r}
+ggplot(df, aes(x=Number.of.Programs, y=Frequency)) +
+  stat_ecdf(geom="step") + stat_ecdf(geom="point",color="blue",size=2) + # <1>
+  theme_bw() + 
+  scale_x_continuous(breaks=c(1:8))+ # <2>
+  labs(x="Number of Programs",y="F(x)") 
+```
+1. "step" creates the lines in the ogive, while "point" shows the points corresponding to the values of F(x). The vertical lines are uninterpretable; they only provide a visual cue for the jump from one value to another.
+2. The `scale_x_continuous(breaks=c(1:8))` statement tells R to show all the points between 1 and 8 in the graph. This way, it is easier to interpret for other readers.
+
+
+:::
+
+## Example 2.1
+
+Consider the food assistance example. What is the probability of randomly selecting a family that have used less than three assistance programs.
+
+```{r}
+#| code-fold: true
+df <- data.frame(`Number of Programs`=1:8,
+Frequency = c(62,47,39,39,58,37,4,11),
+Relative.Frequency = c(62,47,39,39,58,37,4,11)/297) 
+
+mutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))
+```
+
+::: callout-tip
+Less than three assistance programs can also mean "two or less programs" or "at most two programs". Hence, we are interested in $F(2)$
+
+$F(2) = P(X \leq 2) = P(X=1) + P(X=2)=$ `r round(0.20875421 + 0.15824916,4)`
+:::
+
+## Exercise
+
+Consider the food assistance example.
+
+
+
+::: panel-tabset
+
+### Question
+
+What is the probability that a randomly selected family utilized at least 4 programs?
+
+```{r}
+#| code-fold: true
+df <- data.frame(`Number of Programs`=1:8,
+Frequency = c(62,47,39,39,58,37,4,11),
+Relative.Frequency = c(62,47,39,39,58,37,4,11)/297) 
+
+mutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))
+```
+
+
+### Answer
+
+There are two ways to approach this question.
+
+::: callout-tip
+Approach 1: Sum the relative frequencies from $X=4$ to the maximum possible value ($X=8$).
+
+$p(4) + p(5) + p(6) + p(7) + p(8)$ = 0.1313+0.1953+0.1246+0.0135+0.0370 = `r 0.1313+0.1953+0.1246+0.01347+0.0370`
+:::
+
+::: callout-tip
+Approach 2: Use the complement principle. To isolate the families who utilized at least 4 programs, we must remove those who utilized three programs or less. Then,
+
+$p(4) + p(5) + p(6) + p(7) + p(8)$ = 1-F(3) = 1-0.4983 = `r 1-0.4983`
+:::
+
+:::
+
+
+## Expectation Values of Discrete Probability Distributions
+
+The expected value of a random variable can be thought of as the average of a very large number of observations of the random variable. 
+
+
+::: callout-tip
+The expected value of $X$, denoted by $E(X)$, can be calculated by taking the sum of the products of each outcome \{$x_1,x_2,...,$\} and their corresponding probabilities \{$p(x_1),p(x_2),...$\}. In mathematical terms,
+
+$$
+E(X)= \sum_i x_i p(x_i)
+$$
+:::
+
+::: callout-important
+$E(X)$ is also the **mean** of the discrete probability distribution.
+:::
+
+## Example
+
+Consider a random variable $X$ that represents the outcome of a fair six-sided die. Prior to rolling the die, $X$ can take on any one of the six values: {1,2,3,4,5,6}. The probability distribution is shown below:
+
+
+::: panel-tabset
+
+### Probability Distribution
+
+| Outcome of $X$ | p(x) |
+|----------------|------|
+| 1              | 1/6  |
+| 2              | 1/6  |
+| 3              | 1/6  |
+| 4              | 1/6  |
+| 5              | 1/6  |
+| 6              | 1/6  |
+
+### Calculation
+
+$E(X)$ can be calculated using the formula as shown below:
+
+$$
+E(X) = 1(1/6)+2(1/6)+3(1/6)+4(1/6)+5(1/6)+6(1/6)
+$$
+
+The result leads to $E(X)=$ `r sum(c(1:6)*(1/6))` 
+
+
+:::
+
+## Exercise
+
+Consider the food assistance example. What is the mean number of assistance programs used based on the PMF provided?
+
+::: panel-tabset
+
+### PMF
+
+```{r}
+#| echo: false
+
+df <- data.frame(`Number of Programs`=1:8,
+Frequency = c(62,47,39,39,58,37,4,11),
+Relative.Frequency = c(62,47,39,39,58,37,4,11)/297) 
+
+df
+```
+
+### Answer
+
+$E(X) = \sum_i x_i p(x_i)$ translates to: 
+
+E(X) = 1(0.2087)+2(0.1582) + 3(0.1313) + 4(0.1313) + 5(0.1953) + 6(0.1246) + 7(0.0135) + 8(0.037).
+
+This results to $E(X)=$ `r round(sum(df$Number.of.Programs * df$Relative.Frequency),3)`
+
+:::
