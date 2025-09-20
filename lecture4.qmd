@@ -565,6 +565,61 @@ $$
 `rbinom(k,n,p)` generates `k` numbers for a binomial distribution with number of trials $n$ and success probability $p$. 
 :::
 
+## Binomial Distribution: Visualization
+
+::: panel-tabset
+
+### BIN(10,0.5)
+
+```{r}
+#| echo: false
+
+df <- data.frame(x=0:10) |> 
+  mutate(y1 = dbinom(x,10,0.5)) 
+
+df |> ggplot(aes(x=x)) + 
+  geom_segment(aes(xend=x,y=y1,yend=0), color="black",size=1.5) + 
+  geom_point(aes(y=y1), color="blue",size=2) + 
+  scale_x_continuous(breaks=0:10) + 
+  theme_bw() + 
+  labs(y="p(x)")
+```
+
+### BIN(10,0.7)
+
+```{r}
+#| echo: false
+
+df <- data.frame(x=0:10) |> 
+  mutate(y1 = dbinom(x,10,0.7)) 
+
+df |> ggplot(aes(x=x)) + 
+  geom_segment(aes(xend=x,y=y1,yend=0), color="black",size=1.5) + 
+  geom_point(aes(y=y1), color="blue",size=2) + 
+  scale_x_continuous(breaks=0:10) + 
+  theme_bw() + 
+  labs(y="p(x)")
+```
+
+### BIN(10,0.2)
+
+```{r}
+#| echo: false
+
+df <- data.frame(x=0:10) |> 
+  mutate(y1 = dbinom(x,10,0.2)) 
+
+
+df |> ggplot(aes(x=x)) + 
+  geom_segment(aes(xend=x,y=y1,yend=0), color="black",size=1.5) + 
+  geom_point(aes(y=y1), color="blue",size=2)  +
+  scale_x_continuous(breaks=0:10)+
+  theme_bw() + 
+  labs(y="p(x)")
+```
+
+:::
+
 ## Example
 
 
@@ -655,6 +710,7 @@ dbinom(45,250,0.089)
 ```{r}
 pbinom(60,250,0.089) - pbinom(29,250,0.089)
 ```
+
 ### Simulation
 
 ```{r}
@@ -780,6 +836,61 @@ The `exp(lambda)` can calculate the $e^{-\lambda}$ term in the Poisson PMF.
 `rpois(k,lambda)` draws `k` values from a random variable $X \sim POIS(\lambda)$.
 :::
 
+## Poisson Distribution: Visualization
+
+
+::: panel-tabset
+
+### POIS(1)
+
+```{r}
+#| echo: false
+
+df <- data.frame(x=0:10) |> 
+  mutate(y1 = dpois(x,lambda=1),
+         y2 = dpois(x,lambda=2.5),
+         y3 = dpois(x, lambda=5)) 
+
+df |> ggplot(aes(x=x)) + 
+  geom_segment(aes(xend=x,y=y1,yend=0), color="black",size=1.5) + 
+  geom_point(aes(y=y1), color="blue",size=2) + 
+  scale_x_continuous(breaks=0:10) + 
+  theme_bw() + 
+  labs(y="p(x)")
+```
+
+### POIS(2.5)
+
+```{r}
+#| echo: false
+
+
+df |> ggplot(aes(x=x)) + 
+  geom_segment(aes(xend=x,y=y2,yend=0), color="black",size=1.5) + 
+  geom_point(aes(y=y2), color="blue",size=2) + 
+  scale_x_continuous(breaks=0:10) + 
+  theme_bw() + 
+  labs(y="p(x)")
+```
+
+### POIS(5)
+
+```{r}
+#| echo: false
+
+df <- data.frame(x=0:10) |> 
+  mutate(y1 = dpois(x,lambda=1),
+         y2 = dpois(x,lambda=2.5),
+         y3 = dpois(x, lambda=5)) 
+
+df |> ggplot(aes(x=x)) + 
+  geom_segment(aes(xend=x,y=y3,yend=0), color="black",size=1.5) + 
+  geom_point(aes(y=y3), color="blue",size=2)  +
+  scale_x_continuous(breaks=0:10)+
+  theme_bw() + 
+  labs(y="p(x)")
+```
+:::
 
 ## Example
 
@@ -939,26 +1050,47 @@ There are important differences between probability density functions and probab
 
 $P(X=x) = 0 \neq f(x)$.
 
-It also follows that
+:::
+
+
+## Cumulative Distribution Functions
+
+Recall that the cumulative distribution function (CDF) is given by $F_X(x) = P(X \leq x)$. The CDF is mathematically defined as:
+
+$$
+F_X(x) = \int_{-\infty}^x f(x)dx
+$$
+
+::: callout-tip
+
+Since $P(X=x) = 0$, it also follows that
 
 $$
 P(a \leq x \leq b) = P(a < x \leq b) = P(a \leq x < b) =  P(a < x < b)
 $$
+
+and that
+
+$$
+F_X(x) = P(X \leq x) = P(X<x)
+$$
 :::
+
+
 
 ## Probabilities for Continuous Random Variables
 
 Instead of $P(X=x)$, we are more interested in the probability that a continuous random variable assumes a value between $a$ and $b$, denoted by $P(a < X < b)$, which can be calculated as:
 
 $$
-P(a < X < b) = \int_a^b f(x)dx
+P(a < X < b) = \int_a^b f(x)dx = F(b)-F(a)
 $$
 
 ::: callout-note
 Probability density functions have the following properties
 
 - $f(x) \geq 0$ for $-\infty < x < \infty$.
-- $\int_{-\infty}^{\infty} f(x)dx = 1$
+- $\int_{-\infty}^{\infty} f(x)dx = 1$ or $F(\infty)=1$.
 :::
 
 ## Uniform Distribution: PDF
@@ -979,6 +1111,26 @@ A random variable $X$ that has a uniform distribution on the interval $[\theta_1
 ::: callout-note
 A uniform distribution is defined by two parameters: $\theta_1$ and $\theta_2$. A standard uniform distribution is a special case such that $\theta_1$=0, $\theta_2$=1.
 :::
+
+## Uniform Distribution: Visualization
+
+
+
+```{r}
+#| echo: false
+colors <- c("Unif(0,1)" = "black", "Unif(0.3,0.7)" = "blue", "Unif(-1.5,1.5)" = "red")
+ggplot(data.frame(x = c(-2,2)), aes(x)) + 
+  stat_function(fun = dunif, args = list(min=0, max=1), aes(color="Unif(0,1)"), size=2) +
+  stat_function(fun = dunif, args=list(min=0.3, max=0.7), aes(color="Unif(0.3,0.7)"), size=2) +
+  stat_function(fun=dunif, args=list(min=-1.5,max=1.5), aes(color="Unif(-1.5,1.5)"), size=2) +
+  scale_color_manual(values=colors)+
+  
+  
+  theme_bw() + 
+  labs(y="f(x)", color="Distributions"
+       )
+```
+
 
 ## Uniform Distribution: Probabilities
 
@@ -1067,6 +1219,178 @@ Many natural physical and human-related phenomena closely follow a normal distri
 :::
 
 ## Gaussian Distribution: PDF
+
+The probability density function of the Gaussian distribution can be expressed as:
+
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}; -\infty < x < \infty
+$$
+
+::: callout-note
+A uniform distribution is defined by two parameters: the mean $\mu$ and $\sigma^2$. A random variable $X$ that has a Gaussian distribution with mean $\mu$ and variance $\sigma^2$ is denoted as $X\sim N(\mu,\sigma^2)$. 
+:::
+
+::: callout-important
+A standard normal distribution is a special case such that $\mu$=0, $\sigma^2$=1. Variables that follow a standard normal distribution are often denoted as $Z$.    
+:::
+
+## Gaussian Distribution: Characteristics
+
+The Gaussian distribution has the following characteristics:
+
+- The distribution is symmetric about the mean $\mu$.
+- The mean, median, and mode are all equal.
+
+
+
+## Gaussian Distribution: Visualization
+
+::: panel-tabset
+
+### Same Means, Changing Variance
+
+
+
+```{r}
+#| echo: false
+mu<- 0
+stdev<- 1
+colors <- c("N(0,1)" = "black", "N(0,4)" = "blue", "N(0,9)" = "red")
+ggplot(data.frame(x = c(-10, 10)), aes(x)) + 
+  stat_function(fun = dnorm, args = list(mean = mu, sd = stdev), aes(color="N(0,1)"), size=2) +
+  stat_function(fun = dnorm, args=list(mean=mu, sd=stdev+1), aes(color="N(0,4)"), size=2) +
+  stat_function(fun=dnorm, args=list(mean=mu,sd=stdev+2), aes(color="N(0,9)"), size=2) +
+  scale_color_manual(values=colors)+
+  
+  
+  theme_bw() + 
+  labs(y="f(x)", color="Distributions"
+       )
+```
+
+### Same Variance, Changing Means
+
+```{r}
+#| echo: false
+mu<- 0
+var<- 1
+colors <- c("N(0,1)" = "black", "N(5,1)" = "blue", "N(-5,1)" = "red")
+ggplot(data.frame(x = c(-10, 10)), aes(x)) + 
+  stat_function(fun = dnorm, args = list(mean = mu, sd = 1), aes(color="N(0,1)"), size=2) +
+  stat_function(fun = dnorm, args=list(mean=mu+5, sd=1), aes(color="N(5,1)"), size=2) +
+  stat_function(fun=dnorm, args=list(mean=mu-5,sd=1), aes(color="N(-5,1)"), size=2) +
+  scale_color_manual(values=colors)+
+  
+  
+  theme_bw() + 
+  labs(y="f(x)", color="Distributions"
+       )
+```
+
+
+:::
+
+## Gaussian Distribution: `R`
+
+::: callout-important
+Calculating probabilities mathematically would be impossible without calculus. However, `R` makes life easy for us.
+:::
+
+::: panel-tabset
+
+### PDF 
+
+You can calculate the PDF value for a normal distribution, f(x), using `dnorm(x,mean,sd)`. Note that the function uses standard deviation, not variance.
+
+### CDF 
+
+You can calculate the CDF value for a normal distribution, F(x), using `pnorm(x,mean,sd)`. Note that the function uses standard deviation, not variance.
+
+### Simulating/Generating Random Variables
+
+You can simulate/generate random Gaussian variables using `rnorm(#sims,mean,sd)`. Note that the function uses standard deviation, not variance.
+
+### CDF to X/Z
+
+If we know the value of $F(x)$, we can determine what $x$ is using `qnorm(F(x),mean, sd)`. If the mean and standard deviation/variance is unknown, we can get the corresponding value of the standard normal distribution $Z$ by specifying `mean=0` and `sd=1`.
+:::
+
+## Example
+
+For a random variable $Z~N(0,1)$ following the standard normal distribution
+
+::: panel-tabset
+### Question
+
+Calculate the following probabilities using `R`
+
+- $P(Z \leq 1)$
+- $P(Z \geq 2.5)$
+- $P(-2 < Z < 2)$
+
+
+### Answer
+
+- $P(Z \leq 1) = F(1)$
+
+```{r}
+pnorm(1,0,1)
+```
+
+- $P(Z\geq 2.5) = 1- P(Z<2.5) = 1-F(2.5)$
+
+```{r}
+1-pnorm(2.5,0,1)
+pnorm(2.5,0,1,lower.tail=FALSE)
+```
+
+- $P(-2 < Z < 2) = F(2)-F(-2)$
+
+```{r}
+pnorm(2,0,1) - pnorm(-2,0,1)
+```
+
+:::
+
+## Example 2
+
+Consider $X \sim N(3,9)$.
+
+::: panel-tabset
+### Question
+
+- $P(X \leq 6)$
+- $P(X \geq 3)$
+- $P(-3 < X < 9)$
+
+### Answer
+
+Note that $\sigma^2=9$, so sd=3.
+
+- $P(X \leq 6)$
+
+```{r}
+pnorm(6,3,3)
+```
+
+- $P(X \geq 10.5)$
+
+```{r}
+1- pnorm(10.5,3,3)
+pnorm(10.5,3,3,lower.tail=F)
+```
+
+- $P(-3 < X < 9)$
+
+```{r}
+pnorm(9,3,3) - pnorm(-3,3,3)
+```
+
+::: callout-important
+Note that the answers are the same!
+:::
+
+:::
 
 
 
