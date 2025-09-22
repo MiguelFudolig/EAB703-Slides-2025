@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Sampling Distributions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,8 +27,73 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5225a0b03738627c8390147651eb7bbf.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -224,11 +289,21 @@
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>The mean of the sampling distribution is equal to the population mean, while the variance is reduced by a factor of the sample size <span class="math inline">\(n\)</span>.</p>
+<p>The mean of the sampling distribution, <span class="math inline">\(\mu_{\bar{X}}\)</span> is equal to the population mean, while the variance, <span class="math inline">\(\sigma^2_{\bar{X}}\)</span> is reduced by a factor of the sample size <span class="math inline">\(n\)</span>.</p>
 <p>The standard deviation of the sampling distribution can be calculated by taking the square root of the variance of the distribution, <span class="math inline">\(\sqrt{\frac{\sigma^2}{n}} = \frac{\sigma}{\sqrt{n}}\)</span>. This is referred to as the <strong>standard error</strong> of the sample mean.</p>
 </div>
 </div>
 </div>
+</section>
+<section id="standardization" class="slide level2">
+<h2>Standardization</h2>
+<p>The sample mean can also be standardized based on the properties of the sampling distribution. The sample mean <span class="math inline">\(\bar{X}\)</span> can be transformed into a random variable <span class="math inline">\(Z\)</span> such that <span class="math inline">\(Z \sim N(0,1)\)</span>.</p>
+<p><span class="math display">\[
+Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}
+\]</span> In addition,</p>
+<p><span class="math display">\[
+P(\bar{X} \leq \bar{x}) = P(Z \leq \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}) = P(Z \leq z)
+\]</span></p>
 </section>
 <section id="sampling-from-non-gaussian-populations" class="slide level2">
 <h2>Sampling from Non-Gaussian Populations</h2>
@@ -258,6 +333,201 @@
 </div>
 <div class="callout-content">
 <p>The rule of thumb for sample means is that a sample size of 30 is satisfactory for the central limit theorem, but this maybe too small for skewed distributions. The Gaussian approximation provided by the CLT becomes better as the sample size increases.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>Suppose it is known that in a certain large human population cranial length is approximately Gaussian distributed with a mean of 185.6 mm and a standard deviation of 12.7 mm.</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Question</a></li><li><a href="#tabset-1-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>What is the probability that a random sample of size 10 from this population will have a mean greater than 190?</p>
+</div>
+<div id="tabset-1-2">
+<p>We can use the sampling distribution because we know the sample is from a Gaussian population. The mean of the sampling distribution, <span class="math inline">\(\mu_\bar{X}\)</span>, should be equal to the population mean. Hence, <span class="math inline">\(\mu_{\bar{X}} = 185.6\)</span>.</p>
+<p>The standard error, <span class="math inline">\(\sigma_{\bar{X}}\)</span>, can be calculated using the following formula: <span class="math inline">\(\sigma_{\bar{X}} = \sigma/\sqrt{n} = 12.7/\sqrt{10} =\)</span> 4.0161</p>
+<p>Using the knowledge that <span class="math inline">\(\bar{X} \sim N(185.6, 12.7/\sqrt{10})\)</span>, we can use <code>pnorm</code> to calculate the probability that the sample mean is greater than 190.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">pnorm</span>(<span class="dv">190</span>,<span class="at">mean=</span><span class="fl">185.6</span>,<span class="at">sd=</span><span class="fl">12.7</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">10</span>),<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1366286</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>z <span class="ot">&lt;-</span> (<span class="dv">190</span><span class="fl">-185.6</span>)<span class="sc">/</span>(<span class="fl">12.7</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">10</span>))</span>
+<span id="cb3-2"><a></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1366286</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example 2</h2>
+<p>Suppose the hourly number of customer arrivals at a hospital ED has a Poisson distribution with rate parameter <span class="math inline">\(\lambda=6\)</span>. Every hour for 48 hours, the number of customer arrivals is counted and recorded.</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Question</a></li><li><a href="#tabset-2-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>Use the CLT to approximate the probability that the average number of arrivals is between 5 and 8.</p>
+</div>
+<div id="tabset-2-2">
+<p>The data is non-Gaussian, but we will assume that the CLT holds. Recall that for a Poisson distribution, the mean is equal to the variance. Specifically, <span class="math inline">\(\mu=6\)</span>, <span class="math inline">\(\sigma^2 = 6\)</span>, <span class="math inline">\(n=48\)</span>. Hence, the mean and the standard error can be expressed as:</p>
+<p><span class="math display">\[
+\mu_{\bar{X}} = 6; \sigma_{\bar{X}} = \sqrt{6/48}
+\]</span> The probability that the average number of arrivals in the 48-hour period is between 5 and 8 is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">pnorm</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="fu">sqrt</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">48</span>)) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="fu">sqrt</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">48</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9976611</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<p>The daily average screen time of elementary school students is assumed to follow a non-Gaussian distribution with 2.6 hours with a standard deviation of 5.3.</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Question</a></li><li><a href="#tabset-3-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>Use the central limit theorem to calculate the probability that a sample of 250 elementary school students will yield an average screen time between 1.5 hours and 2 hours?</p>
+</div>
+<div id="tabset-3-2">
+<p>The mean of the sampling distribution is 2.6 hours and the standard error of the mean is <span class="math inline">\(5.3/\sqrt{250} =\)</span> 0.3352014.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">pnorm</span>(<span class="dv">2</span>,<span class="fl">2.6</span>,<span class="fl">5.3</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">250</span>)) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">1.5</span>,<span class="fl">2.6</span>,<span class="fl">5.3</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">250</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03621341</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="distribution-of-the-difference-between-two-sample-means" class="title-slide slide level1 center">
+<h1>Distribution of the Difference Between Two Sample Means</h1>
+
+</section>
+<section id="sample-mean-vs.-difference-between-two-sample-means" class="slide level2">
+<h2>Sample Mean vs.&nbsp;Difference Between Two Sample Means</h2>
+<p>Consider Populations A and B with the following possible measurements:</p>
+<p>A: {0,1,2}; B:{1,2,3}.</p>
+<p>If we take a sample with size 2, we can have the following scenario:</p>
+<p>Sample A: {0,2}; Sample B: {1,2}</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>The sample mean of Sample A is 1, and the mean of Sample B is 1.5. However, the difference between the sample means is -0.5, which is not a possible value for the sample means of A and B.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sampling-from-gaussian-distributed-populations-1" class="slide level2">
+<h2>Sampling from Gaussian-distributed populations</h2>
+<p>When sampling from two Gaussian-distributed populations <span class="math inline">\(N(\mu_1,\sigma_1^2)\)</span> and <span class="math inline">\(N(\mu_2,\sigma_2^2)\)</span>, the distribution of the difference between sample means <span class="math inline">\(\bar{X}_1 - \bar{X}_2\)</span> is a Gaussian distribution with mean <span class="math inline">\(\mu_1-\mu_2\)</span> and variance <span class="math inline">\(\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\)</span>. Mathematically,</p>
+<p><span class="math display">\[
+\bar{X}_1 - \bar{X}_2 \sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2})
+\]</span></p>
+</section>
+<section id="standardization-1" class="slide level2">
+<h2>Standardization</h2>
+<p>Similar to the sample mean, the difference of the sample means can also be standardized.</p>
+<p><span class="math display">\[
+Z = \frac{(\bar{X}_1 - \bar{X}_2) - (\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}
+\]</span></p>
+<p>In addition,</p>
+<p><span class="math display">\[
+P((\bar{X}_1 - \bar{X}_2) \leq (\bar{x}_1 - \bar{x}_2)) = P\left(Z \leq \frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}\right)
+\]</span></p>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>Suppose it has been established that for a certain type of client the average length of a home visit by a public health nurse is 45 minutes with a standard deviation of 15 minutes, and that for a second type of client the average home visit is 30 minutes long with a standard deviation of 20 minutes.</p>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Question</a></li><li><a href="#tabset-4-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>If a nurse randomly visits 35 clients from the first and 40 from the second population, what is the probability that the average length of home visit will differ between client type one and client type two by 20 or more minutes?</p>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="co"># Calculate the mean and variance of the sampling distribution first.</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2"></a>diff_means <span class="ot">&lt;-</span> <span class="dv">45-30</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3"></a>diff_var <span class="ot">&lt;-</span> <span class="dv">15</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">35</span> <span class="sc">+</span> <span class="dv">20</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">40</span></span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4"></a></span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a><span class="fu">pnorm</span>(<span class="dv">20</span>,diff_means,<span class="fu">sqrt</span>(diff_var),<span class="at">lower.tail=</span>F)</span>
+<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6"></a></span>
+<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7"></a><span class="co"># OR An alternative solution</span></span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-9" class="code-annotation-target"><a href="#annotated-cell-9-9"></a>z <span class="ot">&lt;-</span> (<span class="dv">20</span> <span class="sc">-</span> diff_means)<span class="sc">/</span><span class="fu">sqrt</span>(diff_var)</span>
+<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10"></a></span>
+<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11"></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">lower.tail=</span>F)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="1">mu_1-mu_2</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="2">sigma_1^2/n1 + sigma_2^2/n2</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="9" data-code-annotation="3">Standardization method</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1086783
+[1] 0.1086783</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise</h2>
+<p>Suppose the age of two student organizations were normally distributed. Organization A has an average age of 20.5 and a standard deviation of 3.7, while Organization B has an average of 19.7 and a standard deviation of 4.5.</p>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Question</a></li><li><a href="#tabset-5-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<p>If 50 students were sampled from each organization, what is the probability that the sample from Organization A is older than Organization B by a value between one and two years?</p>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>diff_means <span class="ot">&lt;-</span> <span class="fl">20.5-19.7</span></span>
+<span id="cb10-2"><a></a>diff_var <span class="ot">&lt;-</span> <span class="fl">4.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">50</span> <span class="sc">+</span> <span class="fl">3.7</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">50</span></span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a><span class="fu">pnorm</span>(<span class="dv">2</span>,diff_means,<span class="fu">sqrt</span>(diff_var))<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">1</span>,diff_means,<span class="fu">sqrt</span>(diff_var))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3314723</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># OR An alternative solution</span></span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a>z1 <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">-</span> diff_means)<span class="sc">/</span><span class="fu">sqrt</span>(diff_var) </span>
+<span id="cb12-4"><a></a>z2 <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> diff_means)<span class="sc">/</span><span class="fu">sqrt</span>(diff_var) </span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a><span class="fu">pnorm</span>(z1,<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(z2,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3314723</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -481,325 +751,419 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
-          }
-          return false;
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
         }
-        const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
-            }
-            return codeEl.innerText;
-        }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
-            } else {
-              return "";
-            }
-          });
-        }
-            let selectedAnnoteEl;
-            const selectorForAnnotation = ( cell, annotation) => {
-              let cellAttr = 'data-code-cell="' + cell + '"';
-              let lineAttr = 'data-code-annotation="' +  annotation + '"';
-              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-              return selector;
-            }
-            const selectCodeLines = (annoteEl) => {
-              const doc = window.document;
-              const targetCell = annoteEl.getAttribute("data-target-cell");
-              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-              const lineIds = lines.map((line) => {
-                return targetCell + "-" + line;
-              })
-              let top = null;
-              let height = null;
-              let parent = null;
-              if (lineIds.length > 0) {
-                  //compute the position of the single el (top and bottom and make a div)
-                  const el = window.document.getElementById(lineIds[0]);
-                  top = el.offsetTop;
-                  height = el.offsetHeight;
-                  parent = el.parentElement.parentElement;
-                if (lineIds.length > 1) {
-                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-                  height = bottom - top;
-                }
-                if (top !== null && height !== null && parent !== null) {
-                  // cook up a div (if necessary) and position it 
-                  let div = window.document.getElementById("code-annotation-line-highlight");
-                  if (div === null) {
-                    div = window.document.createElement("div");
-                    div.setAttribute("id", "code-annotation-line-highlight");
-                    div.style.position = 'absolute';
-                    parent.appendChild(div);
-                  }
-                  div.style.top = top - 2 + "px";
-                  div.style.height = height + 4 + "px";
-                  div.style.left = 0;
-                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-                  if (gutterDiv === null) {
-                    gutterDiv = window.document.createElement("div");
-                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                    gutterDiv.style.position = 'absolute';
-                    const codeCell = window.document.getElementById(targetCell);
-                    const gutter = codeCell.querySelector('.code-annotation-gutter');
-                    gutter.appendChild(gutterDiv);
-                  }
-                  gutterDiv.style.top = top - 2 + "px";
-                  gutterDiv.style.height = height + 4 + "px";
-                }
-                selectedAnnoteEl = annoteEl;
-              }
-            };
-            const unselectCodeLines = () => {
-              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-              elementsIds.forEach((elId) => {
-                const div = window.document.getElementById(elId);
-                if (div) {
-                  div.remove();
-                }
-              });
-              selectedAnnoteEl = undefined;
-            };
-              // Handle positioning of the toggle
-          window.addEventListener(
-            "resize",
-            throttle(() => {
-              elRect = undefined;
-              if (selectedAnnoteEl) {
-                selectCodeLines(selectedAnnoteEl);
-              }
-            }, 10)
-          );
-          function throttle(fn, ms) {
-          let throttle = false;
-          let timer;
-            return (...args) => {
-              if(!throttle) { // first call gets through
-                  fn.apply(this, args);
-                  throttle = true;
-              } else { // all the others get throttled
-                  if(timer) clearTimeout(timer); // cancel #2
-                  timer = setTimeout(() => {
-                    fn.apply(this, args);
-                    timer = throttle = false;
-                  }, ms);
-              }
-            };
-          }
-            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-            for (let i=0; i<annoteTargets.length; i++) {
-              const annoteTarget = annoteTargets[i];
-              const targetCell = annoteTarget.getAttribute("data-target-cell");
-              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-              const contentFn = () => {
-                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-                if (content) {
-                  const tipContent = content.cloneNode(true);
-                  tipContent.classList.add("code-annotation-tip-content");
-                  return tipContent.outerHTML;
-                }
-              }
-              const config = {
-                allowHTML: true,
-                content: contentFn,
-                onShow: (instance) => {
-                  selectCodeLines(instance.reference);
-                  instance.reference.classList.add('code-annotation-active');
-                  window.tippy.hideAll();
-                },
-                onHide: (instance) => {
-                  unselectCodeLines();
-                  instance.reference.classList.remove('code-annotation-active');
-                },
-                maxWidth: 300,
-                delay: [50, 0],
-                duration: [200, 0],
-                offset: [5, 10],
-                arrow: true,
-                appendTo: function(el) {
-                  return el.parentElement.parentElement.parentElement;
-                },
-                interactive: true,
-                interactiveBorder: 10,
-                theme: 'light-border',
-                placement: 'right',
-                popperOptions: {
-                  modifiers: [
-                  {
-                    name: 'flip',
-                    options: {
-                      flipVariations: false, // true by default
-                      allowedAutoPlacements: ['right'],
-                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
-                    },
-                  },
-                  {
-                    name: 'preventOverflow',
-                    options: {
-                      mainAxis: false,
-                      altAxis: false
-                    }
-                  }
-                  ]        
-                }      
-              };
-              window.tippy(annoteTarget, config); 
-            }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
-            }
-          } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
-            });
-          }
-        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
       });
-      </script>
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+          let selectedAnnoteEl;
+          const selectorForAnnotation = ( cell, annotation) => {
+            let cellAttr = 'data-code-cell="' + cell + '"';
+            let lineAttr = 'data-code-annotation="' +  annotation + '"';
+            const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+            return selector;
+          }
+          const selectCodeLines = (annoteEl) => {
+            const doc = window.document;
+            const targetCell = annoteEl.getAttribute("data-target-cell");
+            const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+            const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+            const lineIds = lines.map((line) => {
+              return targetCell + "-" + line;
+            })
+            let top = null;
+            let height = null;
+            let parent = null;
+            if (lineIds.length > 0) {
+                //compute the position of the single el (top and bottom and make a div)
+                const el = window.document.getElementById(lineIds[0]);
+                top = el.offsetTop;
+                height = el.offsetHeight;
+                parent = el.parentElement.parentElement;
+              if (lineIds.length > 1) {
+                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                height = bottom - top;
+              }
+              if (top !== null && height !== null && parent !== null) {
+                // cook up a div (if necessary) and position it 
+                let div = window.document.getElementById("code-annotation-line-highlight");
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = 'absolute';
+                  parent.appendChild(div);
+                }
+                div.style.top = top - 2 + "px";
+                div.style.height = height + 4 + "px";
+                div.style.left = 0;
+                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                  gutterDiv.style.position = 'absolute';
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector('.code-annotation-gutter');
+                  gutter.appendChild(gutterDiv);
+                }
+                gutterDiv.style.top = top - 2 + "px";
+                gutterDiv.style.height = height + 4 + "px";
+              }
+              selectedAnnoteEl = annoteEl;
+            }
+          };
+          const unselectCodeLines = () => {
+            const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+            elementsIds.forEach((elId) => {
+              const div = window.document.getElementById(elId);
+              if (div) {
+                div.remove();
+              }
+            });
+            selectedAnnoteEl = undefined;
+          };
+            // Handle positioning of the toggle
+        window.addEventListener(
+          "resize",
+          throttle(() => {
+            elRect = undefined;
+            if (selectedAnnoteEl) {
+              selectCodeLines(selectedAnnoteEl);
+            }
+          }, 10)
+        );
+        function throttle(fn, ms) {
+        let throttle = false;
+        let timer;
+          return (...args) => {
+            if(!throttle) { // first call gets through
+                fn.apply(this, args);
+                throttle = true;
+            } else { // all the others get throttled
+                if(timer) clearTimeout(timer); // cancel #2
+                timer = setTimeout(() => {
+                  fn.apply(this, args);
+                  timer = throttle = false;
+                }, ms);
+            }
+          };
+        }
+          const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+          for (let i=0; i<annoteTargets.length; i++) {
+            const annoteTarget = annoteTargets[i];
+            const targetCell = annoteTarget.getAttribute("data-target-cell");
+            const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+            const contentFn = () => {
+              const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              if (content) {
+                const tipContent = content.cloneNode(true);
+                tipContent.classList.add("code-annotation-tip-content");
+                return tipContent.outerHTML;
+              }
+            }
+            const config = {
+              allowHTML: true,
+              content: contentFn,
+              onShow: (instance) => {
+                selectCodeLines(instance.reference);
+                instance.reference.classList.add('code-annotation-active');
+                window.tippy.hideAll();
+              },
+              onHide: (instance) => {
+                unselectCodeLines();
+                instance.reference.classList.remove('code-annotation-active');
+              },
+              maxWidth: 300,
+              delay: [50, 0],
+              duration: [200, 0],
+              offset: [5, 10],
+              arrow: true,
+              appendTo: function(el) {
+                return el.parentElement.parentElement.parentElement;
+              },
+              interactive: true,
+              interactiveBorder: 10,
+              theme: 'light-border',
+              placement: 'right',
+              popperOptions: {
+                modifiers: [
+                {
+                  name: 'flip',
+                  options: {
+                    flipVariations: false, // true by default
+                    allowedAutoPlacements: ['right'],
+                    fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                  },
+                },
+                {
+                  name: 'preventOverflow',
+                  options: {
+                    mainAxis: false,
+                    altAxis: false
+                  }
+                }
+                ]        
+              }      
+            };
+            window.tippy(annoteTarget, config); 
+          }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
     
 
 </body></html>

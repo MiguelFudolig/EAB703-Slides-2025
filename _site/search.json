@@ -2305,7 +2305,7 @@
     "href": "lecture5.html#implications",
     "title": "Sampling Distributions",
     "section": "Implications",
-    "text": "Implications\n\n\n\n\n\n\nImportant\n\n\nThe mean of the sampling distribution is equal to the population mean, while the variance is reduced by a factor of the sample size \\(n\\).\nThe standard deviation of the sampling distribution can be calculated by taking the square root of the variance of the distribution, \\(\\sqrt{\\frac{\\sigma^2}{n}} = \\frac{\\sigma}{\\sqrt{n}}\\). This is referred to as the standard error of the sample mean."
+    "text": "Implications\n\n\n\n\n\n\nImportant\n\n\nThe mean of the sampling distribution, \\(\\mu_{\\bar{X}}\\) is equal to the population mean, while the variance, \\(\\sigma^2_{\\bar{X}}\\) is reduced by a factor of the sample size \\(n\\).\nThe standard deviation of the sampling distribution can be calculated by taking the square root of the variance of the distribution, \\(\\sqrt{\\frac{\\sigma^2}{n}} = \\frac{\\sigma}{\\sqrt{n}}\\). This is referred to as the standard error of the sample mean."
   },
   {
     "objectID": "lecture5.html#sampling-from-gaussian-distributed-populations",
@@ -2320,5 +2320,68 @@
     "title": "Sampling Distributions",
     "section": "Sampling from Non-Gaussian Populations",
     "text": "Sampling from Non-Gaussian Populations\nThe sampling distribution previously derived could also apply to samples from non-Gaussian populations under certain conditions. These conditions are provided by the central limit theorem.\n\n\n\n\n\n\n\nCentral Limit Theorem (CLT)\n\n\nGiven a population of any non-Gaussian functional form with a mean \\(\\mu\\) and finite variance \\(\\sigma^2\\), the sampling distribution of \\(\\bar{x}\\) computed from samples of size \\(n\\) from this population, will have mean \\(\\mu\\) and variance \\(\\sigma^2/n\\) and will be approximately Gaussian distributed when the sample size is large.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe rule of thumb for sample means is that a sample size of 30 is satisfactory for the central limit theorem, but this maybe too small for skewed distributions. The Gaussian approximation provided by the CLT becomes better as the sample size increases."
+  },
+  {
+    "objectID": "lecture5.html#example",
+    "href": "lecture5.html#example",
+    "title": "Sampling Distributions",
+    "section": "Example",
+    "text": "Example\nSuppose it is known that in a certain large human population cranial length is approximately Gaussian distributed with a mean of 185.6 mm and a standard deviation of 12.7 mm.\n\nQuestionAnswer\n\n\nWhat is the probability that a random sample of size 10 from this population will have a mean greater than 190?\n\n\nWe can use the sampling distribution because we know the sample is from a Gaussian population. The mean of the sampling distribution, \\(\\mu_\\bar{X}\\), should be equal to the population mean. Hence, \\(\\mu_{\\bar{X}} = 185.6\\).\nThe standard error, \\(\\sigma_{\\bar{X}}\\), can be calculated using the following formula: \\(\\sigma_{\\bar{X}} = \\sigma/\\sqrt{n} = 12.7/\\sqrt{10} =\\) 4.0161\nUsing the knowledge that \\(\\bar{X} \\sim N(185.6, 12.7/\\sqrt{10})\\), we can use pnorm to calculate the probability that the sample mean is greater than 190.\n\npnorm(190,mean=185.6,sd=12.7/sqrt(10),lower.tail=F)\n\n[1] 0.1366286\n\nz &lt;- (190-185.6)/(12.7/sqrt(10))\npnorm(z,0,1,lower.tail=F)\n\n[1] 0.1366286"
+  },
+  {
+    "objectID": "lecture5.html#example-2",
+    "href": "lecture5.html#example-2",
+    "title": "Sampling Distributions",
+    "section": "Example 2",
+    "text": "Example 2\nSuppose the hourly number of customer arrivals at a hospital ED has a Poisson distribution with rate parameter \\(\\lambda=6\\). Every hour for 48 hours, the number of customer arrivals is counted and recorded.\n\nQuestionAnswer\n\n\nUse the CLT to approximate the probability that the average number of arrivals is between 5 and 8.\n\n\nThe data is non-Gaussian, but we will assume that the CLT holds. Recall that for a Poisson distribution, the mean is equal to the variance. Specifically, \\(\\mu=6\\), \\(\\sigma^2 = 6\\), \\(n=48\\). Hence, the mean and the standard error can be expressed as:\n\\[\n\\mu_{\\bar{X}} = 6; \\sigma_{\\bar{X}} = \\sqrt{6/48}\n\\] The probability that the average number of arrivals in the 48-hour period is between 5 and 8 is:\n\npnorm(8,6,sqrt(6/48)) - pnorm(5,6,sqrt(6/48))\n\n[1] 0.9976611"
+  },
+  {
+    "objectID": "lecture5.html#exercise",
+    "href": "lecture5.html#exercise",
+    "title": "Sampling Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nThe daily average screen time of elementary school students is assumed to follow a non-Gaussian distribution with 2.6 hours with a standard deviation of 5.3.\n\nQuestionAnswer\n\n\nUse the central limit theorem to calculate the probability that a sample of 250 elementary school students will yield an average screen time between 1.5 hours and 2 hours?\n\n\nThe mean of the sampling distribution is 2.6 hours and the standard error of the mean is \\(5.3/\\sqrt{250} =\\) 0.3352014.\n\npnorm(2,2.6,5.3/sqrt(250)) - pnorm(1.5,2.6,5.3/sqrt(250))\n\n[1] 0.03621341"
+  },
+  {
+    "objectID": "lecture5.html#standardization",
+    "href": "lecture5.html#standardization",
+    "title": "Sampling Distributions",
+    "section": "Standardization",
+    "text": "Standardization\nThe sample mean can also be standardized based on the properties of the sampling distribution. The sample mean \\(\\bar{X}\\) can be transformed into a random variable \\(Z\\) such that \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\bar{X} - \\mu}{\\sigma/\\sqrt{n}}\n\\] In addition,\n\\[\nP(\\bar{X} \\leq \\bar{x}) = P(Z \\leq \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}) = P(Z \\leq z)\n\\]"
+  },
+  {
+    "objectID": "lecture5.html#sample-mean-vs.-difference-between-two-sample-means",
+    "href": "lecture5.html#sample-mean-vs.-difference-between-two-sample-means",
+    "title": "Sampling Distributions",
+    "section": "Sample Mean vs. Difference Between Two Sample Means",
+    "text": "Sample Mean vs. Difference Between Two Sample Means\nConsider Populations A and B with the following possible measurements:\nA: {0,1,2}; B:{1,2,3}.\nIf we take a sample with size 2, we can have the following scenario:\nSample A: {0,2}; Sample B: {1,2}\n\n\n\n\n\n\nWarning\n\n\nThe sample mean of Sample A is 1, and the mean of Sample B is 1.5. However, the difference between the sample means is -0.5, which is not a possible value for the sample means of A and B."
+  },
+  {
+    "objectID": "lecture5.html#sampling-from-gaussian-distributed-populations-1",
+    "href": "lecture5.html#sampling-from-gaussian-distributed-populations-1",
+    "title": "Sampling Distributions",
+    "section": "Sampling from Gaussian-distributed populations",
+    "text": "Sampling from Gaussian-distributed populations\nWhen sampling from two Gaussian-distributed populations \\(N(\\mu_1,\\sigma_1^2)\\) and \\(N(\\mu_2,\\sigma_2^2)\\), the distribution of the difference between sample means \\(\\bar{X}_1 - \\bar{X}_2\\) is a Gaussian distribution with mean \\(\\mu_1-\\mu_2\\) and variance \\(\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}\\). Mathematically,\n\\[\n\\bar{X}_1 - \\bar{X}_2 \\sim N(\\mu_1-\\mu_2,\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2})\n\\]"
+  },
+  {
+    "objectID": "lecture5.html#standardization-1",
+    "href": "lecture5.html#standardization-1",
+    "title": "Sampling Distributions",
+    "section": "Standardization",
+    "text": "Standardization\nSimilar to the sample mean, the difference of the sample means can also be standardized.\n\\[\nZ = \\frac{(\\bar{X}_1 - \\bar{X}_2) - (\\mu_1-\\mu_2)}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}\n\\]\nIn addition,\n\\[\nP((\\bar{X}_1 - \\bar{X}_2) \\leq (\\bar{x}_1 - \\bar{x}_2)) = P\\left(Z \\leq \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1-\\mu_2)}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}\\right)\n\\]"
+  },
+  {
+    "objectID": "lecture5.html#example-1",
+    "href": "lecture5.html#example-1",
+    "title": "Sampling Distributions",
+    "section": "Example",
+    "text": "Example\nSuppose it has been established that for a certain type of client the average length of a home visit by a public health nurse is 45 minutes with a standard deviation of 15 minutes, and that for a second type of client the average home visit is 30 minutes long with a standard deviation of 20 minutes.\n\nQuestionAnswer\n\n\nIf a nurse randomly visits 35 clients from the first and 40 from the second population, what is the probability that the average length of home visit will differ between client type one and client type two by 20 or more minutes?\n\n\n\n# Calculate the mean and variance of the sampling distribution first.\n1diff_means &lt;- 45-30\n2diff_var &lt;- 15^2/35 + 20^2/40\n\npnorm(20,diff_means,sqrt(diff_var),lower.tail=F)\n\n# OR An alternative solution\n\n3z &lt;- (20 - diff_means)/sqrt(diff_var)\n\npnorm(z,0,1,lower.tail=F)\n\n\n1\n\nmu_1-mu_2\n\n2\n\nsigma_1^2/n1 + sigma_2^2/n2\n\n3\n\nStandardization method\n\n\n\n\n[1] 0.1086783\n[1] 0.1086783"
+  },
+  {
+    "objectID": "lecture5.html#exercise-1",
+    "href": "lecture5.html#exercise-1",
+    "title": "Sampling Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nSuppose the age of two student organizations were normally distributed. Organization A has an average age of 20.5 and a standard deviation of 3.7, while Organization B has an average of 19.7 and a standard deviation of 4.5.\n\nQuestionAnswer\n\n\nIf 50 students were sampled from each organization, what is the probability that the sample from Organization A is older than Organization B by a value between one and two years?\n\n\n\ndiff_means &lt;- 20.5-19.7\ndiff_var &lt;- 4.5^2/50 + 3.7^2/50\n\npnorm(2,diff_means,sqrt(diff_var))-pnorm(1,diff_means,sqrt(diff_var))\n\n[1] 0.3314723\n\n# OR An alternative solution\n\nz1 &lt;- (2 - diff_means)/sqrt(diff_var) \nz2 &lt;- (1 - diff_means)/sqrt(diff_var) \n\npnorm(z1,0,1) - pnorm(z2,0,1)\n\n[1] 0.3314723"
   }
 ]
