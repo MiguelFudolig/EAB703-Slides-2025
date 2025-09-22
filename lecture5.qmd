@@ -1,0 +1,98 @@
+---
+title: "Sampling Distributions"
+subtitle: Lecture 5
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 5 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+# Outline 
+
+- Importance of Sampling Distributions
+- Distributions of the Sample Mean
+- Distributions of the Difference Between Two Sample Means
+- Distributions of the Sample Proportion
+- Distributions of the Difference Between Two Proportions
+
+# Importance of Sampling Distributions
+
+## Activity
+
+Let us use the "Sampling Words" applet through this [link](https://www.isi-stats.com/isi2nd/ISIapplets2021.html). Suppose we are interested in calculating the average word length of different samples of 10 words from Beyonce's Crazy in Love.
+
+- Did we get the same average length for all samples?
+
+## Sampling Distributions
+
+Repeated samples will yield different values for the statistics. 
+
+::: callout-note
+We have to view statistics as the sample mean $\bar{x}$ and sample proportion $\hat{p}$ as random variables. The probability distribution of these statistics are called sampling distributions. These distributions enable us to:
+
+- Answer probability questions about sample statistics
+- Provide the necessary theory for some statistical inference tests.
+:::
+
+## Sampling Distributions
+
+The sampling distribution of a statistic is the distribution of *all possible values* that can be assumed by some statistic computed from samples of the same size from the population.
+
+::: callout-note
+We are usually interested in knowing the functional form (refer to distributions discussed in Chapter 4), mean, and variance.
+:::
+
+
+# Distributions of the Sample Mean
+
+## Sampling from Gaussian-distributed populations
+
+For a sample with size $n$ that comes from a Gaussian-distributed population with mean $\mu$ and variance $\sigma^2$, i.e. the samples $X_1,X_2,...,X_n$ are all independent and identically distributed such that $X_i \sim N(\mu,\sigma^2)$, the sample mean can be defined as:
+
+$$
+\bar{X} = \frac{X_1 + X_2 + ... + X_n}{n}
+$$
+
+The probability distribution of the sample mean, also known as the sampling distribution of the sample mean can be expressed as:
+
+$$
+\bar{X} \sim N(\mu, \frac{\sigma^2}{n})
+$$
+
+## Implications
+
+::: callout-important
+The mean of the sampling distribution is equal to the population mean, while the variance is reduced by a factor of the sample size $n$.
+
+The standard deviation of the sampling distribution can be calculated by taking the square root of the variance of the distribution, $\sqrt{\frac{\sigma^2}{n}} = \frac{\sigma}{\sqrt{n}}$. This is referred to as the **standard error** of the sample mean.
+:::
+
+## Sampling from Non-Gaussian Populations
+
+The sampling distribution previously derived could also apply to samples from non-Gaussian populations under certain conditions. These conditions are provided by the **central limit theorem**.
+
+::: {.callout-note title="Central Limit Theorem (CLT)"}
+Given a population of any non-Gaussian functional form with a mean $\mu$ and finite variance $\sigma^2$, the sampling distribution of $\bar{x}$ computed from samples of size $n$ from this population, will have mean $\mu$ and variance $\sigma^2/n$ and will be approximately Gaussian distributed **when the sample size is large**.
+:::
+
+::: callout-tip
+The rule of thumb for sample means is that a sample size of 30 is satisfactory for the central limit theorem, but this maybe too small for skewed distributions. The Gaussian approximation provided by the CLT becomes better as the sample size increases.
+:::
+
+
+
