@@ -22,7 +22,9 @@ format:
 bibliography: references.bib
 ---
 
-```{r setup }
+```{r setup}
+#| echo: false
+
 library(tidyverse)
 ```
 
@@ -719,7 +721,7 @@ set.seed(12) # <1>
 sims <- rbinom(Nsim,250,0.089)
 df <- data.frame(simulations=sims)
 ggplot(df, aes(x=simulations)) + 
-  geom_histogram(bins=50) + 
+  geom_histogram(binwidth=1) + 
   theme_bw() + 
   labs(x="Number of Diagnosed Diabetics", y="Count")
 ```
@@ -925,7 +927,7 @@ set.seed(12345) # <1>
 sims <- rpois(Nsim,14)
 df <- data.frame(simulations=sims)
 ggplot(df, aes(x=simulations)) + 
-  geom_histogram(bins=50) + 
+  geom_histogram(binwidth=1) + 
   theme_bw() + 
   labs(x="Number of People in the Waiting Room", y="Count")
 ```
@@ -1352,7 +1354,7 @@ pnorm(2,0,1) - pnorm(-2,0,1)
 
 :::
 
-## Example 2
+## Exercise
 
 Consider $X \sim N(3,9)$.
 
@@ -1392,6 +1394,204 @@ Note that the answers are the same!
 
 :::
 
+## Other Continuous Distributions
+
+::: {.callout-note title="Weibull Distribution"}
+The Weibull distribution is used to model random variables that are constrained to be positive, such as lifetimes, impurities, etc. This is common for epidemic modeling and survival analysis.
+:::
+
+::: {.callout-note title="Statistical tests"}
+Continuous distributions that you will learn about in future chapters are the $t$ distribution, $F$ distribution, and the $\chi^2$ (chi-squared) distribution.
+:::
+
+# Application of the Gaussian/Normal Distribution
+
+## Standardization
+
+A common transformation employed with Gaussian distributed variables is standardization. Standardization involves rescaling the variable based on the mean, $\mu$, and variance $\sigma^2$, of the distribution. An observation $X$ can be standardized into a standardized variable $Z$ using the following equation:
+
+$$
+Z = \frac{X-\mu}{\sigma}
+$$
+
+::: callout-important
+If $X \sim(\mu,\sigma^2)$, then $Z\sim N(0,1)$. The CDF of the normal distribution is referred to by $\Phi(z) = P(Z \leq z)$.
+:::
+
+
+## Standard Normal Distribution: Implications
+
+::: callout-note
+The random variable $Z$ calculates how many standard deviations away the observation is from the mean. The transformation also implies that
+
+$$
+P(a < X < b) = P \left(\frac{a-\mu}{\sigma} < Z < \frac{b-\mu}{\sigma}\right)
+$$
+
+and
+
+$$
+F(x) = \Phi \left(z=\frac{x-\mu}{\sigma}\right)
+$$
+:::
+
+
+## Example
+
+The results of a biostatistics aptitude test was found to be normally distributed with a mean score of 78.5 and variance of
+120. 
+
+- What is the probability that somebody scores above 92 points?
+- Generate 1000 draws from the corresponding normal distribution using `rnorm()` and create a histogram from the generated values.
+
+::: panel-tabset
+
+### No standardization
+
+```{r}
+pnorm(92,78.5,sqrt(120),lower.tail=F)
+```
+
+### Standardization
+
+$Z = \frac{X-\mu}{\sigma}$ = `r (92-78.5)/sqrt(120)`
+
+```{r}
+pnorm((92-78.5)/sqrt(120),0,1,lower.tail=F)
+```
+
+### Simulation/Generation
+
+```{r}
+set.seed(12345)
+df <- data.frame(x=rnorm(1000,mean=78.5,sd=sqrt(120)))
+
+ggplot(df,aes(x=x)) + 
+  geom_histogram(binwidth=1) +
+  theme_bw() + 
+  labs(x="Generated Scores",
+       y="Count")
+```
+
+:::
+
+## Exercise
+
+The waiting time for physician appointments in a hospital was normally distributed with mean equal to 23.5 minutes and standard deviation of 6.7 minutes. What is the probability that a patient will wait less than five minutes for an appointment?
+
+::: panel-tabset
+
+### Question
+
+- Use standardization to calculate the standardized variable $z$ such that $P(X<5) = P(Z < z)$.
+
+- Calculate the probability using the standardization method.
+
+### Answer
+
+$z = \frac{5-23.5}{6.7}$ = `r (5-23.5)/6.7`
+
+```{r}
+pnorm((5-23.5)/6.7,0,1)
+```
+
+:::
+
+## Implications
+
+For every random variable $X \sim N(\mu,\sigma^2)$, the probability of an outcome to be within one standard deviation of the mean can be written as:
+
+$$
+P((\mu-\sigma) < X < (\mu+\sigma)) = P(-1 < Z <1)
+$$
+```{r}
+pnorm(1,0,1) - pnorm(-1,0,1)
+```
+
+::: callout-note
+We expect 68.3% of the measurements of the random variable $X$ is within one standard deviation of the mean ($\pm 1\sigma$)
+:::
+
+## Implications
+
+Similarly, we can calculate the probability within $\pm 2\sigma$ and $\pm 3\sigma$. Around 95.4% of the outcomes are $\pm 2\sigma$, while 99.7% of the outcomes are $\pm 3\sigma$. This is why it is sometimes assumed that normally distributed data should be found within three standard deviations from the mean.
+
+::: panel-tabset
+
+### $\pm 2 \sigma$
+
+```{r}
+pnorm(2,0,1) - pnorm(-2,0,1)
+```
+
+### $\pm 3 \sigma$
+
+```{r}
+pnorm(3,0,1) - pnorm(-3,0,1)
+```
+
+:::
+
+
+## Calculating $z$ from $\Phi(z)$
+
+The function `qnorm(prob)` provides the value for $z$ such that the CDF $\Phi(z) = P(Z \leq z) = prob$.
+
+## Example
+
+Find $z$ such that $\Phi(z) = 0.93$.
+
+```{r}
+qnorm(0.93)
+```
+
+## Example 2
+
+Consider a random distribution with mean 5 and standard deviation 2.7. What is the 90th percentile of the distribution?
+
+- The 90th percentile, $p_{90}$, can be expressed as $P(X \leq p_{90}) = 0.90$. $p_{90}$ can be calculated using `qnorm`.
+
+```{r}
+qnorm(0.90,mean=5,sd=2.7)
+```
+
+
+## Exercise
+
+Suppose the total cholesterol values for a certain population are approximately normally distributed with a mean of 205.7 mg/100ml with a standard deviation of 23.5 mg/100ml. 
+
+::: panel-tabset
+### Questions
+
+- What is the probability that an individual picked at random will have
+
+  - Above 200 mg/100ml?
+  - Between 150 and 200 mg/100ml?
+
+- What is the cholesterol level such that only 5% of the population have cholesterol levels above this amount?
+ 
+
+### Answer
+
+- Above 200 mg/100ml
+
+```{r}
+pnorm(200,mean=205.7,sd=23.5)
+```
+
+- Between 150 and 200 mg/100ml
+
+```{r}
+pnorm(200,mean=205.7,sd=23.5) - pnorm(150,mean=205.7,sd=23.5)
+```
+
+- Only 5% of the population have cholesterol levels above this amount: $p_{95}$
+
+```{r}
+qnorm(0.95,mean=205.7,sd=23.5)
+```
+
+:::
 
 
 

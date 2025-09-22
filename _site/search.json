@@ -1,19 +1,789 @@
 [
   {
-    "objectID": "PS1_key.html",
-    "href": "PS1_key.html",
-    "title": "Problem Set 1 Key",
+    "objectID": "PS2_key.html",
+    "href": "PS2_key.html",
+    "title": "Problem Set 2 Key",
     "section": "",
-    "text": "The data set Arrests can be accessed through the package car inR. The data set includes data on police treatment of individuals arrested in Toronto for simple possession of small quantities of marijuana. The data are part of a larger data set featured in a series of articles in the Toronto Star newspaper.\n\n\nProvide the relevant R code to install the car package in R.\n\ninstall.packages(\"car\")\n\nProvide the relevant R code to load the car package.\n\n\nlibrary(car)\n\nLoading required package: carData\n\n\n\nExplore the Arrests data set using glimpse() to show the different variables available in the data set. What are the different variables in the Arrests data set? Show your code. [4pts.]\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n✖ dplyr::recode() masks car::recode()\n✖ purrr::some()   masks car::some()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nglimpse(Arrests)\n\nRows: 5,226\nColumns: 8\n$ released &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes…\n$ colour   &lt;fct&gt; White, Black, White, Black, Black, Black, White, White, Black…\n$ year     &lt;int&gt; 2002, 1999, 2000, 2000, 1999, 1998, 1999, 1998, 2000, 2001, 1…\n$ age      &lt;int&gt; 21, 17, 24, 46, 27, 16, 40, 34, 23, 30, 18, 18, 17, 42, 26, 2…\n$ sex      &lt;fct&gt; Male, Male, Male, Male, Female, Female, Male, Female, Male, M…\n$ employed &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Ye…\n$ citizen  &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Ye…\n$ checks   &lt;int&gt; 3, 3, 3, 1, 1, 0, 0, 1, 4, 3, 0, 3, 1, 0, 2, 3, 4, 5, 3, 0, 0…\n\n\n\nCreate a frequency table for the year of arrests (year variable). Which year had the most arrests? Show your code. [2pts.]\n\n\nlibrary(summarytools)\n\n\nAttaching package: 'summarytools'\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\nfreq(Arrests$year)\n\nError in match(x, table, nomatch = 0L): 'match' requires vector arguments\n\n\nWarning in parse_call(mc = match.call(), caller = \"freq\"): metadata extraction\nterminated unexpectedly; inspect results carefully\n\n\nFrequencies  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n       1997    492      9.41           9.41      9.41           9.41\n       1998    877     16.78          26.20     16.78          26.20\n       1999   1099     21.03          47.23     21.03          47.23\n       2000   1270     24.30          71.53     24.30          71.53\n       2001   1211     23.17          94.70     23.17          94.70\n       2002    277      5.30         100.00      5.30         100.00\n       &lt;NA&gt;      0                               0.00         100.00\n      Total   5226    100.00         100.00    100.00         100.00\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe year with the most arrests was 2000.\n\n\n\nCreate a bar plot to visualize the frequencies of arrests for each year using ggplot() and geom_bar(). Show your code. [2pts.]\n\nAcceptable solution (full credit):\n\nggplot(data=Arrests,aes(x=year)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nBetter solution:\n\nggplot(data=Arrests,aes(x=as.factor(year))) +\n  geom_bar(color=\"black\") + \n  theme_bw() + \n  labs(x=\"Year\", y=\"Frequency\")\n\n\n\n\n\n\n\n\n\nThe file SleepHealthData.csv comprises 400 rows and 13 columns, covering a wide range of variables related to sleep and daily habits. It includes details such as gender, age, occupation, sleep duration, quality of sleep, physical activity level, stress levels, BMI category, blood pressure, heart rate, daily steps, and the presence or absence of sleep disorders.\n\n\nProvide the relevant R code to import SleepHealthData.csv into R and assign it to the variable sleep.\n\n\n\n\n\n\n\nImportant\n\n\n\nSave the CSV file in the same folder as your Rscript!\n\n\nsetwd(getwd())\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nComplete the following table for the recorded heart rate of the participants. Show your code.\n\nMean:\n\nmean(sleep$heart_rate)\n\n[1] 70.16578\n\n\nMedian:\n\nmedian(sleep$heart_rate)\n\n[1] 70\n\n\nRange:\n\nmax(sleep$heart_rate)-min(sleep$heart_rate)\n\n[1] 21\n\n\nVariance and Standard Deviation:\n\nvar(sleep$heart_rate)\n\n[1] 17.10381\n\nsd(sleep$heart_rate)\n\n[1] 4.135676\n\n\nMinimum and Maximum:\n\nmin(sleep$heart_rate)\n\n[1] 65\n\nmax(sleep$heart_rate)\n\n[1] 86\n\n\n\\(Q_1\\), \\(Q_3\\), and IQR:\n\nquantile(sleep$heart_rate,0.25)\n\n25% \n 68 \n\nquantile(sleep$heart_rate,0.75)\n\n75% \n 72 \n\nIQR(sleep$heart_rate)\n\n[1] 4\n\n\n\nCreate a histogram for the recorded heart rate of all the participants using ggplot() and geom_histogram(). Show your code.\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram(color=\"white\", binwidth=2.5, fill=\"black\") + \n  theme_bw() +\n  labs(x=\"Heart Rate Measurement\")\n\n\n\n\n\n\n\n\n\nCreate a boxplot for the recorded heart rate of all the participants grouped by gender using ggplot() and geom_boxplot(). Show your code. (Hint: Use x=gender in the aes() function.)\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=gender,y=heart_rate)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=gender, y=heart_rate)) + \n  geom_boxplot() + \n  theme_bw() + \n  labs(x=\"Gender\",y=\"Heart Rate Measurement\")"
+    "text": "Consider a diagnostic test designed to determine whether a piece of medical equipment is faulty. The diagnostic test has a sensitivity of 0.9 and specificity of 0.9. If the estimated percentage of faulty equipment fleet is 1%, what is the probability that a randomly selected piece of equipment is faulty given that it tested positive? [2pts]\n\n\n\n\n\n\n\nAnswer\n\n\n\nThe base rate is 0.01, Sensitivity is 0.9, Specificity is 0.9. The probability that the equipment is faulty given a positive test is a positive predictive value.\n\\[\nPPV = \\frac{sens*BR}{sens*BR + (1-spec)(1-BR)}\n\\]\n\nPPV &lt;- (0.9)*(0.01)/((0.9*0.01)+(1-0.9)*(1-0.01))\nPPV\n\n[1] 0.08333333\n\n\n\n\n\nWhat is the sample space of a two-sided coin that was tossed three times? [1pt.]\n\n\n\n\n\n\n\nAnswer\n\n\n\nThe answer should include all possible outcomes after tossing a two-sided coin three times. H: Heads, T: Tails\n\nHHH\nHTT\nTHT\nTTH\nTHH\nHTH\nHHT\nTTT\n\nHence the sample space can be written as {HHH, HTT, THT,TTH,THH,HTH,HHT,TTT}\n\n\n\nAn experiment has three possible outcomes, A, B, and C, only one of which can occur at a time. If outcome B is twice as likely as outcome A and if outcome C is thrice as likely as outcome A, what are the marginal probabilities of each outcome (P(A), P(B), P(C))? (Hint: The second axiom of probability states that the sum of the probabilities of the mutually exclusive events is equal to 1.) [3pts]\n\n\n\n\n\n\n\nAnswer\n\n\n\nFrom the hint, \\(P(A)+P(B)+P(C) = 1\\). We also know that \\(P(B) = 2P(A)\\) and \\(P(C) = 3P(A)\\). Substituting it to the 2nd axiom of probability,\n\\[\n3P(A) + 2P(A) + P(A) = 1\n\\] \\[\n6P(A) = 1; P(A) = 1/6\n\\]\nIt follows that \\(P(B) = 2P(A) = 2/6 = 1/3\\), \\(P(C) = 3P(A) = 3/6 = 1/2\\).\n\n\n\nThe results of a feasibility study suggest that the probability of randomly selecting an individual who uses AI is 55%. Among those who use AI, the probability of using AI for health-related advice is 23%. What is the probability that a randomly selected individual uses AI for health-related advice? [2pts]\n\n\n\n\n\n\n\nAnswer\n\n\n\nP(AI and health advice) can be calculated using the multiplication rule with the following values: \\(P(AI) = 0.55\\), \\(P(HA | AI) = 0.23\\). Then,\n\\[\nP(AI \\cap HA) = P(HA|AI)P(AI) = (0.55)(0.23)\n\\]\nThe resulting value of \\(P(AI \\cap HA) =\\) 0.1265\n\n\n\nAmong 1000 university students, 247 reported to be current smokers, 312 reported to have symptoms of binge drinking, and 59 reported to being current smokers and having symptoms of binge drinking. What is the probability that a randomly selected student out of the 1000 university students is a current smoker or has symptoms of binge drinking? [2pts]\n\n\n\n\n\n\n\nAnswer\n\n\n\nWe can solve for P(Smoker OR Binge) using the addition rule.\n\\[\nP(S \\cup B) = P(S) + P(B) - P(S \\cap B) = 247/1000+312/1000 - 59/1000\n\\]\nThe resulting value of \\(P(S \\cup B)=\\) 0.5"
   },
   {
-    "objectID": "lectures.html",
-    "href": "lectures.html",
-    "title": "EAB 703 Lectures",
+    "objectID": "problemsets.html",
+    "href": "problemsets.html",
+    "title": "EAB 703 Problem Set Keys",
     "section": "",
-    "text": "This website provides the slides for EAB 703-1002 for Dr. Miguel Fudolig. Content is mainly based on the following books:\n\nDaniel, W. W., & Cross, C. L. (2018). Biostatistics: a foundation for analysis in the health sciences. John Wiley & Sons.\nRigdon, S. E., Fricker Jr, R. D., & Montgomery, D. C. (2024). Introduction to Probability and Statistics for Data Science: with R. Cambridge University Press.\nIsmay, C., Kim, A.Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546",
+    "text": "This website provides the answer keys for the Problem Sets given in EAB 703-1002 taught by Dr. Miguel Fudolig.",
     "crumbs": [
-      "Lectures"
+      "Problem Sets"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#discrete-random-variables",
+    "href": "lecture4.html#discrete-random-variables",
+    "title": "Probability Distributions",
+    "section": "Discrete Random Variables",
+    "text": "Discrete Random Variables\n\n\n\n\n\n\n\nDiscrete Random Variable\n\n\nA random variable is discrete if it can only take on a finite or countably infinite number of values.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIntegers are countably infinite, hence counts are considered discrete.\nQualitative variables often take on a finite number of values.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#discrete-probability-distribution",
+    "href": "lecture4.html#discrete-probability-distribution",
+    "title": "Probability Distributions",
+    "section": "Discrete Probability Distribution",
+    "text": "Discrete Probability Distribution\nThe probability distribution of a discrete random variable is a table, graph, formula, or other device used to specify all possible values of a discrete random variable along with their respective probabilities.\n\n\n\n\n\n\nTip\n\n\nFormulas that describe discrete probability distributions are also known as the probability mass function (pmf). The function is often denoted as \\(P(X=x)\\), \\(p_X(x)\\), or simply \\(p(x)\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\nNotation is important here. \\(X\\) is the random variable, \\(x\\) is the outcome/realization. \\(X=x\\) is the event that the random variable is equal to the outcome \\(x\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-1",
+    "href": "lecture4.html#example-1",
+    "title": "Probability Distributions",
+    "section": "Example 1",
+    "text": "Example 1\nConsider a random variable \\(X\\) that represents the outcome of a fair six-sided die. Prior to rolling the die, \\(X\\) can take on any one of the six values: {1,2,3,4,5,6}. The discrete probability distribution can be expressed in the following forms:\n\nTableFormulaGraphNotes\n\n\n\n\n\nOutcome of \\(X\\)\np(x)\n\n\n\n\n1\n1/6\n\n\n2\n1/6\n\n\n3\n1/6\n\n\n4\n1/6\n\n\n5\n1/6\n\n\n6\n1/6\n\n\n\n\n\n\\[\np(x) = \\begin{cases}\n      1/6,~ if~x=1,2,...,6 \\\\\n      0, ~ otherwise\n   \\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nHere, \\(X\\) is the result of rolling the die, \\(x\\) is the outcome measured after rolling the die which can be any of the following numbers: {1,2,3,4,5,6}.\n\n\n\nThis PMF is also referred to as a uniform discrete distribution because the probability is uniformly distributed across the sample space.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-2.1",
+    "href": "lecture4.html#example-2.1",
+    "title": "Probability Distributions",
+    "section": "Example 2.1",
+    "text": "Example 2.1\nThe frequency table below shows the results of a survey in which participants residing in the Appalachian region of southern Ohio were asked how many food assistance programs they had used in the last 12 months.\n\nFrequency TableProbability DistributionGraph\n\n\n\n\n\nNumber of Programs\nFrequency\n\n\n\n\n1\n62\n\n\n2\n47\n\n\n3\n39\n\n\n4\n39\n\n\n5\n58\n\n\n6\n37\n\n\n7\n4\n\n\n8\n11\n\n\nTotal\n297\n\n\n\n\n\nWe can calculate the probability distribution by calculating the relative frequency of each outcome. This can be done by dividing the frequencies by the total (297).\n\ndf &lt;- data.frame(`Number of Programs`=factor(c(1:8), levels=c(1:8)),\nFrequency = c(62,47,39,39,58,37,4,11),\nRelative.Frequency = c(62,47,39,39,58,37,4,11)/297) \n\ndf\n\n  Number.of.Programs Frequency Relative.Frequency\n1                  1        62         0.20875421\n2                  2        47         0.15824916\n3                  3        39         0.13131313\n4                  4        39         0.13131313\n5                  5        58         0.19528620\n6                  6        37         0.12457912\n7                  7         4         0.01346801\n8                  8        11         0.03703704\n\n\n\n\n\nlibrary(ggplot2)\nggplot(df, aes(x=Number.of.Programs,y=Relative.Frequency)) + \n1  geom_col(fill=\"gray\",color=\"black\") +\n2  theme_bw() +\n3  labs(x=\"Number of Programs\",y=\"p(x)\")\n\n\n1\n\nFormatting the bar plot with a gray fill and black outline\n\n2\n\ntheme_bw using a black and white theme, which looks good aesthetically\n\n3\n\nAxes labels were changed.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-2.2",
+    "href": "lecture4.html#example-2.2",
+    "title": "Probability Distributions",
+    "section": "Example 2.2",
+    "text": "Example 2.2\nConsider the probability distribution in Example 2.1.\n\nWhat is the probability of randomly selecting a family who used four assistance programs?\n\n\\(p(4) = 0.1313\\)\n\nWhat is the probability of randomly selecting a family who used one or three assistance programs?\n\n\n\n\n\n\n\nImportant\n\n\nThese events are disjoint, hence P(one AP AND three AP 0) = 0. Using the addition rule,\n\\(P(one~ \\cup~ three) = P(one) + P(three) =\\) 0.34",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#pmf-properties",
+    "href": "lecture4.html#pmf-properties",
+    "title": "Probability Distributions",
+    "section": "PMF: Properties",
+    "text": "PMF: Properties\nThe discrete probability distribution should satisfy the following properties:\n\n\\(0 \\leq p(x) \\leq 1\\) for all \\(x\\).\n\\(\\sum_{all~x} p(x) = 1\\) (The sum of the probabilities of all disjoint outcomes in the sample space is \\(1\\).)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#cumulative-distributions",
+    "href": "lecture4.html#cumulative-distributions",
+    "title": "Probability Distributions",
+    "section": "Cumulative Distributions",
+    "text": "Cumulative Distributions\nIn addition to discrete probability distributions, discrete variables also have cumulative distribution functions (CDF)\n\n\n\n\n\n\nTip\n\n\nThe CDF for a discrete variable can be calculated by successively adding the probabilities of the outcome of interest and others before it.\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe CDF is often referred to as \\(F_X(x)\\) or \\(F(x)\\) to signify \\(P(X \\leq x)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-1-1",
+    "href": "lecture4.html#example-1-1",
+    "title": "Probability Distributions",
+    "section": "Example 1",
+    "text": "Example 1\nConsider the PMF of the fair six-sided die. The cumulative distribution can be calculated using the cumulative relative frequency.\n\n\n\nOutcome of \\(X\\)\np(x)\nF(x) = P(X\\(\\leq\\)x)\n\n\n\n\n1\n1/6\n1/6\n\n\n2\n1/6\n2/6\n\n\n3\n1/6\n3/6\n\n\n4\n1/6\n4/6\n\n\n5\n1/6\n5/6\n\n\n6\n1/6\n6/6",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-2",
+    "href": "lecture4.html#example-2",
+    "title": "Probability Distributions",
+    "section": "Example 2",
+    "text": "Example 2\nConsider the PMF for the food assistance example. We can calculate and visualize the cumulative relative frequency using R.\n\nTableGraph\n\n\nTo create a separate table as a function of existing tables, we use the mutate(data_frame,expr) function in the dplyr package available in tidyverse. The cumulative sum can also be calculated automatically using the cumsum(column_name) function\n\ndf &lt;- data.frame(`Number of Programs`=1:8,\nFrequency = c(62,47,39,39,58,37,4,11),\nRelative.Frequency = c(62,47,39,39,58,37,4,11)/297) \n\nmutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))\n\n  Number.of.Programs Frequency Relative.Frequency Cumulative.Relative.Frequency\n1                  1        62         0.20875421                     0.2087542\n2                  2        47         0.15824916                     0.3670034\n3                  3        39         0.13131313                     0.4983165\n4                  4        39         0.13131313                     0.6296296\n5                  5        58         0.19528620                     0.8249158\n6                  6        37         0.12457912                     0.9494949\n7                  7         4         0.01346801                     0.9629630\n8                  8        11         0.03703704                     1.0000000\n\n\n\n\nThe plot of the cumulative distribution function is called an ogive. The option stat_ecdf provides us with a way to create ogives based on frequency values.\n\nggplot(df, aes(x=Number.of.Programs, y=Frequency)) +\n1  stat_ecdf(geom=\"step\") + stat_ecdf(geom=\"point\",color=\"blue\",size=2) +\n  theme_bw() + \n2  scale_x_continuous(breaks=c(1:8))+\n  labs(x=\"Number of Programs\",y=\"F(x)\") \n\n\n1\n\n“step” creates the lines in the ogive, while “point” shows the points corresponding to the values of F(x). The vertical lines are uninterpretable; they only provide a visual cue for the jump from one value to another.\n\n2\n\nThe scale_x_continuous(breaks=c(1:8)) statement tells R to show all the points between 1 and 8 in the graph. This way, it is easier to interpret for other readers.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-2.1-1",
+    "href": "lecture4.html#example-2.1-1",
+    "title": "Probability Distributions",
+    "section": "Example 2.1",
+    "text": "Example 2.1\nConsider the food assistance example. What is the probability of randomly selecting a family that have used less than three assistance programs.\n\n\nCode\ndf &lt;- data.frame(`Number of Programs`=1:8,\nFrequency = c(62,47,39,39,58,37,4,11),\nRelative.Frequency = c(62,47,39,39,58,37,4,11)/297) \n\nmutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))\n\n\n  Number.of.Programs Frequency Relative.Frequency Cumulative.Relative.Frequency\n1                  1        62         0.20875421                     0.2087542\n2                  2        47         0.15824916                     0.3670034\n3                  3        39         0.13131313                     0.4983165\n4                  4        39         0.13131313                     0.6296296\n5                  5        58         0.19528620                     0.8249158\n6                  6        37         0.12457912                     0.9494949\n7                  7         4         0.01346801                     0.9629630\n8                  8        11         0.03703704                     1.0000000\n\n\n\n\n\n\n\n\nTip\n\n\nLess than three assistance programs can also mean “two or less programs” or “at most two programs”. Hence, we are interested in \\(F(2)\\)\n\\(F(2) = P(X \\leq 2) = P(X=1) + P(X=2)=\\) 0.367",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise",
+    "href": "lecture4.html#exercise",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the food assistance example.\n\nQuestionAnswer\n\n\nWhat is the probability that a randomly selected family utilized at least 4 programs?\n\n\nCode\ndf &lt;- data.frame(`Number of Programs`=1:8,\nFrequency = c(62,47,39,39,58,37,4,11),\nRelative.Frequency = c(62,47,39,39,58,37,4,11)/297) \n\nmutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))\n\n\n  Number.of.Programs Frequency Relative.Frequency Cumulative.Relative.Frequency\n1                  1        62         0.20875421                     0.2087542\n2                  2        47         0.15824916                     0.3670034\n3                  3        39         0.13131313                     0.4983165\n4                  4        39         0.13131313                     0.6296296\n5                  5        58         0.19528620                     0.8249158\n6                  6        37         0.12457912                     0.9494949\n7                  7         4         0.01346801                     0.9629630\n8                  8        11         0.03703704                     1.0000000\n\n\n\n\nThere are two ways to approach this question.\n\n\n\n\n\n\nTip\n\n\nApproach 1: Sum the relative frequencies from \\(X=4\\) to the maximum possible value (\\(X=8\\)).\n\\(p(4) + p(5) + p(6) + p(7) + p(8)\\) = 0.1313+0.1953+0.1246+0.0135+0.0370 = 0.50167\n\n\n\n\n\n\n\n\n\nTip\n\n\nApproach 2: Use the complement principle. To isolate the families who utilized at least 4 programs, we must remove those who utilized three programs or less. Then,\n\\(p(4) + p(5) + p(6) + p(7) + p(8)\\) = 1-F(3) = 1-0.4983 = 0.5017",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#expectation-values-of-discrete-probability-distributions",
+    "href": "lecture4.html#expectation-values-of-discrete-probability-distributions",
+    "title": "Probability Distributions",
+    "section": "Expectation Values of Discrete Probability Distributions",
+    "text": "Expectation Values of Discrete Probability Distributions\nThe expected value of a random variable can be thought of as the average of a very large number of observations of the random variable.\n\n\n\n\n\n\nTip\n\n\nThe expected value of \\(X\\), denoted by \\(E(X)\\), can be calculated by taking the sum of the products of each outcome {\\(x_1,x_2,...,\\)} and their corresponding probabilities {\\(p(x_1),p(x_2),...\\)}. In mathematical terms,\n\\[\nE(X)= \\sum_i x_i p(x_i)\n\\]\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\\(E(X)\\) is also the mean of the discrete probability distribution, \\(\\mu\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example",
+    "href": "lecture4.html#example",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nConsider a random variable \\(X\\) that represents the outcome of a fair six-sided die. Prior to rolling the die, \\(X\\) can take on any one of the six values: {1,2,3,4,5,6}. The probability distribution is shown below:\n\nProbability DistributionCalculation\n\n\n\n\n\nOutcome of \\(X\\)\np(x)\n\n\n\n\n1\n1/6\n\n\n2\n1/6\n\n\n3\n1/6\n\n\n4\n1/6\n\n\n5\n1/6\n\n\n6\n1/6\n\n\n\n\n\n\\(E(X)\\) can be calculated using the formula as shown below:\n\\[\nE(X) = 1(1/6)+2(1/6)+3(1/6)+4(1/6)+5(1/6)+6(1/6)\n\\]\nThe result leads to \\(E(X)=\\) 3.5",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise-1",
+    "href": "lecture4.html#exercise-1",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the food assistance example. What is the mean number of assistance programs used based on the PMF provided?\n\nPMFAnswer\n\n\n\n\n  Number.of.Programs Frequency Relative.Frequency\n1                  1        62         0.20875421\n2                  2        47         0.15824916\n3                  3        39         0.13131313\n4                  4        39         0.13131313\n5                  5        58         0.19528620\n6                  6        37         0.12457912\n7                  7         4         0.01346801\n8                  8        11         0.03703704\n\n\n\n\n\\(E(X) = \\sum_i x_i p(x_i)\\) translates to:\nE(X) = 1(0.2087)+2(0.1582) + 3(0.1313) + 4(0.1313) + 5(0.1953) + 6(0.1246) + 7(0.0135) + 8(0.037).\nThis results to \\(E(X)=\\) 3.559",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#expectation-value-of-functions",
+    "href": "lecture4.html#expectation-value-of-functions",
+    "title": "Probability Distributions",
+    "section": "Expectation Value of Functions",
+    "text": "Expectation Value of Functions\nExpectation values can also be calculated for functions.\n\n\n\n\n\n\nTip\n\n\nThe expected value of a function \\(g(X)\\), denoted by \\(E[g(X)]\\), can be calculated by taking the sum of the products of each function evaluated at the outcome {\\(g(x_1),g(x_2),...,\\)} and their corresponding probabilities {\\(p(x_1),p(x_2),...\\)}. In mathematical terms,\n\\[\nE[g(X)]= \\sum_i g(x_i) p(x_i)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#variance-and-standard-deviation",
+    "href": "lecture4.html#variance-and-standard-deviation",
+    "title": "Probability Distributions",
+    "section": "Variance and Standard Deviation",
+    "text": "Variance and Standard Deviation\nThe variance of the discrete probability distribution can be calculated using expectation values as well. The variance \\(\\sigma^2\\) can be expressed as \\(E[(X-\\mu)^2]\\).\n\\[\n\\sigma^2 = E[(X-\\mu)^2] = \\sum_i (x_i-\\mu)^2 p(x_i)\n\\]\nThe standard deviation can be calculated by taking taking the square root of the variance.\n\\[\n\\sigma = \\sqrt{\\sigma^2}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-3",
+    "href": "lecture4.html#example-3",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nWhat is the variance and standard deviation of the probability distribution for rolling a fair six-sided die?\n\nNotesAnswer\n\n\nIn calculating the variance, it would be easier to use R. First, we would need to create a data frame for the probability distribution:\n\ndf &lt;- data.frame(Outcome = 1:6,\n                 Prob = rep(1/6,6))\n\ndf\n\n  Outcome      Prob\n1       1 0.1666667\n2       2 0.1666667\n3       3 0.1666667\n4       4 0.1666667\n5       5 0.1666667\n6       6 0.1666667\n\n\n\n\n\nmu &lt;- sum(df$Outcome*df$Prob)\nmu\n\n[1] 3.5\n\nsigma_2 &lt;- sum((df$Outcome-mu)^2*df$Prob)\nsigma_2\n\n[1] 2.916667\n\n\nThe variance is 2.9166667",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#bernoulli-trials",
+    "href": "lecture4.html#bernoulli-trials",
+    "title": "Probability Distributions",
+    "section": "Bernoulli Trials",
+    "text": "Bernoulli Trials\nA random process, also referred to as a trial, can result in only one of two mutually exclusive outcomes is called a Bernoulli trial.\n\n\n\n\n\n\nNote\n\n\nExamples of Bernoulli trials include dichotomous random variables such as mortality (dead/alive), coin tosses (heads/tails), and infections (infected/not infected).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#bernoulli-process",
+    "href": "lecture4.html#bernoulli-process",
+    "title": "Probability Distributions",
+    "section": "Bernoulli Process",
+    "text": "Bernoulli Process\n\n\n\n\n\n\nImportant\n\n\nA sequence of Bernoulli trials forms a Bernoulli process. Bernoulli processes have the following characteristics:\n\nThe experiment consists of exactly \\(n\\) identical trials\nEach trial can have only one of two outcomes (success/failure)\nThe probability of success, \\(p\\) is constant for every trial. The probability of failure, \\(q\\), is equal to \\(1-p\\).\nThe trials are independent\nThe random variable of interest is the number of successes \\(X\\) out of the \\(n\\) trials.\n\n\n\n\n\n\n\n\n\n\n\nExample\n\n\nImagine flipping a coin \\(n\\) times. The random variable \\(X\\) can be the number of heads observed after \\(n\\) flips.\n\nSuccess: Flipping a head, Failure: Flipping a tail\nProbability of success, \\(p\\) is 0.50 for a fair coin.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#binomial-distribution-1",
+    "href": "lecture4.html#binomial-distribution-1",
+    "title": "Probability Distributions",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\nThe random variable \\(X\\) described in the Bernoulli process follows the Binomial distribution.\n\n\n\n\n\n\n\nBinomial Distribution\n\n\nThe probability mass function (PMF) of a binomial random variable \\(X\\) with parameters \\(n\\) and \\(p\\) is:\n\\[\np(x) = \\frac{n!}{x!(n-x)!} p^x (1-p)^{n-x}\n\\]\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIf a random variable \\(X\\) follows the binomial distribution with \\(n\\) trials and success probability \\(p\\), we can use the following notation: \\(X \\sim BIN(n,p)\\)\n\n\n\n\n\n\n\n\n\nNote\n\n\n\\(n!\\) is the factorial of a non-negative integer \\(n\\). The factorial is the product of all the positive integers less than or equal to n.\n\\[\nn! = n(n-1)(n-2)...(2)(1)\n\\]\nWith the special case \\(0!=1\\)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#dissecting-the-binomial-distribution-independent-events",
+    "href": "lecture4.html#dissecting-the-binomial-distribution-independent-events",
+    "title": "Probability Distributions",
+    "section": "Dissecting the Binomial Distribution: Independent Events",
+    "text": "Dissecting the Binomial Distribution: Independent Events\nSuppose we toss a coin three times, each toss independent of each other. Assuming the probability of getting heads is \\(p\\), the probability of flipping two heads out of three tosses can be calculated using the property of independent events.\n\\[\nP(2 heads) = pp(1-p)(1-p) = p^2 (1-p)^1 = p^2 (1-p)^{(3-2)}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#dissecting-the-binomial-distribution-counting-sample-points",
+    "href": "lecture4.html#dissecting-the-binomial-distribution-counting-sample-points",
+    "title": "Probability Distributions",
+    "section": "Dissecting the Binomial Distribution: Counting Sample Points",
+    "text": "Dissecting the Binomial Distribution: Counting Sample Points\nHowever, the probability measured using independent events does not account for the multiple configurations of flipping two heads out of three tosses.\n\nResultsNotes\n\n\n\n\n\n\n\n\nWarning\n\n\nFlipping two heads out of three tosses could lead to the following results: HTH, HHT, THH.\n\n\n\n\n\nNote that the order in flipping the two heads does not matter; what matters is counting the number of ways that the two heads can occur after three tosses. These results are disjoint with the same probability \\(p^2(1-p)\\). The probability that any of these results occur can be calculated using the addition rule:\n\\[\nP(2heads) = P(HTH)+P(HHT) + P(THH)= 3p^2(1-p)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#combination",
+    "href": "lecture4.html#combination",
+    "title": "Probability Distributions",
+    "section": "Combination",
+    "text": "Combination\nHow do we account for the number of sample points when we consider 100 tosses instead of 3?\n\n\n\n\n\n\n\nCombination\n\n\nThe unordered selection of \\(x\\) successes out of \\(n\\) trias is called a combination, also denoted by \\(C(n,x)\\).\n\\[\nC(n,x) = \\frac{n!}{x!(n-x)!}\n\\]\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nUsing combinations for the three toss example, \\(n=3\\), \\(x=2\\).\n\\[\nC(3,2) = \\frac{3!}{2!(3-2)!} = 3\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#binomial-distribution-in-r",
+    "href": "lecture4.html#binomial-distribution-in-r",
+    "title": "Probability Distributions",
+    "section": "Binomial Distribution in R",
+    "text": "Binomial Distribution in R\nR is handy for handling binomial random variables.\n\nCombinationPMFCDFRandom Binomial Numbers\n\n\nchoose(n,x) can calculate the number of combinations of \\(x\\) successes in \\(n\\) trials.\n\n\ndbinom(x,n,p) can calculate the PMF of the binomial distribution for an outcome of \\(x\\) successes out of \\(n\\) trials with success probability \\(p\\).\n\n\npbinom(x,n,p) can calculate the CDF of the binomial distribution for an outcome of \\(x\\) successes out of \\(n\\) trials with success probability \\(p\\).\n\n\nrbinom(k,n,p) generates k numbers for a binomial distribution with number of trials \\(n\\) and success probability \\(p\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#binomial-distribution-visualization",
+    "href": "lecture4.html#binomial-distribution-visualization",
+    "title": "Probability Distributions",
+    "section": "Binomial Distribution: Visualization",
+    "text": "Binomial Distribution: Visualization\n\nBIN(10,0.5)BIN(10,0.7)BIN(10,0.2)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-4",
+    "href": "lecture4.html#example-4",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nSuppose we toss a fair coin (\\(p\\)=0.5) three times, each toss independent of each other.\n\nQuestionsPMF (Math)PMF (R)\\(P(X\\leq 2)\\)Simulation\n\n\n\nWhat is the probability of flipping heads twice?\n\nCalculate manually using the equation for \\(p(x)\\).\nCalculate using R.\n\nWhat is the probability of flipping at most two heads? Calculate using R.\nSimulate this binomial process 10 times using rbinom()\n\n\n\n\\(p(x) = C(3,2)(0.5)^2(1-0.5) = 3(0.5)^2(1-0.5)=\\) 0.375\n\n\n\ndbinom(2,3,0.5)\n\n[1] 0.375\n\n\n\n\n\\(P(X\\leq 2)\\) corresponds to the value of the CDF at \\(x=2\\) (\\(F(2)\\)).\n\npbinom(2,3,0.5)\n\n[1] 0.875\n\ndbinom(0,3,0.5) + dbinom(1,3,0.5) + dbinom(2,3,0.5)\n\n[1] 0.875\n\n\nYou can also use the complementary principle. The complement of \\(X \\leq 2\\) is \\(X=3\\).\n\n1- dbinom(3,3,0.5)\n\n[1] 0.875\n\n\n\n\n\nNsim&lt;- 10 # Simulating 10 times\n1set.seed(12)\nsims &lt;- rbinom(Nsim,3,0.5)\nsims\n\n\n1\n\nSetting a seed enables us to draw the same numbers from the binomial distribution.\n\n\n\n\n [1] 0 2 3 1 1 0 1 2 0 0\n\n\nWe can create a bar plot for the simulations.\n\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram() + \n  theme_bw() + \n  labs(x=\"Number of Heads\", y=\"Count\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise-2",
+    "href": "lecture4.html#exercise-2",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nIn 2021, 8.9% of US adults were diagnosed with diabetes (Types I and II) CDC.\n\nQuestionsAnswerSimulation\n\n\nWhat is the probability that out of a sample of 250 adults in 2021,\n\nExactly 45 have diabetes\nBetween 30 and 60, inclusive, have diabetes\nSimulate the sampling process 100 times and create a histogram of the count of participants diagnosed with diabetes out of 250 adults.\n\n\n\n\nExactly 45 have diabetes\n\n\ndbinom(45,250,0.089)\n\n[1] 2.638007e-06\n\n\n\nBetween 30 and 60, inclusive, have diabetes: \\(30 \\leq x \\leq 60\\)\n\n\npbinom(60,250,0.089) - pbinom(29,250,0.089)\n\n[1] 0.05825713\n\n\n\n\n\nNsim&lt;- 100 # Simulating 10 times\nset.seed(12)\nsims &lt;- rbinom(Nsim,250,0.089)\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram(binwidth=1) + \n  theme_bw() + \n  labs(x=\"Number of Diagnosed Diabetics\", y=\"Count\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#expected-value-and-variance",
+    "href": "lecture4.html#expected-value-and-variance",
+    "title": "Probability Distributions",
+    "section": "Expected Value and Variance",
+    "text": "Expected Value and Variance\n\n\n\n\n\n\n\nExpected Value\n\n\nThe expected value/mean of the binomial distribution with \\(n\\) trials and success probability \\(p\\) is \\(E(X) = np\\).\n\n\n\n\n\n\n\n\n\n\n\nVariance\n\n\nThe variance of the binomial distribution with \\(n\\) trials and success probability \\(p\\) is \\(V(X) = np(1-p)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-5",
+    "href": "lecture4.html#example-5",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nIn the Philippines, the estimated percentage of individuals who received booster shots for COVID-19 is 19.7%.\n\nQuestionAnswer\n\n\nFor a sample of 2,500 Philippine residents, what is the expected value of Philippine residents who received a booster? What is the variance of the associated binomial distribution?\n\n\nExpected Value: \\(E(X) = 2500(0.197)=\\) 492.5\nVariance: \\(V(X) = 2500(0.197)(1-0.197)=\\) 395.4775",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise-3",
+    "href": "lecture4.html#exercise-3",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nIn 2021, 8.9% of US adults were diagnosed with diabetes (Types I and II) CDC.\n\nQuestionsAnswers\n\n\nFor a sample of 250 adults in 2021, what is the expected number of diagnosed diabetics? What is the variance of the distribution?\n\n\nExpected Value: \\(E(X) = 250(0.089)=\\) 22.25\nVariance: \\(V(X) = 250(0.089)(1-0.089)=\\) 20.26975",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#poisson-distribution",
+    "href": "lecture4.html#poisson-distribution",
+    "title": "Probability Distributions",
+    "section": "Poisson Distribution",
+    "text": "Poisson Distribution\nThe Poisson distribution is often used to model the count of events occurring in an interval of time or space. These events are assumed to have a very low probability of occurrence in a small interval.\n\n\n\n\n\n\nNote\n\n\nExamples include number of cars stopped at an intersection for an hour, radioactive particles that decay in a given period of time, and number of hospitalizations in a day.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#poisson-process",
+    "href": "lecture4.html#poisson-process",
+    "title": "Probability Distributions",
+    "section": "Poisson Process",
+    "text": "Poisson Process\nThe Poisson distribution results from a set of assumptions about an underlying process called the Poisson process.\n\n\n\n\n\n\nImportant\n\n\nThe Poisson process has the following characteristics\n\nThe occurrence of an event in an interval of space or time has no effect on the probability of a second occurrence of the event in the same or other interval.\nAn infinite number of occurrences of the event must be possible in the interval\nThe probability of a single occurrence of the event in a given interval is proportional to the length of the interval.\nIn any infinitesimally small portion of the interval, the probability of more than one occurrence of the event is negligible.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#poisson-distribution-1",
+    "href": "lecture4.html#poisson-distribution-1",
+    "title": "Probability Distributions",
+    "section": "Poisson Distribution",
+    "text": "Poisson Distribution\nThe PMF for the Poisson distribution is defined by the parameter \\(\\lambda\\).\n\\[\np(x) =\\frac{\\lambda^x e^{-\\lambda}}{x!}; x = 0,1,2,...\n\\]\n\n\n\n\n\n\nNote\n\n\n\\(e\\) is Euler’s number, \\(\\lambda\\) is the Poisson rate parameter describing the average number of events per unit interval.\\(\\lambda\\) must be positive.\nThe notation for a Poisson distribution with a Poisson rate parameter \\(\\lambda\\) is \\(X \\sim POIS(\\lambda)\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe Poisson distribution can approximate a binomial distribution with large \\(n\\) and small \\(p\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#poisson-distribution-r",
+    "href": "lecture4.html#poisson-distribution-r",
+    "title": "Probability Distributions",
+    "section": "Poisson Distribution: R",
+    "text": "Poisson Distribution: R\nR is also capable of calculating the PMF, CDF, and simulating data for a Poisson process.\n\nExponentialPMFCDFRandom\n\n\nThe exp(lambda) can calculate the \\(e^{-\\lambda}\\) term in the Poisson PMF.\n\n\ndpois(x,lambda) calculates the value of the PMF for \\(X=x\\), i.e. \\(P(X=x) = p(x)\\).\n\n\nppois(x,lambda) calculates the value of the CDF for \\(X=x\\), i.e. \\(P(X\\leq x) = F(x)\\).\n\n\nrpois(k,lambda) draws k values from a random variable \\(X \\sim POIS(\\lambda)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#poisson-distribution-visualization",
+    "href": "lecture4.html#poisson-distribution-visualization",
+    "title": "Probability Distributions",
+    "section": "Poisson Distribution: Visualization",
+    "text": "Poisson Distribution: Visualization\n\nPOIS(1)POIS(2.5)POIS(5)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-6",
+    "href": "lecture4.html#example-6",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nOn a weekday, the expected number of people in the waiting room of a small clinic is 14.\n\nQuestionsAnswersSimulations\n\n\n\nWhat is the probability that there will be exactly 20 people in the waiting room on a weekday?\nWhat is the probability that there will be at most 10 people in the waiting room on a weekday?\nSimulate 150 weekdays using rpois(). Create a histogram for the number of people in the waiting room from the 150 simulations.\n\n\n\n\nExactly 20 people\n\n\ndpois(20,14)\n\n[1] 0.02859653\n\n\n\nAt most 10 people\n\n\nppois(10,14)\n\n[1] 0.1756812\n\n\n\n\n\nNsim&lt;- 150 # Simulating 10 times\nset.seed(12345)\nsims &lt;- rpois(Nsim,14)\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram(binwidth=1) + \n  theme_bw() + \n  labs(x=\"Number of People in the Waiting Room\", y=\"Count\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise-4",
+    "href": "lecture4.html#exercise-4",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nThe hourly number of pedestrians waiting by a bus stop is estimated to be 7.\n\nQuestionsAnswersSimulations/Random Draws\n\n\n\nWhat is the probability of observing exactly 7 pedestrians at the bus stop?\nwhat is the probability of observing at least 10 pedestrians at the bus stop?\nDraw 1000 values from the associated Poisson distribution using rpois. Create a histogram for the randomly drawn values.\n\n\n\n\nExactly 7 pedestrians\n\n\ndpois(7,7)\n\n[1] 0.1490028\n\n\n\nAt least 10 pedestrians: Complement of at most 9 pedestrians! Hence, the probability is equal to \\(1-P(X \\leq 9) = 1-F(9)\\)\n\n\n1-ppois(9,7)\n\n[1] 0.1695041\n\n\n\n\n\nNsim&lt;- 1000 # Simulating 10 times\nset.seed(12)\nsims &lt;- rpois(Nsim,14)\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram(bins=50) + \n  theme_bw() + \n  labs(x=\"Number of Diagnosed Diabetics\", y=\"Count\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#expected-value-and-variance-1",
+    "href": "lecture4.html#expected-value-and-variance-1",
+    "title": "Probability Distributions",
+    "section": "Expected Value and Variance",
+    "text": "Expected Value and Variance\nThe expected value and variance of the Poisson distribution are equal and is given by the rate parameter \\(\\lambda\\), i.e. \\(E(X) = \\lambda, V(X) = \\lambda\\).\n\n\n\n\n\n\nImportant\n\n\nIf we are interested in the expected value for \\(t\\) units of time, then the expected value is given by \\(E(X) = \\lambda t\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe equality between expected value and variance can be restrictive because data variability cannot be controlled such that this equality can hold.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-7",
+    "href": "lecture4.html#example-7",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nThe hourly number of pedestrians waiting by a bus stop is estimated to be 7.\n\nQuestionsAnswers\n\n\n\nWhat is the expected value of the number of pedestrians waiting by the bus stop after one hour?\nWhat is the variance of the associated Poisson distribution?\nWhat is the expected value of the number of pedestrians waiting by the bus stop after 30 minutes?\n\n\n\n\nAfter one hour, \\(E(X) = \\lambda t = (7)(1)=\\) 7\nVariance: \\(V(X) = \\lambda =\\) 7\nAfter 30 minutes, \\(E(X) = \\lambda t = (7)(0.5)=\\) 3.5",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#other-discrete-distributions",
+    "href": "lecture4.html#other-discrete-distributions",
+    "title": "Probability Distributions",
+    "section": "Other Discrete Distributions",
+    "text": "Other Discrete Distributions\n\n\n\n\n\n\n\nHypergeometric Distribution\n\n\nConsider a population size \\(N\\) and a sample size \\(n\\). Each element in the population can be categorized into a “success” or failure. If there are \\(r\\) successes in the population, the probability that \\(x\\) successes will be drawn in a sample of size \\(n\\) is given by the hypergeometric distribution.\nThis distribution is used in exact tests such as the Fisher’s Exact Test.\n\n\n\n\n\n\n\n\n\n\n\nNegative Binomial Distribution\n\n\nThe negative binomial distribution is used to model counts for overdispersed data and other biological processes. Overdispersion occurs when the data set exhibits more variability than what a statistical model expects. Recall that the Poisson distribution is restricted by the property that the mean is equal to the variance.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#continuous-random-variables",
+    "href": "lecture4.html#continuous-random-variables",
+    "title": "Probability Distributions",
+    "section": "Continuous Random Variables",
+    "text": "Continuous Random Variables\n\n\n\n\n\n\n\nContinuous Random Variable\n\n\nA random variable is continuous if it can only take on values in one or more intervals of the real line.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nTime, distance, weight, and volume are examples of continuous variables.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#continuous-probability-distributions",
+    "href": "lecture4.html#continuous-probability-distributions",
+    "title": "Probability Distributions",
+    "section": "Continuous Probability Distributions",
+    "text": "Continuous Probability Distributions\n\n\n\n\n\n\nNote\n\n\nRecall that probabilities from discrete random variables are found by summing PMF values.\n\n\n\nFor continuous random variables, summing becomes integration.\n\n\n\n\n\n\nTip\n\n\nImagine creating a histogram with an infinite amount of narrow bins. Adding these values eventually lead to a sum of the areas under the curve.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#probability-density-functions",
+    "href": "lecture4.html#probability-density-functions",
+    "title": "Probability Distributions",
+    "section": "Probability Density Functions",
+    "text": "Probability Density Functions\nThe continuous probability distribution can be expressed as a probability density function (PDF), denoted by \\(f_X(x)\\) or \\(f(x)\\).\n\n\n\n\n\n\nWarning\n\n\nThere are important differences between probability density functions and probability mass functions (discrete). For example, for continuous variables,\n\\(P(X=x) = 0 \\neq f(x)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#cumulative-distribution-functions",
+    "href": "lecture4.html#cumulative-distribution-functions",
+    "title": "Probability Distributions",
+    "section": "Cumulative Distribution Functions",
+    "text": "Cumulative Distribution Functions\nRecall that the cumulative distribution function (CDF) is given by \\(F_X(x) = P(X \\leq x)\\). The CDF is mathematically defined as:\n\\[\nF_X(x) = \\int_{-\\infty}^x f(x)dx\n\\]\n\n\n\n\n\n\nTip\n\n\nSince \\(P(X=x) = 0\\), it also follows that\n\\[\nP(a \\leq x \\leq b) = P(a &lt; x \\leq b) = P(a \\leq x &lt; b) =  P(a &lt; x &lt; b)\n\\]\nand that\n\\[\nF_X(x) = P(X \\leq x) = P(X&lt;x)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#probabilities-for-continuous-random-variables",
+    "href": "lecture4.html#probabilities-for-continuous-random-variables",
+    "title": "Probability Distributions",
+    "section": "Probabilities for Continuous Random Variables",
+    "text": "Probabilities for Continuous Random Variables\nInstead of \\(P(X=x)\\), we are more interested in the probability that a continuous random variable assumes a value between \\(a\\) and \\(b\\), denoted by \\(P(a &lt; X &lt; b)\\), which can be calculated as:\n\\[\nP(a &lt; X &lt; b) = \\int_a^b f(x)dx = F(b)-F(a)\n\\]\n\n\n\n\n\n\nNote\n\n\nProbability density functions have the following properties\n\n\\(f(x) \\geq 0\\) for \\(-\\infty &lt; x &lt; \\infty\\).\n\\(\\int_{-\\infty}^{\\infty} f(x)dx = 1\\) or \\(F(\\infty)=1\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#uniform-distribution-pdf",
+    "href": "lecture4.html#uniform-distribution-pdf",
+    "title": "Probability Distributions",
+    "section": "Uniform Distribution: PDF",
+    "text": "Uniform Distribution: PDF\nThe uniform distribution has a constant PDF such that\n\\[\nf(x) = \\begin{cases}\n      \\frac{1}{\\theta_2-\\theta_1},~ \\theta_1 \\leq x \\leq \\theta_2; \\theta_2&gt;\\theta_1 \\\\\n      0, ~ otherwise\n   \\end{cases}\n\\]\nA random variable \\(X\\) that has a uniform distribution on the interval \\([\\theta_1,\\theta_2]\\) is denoted as \\(X\\sim UNIF(\\theta_1,\\theta_2)\\).\n\n\n\n\n\n\nNote\n\n\nA uniform distribution is defined by two parameters: \\(\\theta_1\\) and \\(\\theta_2\\). A standard uniform distribution is a special case such that \\(\\theta_1\\)=0, \\(\\theta_2\\)=1.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#uniform-distribution-visualization",
+    "href": "lecture4.html#uniform-distribution-visualization",
+    "title": "Probability Distributions",
+    "section": "Uniform Distribution: Visualization",
+    "text": "Uniform Distribution: Visualization",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#uniform-distribution-probabilities",
+    "href": "lecture4.html#uniform-distribution-probabilities",
+    "title": "Probability Distributions",
+    "section": "Uniform Distribution: Probabilities",
+    "text": "Uniform Distribution: Probabilities\n\n\n\n\n\n\nImportant\n\n\nLucky for you, there’s no expectations of any calculus in class.\n\n\n\nThe probability \\(P(a&lt;X&lt;b)\\) if \\(X\\sim UNIF(\\theta_1,\\theta_2)\\) can be calculated using the following equation:\n\\[\nP(a &lt; X &lt; b) = \\frac{b-a}{\\theta_2-\\theta_1}\n\\]\nwhere \\(a,b\\) are assumed to be between \\(\\theta_1 &lt; a \\leq b &lt; \\theta_2\\).\n\n\n\n\n\n\nImportant\n\n\nThis result can also be demonstrated using geometry!",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#uniform-distribution-probabilities-in-r",
+    "href": "lecture4.html#uniform-distribution-probabilities-in-r",
+    "title": "Probability Distributions",
+    "section": "Uniform Distribution: Probabilities in R",
+    "text": "Uniform Distribution: Probabilities in R\nIn R, punif(x,min,max) can calculate the probability \\(P(X \\leq x) = P(\\theta_1&lt;X &lt; x)\\). Hence, if we want to calculate \\(P(a &lt; X &lt; b)\\) when \\(X\\sim UNIF(\\theta_1,\\theta_2)\\),\nP(a &lt; X &lt; b) = punif(b,theta_1,theta_2)-punif(a,theta_1,theta_2)\n\n\n\n\n\n\nImportant\n\n\nYou can also draw random numbers from a uniform distribution \\(UNIF(\\theta_1,\\theta_2)\\) using runif(#sims,theta_1,theta_2)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-8",
+    "href": "lecture4.html#example-8",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nSuppose \\(X \\sim UNIF(0,5)\\). What is the probability that an outcome \\(x\\) is between 0.25 and 4?\n\nMathR\n\n\na = 0.25, b=4, \\(\\theta_1 = 0, \\theta_2=5\\).\n\\[\nP(a &lt; X &lt; b) = \\frac{b-a}{\\theta_2-\\theta_1} = \\frac{4-0.25}{5-0}\n\\]\nHence, P(a &lt; X &lt; b) = 0.75\n\n\n\npunif(4,0,5) - punif(0.25,0,5)\n\n[1] 0.75",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise-5",
+    "href": "lecture4.html#exercise-5",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nSuppose \\(X \\sim UNIF(0,100)\\).\n\nQuestionAnswer\n\n\nWhat is the probability that an outcome \\(x\\) is between 55 and 85?\n\n\n\\[\n\\frac{85-55}{100-0}=0.30\n\\]\n\npunif(85,0,100) - punif(55,0,100)\n\n[1] 0.3",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#uniform-distribution-expected-value-and-variance",
+    "href": "lecture4.html#uniform-distribution-expected-value-and-variance",
+    "title": "Probability Distributions",
+    "section": "Uniform Distribution: Expected Value and Variance",
+    "text": "Uniform Distribution: Expected Value and Variance\nFor the uniform distribution, the mean is given by \\(E(X) = \\frac{\\theta_1+\\theta_2}{2}\\). The variance is given by \\(E(X) = \\frac{(\\theta_2+\\theta_1)^2}{12}\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#gaussian-distribution",
+    "href": "lecture4.html#gaussian-distribution",
+    "title": "Probability Distributions",
+    "section": "Gaussian Distribution",
+    "text": "Gaussian Distribution\nThe Gaussian distribution, also known as the normal distribution, is an important distribution in statistics.\n\n\n\n\n\n\nNote\n\n\nMany natural physical and human-related phenomena closely follow a normal distribution.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#gaussian-distribution-pdf",
+    "href": "lecture4.html#gaussian-distribution-pdf",
+    "title": "Probability Distributions",
+    "section": "Gaussian Distribution: PDF",
+    "text": "Gaussian Distribution: PDF\nThe probability density function of the Gaussian distribution can be expressed as:\n\\[\nf(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}; -\\infty &lt; x &lt; \\infty\n\\]\n\n\n\n\n\n\nNote\n\n\nA uniform distribution is defined by two parameters: the mean \\(\\mu\\) and \\(\\sigma^2\\). A random variable \\(X\\) that has a Gaussian distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\) is denoted as \\(X\\sim N(\\mu,\\sigma^2)\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\nA standard normal distribution is a special case such that \\(\\mu\\)=0, \\(\\sigma^2\\)=1. Variables that follow a standard normal distribution are often denoted as \\(Z\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#gaussian-distribution-characteristics",
+    "href": "lecture4.html#gaussian-distribution-characteristics",
+    "title": "Probability Distributions",
+    "section": "Gaussian Distribution: Characteristics",
+    "text": "Gaussian Distribution: Characteristics\nThe Gaussian distribution has the following characteristics:\n\nThe distribution is symmetric about the mean \\(\\mu\\).\nThe mean, median, and mode are all equal.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#gaussian-distribution-visualization",
+    "href": "lecture4.html#gaussian-distribution-visualization",
+    "title": "Probability Distributions",
+    "section": "Gaussian Distribution: Visualization",
+    "text": "Gaussian Distribution: Visualization\n\nSame Means, Changing VarianceSame Variance, Changing Means",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#gaussian-distribution-r",
+    "href": "lecture4.html#gaussian-distribution-r",
+    "title": "Probability Distributions",
+    "section": "Gaussian Distribution: R",
+    "text": "Gaussian Distribution: R\n\n\n\n\n\n\nImportant\n\n\nCalculating probabilities mathematically would be impossible without calculus. However, R makes life easy for us.\n\n\n\n\nPDFCDFSimulating/Generating Random VariablesCDF to X/Z\n\n\nYou can calculate the PDF value for a normal distribution, f(x), using dnorm(x,mean,sd). Note that the function uses standard deviation, not variance.\n\n\nYou can calculate the CDF value for a normal distribution, F(x), using pnorm(x,mean,sd). Note that the function uses standard deviation, not variance.\n\n\nYou can simulate/generate random Gaussian variables using rnorm(#sims,mean,sd). Note that the function uses standard deviation, not variance.\n\n\nIf we know the value of \\(F(x)\\), we can determine what \\(x\\) is using qnorm(F(x),mean, sd). If the mean and standard deviation/variance is unknown, we can get the corresponding value of the standard normal distribution \\(Z\\) by specifying mean=0 and sd=1.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-9",
+    "href": "lecture4.html#example-9",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nFor a random variable \\(Z~N(0,1)\\) following the standard normal distribution\n\nQuestionAnswer\n\n\nCalculate the following probabilities using R\n\n\\(P(Z \\leq 1)\\)\n\\(P(Z \\geq 2.5)\\)\n\\(P(-2 &lt; Z &lt; 2)\\)\n\n\n\n\n\\(P(Z \\leq 1) = F(1)\\)\n\n\npnorm(1,0,1)\n\n[1] 0.8413447\n\n\n\n\\(P(Z\\geq 2.5) = 1- P(Z&lt;2.5) = 1-F(2.5)\\)\n\n\n1-pnorm(2.5,0,1)\n\n[1] 0.006209665\n\npnorm(2.5,0,1,lower.tail=FALSE)\n\n[1] 0.006209665\n\n\n\n\\(P(-2 &lt; Z &lt; 2) = F(2)-F(-2)\\)\n\n\npnorm(2,0,1) - pnorm(-2,0,1)\n\n[1] 0.9544997",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise-6",
+    "href": "lecture4.html#exercise-6",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nConsider \\(X \\sim N(3,9)\\).\n\nQuestionAnswer\n\n\n\n\\(P(X \\leq 6)\\)\n\\(P(X \\geq 3)\\)\n\\(P(-3 &lt; X &lt; 9)\\)\n\n\n\nNote that \\(\\sigma^2=9\\), so sd=3.\n\n\\(P(X \\leq 6)\\)\n\n\npnorm(6,3,3)\n\n[1] 0.8413447\n\n\n\n\\(P(X \\geq 10.5)\\)\n\n\n1- pnorm(10.5,3,3)\n\n[1] 0.006209665\n\npnorm(10.5,3,3,lower.tail=F)\n\n[1] 0.006209665\n\n\n\n\\(P(-3 &lt; X &lt; 9)\\)\n\n\npnorm(9,3,3) - pnorm(-3,3,3)\n\n[1] 0.9544997\n\n\n\n\n\n\n\n\nImportant\n\n\nNote that the answers are the same!",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#other-continuous-distributions",
+    "href": "lecture4.html#other-continuous-distributions",
+    "title": "Probability Distributions",
+    "section": "Other Continuous Distributions",
+    "text": "Other Continuous Distributions\n\n\n\n\n\n\n\nWeibull Distribution\n\n\nThe Weibull distribution is used to model random variables that are constrained to be positive, such as lifetimes, impurities, etc. This is common for epidemic modeling and survival analysis.\n\n\n\n\n\n\n\n\n\n\n\nStatistical tests\n\n\nContinuous distributions that you will learn about in future chapters are the \\(t\\) distribution, \\(F\\) distribution, and the \\(\\chi^2\\) (chi-squared) distribution.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#standardization",
+    "href": "lecture4.html#standardization",
+    "title": "Probability Distributions",
+    "section": "Standardization",
+    "text": "Standardization\nA common transformation employed with Gaussian distributed variables is standardization. Standardization involves rescaling the variable based on the mean, \\(\\mu\\), and variance \\(\\sigma^2\\), of the distribution. An observation \\(X\\) can be standardized into a standardized variable \\(Z\\) using the following equation:\n\\[\nZ = \\frac{X-\\mu}{\\sigma}\n\\]\n\n\n\n\n\n\nImportant\n\n\nIf \\(X \\sim(\\mu,\\sigma^2)\\), then \\(Z\\sim N(0,1)\\). The CDF of the normal distribution is referred to by \\(\\Phi(z) = P(Z \\leq z)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#standard-normal-distribution-implications",
+    "href": "lecture4.html#standard-normal-distribution-implications",
+    "title": "Probability Distributions",
+    "section": "Standard Normal Distribution: Implications",
+    "text": "Standard Normal Distribution: Implications\n\n\n\n\n\n\nNote\n\n\nThe random variable \\(Z\\) calculates how many standard deviations away the observation is from the mean. The transformation also implies that\n\\[\nP(a &lt; X &lt; b) = P \\left(\\frac{a-\\mu}{\\sigma} &lt; Z &lt; \\frac{b-\\mu}{\\sigma}\\right)\n\\]\nand\n\\[\nF(x) = \\Phi \\left(z=\\frac{x-\\mu}{\\sigma}\\right)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-10",
+    "href": "lecture4.html#example-10",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nThe results of a biostatistics aptitude test was found to be normally distributed with a mean score of 78.5 and variance of 120.\n\nWhat is the probability that somebody scores above 92 points?\nGenerate 1000 draws from the corresponding normal distribution using rnorm() and create a histogram from the generated values.\n\n\nNo standardizationStandardizationSimulation/Generation\n\n\n\npnorm(92,78.5,sqrt(120),lower.tail=F)\n\n[1] 0.1089044\n\n\n\n\n\\(Z = \\frac{X-\\mu}{\\sigma}\\) = 1.2323758\n\npnorm((92-78.5)/sqrt(120),0,1,lower.tail=F)\n\n[1] 0.1089044\n\n\n\n\n\nset.seed(12345)\ndf &lt;- data.frame(x=rnorm(1000,mean=78.5,sd=sqrt(120)))\n\nggplot(df,aes(x=x)) + \n  geom_histogram(binwidth=1) +\n  theme_bw() + \n  labs(x=\"Generated Scores\",\n       y=\"Count\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise-7",
+    "href": "lecture4.html#exercise-7",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nThe waiting time for physician appointments in a hospital was normally distributed with mean equal to 23.5 minutes and standard deviation of 6.7 minutes. What is the probability that a patient will wait less than five minutes for an appointment?\n\nQuestionAnswer\n\n\n\nUse standardization to calculate the standardized variable \\(z\\) such that \\(P(X&lt;5) = P(Z &lt; z)\\).\nCalculate the probability using the standardization method.\n\n\n\n\\(z = \\frac{5-23.5}{6.7}\\) = -2.761194\n\npnorm((5-23.5)/6.7,0,1)\n\n[1] 0.002879523",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#implications",
+    "href": "lecture4.html#implications",
+    "title": "Probability Distributions",
+    "section": "Implications",
+    "text": "Implications\nFor every random variable \\(X \\sim N(\\mu,\\sigma^2)\\), the probability of an outcome to be within one standard deviation of the mean can be written as:\n\\[\nP((\\mu-\\sigma) &lt; X &lt; (\\mu+\\sigma)) = P(-1 &lt; Z &lt;1)\n\\]\n\npnorm(1,0,1) - pnorm(-1,0,1)\n\n[1] 0.6826895\n\n\n\n\n\n\n\n\nNote\n\n\nWe expect 68.3% of the measurements of the random variable \\(X\\) is within one standard deviation of the mean (\\(\\pm 1\\sigma\\))",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#implications-1",
+    "href": "lecture4.html#implications-1",
+    "title": "Probability Distributions",
+    "section": "Implications",
+    "text": "Implications\nSimilarly, we can calculate the probability within \\(\\pm 2\\sigma\\) and \\(\\pm 3\\sigma\\). Around 95.4% of the outcomes are \\(\\pm 2\\sigma\\), while 99.7% of the outcomes are \\(\\pm 3\\sigma\\). This is why it is sometimes assumed that normally distributed data should be found within three standard deviations from the mean.\n\n\\(\\pm 2 \\sigma\\)\\(\\pm 3 \\sigma\\)\n\n\n\npnorm(2,0,1) - pnorm(-2,0,1)\n\n[1] 0.9544997\n\n\n\n\n\npnorm(3,0,1) - pnorm(-3,0,1)\n\n[1] 0.9973002",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#calculating-z-from-phiz",
+    "href": "lecture4.html#calculating-z-from-phiz",
+    "title": "Probability Distributions",
+    "section": "Calculating \\(z\\) from \\(\\Phi(z)\\)",
+    "text": "Calculating \\(z\\) from \\(\\Phi(z)\\)\nThe function qnorm(prob) provides the value for \\(z\\) such that the CDF \\(\\Phi(z) = P(Z \\leq z) = prob\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-11",
+    "href": "lecture4.html#example-11",
+    "title": "Probability Distributions",
+    "section": "Example",
+    "text": "Example\nFind \\(z\\) such that \\(\\Phi(z) = 0.93\\).\n\nqnorm(0.93)\n\n[1] 1.475791",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#example-2-1",
+    "href": "lecture4.html#example-2-1",
+    "title": "Probability Distributions",
+    "section": "Example 2",
+    "text": "Example 2\nConsider a random distribution with mean 5 and standard deviation 2.7. What is the 90th percentile of the distribution?\n\nThe 90th percentile, \\(p_{90}\\), can be expressed as \\(P(X \\leq p_{90}) = 0.90\\). \\(p_{90}\\) can be calculated using qnorm.\n\n\nqnorm(0.90,mean=5,sd=2.7)\n\n[1] 8.460189",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#exercise-8",
+    "href": "lecture4.html#exercise-8",
+    "title": "Probability Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nSuppose the total cholesterol values for a certain population are approximately normally distributed with a mean of 205.7 mg/100ml with a standard deviation of 23.5 mg/100ml.\n\nQuestionsAnswer\n\n\n\nWhat is the probability that an individual picked at random will have\n\nAbove 200 mg/100ml?\nBetween 150 and 200 mg/100ml?\n\nWhat is the cholesterol level such that only 5% of the population have cholesterol levels above this amount?\n\n\n\n\nAbove 200 mg/100ml\n\n\npnorm(200,mean=205.7,sd=23.5)\n\n[1] 0.4041758\n\n\n\nBetween 150 and 200 mg/100ml\n\n\npnorm(200,mean=205.7,sd=23.5) - pnorm(150,mean=205.7,sd=23.5)\n\n[1] 0.3952868\n\n\n\nOnly 5% of the population have cholesterol levels above this amount: \\(p_{95}\\)\n\n\nqnorm(0.95,mean=205.7,sd=23.5)\n\n[1] 244.3541",
+    "crumbs": [
+      "Lectures",
+      "Lecture 4- Probability Distributions"
     ]
   },
   {
@@ -1061,7 +1831,7 @@
     "href": "lecture3.html#objective-probability",
     "title": "Introduction to Probability",
     "section": "Objective Probability",
-    "text": "Objective Probability\nProbability was thought of by statisticians and mathematicians only as an objective phenomenon derived from objective processes.\n\n\n\n\n\n\nNote\n\n\n\nThere are two categories of objective probability:\n\nclassical/a priori probability\nfrequentist/a posteriori probability",
+    "text": "Objective Probability\nProbability was thought of by statisticians and mathematicians only as an objective phenomenon derived from objective processes.\n\n\n\n\n\n\nNote\n\n\nThere are two categories of objective probability:\n\nclassical/a priori probability\nfrequentist/a posteriori probability",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1072,7 +1842,7 @@
     "href": "lecture3.html#classical-probability",
     "title": "Introduction to Probability",
     "section": "Classical Probability",
-    "text": "Classical Probability\nProbabilities for random events related to games of chance can be calculated by the processes of abstract reasoning. Therefore, it is not necessary for these events to happen to compute these probabilities.\n\n\n\n\n\n\nClassical/A Priori Probability\n\n\n\nProbability is defined as follows: If an event can occur in \\(N\\) mutually exclusive and equally likely ways, and if \\(m\\) of these possess a trait \\(E\\), the probability of the occurrence of \\(E\\) is equal to \\(m/N\\).\n\\[\nP(E)= m/N\n\\]\n\n\n\n\n\n\n\n\nNote\n\n\n\nAs an example, the probability of getting a three after tossing a fair six-sided die can be calculated by assuming that each of the six sides is equally likely to be observed.\nThe number of outcomes that include a three is 1 out of a total of 6 mutually exclusive outcomes.\nHence, the probability is 1/6.",
+    "text": "Classical Probability\nProbabilities for random events related to games of chance can be calculated by the processes of abstract reasoning. Therefore, it is not necessary for these events to happen to compute these probabilities.\n\n\n\n\n\n\n\nClassical/A Priori Probability\n\n\nProbability is defined as follows: If an event can occur in \\(N\\) mutually exclusive and equally likely ways, and if \\(m\\) of these possess a trait \\(E\\), the probability of the occurrence of \\(E\\) is equal to \\(m/N\\).\n\\[\nP(E)= m/N\n\\]\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nAs an example, the probability of getting a three after tossing a fair six-sided die can be calculated by assuming that each of the six sides is equally likely to be observed.\nThe number of outcomes that include a three is 1 out of a total of 6 mutually exclusive outcomes.\nHence, the probability is 1/6.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1083,7 +1853,7 @@
     "href": "lecture3.html#frequentist-probability",
     "title": "Introduction to Probability",
     "section": "Frequentist Probability",
-    "text": "Frequentist Probability\nThe frequentist approach to probability depends on the repeatability of some process and the ability to count the number of repetitions, as well as the number of times that some event of interest occurs. The probability describes the long-run relative frequency of occurrences from the process.\n\n\n\n\n\n\nFrequentist/A Posteriori Probability\n\n\n\nProbability is defined as follows: If some process is repeated a large number of times, \\(n\\), and if some resulting event with the characteristic \\(E\\) occurs \\(m\\) times, the relative frequency of occurrence of \\(E\\), \\(m/n\\), will be approximately equal to the probability of \\(E\\).\n\\[\nP(E) = m/n\n\\]\n\n\n\n\n\n\n\n\nImportant\n\n\n\nNote that \\(m/n\\) is only an estimate of the probability, and that \\(n\\) should be large to have a better estimate of \\(P(E)\\).\nExample: Monty-Hall Problem",
+    "text": "Frequentist Probability\nThe frequentist approach to probability depends on the repeatability of some process and the ability to count the number of repetitions, as well as the number of times that some event of interest occurs. The probability describes the long-run relative frequency of occurrences from the process.\n\n\n\n\n\n\n\nFrequentist/A Posteriori Probability\n\n\nProbability is defined as follows: If some process is repeated a large number of times, \\(n\\), and if some resulting event with the characteristic \\(E\\) occurs \\(m\\) times, the relative frequency of occurrence of \\(E\\), \\(m/n\\), will be approximately equal to the probability of \\(E\\).\n\\[\nP(E) = m/n\n\\]\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nNote that \\(m/n\\) is only an estimate of the probability, and that \\(n\\) should be large to have a better estimate of \\(P(E)\\).\nExample: Monty-Hall Problem",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1094,7 +1864,7 @@
     "href": "lecture3.html#subjective-probability",
     "title": "Introduction to Probability",
     "section": "Subjective Probability",
-    "text": "Subjective Probability\nThis view holds that probability measures the confidence that a particular individual has in the truth of a particular proposition.\n\n\n\n\n\n\nNote\n\n\n\nThe most famous example of subjective probability is Bayesian, which is a mathematically formal method to combine experimental data and expert information in producing probabilities.",
+    "text": "Subjective Probability\nThis view holds that probability measures the confidence that a particular individual has in the truth of a particular proposition.\n\n\n\n\n\n\nNote\n\n\nThe most famous example of subjective probability is Bayesian, which is a mathematically formal method to combine experimental data and expert information in producing probabilities.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1105,7 +1875,7 @@
     "href": "lecture3.html#helpful-definitions",
     "title": "Introduction to Probability",
     "section": "Helpful Definitions",
-    "text": "Helpful Definitions\n\n\n\n\n\n\nSample Space\n\n\n\nA sample space is a list of all possible outcomes that might be observed.\n\n\n\n\n\n\n\n\nEvent\n\n\n\nAn event is any collection of outcomes in the sample space.\n\n\n\n\n\n\n\n\nMutually Exclusive\n\n\n\nIf two events \\(E_i\\) and \\(E_j\\) contain no elements in common, these two events are said to be disjoint or mutually exclusive.",
+    "text": "Helpful Definitions\n\n\n\n\n\n\n\nSample Space\n\n\nA sample space is a list of all possible outcomes that might be observed.\n\n\n\n\n\n\n\n\n\n\n\nEvent\n\n\nAn event is any collection of outcomes in the sample space.\n\n\n\n\n\n\n\n\n\n\n\nMutually Exclusive\n\n\nIf two events \\(E_i\\) and \\(E_j\\) contain no elements in common, these two events are said to be disjoint or mutually exclusive.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1127,7 +1897,7 @@
     "href": "lecture3.html#calculating-marginal-probabilities",
     "title": "Introduction to Probability",
     "section": "Calculating Marginal Probabilities",
-    "text": "Calculating Marginal Probabilities\nWe can calculate the probability of occurrence for events using the sample point method.\n\n\n\n\n\n\nSample Point Method\n\n\n\nUnder the assumption that every outcome in the sample space is equally likely to occur, the probability that some event \\(E_i\\) occurs is defined as the number of outcomes corresponding to \\(E_i\\) divided by the total number of outcomes in the sample space.\nIn frequency distributions, this corresponds to the relative frequency of a specific outcome.\n\n\n\n\n\n\n\n\nImportant\n\n\n\nProbabilities computed using this method are often referred to as marginal probability. Marginal probabilities are unconditional and are specific to an event.",
+    "text": "Calculating Marginal Probabilities\nWe can calculate the probability of occurrence for events using the sample point method.\n\n\n\n\n\n\n\nSample Point Method\n\n\nUnder the assumption that every outcome in the sample space is equally likely to occur, the probability that some event \\(E_i\\) occurs is defined as the number of outcomes corresponding to \\(E_i\\) divided by the total number of outcomes in the sample space.\nIn frequency distributions, this corresponds to the relative frequency of a specific outcome.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nProbabilities computed using this method are often referred to as marginal probability. Marginal probabilities are unconditional and are specific to an event.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1171,7 +1941,7 @@
     "href": "lecture3.html#union-of-events",
     "title": "Introduction to Probability",
     "section": "Union of Events",
-    "text": "Union of Events\nUnion means “together”: the union of events \\(A\\) and \\(B\\) consists of all outcomes that are either in event A, event B, or both.\n\n\n\n\n\n\nNote\n\n\n\nThe union of events is mathematically denoted by \\(\\cup\\) or “OR”.\nAs an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The union of events A and B can be interpreted as “the event where we draw an ace or a diamond card” or in mathematical terms \\(Ace \\cup Diamond\\).",
+    "text": "Union of Events\nUnion means “together”: the union of events \\(A\\) and \\(B\\) consists of all outcomes that are either in event A, event B, or both.\n\n\n\n\n\n\nNote\n\n\nThe union of events is mathematically denoted by \\(\\cup\\) or “OR”.\nAs an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The union of events A and B can be interpreted as “the event where we draw an ace or a diamond card” or in mathematical terms \\(Ace \\cup Diamond\\).",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1182,7 +1952,7 @@
     "href": "lecture3.html#intersection-of-events",
     "title": "Introduction to Probability",
     "section": "Intersection of Events",
-    "text": "Intersection of Events\nThe intersection of events \\(A\\) and \\(B\\) consists of all outcomes that are in event A AND event B.\n\n\n\n\n\n\nNote\n\n\n\nThe intersection of events is mathematically denoted by \\(\\cap\\) or “AND”.\nAs an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The intersection of events A and B can be interpreted as “the event where we draw an ace AND a diamond card” or in mathematical terms \\(Ace \\cap Diamond\\). This simplifies to drawing of a specific card: the ace of diamonds.",
+    "text": "Intersection of Events\nThe intersection of events \\(A\\) and \\(B\\) consists of all outcomes that are in event A AND event B.\n\n\n\n\n\n\nNote\n\n\nThe intersection of events is mathematically denoted by \\(\\cap\\) or “AND”.\nAs an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The intersection of events A and B can be interpreted as “the event where we draw an ace AND a diamond card” or in mathematical terms \\(Ace \\cap Diamond\\). This simplifies to drawing of a specific card: the ace of diamonds.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1193,7 +1963,7 @@
     "href": "lecture3.html#union-vs.-intersection",
     "title": "Introduction to Probability",
     "section": "Union vs. Intersection",
-    "text": "Union vs. Intersection\n\n\n\nOr vs. And",
+    "text": "Union vs. Intersection\n\nOr vs. And",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1204,7 +1974,7 @@
     "href": "lecture3.html#additive-law-of-probability",
     "title": "Introduction to Probability",
     "section": "Additive Law of Probability",
-    "text": "Additive Law of Probability\nFor any two events \\(A\\) and \\(B\\), the probability of \\(A\\) or \\(B\\) occurring is equal to:\n\\[\nP(A \\cup B) = P(A)+P(B) - P(A \\cap B)\n\\]\n\n\n\n\n\n\nImportant\n\n\n\nDisjoint events cannot happen at the same time. For disjoint events \\(C\\) and \\(D\\), \\(P(C \\cap D) = 0\\). Therefore, \\(P(C \\cup D) = P(C)+P(D)\\) is consistent with Axiom 3.",
+    "text": "Additive Law of Probability\nFor any two events \\(A\\) and \\(B\\), the probability of \\(A\\) or \\(B\\) occurring is equal to:\n\\[\nP(A \\cup B) = P(A)+P(B) - P(A \\cap B)\n\\]\n\n\n\n\n\n\nImportant\n\n\nDisjoint events cannot happen at the same time. For disjoint events \\(C\\) and \\(D\\), \\(P(C \\cap D) = 0\\). Therefore, \\(P(C \\cup D) = P(C)+P(D)\\) is consistent with Axiom 3.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1215,7 +1985,7 @@
     "href": "lecture3.html#example-1",
     "title": "Introduction to Probability",
     "section": "Example",
-    "text": "Example\nWhat is the probability of rolling a 1 or 3 on a single roll of a fair six-sided die?\n\n\n\n\n\n\nImportant\n\n\n\nRolling a 1 and a 3 is not possible. Thus, \\(P(roll 1 \\cap roll 3) = 0\\).\n\n\n\\[\nP(roll 1 \\cup roll 3) = P(roll 1) + P(roll 3) - P (roll 1 \\cap roll 3)\n\\] \\[\nP(roll 1 \\cup roll 3) = 1/6+1/6-0 = 1/3\n\\]\nThus, \\(P(roll 1 \\cup roll 3)=\\) 0.3333",
+    "text": "Example\nWhat is the probability of rolling a 1 or 3 on a single roll of a fair six-sided die?\n\n\n\n\n\n\nImportant\n\n\nRolling a 1 and a 3 is not possible. Thus, \\(P(roll 1 \\cap roll 3) = 0\\).\n\n\n\n\\[\nP(roll 1 \\cup roll 3) = P(roll 1) + P(roll 3) - P (roll 1 \\cap roll 3)\n\\] \\[\nP(roll 1 \\cup roll 3) = 1/6+1/6-0 = 1/3\n\\]\nThus, \\(P(roll 1 \\cup roll 3)=\\) 0.3333",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1226,7 +1996,7 @@
     "href": "lecture3.html#example-2-1",
     "title": "Introduction to Probability",
     "section": "Example 2",
-    "text": "Example 2\nConsider a standard deck of playing cards. What is the probability of drawing an ace or a diamond card?\n\n\n\n\n\n\nImportant\n\n\n\nDrawing an ace AND a diamond card is possible. This event corresponds to drawing the ace of diamonds. The probability of drawing the ace of diamonds from a standard deck of playing cards is 1/52. Hence, \\(P(A \\cap D) = 1/52\\).\n\n\n\\[\nP(A \\cup D) = P(A) + P(D) - P (A \\cap D)\n\\]\n\\[\nP(Ace \\cup Diamond) = 4/52 + 13/52 - 1/52 = 16/52\n\\] Thus, \\(P(Ace \\cup Diamond)\\) = 0.3077",
+    "text": "Example 2\nConsider a standard deck of playing cards. What is the probability of drawing an ace or a diamond card?\n\n\n\n\n\n\nImportant\n\n\nDrawing an ace AND a diamond card is possible. This event corresponds to drawing the ace of diamonds. The probability of drawing the ace of diamonds from a standard deck of playing cards is 1/52. Hence, \\(P(A \\cap D) = 1/52\\).\n\n\n\n\\[\nP(A \\cup D) = P(A) + P(D) - P (A \\cap D)\n\\]\n\\[\nP(Ace \\cup Diamond) = 4/52 + 13/52 - 1/52 = 16/52\n\\] Thus, \\(P(Ace \\cup Diamond)\\) = 0.3077",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1248,7 +2018,7 @@
     "href": "lecture3.html#independent-events",
     "title": "Introduction to Probability",
     "section": "Independent Events",
-    "text": "Independent Events\nTwo events are independent if knowing the outcome for one of the events provides no information about the outcome of the other event. Mathematically,\n\n\n\n\n\n\nIndependent Events\n\n\n\nTwo events \\(A\\) and \\(B\\) are independent if \\(P(A \\cap B) = P(A)P(B)\\).\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe probability \\(P(A \\cap B)\\) is also referred to as the joint probability of \\(A\\) and \\(B\\).",
+    "text": "Independent Events\nTwo events are independent if knowing the outcome for one of the events provides no information about the outcome of the other event. Mathematically,\n\n\n\n\n\n\n\nIndependent Events\n\n\nTwo events \\(A\\) and \\(B\\) are independent if \\(P(A \\cap B) = P(A)P(B)\\).\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe probability \\(P(A \\cap B)\\) is also referred to as the joint probability of \\(A\\) and \\(B\\).",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1281,7 +2051,7 @@
     "href": "lecture3.html#complementary-events",
     "title": "Introduction to Probability",
     "section": "Complementary Events",
-    "text": "Complementary Events\nThe complement of an event \\(A\\) is defined to be the set of all elements in the sample space that are NOT A.\n\n\n\n\n\n\nTip\n\n\n\nThe complement of \\(A\\) is denoted by \\(\\bar{A}\\) or \\(A^C\\).\n\n\n\n\n\n\n\n\nNote\n\n\n\nFor any event \\(A\\) and its complement \\(A^C\\),\n\\[\nP(A^C) = 1-P(A)\n\\]",
+    "text": "Complementary Events\nThe complement of an event \\(A\\) is defined to be the set of all elements in the sample space that are NOT A.\n\n\n\n\n\n\nTip\n\n\nThe complement of \\(A\\) is denoted by \\(\\bar{A}\\) or \\(A^C\\).\n\n\n\n\n\n\n\n\n\nNote\n\n\nFor any event \\(A\\) and its complement \\(A^C\\),\n\\[\nP(A^C) = 1-P(A)\n\\]",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1314,7 +2084,7 @@
     "href": "lecture3.html#conditional-probability",
     "title": "Introduction to Probability",
     "section": "Conditional Probability",
-    "text": "Conditional Probability\nIf two events are dependent, then knowing the outcome of one event provides information about the probability of the other event.\n\n\n\n\n\n\nNote\n\n\n\nIn screening tests, the probability of a positive test depends on whether the subject has the condition or not.\n\n\n\n\n\n\n\n\nTip\n\n\n\nThe notation for conditional probabilities is \\(P(A|B)\\), which is read as the “probability of \\(A\\) given \\(B\\)”.\n\n\n\n\n\n\n\n\nImportant\n\n\n\nConditional probabilities are order-specific, i.e. \\(P(A|B) \\neq P(B|A)\\).",
+    "text": "Conditional Probability\nIf two events are dependent, then knowing the outcome of one event provides information about the probability of the other event.\n\n\n\n\n\n\nNote\n\n\nIn screening tests, the probability of a positive test depends on whether the subject has the condition or not.\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe notation for conditional probabilities is \\(P(A|B)\\), which is read as the “probability of \\(A\\) given \\(B\\)”.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nConditional probabilities are order-specific, i.e. \\(P(A|B) \\neq P(B|A)\\).",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1391,7 +2161,7 @@
     "href": "lecture3.html#bayes-theorem-1",
     "title": "Introduction to Probability",
     "section": "Bayes’ Theorem",
-    "text": "Bayes’ Theorem\nRecall that \\(P(B|A) \\neq P(A|B)\\). Bayes’ theorem provides a way to invert conditional probabilities.\n\n\n\n\n\n\nBayes’ Theorem\n\n\n\nLet \\(A\\) and \\(B_1, B_2,...,B_n\\) be disjoint events that span the whole sample space, and with \\(P(B_j) \\neq 0\\) for all \\(j\\),\n\\[\nP(B_j|A) = \\frac{P(A|B_j) P(B_j)}{\\sum_{i=1}^n P(A|B_i)P(B_i)}\n\\]\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf we know the marginal probability of \\(A\\),\n\\[\nP(B_j|A) = \\frac{P(A|B_j) P(B_j)}{P(A)}\n\\]",
+    "text": "Bayes’ Theorem\nRecall that \\(P(B|A) \\neq P(A|B)\\). Bayes’ theorem provides a way to invert conditional probabilities.\n\n\n\n\n\n\n\nBayes’ Theorem\n\n\nLet \\(A\\) and \\(B_1, B_2,...,B_n\\) be disjoint events that span the whole sample space, and with \\(P(B_j) \\neq 0\\) for all \\(j\\),\n\\[\nP(B_j|A) = \\frac{P(A|B_j) P(B_j)}{\\sum_{i=1}^n P(A|B_i)P(B_i)}\n\\]\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIf we know the marginal probability of \\(A\\),\n\\[\nP(B_j|A) = \\frac{P(A|B_j) P(B_j)}{P(A)}\n\\]",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1402,7 +2172,7 @@
     "href": "lecture3.html#screening-tests-1",
     "title": "Introduction to Probability",
     "section": "Screening Tests",
-    "text": "Screening Tests\nWhen screening for diseases, we are interested in the true positive (positive tests for people who have the disease) and true negative rates (negative tests for people who do not have the disease).\n\n\n\n\nAN (+)\nAN(-)\n\n\nTest (+)\nTP\nFP\n\n\nTest (-)\nFN\nTN\n\n\n\n\nSensitivitySpecificityBase Rate\n\n\n\n\n\n\n\n\nSensitivity\n\n\n\nThe probability that a person randomly selected from the population tests positive given that they have the disease is called the sensitivity of a test.\n\\[\nSens = P(PT|D) = \\frac{TP}{TP+FN}\n\\]\n\n\n\n\n\n\n\n\n\n\nSpecificity\n\n\n\nThe probability that a person randomly selected from the population tests negative given that they do not have the disease is called the specificity of a test.\n\\[\nSpec = P(NT|ND) = 1-P(PT|ND) =  \\frac{TN}{TN+FP}\n\\]\n\n\n\n\n\n\n\n\n\n\nBase Rate\n\n\n\nThe probability that a person randomly selected from the population has the disease is called the base rate of a test.",
+    "text": "Screening Tests\nWhen screening for diseases, we are interested in the true positive (positive tests for people who have the disease) and true negative rates (negative tests for people who do not have the disease).\n\n\n\n\nAN (+)\nAN(-)\n\n\nTest (+)\nTP\nFP\n\n\nTest (-)\nFN\nTN\n\n\n\n\nSensitivitySpecificityBase Rate\n\n\n\n\n\n\n\n\n\nSensitivity\n\n\nThe probability that a person randomly selected from the population tests positive given that they have the disease is called the sensitivity of a test.\n\\[\nSens = P(PT|D) = \\frac{TP}{TP+FN}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpecificity\n\n\nThe probability that a person randomly selected from the population tests negative given that they do not have the disease is called the specificity of a test.\n\\[\nSpec = P(NT|ND) = 1-P(PT|ND) =  \\frac{TN}{TN+FP}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nBase Rate\n\n\nThe probability that a person randomly selected from the population has the disease is called the base rate of a test.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1413,7 +2183,7 @@
     "href": "lecture3.html#positive-predictive-value",
     "title": "Introduction to Probability",
     "section": "Positive Predictive Value",
-    "text": "Positive Predictive Value\nWe are also interested in the conditional probabilities of having the disease based on the test for a random member of the population.\n\n\n\n\n\n\nPositive Predictive Value (PPV)\n\n\n\nThe probability of having the disease given a positive test (P(D|PT)) is called the positive predictive value (PPV).\n\\[\nP(D|PT) = \\frac{P(PT|D)P(D)}{P(PT)} = \\frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}\n\\]\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThe positive predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.",
+    "text": "Positive Predictive Value\nWe are also interested in the conditional probabilities of having the disease based on the test for a random member of the population.\n\n\n\n\n\n\n\nPositive Predictive Value (PPV)\n\n\nThe probability of having the disease given a positive test (P(D|PT)) is called the positive predictive value (PPV).\n\\[\nP(D|PT) = \\frac{P(PT|D)P(D)}{P(PT)} = \\frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}\n\\]\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nThe positive predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1424,7 +2194,7 @@
     "href": "lecture3.html#negative-predictive-value",
     "title": "Introduction to Probability",
     "section": "Negative Predictive Value",
-    "text": "Negative Predictive Value\n\n\n\n\n\n\nNegative Predictive Value (NPV)\n\n\n\nThe probability of not having the disease given a negative test (P(ND|NT)) is called the negative predictive value (NPV).\n\\[\nP(ND|NT) = \\frac{P(NT|ND)P(ND)}{P(NT)} = \\frac{spec*(1-BR)}{spec*(1-BR) + (1-sens)*(BR)}\n\\]\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThe negative predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.",
+    "text": "Negative Predictive Value\n\n\n\n\n\n\n\nNegative Predictive Value (NPV)\n\n\nThe probability of not having the disease given a negative test (P(ND|NT)) is called the negative predictive value (NPV).\n\\[\nP(ND|NT) = \\frac{P(NT|ND)P(ND)}{P(NT)} = \\frac{spec*(1-BR)}{spec*(1-BR) + (1-sens)*(BR)}\n\\]\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nThe negative predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1468,7 +2238,7 @@
     "href": "lecture3.html#notes-on-screening-tests",
     "title": "Introduction to Probability",
     "section": "Notes on Screening Tests",
-    "text": "Notes on Screening Tests\n\n\n\n\n\n\nImportant\n\n\n\nThere are a lot of available functions in R that calculate sensitivity, specificity, NPV, and PPV. However, you need to be careful about interpreting the PPV and NPV values provided. Sometimes, these values do not account for the base rate.\n\n\n\n\n\n\n\n\nTip\n\n\n\nPackages like yardstick and epiR calculate screening test characteristics and relevant confidence intervals.",
+    "text": "Notes on Screening Tests\n\n\n\n\n\n\nImportant\n\n\nThere are a lot of available functions in R that calculate sensitivity, specificity, NPV, and PPV. However, you need to be careful about interpreting the PPV and NPV values provided. Sometimes, these values do not account for the base rate.\n\n\n\n\n\n\n\n\n\nTip\n\n\nPackages like yardstick and epiR calculate screening test characteristics and relevant confidence intervals.",
     "crumbs": [
       "Lectures",
       "Lecture 3- Intro to Probability"
@@ -1486,473 +2256,20 @@
     ]
   },
   {
-    "objectID": "problemsets.html",
-    "href": "problemsets.html",
-    "title": "EAB 703 Problem Set Keys",
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "EAB 703 Lectures",
     "section": "",
-    "text": "This website provides the answer keys for the Problem Sets given in EAB 703-1002 taught by Dr. Miguel Fudolig.",
+    "text": "This website provides the slides for EAB 703-1002 for Dr. Miguel Fudolig. Content is mainly based on the following books:\n\nDaniel, W. W., & Cross, C. L. (2018). Biostatistics: a foundation for analysis in the health sciences. John Wiley & Sons.\nRigdon, S. E., Fricker Jr, R. D., & Montgomery, D. C. (2024). Introduction to Probability and Statistics for Data Science: with R. Cambridge University Press.\nIsmay, C., Kim, A.Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546",
     "crumbs": [
-      "Problem Sets"
+      "Lectures"
     ]
   },
   {
-    "objectID": "lecture4.html#discrete-random-variables",
-    "href": "lecture4.html#discrete-random-variables",
-    "title": "Probability Distributions",
-    "section": "Discrete Random Variables",
-    "text": "Discrete Random Variables\n\n\n\n\n\n\nDiscrete Random Variable\n\n\nA random variable is discrete if it can only take on a finite or countably infinite number of values.\n\n\n\n\n\n\n\n\n\nTip\n\n\nIntegers are countably infinite, hence counts are considered discrete.\nQualitative variables often take on a finite number of values."
-  },
-  {
-    "objectID": "lecture4.html#discrete-probability-distribution",
-    "href": "lecture4.html#discrete-probability-distribution",
-    "title": "Probability Distributions",
-    "section": "Discrete Probability Distribution",
-    "text": "Discrete Probability Distribution\nThe probability distribution of a discrete random variable is a table, graph, formula, or other device used to specify all possible values of a discrete random variable along with their respective probabilities.\n\n\n\n\n\n\nTip\n\n\nFormulas that describe discrete probability distributions are also known as the probability mass function (pmf). The function is often denoted as \\(P(X=x)\\), \\(p_X(x)\\), or simply \\(p(x)\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\nNotation is important here. \\(X\\) is the random variable, \\(x\\) is the outcome/realization. \\(X=x\\) is the event that the random variable is equal to the outcome \\(x\\)."
-  },
-  {
-    "objectID": "lecture4.html#example-1",
-    "href": "lecture4.html#example-1",
-    "title": "Probability Distributions",
-    "section": "Example 1",
-    "text": "Example 1\nConsider a random variable \\(X\\) that represents the outcome of a fair six-sided die. Prior to rolling the die, \\(X\\) can take on any one of the six values: {1,2,3,4,5,6}. The discrete probability distribution can be expressed in the following forms:\n\nTableFormulaGraphNotes\n\n\n\n\n\nOutcome of \\(X\\)\np(x)\n\n\n\n\n1\n1/6\n\n\n2\n1/6\n\n\n3\n1/6\n\n\n4\n1/6\n\n\n5\n1/6\n\n\n6\n1/6\n\n\n\n\n\n\\[\np(x) = \\begin{cases}\n      1/6,~ if~x=1,2,...,6 \\\\\n      0, ~ otherwise\n   \\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nHere, \\(X\\) is the result of rolling the die, \\(x\\) is the outcome measured after rolling the die which can be any of the following numbers: {1,2,3,4,5,6}.\n\n\n\nThis PMF is also referred to as a uniform discrete distribution because the probability is uniformly distributed across the sample space."
-  },
-  {
-    "objectID": "lecture4.html#example-2",
-    "href": "lecture4.html#example-2",
-    "title": "Probability Distributions",
-    "section": "Example 2",
-    "text": "Example 2\nConsider the PMF for the food assistance example. We can calculate and visualize the cumulative relative frequency using R.\n\nTableGraph\n\n\nTo create a separate table as a function of existing tables, we use the mutate(data_frame,expr) function in the dplyr package available in tidyverse. The cumulative sum can also be calculated automatically using the cumsum(column_name) function\n\ndf &lt;- data.frame(`Number of Programs`=1:8,\nFrequency = c(62,47,39,39,58,37,4,11),\nRelative.Frequency = c(62,47,39,39,58,37,4,11)/297) \n\nmutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))\n\n  Number.of.Programs Frequency Relative.Frequency Cumulative.Relative.Frequency\n1                  1        62         0.20875421                     0.2087542\n2                  2        47         0.15824916                     0.3670034\n3                  3        39         0.13131313                     0.4983165\n4                  4        39         0.13131313                     0.6296296\n5                  5        58         0.19528620                     0.8249158\n6                  6        37         0.12457912                     0.9494949\n7                  7         4         0.01346801                     0.9629630\n8                  8        11         0.03703704                     1.0000000\n\n\n\n\nThe plot of the cumulative distribution function is called an ogive. The option stat_ecdf provides us with a way to create ogives based on frequency values.\n\nggplot(df, aes(x=Number.of.Programs, y=Frequency)) +\n  stat_ecdf(geom=\"step\") + stat_ecdf(geom=\"point\",color=\"blue\",size=2) +\n  theme_bw() + \n  scale_x_continuous(breaks=c(1:8))+\n  labs(x=\"Number of Programs\",y=\"F(x)\") \n\n\n1\n\n“step” creates the lines in the ogive, while “point” shows the points corresponding to the values of F(x). The vertical lines are uninterpretable; they only provide a visual cue for the jump from one value to another.\n\n2\n\nThe scale_x_continuous(breaks=c(1:8)) statement tells R to show all the points between 1 and 8 in the graph. This way, it is easier to interpret for other readers."
-  },
-  {
-    "objectID": "lecture4.html#example-2.1",
-    "href": "lecture4.html#example-2.1",
-    "title": "Probability Distributions",
-    "section": "Example 2.1",
-    "text": "Example 2.1\nThe frequency table below shows the results of a survey in which participants residing in the Appalachian region of southern Ohio were asked how many food assistance programs they had used in the last 12 months.\n\nFrequency TableProbability DistributionGraph\n\n\n\n\n\nNumber of Programs\nFrequency\n\n\n\n\n1\n62\n\n\n2\n47\n\n\n3\n39\n\n\n4\n39\n\n\n5\n58\n\n\n6\n37\n\n\n7\n4\n\n\n8\n11\n\n\nTotal\n297\n\n\n\n\n\nWe can calculate the probability distribution by calculating the relative frequency of each outcome. This can be done by dividing the frequencies by the total (297).\n\ndf &lt;- data.frame(`Number of Programs`=factor(c(1:8), levels=c(1:8)),\nFrequency = c(62,47,39,39,58,37,4,11),\nRelative.Frequency = c(62,47,39,39,58,37,4,11)/297) \n\ndf\n\n  Number.of.Programs Frequency Relative.Frequency\n1                  1        62         0.20875421\n2                  2        47         0.15824916\n3                  3        39         0.13131313\n4                  4        39         0.13131313\n5                  5        58         0.19528620\n6                  6        37         0.12457912\n7                  7         4         0.01346801\n8                  8        11         0.03703704\n\n\n\n\n\nlibrary(ggplot2)\n11ggplot(df, aes(x=Number.of.Programs,y=Relative.Frequency)) + \n1  geom_col(fill=\"gray\",color=\"black\") +\n22  theme_bw() +\n3  labs(x=\"Number of Programs\",y=\"p(x)\")\n\n\n1\n\nFormatting the bar plot with a gray fill and black outline\n\n2\n\ntheme_bw using a black and white theme, which looks good aesthetically\n\n3\n\nAxes labels were changed."
-  },
-  {
-    "objectID": "lecture4.html#example-2.2",
-    "href": "lecture4.html#example-2.2",
-    "title": "Probability Distributions",
-    "section": "Example 2.2",
-    "text": "Example 2.2\nConsider the probability distribution in Example 2.1.\n\nWhat is the probability of randomly selecting a family who used four assistance programs?\n\n\\(p(4) = 0.1313\\)\n\nWhat is the probability of randomly selecting a family who used one or three assistance programs?\n\n\n\n\n\n\n\nImportant\n\n\nThese events are disjoint, hence P(one AP AND three AP 0) = 0. Using the addition rule,\n\\(P(one~ \\cup~ three) = P(one) + P(three) =\\) 0.34"
-  },
-  {
-    "objectID": "lecture4.html#pmf-properties",
-    "href": "lecture4.html#pmf-properties",
-    "title": "Probability Distributions",
-    "section": "PMF: Properties",
-    "text": "PMF: Properties\nThe discrete probability distribution should satisfy the following properties:\n\n\\(0 \\leq p(x) \\leq 1\\) for all \\(x\\).\n\\(\\sum_{all~x} p(x) = 1\\) (The sum of the probabilities of all disjoint outcomes in the sample space is \\(1\\).)"
-  },
-  {
-    "objectID": "lecture4.html#cumulative-distributions",
-    "href": "lecture4.html#cumulative-distributions",
-    "title": "Probability Distributions",
-    "section": "Cumulative Distributions",
-    "text": "Cumulative Distributions\nIn addition to discrete probability distributions, discrete variables also have cumulative distribution functions (CDF)\n\n\n\n\n\n\nTip\n\n\nThe CDF for a discrete variable can be calculated by successively adding the probabilities of the outcome of interest and others before it.\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe CDF is often referred to as \\(F_X(x)\\) or \\(F(x)\\) to signify \\(P(X \\leq x)\\)."
-  },
-  {
-    "objectID": "lecture4.html#example-1-1",
-    "href": "lecture4.html#example-1-1",
-    "title": "Probability Distributions",
-    "section": "Example 1",
-    "text": "Example 1\nConsider the PMF of the fair six-sided die. The cumulative distribution can be calculated using the cumulative relative frequency.\n\n\n\nOutcome of \\(X\\)\np(x)\nF(x) = P(X\\(\\leq\\)x)\n\n\n\n\n1\n1/6\n1/6\n\n\n2\n1/6\n2/6\n\n\n3\n1/6\n3/6\n\n\n4\n1/6\n4/6\n\n\n5\n1/6\n5/6\n\n\n6\n1/6\n6/6"
-  },
-  {
-    "objectID": "lecture4.html#example-2.1-1",
-    "href": "lecture4.html#example-2.1-1",
-    "title": "Probability Distributions",
-    "section": "Example 2.1",
-    "text": "Example 2.1\nConsider the food assistance example. What is the probability of randomly selecting a family that have used less than three assistance programs.\n\n\nCode\ndf &lt;- data.frame(`Number of Programs`=1:8,\nFrequency = c(62,47,39,39,58,37,4,11),\nRelative.Frequency = c(62,47,39,39,58,37,4,11)/297) \n\nmutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))\n\n\n  Number.of.Programs Frequency Relative.Frequency Cumulative.Relative.Frequency\n1                  1        62         0.20875421                     0.2087542\n2                  2        47         0.15824916                     0.3670034\n3                  3        39         0.13131313                     0.4983165\n4                  4        39         0.13131313                     0.6296296\n5                  5        58         0.19528620                     0.8249158\n6                  6        37         0.12457912                     0.9494949\n7                  7         4         0.01346801                     0.9629630\n8                  8        11         0.03703704                     1.0000000\n\n\n\n\n\n\n\n\nTip\n\n\nLess than three assistance programs can also mean “two or less programs” or “at most two programs”. Hence, we are interested in \\(F(2)\\)\n\\(F(2) = P(X \\leq 2) = P(X=1) + P(X=2)=\\) 0.367"
-  },
-  {
-    "objectID": "lecture4.html#exercise",
-    "href": "lecture4.html#exercise",
-    "title": "Probability Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nConsider the food assistance example.\n\nQuestionAnswer\n\n\nWhat is the probability that a randomly selected family utilized at least 4 programs?\n\n\nCode\ndf &lt;- data.frame(`Number of Programs`=1:8,\nFrequency = c(62,47,39,39,58,37,4,11),\nRelative.Frequency = c(62,47,39,39,58,37,4,11)/297) \n\nmutate(df,Cumulative.Relative.Frequency = cumsum(Relative.Frequency))\n\n\n  Number.of.Programs Frequency Relative.Frequency Cumulative.Relative.Frequency\n1                  1        62         0.20875421                     0.2087542\n2                  2        47         0.15824916                     0.3670034\n3                  3        39         0.13131313                     0.4983165\n4                  4        39         0.13131313                     0.6296296\n5                  5        58         0.19528620                     0.8249158\n6                  6        37         0.12457912                     0.9494949\n7                  7         4         0.01346801                     0.9629630\n8                  8        11         0.03703704                     1.0000000\n\n\n\n\nThere are two ways to approach this question.\n\n\n\n\n\n\nTip\n\n\nApproach 1: Sum the relative frequencies from \\(X=4\\) to the maximum possible value (\\(X=8\\)).\n\\(p(4) + p(5) + p(6) + p(7) + p(8)\\) = 0.1313+0.1953+0.1246+0.0135+0.0370 = 0.50167\n\n\n\n\n\n\n\n\n\nTip\n\n\nApproach 2: Use the complement principle. To isolate the families who utilized at least 4 programs, we must remove those who utilized three programs or less. Then,\n\\(p(4) + p(5) + p(6) + p(7) + p(8)\\) = 1-F(3) = 1-0.4983 = 0.5017"
-  },
-  {
-    "objectID": "lecture4.html#expectation-values-of-discrete-probability-distributions",
-    "href": "lecture4.html#expectation-values-of-discrete-probability-distributions",
-    "title": "Probability Distributions",
-    "section": "Expectation Values of Discrete Probability Distributions",
-    "text": "Expectation Values of Discrete Probability Distributions\nThe expected value of a random variable can be thought of as the average of a very large number of observations of the random variable.\n\n\n\n\n\n\nTip\n\n\nThe expected value of \\(X\\), denoted by \\(E(X)\\), can be calculated by taking the sum of the products of each outcome {\\(x_1,x_2,...,\\)} and their corresponding probabilities {\\(p(x_1),p(x_2),...\\)}. In mathematical terms,\n\\[\nE(X)= \\sum_i x_i p(x_i)\n\\]\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\\(E(X)\\) is also the mean of the discrete probability distribution, \\(\\mu\\)."
-  },
-  {
-    "objectID": "lecture4.html#example",
-    "href": "lecture4.html#example",
-    "title": "Probability Distributions",
-    "section": "Example",
-    "text": "Example\nConsider a random variable \\(X\\) that represents the outcome of a fair six-sided die. Prior to rolling the die, \\(X\\) can take on any one of the six values: {1,2,3,4,5,6}. The probability distribution is shown below:\n\nProbability DistributionCalculation\n\n\n\n\n\nOutcome of \\(X\\)\np(x)\n\n\n\n\n1\n1/6\n\n\n2\n1/6\n\n\n3\n1/6\n\n\n4\n1/6\n\n\n5\n1/6\n\n\n6\n1/6\n\n\n\n\n\n\\(E(X)\\) can be calculated using the formula as shown below:\n\\[\nE(X) = 1(1/6)+2(1/6)+3(1/6)+4(1/6)+5(1/6)+6(1/6)\n\\]\nThe result leads to \\(E(X)=\\) 3.5"
-  },
-  {
-    "objectID": "lecture4.html#exercise-1",
-    "href": "lecture4.html#exercise-1",
-    "title": "Probability Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nConsider the food assistance example. What is the mean number of assistance programs used based on the PMF provided?\n\nPMFAnswer\n\n\n\n\n  Number.of.Programs Frequency Relative.Frequency\n1                  1        62         0.20875421\n2                  2        47         0.15824916\n3                  3        39         0.13131313\n4                  4        39         0.13131313\n5                  5        58         0.19528620\n6                  6        37         0.12457912\n7                  7         4         0.01346801\n8                  8        11         0.03703704\n\n\n\n\n\\(E(X) = \\sum_i x_i p(x_i)\\) translates to:\nE(X) = 1(0.2087)+2(0.1582) + 3(0.1313) + 4(0.1313) + 5(0.1953) + 6(0.1246) + 7(0.0135) + 8(0.037).\nThis results to \\(E(X)=\\) 3.559"
-  },
-  {
-    "objectID": "lecture4.html#expectation-value-of-functions",
-    "href": "lecture4.html#expectation-value-of-functions",
-    "title": "Probability Distributions",
-    "section": "Expectation Value of Functions",
-    "text": "Expectation Value of Functions\nExpectation values can also be calculated for functions.\n\n\n\n\n\n\nTip\n\n\nThe expected value of a function \\(g(X)\\), denoted by \\(E[g(X)]\\), can be calculated by taking the sum of the products of each function evaluated at the outcome {\\(g(x_1),g(x_2),...,\\)} and their corresponding probabilities {\\(p(x_1),p(x_2),...\\)}. In mathematical terms,\n\\[\nE[g(X)]= \\sum_i g(x_i) p(x_i)\n\\]"
-  },
-  {
-    "objectID": "lecture4.html#variance-and-standard-deviation",
-    "href": "lecture4.html#variance-and-standard-deviation",
-    "title": "Probability Distributions",
-    "section": "Variance and Standard Deviation",
-    "text": "Variance and Standard Deviation\nThe variance of the discrete probability distribution can be calculated using expectation values as well. The variance \\(\\sigma^2\\) can be expressed as \\(E[(X-\\mu)^2]\\).\n\\[\n\\sigma^2 = E[(X-\\mu)^2] = \\sum_i (x_i-\\mu)^2 p(x_i)\n\\]\nThe standard deviation can be calculated by taking taking the square root of the variance.\n\\[\n\\sigma = \\sqrt{\\sigma^2}\n\\]"
-  },
-  {
-    "objectID": "lecture4.html#example-3",
-    "href": "lecture4.html#example-3",
-    "title": "Probability Distributions",
-    "section": "Example",
-    "text": "Example\nWhat is the variance and standard deviation of the probability distribution for rolling a fair six-sided die?\n\nNotesAnswer\n\n\nIn calculating the variance, it would be easier to use R. First, we would need to create a data frame for the probability distribution:\n\ndf &lt;- data.frame(Outcome = 1:6,\n                 Prob = rep(1/6,6))\n\ndf\n\n  Outcome      Prob\n1       1 0.1666667\n2       2 0.1666667\n3       3 0.1666667\n4       4 0.1666667\n5       5 0.1666667\n6       6 0.1666667\n\n\n\n\n\nmu &lt;- sum(df$Outcome*df$Prob)\nmu\n\n[1] 3.5\n\nsigma_2 &lt;- sum((df$Outcome-mu)^2*df$Prob)\nsigma_2\n\n[1] 2.916667\n\n\nThe variance is 2.9166667"
-  },
-  {
-    "objectID": "PS2_key.html",
-    "href": "PS2_key.html",
-    "title": "Problem Set 2 Key",
+    "objectID": "PS1_key.html",
+    "href": "PS1_key.html",
+    "title": "Problem Set 1 Key",
     "section": "",
-    "text": "Consider a diagnostic test designed to determine whether a piece of medical equipment is faulty. The diagnostic test has a sensitivity of 0.9 and specificity of 0.9. If the estimated percentage of faulty equipment fleet is 1%, what is the probability that a randomly selected piece of equipment is faulty given that it tested positive? [2pts]\n\n\n\n\n\n\n\nAnswer\n\n\n\nThe base rate is 0.01, Sensitivity is 0.9, Specificity is 0.9. The probability that the equipment is faulty given a positive test is a positive predictive value.\n\\[\nPPV = \\frac{sens*BR}{sens*BR + (1-spec)(1-BR)}\n\\]\n\nPPV &lt;- (0.9)*(0.01)/((0.9*0.01)+(1-0.9)*(1-0.01))\nPPV\n\n[1] 0.08333333\n\n\n\n\n\nWhat is the sample space of a two-sided coin that was tossed three times? [1pt.]\n\n\n\n\n\n\n\nAnswer\n\n\n\nThe answer should include all possible outcomes after tossing a two-sided coin three times. H: Heads, T: Tails\n\nHHH\nHTT\nTHT\nTTH\nTHH\nHTH\nHHT\nTTT\n\nHence the sample space can be written as {HHH, HTT, THT,TTH,THH,HTH,HHT,TTT}\n\n\n\nAn experiment has three possible outcomes, A, B, and C, only one of which can occur at a time. If outcome B is twice as likely as outcome A and if outcome C is thrice as likely as outcome A, what are the marginal probabilities of each outcome (P(A), P(B), P(C))? (Hint: The second axiom of probability states that the sum of the probabilities of the mutually exclusive events is equal to 1.) [3pts]\n\n\n\n\n\n\n\nAnswer\n\n\n\nFrom the hint, \\(P(A)+P(B)+P(C) = 1\\). We also know that \\(P(B) = 2P(A)\\) and \\(P(C) = 3P(A)\\). Substituting it to the 2nd axiom of probability,\n\\[\n3P(A) + 2P(A) + P(A) = 1\n\\] \\[\n6P(A) = 1; P(A) = 1/6\n\\]\nIt follows that \\(P(B) = 2P(A) = 2/6 = 1/3\\), \\(P(C) = 3P(A) = 3/6 = 1/2\\).\n\n\n\nThe results of a feasibility study suggest that the probability of randomly selecting an individual who uses AI is 55%. Among those who use AI, the probability of using AI for health-related advice is 23%. What is the probability that a randomly selected individual uses AI for health-related advice? [2pts]\n\n\n\n\n\n\n\nAnswer\n\n\n\nP(AI and health advice) can be calculated using the multiplication rule with the following values: \\(P(AI) = 0.55\\), \\(P(HA | AI) = 0.23\\). Then,\n\\[\nP(AI \\cap HA) = P(HA|AI)P(AI) = (0.55)(0.23)\n\\]\nThe resulting value of \\(P(AI \\cap HA) =\\) 0.1265\n\n\n\nAmong 1000 university students, 247 reported to be current smokers, 312 reported to have symptoms of binge drinking, and 59 reported to being current smokers and having symptoms of binge drinking. What is the probability that a randomly selected student out of the 1000 university students is a current smoker or has symptoms of binge drinking? [2pts]\n\n\n\n\n\n\n\nAnswer\n\n\n\nWe can solve for P(Smoker OR Binge) using the addition rule.\n\\[\nP(S \\cup B) = P(S) + P(B) - P(S \\cap B) = 247/1000+312/1000 - 59/1000\n\\]\nThe resulting value of \\(P(S \\cup B)=\\) 0.5"
-  },
-  {
-    "objectID": "lecture3.html",
-    "href": "lecture3.html",
-    "title": "Introduction to Probability",
-    "section": "",
-    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
-    "crumbs": [
-      "Lectures",
-      "Lecture 3- Intro to Probability"
-    ]
-  },
-  {
-    "objectID": "lecture4.html#bernoulli-trials",
-    "href": "lecture4.html#bernoulli-trials",
-    "title": "Probability Distributions",
-    "section": "Bernoulli Trials",
-    "text": "Bernoulli Trials\nA random process, also referred to as a trial, can result in only one of two mutually exclusive outcomes is called a Bernoulli trial.\n\n\n\n\n\n\nNote\n\n\nExamples of Bernoulli trials include dichotomous random variables such as mortality (dead/alive), coin tosses (heads/tails), and infections (infected/not infected)."
-  },
-  {
-    "objectID": "lecture4.html#bernoulli-trials-characteristics",
-    "href": "lecture4.html#bernoulli-trials-characteristics",
-    "title": "Probability Distributions",
-    "section": "Bernoulli Trials: Characteristics",
-    "text": "Bernoulli Trials: Characteristics\n\n\n\n\n\n\nImportant\n\n\nA sequence of Bernoulli trials forms a Bernoulli process. Bernoulli processes have the following characteristics:\n\nThe experiment consists of exactly \\(n\\) identical trials\nEach trial can have only one of two outcomes (success/failure)\nThe probability of success, \\(p\\) is constant for every trial. The probability of failure, \\(q\\), is equal to \\(1-p\\).\nThe trials are independent\nThe random variable of interest is the number of successes \\(X\\) out of the \\(n\\) trials.",
-    "crumbs": [
-      "Lectures",
-      "Lecture 4- Probability Distributions"
-    ]
-  },
-  {
-    "objectID": "lecture4.html#bernoulli-process",
-    "href": "lecture4.html#bernoulli-process",
-    "title": "Probability Distributions",
-    "section": "Bernoulli Process",
-    "text": "Bernoulli Process\n\n\n\n\n\n\nImportant\n\n\nA sequence of Bernoulli trials forms a Bernoulli process. Bernoulli processes have the following characteristics:\n\nThe experiment consists of exactly \\(n\\) identical trials\nEach trial can have only one of two outcomes (success/failure)\nThe probability of success, \\(p\\) is constant for every trial. The probability of failure, \\(q\\), is equal to \\(1-p\\).\nThe trials are independent\nThe random variable of interest is the number of successes \\(X\\) out of the \\(n\\) trials.\n\n\n\n\n\n\n\n\n\n\nExample\n\n\nImagine flipping a coin \\(n\\) times. The random variable \\(X\\) can be the number of heads observed after \\(n\\) flips.\n\nSuccess: Flipping a head, Failure: Flipping a tail\nProbability of success, \\(p\\) is 0.50 for a fair coin."
-  },
-  {
-    "objectID": "lecture4.html#binomial-distribution-1",
-    "href": "lecture4.html#binomial-distribution-1",
-    "title": "Probability Distributions",
-    "section": "Binomial distribution",
-    "text": "Binomial distribution\nThe random variable \\(X\\) described in the Bernoulli process follows the Binomial distribution.\n\n\n\n\n\n\nBinomial Distribution\n\n\nThe probability mass function (PMF) of a binomial random variable \\(X\\) with parameters \\(n\\) and \\(p\\) is:\n\\[\np(x) = \\frac{n!}{x!(n-x)!} p^x (1-p)^{n-x}\n\\]\n\n\n\n\n\n\n\n\n\nTip\n\n\nIf a random variable \\(X\\) follows the binomial distribution with \\(n\\) trials and success probability \\(p\\), we can use the following notation: \\(X \\sim BIN(n,p)\\)\n\n\n\n\n\n\n\n\n\nNote\n\n\n\\(n!\\) is the factorial of a non-negative integer \\(n\\). The factorial is the product of all the positive integers less than or equal to n.\n\\[\nn! = n(n-1)(n-2)...(2)(1)\n\\]\nWith the special case \\(0!=1\\)"
-  },
-  {
-    "objectID": "lecture4.html#dissecting-the-binomial-distribution-independent-events",
-    "href": "lecture4.html#dissecting-the-binomial-distribution-independent-events",
-    "title": "Probability Distributions",
-    "section": "Dissecting the Binomial Distribution: Independent Events",
-    "text": "Dissecting the Binomial Distribution: Independent Events\nSuppose we toss a coin three times, each toss independent of each other. Assuming the probability of getting heads is \\(p\\), the probability of flipping two heads out of three tosses can be calculated using the property of independent events.\n\\[\nP(2 heads) = pp(1-p)(1-p) = p^2 (1-p)^1 = p^2 (1-p)^{(3-2)}\n\\]"
-  },
-  {
-    "objectID": "lecture4.html#combination",
-    "href": "lecture4.html#combination",
-    "title": "Probability Distributions",
-    "section": "Combination",
-    "text": "Combination\nHow do we account for the number of sample points when we consider 100 tosses instead of 3?\n\n\n\n\n\n\nCombination\n\n\nThe unordered selection of \\(x\\) successes out of \\(n\\) trias is called a combination, also denoted by \\(C(n,x)\\).\n\\[\nC(n,x) = \\frac{n!}{x!(n-x)!}\n\\]\n\n\n\n\n\n\n\n\n\nTip\n\n\nUsing combinations for the three toss example, \\(n=3\\), \\(x=2\\).\n\\[\nC(3,2) = \\frac{3!}{2!(3-2)!} = 3\n\\]"
-  },
-  {
-    "objectID": "lecture4.html#dissecting-the-binomial-distribution-counting-sample-points",
-    "href": "lecture4.html#dissecting-the-binomial-distribution-counting-sample-points",
-    "title": "Probability Distributions",
-    "section": "Dissecting the Binomial Distribution: Counting Sample Points",
-    "text": "Dissecting the Binomial Distribution: Counting Sample Points\nHowever, the probability measured using independent events does not account for the multiple configurations of flipping two heads out of three tosses.\n\nResultsNotes\n\n\n\n\n\n\n\n\nWarning\n\n\nFlipping two heads out of three tosses could lead to the following results: HTH, HHT, THH.\n\n\n\n\n\nNote that the order in flipping the two heads does not matter; what matters is counting the number of ways that the two heads can occur after three tosses. These results are disjoint with the same probability \\(p^2(1-p)\\). The probability that any of these results occur can be calculated using the addition rule:\n\\[\nP(2heads) = P(HTH)+P(HHT) + P(THH)= 3p^2(1-p)\n\\]"
-  },
-  {
-    "objectID": "lecture4.html#binomial-distribution-in-r",
-    "href": "lecture4.html#binomial-distribution-in-r",
-    "title": "Probability Distributions",
-    "section": "Binomial Distribution in R",
-    "text": "Binomial Distribution in R\nR is handy for handling binomial random variables.\n\nCombinationPMFCDFRandom Binomial Numbers\n\n\nchoose(n,x) can calculate the number of combinations of \\(x\\) successes in \\(n\\) trials.\n\n\ndbinom(x,n,p) can calculate the PMF of the binomial distribution for an outcome of \\(x\\) successes out of \\(n\\) trials with success probability \\(p\\).\n\n\npbinom(x,n,p) can calculate the CDF of the binomial distribution for an outcome of \\(x\\) successes out of \\(n\\) trials with success probability \\(p\\).\n\n\nrbinom(k,n,p) generates k numbers for a binomial distribution with number of trials \\(n\\) and success probability \\(p\\)."
-  },
-  {
-    "objectID": "lecture4.html#example-4",
-    "href": "lecture4.html#example-4",
-    "title": "Probability Distributions",
-    "section": "Example",
-    "text": "Example\nSuppose we toss a fair coin (\\(p\\)=0.5) three times, each toss independent of each other.\n\nQuestionsPMF (Math)PMF (R)\\(P(X\\leq 2)\\)Simulation\n\n\n\nWhat is the probability of flipping heads twice?\n\nCalculate manually using the equation for \\(p(x)\\).\nCalculate using R.\n\nWhat is the probability of flipping at most two heads? Calculate using R.\nSimulate this binomial process 10 times using rbinom()\n\n\n\n\\(p(x) = C(3,2)(0.5)^2(1-0.5) = 3(0.5)^2(1-0.5)=\\) 0.375\n\n\n\ndbinom(2,3,0.5)\n\n[1] 0.375\n\n\n\n\n\\(P(X\\leq 2)\\) corresponds to the value of the CDF at \\(x=2\\) (\\(F(2)\\)).\n\npbinom(2,3,0.5)\n\n[1] 0.875\n\ndbinom(0,3,0.5) + dbinom(1,3,0.5) + dbinom(2,3,0.5)\n\n[1] 0.875\n\n\nYou can also use the complementary principle. The complement of \\(X \\leq 2\\) is \\(X=3\\).\n\n1- dbinom(3,3,0.5)\n\n[1] 0.875\n\n\n\n\n\nNsim&lt;- 10 # Simulating 10 times\nset.seed(12)\nsims &lt;- rbinom(Nsim,3,0.5)\nsims\n\n\n1\n\nSetting a seed enables us to draw the same numbers from the binomial distribution.\n\n\n\n\n [1] 0 2 3 1 1 0 1 2 0 0\n\n\nWe can create a bar plot for the simulations.\n\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram() + \n  theme_bw() + \n  labs(x=\"Number of Heads\", y=\"Count\")"
-  },
-  {
-    "objectID": "lecture4.html#exercise-2",
-    "href": "lecture4.html#exercise-2",
-    "title": "Probability Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nIn 2021, 8.9% of US adults were diagnosed with diabetes (Types I and II) CDC.\n\nQuestionsAnswerSimulation\n\n\nWhat is the probability that out of a sample of 250 adults in 2021,\n\nExactly 45 have diabetes\nBetween 30 and 60, inclusive, have diabetes\nSimulate the sampling process 100 times and create a histogram of the count of participants diagnosed with diabetes out of 250 adults.\n\n\n\n\nExactly 45 have diabetes\n\n\ndbinom(45,250,0.089)\n\n[1] 2.638007e-06\n\n\n\nBetween 30 and 60, inclusive, have diabetes: \\(30 \\leq x \\leq 60\\)\n\n\npbinom(60,250,0.089) - pbinom(29,250,0.089)\n\n[1] 0.05825713"
-  },
-  {
-    "objectID": "lecture4.html#expected-value-and-variance",
-    "href": "lecture4.html#expected-value-and-variance",
-    "title": "Probability Distributions",
-    "section": "Expected Value and Variance",
-    "text": "Expected Value and Variance\n\n\n\n\n\n\nExpected Value\n\n\nThe expected value/mean of the binomial distribution with \\(n\\) trials and success probability \\(p\\) is \\(E(X) = np\\).\n\n\n\n\n\n\n\n\n\nVariance\n\n\nThe variance of the binomial distribution with \\(n\\) trials and success probability \\(p\\) is \\(V(X) = np(1-p)\\)."
-  },
-  {
-    "objectID": "lecture4.html#example-5",
-    "href": "lecture4.html#example-5",
-    "title": "Probability Distributions",
-    "section": "Example",
-    "text": "Example\nIn the Philippines, the estimated percentage of individuals who received booster shots for COVID-19 is 19.7%.\n\nQuestionAnswer\n\n\nFor a sample of 2,500 Philippine residents, what is the expected value of Philippine residents who received a booster? What is the variance of the associated binomial distribution?\n\n\nExpected Value: \\(E(X) = 2500(0.197)=\\) 492.5\nVariance: \\(V(X) = 2500(0.197)(1-0.197)=\\) 395.4775"
-  },
-  {
-    "objectID": "lecture4.html#exercise-3",
-    "href": "lecture4.html#exercise-3",
-    "title": "Probability Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nIn 2021, 8.9% of US adults were diagnosed with diabetes (Types I and II) CDC.\n\nQuestionsAnswers\n\n\nFor a sample of 250 adults in 2021, what is the expected number of diagnosed diabetics? What is the variance of the distribution?\n\n\nExpected Value: \\(E(X) = 250(0.089)=\\) 22.25\nVariance: \\(V(X) = 250(0.089)(1-0.089)=\\) 20.26975"
-  },
-  {
-    "objectID": "lecture4.html#poisson-distribution",
-    "href": "lecture4.html#poisson-distribution",
-    "title": "Probability Distributions",
-    "section": "Poisson Distribution",
-    "text": "Poisson Distribution\nThe Poisson distribution is often used to model the count of events occurring in an interval of time or space. These events are assumed to have a very low probability of occurrence in a small interval.\n\n\n\n\n\n\nNote\n\n\nExamples include number of cars stopped at an intersection for an hour, radioactive particles that decay in a given period of time, and number of hospitalizations in a day."
-  },
-  {
-    "objectID": "lecture4.html#poisson-distribution-assumptions",
-    "href": "lecture4.html#poisson-distribution-assumptions",
-    "title": "Probability Distributions",
-    "section": "Poisson Distribution: Assumptions",
-    "text": "Poisson Distribution: Assumptions\n\n\n\n\n\n\n\nAssumptions",
-    "crumbs": [
-      "Lectures",
-      "Lecture 4- Probability Distributions"
-    ]
-  },
-  {
-    "objectID": "lecture4.html#poisson-process",
-    "href": "lecture4.html#poisson-process",
-    "title": "Probability Distributions",
-    "section": "Poisson Process",
-    "text": "Poisson Process\nThe Poisson distribution results from a set of assumptions about an underlying process called the Poisson process.\n\n\n\n\n\n\nImportant\n\n\nThe Poisson process has the following characteristics\n\nThe occurrence of an event in an interval of space or time has no effect on the probability of a second occurrence of the event in the same or other interval.\nAn infinite number of occurrences of the event must be possible in the interval\nThe probability of a single occurrence of the event in a given interval is proportional to the length of the interval.\nIn any infinitesimally small portion of the interval, the probability of more than one occurrence of the event is negligible."
-  },
-  {
-    "objectID": "lecture4.html#poisson-distribution-1",
-    "href": "lecture4.html#poisson-distribution-1",
-    "title": "Probability Distributions",
-    "section": "Poisson Distribution",
-    "text": "Poisson Distribution\nThe PMF for the Poisson distribution is defined by the parameter \\(\\lambda\\).\n\\[\np(x) =\\frac{\\lambda^x e^{-\\lambda}}{x!}; x = 0,1,2,...\n\\]\n\n\n\n\n\n\nNote\n\n\n\\(e\\) is Euler’s number, \\(\\lambda\\) is the Poisson rate parameter describing the average number of events per unit interval.\\(\\lambda\\) must be positive.\nThe notation for a Poisson distribution with a Poisson rate parameter \\(\\lambda\\) is \\(X \\sim POIS(\\lambda)\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe Poisson distribution can approximate a binomial distribution with large \\(n\\) and small \\(p\\)."
-  },
-  {
-    "objectID": "lecture4.html#poisson-distribution-r",
-    "href": "lecture4.html#poisson-distribution-r",
-    "title": "Probability Distributions",
-    "section": "Poisson Distribution: R",
-    "text": "Poisson Distribution: R\nR is also capable of calculating the PMF, CDF, and simulating data for a Poisson process.\n\nExponentialPMFCDFRandom\n\n\nThe exp(lambda) can calculate the \\(e^{-\\lambda}\\) term in the Poisson PMF.\n\n\ndpois(x,lambda) calculates the value of the PMF for \\(X=x\\), i.e. \\(P(X=x) = p(x)\\).\n\n\nppois(x,lambda) calculates the value of the CDF for \\(X=x\\), i.e. \\(P(X\\leq x) = F(x)\\).\n\n\nrpois(k,lambda) draws k values from a random variable \\(X \\sim POIS(\\lambda)\\)."
-  },
-  {
-    "objectID": "lecture4.html#example-6",
-    "href": "lecture4.html#example-6",
-    "title": "Probability Distributions",
-    "section": "Example",
-    "text": "Example\nOn a weekday, the expected number of people in the waiting room of a small clinic is 14.\n\nQuestionsAnswersSimulations\n\n\n\nWhat is the probability that there will be exactly 20 people in the waiting room on a weekday?\nWhat is the probability that there will be at most 10 people in the waiting room on a weekday?\nSimulate 150 weekdays using rpois(). Create a histogram for the number of people in the waiting room from the 150 simulations.\n\n\n\n\nExactly 20 people\n\n\ndpois(20,14)\n\n[1] 0.02859653\n\n\n\nAt most 10 people\n\n\nppois(10,14)\n\n[1] 0.1756812"
-  },
-  {
-    "objectID": "lecture4.html#exercise-4",
-    "href": "lecture4.html#exercise-4",
-    "title": "Probability Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nThe hourly number of pedestrians waiting by a bus stop is estimated to be 7.\n\nQuestionsAnswersSimulations/Random Draws\n\n\n\nWhat is the probability of observing exactly 7 pedestrians at the bus stop?\nwhat is the probability of observing at least 10 pedestrians at the bus stop?\nDraw 1000 values from the associated Poisson distribution using rpois. Create a histogram for the randomly drawn values.\n\n\n\n\nExactly 7 pedestrians\n\n\ndpois(7,7)\n\n[1] 0.1490028\n\n\n\nAt least 10 pedestrians: Complement of at most 9 pedestrians! Hence, the probability is equal to \\(1-P(X \\leq 9) = 1-F(9)\\)\n\n\n1-ppois(9,7)\n\n[1] 0.1695041"
-  },
-  {
-    "objectID": "lecture4.html#expected-value-and-variance-1",
-    "href": "lecture4.html#expected-value-and-variance-1",
-    "title": "Probability Distributions",
-    "section": "Expected Value and Variance",
-    "text": "Expected Value and Variance\nThe expected value and variance of the Poisson distribution are equal and is given by the rate parameter \\(\\lambda\\), i.e. \\(E(X) = \\lambda, V(X) = \\lambda\\).\n\n\n\n\n\n\nImportant\n\n\nIf we are interested in the expected value for \\(t\\) units of time, then the expected value is given by \\(E(X) = \\lambda t\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe equality between expected value and variance can be restrictive because data variability cannot be controlled such that this equality can hold."
-  },
-  {
-    "objectID": "lecture4.html#example-7",
-    "href": "lecture4.html#example-7",
-    "title": "Probability Distributions",
-    "section": "Example",
-    "text": "Example\nThe hourly number of pedestrians waiting by a bus stop is estimated to be 7.\n\nQuestionsAnswers\n\n\n\nWhat is the expected value of the number of pedestrians waiting by the bus stop after one hour?\nWhat is the variance of the associated Poisson distribution?\nWhat is the expected value of the number of pedestrians waiting by the bus stop after 30 minutes?\n\n\n\n\nAfter one hour, \\(E(X) = \\lambda t = (7)(1)=\\) 7\nVariance: \\(V(X) = \\lambda =\\) 7\nAfter 30 minutes, \\(E(X) = \\lambda t = (7)(0.5)=\\) 3.5"
-  },
-  {
-    "objectID": "lecture4.html#other-discrete-distributions",
-    "href": "lecture4.html#other-discrete-distributions",
-    "title": "Probability Distributions",
-    "section": "Other Discrete Distributions",
-    "text": "Other Discrete Distributions\n\n\n\n\n\n\nHypergeometric Distribution\n\n\nConsider a population size \\(N\\) and a sample size \\(n\\). Each element in the population can be categorized into a “success” or failure. If there are \\(r\\) successes in the population, the probability that \\(x\\) successes will be drawn in a sample of size \\(n\\) is given by the hypergeometric distribution.\nThis distribution is used in exact tests such as the Fisher’s Exact Test.\n\n\n\n\n\n\n\n\n\nNegative Binomial Distribution\n\n\nThe negative binomial distribution is used to model counts for overdispersed data and other biological processes. Overdispersion occurs when the data set exhibits more variability than what a statistical model expects. Recall that the Poisson distribution is restricted by the property that the mean is equal to the variance."
-  },
-  {
-    "objectID": "lecture4.html#continuous-random-variables",
-    "href": "lecture4.html#continuous-random-variables",
-    "title": "Probability Distributions",
-    "section": "Continuous Random Variables",
-    "text": "Continuous Random Variables\n\n\n\n\n\n\nContinuous Random Variable\n\n\nA random variable is continuous if it can only take on values in one or more intervals of the real line.\n\n\n\n\n\n\n\n\n\nTip\n\n\nTime, distance, weight, and volume are examples of continuous variables."
-  },
-  {
-    "objectID": "lecture4.html#continuous-probability-distributions",
-    "href": "lecture4.html#continuous-probability-distributions",
-    "title": "Probability Distributions",
-    "section": "Continuous Probability Distributions",
-    "text": "Continuous Probability Distributions\n\n\n\n\n\n\nNote\n\n\nRecall that probabilities from discrete random variables are found by summing PMF values.\n\n\n\nFor continuous random variables, summing becomes integration.\n\n\n\n\n\n\nTip\n\n\nImagine creating a histogram with an infinite amount of narrow bins. Adding these values eventually lead to a sum of the areas under the curve."
-  },
-  {
-    "objectID": "lecture4.html#probability-density-functions",
-    "href": "lecture4.html#probability-density-functions",
-    "title": "Probability Distributions",
-    "section": "Probability Density Functions",
-    "text": "Probability Density Functions\nThe continuous probability distribution can be expressed as a probability density function (PDF), denoted by \\(f_X(x)\\) or \\(f(x)\\).\n\n\n\n\n\n\nWarning\n\n\nThere are important differences between probability density functions and probability mass functions (discrete). For example, for continuous variables,\n\\(P(X=x) = 0 \\neq f(x)\\)."
-  },
-  {
-    "objectID": "lecture4.html#probabilities-for-continuous-random-variables",
-    "href": "lecture4.html#probabilities-for-continuous-random-variables",
-    "title": "Probability Distributions",
-    "section": "Probabilities for Continuous Random Variables",
-    "text": "Probabilities for Continuous Random Variables\nInstead of \\(P(X=x)\\), we are more interested in the probability that a continuous random variable assumes a value between \\(a\\) and \\(b\\), denoted by \\(P(a &lt; X &lt; b)\\), which can be calculated as:\n\\[\nP(a &lt; X &lt; b) = \\int_a^b f(x)dx = F(b)-F(a)\n\\]\n\n\n\n\n\n\nNote\n\n\nProbability density functions have the following properties\n\n\\(f(x) \\geq 0\\) for \\(-\\infty &lt; x &lt; \\infty\\).\n\\(\\int_{-\\infty}^{\\infty} f(x)dx = 1\\) or \\(F(\\infty)=1\\)."
-  },
-  {
-    "objectID": "lecture4.html#uniform-distribution-pdf",
-    "href": "lecture4.html#uniform-distribution-pdf",
-    "title": "Probability Distributions",
-    "section": "Uniform Distribution: PDF",
-    "text": "Uniform Distribution: PDF\nThe uniform distribution has a constant PDF such that\n\\[\nf(x) = \\begin{cases}\n      \\frac{1}{\\theta_2-\\theta_1},~ \\theta_1 \\leq x \\leq \\theta_2; \\theta_2&gt;\\theta_1 \\\\\n      0, ~ otherwise\n   \\end{cases}\n\\]\nA random variable \\(X\\) that has a uniform distribution on the interval \\([\\theta_1,\\theta_2]\\) is denoted as \\(X\\sim UNIF(\\theta_1,\\theta_2)\\).\n\n\n\n\n\n\nNote\n\n\nA uniform distribution is defined by two parameters: \\(\\theta_1\\) and \\(\\theta_2\\). A standard uniform distribution is a special case such that \\(\\theta_1\\)=0, \\(\\theta_2\\)=1."
-  },
-  {
-    "objectID": "lecture4.html#uniform-distribution-probabilities",
-    "href": "lecture4.html#uniform-distribution-probabilities",
-    "title": "Probability Distributions",
-    "section": "Uniform Distribution: Probabilities",
-    "text": "Uniform Distribution: Probabilities\n\n\n\n\n\n\nImportant\n\n\nLucky for you, there’s no expectations of any calculus in class.\n\n\n\nThe probability \\(P(a&lt;X&lt;b)\\) if \\(X\\sim UNIF(\\theta_1,\\theta_2)\\) can be calculated using the following equation:\n\\[\nP(a &lt; X &lt; b) = \\frac{b-a}{\\theta_2-\\theta_1}\n\\]\nwhere \\(a,b\\) are assumed to be between \\(\\theta_1 &lt; a \\leq b &lt; \\theta_2\\).\n\n\n\n\n\n\nImportant\n\n\nThis result can also be demonstrated using geometry!"
-  },
-  {
-    "objectID": "lecture4.html#uniform-distribution-probabilities-in-r",
-    "href": "lecture4.html#uniform-distribution-probabilities-in-r",
-    "title": "Probability Distributions",
-    "section": "Uniform Distribution: Probabilities in R",
-    "text": "Uniform Distribution: Probabilities in R\nIn R, punif(x,min,max) can calculate the probability \\(P(X \\leq x) = P(\\theta_1&lt;X &lt; x)\\). Hence, if we want to calculate \\(P(a &lt; X &lt; b)\\) when \\(X\\sim UNIF(\\theta_1,\\theta_2)\\),\nP(a &lt; X &lt; b) = punif(b,theta_1,theta_2)-punif(a,theta_1,theta_2)\n\n\n\n\n\n\nImportant\n\n\nYou can also draw random numbers from a uniform distribution \\(UNIF(\\theta_1,\\theta_2)\\) using runif(#sims,theta_1,theta_2)"
-  },
-  {
-    "objectID": "lecture4.html#example-8",
-    "href": "lecture4.html#example-8",
-    "title": "Probability Distributions",
-    "section": "Example",
-    "text": "Example\nSuppose \\(X \\sim UNIF(0,5)\\). What is the probability that an outcome \\(x\\) is between 0.25 and 4?\n\nMathR\n\n\na = 0.25, b=4, \\(\\theta_1 = 0, \\theta_2=5\\).\n\\[\nP(a &lt; X &lt; b) = \\frac{b-a}{\\theta_2-\\theta_1} = \\frac{4-0.25}{5-0}\n\\]\nHence, P(a &lt; X &lt; b) = 0.75\n\n\n\npunif(4,0,5) - punif(0.25,0,5)\n\n[1] 0.75"
-  },
-  {
-    "objectID": "lecture4.html#exercise-5",
-    "href": "lecture4.html#exercise-5",
-    "title": "Probability Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nSuppose \\(X \\sim UNIF(0,100)\\).\n\nQuestionAnswer\n\n\nWhat is the probability that an outcome \\(x\\) is between 55 and 85?\n\n\n\\[\n\\frac{85-55}{100-0}=0.30\n\\]\n\npunif(85,0,100) - punif(55,0,100)\n\n[1] 0.3"
-  },
-  {
-    "objectID": "lecture4.html#uniform-distribution-expected-value-and-variance",
-    "href": "lecture4.html#uniform-distribution-expected-value-and-variance",
-    "title": "Probability Distributions",
-    "section": "Uniform Distribution: Expected Value and Variance",
-    "text": "Uniform Distribution: Expected Value and Variance\nFor the uniform distribution, the mean is given by \\(E(X) = \\frac{\\theta_1+\\theta_2}{2}\\). The variance is given by \\(E(X) = \\frac{(\\theta_2+\\theta_1)^2}{12}\\)."
-  },
-  {
-    "objectID": "lecture4.html#gaussian-distribution",
-    "href": "lecture4.html#gaussian-distribution",
-    "title": "Probability Distributions",
-    "section": "Gaussian Distribution",
-    "text": "Gaussian Distribution\nThe Gaussian distribution, also known as the normal distribution, is an important distribution in statistics.\n\n\n\n\n\n\nNote\n\n\nMany natural physical and human-related phenomena closely follow a normal distribution."
-  },
-  {
-    "objectID": "lecture4.html#gaussian-distribution-pdf",
-    "href": "lecture4.html#gaussian-distribution-pdf",
-    "title": "Probability Distributions",
-    "section": "Gaussian Distribution: PDF",
-    "text": "Gaussian Distribution: PDF\nThe probability density function of the Gaussian distribution can be expressed as:\n\\[\nf(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}; -\\infty &lt; x &lt; \\infty\n\\]\n\n\n\n\n\n\nNote\n\n\nA uniform distribution is defined by two parameters: the mean \\(\\mu\\) and \\(\\sigma^2\\). A random variable \\(X\\) that has a Gaussian distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\) is denoted as \\(X\\sim N(\\mu,\\sigma^2)\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\nA standard normal distribution is a special case such that \\(\\mu\\)=0, \\(\\sigma^2\\)=1. Variables that follow a standard normal distribution are often denoted as \\(Z\\)."
-  },
-  {
-    "objectID": "lecture4.html#cumulative-distribution-functions",
-    "href": "lecture4.html#cumulative-distribution-functions",
-    "title": "Probability Distributions",
-    "section": "Cumulative Distribution Functions",
-    "text": "Cumulative Distribution Functions\nRecall that the cumulative distribution function (CDF) is given by \\(F_X(x) = P(X \\leq x)\\). The CDF is mathematically defined as:\n\\[\nF_X(x) = \\int_{-\\infty}^x f(x)dx\n\\]\n\n\n\n\n\n\nTip\n\n\nSince \\(P(X=x) = 0\\), it also follows that\n\\[\nP(a \\leq x \\leq b) = P(a &lt; x \\leq b) = P(a \\leq x &lt; b) =  P(a &lt; x &lt; b)\n\\]\nand that\n\\[\nF_X(x) = P(X \\leq x) = P(X&lt;x)\n\\]"
-  },
-  {
-    "objectID": "lecture4.html#gaussian-distribution-characteristics",
-    "href": "lecture4.html#gaussian-distribution-characteristics",
-    "title": "Probability Distributions",
-    "section": "Gaussian Distribution: Characteristics",
-    "text": "Gaussian Distribution: Characteristics\nThe Gaussian distribution has the following characteristics:\n\nThe distribution is symmetric about the mean \\(\\mu\\).\nThe mean, median, and mode are all equal."
-  },
-  {
-    "objectID": "lecture4.html#section",
-    "href": "lecture4.html#section",
-    "title": "Probability Distributions",
-    "section": "",
-    "text": "Lecture 4 - Back to home"
-  },
-  {
-    "objectID": "lecture4.html#binomial-distribution-visualization",
-    "href": "lecture4.html#binomial-distribution-visualization",
-    "title": "Probability Distributions",
-    "section": "Binomial Distribution: Visualization",
-    "text": "Binomial Distribution: Visualization\n\nBIN(10,0.5)BIN(10,0.7)BIN(10,0.2)"
-  },
-  {
-    "objectID": "lecture4.html#poisson-distribution-visualization",
-    "href": "lecture4.html#poisson-distribution-visualization",
-    "title": "Probability Distributions",
-    "section": "Poisson Distribution: Visualization",
-    "text": "Poisson Distribution: Visualization\n\nPOIS(1)POIS(2.5)POIS(5)"
-  },
-  {
-    "objectID": "lecture4.html#uniform-distribution-visualization",
-    "href": "lecture4.html#uniform-distribution-visualization",
-    "title": "Probability Distributions",
-    "section": "Uniform Distribution: Visualization",
-    "text": "Uniform Distribution: Visualization"
-  },
-  {
-    "objectID": "lecture4.html#gaussian-distribution-visualization",
-    "href": "lecture4.html#gaussian-distribution-visualization",
-    "title": "Probability Distributions",
-    "section": "Gaussian Distribution: Visualization",
-    "text": "Gaussian Distribution: Visualization\n\nSame Means, Changing VarianceSame Variance, Changing Means"
-  },
-  {
-    "objectID": "lecture4.html#gaussian-distribution-r",
-    "href": "lecture4.html#gaussian-distribution-r",
-    "title": "Probability Distributions",
-    "section": "Gaussian Distribution: R",
-    "text": "Gaussian Distribution: R\n\n\n\n\n\n\nImportant\n\n\nCalculating probabilities mathematically would be impossible without calculus. However, R makes life easy for us.\n\n\n\n\nPDFCDFSimulating/Generating Random VariablesCDF to X/Z\n\n\nYou can calculate the PDF value for a normal distribution, f(x), using dnorm(x,mean,sd). Note that the function uses standard deviation, not variance.\n\n\nYou can calculate the CDF value for a normal distribution, F(x), using pnorm(x,mean,sd). Note that the function uses standard deviation, not variance.\n\n\nYou can simulate/generate random Gaussian variables using rnorm(#sims,mean,sd). Note that the function uses standard deviation, not variance.\n\n\nIf we know the value of \\(F(x)\\), we can determine what \\(x\\) is using qnorm(F(x),mean, sd). If the mean and standard deviation/variance is unknown, we can get the corresponding value of the standard normal distribution \\(Z\\) by specifying mean=0 and sd=1."
-  },
-  {
-    "objectID": "lecture4.html#example-9",
-    "href": "lecture4.html#example-9",
-    "title": "Probability Distributions",
-    "section": "Example",
-    "text": "Example\nFor a random variable \\(Z~N(0,1)\\) following the standard normal distribution\n\nQuestionAnswer\n\n\nCalculate the following probabilities using R\n\n\\(P(Z \\leq 1)\\)\n\\(P(Z \\geq 2.5)\\)\n\\(P(-2 &lt; Z &lt; 2)\\)\n\n\n\n\n\\(P(Z \\leq 1) = F(1)\\)\n\n\npnorm(1,0,1)\n\n[1] 0.8413447\n\n\n\n\\(P(Z\\geq 2.5) = 1- P(Z&lt;2.5) = 1-F(2.5)\\)\n\n\n1-pnorm(2.5,0,1)\n\n[1] 0.006209665\n\npnorm(2.5,0,1,lower.tail=FALSE)\n\n[1] 0.006209665\n\n\n\n\\(P(-2 &lt; Z &lt; 2) = F(2)-F(-2)\\)\n\n\npnorm(2,0,1) - pnorm(-2,0,1)\n\n[1] 0.9544997"
-  },
-  {
-    "objectID": "lecture4.html#example-2-1",
-    "href": "lecture4.html#example-2-1",
-    "title": "Probability Distributions",
-    "section": "Example 2",
-    "text": "Example 2\nConsider \\(X \\sim N(3,9)\\).\n\nQuestionAnswer\n\n\n\n\\(P(X \\leq 6)\\)\n\\(P(X \\geq 3)\\)\n\\(P(-3 &lt; X &lt; 9)\\)\n\n\n\nNote that \\(\\sigma^2=9\\), so sd=3.\n\n\\(P(X \\leq 6)\\)\n\n\npnorm(6,3,3)\n\n[1] 0.8413447\n\n\n\n\\(P(X \\geq 10.5)\\)\n\n\n1- pnorm(10.5,3,3)\n\n[1] 0.006209665\n\npnorm(10.5,3,3,lower.tail=F)\n\n[1] 0.006209665\n\n\n\n\\(P(-3 &lt; X &lt; 9)\\)\n\n\npnorm(9,3,3) - pnorm(-3,3,3)\n\n[1] 0.9544997\n\n\n\n\n\n\n\n\nImportant\n\n\nNote that the answers are the same!\n\n\n\n\n\n\n\n\nLecture 4 - Back to home"
+    "text": "The data set Arrests can be accessed through the package car inR. The data set includes data on police treatment of individuals arrested in Toronto for simple possession of small quantities of marijuana. The data are part of a larger data set featured in a series of articles in the Toronto Star newspaper.\n\n\nProvide the relevant R code to install the car package in R.\n\ninstall.packages(\"car\")\n\nProvide the relevant R code to load the car package.\n\n\nlibrary(car)\n\nLoading required package: carData\n\n\n\nExplore the Arrests data set using glimpse() to show the different variables available in the data set. What are the different variables in the Arrests data set? Show your code. [4pts.]\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.2\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n✖ dplyr::recode() masks car::recode()\n✖ purrr::some()   masks car::some()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nglimpse(Arrests)\n\nRows: 5,226\nColumns: 8\n$ released &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes…\n$ colour   &lt;fct&gt; White, Black, White, Black, Black, Black, White, White, Black…\n$ year     &lt;int&gt; 2002, 1999, 2000, 2000, 1999, 1998, 1999, 1998, 2000, 2001, 1…\n$ age      &lt;int&gt; 21, 17, 24, 46, 27, 16, 40, 34, 23, 30, 18, 18, 17, 42, 26, 2…\n$ sex      &lt;fct&gt; Male, Male, Male, Male, Female, Female, Male, Female, Male, M…\n$ employed &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Ye…\n$ citizen  &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Ye…\n$ checks   &lt;int&gt; 3, 3, 3, 1, 1, 0, 0, 1, 4, 3, 0, 3, 1, 0, 2, 3, 4, 5, 3, 0, 0…\n\n\n\nCreate a frequency table for the year of arrests (year variable). Which year had the most arrests? Show your code. [2pts.]\n\n\nlibrary(summarytools)\n\n\nAttaching package: 'summarytools'\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\nfreq(Arrests$year)\n\nError in match(x, table, nomatch = 0L): 'match' requires vector arguments\n\n\nWarning in parse_call(mc = match.call(), caller = \"freq\"): metadata extraction\nterminated unexpectedly; inspect results carefully\n\n\nFrequencies  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n       1997    492      9.41           9.41      9.41           9.41\n       1998    877     16.78          26.20     16.78          26.20\n       1999   1099     21.03          47.23     21.03          47.23\n       2000   1270     24.30          71.53     24.30          71.53\n       2001   1211     23.17          94.70     23.17          94.70\n       2002    277      5.30         100.00      5.30         100.00\n       &lt;NA&gt;      0                               0.00         100.00\n      Total   5226    100.00         100.00    100.00         100.00\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe year with the most arrests was 2000.\n\n\n\nCreate a bar plot to visualize the frequencies of arrests for each year using ggplot() and geom_bar(). Show your code. [2pts.]\n\nAcceptable solution (full credit):\n\nggplot(data=Arrests,aes(x=year)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nBetter solution:\n\nggplot(data=Arrests,aes(x=as.factor(year))) +\n  geom_bar(color=\"black\") + \n  theme_bw() + \n  labs(x=\"Year\", y=\"Frequency\")\n\n\n\n\n\n\n\n\n\nThe file SleepHealthData.csv comprises 400 rows and 13 columns, covering a wide range of variables related to sleep and daily habits. It includes details such as gender, age, occupation, sleep duration, quality of sleep, physical activity level, stress levels, BMI category, blood pressure, heart rate, daily steps, and the presence or absence of sleep disorders.\n\n\nProvide the relevant R code to import SleepHealthData.csv into R and assign it to the variable sleep.\n\n\n\n\n\n\n\nImportant\n\n\n\nSave the CSV file in the same folder as your Rscript!\n\n\nsetwd(getwd())\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nComplete the following table for the recorded heart rate of the participants. Show your code.\n\nMean:\n\nmean(sleep$heart_rate)\n\n[1] 70.16578\n\n\nMedian:\n\nmedian(sleep$heart_rate)\n\n[1] 70\n\n\nRange:\n\nmax(sleep$heart_rate)-min(sleep$heart_rate)\n\n[1] 21\n\n\nVariance and Standard Deviation:\n\nvar(sleep$heart_rate)\n\n[1] 17.10381\n\nsd(sleep$heart_rate)\n\n[1] 4.135676\n\n\nMinimum and Maximum:\n\nmin(sleep$heart_rate)\n\n[1] 65\n\nmax(sleep$heart_rate)\n\n[1] 86\n\n\n\\(Q_1\\), \\(Q_3\\), and IQR:\n\nquantile(sleep$heart_rate,0.25)\n\n25% \n 68 \n\nquantile(sleep$heart_rate,0.75)\n\n75% \n 72 \n\nIQR(sleep$heart_rate)\n\n[1] 4\n\n\n\nCreate a histogram for the recorded heart rate of all the participants using ggplot() and geom_histogram(). Show your code.\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram(color=\"white\", binwidth=2.5, fill=\"black\") + \n  theme_bw() +\n  labs(x=\"Heart Rate Measurement\")\n\n\n\n\n\n\n\n\n\nCreate a boxplot for the recorded heart rate of all the participants grouped by gender using ggplot() and geom_boxplot(). Show your code. (Hint: Use x=gender in the aes() function.)\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=gender,y=heart_rate)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=gender, y=heart_rate)) + \n  geom_boxplot() + \n  theme_bw() + \n  labs(x=\"Gender\",y=\"Heart Rate Measurement\")"
   }
 ]
