@@ -182,6 +182,117 @@ pnorm(2,2.6,5.3/sqrt(250)) - pnorm(1.5,2.6,5.3/sqrt(250))
 
 :::
 
+## Finite Population Correction
+
+The resulting sampling distribution assumes that sampling was done with replacement (those who were sampled can be sampled again) or sampling was done from an infinite population. 
+
+::: callout-important
+When dealing with smaller populations, it is possible for these assumptions to be broken. We need to account for the type of sampling and the finiteness of the population.
+:::
+
+::: callout-important
+This correction is often ignored when the sample size is less than 5% of the population.
+:::
+
+## Finite Population Correction Formula
+
+::: callout-tip
+When sampling is without replacement from a finite population, the sampling distribution of $\bar{x}$ will have mean $\mu$ and variance
+
+$$
+\sigma^2_{\bar{X}} = \frac{\sigma^2}{n} \left(\frac{N-n}{N-1}\right)
+$$
+
+The standard error can be expressed as the square root of this variance.
+
+$$
+\sigma_{\bar{X}} = \sqrt{\frac{\sigma^2}{n} \left(\frac{N-n}{N-1}\right)}
+$$
+:::
+
+::: callout-important
+It also follows that the standardization with the finite population correction can be expressed as
+
+$$
+Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}\sqrt{\left(\frac{N-n}{N-1}\right)}}
+$$
+:::
+
+## Example
+
+Suppose 30 prototypes of a newly invented suture thread have a mean tensile strength of 140 psi and standard deviation of 10.5 psi. Assuming the tensile strengths are normally distributed,
+
+::: panel-tabset
+
+### Question
+
+What is the probability that a sample of 7 prototypes will have a mean tensile strength lower than 137 psi?
+
+- Assuming sampling with replacement + infinite populations
+- Using the finite population correction
+
+### Answer
+
+- Infinite population: standard error = $\sqrt{\sigma^2/n}=\sqrt{10.5^2/7}$ = `r sqrt(10.5^2/7)`
+
+```{r}
+mu <- 140
+se <- sqrt(10.5^2/7)
+
+pnorm(137,mu,se)
+```
+
+- Finite Population Correction
+
+ standard error = $\sqrt{\sigma^2/n}\sqrt{\left(\frac{N-n}{n-1}\right)}=\sqrt{10.5^2/7}\sqrt{\frac{30-7}{30-1}}$ = `r sqrt(10.5^2/7)*sqrt((30-7)/(7-1))`
+
+```{r}
+mu <- 140
+se <- sqrt(10.5^2/7)*sqrt((30-7)/(30-1))
+
+pnorm(137,mu,se)
+```
+
+:::
+
+## Exercise
+
+Suppose **300** prototypes of a newly invented suture thread have a mean tensile strength of 140 psi and standard deviation of 10.5 psi. Assuming the tensile strengths are normally distributed,
+
+::: panel-tabset
+
+### Question
+
+What is the probability that a sample of 7 prototypes will have a mean tensile strength lower than 137 psi?
+
+- Assuming sampling with replacement + infinite populations
+- Using the finite population correction
+
+### Answer
+
+- Infinite population: standard error = $\sqrt{\sigma^2/n}=\sqrt{10.5^2/7}$ = `r sqrt(10.5^2/7)`
+
+```{r}
+mu <- 140
+se <- sqrt(10.5^2/7)
+
+pnorm(137,mu,se)
+```
+
+- Finite Population Correction
+
+ standard error = $\sqrt{\sigma^2/n}\sqrt{\left(\frac{N-n}{n-1}\right)}=\sqrt{10.5^2/7}\sqrt{\frac{300-7}{300-1}}$ = `r sqrt(10.5^2/7)*sqrt((300-7)/(300-1))`
+
+```{r}
+mu <- 140
+se <- sqrt(10.5^2/7)*sqrt((300-7)/(300-1))
+
+pnorm(137,mu,se)
+```
+
+:::
+
+
 # Distribution of the Difference Between Two Sample Means
 
 ## Sample Mean vs. Difference Between Two Sample Means
@@ -202,6 +313,15 @@ The sample mean of Sample A is 1, and the mean of Sample B is 1.5. However, the 
 ## Sampling from Gaussian-distributed populations
 
 When sampling from two Gaussian-distributed populations $N(\mu_1,\sigma_1^2)$ and $N(\mu_2,\sigma_2^2)$, the distribution of the difference between sample means $\bar{X}_1 - \bar{X}_2$ is a Gaussian distribution with mean $\mu_1-\mu_2$ and variance $\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}$. Mathematically,
+
+$$
+\bar{X}_1 - \bar{X}_2 \sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2})
+$$
+
+## Sampling from non Gaussian-distributed populations
+
+When sampling from two Gaussian-distributed populations with finite means and variances, we can impose the Central Limit Theorem such that the distribution of the difference between sample means $\bar{X}_1 - \bar{X}_2$ can be approximated by the following Gaussian distribution.
+
 
 $$
 \bar{X}_1 - \bar{X}_2 \sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2})
@@ -281,3 +401,44 @@ pnorm(z1,0,1) - pnorm(z2,0,1)
 
 
 :::
+
+# Distribution of the Sample Proportion
+
+## Sampling Distribution for the Sample Proportion
+
+Oftentimes, we are interested in the distribution of the sample proportion when dealing with frequency data.
+
+::: callout-note
+Unlike the means where we measure values, we create the sampling distribution for sample proportions by taking all possible samples of a given size and calculating the proportion of the variable of interest for each sample. The variable is usually dichotomous (yes/no, 0/1)
+:::
+
+## Sampling Distribution for the Sample Proportion
+
+Suppose the true population/long-run proportion is $p$. Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, $\hat{P}$ when the sample size is large follows a Gaussian distribution with mean $p$ and variance $\frac{p(1-p)}{n}$.
+
+Formally,
+
+$$
+\hat{P} \sim N(p,\frac{p(1-p)}{n})
+$$
+
+It follows that the standard error of the sample proportion is $\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$.
+
+## Standardization
+
+The sample proportion can also be standardized based on the properties of the sampling distribution. The sample mean $\hat{p}$ can be transformed into a random variable $Z$ such that $Z \sim N(0,1)$.
+
+$$
+Z = \frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}
+$$
+In addition,
+
+$$
+P(\hat{P} \leq \hat{p}) = P\left(Z \leq \frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}\right) = P(Z \leq z)
+$$
+
+## Example
+
+
+
+
