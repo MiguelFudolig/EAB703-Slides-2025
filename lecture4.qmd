@@ -497,7 +497,7 @@ With the special case $0!=1$
 Suppose we toss a coin three times, each toss independent of each other. Assuming the probability of getting heads is $p$, the probability of flipping two heads out of three tosses can be calculated using the property of independent events.
 
 $$
-P(2 heads) = pp(1-p)(1-p) = p^2 (1-p)^1 = p^2 (1-p)^{(3-2)}
+P(2 heads) = pp(1-p) = p^2 (1-p)^1 = p^2 (1-p)^{(3-2)}
 $$
 
 ## Dissecting the Binomial Distribution: Counting Sample Points
@@ -963,12 +963,12 @@ dpois(7,7)
 ```{r}
 Nsim<- 1000 # Simulating 10 times
 set.seed(12) # <1>
-sims <- rpois(Nsim,14)
+sims <- rpois(Nsim,7)
 df <- data.frame(simulations=sims)
 ggplot(df, aes(x=simulations)) + 
-  geom_histogram(bins=50) + 
+  geom_histogram(binwidth=1) + 
   theme_bw() + 
-  labs(x="Number of Diagnosed Diabetics", y="Count")
+  labs(x="Number of Pedestrians", y="Count")
 ```
 
 :::

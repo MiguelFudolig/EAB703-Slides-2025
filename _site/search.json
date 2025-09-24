@@ -2428,13 +2428,48 @@
     "href": "lecture5.html#sampling-distribution-for-the-sample-proportion-1",
     "title": "Sampling Distributions",
     "section": "Sampling Distribution for the Sample Proportion",
-    "text": "Sampling Distribution for the Sample Proportion\nSuppose the true population/long-run proportion is \\(p\\). Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, \\(\\hat{P}\\) when the sample size is large follows a Gaussian distribution with mean \\(p\\) and variance \\(\\frac{p(1-p)}{n}\\).\nFormally,\n\\[\n\\hat{P} \\sim N(p,\\frac{p(1-p)}{n})\n\\]\nIt follows that the standard error of the sample proportion is \\(\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1-p)}{n}}\\)."
+    "text": "Sampling Distribution for the Sample Proportion\nSuppose the true population/long-run proportion is \\(\\pi\\). Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, \\(\\hat{P}\\) when the sample size is large follows a Gaussian distribution with mean \\(p\\) and variance \\(\\frac{\\pi(1-\\pi)}{n}\\).\nFormally,\n\\[\n\\hat{P} \\sim N\\left(\\pi,\\frac{\\pi(1-\\pi)}{n}\\right)\n\\]\nIt follows that the standard error of the sample proportion is \\(\\sigma_{\\hat{p}} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\)."
   },
   {
     "objectID": "lecture5.html#standardization-2",
     "href": "lecture5.html#standardization-2",
     "title": "Sampling Distributions",
     "section": "Standardization",
-    "text": "Standardization\nThe sample proportion can also be standardized based on the properties of the sampling distribution. The sample mean \\(\\hat{p}\\) can be transformed into a random variable \\(Z\\) such that \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\hat{p}-p}{\\sqrt{\\frac{p(1-p)}{n}}}\n\\] In addition,\n\\[\nP(\\hat{P} \\leq \\hat{p}) = P\\left(Z \\leq \\frac{\\hat{p}-p}{\\sqrt{\\frac{p(1-p)}{n}}}\\right) = P(Z \\leq z)\n\\]"
+    "text": "Standardization\nThe sample proportion can also be standardized based on the properties of the sampling distribution. The sample mean \\(\\hat{p}\\) can be transformed into a random variable \\(Z\\) such that \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\hat{p}-\\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}}\n\\] In addition,\n\\[\nP(\\hat{P} \\leq \\hat{p}) = P\\left(Z \\leq \\frac{\\hat{p}-\\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}}\\right) = P(Z \\leq z)\n\\]"
+  },
+  {
+    "objectID": "lecture5.html#example-4",
+    "href": "lecture5.html#example-4",
+    "title": "Sampling Distributions",
+    "section": "Example",
+    "text": "Example\nIn a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps.\n\nQuestionsAnswer\n\n\nWhat is the probability that in a random sample of 200, less than 125 will be against the new proposed zoning maps?\n\n\nThe population proportion is \\(\\pi=0.637=\\mu\\), the sample size \\(n=200\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (0.637)(1-0.637)/200 =\\) 0.0011562.\n\nphat &lt;- 125/200\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/200\n\npnorm(phat,pi,sqrt(variance))\n\n[1] 0.3620751"
+  },
+  {
+    "objectID": "lecture5.html#exercise-3",
+    "href": "lecture5.html#exercise-3",
+    "title": "Sampling Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nAccording to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States.\n\nQuestionAnswer\n\n\nWhat is the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?\n\n\nThe population proportion is \\(\\pi=1/31=\\mu\\), the sample size \\(n=1000\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (1/31)(1-1/31)/1000 =\\) 3.1217482^{-5}.\n\nphat &lt;- 50/1000\npi &lt;- 1/31\nvariance &lt;- (1/31) * (1-1/31) / 1000\n1-pnorm(phat,pi,sqrt(variance))\n\n[1] 0.0007480821\n\npnorm(phat,pi,sqrt(variance),lower.tail=F)\n\n[1] 0.0007480821"
+  },
+  {
+    "objectID": "lecture5.html#continuity-correction",
+    "href": "lecture5.html#continuity-correction",
+    "title": "Sampling Distributions",
+    "section": "Continuity Correction",
+    "text": "Continuity Correction\n\n\n\n\n\n\nWarning\n\n\nRecall that proportions often come from discrete distributions such as the binomial distribution. However, we’re using the Gaussian distribution, which is continuous, to approximate a discrete distribution.\n\n\n\n\n\n\n\n\n\nTip\n\n\nWe can employ a continuity correction to account for the adjustment from discrete to continuous distributions. The correction is implemented during the standardization of the sample proportion. Given the sample proportion \\(\\hat{p}\\), sample size \\(n\\), and the population proportion \\(\\pi\\),\n\\[\nz=\\begin{cases}\n      \\frac{\\hat{p}+(0.5/n) - \\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}},~ \\hat{p} &lt; \\pi \\\\\n      \\frac{\\hat{p}-(0.5/n) - \\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}},~ \\hat{p} &gt; \\pi\n   \\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe effect of the continuity correction on the resulting standardized z-score is lower for high sample sizes."
+  },
+  {
+    "objectID": "lecture5.html#example-5",
+    "href": "lecture5.html#example-5",
+    "title": "Sampling Distributions",
+    "section": "Example",
+    "text": "Example\nIn a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps.\n\nQuestionsAnswer\n\n\nUse the continuity correction to calculate the probability that in a random sample of 20, less than 12 will be against the new proposed zoning maps?\n\n\nThe population proportion is \\(\\pi=0.637=\\mu\\), the sample size \\(n=20\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (0.637)(1-0.637)/20 =\\) 0.0115616. Note that \\(\\hat{p} = 12/20=\\) 0.6 is less than \\(\\pi=0.637\\).\n\nphat &lt;- 12/20\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/20\nsampsize &lt;- 20\n\nz &lt;- (phat + (0.5/sampsize) -pi)/sqrt(variance)\npnorm(z,0,1)\n\n[1] 0.4555694\n\n\nWithout continuity correction:\n\nphat &lt;- 12/20\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/20\n\npnorm(phat,pi,sqrt(variance))\n\n[1] 0.3653829"
+  },
+  {
+    "objectID": "lecture5.html#exercise-4",
+    "href": "lecture5.html#exercise-4",
+    "title": "Sampling Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nAccording to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States.\n\nQuestionAnswer\n\n\nUse the continuity correction to calculate the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?\n\n\nThe population proportion is \\(\\pi=1/31=\\mu\\), the sample size \\(n=1000\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (1/31)(1-1/31)/1000 =\\) 3.1217482^{-5}. Note that \\(\\hat{p}\\) &gt; \\(\\pi\\).\n\nphat &lt;- 50/1000\npi &lt;- 1/31\nvariance &lt;- (1/31) * (1-1/31) / 1000\nsampsize&lt;- 1000\n\nz &lt;- (phat - (0.5/sampsize) -pi)/sqrt(variance)\npnorm(z,0,1,lower.tail=F)\n\n[1] 0.001014558\n\n1-pnorm(z,0,1)\n\n[1] 0.001014558"
   }
 ]

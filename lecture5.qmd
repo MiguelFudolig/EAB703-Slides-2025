@@ -414,31 +414,160 @@ Unlike the means where we measure values, we create the sampling distribution fo
 
 ## Sampling Distribution for the Sample Proportion
 
-Suppose the true population/long-run proportion is $p$. Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, $\hat{P}$ when the sample size is large follows a Gaussian distribution with mean $p$ and variance $\frac{p(1-p)}{n}$.
+Suppose the true population/long-run proportion is $\pi$. Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, $\hat{P}$ when the sample size is large follows a Gaussian distribution with mean $p$ and variance $\frac{\pi(1-\pi)}{n}$.
 
 Formally,
 
 $$
-\hat{P} \sim N(p,\frac{p(1-p)}{n})
+\hat{P} \sim N\left(\pi,\frac{\pi(1-\pi)}{n}\right)
 $$
 
-It follows that the standard error of the sample proportion is $\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{n}}$.
+It follows that the standard error of the sample proportion is $\sigma_{\hat{p}} = \sqrt{\frac{\pi(1-\pi)}{n}}$.
 
 ## Standardization
 
 The sample proportion can also be standardized based on the properties of the sampling distribution. The sample mean $\hat{p}$ can be transformed into a random variable $Z$ such that $Z \sim N(0,1)$.
 
 $$
-Z = \frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}
+Z = \frac{\hat{p}-\pi}{\sqrt{\frac{\pi(1-\pi)}{n}}}
 $$
 In addition,
 
 $$
-P(\hat{P} \leq \hat{p}) = P\left(Z \leq \frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}\right) = P(Z \leq z)
+P(\hat{P} \leq \hat{p}) = P\left(Z \leq \frac{\hat{p}-\pi}{\sqrt{\frac{\pi(1-\pi)}{n}}}\right) = P(Z \leq z)
 $$
 
 ## Example
 
+In a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps. 
 
+::: panel-tabset
+
+### Questions
+What is the probability that in a random sample of 200, less than 125 will be against the new proposed zoning maps?
+
+### Answer
+
+The population proportion is $\pi=0.637=\mu$, the sample size $n=200$. The variance can be calculated using the formula $\pi(1-\pi)/n = (0.637)(1-0.637)/200 =$ `r 0.637 * (1-0.637)/200`.
+
+```{r}
+phat <- 125/200
+pi <- 0.637
+variance <- 0.637 * (1-0.637)/200
+
+pnorm(phat,pi,sqrt(variance))
+```
+
+:::
+
+## Exercise
+
+According to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States. 
+
+::: panel-tabset
+
+### Question
+What is the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?
+
+### Answer
+
+
+The population proportion is $\pi=1/31=\mu$, the sample size $n=1000$. The variance can be calculated using the formula $\pi(1-\pi)/n = (1/31)(1-1/31)/1000 =$ `r (1/31) * (1-1/31) / 1000`.
+
+```{r}
+phat <- 50/1000
+pi <- 1/31
+variance <- (1/31) * (1-1/31) / 1000
+1-pnorm(phat,pi,sqrt(variance))
+pnorm(phat,pi,sqrt(variance),lower.tail=F)
+```
+
+
+:::
+
+## Continuity Correction
+
+::: callout-warning
+Recall that proportions often come from discrete distributions such as the binomial distribution. However, we're using the Gaussian distribution, which is continuous, to approximate a discrete distribution. 
+:::
+
+::: callout-tip
+We can employ a continuity correction to account for the adjustment from discrete to continuous distributions. The correction is implemented during the standardization of the sample proportion. Given the sample proportion $\hat{p}$, sample size $n$, and the population proportion $\pi$,
+
+$$
+z=\begin{cases} 
+      \frac{\hat{p}+(0.5/n) - \pi}{\sqrt{\frac{\pi(1-\pi)}{n}}},~ \hat{p} < \pi \\
+      \frac{\hat{p}-(0.5/n) - \pi}{\sqrt{\frac{\pi(1-\pi)}{n}}},~ \hat{p} > \pi
+   \end{cases}
+$$
+:::
+
+::: callout-important
+The effect of the continuity correction on the resulting standardized z-score is lower for high sample sizes. 
+:::
+
+## Example
+
+In a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps. 
+
+::: panel-tabset
+
+### Questions
+Use the continuity correction to calculate the probability that in a random sample of 20, less than 12 will be against the new proposed zoning maps?
+
+### Answer
+
+The population proportion is $\pi=0.637=\mu$, the sample size $n=20$. The variance can be calculated using the formula $\pi(1-\pi)/n = (0.637)(1-0.637)/20 =$ `r 0.637 * (1-0.637)/20`. Note that $\hat{p} = 12/20=$ `r 12/20` is less than $\pi=0.637$.
+
+```{r}
+phat <- 12/20
+pi <- 0.637
+variance <- 0.637 * (1-0.637)/20
+sampsize <- 20
+
+z <- (phat + (0.5/sampsize) -pi)/sqrt(variance)
+pnorm(z,0,1)
+```
+
+Without continuity correction:
+
+```{r}
+phat <- 12/20
+pi <- 0.637
+variance <- 0.637 * (1-0.637)/20
+
+pnorm(phat,pi,sqrt(variance))
+```
+
+
+:::
+
+## Exercise
+
+According to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States. 
+
+::: panel-tabset
+
+### Question
+Use the continuity correction to calculate the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?
+
+### Answer
+
+
+The population proportion is $\pi=1/31=\mu$, the sample size $n=1000$. The variance can be calculated using the formula $\pi(1-\pi)/n = (1/31)(1-1/31)/1000 =$ `r (1/31) * (1-1/31) / 1000`. Note that $\hat{p}$ > $\pi$.
+
+```{r}
+phat <- 50/1000
+pi <- 1/31
+variance <- (1/31) * (1-1/31) / 1000
+sampsize<- 1000
+
+z <- (phat - (0.5/sampsize) -pi)/sqrt(variance)
+pnorm(z,0,1,lower.tail=F)
+1-pnorm(z,0,1)
+```
+
+
+:::
 
 
