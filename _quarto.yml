@@ -23,8 +23,8 @@ website:
       - section: "Problem Sets"
         href: problemsets.qmd
         contents:
-          # - href: PS1_key.qmd
-          #   text: Problem Set 1 Key
+          - href: PS1_key.qmd
+            text: Problem Set 1 Key
 
 format:
   html:

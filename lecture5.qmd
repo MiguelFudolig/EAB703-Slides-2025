@@ -124,7 +124,7 @@ Suppose it is known that in a certain large human population cranial length is a
 What is the probability that a random sample of size 10 from this population will have a mean greater than 190?
 
 ### Answer
-We can use the sampling distribution because we know the sample is from a Gaussian population. The mean of the sampling distribution, $\mu_\bar{X}$, should be equal to the population mean. Hence, $\mu_{\bar{X}} = 185.6$.
+We can use the sampling distribution because we know the sample is from a Gaussian population. The mean of the sampling distribution, $\mu_{\bar{X}}$, should be equal to the population mean. Hence, $\mu_{\bar{X}} = 185.6$.
 
 The standard error, $\sigma_{\bar{X}}$, can be calculated using the following formula: $\sigma_{\bar{X}} = \sigma/\sqrt{n} = 12.7/\sqrt{10} =$ `r round(12.7/sqrt(10),4)`
 

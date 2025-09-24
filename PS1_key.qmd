@@ -69,7 +69,7 @@ Save the CSV file in the same folder as your `R `script!
 :::
 
 ```{.r}
-setwd(getwd())
+getwd() # provides your working directory
 ```
 
 ```{r}

@@ -1092,8 +1092,8 @@ There are multiple ways to import files into `R`. The most common data set forma
 First, download the file `SleepHealthData.csv` from Canvas in the same folder as your R source code.
 
 ```{r}
-setwd(getwd())
-sleep <- read.csv("SleepHealthData.csv")
+getwd() # save your data in this folder
+sleep <- read.csv("SleepHealthData.csv") # or use a specific path to your folder
 glimpse(sleep)
 ```
 
