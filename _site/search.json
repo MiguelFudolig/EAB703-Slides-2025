@@ -21,105 +21,352 @@
     "href": "lecture5.html#activity",
     "title": "Sampling Distributions",
     "section": "Activity",
-    "text": "Activity\nLet us use the “Sampling Words” applet through this link. Suppose we are interested in calculating the average word length of different samples of 10 words from Beyonce’s Crazy in Love.\n\nDid we get the same average length for all samples?"
+    "text": "Activity\nLet us use the “Sampling Words” applet through this link. Suppose we are interested in calculating the average word length of different samples of 10 words from Beyonce’s Crazy in Love.\n\nDid we get the same average length for all samples?",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#sampling-distributions",
     "href": "lecture5.html#sampling-distributions",
     "title": "Sampling Distributions",
     "section": "Sampling Distributions",
-    "text": "Sampling Distributions\nRepeated samples will yield different values for the statistics.\n\n\n\n\n\n\nNote\n\n\nWe have to view statistics as the sample mean \\(\\bar{x}\\) and sample proportion \\(\\hat{p}\\) as random variables. The probability distribution of these statistics are called sampling distributions. These distributions enable us to:\n\nAnswer probability questions about sample statistics\nProvide the necessary theory for some statistical inference tests."
+    "text": "Sampling Distributions\nRepeated samples will yield different values for the statistics.\n\n\n\n\n\n\nNote\n\n\nWe have to view statistics as the sample mean \\(\\bar{x}\\) and sample proportion \\(\\hat{p}\\) as random variables. The probability distribution of these statistics are called sampling distributions. These distributions enable us to:\n\nAnswer probability questions about sample statistics\nProvide the necessary theory for some statistical inference tests.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#sampling-distributions-1",
     "href": "lecture5.html#sampling-distributions-1",
     "title": "Sampling Distributions",
     "section": "Sampling Distributions",
-    "text": "Sampling Distributions\nThe sampling distribution of a statistic is the distribution of all possible values that can be assumed by some statistic computed from samples of the same size from the population.\n\n\n\n\n\n\nNote\n\n\nWe are usually interested in knowing the functional form (refer to distributions discussed in Chapter 4), mean, and variance."
+    "text": "Sampling Distributions\nThe sampling distribution of a statistic is the distribution of all possible values that can be assumed by some statistic computed from samples of the same size from the population.\n\n\n\n\n\n\nNote\n\n\nWe are usually interested in knowing the functional form (refer to distributions discussed in Chapter 4), mean, and variance.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#sampling-from-gaussian-distributed-populations",
     "href": "lecture5.html#sampling-from-gaussian-distributed-populations",
     "title": "Sampling Distributions",
     "section": "Sampling from Gaussian-distributed populations",
-    "text": "Sampling from Gaussian-distributed populations\nFor a sample with size \\(n\\) that comes from a Gaussian-distributed population with mean \\(\\mu\\) and variance \\(\\sigma^2\\), i.e. the samples \\(X_1,X_2,...,X_n\\) are all independent and identically distributed such that \\(X_i \\sim N(\\mu,\\sigma^2)\\), the sample mean can be defined as:\n\\[\n\\bar{X} = \\frac{X_1 + X_2 + ... + X_n}{n}\n\\]\nThe probability distribution of the sample mean, also known as the sampling distribution of the sample mean can be expressed as:\n\\[\n\\bar{X} \\sim N(\\mu, \\frac{\\sigma^2}{n})\n\\]"
+    "text": "Sampling from Gaussian-distributed populations\nFor a sample with size \\(n\\) that comes from a Gaussian-distributed population with mean \\(\\mu\\) and variance \\(\\sigma^2\\), i.e. the samples \\(X_1,X_2,...,X_n\\) are all independent and identically distributed such that \\(X_i \\sim N(\\mu,\\sigma^2)\\), the sample mean can be defined as:\n\\[\n\\bar{X} = \\frac{X_1 + X_2 + ... + X_n}{n}\n\\]\nThe probability distribution of the sample mean, also known as the sampling distribution of the sample mean can be expressed as:\n\\[\n\\bar{X} \\sim N(\\mu, \\frac{\\sigma^2}{n})\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#implications",
     "href": "lecture5.html#implications",
     "title": "Sampling Distributions",
     "section": "Implications",
-    "text": "Implications\n\n\n\n\n\n\nImportant\n\n\nThe mean of the sampling distribution, \\(\\mu_{\\bar{X}}\\) is equal to the population mean, while the variance, \\(\\sigma^2_{\\bar{X}}\\) is reduced by a factor of the sample size \\(n\\).\nThe standard deviation of the sampling distribution can be calculated by taking the square root of the variance of the distribution, \\(\\sqrt{\\frac{\\sigma^2}{n}} = \\frac{\\sigma}{\\sqrt{n}}\\). This is referred to as the standard error of the sample mean."
+    "text": "Implications\n\n\n\n\n\n\nImportant\n\n\nThe mean of the sampling distribution, \\(\\mu_{\\bar{X}}\\) is equal to the population mean, while the variance, \\(\\sigma^2_{\\bar{X}}\\) is reduced by a factor of the sample size \\(n\\).\nThe standard deviation of the sampling distribution can be calculated by taking the square root of the variance of the distribution, \\(\\sqrt{\\frac{\\sigma^2}{n}} = \\frac{\\sigma}{\\sqrt{n}}\\). This is referred to as the standard error of the sample mean.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#standardization",
     "href": "lecture5.html#standardization",
     "title": "Sampling Distributions",
     "section": "Standardization",
-    "text": "Standardization\nThe sample mean can also be standardized based on the properties of the sampling distribution. The sample mean \\(\\bar{X}\\) can be transformed into a random variable \\(Z\\) such that \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\bar{X} - \\mu}{\\sigma/\\sqrt{n}}\n\\] In addition,\n\\[\nP(\\bar{X} \\leq \\bar{x}) = P(Z \\leq \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}) = P(Z \\leq z)\n\\]"
+    "text": "Standardization\nThe sample mean can also be standardized based on the properties of the sampling distribution. The sample mean \\(\\bar{X}\\) can be transformed into a random variable \\(Z\\) such that \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\bar{X} - \\mu}{\\sigma/\\sqrt{n}}\n\\] In addition,\n\\[\nP(\\bar{X} \\leq \\bar{x}) = P(Z \\leq \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}) = P(Z \\leq z)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#sampling-from-non-gaussian-populations",
     "href": "lecture5.html#sampling-from-non-gaussian-populations",
     "title": "Sampling Distributions",
     "section": "Sampling from Non-Gaussian Populations",
-    "text": "Sampling from Non-Gaussian Populations\nThe sampling distribution previously derived could also apply to samples from non-Gaussian populations under certain conditions. These conditions are provided by the central limit theorem.\n\n\n\n\n\n\n\nCentral Limit Theorem (CLT)\n\n\nGiven a population of any non-Gaussian functional form with a mean \\(\\mu\\) and finite variance \\(\\sigma^2\\), the sampling distribution of \\(\\bar{x}\\) computed from samples of size \\(n\\) from this population, will have mean \\(\\mu\\) and variance \\(\\sigma^2/n\\) and will be approximately Gaussian distributed when the sample size is large.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe rule of thumb for sample means is that a sample size of 30 is satisfactory for the central limit theorem, but this maybe too small for skewed distributions. The Gaussian approximation provided by the CLT becomes better as the sample size increases."
+    "text": "Sampling from Non-Gaussian Populations\nThe sampling distribution previously derived could also apply to samples from non-Gaussian populations under certain conditions. These conditions are provided by the central limit theorem.\n\n\n\n\n\n\n\nCentral Limit Theorem (CLT)\n\n\nGiven a population of any non-Gaussian functional form with a mean \\(\\mu\\) and finite variance \\(\\sigma^2\\), the sampling distribution of \\(\\bar{x}\\) computed from samples of size \\(n\\) from this population, will have mean \\(\\mu\\) and variance \\(\\sigma^2/n\\) and will be approximately Gaussian distributed when the sample size is large.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe rule of thumb for sample means is that a sample size of 30 is satisfactory for the central limit theorem, but this maybe too small for skewed distributions. The Gaussian approximation provided by the CLT becomes better as the sample size increases.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#example",
     "href": "lecture5.html#example",
     "title": "Sampling Distributions",
     "section": "Example",
-    "text": "Example\nSuppose it is known that in a certain large human population cranial length is approximately Gaussian distributed with a mean of 185.6 mm and a standard deviation of 12.7 mm.\n\nQuestionAnswer\n\n\nWhat is the probability that a random sample of size 10 from this population will have a mean greater than 190?\n\n\nWe can use the sampling distribution because we know the sample is from a Gaussian population. The mean of the sampling distribution, \\(\\mu_{\\bar{X}}\\), should be equal to the population mean. Hence, \\(\\mu_{\\bar{X}} = 185.6\\).\nThe standard error, \\(\\sigma_{\\bar{X}}\\), can be calculated using the following formula: \\(\\sigma_{\\bar{X}} = \\sigma/\\sqrt{n} = 12.7/\\sqrt{10} =\\) 4.0161\nUsing the knowledge that \\(\\bar{X} \\sim N(185.6, 12.7/\\sqrt{10})\\), we can use pnorm to calculate the probability that the sample mean is greater than 190.\n\npnorm(190,mean=185.6,sd=12.7/sqrt(10),lower.tail=F)\n\n[1] 0.1366286\n\nz &lt;- (190-185.6)/(12.7/sqrt(10))\npnorm(z,0,1,lower.tail=F)\n\n[1] 0.1366286"
+    "text": "Example\nSuppose it is known that in a certain large human population cranial length is approximately Gaussian distributed with a mean of 185.6 mm and a standard deviation of 12.7 mm.\n\nQuestionAnswer\n\n\nWhat is the probability that a random sample of size 10 from this population will have a mean greater than 190?\n\n\nWe can use the sampling distribution because we know the sample is from a Gaussian population. The mean of the sampling distribution, \\(\\mu_{\\bar{X}}\\), should be equal to the population mean. Hence, \\(\\mu_{\\bar{X}} = 185.6\\).\nThe standard error, \\(\\sigma_{\\bar{X}}\\), can be calculated using the following formula: \\(\\sigma_{\\bar{X}} = \\sigma/\\sqrt{n} = 12.7/\\sqrt{10} =\\) 4.0161\nUsing the knowledge that \\(\\bar{X} \\sim N(185.6, 12.7/\\sqrt{10})\\), we can use pnorm to calculate the probability that the sample mean is greater than 190.\n\npnorm(190,mean=185.6,sd=12.7/sqrt(10),lower.tail=F)\n\n[1] 0.1366286\n\nz &lt;- (190-185.6)/(12.7/sqrt(10))\npnorm(z,0,1,lower.tail=F)\n\n[1] 0.1366286",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#example-2",
     "href": "lecture5.html#example-2",
     "title": "Sampling Distributions",
     "section": "Example 2",
-    "text": "Example 2\nSuppose the hourly number of customer arrivals at a hospital ED has a Poisson distribution with rate parameter \\(\\lambda=6\\). Every hour for 48 hours, the number of customer arrivals is counted and recorded.\n\nQuestionAnswer\n\n\nUse the CLT to approximate the probability that the average number of arrivals is between 5 and 8.\n\n\nThe data is non-Gaussian, but we will assume that the CLT holds. Recall that for a Poisson distribution, the mean is equal to the variance. Specifically, \\(\\mu=6\\), \\(\\sigma^2 = 6\\), \\(n=48\\). Hence, the mean and the standard error can be expressed as:\n\\[\n\\mu_{\\bar{X}} = 6; \\sigma_{\\bar{X}} = \\sqrt{6/48}\n\\] The probability that the average number of arrivals in the 48-hour period is between 5 and 8 is:\n\npnorm(8,6,sqrt(6/48)) - pnorm(5,6,sqrt(6/48))\n\n[1] 0.9976611"
+    "text": "Example 2\nSuppose the hourly number of customer arrivals at a hospital ED has a Poisson distribution with rate parameter \\(\\lambda=6\\). Every hour for 48 hours, the number of customer arrivals is counted and recorded.\n\nQuestionAnswer\n\n\nUse the CLT to approximate the probability that the average number of arrivals is between 5 and 8.\n\n\nThe data is non-Gaussian, but we will assume that the CLT holds. Recall that for a Poisson distribution, the mean is equal to the variance. Specifically, \\(\\mu=6\\), \\(\\sigma^2 = 6\\), \\(n=48\\). Hence, the mean and the standard error can be expressed as:\n\\[\n\\mu_{\\bar{X}} = 6; \\sigma_{\\bar{X}} = \\sqrt{6/48}\n\\] The probability that the average number of arrivals in the 48-hour period is between 5 and 8 is:\n\npnorm(8,6,sqrt(6/48)) - pnorm(5,6,sqrt(6/48))\n\n[1] 0.9976611",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#exercise",
     "href": "lecture5.html#exercise",
     "title": "Sampling Distributions",
     "section": "Exercise",
-    "text": "Exercise\nThe daily average screen time of elementary school students is assumed to follow a non-Gaussian distribution with 2.6 hours with a standard deviation of 5.3.\n\nQuestionAnswer\n\n\nUse the central limit theorem to calculate the probability that a sample of 250 elementary school students will yield an average screen time between 1.5 hours and 2 hours?\n\n\nThe mean of the sampling distribution is 2.6 hours and the standard error of the mean is \\(5.3/\\sqrt{250} =\\) 0.3352014.\n\npnorm(2,2.6,5.3/sqrt(250)) - pnorm(1.5,2.6,5.3/sqrt(250))\n\n[1] 0.03621341"
+    "text": "Exercise\nThe daily average screen time of elementary school students is assumed to follow a non-Gaussian distribution with 2.6 hours with a standard deviation of 5.3.\n\nQuestionAnswer\n\n\nUse the central limit theorem to calculate the probability that a sample of 250 elementary school students will yield an average screen time between 1.5 hours and 2 hours?\n\n\nThe mean of the sampling distribution is 2.6 hours and the standard error of the mean is \\(5.3/\\sqrt{250} =\\) 0.3352014.\n\npnorm(2,2.6,5.3/sqrt(250)) - pnorm(1.5,2.6,5.3/sqrt(250))\n\n[1] 0.03621341",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
-    "objectID": "lecture5.html#sample-mean-vs.-difference-between-two-sample-means",
-    "href": "lecture5.html#sample-mean-vs.-difference-between-two-sample-means",
+    "objectID": "lecture5.html#finite-population-correction",
+    "href": "lecture5.html#finite-population-correction",
     "title": "Sampling Distributions",
-    "section": "Sample Mean vs. Difference Between Two Sample Means",
-    "text": "Sample Mean vs. Difference Between Two Sample Means\nConsider Populations A and B with the following possible measurements:\nA: {0,1,2}; B:{1,2,3}.\nIf we take a sample with size 2, we can have the following scenario:\nSample A: {0,2}; Sample B: {1,2}\n\n\n\n\n\n\nWarning\n\n\nThe sample mean of Sample A is 1, and the mean of Sample B is 1.5. However, the difference between the sample means is -0.5, which is not a possible value for the sample means of A and B."
+    "section": "Finite Population Correction",
+    "text": "Finite Population Correction\nThe resulting sampling distribution assumes that sampling was done with replacement (those who were sampled can be sampled again) or sampling was done from an infinite population.\n\n\n\n\n\n\nImportant\n\n\nWhen dealing with smaller populations, it is possible for these assumptions to be broken. We need to account for the type of sampling and the finiteness of the population.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThis correction is often ignored when the sample size is less than 5% of the population.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
-    "objectID": "lecture5.html#sampling-from-gaussian-distributed-populations-1",
-    "href": "lecture5.html#sampling-from-gaussian-distributed-populations-1",
+    "objectID": "lecture5.html#finite-population-correction-formula",
+    "href": "lecture5.html#finite-population-correction-formula",
     "title": "Sampling Distributions",
-    "section": "Sampling from Gaussian-distributed populations",
-    "text": "Sampling from Gaussian-distributed populations\nWhen sampling from two Gaussian-distributed populations \\(N(\\mu_1,\\sigma_1^2)\\) and \\(N(\\mu_2,\\sigma_2^2)\\), the distribution of the difference between sample means \\(\\bar{X}_1 - \\bar{X}_2\\) is a Gaussian distribution with mean \\(\\mu_1-\\mu_2\\) and variance \\(\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}\\). Mathematically,\n\\[\n\\bar{X}_1 - \\bar{X}_2 \\sim N(\\mu_1-\\mu_2,\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2})\n\\]"
-  },
-  {
-    "objectID": "lecture5.html#standardization-1",
-    "href": "lecture5.html#standardization-1",
-    "title": "Sampling Distributions",
-    "section": "Standardization",
-    "text": "Standardization\nSimilar to the sample mean, the difference of the sample means can also be standardized.\n\\[\nZ = \\frac{(\\bar{X}_1 - \\bar{X}_2) - (\\mu_1-\\mu_2)}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}\n\\]\nIn addition,\n\\[\nP((\\bar{X}_1 - \\bar{X}_2) \\leq (\\bar{x}_1 - \\bar{x}_2)) = P\\left(Z \\leq \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1-\\mu_2)}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}\\right)\n\\]"
+    "section": "Finite Population Correction Formula",
+    "text": "Finite Population Correction Formula\n\n\n\n\n\n\nTip\n\n\nWhen sampling is without replacement from a finite population, the sampling distribution of \\(\\bar{x}\\) will have mean \\(\\mu\\) and variance\n\\[\n\\sigma^2_{\\bar{X}} = \\frac{\\sigma^2}{n} \\left(\\frac{N-n}{N-1}\\right)\n\\]\nThe standard error can be expressed as the square root of this variance.\n\\[\n\\sigma_{\\bar{X}} = \\sqrt{\\frac{\\sigma^2}{n} \\left(\\frac{N-n}{N-1}\\right)}\n\\]\n\n\n\n\n\n\n\n\n\nImportant\n\n\nIt also follows that the standardization with the finite population correction can be expressed as\n\\[\nZ = \\frac{\\bar{X} - \\mu}{\\sigma/\\sqrt{n}\\sqrt{\\left(\\frac{N-n}{N-1}\\right)}}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#example-1",
     "href": "lecture5.html#example-1",
     "title": "Sampling Distributions",
     "section": "Example",
-    "text": "Example\nSuppose 30 prototypes of a newly invented suture thread have a mean tensile strength of 140 psi and standard deviation of 10.5 psi. Assuming the tensile strengths are normally distributed,\n\nQuestionAnswer\n\n\nWhat is the probability that a sample of 7 prototypes will have a mean tensile strength lower than 137 psi?\n\nAssuming sampling with replacement + infinite populations\nUsing the finite population correction\n\n\n\n\nInfinite population: standard error = \\(\\sqrt{\\sigma^2/n}=\\sqrt{10.5^2/7}\\) = 3.968627\n\n\nmu &lt;- 140\nse &lt;- sqrt(10.5^2/7)\n\npnorm(137,mu,se)\n\n[1] 0.2248459\n\n\n\nFinite Population Correction\n\nstandard error = \\(\\sqrt{\\sigma^2/n}\\sqrt{\\left(\\frac{N-n}{n-1}\\right)}=\\sqrt{10.5^2/7}\\sqrt{\\frac{30-7}{30-1}}\\) = 7.7701351\n\nmu &lt;- 140\nse &lt;- sqrt(10.5^2/7)*sqrt((30-7)/(30-1))\n\npnorm(137,mu,se)\n\n[1] 0.1979905"
+    "text": "Example\nSuppose 30 prototypes of a newly invented suture thread have a mean tensile strength of 140 psi and standard deviation of 10.5 psi. Assuming the tensile strengths are normally distributed,\n\nQuestionAnswer\n\n\nWhat is the probability that a sample of 7 prototypes will have a mean tensile strength lower than 137 psi?\n\nAssuming sampling with replacement + infinite populations\nUsing the finite population correction\n\n\n\n\nInfinite population: standard error = \\(\\sqrt{\\sigma^2/n}=\\sqrt{10.5^2/7}\\) = 3.968627\n\n\nmu &lt;- 140\nse &lt;- sqrt(10.5^2/7)\n\npnorm(137,mu,se)\n\n[1] 0.2248459\n\n\n\nFinite Population Correction\n\nstandard error = \\(\\sqrt{\\sigma^2/n}\\sqrt{\\left(\\frac{N-n}{n-1}\\right)}=\\sqrt{10.5^2/7}\\sqrt{\\frac{30-7}{30-1}}\\) = 7.7701351\n\nmu &lt;- 140\nse &lt;- sqrt(10.5^2/7)*sqrt((30-7)/(30-1))\n\npnorm(137,mu,se)\n\n[1] 0.1979905",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture5.html#exercise-1",
     "href": "lecture5.html#exercise-1",
     "title": "Sampling Distributions",
     "section": "Exercise",
-    "text": "Exercise\nSuppose 300 prototypes of a newly invented suture thread have a mean tensile strength of 140 psi and standard deviation of 10.5 psi. Assuming the tensile strengths are normally distributed,\n\nQuestionAnswer\n\n\nWhat is the probability that a sample of 7 prototypes will have a mean tensile strength lower than 137 psi?\n\nAssuming sampling with replacement + infinite populations\nUsing the finite population correction\n\n\n\n\nInfinite population: standard error = \\(\\sqrt{\\sigma^2/n}=\\sqrt{10.5^2/7}\\) = 3.968627\n\n\nmu &lt;- 140\nse &lt;- sqrt(10.5^2/7)\n\npnorm(137,mu,se)\n\n[1] 0.2248459\n\n\n\nFinite Population Correction\n\nstandard error = \\(\\sqrt{\\sigma^2/n}\\sqrt{\\left(\\frac{N-n}{n-1}\\right)}=\\sqrt{10.5^2/7}\\sqrt{\\frac{300-7}{300-1}}\\) = 3.9286062\n\nmu &lt;- 140\nse &lt;- sqrt(10.5^2/7)*sqrt((300-7)/(300-1))\n\npnorm(137,mu,se)\n\n[1] 0.222544"
+    "text": "Exercise\nSuppose 300 prototypes of a newly invented suture thread have a mean tensile strength of 140 psi and standard deviation of 10.5 psi. Assuming the tensile strengths are normally distributed,\n\nQuestionAnswer\n\n\nWhat is the probability that a sample of 7 prototypes will have a mean tensile strength lower than 137 psi?\n\nAssuming sampling with replacement + infinite populations\nUsing the finite population correction\n\n\n\n\nInfinite population: standard error = \\(\\sqrt{\\sigma^2/n}=\\sqrt{10.5^2/7}\\) = 3.968627\n\n\nmu &lt;- 140\nse &lt;- sqrt(10.5^2/7)\n\npnorm(137,mu,se)\n\n[1] 0.2248459\n\n\n\nFinite Population Correction\n\nstandard error = \\(\\sqrt{\\sigma^2/n}\\sqrt{\\left(\\frac{N-n}{n-1}\\right)}=\\sqrt{10.5^2/7}\\sqrt{\\frac{300-7}{300-1}}\\) = 3.9286062\n\nmu &lt;- 140\nse &lt;- sqrt(10.5^2/7)*sqrt((300-7)/(300-1))\n\npnorm(137,mu,se)\n\n[1] 0.222544",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#sample-mean-vs.-difference-between-two-sample-means",
+    "href": "lecture5.html#sample-mean-vs.-difference-between-two-sample-means",
+    "title": "Sampling Distributions",
+    "section": "Sample Mean vs. Difference Between Two Sample Means",
+    "text": "Sample Mean vs. Difference Between Two Sample Means\nConsider Populations A and B with the following possible measurements:\nA: {0,1,2}; B:{1,2,3}.\nIf we take a sample with size 2, we can have the following scenario:\nSample A: {0,2}; Sample B: {1,2}\n\n\n\n\n\n\nWarning\n\n\nThe sample mean of Sample A is 1, and the mean of Sample B is 1.5. However, the difference between the sample means is -0.5, which is not a possible value for the sample means of A and B.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#sampling-from-gaussian-distributed-populations-1",
+    "href": "lecture5.html#sampling-from-gaussian-distributed-populations-1",
+    "title": "Sampling Distributions",
+    "section": "Sampling from Gaussian-distributed populations",
+    "text": "Sampling from Gaussian-distributed populations\nWhen sampling from two Gaussian-distributed populations \\(N(\\mu_1,\\sigma_1^2)\\) and \\(N(\\mu_2,\\sigma_2^2)\\), the distribution of the difference between sample means \\(\\bar{X}_1 - \\bar{X}_2\\) is a Gaussian distribution with mean \\(\\mu_1-\\mu_2\\) and variance \\(\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}\\). Mathematically,\n\\[\n\\bar{X}_1 - \\bar{X}_2 \\sim N(\\mu_1-\\mu_2,\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2})\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#sampling-from-non-gaussian-distributed-populations",
+    "href": "lecture5.html#sampling-from-non-gaussian-distributed-populations",
+    "title": "Sampling Distributions",
+    "section": "Sampling from non Gaussian-distributed populations",
+    "text": "Sampling from non Gaussian-distributed populations\nWhen sampling from two Gaussian-distributed populations with finite means and variances, we can impose the Central Limit Theorem such that the distribution of the difference between sample means \\(\\bar{X}_1 - \\bar{X}_2\\) can be approximated by the following Gaussian distribution.\n\\[\n\\bar{X}_1 - \\bar{X}_2 \\sim N(\\mu_1-\\mu_2,\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2})\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#standardization-1",
+    "href": "lecture5.html#standardization-1",
+    "title": "Sampling Distributions",
+    "section": "Standardization",
+    "text": "Standardization\nSimilar to the sample mean, the difference of the sample means can also be standardized.\n\\[\nZ = \\frac{(\\bar{X}_1 - \\bar{X}_2) - (\\mu_1-\\mu_2)}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}\n\\]\nIn addition,\n\\[\nP((\\bar{X}_1 - \\bar{X}_2) \\leq (\\bar{x}_1 - \\bar{x}_2)) = P\\left(Z \\leq \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1-\\mu_2)}{\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}\\right)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#example-3",
+    "href": "lecture5.html#example-3",
+    "title": "Sampling Distributions",
+    "section": "Example",
+    "text": "Example\nSuppose it has been established that for a certain type of client the average length of a home visit by a public health nurse is 45 minutes with a standard deviation of 15 minutes, and that for a second type of client the average home visit is 30 minutes long with a standard deviation of 20 minutes.\n\nQuestionAnswer\n\n\nIf a nurse randomly visits 35 clients from the first and 40 from the second population, what is the probability that the average length of home visit will differ between client type one and client type two by 20 or more minutes?\n\n\n\n# Calculate the mean and variance of the sampling distribution first.\n1diff_means &lt;- 45-30\n2diff_var &lt;- 15^2/35 + 20^2/40\n\npnorm(20,diff_means,sqrt(diff_var),lower.tail=F)\n\n# OR An alternative solution\n\n3z &lt;- (20 - diff_means)/sqrt(diff_var)\n\npnorm(z,0,1,lower.tail=F)\n\n\n1\n\nmu_1-mu_2\n\n2\n\nsigma_1^2/n1 + sigma_2^2/n2\n\n3\n\nStandardization method\n\n\n\n\n[1] 0.1086783\n[1] 0.1086783",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#exercise-2",
+    "href": "lecture5.html#exercise-2",
+    "title": "Sampling Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nSuppose the age of two student organizations were normally distributed. Organization A has an average age of 20.5 and a standard deviation of 3.7, while Organization B has an average of 19.7 and a standard deviation of 4.5.\n\nQuestionAnswer\n\n\nIf 50 students were sampled from each organization, what is the probability that the sample from Organization A is older than Organization B by a value between one and two years?\n\n\n\ndiff_means &lt;- 20.5-19.7\ndiff_var &lt;- 4.5^2/50 + 3.7^2/50\n\npnorm(2,diff_means,sqrt(diff_var))-pnorm(1,diff_means,sqrt(diff_var))\n\n[1] 0.3314723\n\n# OR An alternative solution\n\nz1 &lt;- (2 - diff_means)/sqrt(diff_var) \nz2 &lt;- (1 - diff_means)/sqrt(diff_var) \n\npnorm(z1,0,1) - pnorm(z2,0,1)\n\n[1] 0.3314723",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#sampling-distribution-for-the-sample-proportion",
+    "href": "lecture5.html#sampling-distribution-for-the-sample-proportion",
+    "title": "Sampling Distributions",
+    "section": "Sampling Distribution for the Sample Proportion",
+    "text": "Sampling Distribution for the Sample Proportion\nOftentimes, we are interested in the distribution of the sample proportion when dealing with frequency data.\n\n\n\n\n\n\nNote\n\n\nUnlike the means where we measure values, we create the sampling distribution for sample proportions by taking all possible samples of a given size and calculating the proportion of the variable of interest for each sample. The variable is usually dichotomous (yes/no, 0/1)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#sampling-distribution-for-the-sample-proportion-1",
+    "href": "lecture5.html#sampling-distribution-for-the-sample-proportion-1",
+    "title": "Sampling Distributions",
+    "section": "Sampling Distribution for the Sample Proportion",
+    "text": "Sampling Distribution for the Sample Proportion\nSuppose the true population/long-run proportion is \\(\\pi\\). Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, \\(\\hat{P}\\) when the sample size is large follows a Gaussian distribution with mean \\(\\pi\\) and variance \\(\\frac{\\pi(1-\\pi)}{n}\\).\nFormally,\n\\[\n\\hat{P} \\sim N\\left(\\pi,\\frac{\\pi(1-\\pi)}{n}\\right)\n\\]\nIt follows that the standard error of the sample proportion is \\(\\sigma_{\\hat{p}} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#standardization-2",
+    "href": "lecture5.html#standardization-2",
+    "title": "Sampling Distributions",
+    "section": "Standardization",
+    "text": "Standardization\nThe sample proportion can also be standardized based on the properties of the sampling distribution. The sample proportion \\(\\hat{P}\\) can be transformed into a random variable \\(Z\\) such that \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\hat{p}-\\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}}\n\\] In addition,\n\\[\nP(\\hat{P} \\leq \\hat{p}) = P\\left(Z \\leq \\frac{\\hat{p}-\\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}}\\right) = P(Z \\leq z)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#example-4",
+    "href": "lecture5.html#example-4",
+    "title": "Sampling Distributions",
+    "section": "Example",
+    "text": "Example\nIn a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps.\n\nQuestionsAnswer\n\n\nWhat is the probability that in a random sample of 200, less than 125 will be against the new proposed zoning maps?\n\n\nThe population proportion is \\(\\pi=0.637=\\mu\\), the sample size \\(n=200\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (0.637)(1-0.637)/200 =\\) 0.0011562.\n\nphat &lt;- 125/200\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/200\n\npnorm(phat,pi,sqrt(variance))\n\n[1] 0.3620751",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#exercise-3",
+    "href": "lecture5.html#exercise-3",
+    "title": "Sampling Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nAccording to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States.\n\nQuestionAnswer\n\n\nWhat is the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?\n\n\nThe population proportion is \\(\\pi=1/31=\\mu\\), the sample size \\(n=1000\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (1/31)(1-1/31)/1000 =\\) 3.1217482^{-5}.\n\nphat &lt;- 50/1000\npi &lt;- 1/31\nvariance &lt;- (1/31) * (1-1/31) / 1000\n1-pnorm(phat,pi,sqrt(variance))\n\n[1] 0.0007480821\n\npnorm(phat,pi,sqrt(variance),lower.tail=F)\n\n[1] 0.0007480821",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#continuity-correction",
+    "href": "lecture5.html#continuity-correction",
+    "title": "Sampling Distributions",
+    "section": "Continuity Correction",
+    "text": "Continuity Correction\n\n\n\n\n\n\nWarning\n\n\nRecall that proportions often come from discrete distributions such as the binomial distribution. However, we’re using the Gaussian distribution, which is continuous, to approximate a discrete distribution.\n\n\n\n\n\n\n\n\n\nTip\n\n\nWe can employ a continuity correction to account for the adjustment from discrete to continuous distributions. The correction is implemented during the standardization of the sample proportion. Given the sample proportion \\(\\hat{p}\\), sample size \\(n\\), and the population proportion \\(\\pi\\),\n\\[\nz=\\begin{cases}\n      \\frac{\\hat{p}+(0.5/n) - \\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}},~ \\hat{p} &lt; \\pi \\\\\n      \\frac{\\hat{p}-(0.5/n) - \\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}},~ \\hat{p} &gt; \\pi\n   \\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe effect of the continuity correction on the resulting standardized z-score is lower for high sample sizes.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#example-5",
+    "href": "lecture5.html#example-5",
+    "title": "Sampling Distributions",
+    "section": "Example",
+    "text": "Example\nIn a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps.\n\nQuestionsAnswer\n\n\nUse the continuity correction to calculate the probability that in a random sample of 20, less than 12 will be against the new proposed zoning maps?\n\n\nThe population proportion is \\(\\pi=0.637=\\mu\\), the sample size \\(n=20\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (0.637)(1-0.637)/20 =\\) 0.0115616. Note that \\(\\hat{p} = 12/20=\\) 0.6 is less than \\(\\pi=0.637\\).\n\nphat &lt;- 12/20\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/20\nsampsize &lt;- 20\n\nz &lt;- (phat + (0.5/sampsize) -pi)/sqrt(variance)\npnorm(z,0,1)\n\n[1] 0.4555694\n\n\nWithout continuity correction:\n\nphat &lt;- 12/20\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/20\n\npnorm(phat,pi,sqrt(variance))\n\n[1] 0.3653829",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#exercise-4",
+    "href": "lecture5.html#exercise-4",
+    "title": "Sampling Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nAccording to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States.\n\nQuestionAnswer\n\n\nUse the continuity correction to calculate the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?\n\n\nThe population proportion is \\(\\pi=1/31=\\mu\\), the sample size \\(n=1000\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (1/31)(1-1/31)/1000 =\\) 3.1217482^{-5}. Note that \\(\\hat{p}\\) &gt; \\(\\pi\\).\n\nphat &lt;- 50/1000\npi &lt;- 1/31\nvariance &lt;- (1/31) * (1-1/31) / 1000\nsampsize&lt;- 1000\n\nz &lt;- (phat - (0.5/sampsize) -pi)/sqrt(variance)\npnorm(z,0,1,lower.tail=F)\n\n[1] 0.001014558\n\n1-pnorm(z,0,1)\n\n[1] 0.001014558",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#difference-between-two-sample-proportions",
+    "href": "lecture5.html#difference-between-two-sample-proportions",
+    "title": "Sampling Distributions",
+    "section": "Difference Between Two Sample Proportions",
+    "text": "Difference Between Two Sample Proportions\nSimilar to the difference between two sample means, some values of the difference in proportions cannot be found in the sampling distribution of single proportions from two different groups.\n\n\n\n\n\n\nImportant\n\n\nFor instance, it is possible to get a negative difference between proportions, but not a negative proportion.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#sampling-distribution-of-the-difference-between-two-sample-proportions",
+    "href": "lecture5.html#sampling-distribution-of-the-difference-between-two-sample-proportions",
+    "title": "Sampling Distributions",
+    "section": "Sampling Distribution of the Difference Between Two Sample Proportions",
+    "text": "Sampling Distribution of the Difference Between Two Sample Proportions\nSuppose the respective true population/long-run proportion for groups 1 and 2 are \\(\\pi_1\\) and \\(\\pi_2\\) and the respective samples from these groups are \\(n_1\\) and \\(n_2\\). Invoking the Central Limit Theorem, the sampling distribution of the difference in sample proportions, \\(\\hat{P}_1 - \\hat{P}_2\\) when the sample size is large follows a Gaussian distribution with mean \\(\\pi_1-\\pi_2\\) and variance \\(\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}\\).\nFormally,\n\\[\n\\hat{P}_1 - \\hat{P}_2 \\sim N\\left(\\pi_1-\\pi_2,\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}\\right)\n\\]\nIt follows that the standard error of the sample proportion is \\(\\sigma_{\\hat{P}_1 - \\hat{P}_2} = \\sqrt{\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}}\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#standardization-3",
+    "href": "lecture5.html#standardization-3",
+    "title": "Sampling Distributions",
+    "section": "Standardization",
+    "text": "Standardization\nSimilar to the single proportion case, the difference of two proportions can also be standardized to \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\hat{P}_1 - \\hat{P}_2- (\\pi_1-\\pi_2)}{\\sqrt{\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}}}\n\\]\nIn addition,\n\\[\nP((\\hat{P}_1 - \\hat{P}_2) \\leq \\hat{p}_1 - \\hat{p}_2) = P\\left(Z \\leq \\frac{\\hat{p}_1 - \\hat{p}_2- (\\pi_1-\\pi_2)}{\\sqrt{\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}}}\\right) = P(Z \\leq z)\n\\] ## Example\nResearchers investigated food insecurity in the urban and rural areas of their country. It was previously reported by the country’s census that the proportion of adults who experienced food insecurity in the past year was 33% in rural areas and 23% in urban areas. The researchers sampled 450 adults from urban areas and 300 adults from rural areas.\n\n\n\n\n\n\nQuestion\n\n\nWhat is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was 5% higher than that of the urban sample?\nAnswer\nRemember that ${rural}-{urban} = .10, {rural} = 0.33, {urban}=0.23 $. We are interested in \\(P((\\hat{P}_1 - \\hat{P}_2) \\leq 0.05)\\).\n\npi_1 &lt;- 0.33\nn_1 &lt;- 300\npi_2 &lt;- 0.23\nn_2 &lt;- 450\nvariance &lt;- (pi_1 *(1-pi_1))/n_1 + (pi_2 *(1-pi_2))/n_2\n\npnorm(0.05,pi_1-pi_2,sqrt(variance))\n\n[1] 0.06850149\n\n\nOR through standardization\n\nz &lt;- (0.05-(pi_1-pi_2))/sqrt(variance)\n\npnorm(z,0,1)\n\n[1] 0.06850149",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#exercise-5",
+    "href": "lecture5.html#exercise-5",
+    "title": "Sampling Distributions",
+    "section": "Exercise",
+    "text": "Exercise\nThe prevalence of the Influenza virus in State A was reported to be 30%, while the prevalence of Influenza in State B is 24%.\n\nQuestionAnswer\n\n\nIf we randomly sample 100 constituents from each state, what is the probability that there will be a higher proportion of individuals infected with Influenza in State B compared to State A?\n\n\nWe are interested in \\(P(\\hat{P}_A - \\hat{P}_B &lt; 0)\\), where \\(\\hat{P}_A\\) is the sample proportion of infected individuals in State A and \\(\\hat{P}_B\\) is the sample proportion for State B. It follows that \\(\\pi_A=0.30\\), \\(\\pi_B=0.24\\), and \\(n_1 = n_2 = 100\\).\n\npi_1 &lt;- 0.30\nn_1 &lt;- 100\npi_2 &lt;- 0.24\nn_2 &lt;- 100\nvariance &lt;- (pi_1 *(1-pi_1))/n_1 + (pi_2 *(1-pi_2))/n_2\n\npnorm(0,pi_1-pi_2,sqrt(variance))\n\n[1] 0.1690752\n\n\nOR through standardization\n\nz &lt;- (0-(pi_1-pi_2))/sqrt(variance)\n\npnorm(z,0,1)\n\n[1] 0.1690752",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
   },
   {
     "objectID": "lecture3.html#objective-probability",
@@ -1815,7 +2062,7 @@
     "href": "lecture4.html#dissecting-the-binomial-distribution-independent-events",
     "title": "Probability Distributions",
     "section": "Dissecting the Binomial Distribution: Independent Events",
-    "text": "Dissecting the Binomial Distribution: Independent Events\nSuppose we toss a coin three times, each toss independent of each other. Assuming the probability of getting heads is \\(p\\), the probability of flipping two heads out of three tosses can be calculated using the property of independent events.\n\\[\nP(2 heads) = pp(1-p)(1-p) = p^2 (1-p)^1 = p^2 (1-p)^{(3-2)}\n\\]",
+    "text": "Dissecting the Binomial Distribution: Independent Events\nSuppose we toss a coin three times, each toss independent of each other. Assuming the probability of getting heads is \\(p\\), the probability of flipping two heads out of three tosses can be calculated using the property of independent events.\n\\[\nP(2 heads) = pp(1-p) = p^2 (1-p)^1 = p^2 (1-p)^{(3-2)}\n\\]",
     "crumbs": [
       "Lectures",
       "Lecture 4- Probability Distributions"
@@ -1991,7 +2238,7 @@
     "href": "lecture4.html#exercise-4",
     "title": "Probability Distributions",
     "section": "Exercise",
-    "text": "Exercise\nThe hourly number of pedestrians waiting by a bus stop is estimated to be 7.\n\nQuestionsAnswersSimulations/Random Draws\n\n\n\nWhat is the probability of observing exactly 7 pedestrians at the bus stop?\nwhat is the probability of observing at least 10 pedestrians at the bus stop?\nDraw 1000 values from the associated Poisson distribution using rpois. Create a histogram for the randomly drawn values.\n\n\n\n\nExactly 7 pedestrians\n\n\ndpois(7,7)\n\n[1] 0.1490028\n\n\n\nAt least 10 pedestrians: Complement of at most 9 pedestrians! Hence, the probability is equal to \\(1-P(X \\leq 9) = 1-F(9)\\)\n\n\n1-ppois(9,7)\n\n[1] 0.1695041\n\n\n\n\n\nNsim&lt;- 1000 # Simulating 10 times\nset.seed(12)\nsims &lt;- rpois(Nsim,14)\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram(bins=50) + \n  theme_bw() + \n  labs(x=\"Number of Diagnosed Diabetics\", y=\"Count\")",
+    "text": "Exercise\nThe hourly number of pedestrians waiting by a bus stop is estimated to be 7.\n\nQuestionsAnswersSimulations/Random Draws\n\n\n\nWhat is the probability of observing exactly 7 pedestrians at the bus stop?\nwhat is the probability of observing at least 10 pedestrians at the bus stop?\nDraw 1000 values from the associated Poisson distribution using rpois. Create a histogram for the randomly drawn values.\n\n\n\n\nExactly 7 pedestrians\n\n\ndpois(7,7)\n\n[1] 0.1490028\n\n\n\nAt least 10 pedestrians: Complement of at most 9 pedestrians! Hence, the probability is equal to \\(1-P(X \\leq 9) = 1-F(9)\\)\n\n\n1-ppois(9,7)\n\n[1] 0.1695041\n\n\n\n\n\nNsim&lt;- 1000 # Simulating 10 times\nset.seed(12)\nsims &lt;- rpois(Nsim,7)\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram(binwidth=1) + \n  theme_bw() + \n  labs(x=\"Number of Pedestrians\", y=\"Count\")",
     "crumbs": [
       "Lectures",
       "Lecture 4- Probability Distributions"
@@ -2380,96 +2627,5 @@
       "Problem Sets",
       "Problem Set 1 Key"
     ]
-  },
-  {
-    "objectID": "lecture5.html#finite-population-correction",
-    "href": "lecture5.html#finite-population-correction",
-    "title": "Sampling Distributions",
-    "section": "Finite Population Correction",
-    "text": "Finite Population Correction\nThe resulting sampling distribution assumes that sampling was done with replacement (those who were sampled can be sampled again) or sampling was done from an infinite population.\n\n\n\n\n\n\nImportant\n\n\nWhen dealing with smaller populations, it is possible for these assumptions to be broken. We need to account for the type of sampling and the finiteness of the population.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThis correction is often ignored when the sample size is less than 5% of the population."
-  },
-  {
-    "objectID": "lecture5.html#finite-population-correction-formula",
-    "href": "lecture5.html#finite-population-correction-formula",
-    "title": "Sampling Distributions",
-    "section": "Finite Population Correction Formula",
-    "text": "Finite Population Correction Formula\n\n\n\n\n\n\nTip\n\n\nWhen sampling is without replacement from a finite population, the sampling distribution of \\(\\bar{x}\\) will have mean \\(\\mu\\) and variance\n\\[\n\\sigma^2_{\\bar{X}} = \\frac{\\sigma^2}{n} \\left(\\frac{N-n}{N-1}\\right)\n\\]\nThe standard error can be expressed as the square root of this variance.\n\\[\n\\sigma_{\\bar{X}} = \\sqrt{\\frac{\\sigma^2}{n} \\left(\\frac{N-n}{N-1}\\right)}\n\\]\n\n\n\n\n\n\n\n\n\nImportant\n\n\nIt also follows that the standardization with the finite population correction can be expressed as\n\\[\nZ = \\frac{\\bar{X} - \\mu}{\\sigma/\\sqrt{n}\\sqrt{\\left(\\frac{N-n}{N-1}\\right)}}\n\\]"
-  },
-  {
-    "objectID": "lecture5.html#sampling-from-non-gaussian-distributed-populations",
-    "href": "lecture5.html#sampling-from-non-gaussian-distributed-populations",
-    "title": "Sampling Distributions",
-    "section": "Sampling from non Gaussian-distributed populations",
-    "text": "Sampling from non Gaussian-distributed populations\nWhen sampling from two Gaussian-distributed populations with finite means and variances, we can impose the Central Limit Theorem such that the distribution of the difference between sample means \\(\\bar{X}_1 - \\bar{X}_2\\) can be approximated by the following Gaussian distribution.\n\\[\n\\bar{X}_1 - \\bar{X}_2 \\sim N(\\mu_1-\\mu_2,\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2})\n\\]"
-  },
-  {
-    "objectID": "lecture5.html#sampling-distribution-for-the-sample-proportion",
-    "href": "lecture5.html#sampling-distribution-for-the-sample-proportion",
-    "title": "Sampling Distributions",
-    "section": "Sampling Distribution for the Sample Proportion",
-    "text": "Sampling Distribution for the Sample Proportion\nOftentimes, we are interested in the distribution of the sample proportion when dealing with frequency data.\n\n\n\n\n\n\nNote\n\n\nUnlike the means where we measure values, we create the sampling distribution for sample proportions by taking all possible samples of a given size and calculating the proportion of the variable of interest for each sample. The variable is usually dichotomous (yes/no, 0/1)"
-  },
-  {
-    "objectID": "lecture5.html#example-3",
-    "href": "lecture5.html#example-3",
-    "title": "Sampling Distributions",
-    "section": "Example",
-    "text": "Example\nSuppose it has been established that for a certain type of client the average length of a home visit by a public health nurse is 45 minutes with a standard deviation of 15 minutes, and that for a second type of client the average home visit is 30 minutes long with a standard deviation of 20 minutes.\n\nQuestionAnswer\n\n\nIf a nurse randomly visits 35 clients from the first and 40 from the second population, what is the probability that the average length of home visit will differ between client type one and client type two by 20 or more minutes?\n\n\n\n# Calculate the mean and variance of the sampling distribution first.\n1diff_means &lt;- 45-30\n2diff_var &lt;- 15^2/35 + 20^2/40\n\npnorm(20,diff_means,sqrt(diff_var),lower.tail=F)\n\n# OR An alternative solution\n\n3z &lt;- (20 - diff_means)/sqrt(diff_var)\n\npnorm(z,0,1,lower.tail=F)\n\n\n1\n\nmu_1-mu_2\n\n2\n\nsigma_1^2/n1 + sigma_2^2/n2\n\n3\n\nStandardization method\n\n\n\n\n[1] 0.1086783\n[1] 0.1086783"
-  },
-  {
-    "objectID": "lecture5.html#exercise-2",
-    "href": "lecture5.html#exercise-2",
-    "title": "Sampling Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nSuppose the age of two student organizations were normally distributed. Organization A has an average age of 20.5 and a standard deviation of 3.7, while Organization B has an average of 19.7 and a standard deviation of 4.5.\n\nQuestionAnswer\n\n\nIf 50 students were sampled from each organization, what is the probability that the sample from Organization A is older than Organization B by a value between one and two years?\n\n\n\ndiff_means &lt;- 20.5-19.7\ndiff_var &lt;- 4.5^2/50 + 3.7^2/50\n\npnorm(2,diff_means,sqrt(diff_var))-pnorm(1,diff_means,sqrt(diff_var))\n\n[1] 0.3314723\n\n# OR An alternative solution\n\nz1 &lt;- (2 - diff_means)/sqrt(diff_var) \nz2 &lt;- (1 - diff_means)/sqrt(diff_var) \n\npnorm(z1,0,1) - pnorm(z2,0,1)\n\n[1] 0.3314723"
-  },
-  {
-    "objectID": "lecture5.html#sampling-distribution-for-the-sample-proportion-1",
-    "href": "lecture5.html#sampling-distribution-for-the-sample-proportion-1",
-    "title": "Sampling Distributions",
-    "section": "Sampling Distribution for the Sample Proportion",
-    "text": "Sampling Distribution for the Sample Proportion\nSuppose the true population/long-run proportion is \\(\\pi\\). Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, \\(\\hat{P}\\) when the sample size is large follows a Gaussian distribution with mean \\(p\\) and variance \\(\\frac{\\pi(1-\\pi)}{n}\\).\nFormally,\n\\[\n\\hat{P} \\sim N\\left(\\pi,\\frac{\\pi(1-\\pi)}{n}\\right)\n\\]\nIt follows that the standard error of the sample proportion is \\(\\sigma_{\\hat{p}} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\)."
-  },
-  {
-    "objectID": "lecture5.html#standardization-2",
-    "href": "lecture5.html#standardization-2",
-    "title": "Sampling Distributions",
-    "section": "Standardization",
-    "text": "Standardization\nThe sample proportion can also be standardized based on the properties of the sampling distribution. The sample mean \\(\\hat{p}\\) can be transformed into a random variable \\(Z\\) such that \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\hat{p}-\\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}}\n\\] In addition,\n\\[\nP(\\hat{P} \\leq \\hat{p}) = P\\left(Z \\leq \\frac{\\hat{p}-\\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}}\\right) = P(Z \\leq z)\n\\]"
-  },
-  {
-    "objectID": "lecture5.html#example-4",
-    "href": "lecture5.html#example-4",
-    "title": "Sampling Distributions",
-    "section": "Example",
-    "text": "Example\nIn a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps.\n\nQuestionsAnswer\n\n\nWhat is the probability that in a random sample of 200, less than 125 will be against the new proposed zoning maps?\n\n\nThe population proportion is \\(\\pi=0.637=\\mu\\), the sample size \\(n=200\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (0.637)(1-0.637)/200 =\\) 0.0011562.\n\nphat &lt;- 125/200\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/200\n\npnorm(phat,pi,sqrt(variance))\n\n[1] 0.3620751"
-  },
-  {
-    "objectID": "lecture5.html#exercise-3",
-    "href": "lecture5.html#exercise-3",
-    "title": "Sampling Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nAccording to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States.\n\nQuestionAnswer\n\n\nWhat is the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?\n\n\nThe population proportion is \\(\\pi=1/31=\\mu\\), the sample size \\(n=1000\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (1/31)(1-1/31)/1000 =\\) 3.1217482^{-5}.\n\nphat &lt;- 50/1000\npi &lt;- 1/31\nvariance &lt;- (1/31) * (1-1/31) / 1000\n1-pnorm(phat,pi,sqrt(variance))\n\n[1] 0.0007480821\n\npnorm(phat,pi,sqrt(variance),lower.tail=F)\n\n[1] 0.0007480821"
-  },
-  {
-    "objectID": "lecture5.html#continuity-correction",
-    "href": "lecture5.html#continuity-correction",
-    "title": "Sampling Distributions",
-    "section": "Continuity Correction",
-    "text": "Continuity Correction\n\n\n\n\n\n\nWarning\n\n\nRecall that proportions often come from discrete distributions such as the binomial distribution. However, we’re using the Gaussian distribution, which is continuous, to approximate a discrete distribution.\n\n\n\n\n\n\n\n\n\nTip\n\n\nWe can employ a continuity correction to account for the adjustment from discrete to continuous distributions. The correction is implemented during the standardization of the sample proportion. Given the sample proportion \\(\\hat{p}\\), sample size \\(n\\), and the population proportion \\(\\pi\\),\n\\[\nz=\\begin{cases}\n      \\frac{\\hat{p}+(0.5/n) - \\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}},~ \\hat{p} &lt; \\pi \\\\\n      \\frac{\\hat{p}-(0.5/n) - \\pi}{\\sqrt{\\frac{\\pi(1-\\pi)}{n}}},~ \\hat{p} &gt; \\pi\n   \\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe effect of the continuity correction on the resulting standardized z-score is lower for high sample sizes."
-  },
-  {
-    "objectID": "lecture5.html#example-5",
-    "href": "lecture5.html#example-5",
-    "title": "Sampling Distributions",
-    "section": "Example",
-    "text": "Example\nIn a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps.\n\nQuestionsAnswer\n\n\nUse the continuity correction to calculate the probability that in a random sample of 20, less than 12 will be against the new proposed zoning maps?\n\n\nThe population proportion is \\(\\pi=0.637=\\mu\\), the sample size \\(n=20\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (0.637)(1-0.637)/20 =\\) 0.0115616. Note that \\(\\hat{p} = 12/20=\\) 0.6 is less than \\(\\pi=0.637\\).\n\nphat &lt;- 12/20\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/20\nsampsize &lt;- 20\n\nz &lt;- (phat + (0.5/sampsize) -pi)/sqrt(variance)\npnorm(z,0,1)\n\n[1] 0.4555694\n\n\nWithout continuity correction:\n\nphat &lt;- 12/20\npi &lt;- 0.637\nvariance &lt;- 0.637 * (1-0.637)/20\n\npnorm(phat,pi,sqrt(variance))\n\n[1] 0.3653829"
-  },
-  {
-    "objectID": "lecture5.html#exercise-4",
-    "href": "lecture5.html#exercise-4",
-    "title": "Sampling Distributions",
-    "section": "Exercise",
-    "text": "Exercise\nAccording to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States.\n\nQuestionAnswer\n\n\nUse the continuity correction to calculate the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?\n\n\nThe population proportion is \\(\\pi=1/31=\\mu\\), the sample size \\(n=1000\\). The variance can be calculated using the formula \\(\\pi(1-\\pi)/n = (1/31)(1-1/31)/1000 =\\) 3.1217482^{-5}. Note that \\(\\hat{p}\\) &gt; \\(\\pi\\).\n\nphat &lt;- 50/1000\npi &lt;- 1/31\nvariance &lt;- (1/31) * (1-1/31) / 1000\nsampsize&lt;- 1000\n\nz &lt;- (phat - (0.5/sampsize) -pi)/sqrt(variance)\npnorm(z,0,1,lower.tail=F)\n\n[1] 0.001014558\n\n1-pnorm(z,0,1)\n\n[1] 0.001014558"
   }
 ]

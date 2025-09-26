@@ -1055,7 +1055,7 @@ n! = n(n-1)(n-2)...(2)(1)
 <h2>Dissecting the Binomial Distribution: Independent Events</h2>
 <p>Suppose we toss a coin three times, each toss independent of each other. Assuming the probability of getting heads is <span class="math inline">\(p\)</span>, the probability of flipping two heads out of three tosses can be calculated using the property of independent events.</p>
 <p><span class="math display">\[
-P(2 heads) = pp(1-p)(1-p) = p^2 (1-p)^1 = p^2 (1-p)^{(3-2)}
+P(2 heads) = pp(1-p) = p^2 (1-p)^1 = p^2 (1-p)^{(3-2)}
 \]</span></p>
 </section>
 <section id="dissecting-the-binomial-distribution-counting-sample-points" class="slide level2">
@@ -1622,12 +1622,12 @@ p(x) =\frac{\lambda^x e^{-\lambda}}{x!}; x = 0,1,2,...
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-47"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-47-1"><a href="#annotated-cell-47-1"></a>Nsim<span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co"># Simulating 10 times</span></span>
 <span id="annotated-cell-47-2"><a href="#annotated-cell-47-2"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
-<span id="annotated-cell-47-3"><a href="#annotated-cell-47-3"></a>sims <span class="ot">&lt;-</span> <span class="fu">rpois</span>(Nsim,<span class="dv">14</span>)</span>
+<span id="annotated-cell-47-3"><a href="#annotated-cell-47-3"></a>sims <span class="ot">&lt;-</span> <span class="fu">rpois</span>(Nsim,<span class="dv">7</span>)</span>
 <span id="annotated-cell-47-4"><a href="#annotated-cell-47-4"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">simulations=</span>sims)</span>
 <span id="annotated-cell-47-5"><a href="#annotated-cell-47-5"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>simulations)) <span class="sc">+</span> </span>
-<span id="annotated-cell-47-6"><a href="#annotated-cell-47-6"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">50</span>) <span class="sc">+</span> </span>
+<span id="annotated-cell-47-6"><a href="#annotated-cell-47-6"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="annotated-cell-47-7"><a href="#annotated-cell-47-7"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="annotated-cell-47-8"><a href="#annotated-cell-47-8"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Number of Diagnosed Diabetics"</span>, <span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-47-8"><a href="#annotated-cell-47-8"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Number of Pedestrians"</span>, <span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>

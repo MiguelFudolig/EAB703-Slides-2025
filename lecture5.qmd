@@ -414,7 +414,7 @@ Unlike the means where we measure values, we create the sampling distribution fo
 
 ## Sampling Distribution for the Sample Proportion
 
-Suppose the true population/long-run proportion is $\pi$. Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, $\hat{P}$ when the sample size is large follows a Gaussian distribution with mean $p$ and variance $\frac{\pi(1-\pi)}{n}$.
+Suppose the true population/long-run proportion is $\pi$. Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, $\hat{P}$ when the sample size is large follows a Gaussian distribution with mean $\pi$ and variance $\frac{\pi(1-\pi)}{n}$.
 
 Formally,
 
@@ -426,7 +426,7 @@ It follows that the standard error of the sample proportion is $\sigma_{\hat{p}}
 
 ## Standardization
 
-The sample proportion can also be standardized based on the properties of the sampling distribution. The sample mean $\hat{p}$ can be transformed into a random variable $Z$ such that $Z \sim N(0,1)$.
+The sample proportion can also be standardized based on the properties of the sampling distribution. The sample proportion $\hat{P}$ can be transformed into a random variable $Z$ such that $Z \sim N(0,1)$.
 
 $$
 Z = \frac{\hat{p}-\pi}{\sqrt{\frac{\pi(1-\pi)}{n}}}
@@ -569,5 +569,111 @@ pnorm(z,0,1,lower.tail=F)
 
 
 :::
+
+# Distribution of the Difference Between Two Sample Proportions
+
+## Difference Between Two Sample Proportions
+
+Similar to the difference between two sample means, some values of the difference in proportions cannot be found in the sampling distribution of single proportions from two different groups.
+
+::: callout-important
+For instance, it is possible to get a negative difference between proportions, but not a negative proportion.
+
+
+:::
+
+## Sampling Distribution of the Difference Between Two Sample Proportions
+
+
+Suppose the respective true population/long-run proportion for groups 1 and 2 are $\pi_1$ and $\pi_2$ and the respective samples from these groups are $n_1$ and $n_2$. Invoking the Central Limit Theorem, the sampling distribution of the difference in sample proportions, $\hat{P}_1 - \hat{P}_2$ when the sample size is large follows a Gaussian distribution with mean $\pi_1-\pi_2$ and variance $\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}$.
+
+Formally,
+
+$$
+\hat{P}_1 - \hat{P}_2 \sim N\left(\pi_1-\pi_2,\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}\right)
+$$
+
+It follows that the standard error of the sample proportion is $\sigma_{\hat{P}_1 - \hat{P}_2} = \sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}$.
+
+## Standardization
+
+Similar to the single proportion case, the difference of two proportions can also be standardized to $Z \sim N(0,1)$.
+
+$$
+Z = \frac{\hat{P}_1 - \hat{P}_2- (\pi_1-\pi_2)}{\sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}}
+$$
+
+In addition,
+
+$$
+P((\hat{P}_1 - \hat{P}_2) \leq \hat{p}_1 - \hat{p}_2) = P\left(Z \leq \frac{\hat{p}_1 - \hat{p}_2- (\pi_1-\pi_2)}{\sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}}\right) = P(Z \leq z)
+$$
+## Example
+
+Researchers investigated food insecurity in the urban and rural areas of their country. It was previously reported by the country's census that the proportion of adults who experienced food insecurity in the past year was 33% in rural areas and 23% in urban areas. The researchers sampled 450 adults from urban areas and 300 adults from rural areas. 
+
+::: callout-note
+### Question
+
+What is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was 5% higher than that of the urban sample?
+
+### Answer
+
+Remember that $\pi_{rural}-\pi_{urban} = .10, \pi_{rural} = 0.33, \pi_{urban}=0.23 $. We are interested in $P((\hat{P}_1 - \hat{P}_2) \leq 0.05)$.
+
+```{r}
+pi_1 <- 0.33
+n_1 <- 300
+pi_2 <- 0.23
+n_2 <- 450
+variance <- (pi_1 *(1-pi_1))/n_1 + (pi_2 *(1-pi_2))/n_2
+
+pnorm(0.05,pi_1-pi_2,sqrt(variance))
+
+```
+OR through standardization
+
+```{r}
+z <- (0.05-(pi_1-pi_2))/sqrt(variance)
+
+pnorm(z,0,1)
+```
+
+
+:::
+
+
+## Exercise
+
+The prevalence of the Influenza virus in State A was reported to be 30%, while the prevalence of Influenza in State B is 24%. 
+
+::: panel-tabset
+### Question
+If we randomly sample 100 constituents from each state, what is the probability that there will be a higher proportion of individuals infected with Influenza in State B compared to State A?
+
+### Answer
+We are interested in $P(\hat{P}_A - \hat{P}_B < 0)$, where $\hat{P}_A$ is the sample proportion of infected individuals in State A and $\hat{P}_B$ is the sample proportion for State B. It follows that $\pi_A=0.30$, $\pi_B=0.24$, and $n_1 = n_2 = 100$.
+
+```{r}
+pi_1 <- 0.30
+n_1 <- 100
+pi_2 <- 0.24
+n_2 <- 100
+variance <- (pi_1 *(1-pi_1))/n_1 + (pi_2 *(1-pi_2))/n_2
+
+pnorm(0,pi_1-pi_2,sqrt(variance))
+```
+
+OR through standardization
+
+```{r}
+z <- (0-(pi_1-pi_2))/sqrt(variance)
+
+pnorm(z,0,1)
+```
+
+:::
+
+
 
 

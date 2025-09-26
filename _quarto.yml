@@ -20,6 +20,8 @@ website:
             text: Lecture 3- Intro to Probability
           - href: lecture4.qmd
             text: Lecture 4- Probability Distributions
+          - href: lecture5.qmd
+            text: Lecture 5- Sampling Distributions
       - section: "Problem Sets"
         href: problemsets.qmd
         contents:
