@@ -193,6 +193,7 @@ The table below shows the breakdown of the census region reported by the partici
 | Northeast     | 344       |
 | South         | 472       |
 | West          | 2,303     |
+| Missing         | 3    |
 
 ### Answer
 

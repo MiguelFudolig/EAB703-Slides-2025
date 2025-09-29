@@ -1,0 +1,88 @@
+---
+title: "Problem Set 3 Key"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+## Problem 1
+
+The table below shows the frequency table of the number of referrals offered for expectant mothers who experience socioeconomic barriers for needed healthcare.
+
+|                         |               |
+|-------------------------|---------------|
+| **Number of Referrals** | **Frequency** |
+| 0                       | 90            |
+| 1                       | 132           |
+| 2                       | 76            |
+| 3                       | 10            |
+
+- What is the probability that a randomly selected participant received at least one referral? [2 pts.]
+
+::: callout-note
+We need to calculate the relative frequencies for each category first to calculate the specific probabilities.
+:::
+
+```{r}
+library(tidyverse)
+df <- data.frame(Referrals=c(0,1,2,3),
+                 Frequency = c(90,132,76,10))
+
+mutate(df,RelFrequency = Frequency/sum(Frequency))
+```
+
+OR
+
+```{r}
+total <- sum(c(90,132,76,10))
+
+df <- data.frame(Referrals=c(0,1,2,3),
+                 Frequency = c(90,132,76,10),
+                 Rel.Frequency = c(90,132,76,10)/total)
+
+df
+
+```
+
+
+
+$$
+P(X \geq 1) = P(X=1) + P(X=2) + P(X=3) 
+$$
+or
+
+$$
+P(X \geq 1) = 1-P(X=0)
+$$
+
+Hence the probability $P(X\leq 1)$ is:
+
+```{r}
+1-90/sum(c(90,132,76,10))
+
+# OR 
+
+1-0.2922
+```
+
+- What is the expected value of the number of referrals in the sample? [1pt.]
+
+::: callout-note
+The expected number of referrals is the sum of the product of the outcome and their corresponding probabilities.
+
+$$
+E(X) = 1*(90/308) + 2*(132/308) + 3*(76/308) + 4*(10/308)
+$$
+:::
+
+```{r}
+0*(90/308) + 1*(132/308) + 2*(76/308) + 3*(10/308)
+
+# OR
+
+sum(df$Referrals*df$Rel.Frequency)
+```
+

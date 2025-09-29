@@ -1,0 +1,671 @@
+---
+title: "Data Transformation"
+author: "Miguel Fudolig"
+format:
+  revealjs:
+    theme: clean.scss
+    smaller: false
+    footer: "R Training-Data Transformation"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: false
+    engine: knitr
+    echo: true
+    embed-resources: false
+    scrollable: true
+  pdf: 
+    number-sections: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Data Frames 
+
+## Data Frames
+
+Data frames are the two-dimensional version of a list. They are far and away the most useful storage structure for data analysis. 
+
+::: callout-tip
+You can think of a data frame as R’s equivalent to the Excel spreadsheet because it stores data in a similar format.
+:::
+
+You can create a data frame using the `data.frame()` function.
+
+```{r}
+ex_dataframe <- data.frame(ID = c(1,2), Animal=c("dog","cat"))
+ex_dataframe
+```
+
+
+## Data Frame Properties
+
+:::{.panel-tabset}
+### Column Names
+
+You can access the names of a data frame using the snippet `names([DATA FRAME NAME])`
+
+```{r}
+names(ex_dataframe)
+```
+
+### Details
+
+You can determine the type of vectors for each column using the snippet `str([DATA FRAME NAME])`.
+
+```{r}
+str(ex_dataframe)
+```
+### Column Vectors
+
+You can call a single column using the `$` argument in the following format: `DATAFRAME_NAME$COLUMN_NAME`
+
+```{r}
+ex_dataframe$ID
+ex_dataframe$Animal
+
+ex_dataframe$ID * 5
+```
+
+### Dimensions
+
+The dimensions of the data frame can be calculated using the snippet: `dim([INSERT DATA FRAME NAME HERE])` command.
+
+```{r}
+dim(ex_dataframe)
+```
+
+
+:::
+
+# Importing Data
+
+## Importing Data
+
+Data can be imported from external files, URLs, or from existing `R` packages.
+
+::: callout-note
+`R` can input a wide variety of data files with the help of some packages. Some commonly used data file extensions are   `.csv` (most recommended),  `.xlsx`, `.sav`, `.sas7bdat`, `.xml`, etc.
+:::
+
+We will focus on importing CSVs or existing data from packages in this workshop.
+
+## Importing CSV files
+
+The function `read.csv()` imports CSV files into R.
+
+```{r}
+case_information<- read.csv("Case_Information.csv")
+```
+
+```{.r}
+View(case_information) # <1>
+```
+
+1. `View()` displays the data in a more interactive setting on R Studio.
+
+## Importing Data Frames from packages
+
+Some packages have pre-loaded data sets. For example, the package `nycflights13` has multiple data sets such as `flights`. This dataset contains all 336,776 flights that departed from New York City in 2013. These could be accessed after installing the package.
+
+::: {.panel-tabset}
+
+### Method 1
+
+We can access any function/file in a package using the `::` argument. For example, if we want to access `flights` in the `nycflights13` package without loading the package, we can use the following syntax:
+
+```{r}
+nycflights13::flights
+```
+
+### Method 2
+
+We can load `nycflights13` first, which gives us access to the `flights` data set.
+
+```{r}
+library(nycflights13)
+flights
+```
+
+::: callout-warning
+Sometimes, two packages share the same names for functions with different purposes, leading to an event called _aliasing_. To avoid confusion, more experienced programmers use the `::` argument. For basic users, Method 2 should suffice.
+:::
+
+:::
+
+# `dplyr`
+
+## `dplyr`
+
+The `dplyr` package, which is included in the `tidyverse`, includes functions that can greatly help you with data manipulation. In this package, you can operate on data rows, data columns, groups, or entire data frames.
+
+To use dplyr, we need to import the `tidyverse` package.
+
+```{r}
+library(tidyverse)
+```
+
+# Row Operations
+
+## Rows
+
+Some of the most important `dplyr` functions that involve rows are the following: `filter()`, `arrange()`, and `distinct()`.
+
+## `filter()`
+
+`filter()` allows you to keep rows based on the values of the columns. The syntax of `filter()` follows the format:
+
+```{.r}
+filter(DATAFRAME_NAME,BOOLEAN_CONDITION)
+```
+
+## Boolean Operators
+
+Boolean operations, are a system of logic that result in a `TRUE` or `FALSE` outcome. These operations combine operators like `AND (&)`, `OR (|)`, and `NOT (!)` to combine or modify search terms, expressions, or values, resulting in a true or false outcome. 
+
+:::{.panel-tabset}
+
+### Commonly used operators
+
+Other commonly used operators include:
+
+- The equality boolean operator `==`,
+- The inequalities `<` `>` `<=` `>=`,
+- The function `between()` in `dplyr`,
+- `%in%`, which tests whether a particular value is in a vector,
+- `grepl` which looks for a pattern within character vectors.
+
+### Examples
+```{r}
+x <- 1
+y <- 2
+
+x < y
+x > y
+x == y
+```
+
+```{r}
+cats <- c("Alice","Bob")
+"Alice" %in% cats
+
+grepl("Al",cats)
+```
+
+:::
+
+## Filtering Rows
+
+We can filter rows of interest using one or a combination of boolean operations. Let's examine the `flights` data set.
+
+:::{.panel-tabset}
+
+### Example 1
+
+Suppose we want to find the flights that departed more than 120 minutes (two hours) late:
+
+
+```{r}
+library(nycflights13)
+names(flights)
+ filter(flights, dep_delay > 120)
+```
+
+### Example 2
+
+Suppose we want to examine the flights by carrier AA (American Airlines).
+
+```{r}
+ filter(flights, carrier=="AA")
+```
+
+### Example 3
+
+Suppose we want to examine the flights by carrier AA (American Airlines) and are delayed by more than 120 minutes.
+
+```{r}
+ filter(flights, carrier=="AA" &  dep_delay > 120)
+```
+
+### Example 4
+
+Suppose we want to examine the flights by carrier AA (American Airlines) OR flights that took off from the JFK airport.
+
+```{r}
+filter(flights, carrier=="AA" |  origin=="JFK")
+```
+
+:::
+
+## Exercise
+
+Perform the following filters on the `case_information` data set.
+
+:::{.panel-tabset}
+
+### Exercise 1
+
+Create a data set "older" defined by all the cases aged 60 and above (>=60).
+
+### Answer 1
+
+```{r}
+older <- filter(case_information,age >=60)
+head(older)
+```
+
+### Exercise 2
+
+Create a data set "young_males" defined by all the male cases aged 40 and below (<= 40)
+
+### Answer 2
+
+```{r}
+young_males <- filter(case_information, age <=40 & sex == "Male" )
+```
+
+
+:::
+
+## `arrange()`
+
+`arrange()` changes the order of the rows based on the value of the columns.
+
+::: callout-tip
+`arrange()` by default arranges in increasing order. The `desc()` can be used to arrange in descending order.
+:::
+
+## Sorting Rows
+
+:::{.panel-tabset}
+### Example 1
+
+We can get a sorted data frame based on month, day, and departure time in the data set `flights`, which we can assign as a separate variable.
+
+```{r}
+head(arrange(flights,month,day,dep_time))
+
+sorted_flights <- arrange(flights,month,day,dep_time)
+head(sorted_flights)
+
+```
+
+### Example 2
+
+We can also sort different columns in different orders (ascending/descending)
+
+```{r}
+latebirds <- arrange(flights,carrier,desc(dep_delay))
+head(latebirds)
+```
+### Example 3
+
+We can use both `filter()` and `arrange()` sequentially. Suppose we want to filter out delay times higher than 120 minutes then sort the flights in increasing order.
+
+```{r}
+filterfirst <- filter(flights,dep_delay > 120)
+arrange(filterfirst,dep_delay)
+```
+:::
+
+## Exercise
+
+Use the `case_information` data set to perform the following exercises.
+
+:::{.panel-tabset}
+
+### Exercise 1
+
+Suppose we want to create a data set that includes cases who were female and listed as recovered and assign it to a variable named `fem_rec`.
+
+
+### Answer 1
+
+```{r}
+fem_rec <-filter(case_information,sex=="Female" & status=="Recovered")
+fem_rec
+```
+
+### Exercise 2
+
+Provide data from the six oldest members of `fem_rec`.
+
+### Answer 2
+
+```{r}
+head(arrange(fem_rec,desc(age)))
+```
+
+:::
+
+## `distinct()`
+
+`distinct()` finds all the unique rows in a dataset. Most of the time, you’ll want the distinct combination of some variables, so you can also optionally supply column names.
+
+## Example
+
+:::{.panel-tabset}
+
+### Example 1
+
+Suppose we want to determine the specific flights (origin, destination) in the `flights` data set.
+
+```{r}
+distinct(flights,origin,dest)
+distinct(flights,origin,dest,.keep_all=T) # <1>
+```
+1. This row keeps the other variables in the data set.
+
+### Example 2
+
+We can create a data set that includes the unique trips serviced by American Airlines.
+
+```{r}
+unique_AA<-  filter(flights,carrier=="AA")
+unique_dest_AA <- distinct(unique_AA,origin, dest)
+unique_dest_AA
+```
+
+We can use `count()` to count the number of distinct combinations of columns. To count the number of unique American Airlines (carrier=="AA") flight destinations,
+
+```{r}
+count(unique_AA,origin,dest,sort=T)
+```
+:::
+
+## Exercise
+
+:::{.panel-tabset}
+### Exercise 1
+
+Create a data set that includes the distinct province (`province`) and municipality (`muni_city`) in the `case_information` data set. Arrange this data set in alphabetical order.
+
+### Answer 1
+
+```{r}
+target <- distinct(case_information,province,muni_city)
+arrange(target,province,muni_city)
+```
+
+:::
+
+# Piping `|>`
+
+## Importance of Piping in the `tidyverse`
+
+Suppose we want to perform multiple sequential filtering, counting, and sorting processes for our data. 
+
+As an example, what if we want to create a data frame that includes all delayed flights (dep_delay > 0) coming out of the JFK airport arranged by the time of delay in descending order?
+
+:::{.panel-tabset}
+### Current Methods
+
+```{r}
+filtered <- filter(flights,dep_delay>0 & origin=="JFK")
+arrange(filtered,desc(dep_delay))
+```
+
+OR
+
+```{r}
+arrange(filter(flights,dep_delay>0 & origin=="JFK"),desc(dep_delay))
+```
+
+### Piping
+
+```{r}
+flights |> 
+  filter(dep_delay>0 & origin=="JFK") |> 
+  arrange(desc(dep_delay))
+```
+:::
+
+## Piping
+
+Piping makes coding more efficient when manipulating data.
+
+::: {.callout-note title="Mechanism"}
+If we have a data set A that we want to perform operations on, the following lines are equivalent to each other 
+
+```{.r}
+filter(A, [BOOLEAN OPERATION])
+A |> filter([BOOLEAN OPERATION])
+```
+:::
+
+## Piping in Sequences
+
+::: {.callout-note title="Mechanism"}
+We can also apply this to sequence of functions.
+
+```{.r}
+B <- filter(A, [BOOLEAN OPERATION])
+C <- distinct(B,Col1,Col2)
+count_C <- count(C,Col1)
+```
+
+With pipes,
+
+```{.r}
+A |> 
+filter([BOOLEAN OPERATION]) |> 
+distinct(Col1,Col2) |> 
+count(Col1)
+```
+
+:::
+
+## Piping Uses
+
+I will be using pipes for the rest of the workshop, but you don't need to.
+
+# Column Operations
+
+## Columns
+
+We will discuss three different column specific operations: `rename()`, `select()`, `mutate()`
+
+## `rename()`
+
+`rename()` changes the column names and keeps all existing variables.
+
+```{.r}
+rename(data,[NEWNAME = OLDNAME])
+```
+
+## Examples
+
+```{r}
+flights |> 
+  rename(tail_number = tailnum)
+```
+
+```{r}
+flights |> 
+  rename(destination_airport = dest,
+         origin_airport = origin)
+
+names(flights)
+```
+
+## `mutate()`
+
+`mutate()` adds new columns that are calculated from the existing columns. 
+
+
+## Examples
+
+
+As an example, we can calculate the average speed of the planes (mph) using the following equation:
+
+$$
+speed = distance/air time * 60
+$$
+
+We can create a new variable called speed using the `mutate()` function.
+
+```{r}
+flights |> 
+mutate(speed = distance/air_time*60)
+```
+## Example
+
+Suppose we want to create a variable `late` such that flights that have a positive delay is labeled "Late", while those with no or negative delay is "NotLate".
+
+```{r}
+flights |> 
+  mutate(late = ifelse(dep_delay > 0, "Late","NotLate"),.keep="used")
+
+```
+
+::: callout-note
+`ifelse` produces an if-else statement based on the condition.
+
+```{.r}
+ifelse([CONDITION],[CONDITION IF TRUE],[CONDITION IF FALSE])
+```
+:::
+
+## Exercise
+
+:::{.panel-tabset}
+
+###  Exercise 1
+Using the `case_information` data set, create a variable `OlderAdult` that has a value "yes" for individuals above 60 years of age, and "no" otherwise. Use 
+
+### Answer 1
+
+```{r}
+case_information |> 
+  mutate(OlderAdult = ifelse(age>60,"yes","no"),.keep="used")
+```
+
+:::
+
+## `select()`
+
+`select()` allows you to rapidly zoom in on a useful subset using operations based on the names of the variables. This is helpful when the datasets have hundreds of columns.
+
+:::{.panel-tabset}
+
+### By Name
+
+```{r}
+flights |> 
+  select(carrier,dep_delay,month,day)
+```
+
+### By Range
+
+```{r}
+flights |> 
+  select(year:carrier)
+```
+### By Exclusion
+
+```{r}
+flights |> 
+  select(!c(year,month,day))
+```
+
+:::
+
+# Group Operations
+
+## Groups
+
+The `tidyverse` also enables us to work in groups. Commonly used functions include `group_by()` and `summarize()`.
+
+## `group_by()`
+
+`group_by()` divides the dataset into groups useful for your analysis. These are commonly used in conjunction with other functions.
+
+The `R` output indicates whether your data frame is grouped.
+
+```{r}
+flights |> group_by(carrier) 
+
+```
+## `ungroup()`
+
+`ungroup()` removes the grouping set by group-by(). This is helpful when calculating 
+
+## `summarize()`
+
+When calculating summary statistics from the data frame, we want to reduce the frame to a single row for each group. This can be done using `summarize()` or `summarise()`.
+
+These summary statistics can be calculated for the entire data frame, or by group.
+
+## Example 1
+
+Suppose we want to calculate the average and standard deviation of the departure delay time. 
+
+:::{.panel-tabset}
+### All Flights
+
+```{r}
+flights |> 
+summarize(mean = mean(dep_delay,na.rm=T), 
+          sd = sd(dep_delay,na.rm=T), 
+          median = quantile(dep_delay,0.5,na.rm=T), 
+          minimum = min(dep_delay,na.rm=T),
+          maximum = max(dep_delay,na.rm=T))
+```
+
+### By Carrier
+
+```{r}
+flights |> 
+  group_by(carrier) |> 
+  summarize(mean = mean(dep_delay,na.rm=T), 
+          sd = sd(dep_delay,na.rm=T), 
+          median = quantile(dep_delay,0.5,na.rm=T), 
+          minimum = min(dep_delay,na.rm=T),
+          maximum = max(dep_delay,na.rm=T))
+```
+:::
+
+## Example 2
+
+Suppose we want to count how many times a carrier's flight was delayed in each month.
+
+```{r}
+flights |>
+  mutate(late = ifelse(dep_delay > 0, "Late","NotLate"),.keep="all") |> 
+  group_by(carrier,month,.drop=F) |> 
+  count(late)
+
+```
+## Exercise
+
+::: {.panel-tabset}
+
+### Exercise 1
+Using the case_information data set, calculate the average and standard deviation of age for each status category.
+
+### Answer 1
+```{r}
+case_information |> 
+group_by(status,.drop=F) |> 
+summarize(Mean = mean(age,na.rm=T), SD = sd(age,na.rm=T))
+```
+
+### Exercise 2
+
+Using the case_information data set, count the number of each status category for each age group and sex. Calculate the relative proportion within each agegroup/sex group.
+
+### Answer 2
+
+```{r}
+case_information |> 
+group_by(age_group,sex,.drop=F) |> 
+count(status)
+```
+
+
+:::
+
+# Chapter Done! Click here to go back to the [home page](https://madfudolig.quarto.pub/rtraining/)!

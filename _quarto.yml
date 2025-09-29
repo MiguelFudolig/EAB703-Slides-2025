@@ -22,6 +22,8 @@ website:
             text: Lecture 4- Probability Distributions
           - href: lecture5.qmd
             text: Lecture 5- Sampling Distributions
+          - href: datatransformation.qmd
+            text: Supplementary Material - Data Transformation in R
       - section: "Problem Sets"
         href: problemsets.qmd
         contents:

@@ -1,228 +1,373 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to Probability – EAB 703-1002: Biostatistical Methods for the Health Sciences</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
-  <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Introduction to Probability</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
       }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction to Probability</h1>
-  <p class="subtitle">Lecture 3</p>
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
-<div class="quarto-title-authors">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./UNLV-186.jpg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">EAB 703-1002: Biostatistical Methods for the Health Sciences</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lectures.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lecture3.html">Lecture 3- Intro to Probability</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./lectures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 1- Intro to Biostatistics and R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 2- Descriptive Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lecture 3- Intro to Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 4- Probability Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 5- Sampling Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datatransformation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Supplementary Material - Data Transformation in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./problemsets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Sets</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS1_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 1 Key</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#views-of-probability" id="toc-views-of-probability" class="nav-link" data-scroll-target="#views-of-probability">Views of Probability</a>
+  <ul class="collapse">
+  <li><a href="#objective-probability" id="toc-objective-probability" class="nav-link" data-scroll-target="#objective-probability">Objective Probability</a></li>
+  <li><a href="#classical-probability" id="toc-classical-probability" class="nav-link" data-scroll-target="#classical-probability">Classical Probability</a></li>
+  <li><a href="#frequentist-probability" id="toc-frequentist-probability" class="nav-link" data-scroll-target="#frequentist-probability">Frequentist Probability</a></li>
+  <li><a href="#subjective-probability" id="toc-subjective-probability" class="nav-link" data-scroll-target="#subjective-probability">Subjective Probability</a></li>
+  </ul></li>
+  <li><a href="#properties-of-probability" id="toc-properties-of-probability" class="nav-link" data-scroll-target="#properties-of-probability">Properties of Probability</a>
+  <ul class="collapse">
+  <li><a href="#helpful-definitions" id="toc-helpful-definitions" class="nav-link" data-scroll-target="#helpful-definitions">Helpful Definitions</a></li>
+  <li><a href="#axioms-of-probability" id="toc-axioms-of-probability" class="nav-link" data-scroll-target="#axioms-of-probability">Axioms of Probability</a></li>
+  </ul></li>
+  <li><a href="#calculating-probabilities" id="toc-calculating-probabilities" class="nav-link" data-scroll-target="#calculating-probabilities">Calculating Probabilities</a>
+  <ul class="collapse">
+  <li><a href="#calculating-marginal-probabilities" id="toc-calculating-marginal-probabilities" class="nav-link" data-scroll-target="#calculating-marginal-probabilities">Calculating Marginal Probabilities</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  <li><a href="#union-of-events" id="toc-union-of-events" class="nav-link" data-scroll-target="#union-of-events">Union of Events</a></li>
+  <li><a href="#intersection-of-events" id="toc-intersection-of-events" class="nav-link" data-scroll-target="#intersection-of-events">Intersection of Events</a></li>
+  <li><a href="#union-vs.-intersection" id="toc-union-vs.-intersection" class="nav-link" data-scroll-target="#union-vs.-intersection">Union vs.&nbsp;Intersection</a></li>
+  <li><a href="#additive-law-of-probability" id="toc-additive-law-of-probability" class="nav-link" data-scroll-target="#additive-law-of-probability">Additive Law of Probability</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  <li><a href="#example-2-1" id="toc-example-2-1" class="nav-link" data-scroll-target="#example-2-1">Example 2</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise</a></li>
+  <li><a href="#independent-events" id="toc-independent-events" class="nav-link" data-scroll-target="#independent-events">Independent Events</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise</a></li>
+  <li><a href="#complementary-events" id="toc-complementary-events" class="nav-link" data-scroll-target="#complementary-events">Complementary Events</a></li>
+  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise</a></li>
+  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability">Conditional Probability</a></li>
+  <li><a href="#example-5" id="toc-example-5" class="nav-link" data-scroll-target="#example-5">Example</a></li>
+  <li><a href="#multiplicative-law-of-probability" id="toc-multiplicative-law-of-probability" class="nav-link" data-scroll-target="#multiplicative-law-of-probability">Multiplicative Law of Probability</a></li>
+  <li><a href="#example-6" id="toc-example-6" class="nav-link" data-scroll-target="#example-6">Example</a></li>
+  <li><a href="#example-2-2" id="toc-example-2-2" class="nav-link" data-scroll-target="#example-2-2">Example 2</a></li>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise</a></li>
+  <li><a href="#law-of-total-probability" id="toc-law-of-total-probability" class="nav-link" data-scroll-target="#law-of-total-probability">Law of Total Probability</a></li>
+  </ul></li>
+  <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ Theorem</a>
+  <ul class="collapse">
+  <li><a href="#bayes-theorem-1" id="toc-bayes-theorem-1" class="nav-link" data-scroll-target="#bayes-theorem-1">Bayes’ Theorem</a></li>
+  </ul></li>
+  <li><a href="#screening-tests" id="toc-screening-tests" class="nav-link" data-scroll-target="#screening-tests">Screening Tests</a>
+  <ul class="collapse">
+  <li><a href="#screening-tests-1" id="toc-screening-tests-1" class="nav-link" data-scroll-target="#screening-tests-1">Screening Tests</a></li>
+  <li><a href="#positive-predictive-value" id="toc-positive-predictive-value" class="nav-link" data-scroll-target="#positive-predictive-value">Positive Predictive Value</a></li>
+  <li><a href="#negative-predictive-value" id="toc-negative-predictive-value" class="nav-link" data-scroll-target="#negative-predictive-value">Negative Predictive Value</a></li>
+  <li><a href="#example-7" id="toc-example-7" class="nav-link" data-scroll-target="#example-7">Example</a></li>
+  <li><a href="#example-8" id="toc-example-8" class="nav-link" data-scroll-target="#example-8">Example</a></li>
+  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise</a></li>
+  <li><a href="#notes-on-screening-tests" id="toc-notes-on-screening-tests" class="nav-link" data-scroll-target="#notes-on-screening-tests">Notes on Screening Tests</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture3.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="lecture3.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lectures.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lecture3.html">Lecture 3- Intro to Probability</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Introduction to Probability</h1>
+<p class="subtitle lead">Lecture 3</p>
 </div>
 
-</section>
-<section id="outline" class="title-slide slide level1 center">
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<section id="outline" class="level1">
 <h1>Outline</h1>
 <ul>
 <li>Views of Probability</li>
@@ -232,24 +377,21 @@
 <li>Screening Tests</li>
 </ul>
 </section>
-
-<section>
-<section id="views-of-probability" class="title-slide slide level1 center">
+<section id="views-of-probability" class="level1">
 <h1>Views of Probability</h1>
-
-</section>
-<section id="objective-probability" class="slide level2">
-<h2>Objective Probability</h2>
+<section id="objective-probability" class="level2">
+<h2 class="anchored" data-anchor-id="objective-probability">Objective Probability</h2>
 <p>Probability was thought of by statisticians and mathematicians only as an objective phenomenon derived from objective processes.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>There are two categories of objective probability:</p>
 <ul>
 <li><p>classical/a priori probability</p></li>
@@ -257,217 +399,200 @@
 </ul>
 </div>
 </div>
-</div>
 </section>
-<section id="classical-probability" class="slide level2">
-<h2>Classical Probability</h2>
+<section id="classical-probability" class="level2">
+<h2 class="anchored" data-anchor-id="classical-probability">Classical Probability</h2>
 <p>Probabilities for random events related to games of chance can be calculated by the processes of abstract reasoning. Therefore, it is not necessary for these events to happen to compute these probabilities.</p>
-<div title="Classical/A Priori Probability">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Classical/A Priori Probability">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Classical/A Priori Probability</strong></p>
+<div class="callout-title-container flex-fill">
+Classical/A Priori Probability
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Probability is defined as follows: If an event can occur in <span class="math inline">\(N\)</span> mutually exclusive and equally likely ways, and if <span class="math inline">\(m\)</span> of these possess a trait <span class="math inline">\(E\)</span>, the probability of the occurrence of <span class="math inline">\(E\)</span> is equal to <span class="math inline">\(m/N\)</span>.</p>
 <p><span class="math display">\[
 P(E)= m/N
 \]</span></p>
 </div>
 </div>
-</div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>As an example, the probability of getting a three after tossing a <strong>fair</strong> six-sided die can be calculated by assuming that each of the six sides is equally likely to be observed.</p>
 <p>The number of outcomes that include a three is 1 out of a total of 6 mutually exclusive outcomes.</p>
 <p>Hence, the probability is 1/6.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="frequentist-probability" class="slide level2">
-<h2>Frequentist Probability</h2>
+<section id="frequentist-probability" class="level2">
+<h2 class="anchored" data-anchor-id="frequentist-probability">Frequentist Probability</h2>
 <p>The frequentist approach to probability depends on the repeatability of some process and the ability to count the number of repetitions, as well as the number of times that some event of interest occurs. The probability describes the long-run relative frequency of occurrences from the process.</p>
-<div title="Frequentist/A Posteriori Probability">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Frequentist/A Posteriori Probability">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Frequentist/A Posteriori Probability</strong></p>
+<div class="callout-title-container flex-fill">
+Frequentist/A Posteriori Probability
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Probability is defined as follows: If some process is repeated a large number of times, <span class="math inline">\(n\)</span>, and if some resulting event with the characteristic <span class="math inline">\(E\)</span> occurs <span class="math inline">\(m\)</span> times, the relative frequency of occurrence of <span class="math inline">\(E\)</span>, <span class="math inline">\(m/n\)</span>, will be <em>approximately equal</em> to the probability of <span class="math inline">\(E\)</span>.</p>
 <p><span class="math display">\[
 P(E) = m/n
 \]</span></p>
 </div>
 </div>
-</div>
-</div>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Note that <span class="math inline">\(m/n\)</span> is only an estimate of the probability, and that <span class="math inline">\(n\)</span> should be large to have a better estimate of <span class="math inline">\(P(E)\)</span>.</p>
 <p>Example: <a href="https://www.rossmanchance.com/applets/2021/montyhall/Monty.html">Monty-Hall Problem</a></p>
 </div>
 </div>
-</div>
 </section>
-<section id="subjective-probability" class="slide level2">
-<h2>Subjective Probability</h2>
+<section id="subjective-probability" class="level2">
+<h2 class="anchored" data-anchor-id="subjective-probability">Subjective Probability</h2>
 <p>This view holds that probability measures the confidence that a particular individual has in the truth of a particular proposition.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The most famous example of subjective probability is <em>Bayesian</em>, which is a mathematically formal method to combine experimental data and expert information in producing probabilities.</p>
 </div>
 </div>
-</div>
-</section></section>
-<section>
-<section id="properties-of-probability" class="title-slide slide level1 center">
-<h1>Properties of Probability</h1>
-
 </section>
-<section id="helpful-definitions" class="slide level2">
-<h2>Helpful Definitions</h2>
-<div title="Sample Space">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+</section>
+<section id="properties-of-probability" class="level1">
+<h1>Properties of Probability</h1>
+<section id="helpful-definitions" class="level2">
+<h2 class="anchored" data-anchor-id="helpful-definitions">Helpful Definitions</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Space">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Sample Space</strong></p>
+<div class="callout-title-container flex-fill">
+Sample Space
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>A sample space is a list of all possible outcomes that might be observed.</p>
 </div>
 </div>
-</div>
-</div>
-<div title="Event">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Event">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Event</strong></p>
+<div class="callout-title-container flex-fill">
+Event
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>An event is any collection of outcomes in the sample space.</p>
 </div>
 </div>
-</div>
-</div>
-<div title="Mutually Exclusive">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Mutually Exclusive">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Mutually Exclusive</strong></p>
+<div class="callout-title-container flex-fill">
+Mutually Exclusive
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>If two events <span class="math inline">\(E_i\)</span> and <span class="math inline">\(E_j\)</span> contain no elements in common, these two events are said to be disjoint or mutually exclusive.</p>
 </div>
 </div>
-</div>
-</div>
 </section>
-<section id="axioms-of-probability" class="slide level2 scrollable">
-<h2>Axioms of Probability</h2>
+<section id="axioms-of-probability" class="level2">
+<h2 class="anchored" data-anchor-id="axioms-of-probability">Axioms of Probability</h2>
 <p>The properties of probability was mathematically formalized by Russian mathematician A.N. Kolgomorov by defining the following axioms:</p>
 <ol type="1">
 <li>For each event <span class="math inline">\(E_i\)</span>, the probability of <span class="math inline">\(E_i\)</span> is non-negative.</li>
 <li>The sum of the probabilities of the mutually exclusive events is equal to 1.</li>
 <li>Consider any two mutually exclusive events, <span class="math inline">\(E_i\)</span> and <span class="math inline">\(E_j\)</span>. The probability of occurrence of either <span class="math inline">\(E_i\)</span> or <span class="math inline">\(E_j\)</span> is equal to the sum of their individual probabilities.</li>
 </ol>
-</section></section>
-<section>
-<section id="calculating-probabilities" class="title-slide slide level1 center">
-<h1>Calculating Probabilities</h1>
-
 </section>
-<section id="calculating-marginal-probabilities" class="slide level2">
-<h2>Calculating Marginal Probabilities</h2>
+</section>
+<section id="calculating-probabilities" class="level1">
+<h1>Calculating Probabilities</h1>
+<section id="calculating-marginal-probabilities" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-marginal-probabilities">Calculating Marginal Probabilities</h2>
 <p>We can calculate the probability of occurrence for events using the sample point method.</p>
-<div title="Sample Point Method">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Point Method">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Sample Point Method</strong></p>
+<div class="callout-title-container flex-fill">
+Sample Point Method
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Under the assumption that every outcome in the sample space is equally likely to occur, the probability that some event <span class="math inline">\(E_i\)</span> occurs is defined as the number of outcomes corresponding to <span class="math inline">\(E_i\)</span> divided by the total number of outcomes in the sample space.</p>
 <p>In frequency distributions, this corresponds to the relative frequency of a specific outcome.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Probabilities computed using this method are often referred to as <strong>marginal probability</strong>. Marginal probabilities are unconditional and are specific to an event.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>Out of 1,325 university students, 532 of them reported to consume caffeine through coffee. What is the marginal probability of selecting a university student who consumes coffee?</p>
 <p><span class="math display">\[
 P(E) = \frac{532}{1325}
 \]</span></p>
 <p>The resulting probability is 0.402.</p>
 </section>
-<section id="example-2" class="slide level2">
-<h2>Example 2</h2>
+<section id="example-2" class="level2">
+<h2 class="anchored" data-anchor-id="example-2">Example 2</h2>
 <p>Consider the <code>AMSSurvey</code> data in the package <code>carData</code>. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status. You can learn more about the data set by typing <code>?carData::AMSsurvey</code> after installing the <code>car</code> package.</p>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Question + Data</a></li><li><a href="#tabset-1-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Question + Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>What is the probability of selecting a participant of the survey at random who is not a US citizen in 2008? Use the <code>count</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(carData)</span>
-<span id="cb1-2"><a></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    type    sex citizen count count11
 1  I(Pu)   Male      US   132     148
@@ -497,17 +622,17 @@ P(E) = \frac{532}{1325}
 </div>
 </div>
 </div>
-<div id="tabset-1-2">
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>The total counts can be calculated using the <code>sum</code> function. Or simple addition.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sum</span>(AMSsurvey<span class="sc">$</span>count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(AMSsurvey<span class="sc">$</span>count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1430</code></pre>
 </div>
 </div>
 <p>We can also count the total number of non-US citizens in the data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">130</span><span class="sc">+</span><span class="dv">29</span><span class="sc">+</span><span class="dv">79</span><span class="sc">+</span><span class="dv">25</span><span class="sc">+</span><span class="dv">89</span><span class="sc">+</span><span class="dv">50</span><span class="sc">+</span><span class="dv">53</span><span class="sc">+</span><span class="dv">39</span><span class="sc">+</span><span class="dv">122</span><span class="sc">+</span><span class="dv">105</span><span class="sc">+</span><span class="dv">28</span><span class="sc">+</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">130</span><span class="sc">+</span><span class="dv">29</span><span class="sc">+</span><span class="dv">79</span><span class="sc">+</span><span class="dv">25</span><span class="sc">+</span><span class="dv">89</span><span class="sc">+</span><span class="dv">50</span><span class="sc">+</span><span class="dv">53</span><span class="sc">+</span><span class="dv">39</span><span class="sc">+</span><span class="dv">122</span><span class="sc">+</span><span class="dv">105</span><span class="sc">+</span><span class="dv">28</span><span class="sc">+</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 761</code></pre>
 </div>
@@ -517,15 +642,15 @@ P(E) = \frac{532}{1325}
 </div>
 </div>
 </section>
-<section id="exercise" class="slide level2">
-<h2>Exercise</h2>
-<p>The “COVID-19 Effects on the Mental and Physical Health of Asian Americans &amp; Pacific Islanders Survey Study II” (COMPASS II) data set is from a follow-up survey implemented from 12/2021 to 05/2022. The data set is composed of responses from 3,411 participants. <span class="citation" data-cites="do2025">(<a href="#/references" role="doc-biblioref" onclick="">Do et al. 2025</a>)</span></p>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Exercise</a></li><li><a href="#tabset-2-2">Answer</a></li></ul>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
+<p>The “COVID-19 Effects on the Mental and Physical Health of Asian Americans &amp; Pacific Islanders Survey Study II” (COMPASS II) data set is from a follow-up survey implemented from 12/2021 to 05/2022. The data set is composed of responses from 3,411 participants. <span class="citation" data-cites="do2025">(<a href="#ref-do2025" role="doc-biblioref">Do et al. 2025</a>)</span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>The table below shows the breakdown of the census region reported by the participants. What is the probability that a randomly selected participant was from the Northeast census region?</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Census Region</th>
@@ -549,89 +674,98 @@ P(E) = \frac{532}{1325}
 <td>West</td>
 <td>2,303</td>
 </tr>
+<tr class="odd">
+<td>Missing</td>
+<td>3</td>
+</tr>
 </tbody>
 </table>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>The marginal probability is 344/3411 = 0.101</p>
 </div>
 </div>
 </div>
 </section>
-<section id="union-of-events" class="slide level2">
-<h2>Union of Events</h2>
+<section id="union-of-events" class="level2">
+<h2 class="anchored" data-anchor-id="union-of-events">Union of Events</h2>
 <p>Union means “together”: the union of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> consists of all outcomes that are either in event A, event B, or both.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The union of events is mathematically denoted by <span class="math inline">\(\cup\)</span> or “OR”.</p>
 <p>As an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The union of events A and B can be interpreted as “the event where we draw an ace or a diamond card” or in mathematical terms <span class="math inline">\(Ace \cup Diamond\)</span>.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="intersection-of-events" class="slide level2">
-<h2>Intersection of Events</h2>
+<section id="intersection-of-events" class="level2">
+<h2 class="anchored" data-anchor-id="intersection-of-events">Intersection of Events</h2>
 <p>The intersection of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> consists of all outcomes that are in event A <strong>AND</strong> event B.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The intersection of events is mathematically denoted by <span class="math inline">\(\cap\)</span> or “AND”.</p>
 <p>As an example, consider Event A: drawing an ace from a standard deck of cards and Event B: drawing a diamond from a standard deck of cards. The intersection of events A and B can be interpreted as “the event where we draw an ace AND a diamond card” or in mathematical terms <span class="math inline">\(Ace \cap Diamond\)</span>. This simplifies to drawing of a specific card: the ace of diamonds.</p>
 </div>
 </div>
+</section>
+<section id="union-vs.-intersection" class="level2">
+<h2 class="anchored" data-anchor-id="union-vs.-intersection">Union vs.&nbsp;Intersection</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/3-venn.png" class="img-fluid figure-img"></p>
+<figcaption>Or vs.&nbsp;And</figcaption>
+</figure>
 </div>
 </section>
-<section id="union-vs.-intersection" class="slide level2">
-<h2>Union vs.&nbsp;Intersection</h2>
-
-<img data-src="figs/3-venn.png" class="r-stretch quarto-figure-center"><p class="caption">Or vs.&nbsp;And</p></section>
-<section id="additive-law-of-probability" class="slide level2">
-<h2>Additive Law of Probability</h2>
+<section id="additive-law-of-probability" class="level2">
+<h2 class="anchored" data-anchor-id="additive-law-of-probability">Additive Law of Probability</h2>
 <p>For any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, the probability of <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> occurring is equal to:</p>
 <p><span class="math display">\[
 P(A \cup B) = P(A)+P(B) - P(A \cap B)
 \]</span></p>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Disjoint events cannot happen at the same time. For disjoint events <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span>, <span class="math inline">\(P(C \cap D) = 0\)</span>. Therefore, <span class="math inline">\(P(C \cup D) = P(C)+P(D)\)</span> is consistent with Axiom 3.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
+<section id="example-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-1">Example</h2>
 <p>What is the probability of rolling a 1 or 3 on a single roll of a fair six-sided die?</p>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Rolling a 1 and a 3 is not possible. Thus, <span class="math inline">\(P(roll 1 \cap roll 3) = 0\)</span>.</p>
-</div>
 </div>
 </div>
 <p><span class="math display">\[
@@ -641,20 +775,20 @@ P(roll 1 \cup roll 3) = 1/6+1/6-0 = 1/3
 \]</span></p>
 <p>Thus, <span class="math inline">\(P(roll 1 \cup roll 3)=\)</span> 0.3333</p>
 </section>
-<section id="example-2-1" class="slide level2">
-<h2>Example 2</h2>
+<section id="example-2-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-1">Example 2</h2>
 <p>Consider a standard deck of playing cards. What is the probability of drawing an ace or a diamond card?</p>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Drawing an ace AND a diamond card is possible. This event corresponds to drawing the ace of diamonds. The probability of drawing the ace of diamonds from a standard deck of playing cards is 1/52. Hence, <span class="math inline">\(P(A \cap D) = 1/52\)</span>.</p>
-</div>
 </div>
 </div>
 <p><span class="math display">\[
@@ -664,16 +798,16 @@ P(A \cup D) = P(A) + P(D) - P (A \cap D)
 P(Ace \cup Diamond) = 4/52 + 13/52 - 1/52 = 16/52
 \]</span> Thus, <span class="math inline">\(P(Ace \cup Diamond)\)</span> = 0.3077</p>
 </section>
-<section id="exercise-2" class="slide level2">
-<h2>Exercise</h2>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise</h2>
 <p>From a sample of 30 adults, nine reported cannabis use, eight reported cigarette use, and two reported both cigarette and cannabis use.</p>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Question</a></li><li><a href="#tabset-3-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Question</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>What is the probability that a randomly selected adult from the sample reported cannabis or cigarette use?</p>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p><span class="math inline">\(P(Cannabis)=9/30\)</span>, <span class="math inline">\(P(Cigarette)=8/30\)</span>, <span class="math inline">\(P(Cannabis\cap Cigarettes) = 2/30\)</span>. Therefore,</p>
 <p><span class="math display">\[
 P(Cannabis \cup Cigarettes) = P(Can) + P(Cig) - P(Can\cap Cig)
@@ -686,55 +820,53 @@ P(Cannabis \cup Cigarettes) = 9/30 + 8/30 - 2/30 = 15/30
 </div>
 </div>
 </section>
-<section id="independent-events" class="slide level2">
-<h2>Independent Events</h2>
+<section id="independent-events" class="level2">
+<h2 class="anchored" data-anchor-id="independent-events">Independent Events</h2>
 <p>Two events are independent if knowing the outcome for one of the events provides no information about the outcome of the other event. Mathematically,</p>
-<div title="Independent Events">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Independent Events">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Independent Events</strong></p>
+<div class="callout-title-container flex-fill">
+Independent Events
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A \cap B) = P(A)P(B)\)</span>.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The probability <span class="math inline">\(P(A \cap B)\)</span> is also referred to as the <strong>joint probability</strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="example-3" class="slide level2">
-<h2>Example</h2>
+<section id="example-3" class="level2">
+<h2 class="anchored" data-anchor-id="example-3">Example</h2>
 <p>What is the probability of getting two heads from two independent coin tosses?</p>
 <p><span class="math display">\[
 P(H1 \cap H2) = P(H1)P(H2) = (1/2)(1/2)
 \]</span> <span class="math inline">\(P(H1 \cap H2)\)</span> = 0.25</p>
 </section>
-<section id="exercise-3" class="slide level2">
-<h2>Exercise</h2>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise</h2>
 <p>According to the <a href="https://ndss.org/about">National Down Syndrome Society</a>, the probability that a 35-year-old woman conceives a child with Down syndrome is approximately 0.28%.</p>
-<div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Exercise</a></li><li><a href="#tabset-4-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>What is the probability that two independently sampled 35-year-old women will both conceive children with Down syndrome?</p>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <p><span class="math display">\[
 P(C1Down \cap C2Down) = P(C1Down)P(C2Down) = (0.0028)(0.0028)
 \]</span></p>
@@ -743,56 +875,56 @@ P(C1Down \cap C2Down) = P(C1Down)P(C2Down) = (0.0028)(0.0028)
 </div>
 </div>
 </section>
-<section id="complementary-events" class="slide level2">
-<h2>Complementary Events</h2>
+<section id="complementary-events" class="level2">
+<h2 class="anchored" data-anchor-id="complementary-events">Complementary Events</h2>
 <p>The <strong>complement</strong> of an event <span class="math inline">\(A\)</span> is defined to be the set of all elements in the sample space that are <strong>NOT</strong> A.</p>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<div class="callout-title-container flex-fill">
+Tip
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The complement of <span class="math inline">\(A\)</span> is denoted by <span class="math inline">\(\bar{A}\)</span> or <span class="math inline">\(A^C\)</span>.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>For any event <span class="math inline">\(A\)</span> and its complement <span class="math inline">\(A^C\)</span>,</p>
 <p><span class="math display">\[
 P(A^C) = 1-P(A)
 \]</span></p>
 </div>
 </div>
-</div>
 </section>
-<section id="example-4" class="slide level2">
-<h2>Example</h2>
+<section id="example-4" class="level2">
+<h2 class="anchored" data-anchor-id="example-4">Example</h2>
 <p>What is the probability of <em>NOT</em> getting a 1 after rolling a fair six-sided die?</p>
 <p><span class="math display">\[
 P([roll 1]^C) = 1 - P(roll 1) = 1-\frac{1}{6} = \frac{5}{6}
 \]</span></p>
 </section>
-<section id="exercise-5" class="slide level2">
-<h2>Exercise</h2>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise</h2>
 <p>In a survey study, 10.7% reported to have taken undergraduate courses, 23.4% reported to have finished an undergraduate (Bachelor’s/Associates) degree, 15.2% reported to have taken postgraduate credits, and 3.9% reported to have finished a graduate degree.</p>
-<div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Question</a></li><li><a href="#tabset-5-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Question</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p>What is the probability of randomly sampling a participant who had not received any college-level education?</p>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p>Educational attainment are assumed to be disjoint because respondents cannot be in multiple levels. Hence,</p>
 <p><span class="math display">\[
 P(College) = 0.107+0.234+0.152+0.039
@@ -806,60 +938,60 @@ P(NoCollege) = 1-(0.107+0.234+0.152+0.039)
 </div>
 </div>
 </section>
-<section id="conditional-probability" class="slide level2">
-<h2>Conditional Probability</h2>
+<section id="conditional-probability" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h2>
 <p>If two events are dependent, then knowing the outcome of one event provides information about the probability of the other event.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>In screening tests, the probability of a positive test depends on whether the subject has the condition or not.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<div class="callout-title-container flex-fill">
+Tip
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The notation for conditional probabilities is <span class="math inline">\(P(A|B)\)</span>, which is read as the “probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span>”.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Conditional probabilities are order-specific, i.e.&nbsp;<span class="math inline">\(P(A|B) \neq P(B|A)\)</span>.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="example-5" class="slide level2">
-<h2>Example</h2>
+<section id="example-5" class="level2">
+<h2 class="anchored" data-anchor-id="example-5">Example</h2>
 <p>Consider the <code>AMSSurvey</code> data in the package <code>carData</code>. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status.</p>
-<div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Question + Data</a></li><li><a href="#tabset-6-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Question + Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <p>What is the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(<code>type=IV</code>) in 2008 (<code>count</code> variable) given that they are known to be a US citizen?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(carData)</span>
-<span id="cb7-2"><a></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    type    sex citizen count count11
 1  I(Pu)   Male      US   132     148
@@ -889,15 +1021,15 @@ P(NoCollege) = 1-(0.107+0.234+0.152+0.039)
 </div>
 </div>
 </div>
-<div id="tabset-6-2">
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <p>In total, there are 669 US citizens in the data set. Among them, there are 71+54 = 125 enrolled in statistics/biostatistics program (<code>type=IV</code>).</p>
 <p>Therefore, the probability that a participant who is a known US citizen is enrolled in a statistics/biostatistics program is <span class="math inline">\(\frac{71+54}{132+35+87+20+96+47+47+32+71+54+34+14}\)</span> = 0.186846</p>
 </div>
 </div>
 </div>
 </section>
-<section id="multiplicative-law-of-probability" class="slide level2">
-<h2>Multiplicative Law of Probability</h2>
+<section id="multiplicative-law-of-probability" class="level2">
+<h2 class="anchored" data-anchor-id="multiplicative-law-of-probability">Multiplicative Law of Probability</h2>
 <p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events, and suppose <span class="math inline">\(P(B) \neq 0\)</span>. Then, the joint, marginal, and conditional probabilities can be related by the following equation.</p>
 <p><span class="math display">\[
 P(A \cap B) = P(B) P(A|B)
@@ -907,8 +1039,8 @@ P(A \cap B) = P(B) P(A|B)
 P(A|B) = \frac{P(A \cap B)}{P(B)}
 \]</span></p>
 </section>
-<section id="example-6" class="slide level2">
-<h2>Example</h2>
+<section id="example-6" class="level2">
+<h2 class="anchored" data-anchor-id="example-6">Example</h2>
 <p>Suppose the probability of traffic light failure is 0.0002. A local transportation office calculated that when there is a traffic light failure, there is a 20% chance of a vehicular accident occurring. What is the probability of a vehicular accident and a traffic light failure occurring at the same time?</p>
 <ul>
 <li><span class="math inline">\(P(Fail) = 0.0002\)</span></li>
@@ -918,17 +1050,17 @@ P(A|B) = \frac{P(A \cap B)}{P(B)}
 P(Acc \cap Fail) = P(Acc|Fail) P(Fail)
 \]</span> <span class="math inline">\(P(Acc \cap Fail) = 0.0002 * 0.20\)</span> = 0.00004</p>
 </section>
-<section id="example-2-2" class="slide level2">
-<h2>Example 2</h2>
+<section id="example-2-2" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-2">Example 2</h2>
 <p>Consider the <code>AMSSurvey</code> data in the package <code>carData</code>. The data set includes the counts of new PhDs in the mathematical sciences for 2008-09 and 2011-12 categorized by type of institution, gender, and US citizenship status.</p>
-<div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Question + Data</a></li><li><a href="#tabset-7-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Question + Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <p>Use the multiplication rule to calculate the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(<code>type=IV</code>) in 2008 (<code>count</code> variable) given that they are known to be a US citizen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(carData)</span>
-<span id="cb9-2"><a></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    type    sex citizen count count11
 1  I(Pu)   Male      US   132     148
@@ -958,7 +1090,7 @@ P(Acc \cap Fail) = P(Acc|Fail) P(Fail)
 </div>
 </div>
 </div>
-<div id="tabset-7-2">
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <p>The marginal probability of selecting a US citizen is <span class="math inline">\(\frac{669}{669+761}=\)</span> 0.4678.</p>
 <p>The probability of selecting a US citizen and <code>type=IV</code> is <span class="math inline">\(\frac{(71+54)}{(669+761)}=\)</span> 0.0874</p>
 <p>Therefore, the probability of selecting a participant in <code>type=IV</code> given that they are a US citizen is:</p>
@@ -970,16 +1102,16 @@ P(IV|US) = \frac{P(IV \cap US)}{P(US)} = \frac{\frac{(71+54)}{(669+761)}}{\frac{
 </div>
 </div>
 </section>
-<section id="exercise-6" class="slide level2">
-<h2>Exercise</h2>
+<section id="exercise-6" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6">Exercise</h2>
 <p>In 2016, the global incidence rate of the Zika virus is 0.0017. Suppose a screening test was developed such that the probability of a positive test result given that the participant had the Zika virus is 0.90.</p>
-<div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Question</a></li><li><a href="#tabset-8-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Question</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <p>What is the probability that a randomly selected individual tested positive and had Zika virus?</p>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <ul>
 <li><span class="math inline">\(P(Z) =0.0017\)</span></li>
 <li><span class="math inline">\(P(PT|Z) = 0.90\)</span></li>
@@ -989,65 +1121,59 @@ P(IV|US) = \frac{P(IV \cap US)}{P(US)} = \frac{\frac{(71+54)}{(669+761)}}{\frac{
 </div>
 </div>
 </section>
-<section id="law-of-total-probability" class="slide level2">
-<h2>Law of Total Probability</h2>
+<section id="law-of-total-probability" class="level2">
+<h2 class="anchored" data-anchor-id="law-of-total-probability">Law of Total Probability</h2>
 <p>The law of probability states that for events <span class="math inline">\({B_1,B_2,...,B_n}\)</span> that are disjoint outcomes that span the sample space, and with <span class="math inline">\(P(B_j) \neq 0\)</span> for all <span class="math inline">\(j\)</span>, then for any event <span class="math inline">\(A\)</span>,</p>
 <p><span class="math display">\[
 P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + ... = \sum_{i=1}^n P(A|B_i)P(B_i)
 \]</span></p>
-</section></section>
-<section>
-<section id="bayes-theorem" class="title-slide slide level1 center">
-<h1>Bayes’ Theorem</h1>
-
 </section>
-<section id="bayes-theorem-1" class="slide level2">
-<h2>Bayes’ Theorem</h2>
+</section>
+<section id="bayes-theorem" class="level1">
+<h1>Bayes’ Theorem</h1>
+<section id="bayes-theorem-1" class="level2">
+<h2 class="anchored" data-anchor-id="bayes-theorem-1">Bayes’ Theorem</h2>
 <p>Recall that <span class="math inline">\(P(B|A) \neq P(A|B)\)</span>. Bayes’ theorem provides a way to invert conditional probabilities.</p>
-<div title="Bayes' Theorem">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Bayes' Theorem">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bayes’ Theorem</strong></p>
+<div class="callout-title-container flex-fill">
+Bayes’ Theorem
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B_1, B_2,...,B_n\)</span> be disjoint events that span the whole sample space, and with <span class="math inline">\(P(B_j) \neq 0\)</span> for all <span class="math inline">\(j\)</span>,</p>
 <p><span class="math display">\[
 P(B_j|A) = \frac{P(A|B_j) P(B_j)}{\sum_{i=1}^n P(A|B_i)P(B_i)}
 \]</span></p>
 </div>
 </div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<div class="callout-title-container flex-fill">
+Tip
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>If we know the marginal probability of <span class="math inline">\(A\)</span>,</p>
 <p><span class="math display">\[
 P(B_j|A) = \frac{P(A|B_j) P(B_j)}{P(A)}
 \]</span></p>
 </div>
 </div>
-</div>
-</section></section>
-<section>
-<section id="screening-tests" class="title-slide slide level1 center">
-<h1>Screening Tests</h1>
-
 </section>
-<section id="screening-tests-1" class="slide level2">
-<h2>Screening Tests</h2>
+</section>
+<section id="screening-tests" class="level1">
+<h1>Screening Tests</h1>
+<section id="screening-tests-1" class="level2">
+<h2 class="anchored" data-anchor-id="screening-tests-1">Screening Tests</h2>
 <p>When screening for diseases, we are interested in the true positive (positive tests for people who have the disease) and true negative rates (negative tests for people who do not have the disease).</p>
-<table class="caption-top">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -1066,20 +1192,20 @@ P(B_j|A) = \frac{P(A|B_j) P(B_j)}{P(A)}
 </tr>
 </tbody>
 </table>
-<div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Sensitivity</a></li><li><a href="#tabset-9-2">Specificity</a></li><li><a href="#tabset-9-3">Base Rate</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Sensitivity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Specificity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">Base Rate</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1">
-<div title="Sensitivity">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="callout callout-style-default callout-note callout-titled" title="Sensitivity">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Sensitivity</strong></p>
+<div class="callout-title-container flex-fill">
+Sensitivity
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The probability that a person randomly selected from the population tests positive given that they have the disease is called the <em>sensitivity</em> of a test.</p>
 <p><span class="math display">\[
 Sens = P(PT|D) = \frac{TP}{TP+FN}
@@ -1087,19 +1213,17 @@ Sens = P(PT|D) = \frac{TP}{TP+FN}
 </div>
 </div>
 </div>
-</div>
-</div>
-<div id="tabset-9-2">
-<div title="Specificity">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="callout callout-style-default callout-note callout-titled" title="Specificity">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Specificity</strong></p>
+<div class="callout-title-container flex-fill">
+Specificity
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The probability that a person randomly selected from the population tests negative given that they do not have the disease is called the <em>specificity</em> of a test.</p>
 <p><span class="math display">\[
 Spec = P(NT|ND) = 1-P(PT|ND) =  \frac{TN}{TN+FP}
@@ -1107,120 +1231,112 @@ Spec = P(NT|ND) = 1-P(PT|ND) =  \frac{TN}{TN+FP}
 </div>
 </div>
 </div>
-</div>
-</div>
-<div id="tabset-9-3">
-<div title="Base Rate">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<div class="callout callout-style-default callout-note callout-titled" title="Base Rate">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Base Rate</strong></p>
+<div class="callout-title-container flex-fill">
+Base Rate
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The probability that a person randomly selected from the population has the disease is called the <em>base rate</em> of a test.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
 </section>
-<section id="positive-predictive-value" class="slide level2">
-<h2>Positive Predictive Value</h2>
+<section id="positive-predictive-value" class="level2">
+<h2 class="anchored" data-anchor-id="positive-predictive-value">Positive Predictive Value</h2>
 <p>We are also interested in the conditional probabilities of having the disease based on the test for a random member of the population.</p>
-<div title="Positive Predictive Value (PPV)">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Positive Predictive Value (PPV)">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Positive Predictive Value (PPV)</strong></p>
+<div class="callout-title-container flex-fill">
+Positive Predictive Value (PPV)
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The probability of having the disease given a positive test (P(D|PT)) is called the positive predictive value (PPV).</p>
 <p><span class="math display">\[
 P(D|PT) = \frac{P(PT|D)P(D)}{P(PT)} = \frac{sens*BR}{sens*BR + (1-spec)*(1-BR)}
 \]</span></p>
 </div>
 </div>
-</div>
-</div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<div class="callout-title-container flex-fill">
+Warning
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The positive predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="negative-predictive-value" class="slide level2">
-<h2>Negative Predictive Value</h2>
-<div title="Negative Predictive Value (NPV)">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<section id="negative-predictive-value" class="level2">
+<h2 class="anchored" data-anchor-id="negative-predictive-value">Negative Predictive Value</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Negative Predictive Value (NPV)">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Negative Predictive Value (NPV)</strong></p>
+<div class="callout-title-container flex-fill">
+Negative Predictive Value (NPV)
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The probability of not having the disease given a negative test (P(ND|NT)) is called the negative predictive value (NPV).</p>
 <p><span class="math display">\[
 P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sens)*(BR)}
 \]</span></p>
 </div>
 </div>
-</div>
-</div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<div class="callout-title-container flex-fill">
+Warning
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>The negative predictive value can be calculated using a contingency table based on the results of the screening tests, but this might not reflect the true predictive value for a randomly selected member of the population.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="example-7" class="slide level2">
-<h2>Example</h2>
+<section id="example-7" class="level2">
+<h2 class="anchored" data-anchor-id="example-7">Example</h2>
 <p>Suppose a screening test designed for virus X has a sensitivity of 0.64 and a specificity of 0.98.</p>
-<div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Question</a></li><li><a href="#tabset-10-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Question</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <p>If the base rate of virus X is 0.002,</p>
 <ul>
 <li>What is the negative predictive value of the test?</li>
 <li>What is the positive predictive value of the test?</li>
 </ul>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <ul>
 <li>NPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
-<span id="cb11-2"><a></a>spec <span class="ot">&lt;-</span> <span class="fl">0.98</span></span>
-<span id="cb11-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
-<span id="cb11-4"><a></a></span>
-<span id="cb11-5"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fl">0.98</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>br <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9992644</code></pre>
 </div>
@@ -1229,7 +1345,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>PPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.06026365</code></pre>
 </div>
@@ -1239,29 +1355,29 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 </div>
 </div>
 </section>
-<section id="example-8" class="slide level2">
-<h2>Example</h2>
+<section id="example-8" class="level2">
+<h2 class="anchored" data-anchor-id="example-8">Example</h2>
 <p>Suppose a screening test designed for virus X has a sensitivity of 0.64 and a specificity of 0.98.</p>
-<div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Question</a></li><li><a href="#tabset-11-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Question</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <p>If the base rate of virus X is 0.002,</p>
 <ul>
 <li>What is the negative predictive value of the test?</li>
 <li>What is the positive predictive value of the test?</li>
 </ul>
 </div>
-<div id="tabset-11-2">
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <ul>
 <li>NPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
-<span id="cb15-2"><a></a>spec <span class="ot">&lt;-</span> <span class="fl">0.98</span></span>
-<span id="cb15-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
-<span id="cb15-4"><a></a></span>
-<span id="cb15-5"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fl">0.98</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>br <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9992644</code></pre>
 </div>
@@ -1270,7 +1386,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>PPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.06026365</code></pre>
 </div>
@@ -1280,10 +1396,10 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 </div>
 </div>
 </section>
-<section id="exercise-7" class="slide level2">
-<h2>Exercise</h2>
+<section id="exercise-7" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-7">Exercise</h2>
 <p>Consider a screening instrument developed to detect symptoms of anorexia nervosa in adolescents. The instrument was validated against the Eating Attitudes Test (EAT) results. The results are shown below.</p>
-<table class="caption-top">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -1302,10 +1418,10 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 </tr>
 </tbody>
 </table>
-<div class="panel-tabset">
-<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Question</a></li><li><a href="#tabset-12-2">Answer</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">Question</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-12-1">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <p>Assuming the prevalence rate of anorexia nervosa in adolescents is 7%,</p>
 <ul>
 <li><p>What is the sensitivity of the test?</p></li>
@@ -1314,12 +1430,12 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li><p>What is the probability that a randomly screened adolescent does not have anorexia nervosa given they tested negative?</p></li>
 </ul>
 </div>
-<div id="tabset-12-2">
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
 <ul>
 <li>What is the sensitivity of the test?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7861635</code></pre>
 </div>
@@ -1328,7 +1444,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>What is the specificity of the test?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9607843</code></pre>
 </div>
@@ -1337,11 +1453,11 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>What is the probability that a randomly screened adolescent has anorexia nervosa given they tested positive? <span class="math inline">\(\to\)</span> PPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sens <span class="ot">&lt;-</span> <span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span>
-<span id="cb23-2"><a></a>spec <span class="ot">&lt;-</span> <span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span>
-<span id="cb23-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.07</span></span>
-<span id="cb23-4"><a></a></span>
-<span id="cb23-5"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sens <span class="ot">&lt;-</span> <span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>br <span class="ot">&lt;-</span> <span class="fl">0.07</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6014232</code></pre>
 </div>
@@ -1350,7 +1466,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>What is the probability that a randomly screened adolescent does not have anorexia nervosa given they tested negative? <span class="math inline">\(\to\)</span> NPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9835238</code></pre>
 </div>
@@ -1360,657 +1476,450 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 </div>
 </div>
 </section>
-<section id="notes-on-screening-tests" class="slide level2">
-<h2>Notes on Screening Tests</h2>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<section id="notes-on-screening-tests" class="level2">
+<h2 class="anchored" data-anchor-id="notes-on-screening-tests">Notes on Screening Tests</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>There are a lot of available functions in <code>R</code> that calculate sensitivity, specificity, NPV, and PPV. However, you need to be careful about interpreting the PPV and NPV values provided. Sometimes, these values do not account for the base rate.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<div class="callout-title-container flex-fill">
+Tip
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Packages like <code>yardstick</code> and <code>epiR</code> calculate screening test characteristics and relevant confidence intervals.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
+<section id="references" class="level2">
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-do2025" class="csl-entry" role="listitem">
 Do, Vuong Van, Van My Ta Park, Nhung Nguyen, Pamela May Ling, Marian Tzuang, Bora Nam, Marcelle M. Dougan, Oanh L. Meyer, and Janice Y. Tsoh. 2025. <span>“Use of Cigarettes, Cannabis, and Alcohol Among Asian American, Native Hawaiian, and Pacific Islander Adults: Community-Based National Survey Analysis.”</span> <em>JMIR Public Health and Surveillance</em> 11 (1): e76465. <a href="https://doi.org/10.2196/76465">https://doi.org/10.2196/76465</a>.
 </div>
-</div>
-</section></section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
-<p>Lecture 3 - <a href="https://madfudolig.quarto.pub/introtobiostats/">Back to home</a></p>
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: false,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
-    </script>
-    
-
-    <script>
-
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
-      // slide changes (different for each slide format).
-
-      (function () {
-
-        // dispatch for htmlwidgets
-
-        function fireSlideEnter() {
-
-          const event = window.document.createEvent("Event");
-
-          event.initEvent("slideenter", true, true);
-
-          window.document.dispatchEvent(event);
-
-        }
-
-    
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          fireSlideEnter();
-
-    
-
-          // dispatch for shiny
-
-          if (window.jQuery) {
-
-            if (previousSlide) {
-
-              window.jQuery(previousSlide).trigger("hidden");
-
-            }
-
-            if (currentSlide) {
-
-              window.jQuery(currentSlide).trigger("shown");
-
-            }
-
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-
         }
-
-    
-
-        // hookup for slidy
-
-        if (window.w3c_slidy) {
-
-          window.w3c_slidy.add_observer(function (slide_num) {
-
-            // slide_num starts at position 1
-
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
-          });
-
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-
-    
-
-      })();
-
-    </script>
-
-    
-
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
-          return false;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
-        }
-        const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
-            }
-            return codeEl.innerText;
-        }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/madfudolig\.quarto\.pub\/introtobiostats");
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
-        }
-            let selectedAnnoteEl;
-            const selectorForAnnotation = ( cell, annotation) => {
-              let cellAttr = 'data-code-cell="' + cell + '"';
-              let lineAttr = 'data-code-annotation="' +  annotation + '"';
-              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-              return selector;
-            }
-            const selectCodeLines = (annoteEl) => {
-              const doc = window.document;
-              const targetCell = annoteEl.getAttribute("data-target-cell");
-              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-              const lineIds = lines.map((line) => {
-                return targetCell + "-" + line;
-              })
-              let top = null;
-              let height = null;
-              let parent = null;
-              if (lineIds.length > 0) {
-                  //compute the position of the single el (top and bottom and make a div)
-                  const el = window.document.getElementById(lineIds[0]);
-                  top = el.offsetTop;
-                  height = el.offsetHeight;
-                  parent = el.parentElement.parentElement;
-                if (lineIds.length > 1) {
-                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-                  height = bottom - top;
-                }
-                if (top !== null && height !== null && parent !== null) {
-                  // cook up a div (if necessary) and position it 
-                  let div = window.document.getElementById("code-annotation-line-highlight");
-                  if (div === null) {
-                    div = window.document.createElement("div");
-                    div.setAttribute("id", "code-annotation-line-highlight");
-                    div.style.position = 'absolute';
-                    parent.appendChild(div);
-                  }
-                  div.style.top = top - 2 + "px";
-                  div.style.height = height + 4 + "px";
-                  div.style.left = 0;
-                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-                  if (gutterDiv === null) {
-                    gutterDiv = window.document.createElement("div");
-                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                    gutterDiv.style.position = 'absolute';
-                    const codeCell = window.document.getElementById(targetCell);
-                    const gutter = codeCell.querySelector('.code-annotation-gutter');
-                    gutter.appendChild(gutterDiv);
-                  }
-                  gutterDiv.style.top = top - 2 + "px";
-                  gutterDiv.style.height = height + 4 + "px";
-                }
-                selectedAnnoteEl = annoteEl;
-              }
-            };
-            const unselectCodeLines = () => {
-              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-              elementsIds.forEach((elId) => {
-                const div = window.document.getElementById(elId);
-                if (div) {
-                  div.remove();
-                }
-              });
-              selectedAnnoteEl = undefined;
-            };
-              // Handle positioning of the toggle
-          window.addEventListener(
-            "resize",
-            throttle(() => {
-              elRect = undefined;
-              if (selectedAnnoteEl) {
-                selectCodeLines(selectedAnnoteEl);
-              }
-            }, 10)
-          );
-          function throttle(fn, ms) {
-          let throttle = false;
-          let timer;
-            return (...args) => {
-              if(!throttle) { // first call gets through
-                  fn.apply(this, args);
-                  throttle = true;
-              } else { // all the others get throttled
-                  if(timer) clearTimeout(timer); // cancel #2
-                  timer = setTimeout(() => {
-                    fn.apply(this, args);
-                    timer = throttle = false;
-                  }, ms);
-              }
-            };
           }
-            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-            for (let i=0; i<annoteTargets.length; i++) {
-              const annoteTarget = annoteTargets[i];
-              const targetCell = annoteTarget.getAttribute("data-target-cell");
-              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-              const contentFn = () => {
-                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-                if (content) {
-                  const tipContent = content.cloneNode(true);
-                  tipContent.classList.add("code-annotation-tip-content");
-                  return tipContent.outerHTML;
-                }
-              }
-              const config = {
-                allowHTML: true,
-                content: contentFn,
-                onShow: (instance) => {
-                  selectCodeLines(instance.reference);
-                  instance.reference.classList.add('code-annotation-active');
-                  window.tippy.hideAll();
-                },
-                onHide: (instance) => {
-                  unselectCodeLines();
-                  instance.reference.classList.remove('code-annotation-active');
-                },
-                maxWidth: 300,
-                delay: [50, 0],
-                duration: [200, 0],
-                offset: [5, 10],
-                arrow: true,
-                appendTo: function(el) {
-                  return el.parentElement.parentElement.parentElement;
-                },
-                interactive: true,
-                interactiveBorder: 10,
-                theme: 'light-border',
-                placement: 'right',
-                popperOptions: {
-                  modifiers: [
-                  {
-                    name: 'flip',
-                    options: {
-                      flipVariations: false, // true by default
-                      allowedAutoPlacements: ['right'],
-                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
-                    },
-                  },
-                  {
-                    name: 'preventOverflow',
-                    options: {
-                      mainAxis: false,
-                      altAxis: false
-                    }
-                  }
-                  ]        
-                }      
-              };
-              window.tippy(annoteTarget, config); 
-            }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
 
 </body></html>
