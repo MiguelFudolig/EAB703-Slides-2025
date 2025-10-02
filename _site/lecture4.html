@@ -2480,9 +2480,9 @@ P((\mu-\sigma) &lt; X &lt; (\mu+\sigma)) = P(-1 &lt; Z &lt;1)
 <li>Above 200 mg/100ml</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a><span class="fu">pnorm</span>(<span class="dv">200</span>,<span class="at">mean=</span><span class="fl">205.7</span>,<span class="at">sd=</span><span class="fl">23.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a><span class="fu">pnorm</span>(<span class="dv">200</span>,<span class="at">mean=</span><span class="fl">205.7</span>,<span class="at">sd=</span><span class="fl">23.5</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4041758</code></pre>
+<pre><code>[1] 0.5958242</code></pre>
 </div>
 </div>
 <ul>

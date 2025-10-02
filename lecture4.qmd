@@ -1576,7 +1576,7 @@ Suppose the total cholesterol values for a certain population are approximately 
 - Above 200 mg/100ml
 
 ```{r}
-pnorm(200,mean=205.7,sd=23.5)
+pnorm(200,mean=205.7,sd=23.5,lower.tail=F)
 ```
 
 - Between 150 and 200 mg/100ml
