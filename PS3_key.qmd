@@ -85,4 +85,118 @@ $$
 
 sum(df$Referrals*df$Rel.Frequency)
 ```
+## Problem 2
+
+The proportion of individuals from a certain population with an O blood type is 0.44. What is the probability that out of a sample of 30 individuals from this population,
+
+::: callout-note
+We use the binomial distribution!
+:::
+
+a.	That exactly half of the individuals in the sample have an O blood type? 
+
+```{r}
+dbinom(15,30,0.44)
+```
+
+b.	At most 10 individuals have an O blood type? [1pt]
+
+```{r}
+pbinom(10,30,0.44)
+```
+## Problem 3
+
+	If the mean number of unexcused absences per school year for fifth graders at a public elementary school is 11.8,
+
+::: callout-note
+We use the Poisson distribution!
+:::
+
+
+a.	 What is the probability that a randomly selected student will have chronic absenteeism, i.e. at least 18 unexcused absences per school year? [1 pt.]
+
+```{r}
+1-ppois(17,lambda=11.8)
+```
+
+
+
+b.	Generate 1000 numbers from the associated distribution and create a histogram from these values. [2pts.]
+
+
+```{r}
+library(tidyverse)
+Nsim<- 1000 # Simulating 10 times
+set.seed(12)
+sims <- rpois(Nsim,11.8)
+df <- data.frame(simulations=sims)
+ggplot(df, aes(x=simulations)) + 
+  geom_histogram(binwidth=1) + 
+  theme_bw() + 
+  labs(x="Number of Unexcused Absences", y="Count")
+```
+
+## Problem 4
+
+A random number generator was used to assign participants to two treatment groups. A random number was generated from a UNIF(-1,1) distribution. A value between -0.3 and 0.2 means the participant is assigned to treatment group A, else they were assigned in B. What is the probability that a participant is assigned in group A? [2pts.]
+
+::: callout-note
+You can use R or manual mathematical calculation of areas. I will be showing the R solution.
+
+We use the CDF to calculate probabilities for continuous distributions such as the normal distribution. We will be using `pnorm()`.
+:::
+
+```{r}
+punif(0.2,-1,1) - punif(-0.3,-1,1)
+```
+
+
+## Problem 5
+
+The mean A1c measurement for residents at a nursing home was 5.6 with a standard deviation of 2.1. Assuming the A1c measurements follow a normal distribution,
+
+::: callout-tip
+We use the CDF to calculate probabilities for continuous distributions such as the normal distribution. We will be using `pnorm()`.
+:::
+a.	What is the probability of randomly selecting a resident who is prediabetic (A1c between 5.7 and 6.4)? [1pt]
+
+```{r}
+pnorm(6.4,mean=5.6,sd=2.1) - pnorm(5.7,mean=5.6,sd=2.1)
+```
+
+b.	What is the probability of randomly selecting a resident who is diabetic (A1c above 6.5)? [1pt]
+
+```{r}
+pnorm(6.5,mean=5.6,sd=2.1, lower.tail = F) 
+```
+
+
+c.	What is the expected number of diabetics out of a sample of 100 residents based on this distribution? (Hint: Randomly selecting a diabetic in this sample is a Bernoulli process.) [2 pts.]
+
+::: callout-tip
+Remember that for a Bernoulli process, the expected value $E(X)= np$ where $n$ is the sample size and $p$ is the probability of success.
+:::
+
+```{r}
+probability_diabetic <- pnorm(6.5,mean=5.6,sd=2.1, lower.tail = F) 
+sample_size <- 100
+
+sample_size*probability_diabetic
+```
+
+Expected value is ` r sample_size*probability_diabetic`. If we're talking about number of diabetics, we **round up** to `r ceiling(sample_size*probability_diabetic)`.
+
+
+d.	What is the 85th percentile of the A1c measurements in this nursing home? [1 pt.]
+
+::: callout-tip
+We can use `qnorm()` to calculate values based on percentiles.
+:::
+
+```{r}
+qnorm(0.85,mean=5.6, sd=2.1)
+```
+
+
+
 

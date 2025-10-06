@@ -1049,7 +1049,7 @@ The five-number summary of a set of values include the following statistics:
 The function `geom_boxplot()` is used to create boxplots in the `ggplot2` package.
 :::
 
-Boxplots can also provide information on how skewed the data distribution is by the location of the mediam with respect to the "box". 
+Boxplots can also provide information on how skewed the data distribution is by the location of the median with respect to the "box". 
 
 ::: callout-important
 If the median is closer to the first quartile, the data is right-skewed. If the median is closer to the third quartile, the data is left-skewed. If the median is in the middle, then the data is symmetric/unskewed.
