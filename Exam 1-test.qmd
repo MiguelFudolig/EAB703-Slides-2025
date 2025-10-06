@@ -1,0 +1,58 @@
+---
+title: "Exam 1 - Selected Answers"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+```{r setup}
+library(tidyverse)
+library(summarytools)
+hflashes <- read.csv("datasets/hflashes.csv")
+```
+
+# Item 1
+
+The variable hotflash includes the participant responses when asked if they experienced hot flashes in the past month (0=No, 1=Yes). What is the relative frequency of participants who reported to have experienced hot flashes in the past month?
+
+```{r}
+freq(hflashes$hotflash)
+```
+
+## Item 2
+
+The variable ageg corresponds to the age group where the participants belong based on their age. Group 1: 35-39 years, Group 2: 40-44 years, and Group 3: 45-48 years. Which of the age groups had the highest representation in the study?
+
+
+```{r}
+freq(hflashes$ageg)
+```
+
+## Item 3
+
+The variable fsh contains the baseline follicle-stimulating hormone (FSH) measurements for each participant. What is the mean/median/range/min/max baseline FSH measurement for this group of participants?
+
+```{r}
+mean(hflashes$fsh)
+median(hflashes$fsh)
+range(hflashes$fsh)
+range(hflashes$fsh) |> diff()
+```
+
+## Item 
+
+Suppose you randomly sample 50 participants from this cohort. What is the probability that the average baseline FSH measurement for the sample is greater than 10? Assume the central limit theorem holds for this scenario. (NOTE: The entire cohort is made up of 375 participants, which is a finite population.)
+
+```{r}
+n<- 50
+N <- 375
+mu <- mean(hflashes$fsh)
+se <- sd(hflashes$fsh)/sqrt(n) * sqrt((N-n)/(N-1))
+
+pnorm(9,mean=mu,sd=se,lower.tail=F)
+
+```
+
