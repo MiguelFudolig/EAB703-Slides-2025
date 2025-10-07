@@ -608,18 +608,20 @@ In addition,
 $$
 P((\hat{P}_1 - \hat{P}_2) \leq \hat{p}_1 - \hat{p}_2) = P\left(Z \leq \frac{\hat{p}_1 - \hat{p}_2- (\pi_1-\pi_2)}{\sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}}\right) = P(Z \leq z)
 $$
+
+
 ## Example
 
 Researchers investigated food insecurity in the urban and rural areas of their country. It was previously reported by the country's census that the proportion of adults who experienced food insecurity in the past year was 33% in rural areas and 23% in urban areas. The researchers sampled 450 adults from urban areas and 300 adults from rural areas. 
 
-::: callout-note
+::: panel-tabset
 ### Question
 
-What is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was 5% higher than that of the urban sample?
+What is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was **at least** 5% higher than that of the urban sample?
 
 ### Answer
 
-Remember that $\pi_{rural}-\pi_{urban} = .10, \pi_{rural} = 0.33, \pi_{urban}=0.23 $. We are interested in $P((\hat{P}_1 - \hat{P}_2) \leq 0.05)$.
+Remember that $\pi_{rural}-\pi_{urban} = .10, \pi_{rural} = 0.33, \pi_{urban}=0.23$. We are interested in $P((\hat{P}_1 - \hat{P}_2) \geq 0.05)$.
 
 ```{r}
 pi_1 <- 0.33
@@ -628,7 +630,7 @@ pi_2 <- 0.23
 n_2 <- 450
 variance <- (pi_1 *(1-pi_1))/n_1 + (pi_2 *(1-pi_2))/n_2
 
-pnorm(0.05,pi_1-pi_2,sqrt(variance))
+pnorm(0.05,pi_1-pi_2,sqrt(variance),lower.tail = F)
 
 ```
 OR through standardization
@@ -636,7 +638,7 @@ OR through standardization
 ```{r}
 z <- (0.05-(pi_1-pi_2))/sqrt(variance)
 
-pnorm(z,0,1)
+pnorm(z,0,1,lower.tail=F)
 ```
 
 

@@ -410,7 +410,18 @@
     "href": "lecture5.html#standardization-3",
     "title": "Sampling Distributions",
     "section": "Standardization",
-    "text": "Standardization\nSimilar to the single proportion case, the difference of two proportions can also be standardized to \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\hat{P}_1 - \\hat{P}_2- (\\pi_1-\\pi_2)}{\\sqrt{\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}}}\n\\]\nIn addition,\n\\[\nP((\\hat{P}_1 - \\hat{P}_2) \\leq \\hat{p}_1 - \\hat{p}_2) = P\\left(Z \\leq \\frac{\\hat{p}_1 - \\hat{p}_2- (\\pi_1-\\pi_2)}{\\sqrt{\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}}}\\right) = P(Z \\leq z)\n\\] ## Example\nResearchers investigated food insecurity in the urban and rural areas of their country. It was previously reported by the country’s census that the proportion of adults who experienced food insecurity in the past year was 33% in rural areas and 23% in urban areas. The researchers sampled 450 adults from urban areas and 300 adults from rural areas.\n\n\n\n\n\n\nQuestion\n\n\nWhat is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was 5% higher than that of the urban sample?\nAnswer\nRemember that ${rural}-{urban} = .10, {rural} = 0.33, {urban}=0.23 $. We are interested in \\(P((\\hat{P}_1 - \\hat{P}_2) \\leq 0.05)\\).\n\npi_1 &lt;- 0.33\nn_1 &lt;- 300\npi_2 &lt;- 0.23\nn_2 &lt;- 450\nvariance &lt;- (pi_1 *(1-pi_1))/n_1 + (pi_2 *(1-pi_2))/n_2\n\npnorm(0.05,pi_1-pi_2,sqrt(variance))\n\n[1] 0.06850149\n\n\nOR through standardization\n\nz &lt;- (0.05-(pi_1-pi_2))/sqrt(variance)\n\npnorm(z,0,1)\n\n[1] 0.06850149",
+    "text": "Standardization\nSimilar to the single proportion case, the difference of two proportions can also be standardized to \\(Z \\sim N(0,1)\\).\n\\[\nZ = \\frac{\\hat{P}_1 - \\hat{P}_2- (\\pi_1-\\pi_2)}{\\sqrt{\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}}}\n\\]\nIn addition,\n\\[\nP((\\hat{P}_1 - \\hat{P}_2) \\leq \\hat{p}_1 - \\hat{p}_2) = P\\left(Z \\leq \\frac{\\hat{p}_1 - \\hat{p}_2- (\\pi_1-\\pi_2)}{\\sqrt{\\frac{\\pi_1(1-\\pi_1)}{n_1} + \\frac{\\pi_2(1-\\pi_2)}{n_2}}}\\right) = P(Z \\leq z)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 5- Sampling Distributions"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#example-6",
+    "href": "lecture5.html#example-6",
+    "title": "Sampling Distributions",
+    "section": "Example",
+    "text": "Example\nResearchers investigated food insecurity in the urban and rural areas of their country. It was previously reported by the country’s census that the proportion of adults who experienced food insecurity in the past year was 33% in rural areas and 23% in urban areas. The researchers sampled 450 adults from urban areas and 300 adults from rural areas.\n\nQuestionAnswer\n\n\nWhat is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was at least 5% higher than that of the urban sample?\n\n\nRemember that \\(\\pi_{rural}-\\pi_{urban} = .10, \\pi_{rural} = 0.33, \\pi_{urban}=0.23\\). We are interested in \\(P((\\hat{P}_1 - \\hat{P}_2) \\geq 0.05)\\).\n\npi_1 &lt;- 0.33\nn_1 &lt;- 300\npi_2 &lt;- 0.23\nn_2 &lt;- 450\nvariance &lt;- (pi_1 *(1-pi_1))/n_1 + (pi_2 *(1-pi_2))/n_2\n\npnorm(0.05,pi_1-pi_2,sqrt(variance),lower.tail = F)\n\n[1] 0.9314985\n\n\nOR through standardization\n\nz &lt;- (0.05-(pi_1-pi_2))/sqrt(variance)\n\npnorm(z,0,1,lower.tail=F)\n\n[1] 0.9314985",
     "crumbs": [
       "Lectures",
       "Lecture 5- Sampling Distributions"
@@ -1176,6 +1187,41 @@
     ]
   },
   {
+    "objectID": "Exam 1-test.html",
+    "href": "Exam 1-test.html",
+    "title": "Exam 1 - Selected Answers",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(summarytools)\n\n\nAttaching package: 'summarytools'\n\nThe following object is masked from 'package:tibble':\n\n    view\n\nhflashes &lt;- read.csv(\"datasets/hflashes.csv\")"
+  },
+  {
+    "objectID": "Exam 1-test.html#item-2",
+    "href": "Exam 1-test.html#item-2",
+    "title": "Exam 1 - Selected Answers",
+    "section": "Item 2",
+    "text": "Item 2\nThe variable ageg corresponds to the age group where the participants belong based on their age. Group 1: 35-39 years, Group 2: 40-44 years, and Group 3: 45-48 years. Which of the age groups had the highest representation in the study?\n\nfreq(hflashes$ageg)\n\nFrequencies  \nhflashes$ageg  \nType: Integer  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n          1    133     35.47          35.47     35.47          35.47\n          2    164     43.73          79.20     43.73          79.20\n          3     78     20.80         100.00     20.80         100.00\n       &lt;NA&gt;      0                               0.00         100.00\n      Total    375    100.00         100.00    100.00         100.00"
+  },
+  {
+    "objectID": "Exam 1-test.html#item-3",
+    "href": "Exam 1-test.html#item-3",
+    "title": "Exam 1 - Selected Answers",
+    "section": "Item 3",
+    "text": "Item 3\nThe variable fsh contains the baseline follicle-stimulating hormone (FSH) measurements for each participant. What is the mean/median/range/min/max baseline FSH measurement for this group of participants?\n\nmean(hflashes$fsh)\n\n[1] 8.03728\n\nmedian(hflashes$fsh)\n\n[1] 6.88\n\nrange(hflashes$fsh)\n\n[1]  1.665 47.220\n\nrange(hflashes$fsh) |&gt; diff()\n\n[1] 45.555"
+  },
+  {
+    "objectID": "Exam 1-test.html#item",
+    "href": "Exam 1-test.html#item",
+    "title": "Exam 1 - Selected Answers",
+    "section": "Item",
+    "text": "Item\nSuppose you randomly sample 50 participants from this cohort. What is the probability that the average baseline FSH measurement for the sample is greater than 10? Assume the central limit theorem holds for this scenario. (NOTE: The entire cohort is made up of 375 participants, which is a finite population.)\n\nn&lt;- 50\nN &lt;- 375\nmu &lt;- mean(hflashes$fsh)\nse &lt;- sd(hflashes$fsh)/sqrt(n) * sqrt((N-n)/(N-1))\n\npnorm(9,mean=mu,sd=se,lower.tail=F)\n\n[1] 0.04354046"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
     "objectID": "datatransformation.html#data-frames-1",
     "href": "datatransformation.html#data-frames-1",
     "title": "Data Transformation",
@@ -1570,13 +1616,6 @@
       "Lectures",
       "Supplementary Material - Data Transformation in R"
     ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "index.html",

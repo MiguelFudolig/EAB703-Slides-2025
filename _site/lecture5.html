@@ -946,20 +946,19 @@ Z = \frac{\hat{P}_1 - \hat{P}_2- (\pi_1-\pi_2)}{\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}
 <p>In addition,</p>
 <p><span class="math display">\[
 P((\hat{P}_1 - \hat{P}_2) \leq \hat{p}_1 - \hat{p}_2) = P\left(Z \leq \frac{\hat{p}_1 - \hat{p}_2- (\pi_1-\pi_2)}{\sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}}\right) = P(Z \leq z)
-\]</span> ## Example</p>
+\]</span></p>
+</section>
+<section id="example-6" class="slide level2">
+<h2>Example</h2>
 <p>Researchers investigated food insecurity in the urban and rural areas of their country. It was previously reported by the country’s census that the proportion of adults who experienced food insecurity in the past year was 33% in rural areas and 23% in urban areas. The researchers sampled 450 adults from urban areas and 300 adults from rural areas.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Question</a></li><li><a href="#tabset-12-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
+<p>What is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was <strong>at least</strong> 5% higher than that of the urban sample?</p>
 </div>
-<p><strong>Question</strong></p>
-</div>
-<div class="callout-content">
-<p>What is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was 5% higher than that of the urban sample?</p>
-<h3 id="answer-11">Answer</h3>
-<p>Remember that $<em>{rural}-</em>{urban} = .10, <em>{rural} = 0.33, </em>{urban}=0.23 $. We are interested in <span class="math inline">\(P((\hat{P}_1 - \hat{P}_2) \leq 0.05)\)</span>.</p>
+<div id="tabset-12-2">
+<p>Remember that <span class="math inline">\(\pi_{rural}-\pi_{urban} = .10, \pi_{rural} = 0.33, \pi_{urban}=0.23\)</span>. We are interested in <span class="math inline">\(P((\hat{P}_1 - \hat{P}_2) \geq 0.05)\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>pi_1 <span class="ot">&lt;-</span> <span class="fl">0.33</span></span>
 <span id="cb36-2"><a></a>n_1 <span class="ot">&lt;-</span> <span class="dv">300</span></span>
@@ -967,18 +966,18 @@ P((\hat{P}_1 - \hat{P}_2) \leq \hat{p}_1 - \hat{p}_2) = P\left(Z \leq \frac{\hat
 <span id="cb36-4"><a></a>n_2 <span class="ot">&lt;-</span> <span class="dv">450</span></span>
 <span id="cb36-5"><a></a>variance <span class="ot">&lt;-</span> (pi_1 <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_1))<span class="sc">/</span>n_1 <span class="sc">+</span> (pi_2 <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_2))<span class="sc">/</span>n_2</span>
 <span id="cb36-6"><a></a></span>
-<span id="cb36-7"><a></a><span class="fu">pnorm</span>(<span class="fl">0.05</span>,pi_1<span class="sc">-</span>pi_2,<span class="fu">sqrt</span>(variance))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-7"><a></a><span class="fu">pnorm</span>(<span class="fl">0.05</span>,pi_1<span class="sc">-</span>pi_2,<span class="fu">sqrt</span>(variance),<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.06850149</code></pre>
+<pre><code>[1] 0.9314985</code></pre>
 </div>
 </div>
 <p>OR through standardization</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>z <span class="ot">&lt;-</span> (<span class="fl">0.05</span><span class="sc">-</span>(pi_1<span class="sc">-</span>pi_2))<span class="sc">/</span><span class="fu">sqrt</span>(variance)</span>
 <span id="cb38-2"><a></a></span>
-<span id="cb38-3"><a></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-3"><a></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.06850149</code></pre>
+<pre><code>[1] 0.9314985</code></pre>
 </div>
 </div>
 </div>
@@ -989,12 +988,12 @@ P((\hat{P}_1 - \hat{P}_2) \leq \hat{p}_1 - \hat{p}_2) = P\left(Z \leq \frac{\hat
 <h2>Exercise</h2>
 <p>The prevalence of the Influenza virus in State A was reported to be 30%, while the prevalence of Influenza in State B is 24%.</p>
 <div class="panel-tabset">
-<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Question</a></li><li><a href="#tabset-12-2">Answer</a></li></ul>
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">Question</a></li><li><a href="#tabset-13-2">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-12-1">
+<div id="tabset-13-1">
 <p>If we randomly sample 100 constituents from each state, what is the probability that there will be a higher proportion of individuals infected with Influenza in State B compared to State A?</p>
 </div>
-<div id="tabset-12-2">
+<div id="tabset-13-2">
 <p>We are interested in <span class="math inline">\(P(\hat{P}_A - \hat{P}_B &lt; 0)\)</span>, where <span class="math inline">\(\hat{P}_A\)</span> is the sample proportion of infected individuals in State A and <span class="math inline">\(\hat{P}_B\)</span> is the sample proportion for State B. It follows that <span class="math inline">\(\pi_A=0.30\)</span>, <span class="math inline">\(\pi_B=0.24\)</span>, and <span class="math inline">\(n_1 = n_2 = 100\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>pi_1 <span class="ot">&lt;-</span> <span class="fl">0.30</span></span>
