@@ -1,0 +1,175 @@
+---
+title: "Lecture 6 calculations"
+subtitle: Lecture 6
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 6 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+# Confidence Intervals
+
+## Confidence Interval Form
+
+The confidence intervals in this chapter will follow the form:
+
+$$
+estimate \pm reliability~coefficient*standard~error
+$$
+
+
+
+## Confidence Intervals for Population Means
+
+We can estimate the population mean by using the mean of a representative sample from the population. 
+
+::: callout-warning
+The method differs for cases with known and unknown population variance. Some approximations can be done when there is a large sample size.
+:::
+
+## CI for Mean: Known Population Variance
+
+Cases in which population variances are known are rare. The best example of measurements with known population variances are standardized scales. 
+
+::: callout-note
+The Wechsler Adult Intelligence Scale (WAIS) maintains a standard deviation of 15 points for its full scale IQ scores.
+:::
+
+For a known population variance $\sigma^2$, sample mean $\bar{x}$, and sample size $n$, the 95% confidence limits for the $(1-\alpha)%$ can be calculated using the following formula:
+
+$$
+\bar{x} \pm z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}
+$$
+
+## CI for Mean: Notes
+
+Confidence intervals are often written in parentheses notation as such:
+
+$$
+\left(\bar{x} - z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar{x} + z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\right)
+$$
+
+$z_{1-\alpha/2}$ is referred to as the reliability coefficient and defined as the following:
+
+$$
+P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2
+$$
+
+::: callout-tip
+Recall that $Z$ follows the standard normal distribution. $z_{1-\alpha/2}$ can be calculated using  `qnorm(1-alpha/2,mean=0,sd=1).` For a 95% confidence interval, $\alpha = 0.05$, then it follows that $1-\alpha/2 = 1-0.05/2 = 0.975$. Therefore, the reliability coefficient for a 95% confidence interval can be calculated as:
+
+```{r}
+alpha=0.05
+qnorm(1-alpha/2,mean=0,sd=1)
+```
+:::
+
+## Example
+
+The file `lec6example.csv` contains simulated values from a normal distribution with a variance of 4. 
+
+::: panel-tabset
+
+### Question
+
+Create a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?
+
+### Answer
+
+```{r}
+# setwd("where your file is")
+example <- read.csv("datasets/lec6example.csv")
+sdpop <- sqrt(4)
+```
+We need to calculate the sample mean of the `Sims` column, the sample size, and the reliability coefficient.
+
+```{r}
+xbar <- mean(example$Sims)
+sampsize <- nrow(example) # <1>
+alpha <- 1-0.95
+relcoeff <- qnorm(1-alpha/2,mean = 0, sd=1) #<2>
+```
+1. `nrow()` calculates the number of rows of the data frame. If dealing with a singular vector, you can use `length()`. `nrow(example)` will yield the same answer as `length(example$Sims)`.
+
+
+We can now calculate the 95% confidence interval limits.
+
+```{r}
+lower <- xbar - relcoeff*sdpop/sqrt(sampsize)
+upper <- xbar + relcoeff*sdpop/sqrt(sampsize)
+lower
+upper
+```
+The resulting 95% confidence interval is (`r round(lower,2)`, `r round(upper,2)`). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean.
+
+:::
+
+## Exercise
+
+Consider the sleep health data uploaded on Canvas as `SleepHealthData.csv`. Suppose that in the population that this sample represents, the variance of the sleep duration is 0.5.
+
+::: panel-tabset
+### Question 
+
+Calculate the 95% confidence interval for the average sleep duration (`sleep_duration`) in the population this sample represents. Is 7 hours a plausible value for the average sleep distribution of the population?
+
+### Answer
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+sdpop <- sqrt(0.5)
+xbar <- mean(sleep$sleep_duration)
+sampsize <- nrow(sleep)
+alpha <- 1-0.95
+relcoeff <- qnorm(1-alpha/2) 
+# not specifying the mean and sd in qnorm assumes standard normal
+
+lower <- xbar - relcoeff*sdpop/sqrt(sampsize)
+lower
+upper <- xbar + relcoeff*sdpop/sqrt(sampsize)
+upper
+```
+
+The 95% confidence interval is (`r round(lower,2)`,`r round(upper,2)`). 7 is not a plausible value for the average sleep distribution of the population.
+:::
+
+## Precision
+
+The precision of an interval estimate is related to its width. 
+
+::: callout-note
+The precision, also known as the **margin of error**, can be expressed as the product of the reliability coefficient and the standard error.
+:::
+
+For the case of the population mean with known population variance,
+
+$$
+precision = z_{1-\alpha/2}* \frac{\sigma}{\sqrt{n}}
+$$
+
+::: callout-note
+Because of the symmetry of the confidence interval, the precision is half the width of the confidence interval.
+:::
+
+## CI for Mean: Unknown Population Variance
+
+It is more common to not know the population variance when estimating the population mean. Because of this, we are inclined to use the next best thing: an estimate of the population variance from the collected sample. This estimate is the **sample variance**
+
+::: callout-warning
+Using an approximate value for the population variance implies that our standardized statistic **might not** follow the standard normal distribution. We need a new distribution to calculate reliability coefficients for these confidence intervals.
+:::
