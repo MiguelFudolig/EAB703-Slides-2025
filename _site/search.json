@@ -3235,7 +3235,7 @@
     "href": "lecture6-1.html#precision",
     "title": "Lecture 6 calculations",
     "section": "Precision",
-    "text": "Precision\nThe precision of an interval estimate is related to its width.\n\n\n\n\n\n\nNote\n\n\nThe precision, also known as the margin of error, can be expressed as the product of the reliability coefficient and the standard error.\n\n\n\nFor the case of the population mean with known population variance,\n\\[\nprecision = z_{1-\\alpha/2}* \\frac{\\sigma}{\\sqrt{n}}\n\\]\n\n\n\n\n\n\nNote\n\n\nBecause of the symmetry of the confidence interval, the precision is half the width of the confidence interval."
+    "text": "Precision\nThe precision of an interval estimate is related to its width.\n\n\n\n\n\n\nNote\n\n\nThe precision, also known as the margin of error, can be expressed as the product of the reliability coefficient and the standard error.\n\n\n\nFor the case of the population mean with known population variance,\n\\[\nprecision = z_{1-\\alpha/2}* \\frac{\\sigma}{\\sqrt{n}} = \\frac{upper-lower}{2}\n\\]\n\n\n\n\n\n\nNote\n\n\nBecause of the symmetry of the confidence interval, the precision is half the width of the confidence interval."
   },
   {
     "objectID": "lecture6-1.html#ci-for-mean-unknown-population-variance",
@@ -3243,5 +3243,40 @@
     "title": "Lecture 6 calculations",
     "section": "CI for Mean: Unknown Population Variance",
     "text": "CI for Mean: Unknown Population Variance\nIt is more common to not know the population variance when estimating the population mean. Because of this, we are inclined to use the next best thing: an estimate of the population variance from the collected sample. This estimate is the sample variance\n\n\n\n\n\n\nWarning\n\n\nUsing an approximate value for the population variance implies that our standardized statistic might not follow the standard normal distribution. We need a new distribution to calculate reliability coefficients for these confidence intervals."
+  },
+  {
+    "objectID": "lecture6-1.html#the-students-t-distribution",
+    "href": "lecture6-1.html#the-students-t-distribution",
+    "title": "Lecture 6 calculations",
+    "section": "The Student’s t-distribution",
+    "text": "The Student’s t-distribution\nThe \\(t\\) distribution is symmetric and bell-shaped like the normal distribution, but has heavier tails.\n\n\n\n\n\n\nNote\n\n\nHeavier tails mean that the distribution is more likely to produce values that fall farther from the mean compared to the normal distribution. The heavier tails account for the extra uncertainty introduced by using the sample variance to estimate the population variance.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe t-distribution is defined by the degrees of freedom denoted by \\(\\nu\\) or df, and specific t-distributions can be written as \\(t_{\\nu}\\)."
+  },
+  {
+    "objectID": "lecture6-1.html#the-t-distribution-r",
+    "href": "lecture6-1.html#the-t-distribution-r",
+    "title": "Lecture 6 calculations",
+    "section": "The t distribution: R",
+    "text": "The t distribution: R\nThe R syntax for the t-distribution with degrees of freedom df consists of the following functions:\n\nPDF: dt(x,df)\nCDF: pt(x,df)\nQuantile: qt(x,df)\nGenerate/Simulate n t-distribution points: rt(n,df)"
+  },
+  {
+    "objectID": "lecture6-1.html#ci-for-mean-unknown-population-variance-1",
+    "href": "lecture6-1.html#ci-for-mean-unknown-population-variance-1",
+    "title": "Lecture 6 calculations",
+    "section": "CI for Mean: Unknown Population Variance",
+    "text": "CI for Mean: Unknown Population Variance\nWhen the population variance is unknown OR the sample from a normally distributed population has a low sample size, the \\((1-\\alpha)*100%\\) confidence interval can be calculated using the following formula:\n\\[\n\\bar{x} \\pm t_{\\nu,1-\\alpha/2} \\frac{s}{\\sqrt{n}}\n\\] ::: callout-important\n\\(s\\) is the sample standard deviation \\(t_{\\nu,1-\\alpha/2}\\) is defined as \\(P(t&lt;t_{\\nu,1-\\alpha/2}) = 1-\\alpha/2\\). The degrees of freedom \\(\\nu\\) can be calculated as \\(\\nu=n-1\\).\n:::\nThe 95% confidence interval can be written as:\n\\[\n\\left(\\bar{x} - t_{\\nu,1-\\alpha/2} \\frac{s}{\\sqrt{n}}, \\bar{x} + t_{\\nu,1-\\alpha/2} \\frac{s}{\\sqrt{n}}\\right)\n\\] ## Precision\nThe precision of an interval estimate is related to its width.\n\n\n\n\n\n\nNote\n\n\nThe precision, also known as the margin of error, can be expressed as the product of the reliability coefficient and the standard error.\n\n\n\nFor the case of the population mean with unknown population variance,\n\\[\nprecision = t_{\\nu,1-\\alpha/2} \\frac{s}{\\sqrt{n}}= \\frac{upper-lower}{2}\n\\]\n\n\n\n\n\n\nNote\n\n\nBecause of the symmetry of the confidence interval, the precision is half the width of the confidence interval."
+  },
+  {
+    "objectID": "lecture6-1.html#example-1",
+    "href": "lecture6-1.html#example-1",
+    "title": "Lecture 6 calculations",
+    "section": "Example",
+    "text": "Example\nThe file lec6example.csv contains simulated values from a normal distribution.\n\nQuestionAnswer\n\n\nSupposed the population variance is unknown. Create a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?\n\n\n\n# setwd(\"where your file is\")\nexample &lt;- read.csv(\"datasets/lec6example.csv\")\n\nWe need to calculate the sample mean of the Sims column, the sample size, and the reliability coefficient.\n\nxbar &lt;- mean(example$Sims)\n1sampsize &lt;- nrow(example)\n2stdev &lt;- sd(example$Sims)\n3df &lt;- sampsize-1\nalpha &lt;- 1-0.95\nrelcoeff &lt;- qt(p=1-alpha/2,df=df) \n\n\n1\n\nnrow() calculates the number of rows of the data frame. If dealing with a singular vector, you can use length(). nrow(example) will yield the same answer as length(example$Sims).\n\n2\n\nWe are calculating the sample variance using sd().\n\n3\n\nDegrees of freedom df = n-1.\n\n\n\n\nWe can now calculate the 95% confidence interval limits.\n\nlower &lt;- xbar - relcoeff*stdev/sqrt(sampsize)\nupper &lt;- xbar + relcoeff*stdev/sqrt(sampsize)\nlower\n\n[1] 0.6642442\n\nupper\n\n[1] 1.303367\n\n\nThe resulting 95% confidence interval is (0.66, 1.3). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean."
+  },
+  {
+    "objectID": "lecture6-1.html#exercise-1",
+    "href": "lecture6-1.html#exercise-1",
+    "title": "Lecture 6 calculations",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the sleep health data uploaded on Canvas as SleepHealthData.csv.\n\nQuestionAnswer\n\n\nCalculate the 99% confidence interval for the average heart rate (heart_rate) in bpm in the population this sample represents. Is 65 bpm a plausible value for the average sleep distribution of the population? Calculate the margin of error.\n\n\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\nsdpop &lt;- sd(sleep$heart_rate)\nxbar &lt;- mean(sleep$heart_rate)\nsampsize &lt;- nrow(sleep)\nalpha &lt;- 1-0.99\nrelcoeff &lt;- qt(p=1-alpha/2,df=sampsize-1) \n# not specifying the mean and sd in qnorm assumes standard normal\n\nlower &lt;- xbar - relcoeff*sdpop/sqrt(sampsize)\nlower\n\n[1] 69.6121\n\nupper &lt;- xbar + relcoeff*sdpop/sqrt(sampsize)\nupper\n\n[1] 70.71945\n\n\nThe 95% confidence interval is (69.61,70.72). 65 is not a plausible value for the average heart rate of the population.\nThe margin of error can be calculated as:\n\nrelcoeff*sdpop/sqrt(sampsize)\n\n[1] 0.5536753\n\n(upper-lower)/2\n\n[1] 0.5536753"
   }
 ]

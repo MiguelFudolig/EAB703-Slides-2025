@@ -384,7 +384,7 @@ P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2
 </div>
 <p>For the case of the population mean with known population variance,</p>
 <p><span class="math display">\[
-precision = z_{1-\alpha/2}* \frac{\sigma}{\sqrt{n}}
+precision = z_{1-\alpha/2}* \frac{\sigma}{\sqrt{n}} = \frac{upper-lower}{2}
 \]</span></p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -413,6 +413,193 @@ precision = z_{1-\alpha/2}* \frac{\sigma}{\sqrt{n}}
 </div>
 <div class="callout-content">
 <p>Using an approximate value for the population variance implies that our standardized statistic <strong>might not</strong> follow the standard normal distribution. We need a new distribution to calculate reliability coefficients for these confidence intervals.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-students-t-distribution" class="slide level2">
+<h2>The Student’s t-distribution</h2>
+<p>The <span class="math inline">\(t\)</span> distribution is symmetric and bell-shaped like the normal distribution, but has heavier tails.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Heavier tails mean that the distribution is more likely to produce values that fall farther from the mean compared to the normal distribution. The heavier tails account for the extra uncertainty introduced by using the sample variance to estimate the population variance.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The t-distribution is defined by the degrees of freedom denoted by <span class="math inline">\(\nu\)</span> or <code>df</code>, and specific t-distributions can be written as <span class="math inline">\(t_{\nu}\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-t-distribution-r" class="slide level2">
+<h2>The t distribution: <code>R</code></h2>
+<p>The <code>R</code> syntax for the t-distribution with degrees of freedom <code>df</code> consists of the following functions:</p>
+<ul>
+<li>PDF: <code>dt(x,df)</code></li>
+<li>CDF: <code>pt(x,df)</code></li>
+<li>Quantile: <code>qt(x,df)</code></li>
+<li>Generate/Simulate <code>n</code> t-distribution points: <code>rt(n,df)</code></li>
+</ul>
+</section>
+<section id="ci-for-mean-unknown-population-variance-1" class="slide level2">
+<h2>CI for Mean: Unknown Population Variance</h2>
+<p>When the population variance is unknown OR the sample from a normally distributed population has a low sample size, the <span class="math inline">\((1-\alpha)*100%\)</span> confidence interval can be calculated using the following formula:</p>
+<p><span class="math display">\[
+\bar{x} \pm t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}
+\]</span> ::: callout-important</p>
+<p><span class="math inline">\(s\)</span> is the sample standard deviation <span class="math inline">\(t_{\nu,1-\alpha/2}\)</span> is defined as <span class="math inline">\(P(t&lt;t_{\nu,1-\alpha/2}) = 1-\alpha/2\)</span>. The degrees of freedom <span class="math inline">\(\nu\)</span> can be calculated as <span class="math inline">\(\nu=n-1\)</span>.</p>
+<p>:::</p>
+<p>The 95% confidence interval can be written as:</p>
+<p><span class="math display">\[
+\left(\bar{x} - t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}, \bar{x} + t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}\right)
+\]</span> ## Precision</p>
+<p>The precision of an interval estimate is related to its width.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The precision, also known as the <strong>margin of error</strong>, can be expressed as the product of the reliability coefficient and the standard error.</p>
+</div>
+</div>
+</div>
+<p>For the case of the population mean with unknown population variance,</p>
+<p><span class="math display">\[
+precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
+\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Because of the symmetry of the confidence interval, the precision is half the width of the confidence interval.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>The file <code>lec6example.csv</code> contains simulated values from a normal distribution.</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Question</a></li><li><a href="#tabset-3-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>Supposed the population variance is unknown. Create a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?</p>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># setwd("where your file is")</span></span>
+<span id="cb12-2"><a></a>example <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/lec6example.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We need to calculate the sample mean of the <code>Sims</code> column, the sample size, and the reliability coefficient.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(example<span class="sc">$</span>Sims)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>sampsize <span class="ot">&lt;-</span> <span class="fu">nrow</span>(example)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a>stdev <span class="ot">&lt;-</span> <span class="fu">sd</span>(example<span class="sc">$</span>Sims)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3">3</button><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a>df <span class="ot">&lt;-</span> sampsize<span class="dv">-1</span></span>
+<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
+<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df=</span>df) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="1"><code>nrow()</code> calculates the number of rows of the data frame. If dealing with a singular vector, you can use <code>length()</code>. <code>nrow(example)</code> will yield the same answer as <code>length(example$Sims)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="2">We are calculating the sample variance using <code>sd()</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="3">Degrees of freedom <code>df = n-1</code>.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>We can now calculate the 95% confidence interval limits.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>lower <span class="ot">&lt;-</span> xbar <span class="sc">-</span> relcoeff<span class="sc">*</span>stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
+<span id="cb13-2"><a></a>upper <span class="ot">&lt;-</span> xbar <span class="sc">+</span> relcoeff<span class="sc">*</span>stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
+<span id="cb13-3"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6642442</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.303367</code></pre>
+</div>
+</div>
+<p>The resulting 95% confidence interval is (0.66, 1.3). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider the sleep health data uploaded on Canvas as <code>SleepHealthData.csv</code>.</p>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Question</a></li><li><a href="#tabset-4-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>Calculate the <strong>99%</strong> confidence interval for the average heart rate (<code>heart_rate</code>) in bpm in the population this sample represents. Is 65 bpm a plausible value for the average sleep distribution of the population? Calculate the margin of error.</p>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
+<span id="cb17-2"><a></a>sdpop <span class="ot">&lt;-</span> <span class="fu">sd</span>(sleep<span class="sc">$</span>heart_rate)</span>
+<span id="cb17-3"><a></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>heart_rate)</span>
+<span id="cb17-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="fu">nrow</span>(sleep)</span>
+<span id="cb17-5"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.99</span></span>
+<span id="cb17-6"><a></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df=</span>sampsize<span class="dv">-1</span>) </span>
+<span id="cb17-7"><a></a><span class="co"># not specifying the mean and sd in qnorm assumes standard normal</span></span>
+<span id="cb17-8"><a></a></span>
+<span id="cb17-9"><a></a>lower <span class="ot">&lt;-</span> xbar <span class="sc">-</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
+<span id="cb17-10"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 69.6121</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>upper <span class="ot">&lt;-</span> xbar <span class="sc">+</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
+<span id="cb19-2"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70.71945</code></pre>
+</div>
+</div>
+<p>The 95% confidence interval is (69.61,70.72). 65 is not a plausible value for the average heart rate of the population.</p>
+<p>The margin of error can be calculated as:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5536753</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>(upper<span class="sc">-</span>lower)<span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5536753</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>

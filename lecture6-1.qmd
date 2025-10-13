@@ -159,7 +159,7 @@ The precision, also known as the **margin of error**, can be expressed as the pr
 For the case of the population mean with known population variance,
 
 $$
-precision = z_{1-\alpha/2}* \frac{\sigma}{\sqrt{n}}
+precision = z_{1-\alpha/2}* \frac{\sigma}{\sqrt{n}} = \frac{upper-lower}{2}
 $$
 
 ::: callout-note
@@ -173,3 +173,144 @@ It is more common to not know the population variance when estimating the popula
 ::: callout-warning
 Using an approximate value for the population variance implies that our standardized statistic **might not** follow the standard normal distribution. We need a new distribution to calculate reliability coefficients for these confidence intervals.
 :::
+
+## The Student's t-distribution
+
+The $t$ distribution is symmetric and bell-shaped like the normal distribution, but has heavier tails.
+
+::: callout-note
+Heavier tails mean that the distribution is more likely to produce values that fall farther from the mean compared to the normal distribution. The heavier tails account for the extra uncertainty introduced by using the sample variance to estimate the population variance.
+:::
+
+::: callout-important
+The t-distribution is defined by the degrees of freedom denoted by $\nu$ or `df`, and specific t-distributions can be written as $t_{\nu}$.
+:::
+
+## The t distribution: `R`
+
+The `R` syntax for the t-distribution with degrees of freedom `df` consists of the following functions:
+
+- PDF: `dt(x,df)`
+- CDF: `pt(x,df)`
+- Quantile: `qt(x,df)`
+- Generate/Simulate `n` t-distribution points: `rt(n,df)`
+
+## CI for Mean: Unknown Population Variance
+
+When the population variance is unknown OR the sample from a normally distributed population has a low sample size, the $(1-\alpha)*100%$ confidence interval can be calculated using the following formula:
+
+$$
+\bar{x} \pm t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}
+$$
+::: callout-important
+
+$s$ is the sample standard deviation $t_{\nu,1-\alpha/2}$ is defined as $P(t<t_{\nu,1-\alpha/2}) = 1-\alpha/2$. The degrees of freedom $\nu$ can be calculated as $\nu=n-1$. 
+
+:::
+
+The 95% confidence interval can be written as:
+
+$$
+\left(\bar{x} - t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}, \bar{x} + t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}\right)
+$$
+## Precision
+
+The precision of an interval estimate is related to its width. 
+
+::: callout-note
+The precision, also known as the **margin of error**, can be expressed as the product of the reliability coefficient and the standard error.
+:::
+
+For the case of the population mean with unknown population variance,
+
+$$
+precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
+$$
+
+::: callout-note
+Because of the symmetry of the confidence interval, the precision is half the width of the confidence interval.
+:::
+
+
+
+## Example
+
+The file `lec6example.csv` contains simulated values from a normal distribution. 
+
+::: panel-tabset
+
+### Question
+
+Supposed the population variance is unknown. Create a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?
+
+### Answer
+
+```{r}
+# setwd("where your file is")
+example <- read.csv("datasets/lec6example.csv")
+```
+We need to calculate the sample mean of the `Sims` column, the sample size, and the reliability coefficient.
+
+```{r}
+xbar <- mean(example$Sims)
+sampsize <- nrow(example) # <1>
+stdev <- sd(example$Sims) # <2>
+df <- sampsize-1 #<3>
+alpha <- 1-0.95
+relcoeff <- qt(p=1-alpha/2,df=df) 
+```
+1. `nrow()` calculates the number of rows of the data frame. If dealing with a singular vector, you can use `length()`. `nrow(example)` will yield the same answer as `length(example$Sims)`.
+2. We are calculating the sample variance using `sd()`.
+3. Degrees of freedom `df = n-1`.
+
+
+We can now calculate the 95% confidence interval limits.
+
+```{r}
+lower <- xbar - relcoeff*stdev/sqrt(sampsize)
+upper <- xbar + relcoeff*stdev/sqrt(sampsize)
+lower
+upper
+```
+The resulting 95% confidence interval is (`r round(lower,2)`, `r round(upper,2)`). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean.
+
+:::
+
+## Exercise
+
+Consider the sleep health data uploaded on Canvas as `SleepHealthData.csv`. 
+
+::: panel-tabset
+### Question 
+
+Calculate the **99%** confidence interval for the average heart rate (`heart_rate`) in bpm in the population this sample represents. Is 65 bpm a plausible value for the average sleep distribution of the population? Calculate the margin of error.
+
+### Answer
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+sdpop <- sd(sleep$heart_rate)
+xbar <- mean(sleep$heart_rate)
+sampsize <- nrow(sleep)
+alpha <- 1-0.99
+relcoeff <- qt(p=1-alpha/2,df=sampsize-1) 
+# not specifying the mean and sd in qnorm assumes standard normal
+
+lower <- xbar - relcoeff*sdpop/sqrt(sampsize)
+lower
+upper <- xbar + relcoeff*sdpop/sqrt(sampsize)
+upper
+```
+
+The 95% confidence interval is (`r round(lower,2)`,`r round(upper,2)`). 65 is not a plausible value for the average heart rate of the population.
+
+The margin of error can be calculated as:
+
+```{r}
+relcoeff*sdpop/sqrt(sampsize)
+
+(upper-lower)/2
+```
+
+:::
+
