@@ -1,0 +1,930 @@
+---
+title: "Interval Estimation"
+subtitle: Lecture 6
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 6 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+# Outline
+
+- Estimation: Confidence Intervals
+
+- The t-distribution
+
+- Confidence Intervals for different parameters:
+
+  - Population Mean
+  - Difference Between Two Population Means
+  - Population Proportion
+  - Diffrence Between Two Population Proportions
+
+# Estimation
+
+## Statistical Inference
+
+::: callout-note
+**Statistical inference** is the procedure by which we reach a conclusion about a population on the basis of the information contained in a sample drawn from that population.
+:::
+
+::: callout-important
+The process of estimation entails calculating some statistic from the sample that is offered as an approximation of the corresponding parameter of the population from which the sample was drawn.
+:::
+
+## Point Estimation vs. Interval Estimation
+
+::: {.callout-note title="Point Estimation"}
+Point estimation is the process of finding a single number to use as our best guess for the value of an unknown population parameter. Point estimates do not provide a measure of uncertainty.
+:::
+
+
+::: {.callout-note title="Interval Estimation"}
+Interval estimation involves estimating two numerical values that define a range of values that, with a specified degree of confidence, most likely includes the parameter being estimated.
+:::
+
+## Point Estimation: Unbiased Estimators
+
+::: callout-note
+The single computed value has been referred to as an estimate. On the other hand, the rule that tells us how to compute this estimate is referred to as an estimator.
+:::
+
+::: {.callout-important title="Unbiasedness"}
+An estimator of a parameter $\Theta$, $T$, is said to be an unbiased estimator of $\Theta$ if $E(T)=\Theta$. AN example of an unbiased estimator is the sample mean. The sample mean $\bar{X}$ is an unbiased estimator of the population mean.
+:::
+
+## Sampled vs. Target Populations
+
+::: {.callout-note title="Target Population"}
+The target population is the population about which one wishes to make an inference.
+:::
+
+
+::: {.callout-note title="Sampled Population"}
+The sampled population is the population from which one actually draws a sample.
+:::
+
+::: callout-warning
+If the sampled population and the target population are different, the researcher can reach conclusions about the target population only on the basis of nonstatistical considerations. Estimation from the sampled population could lead to biased estimates.
+:::
+
+## Random vs. Convenience Sampling
+
+In most examples in this class, we assume that the data was collected from random samples. However, it is impossible or impractical to use truly random samples.
+
+
+::: {.callout-note title="Convenience sampling"}
+Convenience sampling involves sampling through volunteerism or readily available subjects to record data. While collecting data using convenience sampling is easy, the results might not be generalizable to the target population.
+:::
+
+## Interval Estimation: Confidence Intervals
+
+There are many variants of interval estimation methods that can be used. One of the more popular interval estimates is the **confidence interval**.
+
+::: {.callout-important title="Confidence Interval"}
+A confidence interval is a random interval that will contain the true value of a parameter with probability $1-\alpha$. The value $1-\alpha$ is called the **confidence level** of the interval.
+:::
+
+::: callout-important
+The confidence interval provides all plausible values of the parameters. The parameter itself is treated as fixed, while the endpoints of the confidence interval are treated as random variables. The endpoints are random because it depends on the data collected.
+:::
+
+::: callout-warning
+The viewpoint for making a probability statement must be **before** the data are collected, not **after**. 
+:::
+
+## Confidence Intervals
+
+For the following tabs, supposed that the 95% confidence interval for the population mean, $\mu$, was calculated to be the interval (80,100).
+
+::: panel-tabset
+
+### Misconception 1
+
+::: {.callout-warning title="Misconception 1"}
+Misconception 1: $P(80 < \mu < 100) = 0.95$
+:::
+
+This is incorrect. The parameter $\mu$ is not random, hence there shouldn't be a probability assigned to it. 80 and 100 are also not random because we have already measured them. Either the interval contains the true value of $\mu$ or not. Hence, the probability interpretation does not make any sense.
+
+### Misconception 2
+
+::: {.callout-warning title="Misconception 2"}
+Misconception 2: 95% of the population lies in the interval (80,100).
+:::
+
+The confidence interval is for the population mean, not the set of all data values from the population. A confidence interval for the mean will often include only a small fraction of the population.
+
+:::
+
+## Interpretation of Confidence Intervals
+
+The confidence level is pertaining to the method that we calculated, not the particular interval. In the long run (or infinite repeated sampling), around 95% of the confidence intervals calculated will include $\mu$.
+
+::: callout-important
+Since our method works 95% of the time, we believe that $\mu$ is in our 95% confidence interval. We don't have the time and means to calculate all confidence intervals.
+:::
+
+
+# Confidence Intervals
+
+## Confidence Interval Form
+
+The confidence intervals in this chapter will follow the form:
+
+$$
+estimate \pm reliability~coefficient*standard~error
+$$
+
+
+
+## Confidence Intervals for Population Means
+
+We can estimate the population mean by using the mean of a representative sample from the population. 
+
+::: callout-warning
+The method differs for cases with known and unknown population variance. Some approximations can be done when there is a large sample size.
+:::
+
+## CI for Mean: Known Population Variance
+
+Cases in which population variances are known are rare. The best example of measurements with known population variances are standardized scales. 
+
+::: callout-note
+The Wechsler Adult Intelligence Scale (WAIS) maintains a standard deviation of 15 points for its full scale IQ scores.
+:::
+
+For a known population variance $\sigma^2$, sample mean $\bar{x}$, and sample size $n$, the 95% confidence limits for the $(1-\alpha)%$ can be calculated using the following formula:
+
+$$
+\bar{x} \pm z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}
+$$
+
+## CI for Mean: Notes
+
+Confidence intervals are often written in parentheses notation as such:
+
+$$
+\left(\bar{x} - z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar{x} + z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\right)
+$$
+
+$z_{1-\alpha/2}$ is referred to as the reliability coefficient and defined as the following:
+
+$$
+P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2
+$$
+
+::: callout-tip
+Recall that $Z$ follows the standard normal distribution. $z_{1-\alpha/2}$ can be calculated using  `qnorm(1-alpha/2,mean=0,sd=1).` For a 95% confidence interval, $\alpha = 0.05$, then it follows that $1-\alpha/2 = 1-0.05/2 = 0.975$. Therefore, the reliability coefficient for a 95% confidence interval can be calculated as:
+
+```{r}
+alpha=0.05
+qnorm(1-alpha/2,mean=0,sd=1)
+```
+:::
+
+## Example
+
+The file `lec6example.csv` contains simulated values from a normal distribution with a variance of 4. 
+
+::: panel-tabset
+
+### Question
+
+Create a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?
+
+### Answer
+
+```{r}
+# setwd("where your file is")
+example <- read.csv("datasets/lec6example.csv")
+sdpop <- sqrt(4)
+```
+We need to calculate the sample mean of the `Sims` column, the sample size, and the reliability coefficient.
+
+```{r}
+xbar <- mean(example$Sims)
+sampsize <- nrow(example) # <1>
+alpha <- 1-0.95
+relcoeff <- qnorm(1-alpha/2,mean = 0, sd=1) #<2>
+```
+1. `nrow()` calculates the number of rows of the data frame. If dealing with a singular vector, you can use `length()`. `nrow(example)` will yield the same answer as `length(example$Sims)`.
+
+
+We can now calculate the 95% confidence interval limits.
+
+```{r}
+lower <- xbar - relcoeff*sdpop/sqrt(sampsize)
+upper <- xbar + relcoeff*sdpop/sqrt(sampsize)
+lower
+upper
+```
+The resulting 95% confidence interval is (`r round(lower,2)`, `r round(upper,2)`). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean.
+
+:::
+
+## Exercise
+
+Consider the sleep health data uploaded on Canvas as `SleepHealthData.csv`. Suppose that in the population that this sample represents, the variance of the sleep duration is 0.5.
+
+::: panel-tabset
+### Question 
+
+Calculate the 95% confidence interval for the average sleep duration (`sleep_duration`) in the population this sample represents. Is 7 hours a plausible value for the average sleep distribution of the population?
+
+### Answer
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+sdpop <- sqrt(0.5)
+xbar <- mean(sleep$sleep_duration)
+sampsize <- nrow(sleep)
+alpha <- 1-0.95
+relcoeff <- qnorm(1-alpha/2) 
+# not specifying the mean and sd in qnorm assumes standard normal
+
+lower <- xbar - relcoeff*sdpop/sqrt(sampsize)
+lower
+upper <- xbar + relcoeff*sdpop/sqrt(sampsize)
+upper
+```
+
+The 95% confidence interval is (`r round(lower,2)`,`r round(upper,2)`). 7 is not a plausible value for the average sleep distribution of the population.
+:::
+
+## Precision
+
+The precision of an interval estimate is related to its width. 
+
+::: callout-note
+The precision, also known as the **margin of error**, can be expressed as the product of the reliability coefficient and the standard error.
+:::
+
+For the case of the population mean with known population variance,
+
+$$
+precision = z_{1-\alpha/2}* \frac{\sigma}{\sqrt{n}} = \frac{upper-lower}{2}
+$$
+
+::: callout-note
+Because of the symmetry of the confidence interval, the precision is half the width of the confidence interval.
+:::
+
+## CI for Mean: Unknown Population Variance
+
+It is more common to not know the population variance when estimating the population mean. Because of this, we are inclined to use the next best thing: an estimate of the population variance from the collected sample. This estimate is the **sample variance**
+
+::: callout-warning
+Using an approximate value for the population variance implies that our standardized statistic **might not** follow the standard normal distribution. We need a new distribution to calculate reliability coefficients for these confidence intervals.
+:::
+
+## The Student's t-distribution
+
+The $t$ distribution is symmetric and bell-shaped like the normal distribution, but has heavier tails.
+
+::: callout-note
+Heavier tails mean that the distribution is more likely to produce values that fall farther from the mean compared to the normal distribution. The heavier tails account for the extra uncertainty introduced by using the sample variance to estimate the population variance.
+:::
+
+::: callout-important
+The t-distribution is defined by the degrees of freedom denoted by $\nu$ or `df`, and specific t-distributions can be written as $t_{\nu}$.
+:::
+
+## The t distribution: `R`
+
+The `R` syntax for the t-distribution with degrees of freedom `df` consists of the following functions:
+
+- PDF: `dt(x,df)`
+- CDF: `pt(x,df)`
+- Quantile: `qt(x,df)`
+- Generate/Simulate `n` t-distribution points: `rt(n,df)`
+
+## CI for Mean: Unknown Population Variance
+
+When the population variance is unknown OR the sample from a normally distributed population has a low sample size, the $(1-\alpha)*100%$ confidence interval can be calculated using the following formula:
+
+$$
+\bar{x} \pm t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}
+$$
+
+::: callout-important
+
+$s$ is the sample standard deviation $t_{\nu,1-\alpha/2}$ is defined as $P(t<t_{\nu,1-\alpha/2}) = 1-\alpha/2$. The degrees of freedom $\nu$ can be calculated as $\nu=n-1$. 
+
+:::
+
+The 95% confidence interval can be written as:
+
+$$
+\left(\bar{x} - t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}, \bar{x} + t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}\right)
+$$
+
+## Precision
+
+The precision of an interval estimate is related to its width. 
+
+::: callout-note
+The precision, also known as the **margin of error**, can be expressed as the product of the reliability coefficient and the standard error.
+:::
+
+For the case of the population mean with unknown population variance,
+
+$$
+precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
+$$
+
+::: callout-note
+Because of the symmetry of the confidence interval, the precision is half the width of the confidence interval.
+:::
+
+
+
+## Example
+
+The file `lec6example.csv` contains simulated values from a normal distribution. 
+
+::: panel-tabset
+
+### Question
+
+Supposed the population variance is unknown. Create a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?
+
+### Answer
+
+```{r}
+# setwd("where your file is")
+example <- read.csv("datasets/lec6example.csv")
+```
+We need to calculate the sample mean of the `Sims` column, the sample size, and the reliability coefficient.
+
+```{r}
+xbar <- mean(example$Sims)
+sampsize <- nrow(example) # <1>
+stdev <- sd(example$Sims) # <2>
+df <- sampsize-1 #<3>
+alpha <- 1-0.95
+relcoeff <- qt(p=1-alpha/2,df=df) 
+```
+1. `nrow()` calculates the number of rows of the data frame. If dealing with a singular vector, you can use `length()`. `nrow(example)` will yield the same answer as `length(example$Sims)`.
+2. We are calculating the sample variance using `sd()`.
+3. Degrees of freedom `df = n-1`.
+
+
+We can now calculate the 95% confidence interval limits.
+
+```{r}
+lower <- xbar - relcoeff*stdev/sqrt(sampsize)
+upper <- xbar + relcoeff*stdev/sqrt(sampsize)
+lower
+upper
+```
+The resulting 95% confidence interval is (`r round(lower,2)`, `r round(upper,2)`). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean.
+
+:::
+
+## Exercise
+
+Consider the sleep health data uploaded on Canvas as `SleepHealthData.csv`. 
+
+::: panel-tabset
+### Question 
+
+Calculate the **99%** confidence interval for the average heart rate (`heart_rate`) in bpm in the population this sample represents. Is 65 bpm a plausible value for the average sleep distribution of the population? Calculate the margin of error.
+
+### Answer
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+sdpop <- sd(sleep$heart_rate)
+xbar <- mean(sleep$heart_rate)
+sampsize <- nrow(sleep)
+alpha <- 1-0.99
+relcoeff <- qt(p=1-alpha/2,df=sampsize-1) 
+# not specifying the mean and sd in qnorm assumes standard normal
+
+lower <- xbar - relcoeff*sdpop/sqrt(sampsize)
+lower
+upper <- xbar + relcoeff*sdpop/sqrt(sampsize)
+upper
+```
+
+The 99% confidence interval is (`r round(lower,2)`,`r round(upper,2)`). 65 is not a plausible value for the average heart rate of the population.
+
+The margin of error can be calculated as:
+
+```{r}
+relcoeff*sdpop/sqrt(sampsize)
+
+(upper-lower)/2
+```
+
+:::
+
+## Confidence Interval for Population Proportions
+
+Many questions of interest to the health worker relate to population proportions. 
+
+::: callout-note
+Some questions could be:
+
+- What is the recovery rate of patients for a particular type of treatment?
+- What is the prevalence rate of a disease?
+- What proportion of medical providers agree with current health recommendations?
+:::
+
+## CI: Population Proportions
+
+For a sample of size $n$ and sample proportion $\hat{p}$, the $100(1-\alpha)$% confidence interval for the population proportion $\pi$ is given by:
+
+$$
+\hat{p} \pm z_{1-\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+$$
+
+Similar to the CI for means, $z_{1-\alpha/2}$ is defined as $P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2$.
+
+
+::: callout-important
+The use of $z_{1-\alpha/2}$ can be justified using the central limit theorem (CLT). The most common guideline for the CLT to apply to proportions is that $n\pi$ and $n(1-\pi)$ are both greater than five.
+:::
+
+The CI would then be reported as:
+
+$$
+\left(\hat{p} - z_{1-\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\hat{p} + z_{1-\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \right)
+$$
+
+## Example
+
+The data set `Liver_Steatosis.csv` comes from a retrospective cohort study to estimate the prevalence of liver steatosis (fatty liver disease) in those who had bariatric surgery ([Wu et al, 2012](https://pubmed.ncbi.nlm.nih.gov/21901286/)). The data set also includes other covariates and comorbidities.
+
+::: panel-tabset
+
+### Question
+One of the comorbidities studied was history of metabolic syndrome (1=Yes, 2=No, `NA` = missing). Calculate a 95% confidence interval for the prevalence of metabolic syndrome based on the data. Only consider **non-missing data** in your analysis.
+
+::: callout-warning
+This data set was collected from patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent liver biopsy. Is this result generalizable to all US adults who have had bariatric surgery? 
+:::
+
+### Answer
+
+We need to calculate the proportion of patients reported to have metabolic syndrome. 
+```{r}
+library(summarytools)
+liver <- read.csv("datasets/Liver_Steatosis.csv")
+summarytools::freq(liver$MET_Syndrome)
+```
+Based on `freq`, the proportion of those with metabolic syndrome is 0.6735 out of a sample size of 441 (removed two missing). We now have everything we need to calculate the confidence interval.
+
+```{r}
+phat <- 297/443
+sampsize <- 441
+alpha = 1-0.95
+relcoeff = qnorm(p=1-alpha/2,mean=0,sd=1)
+se <- sqrt((phat*(1-phat)/sampsize))
+
+lower <- phat - relcoeff*se
+lower
+upper <- phat + relcoeff*se
+upper
+
+```
+
+The 95% confidence interval for the proportion of patients with metabolic syndrome is (`r round(lower,4)`,`r round(upper,4)`).
+
+::: callout-warning
+Caution should be exercised in generalizing this result to all patients from the country as this is a very specific sample.
+:::
+:::
+
+## Exercise
+
+Consider the sleep health data uploaded on Canvas as `SleepHealthData.csv`.
+
+::: panel-tabset
+### Question
+
+Use the `sleep_disorder` column to do the following:
+
+- Estimate the prevalence rate of sleep apnea in the population this sample represents using the sample proportion.
+- Calculate a 90% confidence interval for the prevalence rate of sleep apnea.
+
+### Answer
+
+```{r}
+freq(sleep$sleep_disorder)
+```
+
+The proportion of participants who reported sleep apnea is 0.2086. The sample size is 374. We can now calculate a 90% confidence interval for the prevalence rate of sleep apnea based on this sample.
+
+```{r}
+phat <- 78/374
+sampsize <- 374
+alpha = 1-0.9
+relcoeff = qnorm(p=1-alpha/2,mean=0,sd=1)
+se <- sqrt((phat*(1-phat)/sampsize))
+
+lower <- phat - relcoeff*se
+lower
+upper <- phat + relcoeff*se
+upper
+```
+
+The 90% confidence interval for the prevalence rate of sleep apnea in the population this sample represents is (`r round(lower,4)`,`r round(upper,4)`).
+
+:::
+
+# Sample Size Calculation 
+
+## How to determine sample sizes
+
+Before data are collected, we often need to make a decision about how large of a sample will be required to estimate population parameters. 
+
+::: callout-important
+The sample size depends on the precision/margin of error we would like for our resulting confidence intervals.
+:::
+
+## Sample size for population proportion estimation
+
+Suppose we want our margin of error (MOE) to be equal to $E$ for our planned study. The corresponding estimate for the sample size needed to reach this level of precision is given by
+
+$$
+n = z^2_{1-\alpha/2} \frac{ \hat{\pi}(1-\hat{\pi})}{E^2}
+$$
+
+::: callout-important
+Note that the population proportion AND sample proportion are unknown before data collection. However, we need to have an idea what the expected proportion is for our study, denoted by $\hat{\pi}$ in this case. This proportion can be estimated from prior or pilot studies. If there are no prior studies available (which is the case for some pilot studies), we can assume $\hat{\pi}=0.5$ to create a conservative confidence interval.
+:::
+
+## Example
+
+Suppose we want to design a pilot study to estimate the proportion of young adults in NV who use anabolic-androgenic steroids for muscle growth. 
+
+::: panel-tabset
+
+### Question
+Calculate the sample size required so the resulting 95% confidence interval estimates will have a margin of error of 5%.
+
+### Answer
+
+```{r}
+E <- 0.05
+pi_hat <-0.5
+alpha <- 1-0.95
+z <- qnorm(p=1-alpha/2)
+
+sampsize <- z^2*pi_hat*(1-pi_hat)/E^2
+sampsize
+```
+
+::: callout-important
+When doing sample size calculations, always **round up** your final answer. For this study, you would recommend recruiting `r ceiling(sampsize)` participants for the study so that the MOE for the interval estimate of the usage rate of anabolic-androgenic steroids for muscle growth will be approximately 5%.
+:::
+
+:::
+
+## Exercise
+
+Suppose we performed the pilot study on steroid use and we plan to use the results to design a large scale study. 
+
+::: panel-tabset
+
+### Question
+The pilot study yielded an estimated usage rate of 32%. Calculate the sample size required so the resulting 95% confidence interval estimates will have a margin of error of 1%.
+
+### Answer
+
+```{r}
+E <- 0.01
+pi_hat <-0.32
+alpha <- 1-0.95
+z <- qnorm(p=1-alpha/2)
+
+sampsize <- z^2*pi_hat*(1-pi_hat)/E^2
+sampsize
+```
+
+::: callout-important
+For this study, you would recommend recruiting `r ceiling(sampsize)` participants for the study so that the MOE for the interval estimate of the usage rate of anabolic-androgenic steroids for muscle growth will be approximately 1%.
+:::
+
+:::
+
+## Sample size for population mean estimation
+
+Suppose we want our margin of error (MOE) to be equal to $E$ for our planned study. The corresponding estimate for the sample size needed to reach this level of precision is given by
+
+$$
+n = z^2_{1-\alpha/2} \frac{\hat{\sigma}^2}{E^2}
+$$
+
+where $\hat{\sigma}$ is an a priori estimate of the population standard deviation. As with the estimated population proportion, this value can be obtained from prior studies or estimated using pilot studies. 
+
+::: callout-tip
+Recall that for a Gaussian distribution, approximately 99% of the population can be found within the range $(\mu-3\sigma,\mu+3\sigma)$. The width of this region is $6\sigma$, which could be approximated by the range of the data. Hence, an approximate of the population standard deviation could be expressed as: $\sigma= R/6$, where $R$ is the range.
+:::
+
+## Example
+
+Suppose we want to estimate the average number of views that health provider social media pages in Nevada receive weekly. 
+
+::: panel-tabset
+### Question
+
+If the range of mean views was estimated to be 300,000, how many social media pages should be sampled so that our 99% confidence interval for the average number of views of Nevada health provider social media pages has a margin of error of 10,000?
+
+### Answer
+
+```{r}
+alpha <- 1-0.99
+z <- qnorm(p=1-alpha/2)
+sigma <- 300000/6
+E <- 10000
+sampsize <-z^2*sigma^2/E^2
+sampsize
+```
+
+We need to sample `r ceiling(sampsize)` to achieve a margin of error of 10,000 for our 99% confidence interval.
+
+:::
+
+## Example
+
+You designed a study to estimate the average number of views that health provider social media pages in Nevada receive weekly. 
+
+::: panel-tabset
+### Question
+
+Suppose your boss was not happy with the margin of error for the 99% confidence interval of 10,000 and wanted to decrease the margin of error to 500. How many samples would be recommended for the study if the range of mean views was estimated to be 300,000.
+
+### Answer
+
+```{r}
+alpha <- 1-0.99
+z <- qnorm(p=1-alpha/2)
+sigma <- 300000/6
+E <- 500
+sampsize <-z^2*sigma^2/E^2
+sampsize
+```
+
+We need to sample `r format(ceiling(sampsize),scientific=F)` to achieve a margin of error of 500 for our 99% confidence interval.
+
+:::
+
+
+# Confidence Intervals for Difference in Statistics
+
+## CI for Difference in Statistics
+
+Often, we are more interested in comparing between two groups.
+
+::: callout-note
+Recall that in Chapter 5, we showed how differences between two parameters had a different sampling distribution that individual parameters.
+:::
+
+## CI for Difference in Population Means
+
+For two groups with known population variances $\sigma_1$ and $\sigma_2$, the $100(1-\alpha)$% can be calculated using the following formula:
+
+$$
+(\bar{x}_1-\bar{x}_2) \pm z_{1-\alpha/2}\sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}
+$$
+
+## CI for Difference in Population Means
+
+For two groups with unknown population variances, we will still use the sample variances to estimate the population variances of each group. However, we have to consider two cases:
+
+
+::: panel-tabset
+### Equal Pop. Variances
+When the population variances are assumed to be equal, we need to introduce a pooled variance to estimate the variance for each group.
+
+$$
+s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}
+$$
+
+This results to the following $100(1-\alpha)$% confidence interval:
+
+$$
+(\bar{x}_1-\bar{x}_2) \pm t_{1-\alpha/2,df} \sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
+$$
+
+where $t_{1-\alpha/2,df}$ has degrees of freedom equal to $df= n_1+n_2-2$.
+
+### Unequal Pop. Variances
+
+When the population variances are not equal, then we don't need to pull the variances. However, the t-distribution has to account for the fact that we are using estimated variances for both groups. 
+
+We introduce the **Welch-Satterthwaite** procedure to construct this confidence interval such that the $100(1-\alpha)$% confidence interval is given by:
+
+
+$$
+(\bar{x}_1-\bar{x}_2) \pm t_{1-\alpha/2,df}\sqrt{s_1^2/n_1 + s_2^2/n_2}
+$$
+
+where 
+
+$$
+df = \frac{(s_1^2/n_1 + s_2^2/n_2)^2}{\left(\frac{s_1^2}{n_1}\right)^2/(n_1-1) + \left(\frac{s_2^2}{n_2}\right)^2/(n_2-1)}
+$$
+
+:::
+
+## `R` implementation
+
+We can use `R` to manually calculate the confidence intervals using the formulas provided. However, there is an `R` function called `t.test(formula,conf.level=conf.level, var.equal=TRUE)` that we can use to calculate these confidence intervals.
+
+::: callout-note
+This approach will not work with aggregated data (Mean and SD provided). When data is aggregated, you would need to use the formulas.
+:::
+
+::: callout-note
+The `formula` should be of the form `response_variable~group_variable`.
+:::
+
+## Example
+
+Consider the sleep health data uploaded on Canvas as `SleepHealthData.csv`.
+
+::: panel-tabset
+
+### Question
+Calculate a 95% confidence interval for the difference in average age of males and females who participated in the study assuming equal population variances.
+
+### Answer
+The groups are not presented as two separate columns, but rather defined by another column.
+
+```{r}
+confidence_int <- t.test(age~gender,
+       data=sleep,
+       var.equal=T,
+       conf.level=0.95)
+
+confidence_int
+```
+
+The 95% confidence interval was calculated to be: (`r x<- confidence_int$conf.int |> as.numeric() |> round(4); x[1]`,`r x<- confidence_int$conf.int |> as.numeric() |> round(4); x[2]`)
+:::
+
+## Example
+
+The file `40yarddash.csv` includes the 40-yard dash times from randomly selected football players from a D1 and D3 university. 
+
+::: panel-tabset
+### Question
+
+Calculate a 90% confidence interval for the difference in average 40-yard dash times between the two groups assuming unequal variances.
+
+### Answer
+
+The groups are presented as two separate columns, hence we cannot use the formula notation. We have to define `x` and `y` in `t.test` to estimate the difference of averages in `x` and `y`
+
+```{r}
+
+yard<- read.csv("40yarddash.csv")
+confidence_int <- t.test(x=yard$D1,y=yard$D3,
+       data=sleep,
+       var.equal=F,
+       conf.level=0.9)
+
+confidence_int
+```
+
+The 90% confidence interval for the difference in 40-yard dash times was calculated to be: (`r x<- confidence_int$conf.int |> as.numeric() |> round(4); x[1]`,`r x<- confidence_int$conf.int |> as.numeric() |> round(4); x[2]`)
+:::
+
+## Exercise
+
+Consider the sleep health data uploaded on Canvas as `SleepHealthData.csv`.
+
+::: panel-tabset
+
+### Question
+Calculate a 95% confidence interval for the difference in average sleep duration of males and females who participated in the study assuming equal population variances.
+
+### Answer
+
+```{r}
+confidence_int <- t.test(sleep_duration~gender,
+       data=sleep,
+       var.equal=T,
+       conf.level=0.95)
+
+confidence_int
+```
+
+The 95% confidence interval was calculated to be: (`r x<- confidence_int$conf.int |> as.numeric() |> round(4); x[1]`,`r x<- confidence_int$conf.int |> as.numeric() |> round(4); x[2]`)
+
+:::
+
+## CI for Difference in Proportions
+
+For populations with $n_1$ and $n_2$ are large and the population proportions $\pi_1$ and $\pi_2$ are not too close to 0 or 1, we can implement the central limit theorem and assume the Gaussian distribution for the sampling distribution of the difference in proportions.
+
+The resulting $100(1-\alpha)$% confidence interval for $\pi_1-\pi_2$ can be expressed as:
+
+$$
+\hat{p}_1 - \hat{p}_2 \pm z_{1-\alpha/2} \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1}+\frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
+$$
+
+::: callout-note
+This does not include a continuity correction.
+:::
+
+## `R` implementation
+
+The function `prop.test()` can calculate the confidence intervals for the difference in proportions, even adding the continuity correction. Suppose the successes for each group are denoted by `x1` and `x2`, while the totals for each group are `n1` and `n2`. 
+
+```{.r}
+prop.test(x=c(x1,x2), n=c(n1,n2),conf.level=0.95, correct=FALSE)
+```
+
+For the resulting CI with the continuity correction, set `correct=TRUE`.
+
+
+## Example
+
+Consider the liver steatosis data set. 
+
+```{r}
+liver <- read.csv("Liver_Steatosis.csv")
+```
+
+::: panel-tabset
+
+### Question
+
+Calculate the 95% confidence interval of the difference between the proportion of positive liver steatosis detections using ultrasound (`LS_US=1`) and through biopsy (`LS_Biopsy=1`). Is it plausible that the long-run detection rates for the two methods are equal? Omit missing data and apply the continuity correction.
+
+### Answer
+
+```{r}
+library(summarytools)
+freq(liver$LS_US)
+freq(liver$LS_Biopsy)
+```
+
+There are 295/`r 443-22` positive diagnoses for the ultrasound group and 311/443 for the biopsy group. 
+
+```{r}
+ptest<- prop.test(x=c(295,311),
+          n=c(443-22,443),
+          conf.level=0.95,
+          correct=TRUE)
+
+ptest
+```
+
+The resulting 95% confidence interval is (`r x <- ptest$conf.int |> as.numeric() |> round(4); x[1]`, `r x <- ptest$conf.int |> as.numeric() |> round(4); x[2]`). 0 is part of the interval, which means it is a plausible value of the difference in detection rates between the two methods. Hence, it is plausible that the long-run detection rates of the two methods do not differ.
+:::
+
+## Exercise
+
+In a randomized controlled trial, 23 out of 40 participants who received the treatment reported improvement while 14 out of 35 participants who received the placebo reported improvement. 
+
+::: panel-tabset
+### Question
+
+Calculate a 99% confidence interval **with and without the continuity correction** for the difference in improvement rate between the treatment and placebo groups.
+
+### Answer
+
+Without continuity correction,
+```{r}
+ptest<- prop.test(x=c(23,14),
+          n=c(40,35),
+          conf.level=0.95,
+          correct=FALSE)
+
+ptest
+```
+
+With the continuity correction,
+
+```{r}
+ptest<- prop.test(x=c(23,14),
+          n=c(40,35),
+          conf.level=0.95,
+          correct=TRUE)
+
+ptest
+```
+
+The resulting 95% confidence interval with the continuity correction is is (`r x <- ptest$conf.int |> as.numeric() |> round(4); x[1]`, `r x <- ptest$conf.int |> as.numeric() |> round(4); x[2]`). 0 is part of the interval, which means it is a plausible value of the difference in improvement rates between the two groups. Hence, it is plausible that the long-run improvement rate due to the treatment does not differ from the placebo.
+:::

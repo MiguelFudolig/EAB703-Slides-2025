@@ -76,6 +76,490 @@
     ]
   },
   {
+    "objectID": "lecture6.html#statistical-inference",
+    "href": "lecture6.html#statistical-inference",
+    "title": "Interval Estimation",
+    "section": "Statistical Inference",
+    "text": "Statistical Inference\n\n\n\n\n\n\nNote\n\n\nStatistical inference is the procedure by which we reach a conclusion about a population on the basis of the information contained in a sample drawn from that population.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe process of estimation entails calculating some statistic from the sample that is offered as an approximation of the corresponding parameter of the population from which the sample was drawn.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#point-estimation-vs.-interval-estimation",
+    "href": "lecture6.html#point-estimation-vs.-interval-estimation",
+    "title": "Interval Estimation",
+    "section": "Point Estimation vs. Interval Estimation",
+    "text": "Point Estimation vs. Interval Estimation\n\n\n\n\n\n\n\nPoint Estimation\n\n\nPoint estimation is the process of finding a single number to use as our best guess for the value of an unknown population parameter. Point estimates do not provide a measure of uncertainty.\n\n\n\n\n\n\n\n\n\n\n\nInterval Estimation\n\n\nInterval estimation involves estimating two numerical values that define a range of values that, with a specified degree of confidence, most likely includes the parameter being estimated.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#point-estimation-unbiased-estimators",
+    "href": "lecture6.html#point-estimation-unbiased-estimators",
+    "title": "Interval Estimation",
+    "section": "Point Estimation: Unbiased Estimators",
+    "text": "Point Estimation: Unbiased Estimators\n\n\n\n\n\n\nNote\n\n\nThe single computed value has been referred to as an estimate. On the other hand, the rule that tells us how to compute this estimate is referred to as an estimator.\n\n\n\n\n\n\n\n\n\n\nUnbiasedness\n\n\nAn estimator of a parameter \\(\\Theta\\), \\(T\\), is said to be an unbiased estimator of \\(\\Theta\\) if \\(E(T)=\\Theta\\). AN example of an unbiased estimator is the sample mean. The sample mean \\(\\bar{X}\\) is an unbiased estimator of the population mean.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#sampled-vs.-target-populations",
+    "href": "lecture6.html#sampled-vs.-target-populations",
+    "title": "Interval Estimation",
+    "section": "Sampled vs. Target Populations",
+    "text": "Sampled vs. Target Populations\n\n\n\n\n\n\n\nTarget Population\n\n\nThe target population is the population about which one wishes to make an inference.\n\n\n\n\n\n\n\n\n\n\n\nSampled Population\n\n\nThe sampled population is the population from which one actually draws a sample.\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nIf the sampled population and the target population are different, the researcher can reach conclusions about the target population only on the basis of nonstatistical considerations. Estimation from the sampled population could lead to biased estimates.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#random-vs.-convenience-sampling",
+    "href": "lecture6.html#random-vs.-convenience-sampling",
+    "title": "Interval Estimation",
+    "section": "Random vs. Convenience Sampling",
+    "text": "Random vs. Convenience Sampling\nIn most examples in this class, we assume that the data was collected from random samples. However, it is impossible or impractical to use truly random samples.\n\n\n\n\n\n\n\nConvenience sampling\n\n\nConvenience sampling involves sampling through volunteerism or readily available subjects to record data. While collecting data using convenience sampling is easy, the results might not be generalizable to the target population.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#interval-estimation-confidence-intervals",
+    "href": "lecture6.html#interval-estimation-confidence-intervals",
+    "title": "Interval Estimation",
+    "section": "Interval Estimation: Confidence Intervals",
+    "text": "Interval Estimation: Confidence Intervals\nThere are many variants of interval estimation methods that can be used. One of the more popular interval estimates is the confidence interval.\n\n\n\n\n\n\n\nConfidence Interval\n\n\nA confidence interval is a random interval that will contain the true value of a parameter with probability \\(1-\\alpha\\). The value \\(1-\\alpha\\) is called the confidence level of the interval.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe confidence interval provides all plausible values of the parameters. The parameter itself is treated as fixed, while the endpoints of the confidence interval are treated as random variables. The endpoints are random because it depends on the data collected.\n\n\n\n\n\n\n\n\n\nWarning\n\n\nThe viewpoint for making a probability statement must be before the data are collected, not after.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#confidence-intervals",
+    "href": "lecture6.html#confidence-intervals",
+    "title": "Interval Estimation",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nFor the following tabs, supposed that the 95% confidence interval for the population mean, \\(\\mu\\), was calculated to be the interval (80,100).\n\nMisconception 1Misconception 2\n\n\n\n\n\n\n\n\n\nMisconception 1\n\n\nMisconception 1: \\(P(80 &lt; \\mu &lt; 100) = 0.95\\)\n\n\n\n\nThis is incorrect. The parameter \\(\\mu\\) is not random, hence there shouldn’t be a probability assigned to it. 80 and 100 are also not random because we have already measured them. Either the interval contains the true value of \\(\\mu\\) or not. Hence, the probability interpretation does not make any sense.\n\n\n\n\n\n\n\n\n\nMisconception 2\n\n\nMisconception 2: 95% of the population lies in the interval (80,100).\n\n\n\n\nThe confidence interval is for the population mean, not the set of all data values from the population. A confidence interval for the mean will often include only a small fraction of the population.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#interpretation-of-confidence-intervals",
+    "href": "lecture6.html#interpretation-of-confidence-intervals",
+    "title": "Interval Estimation",
+    "section": "Interpretation of Confidence Intervals",
+    "text": "Interpretation of Confidence Intervals\nThe confidence level is pertaining to the method that we calculated, not the particular interval. In the long run (or infinite repeated sampling), around 95% of the confidence intervals calculated will include \\(\\mu\\).\n\n\n\n\n\n\nImportant\n\n\nSince our method works 95% of the time, we believe that \\(\\mu\\) is in our 95% confidence interval. We don’t have the time and means to calculate all confidence intervals.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#confidence-interval-form",
+    "href": "lecture6.html#confidence-interval-form",
+    "title": "Interval Estimation",
+    "section": "Confidence Interval Form",
+    "text": "Confidence Interval Form\nThe confidence intervals in this chapter will follow the form:\n\\[\nestimate \\pm reliability~coefficient*standard~error\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#confidence-intervals-for-population-means",
+    "href": "lecture6.html#confidence-intervals-for-population-means",
+    "title": "Interval Estimation",
+    "section": "Confidence Intervals for Population Means",
+    "text": "Confidence Intervals for Population Means\nWe can estimate the population mean by using the mean of a representative sample from the population.\n\n\n\n\n\n\nWarning\n\n\nThe method differs for cases with known and unknown population variance. Some approximations can be done when there is a large sample size.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-for-mean-known-population-variance",
+    "href": "lecture6.html#ci-for-mean-known-population-variance",
+    "title": "Interval Estimation",
+    "section": "CI for Mean: Known Population Variance",
+    "text": "CI for Mean: Known Population Variance\nCases in which population variances are known are rare. The best example of measurements with known population variances are standardized scales.\n\n\n\n\n\n\nNote\n\n\nThe Wechsler Adult Intelligence Scale (WAIS) maintains a standard deviation of 15 points for its full scale IQ scores.\n\n\n\nFor a known population variance \\(\\sigma^2\\), sample mean \\(\\bar{x}\\), and sample size \\(n\\), the 95% confidence limits for the \\((1-\\alpha)%\\) can be calculated using the following formula:\n\\[\n\\bar{x} \\pm z_{1-\\alpha/2}\\frac{\\sigma}{\\sqrt{n}}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-for-mean-notes",
+    "href": "lecture6.html#ci-for-mean-notes",
+    "title": "Interval Estimation",
+    "section": "CI for Mean: Notes",
+    "text": "CI for Mean: Notes\nConfidence intervals are often written in parentheses notation as such:\n\\[\n\\left(\\bar{x} - z_{1-\\alpha/2}\\frac{\\sigma}{\\sqrt{n}}, \\bar{x} + z_{1-\\alpha/2}\\frac{\\sigma}{\\sqrt{n}}\\right)\n\\]\n\\(z_{1-\\alpha/2}\\) is referred to as the reliability coefficient and defined as the following:\n\\[\nP(Z \\leq z_{1-\\alpha/2}) = 1-\\alpha/2\n\\]\n\n\n\n\n\n\nTip\n\n\nRecall that \\(Z\\) follows the standard normal distribution. \\(z_{1-\\alpha/2}\\) can be calculated using qnorm(1-alpha/2,mean=0,sd=1). For a 95% confidence interval, \\(\\alpha = 0.05\\), then it follows that \\(1-\\alpha/2 = 1-0.05/2 = 0.975\\). Therefore, the reliability coefficient for a 95% confidence interval can be calculated as:\n\nalpha=0.05\nqnorm(1-alpha/2,mean=0,sd=1)\n\n[1] 1.959964",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example",
+    "href": "lecture6.html#example",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nThe file lec6example.csv contains simulated values from a normal distribution with a variance of 4.\n\nQuestionAnswer\n\n\nCreate a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?\n\n\n\n# setwd(\"where your file is\")\nexample &lt;- read.csv(\"datasets/lec6example.csv\")\nsdpop &lt;- sqrt(4)\n\nWe need to calculate the sample mean of the Sims column, the sample size, and the reliability coefficient.\n\nxbar &lt;- mean(example$Sims)\n1sampsize &lt;- nrow(example)\nalpha &lt;- 1-0.95\nrelcoeff &lt;- qnorm(1-alpha/2,mean = 0, sd=1)\n\n\n1\n\nnrow() calculates the number of rows of the data frame. If dealing with a singular vector, you can use length(). nrow(example) will yield the same answer as length(example$Sims).\n\n\n\n\nWe can now calculate the 95% confidence interval limits.\n\nlower &lt;- xbar - relcoeff*sdpop/sqrt(sampsize)\nupper &lt;- xbar + relcoeff*sdpop/sqrt(sampsize)\nlower\n\n[1] 0.6637448\n\nupper\n\n[1] 1.303866\n\n\nThe resulting 95% confidence interval is (0.66, 1.3). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#exercise",
+    "href": "lecture6.html#exercise",
+    "title": "Interval Estimation",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the sleep health data uploaded on Canvas as SleepHealthData.csv. Suppose that in the population that this sample represents, the variance of the sleep duration is 0.5.\n\nQuestionAnswer\n\n\nCalculate the 95% confidence interval for the average sleep duration (sleep_duration) in the population this sample represents. Is 7 hours a plausible value for the average sleep distribution of the population?\n\n\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\nsdpop &lt;- sqrt(0.5)\nxbar &lt;- mean(sleep$sleep_duration)\nsampsize &lt;- nrow(sleep)\nalpha &lt;- 1-0.95\nrelcoeff &lt;- qnorm(1-alpha/2) \n# not specifying the mean and sd in qnorm assumes standard normal\n\nlower &lt;- xbar - relcoeff*sdpop/sqrt(sampsize)\nlower\n\n[1] 7.060422\n\nupper &lt;- xbar + relcoeff*sdpop/sqrt(sampsize)\nupper\n\n[1] 7.203749\n\n\nThe 95% confidence interval is (7.06,7.2). 7 is not a plausible value for the average sleep distribution of the population.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#precision",
+    "href": "lecture6.html#precision",
+    "title": "Interval Estimation",
+    "section": "Precision",
+    "text": "Precision\nThe precision of an interval estimate is related to its width.\n\n\n\n\n\n\nNote\n\n\nThe precision, also known as the margin of error, can be expressed as the product of the reliability coefficient and the standard error.\n\n\n\nFor the case of the population mean with known population variance,\n\\[\nprecision = z_{1-\\alpha/2}* \\frac{\\sigma}{\\sqrt{n}} = \\frac{upper-lower}{2}\n\\]\n\n\n\n\n\n\nNote\n\n\nBecause of the symmetry of the confidence interval, the precision is half the width of the confidence interval.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-for-mean-unknown-population-variance",
+    "href": "lecture6.html#ci-for-mean-unknown-population-variance",
+    "title": "Interval Estimation",
+    "section": "CI for Mean: Unknown Population Variance",
+    "text": "CI for Mean: Unknown Population Variance\nIt is more common to not know the population variance when estimating the population mean. Because of this, we are inclined to use the next best thing: an estimate of the population variance from the collected sample. This estimate is the sample variance\n\n\n\n\n\n\nWarning\n\n\nUsing an approximate value for the population variance implies that our standardized statistic might not follow the standard normal distribution. We need a new distribution to calculate reliability coefficients for these confidence intervals.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#the-students-t-distribution",
+    "href": "lecture6.html#the-students-t-distribution",
+    "title": "Interval Estimation",
+    "section": "The Student’s t-distribution",
+    "text": "The Student’s t-distribution\nThe \\(t\\) distribution is symmetric and bell-shaped like the normal distribution, but has heavier tails.\n\n\n\n\n\n\nNote\n\n\nHeavier tails mean that the distribution is more likely to produce values that fall farther from the mean compared to the normal distribution. The heavier tails account for the extra uncertainty introduced by using the sample variance to estimate the population variance.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe t-distribution is defined by the degrees of freedom denoted by \\(\\nu\\) or df, and specific t-distributions can be written as \\(t_{\\nu}\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#the-t-distribution-r",
+    "href": "lecture6.html#the-t-distribution-r",
+    "title": "Interval Estimation",
+    "section": "The t distribution: R",
+    "text": "The t distribution: R\nThe R syntax for the t-distribution with degrees of freedom df consists of the following functions:\n\nPDF: dt(x,df)\nCDF: pt(x,df)\nQuantile: qt(x,df)\nGenerate/Simulate n t-distribution points: rt(n,df)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-for-mean-unknown-population-variance-1",
+    "href": "lecture6.html#ci-for-mean-unknown-population-variance-1",
+    "title": "Interval Estimation",
+    "section": "CI for Mean: Unknown Population Variance",
+    "text": "CI for Mean: Unknown Population Variance\nWhen the population variance is unknown OR the sample from a normally distributed population has a low sample size, the \\((1-\\alpha)*100%\\) confidence interval can be calculated using the following formula:\n\\[\n\\bar{x} \\pm t_{\\nu,1-\\alpha/2} \\frac{s}{\\sqrt{n}}\n\\]\n\n\n\n\n\n\nImportant\n\n\n\\(s\\) is the sample standard deviation \\(t_{\\nu,1-\\alpha/2}\\) is defined as \\(P(t&lt;t_{\\nu,1-\\alpha/2}) = 1-\\alpha/2\\). The degrees of freedom \\(\\nu\\) can be calculated as \\(\\nu=n-1\\).\n\n\n\nThe 95% confidence interval can be written as:\n\\[\n\\left(\\bar{x} - t_{\\nu,1-\\alpha/2} \\frac{s}{\\sqrt{n}}, \\bar{x} + t_{\\nu,1-\\alpha/2} \\frac{s}{\\sqrt{n}}\\right)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#precision-1",
+    "href": "lecture6.html#precision-1",
+    "title": "Interval Estimation",
+    "section": "Precision",
+    "text": "Precision\nThe precision of an interval estimate is related to its width.\n\n\n\n\n\n\nNote\n\n\nThe precision, also known as the margin of error, can be expressed as the product of the reliability coefficient and the standard error.\n\n\n\nFor the case of the population mean with unknown population variance,\n\\[\nprecision = t_{\\nu,1-\\alpha/2} \\frac{s}{\\sqrt{n}}= \\frac{upper-lower}{2}\n\\]\n\n\n\n\n\n\nNote\n\n\nBecause of the symmetry of the confidence interval, the precision is half the width of the confidence interval.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example-1",
+    "href": "lecture6.html#example-1",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nThe file lec6example.csv contains simulated values from a normal distribution.\n\nQuestionAnswer\n\n\nSupposed the population variance is unknown. Create a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?\n\n\n\n# setwd(\"where your file is\")\nexample &lt;- read.csv(\"datasets/lec6example.csv\")\n\nWe need to calculate the sample mean of the Sims column, the sample size, and the reliability coefficient.\n\nxbar &lt;- mean(example$Sims)\n1sampsize &lt;- nrow(example)\n2stdev &lt;- sd(example$Sims)\n3df &lt;- sampsize-1\nalpha &lt;- 1-0.95\nrelcoeff &lt;- qt(p=1-alpha/2,df=df) \n\n\n1\n\nnrow() calculates the number of rows of the data frame. If dealing with a singular vector, you can use length(). nrow(example) will yield the same answer as length(example$Sims).\n\n2\n\nWe are calculating the sample variance using sd().\n\n3\n\nDegrees of freedom df = n-1.\n\n\n\n\nWe can now calculate the 95% confidence interval limits.\n\nlower &lt;- xbar - relcoeff*stdev/sqrt(sampsize)\nupper &lt;- xbar + relcoeff*stdev/sqrt(sampsize)\nlower\n\n[1] 0.6642442\n\nupper\n\n[1] 1.303367\n\n\nThe resulting 95% confidence interval is (0.66, 1.3). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#exercise-1",
+    "href": "lecture6.html#exercise-1",
+    "title": "Interval Estimation",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the sleep health data uploaded on Canvas as SleepHealthData.csv.\n\nQuestionAnswer\n\n\nCalculate the 99% confidence interval for the average heart rate (heart_rate) in bpm in the population this sample represents. Is 65 bpm a plausible value for the average sleep distribution of the population? Calculate the margin of error.\n\n\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\nsdpop &lt;- sd(sleep$heart_rate)\nxbar &lt;- mean(sleep$heart_rate)\nsampsize &lt;- nrow(sleep)\nalpha &lt;- 1-0.99\nrelcoeff &lt;- qt(p=1-alpha/2,df=sampsize-1) \n# not specifying the mean and sd in qnorm assumes standard normal\n\nlower &lt;- xbar - relcoeff*sdpop/sqrt(sampsize)\nlower\n\n[1] 69.6121\n\nupper &lt;- xbar + relcoeff*sdpop/sqrt(sampsize)\nupper\n\n[1] 70.71945\n\n\nThe 99% confidence interval is (69.61,70.72). 65 is not a plausible value for the average heart rate of the population.\nThe margin of error can be calculated as:\n\nrelcoeff*sdpop/sqrt(sampsize)\n\n[1] 0.5536753\n\n(upper-lower)/2\n\n[1] 0.5536753",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#confidence-interval-for-population-proportions",
+    "href": "lecture6.html#confidence-interval-for-population-proportions",
+    "title": "Interval Estimation",
+    "section": "Confidence Interval for Population Proportions",
+    "text": "Confidence Interval for Population Proportions\nMany questions of interest to the health worker relate to population proportions.\n\n\n\n\n\n\nNote\n\n\nSome questions could be:\n\nWhat is the recovery rate of patients for a particular type of treatment?\nWhat is the prevalence rate of a disease?\nWhat proportion of medical providers agree with current health recommendations?",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-population-proportions",
+    "href": "lecture6.html#ci-population-proportions",
+    "title": "Interval Estimation",
+    "section": "CI: Population Proportions",
+    "text": "CI: Population Proportions\nFor a sample of size \\(n\\) and sample proportion \\(\\hat{p}\\), the \\(100(1-\\alpha)\\)% confidence interval for the population proportion \\(\\pi\\) is given by:\n\\[\n\\hat{p} \\pm z_{1-\\alpha/2} \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\n\\]\nSimilar to the CI for means, \\(z_{1-\\alpha/2}\\) is defined as \\(P(Z \\leq z_{1-\\alpha/2}) = 1-\\alpha/2\\).\n\n\n\n\n\n\nImportant\n\n\nThe use of \\(z_{1-\\alpha/2}\\) can be justified using the central limit theorem (CLT). The most common guideline for the CLT to apply to proportions is that \\(n\\pi\\) and \\(n(1-\\pi)\\) are both greater than five.\n\n\n\nThe CI would then be reported as:\n\\[\n\\left(\\hat{p} - z_{1-\\alpha/2} \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}},\\hat{p} + z_{1-\\alpha/2} \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\right)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example-2",
+    "href": "lecture6.html#example-2",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nThe data set Liver_Steatosis.csv comes from a retrospective cohort study to estimate the prevalence of liver steatosis (fatty liver disease) in those who had bariatric surgery (Wu et al, 2012). The data set also includes other covariates and comorbidities.\n\nQuestionAnswer\n\n\nOne of the comorbidities studied was history of metabolic syndrome (1=Yes, 2=No, NA = missing). Calculate a 95% confidence interval for the prevalence of metabolic syndrome based on the data. Only consider non-missing data in your analysis.\n\n\n\n\n\n\nWarning\n\n\nThis data set was collected from patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent liver biopsy. Is this result generalizable to all US adults who have had bariatric surgery?\n\n\n\n\n\nWe need to calculate the proportion of patients reported to have metabolic syndrome.\n\nlibrary(summarytools)\nliver &lt;- read.csv(\"datasets/Liver_Steatosis.csv\")\nsummarytools::freq(liver$MET_Syndrome)\n\nFrequencies  \nliver$MET_Syndrome  \nType: Integer  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n          0    144     32.65          32.65     32.51          32.51\n          1    297     67.35         100.00     67.04          99.55\n       &lt;NA&gt;      2                               0.45         100.00\n      Total    443    100.00         100.00    100.00         100.00\n\n\nBased on freq, the proportion of those with metabolic syndrome is 0.6735 out of a sample size of 441 (removed two missing). We now have everything we need to calculate the confidence interval.\n\nphat &lt;- 297/443\nsampsize &lt;- 441\nalpha = 1-0.95\nrelcoeff = qnorm(p=1-alpha/2,mean=0,sd=1)\nse &lt;- sqrt((phat*(1-phat)/sampsize))\n\nlower &lt;- phat - relcoeff*se\nlower\n\n[1] 0.6265577\n\nupper &lt;- phat + relcoeff*se\nupper\n\n[1] 0.7143001\n\n\nThe 95% confidence interval for the proportion of patients with metabolic syndrome is (0.6266,0.7143).\n\n\n\n\n\n\nWarning\n\n\nCaution should be exercised in generalizing this result to all patients from the country as this is a very specific sample.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#exercise-2",
+    "href": "lecture6.html#exercise-2",
+    "title": "Interval Estimation",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the sleep health data uploaded on Canvas as SleepHealthData.csv.\n\nQuestionAnswer\n\n\nUse the sleep_disorder column to do the following:\n\nEstimate the prevalence rate of sleep apnea in the population this sample represents using the sample proportion.\nCalculate a 90% confidence interval for the prevalence rate of sleep apnea.\n\n\n\n\nfreq(sleep$sleep_disorder)\n\nFrequencies  \nsleep$_disorder  \nType: Character  \n\n                    Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------------- ------ --------- -------------- --------- --------------\n         Insomnia     77     20.59          20.59     20.59          20.59\n             None    219     58.56          79.14     58.56          79.14\n      Sleep Apnea     78     20.86         100.00     20.86         100.00\n             &lt;NA&gt;      0                               0.00         100.00\n            Total    374    100.00         100.00    100.00         100.00\n\n\nThe proportion of participants who reported sleep apnea is 0.2086. The sample size is 374. We can now calculate a 90% confidence interval for the prevalence rate of sleep apnea based on this sample.\n\nphat &lt;- 78/374\nsampsize &lt;- 374\nalpha = 1-0.9\nrelcoeff = qnorm(p=1-alpha/2,mean=0,sd=1)\nse &lt;- sqrt((phat*(1-phat)/sampsize))\n\nlower &lt;- phat - relcoeff*se\nlower\n\n[1] 0.174001\n\nupper &lt;- phat + relcoeff*se\nupper\n\n[1] 0.2431113\n\n\nThe 90% confidence interval for the prevalence rate of sleep apnea in the population this sample represents is (0.174,0.2431).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#how-to-determine-sample-sizes",
+    "href": "lecture6.html#how-to-determine-sample-sizes",
+    "title": "Interval Estimation",
+    "section": "How to determine sample sizes",
+    "text": "How to determine sample sizes\nBefore data are collected, we often need to make a decision about how large of a sample will be required to estimate population parameters.\n\n\n\n\n\n\nImportant\n\n\nThe sample size depends on the precision/margin of error we would like for our resulting confidence intervals.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#sample-size-for-population-proportion-estimation",
+    "href": "lecture6.html#sample-size-for-population-proportion-estimation",
+    "title": "Interval Estimation",
+    "section": "Sample size for population proportion estimation",
+    "text": "Sample size for population proportion estimation\nSuppose we want our margin of error (MOE) to be equal to \\(E\\) for our planned study. The corresponding estimate for the sample size needed to reach this level of precision is given by\n\\[\nn = z^2_{1-\\alpha/2} \\frac{ \\hat{\\pi}(1-\\hat{\\pi})}{E^2}\n\\]\n\n\n\n\n\n\nImportant\n\n\nNote that the population proportion AND sample proportion are unknown before data collection. However, we need to have an idea what the expected proportion is for our study, denoted by \\(\\hat{\\pi}\\) in this case. This proportion can be estimated from prior or pilot studies. If there are no prior studies available (which is the case for some pilot studies), we can assume \\(\\hat{\\pi}=0.5\\) to create a conservative confidence interval.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example-3",
+    "href": "lecture6.html#example-3",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nSuppose we want to design a pilot study to estimate the proportion of young adults in NV who use anabolic-androgenic steroids for muscle growth.\n\nQuestionAnswer\n\n\nCalculate the sample size required so the resulting 95% confidence interval estimates will have a margin of error of 5%.\n\n\n\nE &lt;- 0.05\npi_hat &lt;-0.5\nalpha &lt;- 1-0.95\nz &lt;- qnorm(p=1-alpha/2)\n\nsampsize &lt;- z^2*pi_hat*(1-pi_hat)/E^2\nsampsize\n\n[1] 384.1459\n\n\n\n\n\n\n\n\nImportant\n\n\nWhen doing sample size calculations, always round up your final answer. For this study, you would recommend recruiting 385 participants for the study so that the MOE for the interval estimate of the usage rate of anabolic-androgenic steroids for muscle growth will be approximately 5%.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#exercise-3",
+    "href": "lecture6.html#exercise-3",
+    "title": "Interval Estimation",
+    "section": "Exercise",
+    "text": "Exercise\nSuppose we performed the pilot study on steroid use and we plan to use the results to design a large scale study.\n\nQuestionAnswer\n\n\nThe pilot study yielded an estimated usage rate of 32%. Calculate the sample size required so the resulting 95% confidence interval estimates will have a margin of error of 1%.\n\n\n\nE &lt;- 0.01\npi_hat &lt;-0.32\nalpha &lt;- 1-0.95\nz &lt;- qnorm(p=1-alpha/2)\n\nsampsize &lt;- z^2*pi_hat*(1-pi_hat)/E^2\nsampsize\n\n[1] 8359.014\n\n\n\n\n\n\n\n\nImportant\n\n\nFor this study, you would recommend recruiting 8360 participants for the study so that the MOE for the interval estimate of the usage rate of anabolic-androgenic steroids for muscle growth will be approximately 1%.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#sample-size-for-population-mean-estimation",
+    "href": "lecture6.html#sample-size-for-population-mean-estimation",
+    "title": "Interval Estimation",
+    "section": "Sample size for population mean estimation",
+    "text": "Sample size for population mean estimation\nSuppose we want our margin of error (MOE) to be equal to \\(E\\) for our planned study. The corresponding estimate for the sample size needed to reach this level of precision is given by\n\\[\nn = z^2_{1-\\alpha/2} \\frac{\\hat{\\sigma}^2}{E^2}\n\\]\nwhere \\(\\hat{\\sigma}\\) is an a priori estimate of the population standard deviation. As with the estimated population proportion, this value can be obtained from prior studies or estimated using pilot studies.\n\n\n\n\n\n\nTip\n\n\nRecall that for a Gaussian distribution, approximately 99% of the population can be found within the range \\((\\mu-3\\sigma,\\mu+3\\sigma)\\). The width of this region is \\(6\\sigma\\), which could be approximated by the range of the data. Hence, an approximate of the population standard deviation could be expressed as: \\(\\sigma= R/6\\), where \\(R\\) is the range.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example-4",
+    "href": "lecture6.html#example-4",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nSuppose we want to estimate the average number of views that health provider social media pages in Nevada receive weekly.\n\nQuestionAnswer\n\n\nIf the range of mean views was estimated to be 300,000, how many social media pages should be sampled so that our 99% confidence interval for the average number of views of Nevada health provider social media pages has a margin of error of 10,000?\n\n\n\nalpha &lt;- 1-0.99\nz &lt;- qnorm(p=1-alpha/2)\nsigma &lt;- 300000/6\nE &lt;- 10000\nsampsize &lt;-z^2*sigma^2/E^2\nsampsize\n\n[1] 165.8724\n\n\nWe need to sample 166 to achieve a margin of error of 10,000 for our 99% confidence interval.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example-5",
+    "href": "lecture6.html#example-5",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nYou designed a study to estimate the average number of views that health provider social media pages in Nevada receive weekly.\n\nQuestionAnswer\n\n\nSuppose your boss was not happy with the margin of error for the 99% confidence interval of 10,000 and wanted to decrease the margin of error to 500. How many samples would be recommended for the study if the range of mean views was estimated to be 300,000.\n\n\n\nalpha &lt;- 1-0.99\nz &lt;- qnorm(p=1-alpha/2)\nsigma &lt;- 300000/6\nE &lt;- 500\nsampsize &lt;-z^2*sigma^2/E^2\nsampsize\n\n[1] 66348.97\n\n\nWe need to sample 66349 to achieve a margin of error of 500 for our 99% confidence interval.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-for-difference-in-statistics",
+    "href": "lecture6.html#ci-for-difference-in-statistics",
+    "title": "Interval Estimation",
+    "section": "CI for Difference in Statistics",
+    "text": "CI for Difference in Statistics\nOften, we are more interested in comparing between two groups.\n\n\n\n\n\n\nNote\n\n\nRecall that in Chapter 5, we showed how differences between two parameters had a different sampling distribution that individual parameters.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-for-difference-in-population-means",
+    "href": "lecture6.html#ci-for-difference-in-population-means",
+    "title": "Interval Estimation",
+    "section": "CI for Difference in Population Means",
+    "text": "CI for Difference in Population Means\nFor two groups with known population variances \\(\\sigma_1\\) and \\(\\sigma_2\\), the \\(100(1-\\alpha)\\)% can be calculated using the following formula:\n\\[\n(\\bar{x}_1-\\bar{x}_2) \\pm z_{1-\\alpha/2}\\sqrt{\\sigma_1^2/n_1 + \\sigma_2^2/n_2}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-for-difference-in-population-means-1",
+    "href": "lecture6.html#ci-for-difference-in-population-means-1",
+    "title": "Interval Estimation",
+    "section": "CI for Difference in Population Means",
+    "text": "CI for Difference in Population Means\nFor two groups with unknown population variances, we will still use the sample variances to estimate the population variances of each group. However, we have to consider two cases:\n\nEqual Pop. VariancesUnequal Pop. Variances\n\n\nWhen the population variances are assumed to be equal, we need to introduce a pooled variance to estimate the variance for each group.\n\\[\ns_p^2 = \\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}\n\\]\nThis results to the following \\(100(1-\\alpha)\\)% confidence interval:\n\\[\n(\\bar{x}_1-\\bar{x}_2) \\pm t_{1-\\alpha/2,df} \\sqrt{s_p^2\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}\n\\]\nwhere \\(t_{1-\\alpha/2,df}\\) has degrees of freedom equal to \\(df= n_1+n_2-2\\).\n\n\nWhen the population variances are not equal, then we don’t need to pull the variances. However, the t-distribution has to account for the fact that we are using estimated variances for both groups.\nWe introduce the Welch-Satterthwaite procedure to construct this confidence interval such that the \\(100(1-\\alpha)\\)% confidence interval is given by:\n\\[\n(\\bar{x}_1-\\bar{x}_2) \\pm t_{1-\\alpha/2,df}\\sqrt{s_1^2/n_1 + s_2^2/n_2}\n\\]\nwhere\n\\[\ndf = \\frac{(s_1^2/n_1 + s_2^2/n_2)^2}{\\left(\\frac{s_1^2}{n_1}\\right)^2/(n_1-1) + \\left(\\frac{s_2^2}{n_2}\\right)^2/(n_2-1)}\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#r-implementation",
+    "href": "lecture6.html#r-implementation",
+    "title": "Interval Estimation",
+    "section": "R implementation",
+    "text": "R implementation\nWe can use R to manually calculate the confidence intervals using the formulas provided. However, there is an R function called t.test(formula,conf.level=conf.level, var.equal=TRUE) that we can use to calculate these confidence intervals.\n\n\n\n\n\n\nNote\n\n\nThis approach will not work with aggregated data (Mean and SD provided). When data is aggregated, you would need to use the formulas.\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe formula should be of the form response_variable~group_variable.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example-6",
+    "href": "lecture6.html#example-6",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nConsider the sleep health data uploaded on Canvas as SleepHealthData.csv.\n\nQuestionAnswer\n\n\nCalculate a 95% confidence interval for the difference in average age of males and females who participated in the study assuming equal population variances.\n\n\nThe groups are not presented as two separate columns, but rather defined by another column.\n\nconfidence_int &lt;- t.test(age~gender,\n       data=sleep,\n       var.equal=T,\n       conf.level=0.95)\n\nconfidence_int\n\n\n    Two Sample t-test\n\ndata:  age by gender\nt = 14.329, df = 372, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means between group Female and group Male is not equal to 0\n95 percent confidence interval:\n  8.913564 11.749098\nsample estimates:\nmean in group Female   mean in group Male \n            47.40541             37.07407 \n\n\nThe 95% confidence interval was calculated to be: (8.9136,11.7491)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example-7",
+    "href": "lecture6.html#example-7",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nThe file 40yarddash.csv includes the 40-yard dash times from randomly selected football players from a D1 and D3 university.\n\nQuestionAnswer\n\n\nCalculate a 90% confidence interval for the difference in average 40-yard dash times between the two groups assuming unequal variances.\n\n\nThe groups are presented as two separate columns, hence we cannot use the formula notation. We have to define x and y in t.test to estimate the difference of averages in x and y\n\nyard&lt;- read.csv(\"40yarddash.csv\")\nconfidence_int &lt;- t.test(x=yard$D1,y=yard$D3,\n       data=sleep,\n       var.equal=F,\n       conf.level=0.9)\n\nconfidence_int\n\n\n    Welch Two Sample t-test\n\ndata:  yard$D1 and yard$D3\nt = -4.5203, df = 41.952, p-value = 4.979e-05\nalternative hypothesis: true difference in means is not equal to 0\n90 percent confidence interval:\n -0.7112031 -0.3254636\nsample estimates:\nmean of x mean of y \n 4.717667  5.236000 \n\n\nThe 90% confidence interval for the difference in 40-yard dash times was calculated to be: (-0.7112,-0.3255)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#exercise-4",
+    "href": "lecture6.html#exercise-4",
+    "title": "Interval Estimation",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the sleep health data uploaded on Canvas as SleepHealthData.csv.\n\nQuestionAnswer\n\n\nCalculate a 95% confidence interval for the difference in average sleep duration of males and females who participated in the study assuming equal population variances.\n\n\n\nconfidence_int &lt;- t.test(sleep_duration~gender,\n       data=sleep,\n       var.equal=T,\n       conf.level=0.95)\n\nconfidence_int\n\n\n    Two Sample t-test\n\ndata:  sleep_duration by gender\nt = 2.3624, df = 372, p-value = 0.01867\nalternative hypothesis: true difference in means between group Female and group Male is not equal to 0\n95 percent confidence interval:\n 0.03239537 0.35404821\nsample estimates:\nmean in group Female   mean in group Male \n            7.229730             7.036508 \n\n\nThe 95% confidence interval was calculated to be: (0.0324,0.354)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#ci-for-difference-in-proportions",
+    "href": "lecture6.html#ci-for-difference-in-proportions",
+    "title": "Interval Estimation",
+    "section": "CI for Difference in Proportions",
+    "text": "CI for Difference in Proportions\nFor populations with \\(n_1\\) and \\(n_2\\) are large and the population proportions \\(\\pi_1\\) and \\(\\pi_2\\) are not too close to 0 or 1, we can implement the central limit theorem and assume the Gaussian distribution for the sampling distribution of the difference in proportions.\nThe resulting \\(100(1-\\alpha)\\)% confidence interval for \\(\\pi_1-\\pi_2\\) can be expressed as:\n\\[\n\\hat{p}_1 - \\hat{p}_2 \\pm z_{1-\\alpha/2} \\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1}+\\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}\n\\]\n\n\n\n\n\n\nNote\n\n\nThis does not include a continuity correction.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#r-implementation-1",
+    "href": "lecture6.html#r-implementation-1",
+    "title": "Interval Estimation",
+    "section": "R implementation",
+    "text": "R implementation\nThe function prop.test() can calculate the confidence intervals for the difference in proportions, even adding the continuity correction. Suppose the successes for each group are denoted by x1 and x2, while the totals for each group are n1 and n2.\nprop.test(x=c(x1,x2), n=c(n1,n2),conf.level=0.95, correct=FALSE)\nFor the resulting CI with the continuity correction, set correct=TRUE.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#example-8",
+    "href": "lecture6.html#example-8",
+    "title": "Interval Estimation",
+    "section": "Example",
+    "text": "Example\nConsider the liver steatosis data set.\n\nliver &lt;- read.csv(\"Liver_Steatosis.csv\")\n\n\nQuestionAnswer\n\n\nCalculate the 95% confidence interval of the difference between the proportion of positive liver steatosis detections using ultrasound (LS_US=1) and through biopsy (LS_Biopsy=1). Is it plausible that the long-run detection rates for the two methods are equal? Omit missing data and apply the continuity correction.\n\n\n\nlibrary(summarytools)\nfreq(liver$LS_US)\n\nFrequencies  \nliver$LS_US  \nType: Numeric  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n          0    122     28.98          28.98     27.54          27.54\n        0.5      4      0.95          29.93      0.90          28.44\n          1    295     70.07         100.00     66.59          95.03\n       &lt;NA&gt;     22                               4.97         100.00\n      Total    443    100.00         100.00    100.00         100.00\n\nfreq(liver$LS_Biopsy)\n\nFrequencies  \nliver$LS_Biopsy  \nType: Numeric  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n          0    124     27.99          27.99     27.99          27.99\n        0.5      8      1.81          29.80      1.81          29.80\n          1    311     70.20         100.00     70.20         100.00\n       &lt;NA&gt;      0                               0.00         100.00\n      Total    443    100.00         100.00    100.00         100.00\n\n\nThere are 295/421 positive diagnoses for the ultrasound group and 311/443 for the biopsy group.\n\nptest&lt;- prop.test(x=c(295,311),\n          n=c(443-22,443),\n          conf.level=0.95,\n          correct=TRUE)\n\nptest\n\n\n    2-sample test for equality of proportions with continuity correction\n\ndata:  c(295, 311) out of c(443 - 22, 443)\nX-squared = 1.3976e-29, df = 1, p-value = 1\nalternative hypothesis: two.sided\n95 percent confidence interval:\n -0.06369117  0.06105315\nsample estimates:\n   prop 1    prop 2 \n0.7007126 0.7020316 \n\n\nThe resulting 95% confidence interval is (-0.0637, 0.0611). 0 is part of the interval, which means it is a plausible value of the difference in detection rates between the two methods. Hence, it is plausible that the long-run detection rates of the two methods do not differ.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#exercise-5",
+    "href": "lecture6.html#exercise-5",
+    "title": "Interval Estimation",
+    "section": "Exercise",
+    "text": "Exercise\nIn a randomized controlled trial, 23 out of 40 participants who received the treatment reported improvement while 14 out of 35 participants who received the placebo reported improvement.\n\nQuestionAnswer\n\n\nCalculate a 99% confidence interval with and without the continuity correction for the difference in improvement rate between the treatment and placebo groups.\n\n\nWithout continuity correction,\n\nptest&lt;- prop.test(x=c(23,14),\n          n=c(40,35),\n          conf.level=0.95,\n          correct=FALSE)\n\nptest\n\n\n    2-sample test for equality of proportions without continuity correction\n\ndata:  c(23, 14) out of c(40, 35)\nX-squared = 2.2871, df = 1, p-value = 0.1305\nalternative hypothesis: two.sided\n95 percent confidence interval:\n -0.04818231  0.39818231\nsample estimates:\nprop 1 prop 2 \n 0.575  0.400 \n\n\nWith the continuity correction,\n\nptest&lt;- prop.test(x=c(23,14),\n          n=c(40,35),\n          conf.level=0.95,\n          correct=TRUE)\n\nptest\n\n\n    2-sample test for equality of proportions with continuity correction\n\ndata:  c(23, 14) out of c(40, 35)\nX-squared = 1.6405, df = 1, p-value = 0.2003\nalternative hypothesis: two.sided\n95 percent confidence interval:\n -0.07496803  0.42496803\nsample estimates:\nprop 1 prop 2 \n 0.575  0.400 \n\n\nThe resulting 95% confidence interval with the continuity correction is is (-0.075, 0.425). 0 is part of the interval, which means it is a plausible value of the difference in improvement rates between the two groups. Hence, it is plausible that the long-run improvement rate due to the treatment does not differ from the placebo.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 6 - Estimation"
+    ]
+  },
+  {
     "objectID": "lecture5.html#activity",
     "href": "lecture5.html#activity",
     "title": "Sampling Distributions",
@@ -1191,7 +1675,7 @@
     "href": "Exam 1-test.html",
     "title": "Exam 1 - Selected Answers",
     "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(summarytools)\n\n\nAttaching package: 'summarytools'\n\nThe following object is masked from 'package:tibble':\n\n    view\n\nhflashes &lt;- read.csv(\"datasets/hflashes.csv\")"
+    "text": "library(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.5.1\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   4.0.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(summarytools)\n\nWarning: package 'summarytools' was built under R version 4.5.1\n\n\n\nAttaching package: 'summarytools'\n\nThe following object is masked from 'package:tibble':\n\n    view\n\nhflashes &lt;- read.csv(\"datasets/hflashes.csv\")"
   },
   {
     "objectID": "Exam 1-test.html#item-2",
@@ -2314,7 +2798,7 @@
     "href": "lecture2.html#importing-files",
     "title": "Descriptive Statistics",
     "section": "Importing files",
-    "text": "Importing files\nThere are multiple ways to import files into R. The most common data set format is the .csv file. You can import CSV files using the read.csv(filename) function.\nFirst, download the file SleepHealthData.csv from Canvas in the same folder as your R source code.\n\ngetwd() # save your data in this folder\n\n[1] \"C:/Users/migsf/OneDrive/Documents/GitHub/EAB703-Slides-2025\"\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\") # or use a specific path to your folder\nglimpse(sleep)\n\nRows: 374\nColumns: 13\n$ person_id               &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…\n$ gender                  &lt;chr&gt; \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Male\"…\n$ age                     &lt;int&gt; 27, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29…\n$ occupation              &lt;chr&gt; \"Software Engineer\", \"Doctor\", \"Doctor\", \"Sale…\n$ sleep_duration          &lt;dbl&gt; 6.1, 6.2, 6.2, 5.9, 5.9, 5.9, 6.3, 7.8, 7.8, 7…\n$ quality_of_sleep        &lt;int&gt; 6, 6, 6, 4, 4, 4, 6, 7, 7, 7, 6, 7, 6, 6, 6, 6…\n$ physical_activity_level &lt;int&gt; 42, 60, 60, 30, 30, 30, 40, 75, 75, 75, 30, 75…\n$ stress_level            &lt;int&gt; 6, 8, 8, 8, 8, 8, 7, 6, 6, 6, 8, 6, 8, 8, 8, 8…\n$ bmi_category            &lt;chr&gt; \"Overweight\", \"Normal\", \"Normal\", \"Obese\", \"Ob…\n$ blood_pressure          &lt;chr&gt; \"126/83\", \"125/80\", \"125/80\", \"140/90\", \"140/9…\n$ heart_rate              &lt;int&gt; 77, 75, 75, 85, 85, 85, 82, 70, 70, 70, 70, 70…\n$ daily_steps             &lt;int&gt; 4200, 10000, 10000, 3000, 3000, 3000, 3500, 80…\n$ sleep_disorder          &lt;chr&gt; \"None\", \"None\", \"None\", \"Sleep Apnea\", \"Sleep …",
+    "text": "Importing files\nThere are multiple ways to import files into R. The most common data set format is the .csv file. You can import CSV files using the read.csv(filename) function.\nFirst, download the file SleepHealthData.csv from Canvas in the same folder as your R source code.\n\ngetwd() # save your data in this folder\n\n[1] \"C:/Users/fudolig/Documents/GitHub/EAB703-Slides-2025\"\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\") # or use a specific path to your folder\nglimpse(sleep)\n\nRows: 374\nColumns: 13\n$ person_id               &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…\n$ gender                  &lt;chr&gt; \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Male\"…\n$ age                     &lt;int&gt; 27, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29…\n$ occupation              &lt;chr&gt; \"Software Engineer\", \"Doctor\", \"Doctor\", \"Sale…\n$ sleep_duration          &lt;dbl&gt; 6.1, 6.2, 6.2, 5.9, 5.9, 5.9, 6.3, 7.8, 7.8, 7…\n$ quality_of_sleep        &lt;int&gt; 6, 6, 6, 4, 4, 4, 6, 7, 7, 7, 6, 7, 6, 6, 6, 6…\n$ physical_activity_level &lt;int&gt; 42, 60, 60, 30, 30, 30, 40, 75, 75, 75, 30, 75…\n$ stress_level            &lt;int&gt; 6, 8, 8, 8, 8, 8, 7, 6, 6, 6, 8, 6, 8, 8, 8, 8…\n$ bmi_category            &lt;chr&gt; \"Overweight\", \"Normal\", \"Normal\", \"Obese\", \"Ob…\n$ blood_pressure          &lt;chr&gt; \"126/83\", \"125/80\", \"125/80\", \"140/90\", \"140/9…\n$ heart_rate              &lt;int&gt; 77, 75, 75, 85, 85, 85, 82, 70, 70, 70, 70, 70…\n$ daily_steps             &lt;int&gt; 4200, 10000, 10000, 3000, 3000, 3000, 3500, 80…\n$ sleep_disorder          &lt;chr&gt; \"None\", \"None\", \"None\", \"Sleep Apnea\", \"Sleep …",
     "crumbs": [
       "Lectures",
       "Lecture 2- Descriptive Statistics"
@@ -3102,91 +3586,11 @@
     ]
   },
   {
-    "objectID": "lectures.html",
-    "href": "lectures.html",
-    "title": "EAB 703 Lectures",
-    "section": "",
-    "text": "This website provides the slides for EAB 703-1002 for Dr. Miguel Fudolig. Content is mainly based on the following books:\n\nDaniel, W. W., & Cross, C. L. (2018). Biostatistics: a foundation for analysis in the health sciences. John Wiley & Sons.\nRigdon, S. E., Fricker Jr, R. D., & Montgomery, D. C. (2024). Introduction to Probability and Statistics for Data Science: with R. Cambridge University Press.\nIsmay, C., Kim, A.Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546",
-    "crumbs": [
-      "Lectures"
-    ]
-  },
-  {
-    "objectID": "PS1_key.html",
-    "href": "PS1_key.html",
-    "title": "Problem Set 1 Key",
-    "section": "",
-    "text": "The data set Arrests can be accessed through the package car inR. The data set includes data on police treatment of individuals arrested in Toronto for simple possession of small quantities of marijuana. The data are part of a larger data set featured in a series of articles in the Toronto Star newspaper.\n\n\nProvide the relevant R code to install the car package in R.\n\ninstall.packages(\"car\")\n\nProvide the relevant R code to load the car package.\n\n\nlibrary(car)\n\nLoading required package: carData\n\n\n\nExplore the Arrests data set using glimpse() to show the different variables available in the data set. What are the different variables in the Arrests data set? Show your code. [4pts.]\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n✖ dplyr::recode() masks car::recode()\n✖ purrr::some()   masks car::some()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nglimpse(Arrests)\n\nRows: 5,226\nColumns: 8\n$ released &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes…\n$ colour   &lt;fct&gt; White, Black, White, Black, Black, Black, White, White, Black…\n$ year     &lt;int&gt; 2002, 1999, 2000, 2000, 1999, 1998, 1999, 1998, 2000, 2001, 1…\n$ age      &lt;int&gt; 21, 17, 24, 46, 27, 16, 40, 34, 23, 30, 18, 18, 17, 42, 26, 2…\n$ sex      &lt;fct&gt; Male, Male, Male, Male, Female, Female, Male, Female, Male, M…\n$ employed &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Ye…\n$ citizen  &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Ye…\n$ checks   &lt;int&gt; 3, 3, 3, 1, 1, 0, 0, 1, 4, 3, 0, 3, 1, 0, 2, 3, 4, 5, 3, 0, 0…\n\n\n\nCreate a frequency table for the year of arrests (year variable). Which year had the most arrests? Show your code. [2pts.]\n\n\nlibrary(summarytools)\n\n\nAttaching package: 'summarytools'\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\nfreq(Arrests$year)\n\nError in match(x, table, nomatch = 0L): 'match' requires vector arguments\n\n\nWarning in parse_call(mc = match.call(), caller = \"freq\"): metadata extraction\nterminated unexpectedly; inspect results carefully\n\n\nFrequencies  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n       1997    492      9.41           9.41      9.41           9.41\n       1998    877     16.78          26.20     16.78          26.20\n       1999   1099     21.03          47.23     21.03          47.23\n       2000   1270     24.30          71.53     24.30          71.53\n       2001   1211     23.17          94.70     23.17          94.70\n       2002    277      5.30         100.00      5.30         100.00\n       &lt;NA&gt;      0                               0.00         100.00\n      Total   5226    100.00         100.00    100.00         100.00\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe year with the most arrests was 2000.\n\n\n\nCreate a bar plot to visualize the frequencies of arrests for each year using ggplot() and geom_bar(). Show your code. [2pts.]\n\nAcceptable solution (full credit):\n\nggplot(data=Arrests,aes(x=year)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nBetter solution:\n\nggplot(data=Arrests,aes(x=as.factor(year))) +\n  geom_bar(color=\"black\") + \n  theme_bw() + \n  labs(x=\"Year\", y=\"Frequency\")\n\n\n\n\n\n\n\n\n\nThe file SleepHealthData.csv comprises 400 rows and 13 columns, covering a wide range of variables related to sleep and daily habits. It includes details such as gender, age, occupation, sleep duration, quality of sleep, physical activity level, stress levels, BMI category, blood pressure, heart rate, daily steps, and the presence or absence of sleep disorders.\n\n\nProvide the relevant R code to import SleepHealthData.csv into R and assign it to the variable sleep.\n\n\n\n\n\n\n\nImportant\n\n\n\nSave the CSV file in the same folder as your Rscript!\n\n\ngetwd() # provides your working directory\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nComplete the following table for the recorded heart rate of the participants. Show your code.\n\nMean:\n\nmean(sleep$heart_rate)\n\n[1] 70.16578\n\n\nMedian:\n\nmedian(sleep$heart_rate)\n\n[1] 70\n\n\nRange:\n\nmax(sleep$heart_rate)-min(sleep$heart_rate)\n\n[1] 21\n\n\nVariance and Standard Deviation:\n\nvar(sleep$heart_rate)\n\n[1] 17.10381\n\nsd(sleep$heart_rate)\n\n[1] 4.135676\n\n\nMinimum and Maximum:\n\nmin(sleep$heart_rate)\n\n[1] 65\n\nmax(sleep$heart_rate)\n\n[1] 86\n\n\n\\(Q_1\\), \\(Q_3\\), and IQR:\n\nquantile(sleep$heart_rate,0.25)\n\n25% \n 68 \n\nquantile(sleep$heart_rate,0.75)\n\n75% \n 72 \n\nIQR(sleep$heart_rate)\n\n[1] 4\n\n\n\nCreate a histogram for the recorded heart rate of all the participants using ggplot() and geom_histogram(). Show your code.\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram(color=\"white\", binwidth=2.5, fill=\"black\") + \n  theme_bw() +\n  labs(x=\"Heart Rate Measurement\")\n\n\n\n\n\n\n\n\n\nCreate a boxplot for the recorded heart rate of all the participants grouped by gender using ggplot() and geom_boxplot(). Show your code. (Hint: Use x=gender in the aes() function.)\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=gender,y=heart_rate)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=gender, y=heart_rate)) + \n  geom_boxplot() + \n  theme_bw() + \n  labs(x=\"Gender\",y=\"Heart Rate Measurement\")",
-    "crumbs": [
-      "Problem Sets",
-      "Problem Set 1 Key"
-    ]
-  },
-  {
-    "objectID": "PS3_key.html",
-    "href": "PS3_key.html",
-    "title": "Problem Set 3 Key",
-    "section": "",
-    "text": "The table below shows the frequency table of the number of referrals offered for expectant mothers who experience socioeconomic barriers for needed healthcare.\n\n\n\nNumber of Referrals\nFrequency\n\n\n0\n90\n\n\n1\n132\n\n\n2\n76\n\n\n3\n10\n\n\n\n\nWhat is the probability that a randomly selected participant received at least one referral? [2 pts.]\n\n\n\n\n\n\n\nNote\n\n\n\nWe need to calculate the relative frequencies for each category first to calculate the specific probabilities.\n\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\ndf &lt;- data.frame(Referrals=c(0,1,2,3),\n                 Frequency = c(90,132,76,10))\n\nmutate(df,RelFrequency = Frequency/sum(Frequency))\n\n  Referrals Frequency RelFrequency\n1         0        90   0.29220779\n2         1       132   0.42857143\n3         2        76   0.24675325\n4         3        10   0.03246753\n\n\nOR\n\ntotal &lt;- sum(c(90,132,76,10))\n\ndf &lt;- data.frame(Referrals=c(0,1,2,3),\n                 Frequency = c(90,132,76,10),\n                 Rel.Frequency = c(90,132,76,10)/total)\n\ndf\n\n  Referrals Frequency Rel.Frequency\n1         0        90    0.29220779\n2         1       132    0.42857143\n3         2        76    0.24675325\n4         3        10    0.03246753\n\n\n\\[\nP(X \\geq 1) = P(X=1) + P(X=2) + P(X=3)\n\\] or\n\\[\nP(X \\geq 1) = 1-P(X=0)\n\\]\nHence the probability \\(P(X\\leq 1)\\) is:\n\n1-90/sum(c(90,132,76,10))\n\n[1] 0.7077922\n\n# OR \n\n1-0.2922\n\n[1] 0.7078\n\n\n\nWhat is the expected value of the number of referrals in the sample? [1pt.]\n\n\n\n\n\n\n\nNote\n\n\n\nThe expected number of referrals is the sum of the product of the outcome and their corresponding probabilities.\n\\[\nE(X) = 1*(90/308) + 2*(132/308) + 3*(76/308) + 4*(10/308)\n\\]\n\n\n\n0*(90/308) + 1*(132/308) + 2*(76/308) + 3*(10/308)\n\n[1] 1.019481\n\n# OR\n\nsum(df$Referrals*df$Rel.Frequency)\n\n[1] 1.019481",
-    "crumbs": [
-      "Problem Sets",
-      "Problem Set 3 Key"
-    ]
-  },
-  {
-    "objectID": "PS3_key.html#problem-1",
-    "href": "PS3_key.html#problem-1",
-    "title": "Problem Set 3 Key",
-    "section": "",
-    "text": "The table below shows the frequency table of the number of referrals offered for expectant mothers who experience socioeconomic barriers for needed healthcare.\n\n\n\nNumber of Referrals\nFrequency\n\n\n0\n90\n\n\n1\n132\n\n\n2\n76\n\n\n3\n10\n\n\n\n\nWhat is the probability that a randomly selected participant received at least one referral? [2 pts.]\n\n\n\n\n\n\n\nNote\n\n\n\nWe need to calculate the relative frequencies for each category first to calculate the specific probabilities.\n\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\ndf &lt;- data.frame(Referrals=c(0,1,2,3),\n                 Frequency = c(90,132,76,10))\n\nmutate(df,RelFrequency = Frequency/sum(Frequency))\n\n  Referrals Frequency RelFrequency\n1         0        90   0.29220779\n2         1       132   0.42857143\n3         2        76   0.24675325\n4         3        10   0.03246753\n\n\nOR\n\ntotal &lt;- sum(c(90,132,76,10))\n\ndf &lt;- data.frame(Referrals=c(0,1,2,3),\n                 Frequency = c(90,132,76,10),\n                 Rel.Frequency = c(90,132,76,10)/total)\n\ndf\n\n  Referrals Frequency Rel.Frequency\n1         0        90    0.29220779\n2         1       132    0.42857143\n3         2        76    0.24675325\n4         3        10    0.03246753\n\n\n\\[\nP(X \\geq 1) = P(X=1) + P(X=2) + P(X=3)\n\\] or\n\\[\nP(X \\geq 1) = 1-P(X=0)\n\\]\nHence the probability \\(P(X\\leq 1)\\) is:\n\n1-90/sum(c(90,132,76,10))\n\n[1] 0.7077922\n\n# OR \n\n1-0.2922\n\n[1] 0.7078\n\n\n\nWhat is the expected value of the number of referrals in the sample? [1pt.]\n\n\n\n\n\n\n\nNote\n\n\n\nThe expected number of referrals is the sum of the product of the outcome and their corresponding probabilities.\n\\[\nE(X) = 1*(90/308) + 2*(132/308) + 3*(76/308) + 4*(10/308)\n\\]\n\n\n\n0*(90/308) + 1*(132/308) + 2*(76/308) + 3*(10/308)\n\n[1] 1.019481\n\n# OR\n\nsum(df$Referrals*df$Rel.Frequency)\n\n[1] 1.019481",
-    "crumbs": [
-      "Problem Sets",
-      "Problem Set 3 Key"
-    ]
-  },
-  {
-    "objectID": "PS3_key.html#problem-2",
-    "href": "PS3_key.html#problem-2",
-    "title": "Problem Set 3 Key",
-    "section": "Problem 2",
-    "text": "Problem 2\nThe proportion of individuals from a certain population with an O blood type is 0.44. What is the probability that out of a sample of 30 individuals from this population,\n\n\n\n\n\n\nNote\n\n\n\nWe use the binomial distribution!\n\n\n\nThat exactly half of the individuals in the sample have an O blood type?\n\n\ndbinom(15,30,0.44)\n\n[1] 0.1162175\n\n\n\nAt most 10 individuals have an O blood type? [1pt]\n\n\npbinom(10,30,0.44)\n\n[1] 0.160397",
-    "crumbs": [
-      "Problem Sets",
-      "Problem Set 3 Key"
-    ]
-  },
-  {
-    "objectID": "PS3_key.html#problem-3",
-    "href": "PS3_key.html#problem-3",
-    "title": "Problem Set 3 Key",
-    "section": "Problem 3",
-    "text": "Problem 3\nIf the mean number of unexcused absences per school year for fifth graders at a public elementary school is 11.8,\n\n\n\n\n\n\nNote\n\n\n\nWe use the Poisson distribution!\n\n\n\nWhat is the probability that a randomly selected student will have chronic absenteeism, i.e. at least 18 unexcused absences per school year? [1 pt.]\n\n\n1-ppois(17,lambda=11.8)\n\n[1] 0.05561775\n\n\n\nGenerate 1000 numbers from the associated distribution and create a histogram from these values. [2pts.]\n\n\nlibrary(tidyverse)\nNsim&lt;- 1000 # Simulating 10 times\nset.seed(12)\nsims &lt;- rpois(Nsim,11.8)\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram(binwidth=1) + \n  theme_bw() + \n  labs(x=\"Number of Unexcused Absences\", y=\"Count\")",
-    "crumbs": [
-      "Problem Sets",
-      "Problem Set 3 Key"
-    ]
-  },
-  {
-    "objectID": "PS3_key.html#problem-4",
-    "href": "PS3_key.html#problem-4",
-    "title": "Problem Set 3 Key",
-    "section": "Problem 4",
-    "text": "Problem 4\nA random number generator was used to assign participants to two treatment groups. A random number was generated from a UNIF(-1,1) distribution. A value between -0.3 and 0.2 means the participant is assigned to treatment group A, else they were assigned in B. What is the probability that a participant is assigned in group A? [2pts.]\n\n\n\n\n\n\nNote\n\n\n\nYou can use R or manual mathematical calculation of areas. I will be showing the R solution.\nWe use the CDF to calculate probabilities for continuous distributions such as the normal distribution. We will be using pnorm().\n\n\n\npunif(0.2,-1,1) - punif(-0.3,-1,1)\n\n[1] 0.25",
-    "crumbs": [
-      "Problem Sets",
-      "Problem Set 3 Key"
-    ]
-  },
-  {
-    "objectID": "PS3_key.html#problem-5",
-    "href": "PS3_key.html#problem-5",
-    "title": "Problem Set 3 Key",
-    "section": "Problem 5",
-    "text": "Problem 5\nThe mean A1c measurement for residents at a nursing home was 5.6 with a standard deviation of 2.1. Assuming the A1c measurements follow a normal distribution,\n\n\n\n\n\n\nTip\n\n\n\nWe use the CDF to calculate probabilities for continuous distributions such as the normal distribution. We will be using pnorm().\n\n\n\nWhat is the probability of randomly selecting a resident who is prediabetic (A1c between 5.7 and 6.4)? [1pt]\n\n\npnorm(6.4,mean=5.6,sd=2.1) - pnorm(5.7,mean=5.6,sd=2.1)\n\n[1] 0.1293906\n\n\n\nWhat is the probability of randomly selecting a resident who is diabetic (A1c above 6.5)? [1pt]\n\n\npnorm(6.5,mean=5.6,sd=2.1, lower.tail = F) \n\n[1] 0.3341176\n\n\n\nWhat is the expected number of diabetics out of a sample of 100 residents based on this distribution? (Hint: Randomly selecting a diabetic in this sample is a Bernoulli process.) [2 pts.]\n\n\n\n\n\n\n\nTip\n\n\n\nRemember that for a Bernoulli process, the expected value \\(E(X)= np\\) where \\(n\\) is the sample size and \\(p\\) is the probability of success.\n\n\n\nprobability_diabetic &lt;- pnorm(6.5,mean=5.6,sd=2.1, lower.tail = F) \nsample_size &lt;- 100\n\nsample_size*probability_diabetic\n\n[1] 33.41176\n\n\nExpected value is r sample_size*probability_diabetic. If we’re talking about number of diabetics, we round up to 34.\n\nWhat is the 85th percentile of the A1c measurements in this nursing home? [1 pt.]\n\n\n\n\n\n\n\nTip\n\n\n\nWe can use qnorm() to calculate values based on percentiles.\n\n\n\nqnorm(0.85,mean=5.6, sd=2.1)\n\n[1] 7.77651",
-    "crumbs": [
-      "Problem Sets",
-      "Problem Set 3 Key"
-    ]
+    "objectID": "lecture6-1.html#confidence-interval-form",
+    "href": "lecture6-1.html#confidence-interval-form",
+    "title": "Lecture 6 calculations",
+    "section": "Confidence Interval Form",
+    "text": "Confidence Interval Form\nThe confidence intervals in this chapter will follow the form:\n\\[\nestimate \\pm reliability~coefficient*standard~error\n\\]"
   },
   {
     "objectID": "lecture6-1.html#confidence-intervals-for-population-means",
@@ -3215,13 +3619,6 @@
     "title": "Lecture 6 calculations",
     "section": "Example",
     "text": "Example\nThe file lec6example.csv contains simulated values from a normal distribution with a variance of 4.\n\nQuestionAnswer\n\n\nCreate a 95% confidence interval for the population mean. Is 1 a plausible value for the population mean?\n\n\n\n# setwd(\"where your file is\")\nexample &lt;- read.csv(\"datasets/lec6example.csv\")\nsdpop &lt;- sqrt(4)\n\nWe need to calculate the sample mean of the Sims column, the sample size, and the reliability coefficient.\n\nxbar &lt;- mean(example$Sims)\n1sampsize &lt;- nrow(example)\nalpha &lt;- 1-0.95\nrelcoeff &lt;- qnorm(1-alpha/2,mean = 0, sd=1)\n\n\n1\n\nnrow() calculates the number of rows of the data frame. If dealing with a singular vector, you can use length(). nrow(example) will yield the same answer as length(example$Sims).\n\n\n\n\nWe can now calculate the 95% confidence interval limits.\n\nlower &lt;- xbar - relcoeff*sdpop/sqrt(sampsize)\nupper &lt;- xbar + relcoeff*sdpop/sqrt(sampsize)\nlower\n\n[1] 0.6637448\n\nupper\n\n[1] 1.303866\n\n\nThe resulting 95% confidence interval is (0.66, 1.3). Since 1 is in the confidence interval, then we can claim that 1 is a plausible value for the population mean."
-  },
-  {
-    "objectID": "lecture6-1.html#confidence-interval-form",
-    "href": "lecture6-1.html#confidence-interval-form",
-    "title": "Lecture 6 calculations",
-    "section": "Confidence Interval Form",
-    "text": "Confidence Interval Form\nThe confidence intervals in this chapter will follow the form:\n\\[\nestimate \\pm reliability~coefficient*standard~error\n\\]"
   },
   {
     "objectID": "lecture6-1.html#exercise",
@@ -3278,5 +3675,92 @@
     "title": "Lecture 6 calculations",
     "section": "Exercise",
     "text": "Exercise\nConsider the sleep health data uploaded on Canvas as SleepHealthData.csv.\n\nQuestionAnswer\n\n\nCalculate the 99% confidence interval for the average heart rate (heart_rate) in bpm in the population this sample represents. Is 65 bpm a plausible value for the average sleep distribution of the population? Calculate the margin of error.\n\n\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\nsdpop &lt;- sd(sleep$heart_rate)\nxbar &lt;- mean(sleep$heart_rate)\nsampsize &lt;- nrow(sleep)\nalpha &lt;- 1-0.99\nrelcoeff &lt;- qt(p=1-alpha/2,df=sampsize-1) \n# not specifying the mean and sd in qnorm assumes standard normal\n\nlower &lt;- xbar - relcoeff*sdpop/sqrt(sampsize)\nlower\n\n[1] 69.6121\n\nupper &lt;- xbar + relcoeff*sdpop/sqrt(sampsize)\nupper\n\n[1] 70.71945\n\n\nThe 95% confidence interval is (69.61,70.72). 65 is not a plausible value for the average heart rate of the population.\nThe margin of error can be calculated as:\n\nrelcoeff*sdpop/sqrt(sampsize)\n\n[1] 0.5536753\n\n(upper-lower)/2\n\n[1] 0.5536753"
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "EAB 703 Lectures",
+    "section": "",
+    "text": "This website provides the slides for EAB 703-1002 for Dr. Miguel Fudolig. Content is mainly based on the following books:\n\nDaniel, W. W., & Cross, C. L. (2018). Biostatistics: a foundation for analysis in the health sciences. John Wiley & Sons.\nRigdon, S. E., Fricker Jr, R. D., & Montgomery, D. C. (2024). Introduction to Probability and Statistics for Data Science: with R. Cambridge University Press.\nIsmay, C., Kim, A.Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546",
+    "crumbs": [
+      "Lectures"
+    ]
+  },
+  {
+    "objectID": "PS1_key.html",
+    "href": "PS1_key.html",
+    "title": "Problem Set 1 Key",
+    "section": "",
+    "text": "The data set Arrests can be accessed through the package car inR. The data set includes data on police treatment of individuals arrested in Toronto for simple possession of small quantities of marijuana. The data are part of a larger data set featured in a series of articles in the Toronto Star newspaper.\n\n\nProvide the relevant R code to install the car package in R.\n\ninstall.packages(\"car\")\n\nProvide the relevant R code to load the car package.\n\n\nlibrary(car)\n\nLoading required package: carData\n\n\n\nExplore the Arrests data set using glimpse() to show the different variables available in the data set. What are the different variables in the Arrests data set? Show your code. [4pts.]\n\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.5.1\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   4.0.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n✖ dplyr::recode() masks car::recode()\n✖ purrr::some()   masks car::some()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nglimpse(Arrests)\n\nRows: 5,226\nColumns: 8\n$ released &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes…\n$ colour   &lt;fct&gt; White, Black, White, Black, Black, Black, White, White, Black…\n$ year     &lt;int&gt; 2002, 1999, 2000, 2000, 1999, 1998, 1999, 1998, 2000, 2001, 1…\n$ age      &lt;int&gt; 21, 17, 24, 46, 27, 16, 40, 34, 23, 30, 18, 18, 17, 42, 26, 2…\n$ sex      &lt;fct&gt; Male, Male, Male, Male, Female, Female, Male, Female, Male, M…\n$ employed &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Ye…\n$ citizen  &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Ye…\n$ checks   &lt;int&gt; 3, 3, 3, 1, 1, 0, 0, 1, 4, 3, 0, 3, 1, 0, 2, 3, 4, 5, 3, 0, 0…\n\n\n\nCreate a frequency table for the year of arrests (year variable). Which year had the most arrests? Show your code. [2pts.]\n\n\nlibrary(summarytools)\n\nWarning: package 'summarytools' was built under R version 4.5.1\n\n\n\nAttaching package: 'summarytools'\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\nfreq(Arrests$year)\n\nError in match(x, table, nomatch = 0L): 'match' requires vector arguments\n\n\nWarning in parse_call(mc = match.call(), caller = \"freq\"): metadata extraction\nterminated unexpectedly; inspect results carefully\n\n\nFrequencies  \n\n              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.\n----------- ------ --------- -------------- --------- --------------\n       1997    492      9.41           9.41      9.41           9.41\n       1998    877     16.78          26.20     16.78          26.20\n       1999   1099     21.03          47.23     21.03          47.23\n       2000   1270     24.30          71.53     24.30          71.53\n       2001   1211     23.17          94.70     23.17          94.70\n       2002    277      5.30         100.00      5.30         100.00\n       &lt;NA&gt;      0                               0.00         100.00\n      Total   5226    100.00         100.00    100.00         100.00\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe year with the most arrests was 2000.\n\n\n\nCreate a bar plot to visualize the frequencies of arrests for each year using ggplot() and geom_bar(). Show your code. [2pts.]\n\nAcceptable solution (full credit):\n\nggplot(data=Arrests,aes(x=year)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nBetter solution:\n\nggplot(data=Arrests,aes(x=as.factor(year))) +\n  geom_bar(color=\"black\") + \n  theme_bw() + \n  labs(x=\"Year\", y=\"Frequency\")\n\n\n\n\n\n\n\n\n\nThe file SleepHealthData.csv comprises 400 rows and 13 columns, covering a wide range of variables related to sleep and daily habits. It includes details such as gender, age, occupation, sleep duration, quality of sleep, physical activity level, stress levels, BMI category, blood pressure, heart rate, daily steps, and the presence or absence of sleep disorders.\n\n\nProvide the relevant R code to import SleepHealthData.csv into R and assign it to the variable sleep.\n\n\n\n\n\n\n\nImportant\n\n\n\nSave the CSV file in the same folder as your Rscript!\n\n\ngetwd() # provides your working directory\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nComplete the following table for the recorded heart rate of the participants. Show your code.\n\nMean:\n\nmean(sleep$heart_rate)\n\n[1] 70.16578\n\n\nMedian:\n\nmedian(sleep$heart_rate)\n\n[1] 70\n\n\nRange:\n\nmax(sleep$heart_rate)-min(sleep$heart_rate)\n\n[1] 21\n\n\nVariance and Standard Deviation:\n\nvar(sleep$heart_rate)\n\n[1] 17.10381\n\nsd(sleep$heart_rate)\n\n[1] 4.135676\n\n\nMinimum and Maximum:\n\nmin(sleep$heart_rate)\n\n[1] 65\n\nmax(sleep$heart_rate)\n\n[1] 86\n\n\n\\(Q_1\\), \\(Q_3\\), and IQR:\n\nquantile(sleep$heart_rate,0.25)\n\n25% \n 68 \n\nquantile(sleep$heart_rate,0.75)\n\n75% \n 72 \n\nIQR(sleep$heart_rate)\n\n[1] 4\n\n\n\nCreate a histogram for the recorded heart rate of all the participants using ggplot() and geom_histogram(). Show your code.\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=heart_rate)) + \n  geom_histogram(color=\"white\", binwidth=2.5, fill=\"black\") + \n  theme_bw() +\n  labs(x=\"Heart Rate Measurement\")\n\n\n\n\n\n\n\n\n\nCreate a boxplot for the recorded heart rate of all the participants grouped by gender using ggplot() and geom_boxplot(). Show your code. (Hint: Use x=gender in the aes() function.)\n\nAcceptable (full credit):\n\nggplot(data=sleep, aes(x=gender,y=heart_rate)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nBetter version:\n\nggplot(data=sleep, aes(x=gender, y=heart_rate)) + \n  geom_boxplot() + \n  theme_bw() + \n  labs(x=\"Gender\",y=\"Heart Rate Measurement\")",
+    "crumbs": [
+      "Problem Sets",
+      "Problem Set 1 Key"
+    ]
+  },
+  {
+    "objectID": "PS3_key.html",
+    "href": "PS3_key.html",
+    "title": "Problem Set 3 Key",
+    "section": "",
+    "text": "The table below shows the frequency table of the number of referrals offered for expectant mothers who experience socioeconomic barriers for needed healthcare.\n\n\n\nNumber of Referrals\nFrequency\n\n\n0\n90\n\n\n1\n132\n\n\n2\n76\n\n\n3\n10\n\n\n\n\nWhat is the probability that a randomly selected participant received at least one referral? [2 pts.]\n\n\n\n\n\n\n\nNote\n\n\n\nWe need to calculate the relative frequencies for each category first to calculate the specific probabilities.\n\n\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.5.1\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   4.0.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\ndf &lt;- data.frame(Referrals=c(0,1,2,3),\n                 Frequency = c(90,132,76,10))\n\nmutate(df,RelFrequency = Frequency/sum(Frequency))\n\n  Referrals Frequency RelFrequency\n1         0        90   0.29220779\n2         1       132   0.42857143\n3         2        76   0.24675325\n4         3        10   0.03246753\n\n\nOR\n\ntotal &lt;- sum(c(90,132,76,10))\n\ndf &lt;- data.frame(Referrals=c(0,1,2,3),\n                 Frequency = c(90,132,76,10),\n                 Rel.Frequency = c(90,132,76,10)/total)\n\ndf\n\n  Referrals Frequency Rel.Frequency\n1         0        90    0.29220779\n2         1       132    0.42857143\n3         2        76    0.24675325\n4         3        10    0.03246753\n\n\n\\[\nP(X \\geq 1) = P(X=1) + P(X=2) + P(X=3)\n\\] or\n\\[\nP(X \\geq 1) = 1-P(X=0)\n\\]\nHence the probability \\(P(X\\leq 1)\\) is:\n\n1-90/sum(c(90,132,76,10))\n\n[1] 0.7077922\n\n# OR \n\n1-0.2922\n\n[1] 0.7078\n\n\n\nWhat is the expected value of the number of referrals in the sample? [1pt.]\n\n\n\n\n\n\n\nNote\n\n\n\nThe expected number of referrals is the sum of the product of the outcome and their corresponding probabilities.\n\\[\nE(X) = 1*(90/308) + 2*(132/308) + 3*(76/308) + 4*(10/308)\n\\]\n\n\n\n0*(90/308) + 1*(132/308) + 2*(76/308) + 3*(10/308)\n\n[1] 1.019481\n\n# OR\n\nsum(df$Referrals*df$Rel.Frequency)\n\n[1] 1.019481",
+    "crumbs": [
+      "Problem Sets",
+      "Problem Set 3 Key"
+    ]
+  },
+  {
+    "objectID": "PS3_key.html#problem-1",
+    "href": "PS3_key.html#problem-1",
+    "title": "Problem Set 3 Key",
+    "section": "",
+    "text": "The table below shows the frequency table of the number of referrals offered for expectant mothers who experience socioeconomic barriers for needed healthcare.\n\n\n\nNumber of Referrals\nFrequency\n\n\n0\n90\n\n\n1\n132\n\n\n2\n76\n\n\n3\n10\n\n\n\n\nWhat is the probability that a randomly selected participant received at least one referral? [2 pts.]\n\n\n\n\n\n\n\nNote\n\n\n\nWe need to calculate the relative frequencies for each category first to calculate the specific probabilities.\n\n\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.5.1\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   4.0.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\ndf &lt;- data.frame(Referrals=c(0,1,2,3),\n                 Frequency = c(90,132,76,10))\n\nmutate(df,RelFrequency = Frequency/sum(Frequency))\n\n  Referrals Frequency RelFrequency\n1         0        90   0.29220779\n2         1       132   0.42857143\n3         2        76   0.24675325\n4         3        10   0.03246753\n\n\nOR\n\ntotal &lt;- sum(c(90,132,76,10))\n\ndf &lt;- data.frame(Referrals=c(0,1,2,3),\n                 Frequency = c(90,132,76,10),\n                 Rel.Frequency = c(90,132,76,10)/total)\n\ndf\n\n  Referrals Frequency Rel.Frequency\n1         0        90    0.29220779\n2         1       132    0.42857143\n3         2        76    0.24675325\n4         3        10    0.03246753\n\n\n\\[\nP(X \\geq 1) = P(X=1) + P(X=2) + P(X=3)\n\\] or\n\\[\nP(X \\geq 1) = 1-P(X=0)\n\\]\nHence the probability \\(P(X\\leq 1)\\) is:\n\n1-90/sum(c(90,132,76,10))\n\n[1] 0.7077922\n\n# OR \n\n1-0.2922\n\n[1] 0.7078\n\n\n\nWhat is the expected value of the number of referrals in the sample? [1pt.]\n\n\n\n\n\n\n\nNote\n\n\n\nThe expected number of referrals is the sum of the product of the outcome and their corresponding probabilities.\n\\[\nE(X) = 1*(90/308) + 2*(132/308) + 3*(76/308) + 4*(10/308)\n\\]\n\n\n\n0*(90/308) + 1*(132/308) + 2*(76/308) + 3*(10/308)\n\n[1] 1.019481\n\n# OR\n\nsum(df$Referrals*df$Rel.Frequency)\n\n[1] 1.019481",
+    "crumbs": [
+      "Problem Sets",
+      "Problem Set 3 Key"
+    ]
+  },
+  {
+    "objectID": "PS3_key.html#problem-2",
+    "href": "PS3_key.html#problem-2",
+    "title": "Problem Set 3 Key",
+    "section": "Problem 2",
+    "text": "Problem 2\nThe proportion of individuals from a certain population with an O blood type is 0.44. What is the probability that out of a sample of 30 individuals from this population,\n\n\n\n\n\n\nNote\n\n\n\nWe use the binomial distribution!\n\n\n\nThat exactly half of the individuals in the sample have an O blood type?\n\n\ndbinom(15,30,0.44)\n\n[1] 0.1162175\n\n\n\nAt most 10 individuals have an O blood type? [1pt]\n\n\npbinom(10,30,0.44)\n\n[1] 0.160397",
+    "crumbs": [
+      "Problem Sets",
+      "Problem Set 3 Key"
+    ]
+  },
+  {
+    "objectID": "PS3_key.html#problem-3",
+    "href": "PS3_key.html#problem-3",
+    "title": "Problem Set 3 Key",
+    "section": "Problem 3",
+    "text": "Problem 3\nIf the mean number of unexcused absences per school year for fifth graders at a public elementary school is 11.8,\n\n\n\n\n\n\nNote\n\n\n\nWe use the Poisson distribution!\n\n\n\nWhat is the probability that a randomly selected student will have chronic absenteeism, i.e. at least 18 unexcused absences per school year? [1 pt.]\n\n\n1-ppois(17,lambda=11.8)\n\n[1] 0.05561775\n\n\n\nGenerate 1000 numbers from the associated distribution and create a histogram from these values. [2pts.]\n\n\nlibrary(tidyverse)\nNsim&lt;- 1000 # Simulating 10 times\nset.seed(12)\nsims &lt;- rpois(Nsim,11.8)\ndf &lt;- data.frame(simulations=sims)\nggplot(df, aes(x=simulations)) + \n  geom_histogram(binwidth=1) + \n  theme_bw() + \n  labs(x=\"Number of Unexcused Absences\", y=\"Count\")",
+    "crumbs": [
+      "Problem Sets",
+      "Problem Set 3 Key"
+    ]
+  },
+  {
+    "objectID": "PS3_key.html#problem-4",
+    "href": "PS3_key.html#problem-4",
+    "title": "Problem Set 3 Key",
+    "section": "Problem 4",
+    "text": "Problem 4\nA random number generator was used to assign participants to two treatment groups. A random number was generated from a UNIF(-1,1) distribution. A value between -0.3 and 0.2 means the participant is assigned to treatment group A, else they were assigned in B. What is the probability that a participant is assigned in group A? [2pts.]\n\n\n\n\n\n\nNote\n\n\n\nYou can use R or manual mathematical calculation of areas. I will be showing the R solution.\nWe use the CDF to calculate probabilities for continuous distributions such as the normal distribution. We will be using pnorm().\n\n\n\npunif(0.2,-1,1) - punif(-0.3,-1,1)\n\n[1] 0.25",
+    "crumbs": [
+      "Problem Sets",
+      "Problem Set 3 Key"
+    ]
+  },
+  {
+    "objectID": "PS3_key.html#problem-5",
+    "href": "PS3_key.html#problem-5",
+    "title": "Problem Set 3 Key",
+    "section": "Problem 5",
+    "text": "Problem 5\nThe mean A1c measurement for residents at a nursing home was 5.6 with a standard deviation of 2.1. Assuming the A1c measurements follow a normal distribution,\n\n\n\n\n\n\nTip\n\n\n\nWe use the CDF to calculate probabilities for continuous distributions such as the normal distribution. We will be using pnorm().\n\n\n\nWhat is the probability of randomly selecting a resident who is prediabetic (A1c between 5.7 and 6.4)? [1pt]\n\n\npnorm(6.4,mean=5.6,sd=2.1) - pnorm(5.7,mean=5.6,sd=2.1)\n\n[1] 0.1293906\n\n\n\nWhat is the probability of randomly selecting a resident who is diabetic (A1c above 6.5)? [1pt]\n\n\npnorm(6.5,mean=5.6,sd=2.1, lower.tail = F) \n\n[1] 0.3341176\n\n\n\nWhat is the expected number of diabetics out of a sample of 100 residents based on this distribution? (Hint: Randomly selecting a diabetic in this sample is a Bernoulli process.) [2 pts.]\n\n\n\n\n\n\n\nTip\n\n\n\nRemember that for a Bernoulli process, the expected value \\(E(X)= np\\) where \\(n\\) is the sample size and \\(p\\) is the probability of success.\n\n\n\nprobability_diabetic &lt;- pnorm(6.5,mean=5.6,sd=2.1, lower.tail = F) \nsample_size &lt;- 100\n\nsample_size*probability_diabetic\n\n[1] 33.41176\n\n\nExpected value is r sample_size*probability_diabetic. If we’re talking about number of diabetics, we round up to 34.\n\nWhat is the 85th percentile of the A1c measurements in this nursing home? [1 pt.]\n\n\n\n\n\n\n\nTip\n\n\n\nWe can use qnorm() to calculate values based on percentiles.\n\n\n\nqnorm(0.85,mean=5.6, sd=2.1)\n\n[1] 7.77651",
+    "crumbs": [
+      "Problem Sets",
+      "Problem Set 3 Key"
+    ]
   }
 ]
