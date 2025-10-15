@@ -3825,5 +3825,110 @@
     "title": "Hypothesis Testing",
     "section": "Exercise",
     "text": "Exercise\nConsider the following studies:\n\nResearchers were interested in determining whether the daily average amount of dog food in their local animal shelter was lower than 500 grams.\nSuppose a design company created two designs (A and B) for the website of a new community clinic. The clinic administrators wanted to test whether there was a difference in proportion of site visitors who preferred each design.\n\n\nQuestionsAnswer 1Answer 2\n\n\nWhat are the parameters of interest? What are the null and alternative hypotheses for these studies?\n\n\nParameter of interest: Long-run daily average amount of dog food \\(H_0:\\) The long-run daily average amount of dog food is equal to 500 grams. \\(H_a:\\) The long-run daily average amount of dog food is less than 500 grams.\n\\[\nH_0: \\mu = 500; H_a: \\mu &lt; 500\n\\]\n\n\n\\(H_0:\\) There is no difference in proportion of site visitors who preferred Designs A and B. \\(H_a:\\) There is a difference in proportion of site visitors who preferred Designs A and B.\n\\[\nH_0: \\pi_A - \\pi_B = 0; H_a: \\pi_A-\\pi_B \\neq 0\n\\]"
+  },
+  {
+    "objectID": "lecture7.html#hypothesis-testing-decisions",
+    "href": "lecture7.html#hypothesis-testing-decisions",
+    "title": "Hypothesis Testing",
+    "section": "Hypothesis Testing: Decisions",
+    "text": "Hypothesis Testing: Decisions\nThe main idea behind hypothesis testing is to assume the null hypothesis is true until we get evidence that it is false.\n\n\n\n\n\n\nNote\n\n\nHow do we get evidence that \\(H_0\\) is false? If the probability of obtaining the measured statistic (or more extreme values) assuming the null hypothesis is low, then this is evidence against the null hypothesis.\nHow low should this probability be?\n\n\n\n\n\n\n\n\n\nImportant\n\n\nOnce we’ve established this threshold, we need to make a decision.\n\nReject \\(H_0\\)\nDo Not Reject \\(H_0\\) (Note: Failing to Reject \\(H_0\\) is not the same as accepting \\(H_0\\))."
+  },
+  {
+    "objectID": "lecture7.html#significance-level-and-errors",
+    "href": "lecture7.html#significance-level-and-errors",
+    "title": "Hypothesis Testing",
+    "section": "Significance Level and Errors",
+    "text": "Significance Level and Errors"
+  },
+  {
+    "objectID": "lecture7.html#error-types-and-significance-level",
+    "href": "lecture7.html#error-types-and-significance-level",
+    "title": "Hypothesis Testing",
+    "section": "Error Types and Significance Level",
+    "text": "Error Types and Significance Level\n\nErrorsError TablesSignificance Level\n\n\nThere is no error when the null hypothesis is rejected when it is false and when the null hypothesis is not rejected when it is true. However, the following cases are errors:\n\n\n\n\n\n\n\nType I error\n\n\nA Type I error occurs when the null hypothesis is rejected when it is true.\n\n\n\n\n\n\n\n\n\n\n\nType I error\n\n\nA Type II error occurs when the null hypothesis is not rejected when it is false.\n\n\n\n\n\n\n\n\n\nType I errors cannot be avoided due to the randomness of the process. The standard approach in hypothesis testing is to determine the cutoff point for our decision so that the probability of making a Type I error is some small predetermined number. This number is referred to as the significance level, \\(\\alpha\\). Formally,\n\\[\n\\alpha = P(Reject~H_0|True~H_0) = P(Type~I~Error)\n\\]\nThe most common value used for the significance level is \\(\\alpha = 0.05\\)."
+  },
+  {
+    "objectID": "lecture7.html#hypothesis-testing-terminology",
+    "href": "lecture7.html#hypothesis-testing-terminology",
+    "title": "Hypothesis Testing",
+    "section": "Hypothesis Testing: Terminology",
+    "text": "Hypothesis Testing: Terminology\n\n\n\n\n\n\n\nTest Statistic\n\n\nThe test statistic is some function of the data that is used to make the decision about whether to reject \\(H_0\\) or fail to reject \\(H_0\\).\n\n\n\n\n\n\n\n\n\n\n\nRejection Region\n\n\nThe rejection region, also called the critical region, is the set of values of the test statistic that lead us to reject \\(H_0\\)."
+  },
+  {
+    "objectID": "lecture7.html#example-basic-hypothesis-testing",
+    "href": "lecture7.html#example-basic-hypothesis-testing",
+    "title": "Hypothesis Testing",
+    "section": "Example: Basic Hypothesis Testing",
+    "text": "Example: Basic Hypothesis Testing\nSuppose that a hospital emergency department sees patients with influenza-like illness (ILI) at an average rate of six per day, except when there is a flu outbreak, in which case the rate is higher. Each day, the hospital records the number of ILI cases and tests whether there is evidence of an outbreak.\n\nQuestionsAnswers\n\n\n\nWhat should the null and alternative hypotheses be for testing whether there is evidence of an outbreak?\nWhat is the rejection region corresponding to a significance level \\(\\alpha=0.05\\).\nDo we have evidence of an outbreak when we receive a count of 12 cases for a single day?\n\n\n\nSince we’re dealing with counts, we will use the Poisson distribution to describe the distribution of the number of cases. The hypothesis should be related to the rate parameter \\(\\lambda\\).\n\\[\nH_0: \\lambda=6; H_a: \\lambda &gt; 6\n\\] where \\(\\lambda\\) is the average daily count of ILI cases. To find the rejection region, we need to find the critical value \\(x_c\\) such that \\(P(X \\geq x_c) &lt;= 0.05\\) (choose the value with the highest probability to fit this criteria).\n\nlibrary(tidyverse)\ndf &lt;- data.frame(xc=6:15)\ndf2 &lt;- mutate(df, probs = 1-ppois(xc,lambda=6))\ndf2\n\n   xc        probs\n1   6 0.3936972176\n2   7 0.2560202395\n3   8 0.1527625060\n4   9 0.0839240170\n5  10 0.0426209236\n6  11 0.0200919635\n7  12 0.0088274835\n8  13 0.0036284927\n9  14 0.0014003538\n10 15 0.0005090983\n\n\nThe data frame shows that when \\(x_c=10\\), \\(P(X \\geq 10) = 0.0426\\), which is lower than 0.05. This means the rejection/critical region is \\(X\\geq 10\\). If we get at least 10 cases, we have evidence of an outbreak. If we get less than 10 cases, we have no evidence of an outbreak."
+  },
+  {
+    "objectID": "lecture7.html#power",
+    "href": "lecture7.html#power",
+    "title": "Hypothesis Testing",
+    "section": "Power",
+    "text": "Power\nPower is the probability of rejecting the null hypothesis when the null hypothesis is false.\n\n\n\n\n\n\nImportant\n\n\nThe concept of power is closely related to sample size selection. In hypothesis testing, the sample size is determined so that the power at a fixed value of the alternative hypothesis is equal to a predetermined value or based on a set effect size."
+  },
+  {
+    "objectID": "lecture7.html#p-values",
+    "href": "lecture7.html#p-values",
+    "title": "Hypothesis Testing",
+    "section": "p-values",
+    "text": "p-values\n\n\n\n\n\n\nImportant\n\n\nThe p-value is the probability of getting a test statistic as extreme or more extreme than what was actually observed given that \\(H_0\\) is true. “More extreme” refers to getting a test statistic further away from the cutoff point that determines the rejection region.\nThe smaller p-value, the stronger the evidence against the null hypothesis \\(H_0\\).\n\n\n\n\n\n\n\n\n\nImportant\n\n\np-values are also often used for hypothesis testing to decide whether to reject \\(H_0\\) or not. A common rule is to reject the null hypothesis when the p-value is less than \\(\\alpha\\), and fail to reject otherwise.\nAn alternative definition of the p-value is that the p-value is the smallest value of \\(\\alpha\\) that leads to the rejection of the null hypothesis."
+  },
+  {
+    "objectID": "lecture7.html#example-p-values",
+    "href": "lecture7.html#example-p-values",
+    "title": "Hypothesis Testing",
+    "section": "Example: p-values",
+    "text": "Example: p-values\nSuppose that a hospital emergency department sees patients with influenza-like illness (ILI) at an average rate of six per day, except when there is a flu outbreak, in which case the rate is higher. Each day, the hospital records the number of ILI cases and tests whether there is evidence of an outbreak.\n\nQuestionsAnswer\n\n\nRecall that the hypotheses are given by\n\\[\nH_0: \\lambda = 6; H_a: \\lambda &gt; 6\n\\]\nCalculate the p-value if the daily number of ILI cases was 12.\n\n\nAssuming the null hypothesis is true, we assume \\(\\lambda =6\\). We need to calculate the probability of getting a count as extreme or more extreme than 6, i.e. further away from 6. Therefore, we need to calculate the \\(P(X \\geq 12)\\) using a Poisson distribution with \\(\\lambda=6\\).\n\nprob &lt;- 1-ppois(11,lambda=6)\nprob\n\n[1] 0.02009196\n\n\nThe resulting p-value is p=0.020092.\nAfter seeing this result, you must believe one of two things.\n\n\\(H_0\\) is true and you observed an event with probability 0.0201\n\\(H_0\\) is false."
+  },
+  {
+    "objectID": "lecture7.html#hypothesis-testing-approach",
+    "href": "lecture7.html#hypothesis-testing-approach",
+    "title": "Hypothesis Testing",
+    "section": "Hypothesis Testing: Approach",
+    "text": "Hypothesis Testing: Approach\nThe approach for hypothesis testing can be described as follows:\n\nDetermine the parameter of interest\nDetermine the appropriate null and alternative hypotheses\nChoose a value for the significance level.\nDetermine the rejection region.\nCompute the test statistic\nIf the test statistic is in the rejection region, then reject the null hypothesis; otherwise, fail to reject the null hypothesis."
+  },
+  {
+    "objectID": "lecture7.html#hypothesis-test-single-mean-known-variance",
+    "href": "lecture7.html#hypothesis-test-single-mean-known-variance",
+    "title": "Hypothesis Testing",
+    "section": "Hypothesis Test: Single Mean, Known Variance",
+    "text": "Hypothesis Test: Single Mean, Known Variance\nSuppose now that we observe a sample from a Gaussian distribution with known variance \\(\\sigma^2\\). If we are interested in testing the null hypothesis \\(H_0: \\mu=\\mu_0\\), the alternative hypothesis can be one of the following:\n\nOne-sided hypotheses: \\(H_a: \\mu &lt; \\mu_0\\) or \\(H_a: \\mu &gt; \\mu_0\\).\nTwo-sided hypotheses: \\(H_a: \\mu \\neq \\mu_0\\)\n\nThe problem dictates which alternative is appropriate."
+  },
+  {
+    "objectID": "lecture7.html#rejection-region",
+    "href": "lecture7.html#rejection-region",
+    "title": "Hypothesis Testing",
+    "section": "Rejection Region",
+    "text": "Rejection Region"
+  },
+  {
+    "objectID": "lecture7.html#two-sided-tests",
+    "href": "lecture7.html#two-sided-tests",
+    "title": "Hypothesis Testing",
+    "section": "Two-Sided Tests",
+    "text": "Two-Sided Tests\nSuppose the alternative hypothesis is two-sided (\\(H_a: \\mu \\neq \\mu_0\\)). This means we have to consider the two cases in creating the rejection region, the sample mean could be above \\(\\mu_0\\) or below \\(\\mu_0\\)."
+  },
+  {
+    "objectID": "lecture7.html#one-sided-tests",
+    "href": "lecture7.html#one-sided-tests",
+    "title": "Hypothesis Testing",
+    "section": "One-Sided Tests",
+    "text": "One-Sided Tests\nRecall that if \\(\\mu=\\mu_0\\), then the sample mean follows a Gaussian distribution with mean \\(\\mu\\) and variance \\(\\sigma^2/n\\). The corresponding standardized statistic \\(z\\) follows a standard Gaussian/normal distribution with mean 0 and standard deviation 1.\n\\[\nz = \\frac{\\bar{X}-\\mu_0}{\\sigma/\\sqrt{n}}\n\\]\n\nTest Statisticp-value\n\n\nFor one-sided tests with a significance level \\(\\alpha\\), the critical values depend on \\(z_\\alpha\\) defined by \\(P(Z &lt; z_\\alpha) = \\alpha\\).\nSpecifically, for \\(H_a: \\mu &lt; \\mu_0\\), the rejection region is \\(z &lt; z_\\alpha\\). For \\(H_a: \\mu &gt; \\mu_0\\), the rejection region is \\(z &gt; z_{1-\\alpha}\\). Since we typically choose a low value for \\(\\alpha\\), we expect a negative value for \\(z_\\alpha\\).\n\n\nThe p-value can be calculated by calculating the following probabilities:\n\n\\(H_a: \\mu &lt; \\mu_0 \\to P(Z &lt; z)\\)\n\\(H_a: \\mu &gt; \\mu_0 \\to P(Z &gt; z)\\)"
+  },
+  {
+    "objectID": "lecture7.html#rejection-region-two-sided-tests",
+    "href": "lecture7.html#rejection-region-two-sided-tests",
+    "title": "Hypothesis Testing",
+    "section": "Rejection Region: Two-Sided Tests",
+    "text": "Rejection Region: Two-Sided Tests\nSuppose the alternative hypothesis is two-sided (\\(H_a: \\mu \\neq \\mu_0\\)). This means we have to consider the two cases in creating the rejection region, the sample mean could be above \\(\\mu_0\\) or below \\(\\mu_0\\).\n\n\nRejection Region\n\n\nFor two-sided tests with a significance level \\(\\alpha\\), we need to account for rejection regions on either side of the mean dictated by the null hypothesis. Since the standard normal distribution is symmetric about zero, the rejection region is defined by\n\\[\nz &lt; z_{\\alpha/2}~OR~ z &gt; z_{1-\\alpha/2}\n\\] ### p-value\nThe p-value can be calculated using the following equation:\n\\[\nP(Z &lt; -|z|) + P(Z&gt;|z|)\n\\] where \\(|z|\\) is the absolute value of \\(z\\)."
+  },
+  {
+    "objectID": "lecture7.html#example-3",
+    "href": "lecture7.html#example-3",
+    "title": "Hypothesis Testing",
+    "section": "Example",
+    "text": "Example\nSuppose we have a sample of BMI levels for 200 adults. We assume the BMI levels are normally distributed with mean \\(\\mu\\) and a standard deviation of 5.0.\n\nQuestionAnswer 1 (p-value)Rejection Region\n\n\nSuppose the sample mean of the 200 adults was \\(\\bar{x}=22.9\\). Test whether the population BMI is equal to 23.5 against the alternative that it is not 23.5. Use a significance level \\(\\alpha=0.05\\)\n\n\nThe parameter of interest is the population average BMI. The null and alternative hypotheses are as follows:\n\\[\nH_0: \\mu = 23.5; H_a: \\mu \\neq 23.5\n\\]\nWe first calculate the z-score, i.e. the standardized statistic\n\nxbar &lt;- 22.9\nmu_null &lt;- 23.5\nstdev &lt;- 5\nsampsize &lt;- 200\n\nz &lt;- (xbar-mu_null)/(stdev/sqrt(200))\nz\n\n[1] -1.697056\n\n\nTo calculate the p-value, we use pnorm. We can use abs(z) to get the absolute value of z.\n\npval &lt;- pnorm(-abs(z)) + pnorm(abs(z),lower.tail=F)\npval\n\n[1] 0.08968602\n\n\nThe p-value is 0.09. The p-value is higher than the significance level, which means we fail to reject the null hypothesis.\n\n\nTo calculate the rejection region, we need $ z &lt; z_{/2}OR z &gt; z_{1-/2}$.\nThe critical regions are then calculated as:\n\n# limit 1\nalpha=0.05\nqnorm(0.05/2)\n\n[1] -1.959964\n\n# limit 2\n\nqnorm(1-alpha/2)\n\n[1] 1.959964\n\n\nThe rejection region is then z &lt; -1.959964 OR z &gt; 1.959964Since z=-1.6970563 is not part of the rejection region, then we fail to reject \\(H_0\\)."
   }
 ]

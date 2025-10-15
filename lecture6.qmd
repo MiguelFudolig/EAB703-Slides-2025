@@ -494,8 +494,8 @@ Based on `freq`, the proportion of those with metabolic syndrome is 0.6735 out o
 ```{r}
 phat <- 297/443
 sampsize <- 441
-alpha = 1-0.95
-relcoeff = qnorm(p=1-alpha/2,mean=0,sd=1)
+alpha <- 1-0.95
+relcoeff <- qnorm(p=1-alpha/2,mean=0,sd=1)
 se <- sqrt((phat*(1-phat)/sampsize))
 
 lower <- phat - relcoeff*se

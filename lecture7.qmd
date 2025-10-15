@@ -226,3 +226,277 @@ $$
 H_0: \pi_A - \pi_B = 0; H_a: \pi_A-\pi_B \neq 0
 $$
 :::
+
+## Hypothesis Testing: Decisions
+
+The main idea behind hypothesis testing is to **assume the null hypothesis is true until we get evidence that it is false.**
+
+::: callout-note
+How do we get evidence that $H_0$ is false? If the probability of obtaining the measured statistic (or more extreme values) assuming the null hypothesis is low, then this is evidence **against** the null hypothesis.
+
+How low should this probability be?
+:::
+
+::: callout-important
+Once we've established this threshold, we need to make a *decision*.
+
+- Reject $H_0$
+- Do Not Reject $H_0$ (Note: Failing to Reject $H_0$ is not the same as accepting $H_0$).
+:::
+
+## Error Types and Significance Level
+
+::: panel-tabset
+### Errors
+
+There is no error when the null hypothesis is rejected when it is false and when the null hypothesis is not rejected when it is true. However, the following cases are errors:
+
+::: {.callout-note title="Type I error"}
+A Type I error occurs when the null hypothesis is rejected when it is true.
+:::
+
+::: {.callout-note title="Type I error"}
+A Type II error occurs when the null hypothesis is not rejected when it is false.
+:::
+
+
+### Error Tables
+
+![](https://itfeature.com/wp-content/uploads/2024/04/Type-I-and-type-II-Errors-in-hypothesis-testing.jpg)
+
+### Significance Level
+
+Type I errors cannot be avoided due to the randomness of the process. The standard approach in hypothesis testing is to determine the cutoff point for our decision so that the probability of making a Type I error is some small predetermined number. This number is referred to as the **significance level**, $\alpha$. Formally,
+
+$$
+\alpha = P(Reject~H_0|True~H_0) = P(Type~I~Error)
+$$
+
+The most common value used for the significance level is $\alpha = 0.05$.
+
+:::
+
+## Hypothesis Testing: Terminology
+
+
+::: {.callout-note title="Test Statistic"}
+The *test statistic* is some function of the data that is used to make the decision about whether to reject $H_0$ or fail to reject $H_0$.
+:::
+
+::: {.callout-note title="Rejection Region"}
+The *rejection region*, also called the *critical region*, is the set of values of the test statistic that lead us to reject $H_0$.
+:::
+
+## Example: Basic Hypothesis Testing
+
+Suppose that a hospital emergency department sees patients with influenza-like illness (ILI) at an average rate of six per day, except when there is a flu outbreak, in which case the rate is higher. Each day, the hospital records the number of ILI cases and tests whether there is evidence of an outbreak. 
+
+::: panel-tabset
+### Questions
+
+- What should the null and alternative hypotheses be for testing whether there is evidence of an outbreak?
+- What is the rejection region corresponding to a significance level $\alpha=0.05$.
+- Do we have evidence of an outbreak when we receive a count of 12 cases for a single day?
+
+### Answers
+
+Since we're dealing with counts, we will use the Poisson distribution to describe the distribution of the number of cases. The hypothesis should be related to the rate parameter $\lambda$.
+
+$$
+H_0: \lambda=6; H_a: \lambda > 6
+$$
+where $\lambda$ is the average daily count of ILI cases. To find the rejection region, we need to find the critical value $x_c$ such that $P(X \geq x_c) <= 0.05$ (choose the value with the highest probability to fit this criteria).
+
+```{r}
+library(tidyverse)
+df <- data.frame(xc=6:15)
+df2 <- mutate(df, probs = 1-ppois(xc,lambda=6))
+df2
+```
+
+The data frame shows that when $x_c=10$, $P(X \geq 10) = 0.0426$, which is lower than 0.05. This means the rejection/critical region is $X\geq 10$. If we get at least 10 cases, we have evidence of an outbreak. If we get less than 10 cases, we have no evidence of an outbreak.
+:::
+
+## Power 
+
+Power is the probability of rejecting the null hypothesis when the null hypothesis is false.
+
+::: callout-important
+The concept of power is closely related to sample size selection. In hypothesis testing, the sample size is determined so that the power at a fixed value of the alternative hypothesis is equal to a predetermined value or based on a set effect size.
+:::
+
+## p-values
+
+::: callout-important
+The p-value is the probability of getting a test statistic as extreme or more extreme than what was actually observed given that $H_0$ is true. "More extreme" refers to getting a test statistic further away from the cutoff point that determines the rejection region.
+
+The smaller p-value, the stronger the evidence against the null hypothesis $H_0$.
+:::
+
+::: callout-important
+p-values are also often used for hypothesis testing to decide whether to reject $H_0$ or not. A common rule is to reject the null hypothesis when the p-value is less than $\alpha$, and fail to reject otherwise.
+
+An alternative definition of the p-value is that the p-value is the smallest value of $\alpha$ that leads to the rejection of the null hypothesis.
+:::
+
+## Example: p-values
+
+Suppose that a hospital emergency department sees patients with influenza-like illness (ILI) at an average rate of six per day, except when there is a flu outbreak, in which case the rate is higher. Each day, the hospital records the number of ILI cases and tests whether there is evidence of an outbreak. 
+
+::: panel-tabset
+### Questions
+
+Recall that the hypotheses are given by
+
+$$
+H_0: \lambda = 6; H_a: \lambda > 6
+$$
+
+Calculate the p-value if the daily number of ILI cases was 12.
+
+### Answer
+
+Assuming the null hypothesis is true, we assume $\lambda =6$. We need to calculate the probability of getting a count as extreme or more extreme than 6, i.e. further away from 6. Therefore, we need to calculate the $P(X \geq 12)$ using a Poisson distribution with $\lambda=6$.
+
+```{r}
+prob <- 1-ppois(11,lambda=6)
+prob
+```
+
+The resulting p-value is p=`r prob`.
+
+After seeing this result, you must believe one of two things.
+
+- $H_0$ is true and you observed an event with probability `r round(prob,4)`
+- $H_0$ is false. 
+
+:::
+
+## Hypothesis Testing: Approach
+
+The approach for hypothesis testing can be described as follows:
+
+- Determine the parameter of interest
+- Determine the appropriate null and alternative hypotheses
+- Choose a value for the significance level.
+- Determine the rejection region.
+- Compute the test statistic
+- If the test statistic is in the rejection region, then reject the null hypothesis; otherwise, fail to reject the null hypothesis.
+
+# Tests Involving Means
+
+## Hypothesis Test: Single Mean, Known Variance
+
+Suppose now that we observe a sample from a Gaussian distribution with known variance $\sigma^2$. If we are interested in testing the null hypothesis $H_0: \mu=\mu_0$, the alternative hypothesis can be one of the following:
+
+- One-sided hypotheses: $H_a: \mu < \mu_0$ or $H_a: \mu > \mu_0$.
+- Two-sided hypotheses: $H_a: \mu \neq \mu_0$
+
+The problem dictates which alternative is appropriate.
+
+##  One-Sided Tests
+
+Recall that if $\mu=\mu_0$, then the sample mean follows a Gaussian distribution with mean $\mu$ and variance $\sigma^2/n$. The corresponding standardized statistic $z$ follows a standard Gaussian/normal distribution with mean 0 and standard deviation 1. 
+
+$$
+z = \frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}
+$$
+
+::: panel-tabset
+
+### Test Statistic
+For one-sided tests with a significance level $\alpha$, the critical values depend on $z_\alpha$ defined by $P(Z < z_\alpha) = \alpha$.
+
+Specifically, for $H_a: \mu < \mu_0$, the rejection region is $z < z_\alpha$. For $H_a: \mu > \mu_0$, the rejection region is $z > z_{1-\alpha}$. Since we typically choose a low value for $\alpha$, we expect a negative value for $z_\alpha$.
+
+### p-value
+
+The p-value can be calculated by calculating the following probabilities:
+
+- $H_a: \mu < \mu_0 \to P(Z < z)$
+- $H_a: \mu > \mu_0 \to P(Z > z)$
+:::
+
+## Rejection Region: Two-Sided Tests
+
+Suppose the alternative hypothesis is two-sided ($H_a: \mu \neq \mu_0$). This means we have to consider the two cases in creating the rejection region, the sample mean could be above $\mu_0$ or below $\mu_0$.
+
+![](figs/7-twosided.png)
+
+::: panel-tabset
+
+### Rejection Region
+
+For two-sided tests with a significance level $\alpha$, we need to account for rejection regions on either side of the mean dictated by the null hypothesis. Since the standard normal distribution is symmetric about zero, the rejection region is defined by 
+
+$$
+z < z_{\alpha/2}~OR~ z > z_{1-\alpha/2}
+$$
+### p-value
+
+The p-value can be calculated using the following equation:
+
+$$
+P(Z < -|z|) + P(Z>|z|)
+$$
+where $|z|$ is the absolute value of $z$.
+:::
+
+## Example
+
+Suppose we have a sample of BMI levels for 200 adults. We assume the BMI levels are normally distributed with mean $\mu$ and a standard deviation of 5.0. 
+
+::: panel-tabset
+
+### Question
+Suppose the sample mean of the 200 adults was $\bar{x}=22.9$. Test whether the population BMI is equal to 23.5 against the alternative that it is not 23.5. Use a significance level $\alpha=0.05$
+
+### Answer 1 (p-value)
+
+The parameter of interest is the population average BMI. The null and alternative hypotheses are as follows:
+
+$$
+H_0: \mu = 23.5; H_a: \mu \neq 23.5
+$$
+
+We first calculate the z-score, i.e. the standardized statistic
+
+```{r}
+xbar <- 22.9
+mu_null <- 23.5
+stdev <- 5
+sampsize <- 200
+
+z <- (xbar-mu_null)/(stdev/sqrt(200))
+z
+```
+
+To calculate the p-value, we use `pnorm`. We can use `abs(z)` to get the absolute value of `z`.
+
+```{r}
+pval <- pnorm(-abs(z)) + pnorm(abs(z),lower.tail=F)
+pval
+```
+
+The p-value is `r round(pval,3)`. The p-value is higher than the significance level, which means we **fail to reject** the null hypothesis.
+
+### Rejection Region
+
+To calculate the rejection region, we need $ z < z_{\alpha/2}~OR~ z > z_{1-\alpha/2}$.
+
+The critical regions are then calculated as:
+
+```{r}
+# limit 1
+alpha=0.05
+qnorm(0.05/2)
+
+# limit 2
+
+qnorm(1-alpha/2)
+```
+
+The rejection region is then z < `r qnorm(0.05/2)` OR z > `r -qnorm(0.05/2)`Since z=`r z` is not part of the rejection region, then we fail to reject $H_0$.
+:::
+
+
