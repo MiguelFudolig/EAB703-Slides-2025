@@ -3762,5 +3762,68 @@
       "Problem Sets",
       "Problem Set 3 Key"
     ]
+  },
+  {
+    "objectID": "lecture7.html#what-is-hypothesis-testing",
+    "href": "lecture7.html#what-is-hypothesis-testing",
+    "title": "Hypothesis Testing",
+    "section": "What is Hypothesis Testing?",
+    "text": "What is Hypothesis Testing?\nRecall that confidence intervals are used to provide interval estimates for the population parameter. Often, we want to ask if the parameters behave a specific way.\n\n\n\n\n\n\nImportant\n\n\nExamples of research questions we might ask are:\n\nIs the mean lifetime of a person using a newly developed drug the same as the lifetime with a standard drug?\nIs the mortality rate equal to 1%?"
+  },
+  {
+    "objectID": "lecture7.html#hypothesis-testing-example",
+    "href": "lecture7.html#hypothesis-testing-example",
+    "title": "Hypothesis Testing",
+    "section": "Hypothesis Testing Example",
+    "text": "Hypothesis Testing Example\nConsider the mean lifetime example. Suppose you perform the study and you find that the average lifetime for the newly developed drug is 35 years, while those with the standard drug had an average lifetime of 34 years.\n\n\n\n\n\n\nNote\n\n\nCould this difference of 1 year easily have occurred by chance even if the drugs work the same?\n\n\n\n\n\n\n\n\n\nImportant\n\n\nWe need to determine the probability of observing at least a 1-year difference in average lifetimes between the two groups under the assumption that the population means are equal.\n\nIf this probability is high, then it’s not unlikely to observe a 1-year difference or more due to randomness.\nIf this probability is low, then it’s unlikely to observe a 1-year difference or more due to randomness. There is evidence that Drug A works better than Drug B."
+  },
+  {
+    "objectID": "lecture7.html#statistical-hypothesis",
+    "href": "lecture7.html#statistical-hypothesis",
+    "title": "Hypothesis Testing",
+    "section": "Statistical Hypothesis",
+    "text": "Statistical Hypothesis\nIn general, a statistical hypothesis is a statement about one or more parameters.\n\n\n\n\n\n\nWarning\n\n\nThe statistical hypothesis is aligned with the research hypothesis, but not exactly the same. The research hypothesis addresses the problem stated for the study, but it does not need to provide a statemment about the parameters."
+  },
+  {
+    "objectID": "lecture7.html#types-of-statistical-hypotheses",
+    "href": "lecture7.html#types-of-statistical-hypotheses",
+    "title": "Hypothesis Testing",
+    "section": "Types of Statistical Hypotheses",
+    "text": "Types of Statistical Hypotheses\nThere are two types of statistical hypotheses: the null and alternative hypotheses.\n\n\n\n\n\n\n\nNull Hypothesis\n\n\nThe null hypothesis, \\(H_0\\), is usually a specific statement about the parameters and is the statement against which we seek evidence.\n\n\n\n\n\n\n\n\n\n\n\nAlternative Hypothesis\n\n\nThe alternative hypothesis, \\(H_a\\), is the statement that we conclude if we decide against the null hypothesis."
+  },
+  {
+    "objectID": "lecture7.html#null-hypotheses",
+    "href": "lecture7.html#null-hypotheses",
+    "title": "Hypothesis Testing",
+    "section": "Null Hypotheses",
+    "text": "Null Hypotheses\nThe null hypothesis is often a statement about the parameters that amount to nothing or random chance.\n\n\n\n\n\n\nNote\n\n\nThe null hypothesis could be that two treatments may yield the same mean, mortality rate remains the same, a coin is fair, or two random variables are not associated with each other.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nConsider the mean lifetime example. The null hypothesis corresponds to the scenario that both treatment and standard groups yield the same average lifetimes. The parameter of interest is then the difference in population average lifetime between the two groups. Explicitly,\n\\(H_0\\): The average lifetime of the treatment group is equal to the average lifetime of the standard group.\n\\[\nH_0: \\mu_{trt} - \\mu_{standard} = 0\n\\]"
+  },
+  {
+    "objectID": "lecture7.html#alternative-hypothesis",
+    "href": "lecture7.html#alternative-hypothesis",
+    "title": "Hypothesis Testing",
+    "section": "Alternative Hypothesis",
+    "text": "Alternative Hypothesis\nThe alternative hypothesis \\(H_a\\) is the statement that we conclude if we decide against the null hypothesis. Often, the null and alternative hypothesis should cover the entire parameter space.\n\nWarningExampleNotes\n\n\n\n\n\n\n\n\nWarning\n\n\nHowever, there are times when the two hypotheses only cover a part of the parameter space depending on what convention is used for the null hypothesis.\n\n\n\n\n\nConsider the mean lifetime example. If we were looking for evidence that the treatment performs better than the standard drug in increasing lifetimes, then that would be our alternative hypothesis. Explicitly,\n\\(H_a:\\) The population average lifetime of the treatment group is higher than the average lifetime of the treatment group.\n\\[\nH_a: \\mu_{trt} -\\mu_{standard} &gt;0\n\\]\n\n\nThe hypotheses can be expressed by the following statements:\n\\[\nH_0: \\mu_{trt} - \\mu_{standard} = 0\n\\] \\[\nH_a: \\mu_{trt} -\\mu_{standard} &gt;0\n\\]\nThese values do NOT span the entire parameter space \\((-\\infty,\\infty)\\). Rather it only considers one side. Hence, \\(H_a\\) is considered as a one-sided hypothesis.\n\n\n\n\n\n\nTip\n\n\nThere are references who would express the null hypothesis as \\(\\mu_{trt}-\\mu_{standard} \\leq 0\\). The case \\(\\mu_{trt}-\\mu_{standard} &lt; 0\\) means the treatment works worse than the placebo, implying the drug is not effective.\nIn this course, we will be as specific as possible when choosing \\(H_0\\) by only retaining the equality in the null hypothesis."
+  },
+  {
+    "objectID": "lecture7.html#example-1",
+    "href": "lecture7.html#example-1",
+    "title": "Hypothesis Testing",
+    "section": "Example",
+    "text": "Example\nSuppose we want to see whether there was evidence that the germination rate of seeds planted in a new soil mix formulation was higher than 70%.\n\nQuestionAnswer\n\n\nWhat are the null and alternative hypotheses for this study?\n\n\n\\(H_0:\\) The long-run germination rate of seeds planted in the new soil mix is equal to 70%\n\\[\nH_0: \\pi_{germination} = 0.70\n\\]\n\\(H_a:\\) The long-run germination rate of seeds planted in the new soil mix is higher than 70%\n\\[\nH_a: \\pi_{germination} &gt; 0.70\n\\]"
+  },
+  {
+    "objectID": "lecture7.html#example-2",
+    "href": "lecture7.html#example-2",
+    "title": "Hypothesis Testing",
+    "section": "Example",
+    "text": "Example\nSuppose we want to disprove the claim that the average single-serving sugar content of a brand of dark chocolate is 3 grams.\n\nQuestionAnswer\n\n\nWhat are the null and alternative hypotheses for this study?\n\n\n\\(H_0:\\) The population average single-serving sugar content of a brand of dark chocolate is equal to 3 grams. OR The long-run average single-serving sugar content of a brand of dark chocolate is equal to 3 grams.\n\\[\nH_0: \\mu = 3\n\\]\n\\(H_a:\\) The population average single-serving sugar content of a brand of dark chocolate is NOT equal to 3 grams. OR The long-run average single-serving sugar content of a brand of dark chocolate is NOT equal to 3 grams.\n\\[\nH_a: \\mu \\neq 3\n\\]"
+  },
+  {
+    "objectID": "lecture7.html#exercise",
+    "href": "lecture7.html#exercise",
+    "title": "Hypothesis Testing",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the following studies:\n\nResearchers were interested in determining whether the daily average amount of dog food in their local animal shelter was lower than 500 grams.\nSuppose a design company created two designs (A and B) for the website of a new community clinic. The clinic administrators wanted to test whether there was a difference in proportion of site visitors who preferred each design.\n\n\nQuestionsAnswer 1Answer 2\n\n\nWhat are the parameters of interest? What are the null and alternative hypotheses for these studies?\n\n\nParameter of interest: Long-run daily average amount of dog food \\(H_0:\\) The long-run daily average amount of dog food is equal to 500 grams. \\(H_a:\\) The long-run daily average amount of dog food is less than 500 grams.\n\\[\nH_0: \\mu = 500; H_a: \\mu &lt; 500\n\\]\n\n\n\\(H_0:\\) There is no difference in proportion of site visitors who preferred Designs A and B. \\(H_a:\\) There is a difference in proportion of site visitors who preferred Designs A and B.\n\\[\nH_0: \\pi_A - \\pi_B = 0; H_a: \\pi_A-\\pi_B \\neq 0\n\\]"
   }
 ]

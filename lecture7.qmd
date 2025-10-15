@@ -1,0 +1,228 @@
+---
+title: "Hypothesis Testing"
+subtitle: Lecture 7
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 7 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+
+# Outline
+
+- What is Hypothesis Testing?
+- Elements of a Statistical Test
+- What are p-values?
+- Tests of Means
+- Tests of Proportions
+
+# Hypothesis Testing
+
+## What is Hypothesis Testing?
+
+Recall that confidence intervals are used to provide interval estimates for the population parameter. Often, we want to ask if the parameters behave a specific way.
+
+::: callout-important
+Examples of research questions we might ask are:
+
+- Is the mean lifetime of a person using a newly developed drug the same as the lifetime with a standard drug?
+- Is the mortality rate equal to 1%?
+:::
+
+## Hypothesis Testing Example
+
+Consider the mean lifetime example. Suppose you perform the study and you find that the average lifetime for the newly developed drug is 35 years, while those with the standard drug had an average lifetime of 34 years.
+
+::: callout-note
+Could this difference of 1 year easily have occurred by chance even if the drugs work the same?
+:::
+
+::: callout-important
+We need to determine the probability of observing at least a 1-year difference in average lifetimes between the two groups under the assumption that the population means are equal. 
+
+- If this probability is high, then it's not unlikely to observe a 1-year difference or more due to randomness.
+- If this probability is low, then it's unlikely to observe a 1-year difference or more due to randomness. There is evidence that Drug A works better than Drug B.
+:::
+
+# Elements of a Statistical Hypothesis Test
+
+## Statistical Hypothesis
+
+In general, a statistical hypothesis is a statement about one or more parameters.
+
+::: callout-warning
+The statistical hypothesis is aligned with the *research hypothesis*, but not exactly the same. The research hypothesis addresses the problem stated for the study, but it does not need to provide a statemment about the parameters.
+:::
+
+## Types of Statistical Hypotheses
+
+There are two types of statistical hypotheses: the null and alternative hypotheses.
+
+::: {.callout-note title="Null Hypothesis"}
+The null hypothesis, $H_0$, is usually a specific statement about the parameters and is the statement against which we seek evidence.
+:::
+
+::: {.callout-note title="Alternative Hypothesis"}
+The alternative hypothesis, $H_a$, is the statement that we conclude if we decide against the null hypothesis.
+:::
+
+## Null Hypotheses
+
+The null hypothesis is often a statement about the parameters that amount to nothing or random chance. 
+
+::: callout-note
+The null hypothesis could be that two treatments may yield the same mean, mortality rate remains the same, a coin is fair, or two random variables are not associated with each other.
+:::
+
+::: callout-important
+Consider the mean lifetime example. The null hypothesis corresponds to the scenario that both treatment and standard groups yield the same average lifetimes. The parameter of interest is then the difference in population average lifetime between the two groups. Explicitly, 
+
+$H_0$: The average lifetime of the treatment group is equal to the average lifetime of the standard group.
+
+$$
+H_0: \mu_{trt} - \mu_{standard} = 0
+$$
+:::
+
+## Alternative Hypothesis
+
+The alternative hypothesis $H_a$ is the statement that we conclude if we decide against the null hypothesis. Often, the null and alternative hypothesis should cover the entire parameter space. 
+
+
+::: panel-tabset
+
+### Warning
+
+::: callout-warning
+However, there are times when the two hypotheses only cover a part of the parameter space depending on what convention is used for the null hypothesis.
+:::
+
+### Example 
+
+Consider the mean lifetime example. If we were looking for evidence that the treatment performs better than the standard drug in increasing lifetimes, then that would be our alternative hypothesis. Explicitly,
+
+$H_a:$ The population average lifetime of the treatment group is higher than the average lifetime of the treatment group.
+
+$$
+H_a: \mu_{trt} -\mu_{standard} >0
+$$
+
+### Notes
+
+The hypotheses can be expressed by the following statements:
+
+$$
+H_0: \mu_{trt} - \mu_{standard} = 0
+$$
+$$
+H_a: \mu_{trt} -\mu_{standard} >0
+$$
+
+These values do **NOT** span the entire parameter space $(-\infty,\infty)$. Rather it only considers one side. Hence, $H_a$ is considered as a one-sided hypothesis.
+
+::: callout-tip
+There are references who would express the null hypothesis as $\mu_{trt}-\mu_{standard} \leq 0$. The case $\mu_{trt}-\mu_{standard} < 0$ means the treatment works worse than the placebo, implying the drug is not effective.
+
+**In this course**, we will be as specific as possible when choosing $H_0$ by **only retaining the equality in the null hypothesis**.
+:::
+
+:::
+
+## Example
+
+Suppose we want to see whether there was evidence that the germination rate of seeds planted in a new soil mix formulation was higher than 70%.
+
+::: panel-tabset
+### Question
+
+What are the null and alternative hypotheses for this study?
+
+### Answer
+
+$H_0:$ The long-run germination rate of seeds planted in the new soil mix is equal to 70%
+
+$$
+H_0: \pi_{germination} = 0.70
+$$
+
+$H_a:$ The long-run germination rate of seeds planted in the new soil mix is higher than 70%
+
+$$
+H_a: \pi_{germination} > 0.70
+$$
+
+:::
+
+## Example
+
+Suppose we want to disprove the claim that the average single-serving sugar content of a brand of dark chocolate is 3 grams.
+
+::: panel-tabset
+### Question
+
+What are the null and alternative hypotheses for this study?
+
+### Answer
+
+$H_0:$ The population average single-serving sugar content of a brand of dark chocolate is equal to 3 grams. OR The long-run average single-serving sugar content of a brand of dark chocolate is equal to 3 grams.
+
+$$
+H_0: \mu = 3
+$$
+
+$H_a:$ The population average single-serving sugar content of a brand of dark chocolate is *NOT* equal to 3 grams. OR The long-run average single-serving sugar content of a brand of dark chocolate is *NOT* equal to 3 grams.
+
+$$
+H_a: \mu \neq 3
+$$
+
+:::
+
+## Exercise
+
+Consider the following studies:
+
+1. Researchers were interested in determining whether the daily average amount of dog food in their local animal shelter was lower than 500 grams.
+
+2. Suppose a design company created two designs (A and B) for the website of a new community clinic. The clinic administrators wanted to test whether there was a difference in proportion of site visitors who preferred each design.
+
+
+::: panel-tabset
+### Questions
+
+What are the parameters of interest? What are the null and alternative hypotheses for these studies?
+
+### Answer 1
+
+Parameter of interest: Long-run daily average amount of dog food
+$H_0:$ The long-run daily average amount of dog food is equal to 500 grams.
+$H_a:$ The long-run daily average amount of dog food is less than 500 grams.
+
+$$
+H_0: \mu = 500; H_a: \mu < 500
+$$
+
+### Answer 2
+
+$H_0:$ There is no difference in proportion of site visitors who preferred Designs A and B.
+$H_a:$ There is a difference in proportion of site visitors who preferred Designs A and B.
+
+$$
+H_0: \pi_A - \pi_B = 0; H_a: \pi_A-\pi_B \neq 0
+$$
+:::
