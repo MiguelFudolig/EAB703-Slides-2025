@@ -729,7 +729,7 @@ where $t_{1-\alpha/2,df}$ has degrees of freedom equal to $df= n_1+n_2-2$.
 
 ### Unequal Pop. Variances
 
-When the population variances are not equal, then we don't need to pull the variances. However, the t-distribution has to account for the fact that we are using estimated variances for both groups. 
+When the population variances are not equal, then we don't need to pool the variances. However, the t-distribution has to account for the fact that we are using estimated variances for both groups. 
 
 We introduce the **Welch-Satterthwaite** procedure to construct this confidence interval such that the $100(1-\alpha)$% confidence interval is given by:
 

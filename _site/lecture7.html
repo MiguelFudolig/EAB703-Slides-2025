@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.42">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Hypothesis Testing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -28,8 +28,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -40,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -93,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5225a0b03738627c8390147651eb7bbf.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -394,7 +395,8 @@ H_a: \mu_{trt} -\mu_{standard} &gt;0
 <p>The hypotheses can be expressed by the following statements:</p>
 <p><span class="math display">\[
 H_0: \mu_{trt} - \mu_{standard} = 0
-\]</span> <span class="math display">\[
+\]</span></p>
+<p><span class="math display">\[
 H_a: \mu_{trt} -\mu_{standard} &gt;0
 \]</span></p>
 <p>These values do <strong>NOT</strong> span the entire parameter space <span class="math inline">\((-\infty,\infty)\)</span>. Rather it only considers one side. Hence, <span class="math inline">\(H_a\)</span> is considered as a one-sided hypothesis.</p>
@@ -691,7 +693,7 @@ H_0: \lambda=6; H_a: \lambda &gt; 6
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>p-values are also often used for hypothesis testing to decide whether to reject <span class="math inline">\(H_0\)</span> or not. A common rule is to reject the null hypothesis when the p-value is less than <span class="math inline">\(\alpha\)</span>, and fail to reject otherwise.</p>
+<p>p-values are also often used for hypothesis testing to decide whether to reject <span class="math inline">\(H_0\)</span> or not. A common rule is to <strong>reject the null hypothesis when the p-value is less than the significance level</strong> <span class="math inline">\(\alpha\)</span>, and fail to reject otherwise.</p>
 <p>An alternative definition of the p-value is that the p-value is the smallest value of <span class="math inline">\(\alpha\)</span> that leads to the rejection of the null hypothesis.</p>
 </div>
 </div>
@@ -755,12 +757,15 @@ H_0: \lambda = 6; H_a: \lambda &gt; 6
 </ul>
 <p>The problem dictates which alternative is appropriate.</p>
 </section>
-<section id="one-sided-tests" class="slide level2">
-<h2>One-Sided Tests</h2>
+<section id="test-statistic" class="slide level2">
+<h2>Test Statistic</h2>
 <p>Recall that if <span class="math inline">\(\mu=\mu_0\)</span>, then the sample mean follows a Gaussian distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2/n\)</span>. The corresponding standardized statistic <span class="math inline">\(z\)</span> follows a standard Gaussian/normal distribution with mean 0 and standard deviation 1.</p>
 <p><span class="math display">\[
 z = \frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}
 \]</span></p>
+</section>
+<section id="rejection-region-one-sided-tests" class="slide level2">
+<h2>Rejection Region: One-Sided Tests</h2>
 <div class="panel-tabset">
 <ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Test Statistic</a></li><li><a href="#tabset-8-2">p-value</a></li></ul>
 <div class="tab-content">
@@ -798,11 +803,15 @@ P(Z &lt; -|z|) + P(Z&gt;|z|)
 </div>
 </div>
 </section>
+<section id="hypothesis-testing-in-r" class="slide level2">
+<h2>Hypothesis Testing in <code>R</code></h2>
+<p>We can use <code>pnorm(z)</code> to calculate the corresponding probabilities after calculating the z-statistic. The arguments/options for the <code>pnorm</code> function varies for the different alternative hypotheses.</p>
+</section>
 <section id="example-3" class="slide level2">
 <h2>Example</h2>
-<p>Suppose we have a sample of BMI levels for 200 adults. We assume the BMI levels are normally distributed with mean <span class="math inline">\(\mu\)</span> and a standard deviation of 5.0.</p>
+<p>Suppose we have a sample of BMI levels for 200 adults. We assume the population BMI levels are normally distributed with mean <span class="math inline">\(\mu\)</span> and a standard deviation of 5.0.</p>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Question</a></li><li><a href="#tabset-10-2">Answer 1 (p-value)</a></li><li><a href="#tabset-10-3">Rejection Region</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Question</a></li><li><a href="#tabset-10-2">Answer 1 (p-value)</a></li><li><a href="#tabset-10-3">Rejection Region</a></li><li><a href="#tabset-10-4">Note</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1">
 <p>Suppose the sample mean of the 200 adults was <span class="math inline">\(\bar{x}=22.9\)</span>. Test whether the population BMI is equal to 23.5 against the alternative that it is not 23.5. Use a significance level <span class="math inline">\(\alpha=0.05\)</span></p>
@@ -819,7 +828,7 @@ H_0: \mu = 23.5; H_a: \mu \neq 23.5
 <span id="cb5-3"><a></a>stdev <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb5-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">200</span></span>
 <span id="cb5-5"><a></a></span>
-<span id="cb5-6"><a></a>z <span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu_null)<span class="sc">/</span>(stdev<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">200</span>))</span>
+<span id="cb5-6"><a></a>z <span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu_null)<span class="sc">/</span>(stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize))</span>
 <span id="cb5-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.697056</code></pre>
@@ -852,7 +861,1045 @@ H_0: \mu = 23.5; H_a: \mu \neq 23.5
 <pre><code>[1] 1.959964</code></pre>
 </div>
 </div>
-<p>The rejection region is then z &lt; -1.959964 OR z &gt; 1.959964Since z=-1.6970563 is not part of the rejection region, then we fail to reject <span class="math inline">\(H_0\)</span>.</p>
+<p>The rejection region is then z &lt; -1.959964 OR z &gt; 1.959964Since z=-1.6970563 is not part of the rejection region, then we fail to reject <span class="math inline">\(H_0\)</span>. We have insufficient evidence that the population BMI is not equal to 23.5.</p>
+</div>
+<div id="tabset-10-4">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>From here on out, we will use p-values to inform our decision about the null hypothesis. Even though we are using p-values for hypothesis testing, we must consider the fact that rejection regions and p-values are inherently addressing different concepts.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise</h2>
+<p>The scores of the Wechsler Adult Intelligence Scale are normally distributed with a standard deviation of 15.</p>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Question</a></li><li><a href="#tabset-11-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<p>Suppose an organization claims that the average IQ of their members are above 131. A random sample of 40 members had an average Wechsler IQ Score of 133.5. Use hypothesis testing to test the organization’s claim. Assume the sample size is negligible compared to the total membership of the organization. Use a significant level <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+</div>
+<div id="tabset-11-2">
+<p>The parameter of interest <span class="math inline">\(\mu\)</span> is the population average IQ of the organization. Our hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \mu = 131; H_a: \mu &gt; 131
+\]</span></p>
+<p>Calculating our test statistic <span class="math inline">\(z\)</span>,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>xbar <span class="ot">&lt;-</span> <span class="fl">133.5</span></span>
+<span id="cb13-2"><a></a>mu_null <span class="ot">&lt;-</span> <span class="dv">131</span></span>
+<span id="cb13-3"><a></a>stdev <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb13-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a>z <span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu_null)<span class="sc">/</span>(stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize))</span>
+<span id="cb13-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.054093</code></pre>
+</div>
+</div>
+<p>The resulting p-value for this one-sided test is: <span class="math inline">\(P(Z &gt; z)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1459203</code></pre>
+</div>
+</div>
+<p>The resulting p-value 0.15 is greater than the significance level of 0.05. Hence, we fail to reject the null hypothesis. We have insufficient evidence that the population average Wechsler IQ scores of the organization is above 131.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-test-single-mean-unknown-variance" class="slide level2">
+<h2>Hypothesis Test: Single Mean, Unknown Variance</h2>
+<p>When the population variance is unknown, we can use the <span class="math inline">\(t-distribution\)</span> to define our test statistic.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Recall Chapter 6: We can substitute the sample variance for the population variance and use the t-distribution instead of the standard normal distribution to account for the additional variability due to the variance estimation.</p>
+</div>
+</div>
+</div>
+<p>If we are interested in testing the null hypothesis <span class="math inline">\(H_0: \mu=\mu_0\)</span>, the alternative hypothesis can be one of the following:</p>
+<ul>
+<li>One-sided hypotheses: <span class="math inline">\(H_a: \mu &lt; \mu_0\)</span> or <span class="math inline">\(H_a: \mu &gt; \mu_0\)</span>.</li>
+<li>Two-sided hypotheses: <span class="math inline">\(H_a: \mu \neq \mu_0\)</span></li>
+</ul>
+<p>The problem dictates which alternative is appropriate.</p>
+</section>
+<section id="test-statistic-2" class="slide level2">
+<h2>Test Statistic</h2>
+<p>Recall that if <span class="math inline">\(\mu=\mu_0\)</span> and the sample has a mean <span class="math inline">\(\bar{x}\)</span>, variance <span class="math inline">\(s\)</span>, and size <span class="math inline">\(n\)</span>, then the following statistic, <span class="math inline">\(t\)</span>, follows a t-distribution.</p>
+<p><span class="math display">\[
+t = \frac{\bar{X}-\mu_0}{s/\sqrt{n}}
+\]</span></p>
+<p>The statistic <span class="math inline">\(t\)</span> follows a t-distribution with <span class="math inline">\(df=n-1\)</span> degrees of freedom.</p>
+</section>
+<section id="hypothesis-test-r" class="slide level2">
+<h2>Hypothesis Test: <code>R</code></h2>
+<p>The test for a single mean and unknown variance is also known as the <em>one-sample t-test</em>. Here are the different ways to implement this test in <code>R</code>.</p>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Given Statistics</a></li><li><a href="#tabset-12-2">Given Data Set</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
+<p>If we are given the mean, sample size, and standard deviation/variance, we can calculate the t-statistic manually like we did for the z-statistic for the case of known variance. We use the <code>pt()</code> function to calculate the p-value.</p>
+</div>
+<div id="tabset-12-2">
+<p>If we are provided a data set, we can use the <code>t.test(vector,mu=mu_null,alternative)</code> function in <code>R</code>.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>The <code>vector</code> includes the data that we want to use the t-test on.</li>
+<li>The <code>mu_null</code> placeholder is the mean according to the null hypothesis.</li>
+<li><code>alternative</code> can be <code>"less"</code> or <code>"greater"</code> for one-sided tests and <code>two.sided</code> for two-sided tests.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-statistics" class="slide level2">
+<h2>Example: Statistics</h2>
+<p>Suppose the recommendation for boys of a certain age is to consume at least 1,200 calories per day. A dietary recall measure revealed that the daily caloric intake for a random sample of 30 boys from the school district who receive free lunches is 1100 and a standard deviation of 200 calories.</p>
+<div class="panel-tabset">
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">Question</a></li><li><a href="#tabset-13-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1">
+<p>Do we have sufficient evidence that the true mean daily caloric intake for boys who receive free lunches from the school district is lower than the recommended amount? Use a significance level of 0.05.</p>
+</div>
+<div id="tabset-13-2">
+<p>The parameter of interest is the true mean daily caloric intake for boys who receive free lunches from the school district. The hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \mu = 1200; H_a: \mu &lt; 1200
+\]</span></p>
+<p>The summary statistics are provided, hence we need to calculate the t-statistic manually.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>xbar <span class="ot">&lt;-</span> <span class="dv">1100</span></span>
+<span id="cb17-2"><a></a>mu_null <span class="ot">&lt;-</span> <span class="dv">1200</span></span>
+<span id="cb17-3"><a></a>sdsamp <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb17-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb17-5"><a></a></span>
+<span id="cb17-6"><a></a>t<span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu_null)<span class="sc">/</span>(sdsamp<span class="sc">/</span><span class="fu">sqrt</span>(sampsize))</span>
+<span id="cb17-7"><a></a>t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.738613</code></pre>
+</div>
+</div>
+<p>The t-statistic is -2.739. To calculate the p-value,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>df <span class="ot">&lt;-</span> sampsize <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb19-2"><a></a><span class="fu">dt</span>(t,<span class="at">df=</span>df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01255289</code></pre>
+</div>
+</div>
+<p>The p-value is 0.01, which is less than <span class="math inline">\(\alpha\)</span>. We reject the null hypothesis and conclude that there is sufficient evidence that the true mean daily caloric intake for boys who receive free lunches from the school district is lower than the recommended amount of 1,200 calories.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-data-set" class="slide level2">
+<h2>Example: Data Set</h2>
+<p>The data set <code>Salaries</code> in the package <code>carData</code> includes the The 2008-09 nine-month academic salary for Assistant Professors, Associate Professors and Professors in a college in the U.S.</p>
+<div class="panel-tabset">
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">Question</a></li><li><a href="#tabset-14-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1">
+<p>Using the following code, we can isolate the salaries of the Assistant Professors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(carData)</span>
+<span id="cb21-2"><a></a>asstprof <span class="ot">&lt;-</span> <span class="fu">filter</span>(Salaries, rank<span class="sc">==</span><span class="st">"AsstProf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Do we have sufficient evidence that the average salary of the Assistant Professors are above $ 75,000? Use a significance level of 0.01.</p>
+</div>
+<div id="tabset-14-2">
+<p>The parameter of interest is the true average salary of the Assistant Professors in a college in the U.S. The hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \mu=75,000; H_a: \mu &gt; 75,000
+\]</span></p>
+<p>We can use the <code>t.test()</code> function to implement the one-sample t-test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Salaries<span class="sc">$</span>salary,</span>
+<span id="cb22-2"><a></a>       <span class="at">mu=</span><span class="dv">75000</span>,</span>
+<span id="cb22-3"><a></a>       <span class="at">alternative=</span><span class="st">"greater"</span>)</span>
+<span id="cb22-4"><a></a></span>
+<span id="cb22-5"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  Salaries$salary
+t = 25.462, df = 396, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is greater than 75000
+95 percent confidence interval:
+ 111200.1      Inf
+sample estimates:
+mean of x 
+ 113706.5 </code></pre>
+</div>
+</div>
+<p>The test statistic is 25.462 with degrees of freedom df= 396. The p-value is <code>&lt;2.2e-16</code> which translates to a value lower than <span class="math inline">\(2.2 \times 10^{-16}\)</span>. This is definitely lower than the significance level of 0.01, hence we reject the null hypothesis. We have sufficient evidence to support the claim that the average salary of the Assistant Professors are above $ 75,000.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider the data set <code>SleepHealthData.csv</code>.</p>
+<div class="panel-tabset">
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">Question</a></li><li><a href="#tabset-15-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1">
+<p>Test the hypothesis that the average sleep duration for the population this sample represents is not equal to 7.5 hours. Use a significance level of 0.05.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-15-2">
+<p>The parameter of interest is the population average sleep duration. The hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \mu=7; H_a: \mu \neq 7
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sleep<span class="sc">$</span>sleep_duration,</span>
+<span id="cb25-2"><a></a>       <span class="at">mu=</span><span class="dv">7</span>,</span>
+<span id="cb25-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>)</span>
+<span id="cb25-4"><a></a></span>
+<span id="cb25-5"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  sleep$sleep_duration
+t = 3.2104, df = 373, p-value = 0.00144
+alternative hypothesis: true mean is not equal to 7
+95 percent confidence interval:
+ 7.051185 7.212986
+sample estimates:
+mean of x 
+ 7.132086 </code></pre>
+</div>
+</div>
+<p>The test statistic is 3.2104 with degrees of freedom df= 373. The p-value is 0.0014. This is definitely lower than the significance level of 0.05, hence we reject the null hypothesis. We have sufficient evidence that the population average sleep duration is not equal to 7.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-test-difference-of-two-means-independent-groups" class="slide level2">
+<h2>Hypothesis Test: Difference of Two Means (Independent Groups)</h2>
+<p>Often, we are interested in comparing two independent groups.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Recall Chapters 5 and 6: To compare independent groups using a continuous variable response, we investigate the difference between the two groups. Examples of independent group comparisons include treatment vs.&nbsp;placebo, Location 1 vs.&nbsp;Location 2, Male vs.&nbsp;Female, Low vs.&nbsp;High SES.</p>
+</div>
+</div>
+</div>
+<p>We are interested in testing the null hypothesis <span class="math inline">\(H_0: \mu_1-\mu_2=\delta\)</span>. Most often, we use the null hypothesis of equality where <span class="math inline">\(\delta=0\)</span>. The alternative hypothesis can be one of the following:</p>
+<ul>
+<li>One-sided hypotheses: <span class="math inline">\(H_a: \mu_1-\mu_2 &lt; \delta\)</span> or <span class="math inline">\(H_a: \mu_1-\mu_2 &gt; \delta\)</span>.</li>
+<li>Two-sided hypotheses: <span class="math inline">\(H_a: \mu_1-\mu_2 \neq \delta\)</span></li>
+</ul>
+<p>The problem dictates which alternative is appropriate as well as the value of <span class="math inline">\(\delta\)</span> (typically <span class="math inline">\(\delta=0\)</span>).</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The test comparing means of two independent groups is often referred to as the two-sample t-test.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="test-statistic-equalunequal-variances" class="slide level2">
+<h2>Test Statistic: Equal/Unequal Variances</h2>
+<p>The population variances are typically unknown, hence we use the t-distribution for our test statistic.</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Recall Chapter 6: Since we will be estimating the population variances with sample variances, it is important to note whether we are assuming equal or unequal population variances in defining the t-distribution for our test statistic.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="test-statistic-equal-variances" class="slide level2">
+<h2>Test Statistic: Equal Variances</h2>
+<p>Recall Chapter 6: or samples from two independent populations with equal population variances, we use a pooled variance estimate, <span class="math inline">\(s_p^2\)</span>, for the equal population variances.</p>
+<p><span class="math display">\[
+s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}
+\]</span></p>
+<p>The t-statistic can then be calculated as</p>
+<p><span class="math display">\[
+t = \frac{(\bar{x}_1-\bar{x}_2) - (\mu_1-\mu_2)}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}
+\]</span></p>
+<p>where <span class="math inline">\(\bar{x}_1\)</span> and <span class="math inline">\(\bar{x}_2\)</span> are the respective sample means from Groups 1 and 2, <span class="math inline">\(s_p^2\)</span> is the pooled variance, <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are the respective sample sizes from Groups 1 and 2. The t-statistic follows a t-distribution with degrees of freedom <span class="math inline">\(df=n_1 + n_2 - 2\)</span>.</p>
+</section>
+<section id="test-statistic-unequal-variances" class="slide level2">
+<h2>Test Statistic: Unequal Variances</h2>
+<p>Recall Chapter 6: For samples from two independent populations with unequal population variances, we use tje <strong>Welch-Satterthwaite</strong> procedure to construct this confidence interval such that the <span class="math inline">\(100(1-\alpha)\)</span>% confidence interval is given by:</p>
+<p><span class="math display">\[
+t=\frac{(\bar{x}_1-\bar{x}_2) - (\mu_1-\mu_2)}{\sqrt{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)}}
+\]</span></p>
+<p>where the degrees of freedom is provided by the Satterthwaite approximation</p>
+<p><span class="math display">\[
+df = \frac{(s_1^2/n_1 + s_2^2/n_2)^2}{\left(\frac{s_1^2}{n_1}\right)^2/(n_1-1) + \left(\frac{s_2^2}{n_2}\right)^2/(n_2-1)}
+\]</span></p>
+</section>
+<section id="hypothesis-testing-r" class="slide level2">
+<h2>Hypothesis Testing: <code>R</code></h2>
+<p>The function <code>t.test()</code> can be used to implement a two-sample t-test. There are multiple ways to express the t-test using this function in <code>R</code>.</p>
+<div class="panel-tabset">
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">Column Grouping</a></li><li><a href="#tabset-16-2">Variable Grouping</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1">
+<p>Suppose your data is assigned to the data frame <code>df</code> and the measurements from the samples you want to compare are in different columns: <code>col1</code> and <code>col2</code>. Suppose you have a null hypothesis of equality, have a two-sided alternative, and assume equal population variances. Then the t-test function can be coded as:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">t.test</span>(<span class="at">x=</span>df<span class="sc">$</span>col1,</span>
+<span id="cb27-2"><a></a>       <span class="at">y=</span>df<span class="sc">$</span>col2,</span>
+<span id="cb27-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
+<span id="cb27-4"><a></a>       <span class="at">mu=</span><span class="dv">0</span>,</span>
+<span id="cb27-5"><a></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span></span>
+<span id="cb27-6"><a></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-16-2">
+<p>Suppose your data is assigned to the data frame <code>df</code>, the response measurements from the samples are in one column <code>response</code>, and the groups are defined by a variable <code>group</code>. Suppose you have a null hypothesis of equality, have a two-sided alternative, and assume <em>unequal</em> population variances. We have to use the <strong>formula</strong> syntax in defining the groups. The t-test function can be coded as:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">t.test</span>(response<span class="sc">~</span>group,</span>
+<span id="cb28-2"><a></a>       <span class="at">data=</span>df,</span>
+<span id="cb28-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
+<span id="cb28-4"><a></a>       <span class="at">mu=</span><span class="dv">0</span>,</span>
+<span id="cb28-5"><a></a>       <span class="at">var.equal=</span><span class="cn">FALSE</span></span>
+<span id="cb28-6"><a></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>If the grouping variable is NOT a factor, the groups in the parameter of interest <span class="math inline">\(\mu_1-\mu_2\)</span> will be assigned in alphabetical order. If the grouping variable is a factor, it will follow the order set in the factor.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-4" class="slide level2">
+<h2>Example</h2>
+<p>Consider the sleep health data set from <code>SleepHealthData.csv</code>.</p>
+<div class="panel-tabset">
+<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">Question</a></li><li><a href="#tabset-17-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-17-1">
+<p>Perform a hypothesis test to determine if there is any statistically discernible difference between the average sleep duration of males and females. Assume equal variances and a significance level of 0.05.</p>
+</div>
+<div id="tabset-17-2">
+<p>The parameter of interest is the <strong>true difference</strong> in average sleep duration of males and females (<span class="math inline">\(\mu_f-\mu_m\)</span>). The hypotheses should be:</p>
+<p><span class="math display">\[
+H_0: \mu_f - \mu_m = 0; H_a: \mu_f - \mu_m \neq 0
+\]</span> The alternative is two-sided because we did not specify a direction of the difference between the two groups.</p>
+<p>The groups are defined by the variable <code>gender</code> and the response variable is defined by the variable <code>sleep_duration</code>. The t-test can be implemented using the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
+<span id="cb29-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
+<span id="cb29-3"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sleep_duration<span class="sc">~</span>gender,</span>
+<span id="cb29-4"><a></a>                <span class="at">data=</span>sleep,</span>
+<span id="cb29-5"><a></a>                <span class="at">mu=</span><span class="dv">0</span>,</span>
+<span id="cb29-6"><a></a>                <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
+<span id="cb29-7"><a></a>                <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
+<span id="cb29-8"><a></a></span>
+<span id="cb29-9"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  sleep_duration by gender
+t = 2.3624, df = 372, p-value = 0.01867
+alternative hypothesis: true difference in means between group Female and group Male is not equal to 0
+95 percent confidence interval:
+ 0.03239537 0.35404821
+sample estimates:
+mean in group Female   mean in group Male 
+            7.229730             7.036508 </code></pre>
+</div>
+</div>
+<p>The p-value is 0.0187, which is lower than the set significance level of 0.05. We reject the null hypothesis. We have sufficient evidence that the true difference in average sleep duration between females and males is non-zero.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-5" class="slide level2">
+<h2>Example</h2>
+<p>The data set <code>hflashes_subset.csv</code> contains the baseline FSH measurements of 50 randomly sampled participants the following groups: those who reported hot flashes and those who did not.</p>
+<div class="panel-tabset">
+<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">Question</a></li><li><a href="#tabset-18-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-18-1">
+<p>Is there a discernible difference between the average FSH levels of those who reported hot flashes and those who did not? Use a significance level of 0.01. Assume unequal population variances.</p>
+</div>
+<div id="tabset-18-2">
+<p>The parameter of interest is the <strong>true difference</strong> in average FSH levels between those who experienced hot flashes and who did not. The hypotheses should be:</p>
+<p><span class="math display">\[
+H_0: \mu_h - \mu_n = 0; H_a: \mu_h - \mu_n \neq 0
+\]</span> The alternative is two-sided because we did not specify a direction of the difference between the two groups.</p>
+<p>The groups are defined by the columns: <code>YesHotFlash</code> and <code>NoHotFlash</code>. The t-test can be implemented using the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
+<span id="cb31-2"><a></a>fsh <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"hflashes_subset.csv"</span>)</span>
+<span id="cb31-3"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>fsh<span class="sc">$</span>YesHotFlash,</span>
+<span id="cb31-4"><a></a>                <span class="at">y=</span>fsh<span class="sc">$</span>NoHotFlash,</span>
+<span id="cb31-5"><a></a>                <span class="at">mu=</span><span class="dv">0</span>,</span>
+<span id="cb31-6"><a></a>                <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
+<span id="cb31-7"><a></a>                <span class="at">var.equal=</span><span class="cn">FALSE</span>)</span>
+<span id="cb31-8"><a></a></span>
+<span id="cb31-9"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  fsh$YesHotFlash and fsh$NoHotFlash
+t = 0.040448, df = 97.999, p-value = 0.9678
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.085887  2.172687
+sample estimates:
+mean of x mean of y 
+   9.6598    9.6164 </code></pre>
+</div>
+</div>
+<p>The p-value is 0.9678, which is higher than the set significance level of 0.01. We fail to reject the null hypothesis. We have insufficient evidence that the true difference in average fsh levels between those who experience hot flashes and who did not is non-zero.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider the sleep health data set from <code>SleepHealthData.csv</code>.</p>
+<div class="panel-tabset">
+<ul id="tabset-19" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-19-1">Question</a></li><li><a href="#tabset-19-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-19-1">
+<p>Perform a hypothesis test to determine if the average heart rate of males is higher than that of females. Assume equal variances and a significance level of 0.05.</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>The group levels will follow <em>alphabetical order</em>, which means group 1 will be set as the female group.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-19-2">
+<p>The parameter of interest is the <strong>true difference</strong> in average heart rate between females and males (<span class="math inline">\(\mu_f-\mu_m\)</span>). The hypotheses should be:</p>
+<p><span class="math display">\[
+H_0: \mu_f - \mu_m = 0; H_a: \mu_f - \mu_m &lt; 0
+\]</span> The alternative is one-sided, “less”, because we specified the direction where males have a higher average heart rate than females.</p>
+<p>The groups are defined by the variable <code>gender</code> and the response variable is defined by the variable <code>heart_rate</code>. The t-test can be implemented using the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
+<span id="cb33-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>) <span class="co"># if not already loaded</span></span>
+<span id="cb33-3"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(heart_rate<span class="sc">~</span>gender,</span>
+<span id="cb33-4"><a></a>                <span class="at">data=</span>sleep,</span>
+<span id="cb33-5"><a></a>                <span class="at">mu=</span><span class="dv">0</span>,</span>
+<span id="cb33-6"><a></a>                <span class="at">alternative=</span><span class="st">"less"</span>,</span>
+<span id="cb33-7"><a></a>                <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
+<span id="cb33-8"><a></a></span>
+<span id="cb33-9"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  heart_rate by gender
+t = -4.2897, df = 372, p-value = 1.142e-05
+alternative hypothesis: true difference in means between group Female and group Male is less than 0
+95 percent confidence interval:
+      -Inf -1.104046
+sample estimates:
+mean in group Female   mean in group Male 
+            69.25946             71.05291 </code></pre>
+</div>
+</div>
+<p>The p-value is 0.000011, which is lower than the set significance level of 0.05. We reject the null hypothesis. We have sufficient evidence that the true difference in average heart rate between females and males is less than zero. Or we can say: We have sufficient evidence that the average heart rate of males is higher than that of females in the population this sample represents.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing-paired-means" class="slide level2">
+<h2>Hypothesis Testing: Paired Means</h2>
+<p>There are times when two sets of measurements cannot be treated as independent groups. Consider the following example: The table below shows the pre- and post-test scores of five students after going through a newly developed statistics course.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Student ID</th>
+<th>Pre-Test</th>
+<th>Post-Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>75</td>
+<td>77</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>62</td>
+<td>64</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>51</td>
+<td>53</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>55</td>
+<td>57</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>97</td>
+<td>99</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>There is a lot of variability among the pre-test and post-test scores. However, the <strong>paired</strong> differences show an increase of two points for <strong>all</strong> students, showing no variability between students.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="paired-means" class="slide level2">
+<h2>Paired Means</h2>
+<p>For dependent means, the parameter of interest is the <strong>true average of the paired differences</strong> which we will refer to as <span class="math inline">\(mu_d\)</span>.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Paired measurements can come from repeated measures from the same unit (Ex: pre- vs.&nbsp;post-test for a single student) or from matched pairs (two individuals with the same demographic and genetic background going through a randomized controlled trial).</p>
+</div>
+</div>
+</div>
+<p>We are interested in testing the null hypothesis <span class="math inline">\(H_0: \mu_d=d_0\)</span>. Most often, we use the null hypothesis of equality where <span class="math inline">\(d_0=0\)</span>. The alternative hypothesis can be one of the following:</p>
+<ul>
+<li>One-sided hypotheses: <span class="math inline">\(H_a: \mu_d&lt; d_0\)</span> or <span class="math inline">\(H_a: \mu_d&gt; d_0\)</span>.</li>
+<li>Two-sided hypotheses: <span class="math inline">\(H_a: \mu_d \neq d_0\)</span></li>
+</ul>
+<p>The problem dictates which alternative is appropriate as well as the value of <span class="math inline">\(d_0\)</span> (typically <span class="math inline">\(d_0=0\)</span> for the null hypothesis of equality).</p>
+</section>
+<section id="test-statistic-3" class="slide level2">
+<h2>Test Statistic</h2>
+<p>Recall that we do not know the population variance of the paired differences, hence we need to use the t-distribution. if <span class="math inline">\(\mu_d=d_0\)</span> and the sample has a mean paired difference <span class="math inline">\(\bar{x}_d\)</span>, variance <span class="math inline">\(s_d\)</span>, and number of paired observations <span class="math inline">\(n\)</span>, then the following statistic, <span class="math inline">\(t\)</span>, follows a t-distribution.</p>
+<p><span class="math display">\[
+t = \frac{\bar{x}_d-d_0}{s_d/\sqrt{n}}
+\]</span></p>
+<p>The statistic <span class="math inline">\(t\)</span> follows a t-distribution with <span class="math inline">\(df=n-1\)</span> degrees of freedom.</p>
+</section>
+<section id="hypothesis-test-r-1" class="slide level2">
+<h2>Hypothesis Test: <code>R</code></h2>
+<p>The test for paired differences is also known as the <em>paired t-test</em>. Here are the different ways to implement this test in <code>R</code>.</p>
+<div class="panel-tabset">
+<ul id="tabset-20" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-20-1">Given Statistics</a></li><li><a href="#tabset-20-2">Given Data Set</a></li></ul>
+<div class="tab-content">
+<div id="tabset-20-1">
+<p>If we are given the mean, sample size, and standard deviation/variance, we can calculate the t-statistic manually like we did for the z-statistic for the case of known variance. We use the <code>pt()</code> function to calculate the p-value.</p>
+</div>
+<div id="tabset-20-2">
+<p>Suppose your data is assigned to the data frame <code>df</code> and the measurements from the samples you want to compare are in different columns: <code>col1</code> and <code>col2</code>. Suppose you have a null hypothesis <span class="math inline">\(H_0: \mu_d=d_0\)</span>, have a two-sided alternative, and assume equal population variances. Then the t-test function can be coded as:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">t.test</span>(<span class="at">x=</span>df<span class="sc">$</span>col1,</span>
+<span id="cb35-2"><a></a>       <span class="at">y=</span>df<span class="sc">$</span>col2,</span>
+<span id="cb35-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
+<span id="cb35-4"><a></a>       <span class="at">mu=</span>d_0,</span>
+<span id="cb35-5"><a></a>       <span class="at">paired=</span><span class="cn">TRUE</span></span>
+<span id="cb35-6"><a></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>The formula syntax will not work for paired data. The paired variables should be coded as two separate columns.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-6" class="slide level2">
+<h2>Example</h2>
+<p>The data set <code>anorexia</code> from the package <code>MASS</code> contains weight change data for young female anorexia patients.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">library</span>(MASS)</span>
+<span id="cb36-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb36-3"><a></a><span class="fu">glimpse</span>(anorexia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 72
+Columns: 3
+$ Treat  &lt;fct&gt; Cont, Cont, Cont, Cont, Cont, Cont, Cont, Cont, Cont, Cont, Con…
+$ Prewt  &lt;dbl&gt; 80.7, 89.4, 91.8, 74.0, 78.1, 88.3, 87.3, 75.1, 80.6, 78.4, 77.…
+$ Postwt &lt;dbl&gt; 80.2, 80.1, 86.4, 86.3, 76.1, 78.1, 75.1, 86.7, 73.5, 84.6, 77.…</code></pre>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-21" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-21-1">Question</a></li><li><a href="#tabset-21-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-21-1">
+<p>Perform a paired t-test to test whether there is a difference between the preweight <code>prewt</code> and <code>postwt</code> for all patients, disregarding the type of treatment. Use a significance level of 0.05.</p>
+</div>
+<div id="tabset-21-2">
+<p>The parameter of interest is the average paired difference in weight before and after treatment, <span class="math inline">\(\mu_d\)</span>. The hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \mu_d = 0; H_a: \mu_d \neq 0
+\]</span> We can use <code>t.test()</code> to perform the t-test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>anorexia<span class="sc">$</span>Postwt,</span>
+<span id="cb38-2"><a></a>       <span class="at">y=</span>anorexia<span class="sc">$</span>Prewt,</span>
+<span id="cb38-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
+<span id="cb38-4"><a></a>       <span class="at">mu=</span><span class="dv">0</span>,</span>
+<span id="cb38-5"><a></a>       <span class="at">paired=</span><span class="cn">TRUE</span></span>
+<span id="cb38-6"><a></a>       )</span>
+<span id="cb38-7"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  anorexia$Postwt and anorexia$Prewt
+t = 2.9376, df = 71, p-value = 0.004458
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.8878354 4.6399424
+sample estimates:
+mean difference 
+       2.763889 </code></pre>
+</div>
+</div>
+<p>The p-value is 0.0045, which is lower than the set significance level of 0.05. We reject the null hypothesis. We have sufficient evidence that the true average paired difference in weight pre- and post-treatment is not zero.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4" class="slide level2">
+<h2>Exercise</h2>
+<p>The data set <code>ChickWeight.csv</code> contains 10 paired data corresponding to weights of chicks in ounces, two from 10 families, reared in confinement or on open range.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="co"># Remember to save ChickWeight to your working directory</span></span>
+<span id="cb40-2"><a></a>chick <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ChickWeight.csv"</span>)</span>
+<span id="cb40-3"><a></a><span class="fu">glimpse</span>(chick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 10
+Columns: 3
+$ Chicks      &lt;chr&gt; "C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C…
+$ Confinement &lt;int&gt; 9, 17, 14, 13, 15, 10, 11, 13, 13, 15
+$ OpenRange   &lt;int&gt; 8, 15, 11, 11, 9, 12, 11, 10, 9, 14</code></pre>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-22" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-22-1">Question</a></li><li><a href="#tabset-22-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-22-1">
+<p>Suppose the farmer claims that the difference in weights between chicks raised in confinement and those who were raised in open range is higher than 1.5 ounces. Perform a hypothesis test that tests this claim. Use a significance level of 0.05.</p>
+</div>
+<div id="tabset-22-2">
+<p>Note that the chicks were paired up with another chick from the same family, hence we need to use a paired t-test. The parameter of interest is the true average paired difference in weights of chicks raised in confinement and open range. The hypotheses can be written as:</p>
+<p><span class="math display">\[
+H_0: \mu_d = 1.5; H_a: \mu_d &gt; 1.5
+\]</span> Define the difference as <code>Confinement-OpenRange</code>. We can now implement the t-test using the <code>t.test()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>chick<span class="sc">$</span>Confinement,</span>
+<span id="cb42-2"><a></a>       <span class="at">y=</span>chick<span class="sc">$</span>OpenRange,</span>
+<span id="cb42-3"><a></a>       <span class="at">alternative=</span><span class="st">"greater"</span>,</span>
+<span id="cb42-4"><a></a>       <span class="at">mu=</span><span class="fl">1.5</span>,</span>
+<span id="cb42-5"><a></a>       <span class="at">paired=</span><span class="cn">TRUE</span></span>
+<span id="cb42-6"><a></a>       )</span>
+<span id="cb42-7"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  chick$Confinement and chick$OpenRange
+t = 0.7151, df = 9, p-value = 0.2463
+alternative hypothesis: true mean difference is greater than 1.5
+95 percent confidence interval:
+ 0.7182766       Inf
+sample estimates:
+mean difference 
+              2 </code></pre>
+</div>
+</div>
+<p>The p-value is 0.2463, which is higher than the set significance level of 0.05. We fail reject the null hypothesis. We have insufficient evidence that the true average paired difference in weight of chicks raised in confinement and open range is higher than 1.5 ounces.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-test-single-population-proportion" class="slide level2">
+<h2>Hypothesis Test: Single Population Proportion</h2>
+<p>We can also perform hypothesis tests for a single proportion, <span class="math inline">\(\pi\)</span>.</p>
+<p>We are interested in testing the null hypothesis <span class="math inline">\(H_0: \pi=\pi_0\)</span>. The alternative hypothesis can be one of the following:</p>
+<ul>
+<li>One-sided hypotheses: <span class="math inline">\(H_a: \pi&gt;\pi_0\)</span> or <span class="math inline">\(H_a: \pi&lt;\pi_0\)</span>.</li>
+<li>Two-sided hypotheses: <span class="math inline">\(H_a: \pi \neq \pi_0\)</span></li>
+</ul>
+</section>
+<section id="test-statistic-4" class="slide level2">
+<h2>Test Statistic</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Recall Chapter 6: When dealing with inference related to proportions, the reliability coefficient we used was derived from the standard normal distribution. In Chapter 7, we will use the standard normal distribution to describe our test statistic: the z-statistic.</p>
+</div>
+</div>
+</div>
+<p>For a sample proportion <span class="math inline">\(\hat{p}\)</span> and sample size <span class="math inline">\(n\)</span>, the z-statistic can be expressed as <span class="math display">\[
+z = \frac{\hat{p}-\pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}.
+\]</span></p>
+</section>
+<section id="hypothesis-testing-r-1" class="slide level2">
+<h2>Hypothesis Testing: <code>R</code></h2>
+<p>We can use <code>pnorm(z)</code> to calculate the corresponding probabilities after calculating the z-statistic. The arguments/options for the <code>pnorm</code> function varies for the different alternative hypotheses. Similar to the hypothesis test for a single mean with known variance, the p-values can be calculated as:</p>
+<ul>
+<li><span class="math inline">\(H_a: \pi &lt; \pi_0 \to P(Z &lt; z)\)</span></li>
+<li><span class="math inline">\(H_a: \pi &gt; \pi_0 \to P(Z &gt; z)\)</span></li>
+<li><span class="math inline">\(H_a: \pi \neq \pi_0 \to P(Z &lt; -|z|) + P(Z&gt;|z|)\)</span></li>
+</ul>
+</section>
+<section id="example-7" class="slide level2">
+<h2>Example</h2>
+<p>Suppose the health department claims that the vaccination rate for shingles in older adults in the population is above 50%. When a random sample of elderly adults were asked about their vaccination status, 357 out of 700 reported to be vaccinated against shingles.</p>
+<div class="panel-tabset">
+<ul id="tabset-23" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-23-1">Question</a></li><li><a href="#tabset-23-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-23-1">
+<p>Perform a hypothesis test to test the claim of the health department. Use a significance level of 0.01.</p>
+</div>
+<div id="tabset-23-2">
+<p>The parameter of interest is the <strong>true proportion of elderly adults vaccinated against shingles</strong>. The hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \pi = 0.5; H_a: \pi &gt; 0.5
+\]</span></p>
+<p>Our sample proportion is 357/700 with a sample size of 700. We can now calculate the z-statistic</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">700</span></span>
+<span id="cb44-2"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">357</span><span class="sc">/</span>sampsize</span>
+<span id="cb44-3"><a></a>pi_null <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb44-4"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pi_null<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_null)<span class="sc">/</span>sampsize)</span>
+<span id="cb44-5"><a></a></span>
+<span id="cb44-6"><a></a>z <span class="ot">&lt;-</span> (phat<span class="sc">-</span>pi_null)<span class="sc">/</span>se</span>
+<span id="cb44-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5291503</code></pre>
+</div>
+</div>
+<p>The corresponding p-value should be calculated as P(Z &gt; 0.5291503)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2983506</code></pre>
+</div>
+</div>
+<p>The resulting p-value is 0.2983506, which is higher than the significance level of 0.01. We fail to reject the null hypothesis. We have insufficient evidence to claim that the true percentage of elderly adults vaccinated against shingles in this population is higher than 50%.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider the sleep health data <code>SleepHealthData.csv</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-24" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-24-1">Question</a></li><li><a href="#tabset-24-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-24-1">
+<p>Suppose the claim is that the prevalence rate of sleep apnea in this population is lower than 25%. Do we have evidence to support this claim? Use a significance level of 0.10.</p>
+</div>
+<div id="tabset-24-2">
+<p>The parameter of interest is the <strong>true proportion of the population who have sleep apnea</strong>. The hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \pi = 0.25; H_a: \pi &lt; 0.25
+\]</span></p>
+<p>We can calculate the sample proportion using the frequency table provided by <code>freq()</code> from the <code>summarytools</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">library</span>(summarytools)</span>
+<span id="cb49-2"><a></a><span class="fu">freq</span>(sleep<span class="sc">$</span>sleep_disorder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frequencies  
+sleep$_disorder  
+Type: Character  
+
+                    Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+----------------- ------ --------- -------------- --------- --------------
+         Insomnia     77     20.59          20.59     20.59          20.59
+             None    219     58.56          79.14     58.56          79.14
+      Sleep Apnea     78     20.86         100.00     20.86         100.00
+             &lt;NA&gt;      0                               0.00         100.00
+            Total    374    100.00         100.00    100.00         100.00</code></pre>
+</div>
+</div>
+<p>We can now calculate the z-statistic</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">374</span></span>
+<span id="cb51-2"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">78</span><span class="sc">/</span>sampsize</span>
+<span id="cb51-3"><a></a>pi_null <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb51-4"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pi_null<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_null)<span class="sc">/</span>sampsize)</span>
+<span id="cb51-5"><a></a></span>
+<span id="cb51-6"><a></a>z <span class="ot">&lt;-</span> (phat<span class="sc">-</span>pi_null)<span class="sc">/</span>se</span>
+<span id="cb51-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.850952</code></pre>
+</div>
+</div>
+<p>The corresponding p-value should be calculated as P(Z &lt; -1.8509524)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0320882</code></pre>
+</div>
+</div>
+<p>The resulting p-value is 0.0320882, which is lower than the significance level of 0.10. We reject the null hypothesis. We have sufficient evidence to claim that the true prevalence rate of sleep apnea in this population is lower than 25%.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-test-difference-of-two-population-proportions" class="slide level2">
+<h2>Hypothesis Test: Difference of Two Population Proportions</h2>
+<p>We can also expand the hypothesis tests to compare proportions from two populations using their difference, <span class="math inline">\(\pi_1 - \pi_2\)</span>.</p>
+<p>We are interested in testing the null hypothesis of equality <span class="math inline">\(H_0: \pi_1 - \pi_2=0\)</span>. The alternative hypothesis can be one of the following:</p>
+<ul>
+<li>One-sided hypotheses: <span class="math inline">\(H_a: \pi_1 - \pi_2&gt;0\)</span> or <span class="math inline">\(H_a: \pi_1 - \pi_2&lt;0\)</span>.</li>
+<li>Two-sided hypotheses: <span class="math inline">\(H_a: \pi_1 - \pi_2\neq 0\)</span></li>
+</ul>
+</section>
+<section id="test-statistic-5" class="slide level2">
+<h2>Test Statistic</h2>
+<p>When testing the null hypothesis <span class="math inline">\(H_0: \pi_1 - \pi_2=0\)</span>, the standard error used in calculating the z-statistic involves the pooled proportion <span class="math inline">\(\bar{p}\)</span>, given by:</p>
+<p><span class="math display">\[
+\bar{p} = \frac{x_1 + x_2}{n_1 + n_2} = \frac{n_1p_1 + n_2x_2}{n_1 + n_2}
+\]</span></p>
+<p>where the number of successes are <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, sample proportions are <span class="math inline">\(\hat{p}_1\)</span> and <span class="math inline">\(\hat{p}_2\)</span>, and sample sizes are <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>. The z-statistic can be calculated using the following equation:</p>
+<p><span class="math display">\[
+z = \frac{\hat{p}_1 -\hat{p}_2}{\sqrt{\bar{p}(1-\bar{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}.
+\]</span></p>
+</section>
+<section id="example-8" class="slide level2">
+<h2>Example</h2>
+<p>Consider the hotflash data set <code>hflashes.csv</code>. The variable <code>f1a</code> has a value of 1 if the participant currently smokes and 0 otherwise.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>hflashes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/hflashes.csv"</span>)</span>
+<span id="cb55-2"><a></a><span class="fu">glimpse</span>(hflashes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 375
+Columns: 14
+$ pt       &lt;int&gt; 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 23, 24…
+$ ageg     &lt;int&gt; 2, 3, 1, 1, 2, 3, 2, 2, 2, 3, 2, 1, 1, 1, 1, 3, 2, 1, 1, 1, 2…
+$ aagrp    &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0…
+$ edu      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1…
+$ d1       &lt;int&gt; 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0…
+$ f1a      &lt;int&gt; 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1…
+$ pcs12    &lt;dbl&gt; 56.80537, 59.18338, 57.73952, 55.83575, 55.89324, NA, 55.5009…
+$ hotflash &lt;int&gt; 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0…
+$ bmi30    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0…
+$ estra    &lt;dbl&gt; 106.710, 31.250, 13.410, 10.640, 24.060, 37.305, 26.320, 24.1…
+$ fsh      &lt;dbl&gt; 3.005, 11.195, 14.545, 5.530, 9.780, 10.290, 7.960, 4.775, 7.…
+$ lh       &lt;dbl&gt; 2.980, 5.760, 5.595, 2.260, 2.600, 3.395, 3.570, 2.095, 3.660…
+$ testo    &lt;dbl&gt; 7.680, 11.930, 24.375, 8.280, 4.050, 8.275, 15.995, 12.340, 1…
+$ dheas    &lt;dbl&gt; 61.225, 104.920, 117.450, 36.850, 11.165, 100.360, 76.780, 83…</code></pre>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-25" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-25-1">Question</a></li><li><a href="#tabset-25-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-25-1">
+<p>Does this study provide sufficient evidence for us to conclude that participants who smoke have a higher proportion of participants who experience hot flashes compared to those who do not smoke? Use <span class="math inline">\(\alpha=0.05\)</span>.</p>
+</div>
+<div id="tabset-25-2">
+<p>The parameter of interest is the <strong>true difference in proportion of participants who experience hot flashes between current and nonsmokers.</strong>. The hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \pi_s-\pi_n = 0; H_a: \pi_s-\pi_n &gt; 0
+\]</span> Calculating the proportions would be slightly more complicated with two groups. We will use the <code>filter(data,condition)</code> function to separate the smokers and the non-smokers based on the <code>f1a</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>smokers <span class="ot">&lt;-</span> <span class="fu">filter</span>(hflashes,f1a<span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb57-2"><a></a>nonsmokers <span class="ot">&lt;-</span> <span class="fu">filter</span>(hflashes,f1a<span class="sc">==</span><span class="dv">0</span>)</span>
+<span id="cb57-3"><a></a></span>
+<span id="cb57-4"><a></a><span class="fu">freq</span>(smokers<span class="sc">$</span>hotflash)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frequencies  
+smokers$hotflash  
+Type: Integer  
+
+              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+----------- ------ --------- -------------- --------- --------------
+          0     85     61.59          61.59     61.59          61.59
+          1     53     38.41         100.00     38.41         100.00
+       &lt;NA&gt;      0                               0.00         100.00
+      Total    138    100.00         100.00    100.00         100.00</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">freq</span>(nonsmokers<span class="sc">$</span>hotflash)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frequencies  
+nonsmokers$hotflash  
+Type: Integer  
+
+              Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+----------- ------ --------- -------------- --------- --------------
+          0    172     72.57          72.57     72.57          72.57
+          1     65     27.43         100.00     27.43         100.00
+       &lt;NA&gt;      0                               0.00         100.00
+      Total    237    100.00         100.00    100.00         100.00</code></pre>
+</div>
+</div>
+<p>53 out of 138 experienced hot flashes in the smokers group and 65 out 237 experienced hot flashes in the nonsmoker group. We can now calculate the pooled proportion and standard error.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="dv">53</span></span>
+<span id="cb61-2"><a></a>x2 <span class="ot">&lt;-</span> <span class="dv">65</span></span>
+<span id="cb61-3"><a></a>sampsize1 <span class="ot">&lt;-</span> <span class="dv">138</span></span>
+<span id="cb61-4"><a></a>sampsize2 <span class="ot">&lt;-</span> <span class="dv">237</span></span>
+<span id="cb61-5"><a></a>p_pool <span class="ot">&lt;-</span> (x1<span class="sc">+</span>x2)<span class="sc">/</span>(sampsize1<span class="sc">+</span>sampsize2)</span>
+<span id="cb61-6"><a></a></span>
+<span id="cb61-7"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_pool<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_pool)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>sampsize1<span class="sc">+</span><span class="dv">1</span><span class="sc">/</span>sampsize2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now calculate the z-statistic</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>pi1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>sampsize1</span>
+<span id="cb62-2"><a></a>pi2 <span class="ot">&lt;-</span> x2<span class="sc">/</span>sampsize2</span>
+<span id="cb62-3"><a></a></span>
+<span id="cb62-4"><a></a></span>
+<span id="cb62-5"><a></a></span>
+<span id="cb62-6"><a></a>z <span class="ot">&lt;-</span> (pi1<span class="sc">-</span>pi2)<span class="sc">/</span>se</span>
+<span id="cb62-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.208054</code></pre>
+</div>
+</div>
+<p>The corresponding p-value should be calculated as P(Z &gt; 2.2080543)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span>
+<span id="cb64-2"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01362024</code></pre>
+</div>
+</div>
+<p>The resulting p-value is 0.5054335, which is lower than the significance level of 0.05. We reject the null hypothesis. We have sufficient evidence to claim that the true difference in proportion of participants who experience hot flashes between smokers and non-smokers is greater than zero.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-6" class="slide level2">
+<h2>Exercise</h2>
+<p>Noonan syndrome is a genetic condition that can affect the heart, growth, blood clotting, and mental and physical development. The study contained 29 male and 44 female adults. One of the cutoff values used to assess stature was the third percentile of adult height. 11 of the males fell below the third percentile of adult male height, while 24 of the females fell below the third percentile of female adult height.</p>
+<div class="panel-tabset">
+<ul id="tabset-26" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-26-1">Question</a></li><li><a href="#tabset-26-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-26-1">
+<p>Does this study provide sufficient evidence for us to conclude that among subjects with Noonan syndrome, females are more likely than males to fall below the respective third percentile of adult height? Use <span class="math inline">\(\alpha=0.05\)</span>.</p>
+</div>
+<div id="tabset-26-2">
+<p>The parameter of interest is the <strong>true difference in proportion of subjects with Noonan syndrome who fall below the third percentile of adult height between males and females.</strong>. The hypotheses are:</p>
+<p><span class="math display">\[
+H_0: \pi_f-\pi_m = 0; H_a: \pi_f-\pi_m &gt; 0
+\]</span></p>
+<p>We first calculate the pooled proportion used for the standard error. Note that the number of successes for females and males is 24 and 11, respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="dv">24</span></span>
+<span id="cb66-2"><a></a>x2 <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb66-3"><a></a>sampsize1 <span class="ot">&lt;-</span> <span class="dv">44</span></span>
+<span id="cb66-4"><a></a>sampsize2 <span class="ot">&lt;-</span> <span class="dv">29</span></span>
+<span id="cb66-5"><a></a>p_pool <span class="ot">&lt;-</span> (x1<span class="sc">+</span>x2)<span class="sc">/</span>(sampsize1<span class="sc">+</span>sampsize2)</span>
+<span id="cb66-6"><a></a></span>
+<span id="cb66-7"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_pool<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_pool)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>sampsize1<span class="sc">+</span><span class="dv">1</span><span class="sc">/</span>sampsize2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now calculate the z-statistic</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>pi1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>sampsize1</span>
+<span id="cb67-2"><a></a>pi2 <span class="ot">&lt;-</span> x2<span class="sc">/</span>sampsize2</span>
+<span id="cb67-3"><a></a></span>
+<span id="cb67-4"><a></a></span>
+<span id="cb67-5"><a></a></span>
+<span id="cb67-6"><a></a>z <span class="ot">&lt;-</span> (pi1<span class="sc">-</span>pi2)<span class="sc">/</span>se</span>
+<span id="cb67-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.39042</code></pre>
+</div>
+</div>
+<p>The corresponding p-value should be calculated as P(Z &gt; 1.3904204)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span>
+<span id="cb69-2"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.08220063</code></pre>
+</div>
+</div>
+<p>The resulting p-value is 0.5327564, which is higher than the significance level of 0.05. We fail to reject the null hypothesis. We have insufficient evidence to claim that the true difference in proportion of subjects with Noonan syndrome who fall below the third percentile of adult height between males and females is greater than zero.</p>
 </div>
 </div>
 </div>
@@ -1153,342 +2200,324 @@ H_0: \mu = 23.5; H_a: \mu \neq 23.5
     
 
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
         });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
+          return false;
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
         });
-      }
-          let selectedAnnoteEl;
-          const selectorForAnnotation = ( cell, annotation) => {
-            let cellAttr = 'data-code-cell="' + cell + '"';
-            let lineAttr = 'data-code-annotation="' +  annotation + '"';
-            const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-            return selector;
-          }
-          const selectCodeLines = (annoteEl) => {
-            const doc = window.document;
-            const targetCell = annoteEl.getAttribute("data-target-cell");
-            const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-            const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-            const lineIds = lines.map((line) => {
-              return targetCell + "-" + line;
-            })
-            let top = null;
-            let height = null;
-            let parent = null;
-            if (lineIds.length > 0) {
-                //compute the position of the single el (top and bottom and make a div)
-                const el = window.document.getElementById(lineIds[0]);
-                top = el.offsetTop;
-                height = el.offsetHeight;
-                parent = el.parentElement.parentElement;
-              if (lineIds.length > 1) {
-                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-                height = bottom - top;
-              }
-              if (top !== null && height !== null && parent !== null) {
-                // cook up a div (if necessary) and position it 
-                let div = window.document.getElementById("code-annotation-line-highlight");
-                if (div === null) {
-                  div = window.document.createElement("div");
-                  div.setAttribute("id", "code-annotation-line-highlight");
-                  div.style.position = 'absolute';
-                  parent.appendChild(div);
-                }
-                div.style.top = top - 2 + "px";
-                div.style.height = height + 4 + "px";
-                div.style.left = 0;
-                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-                if (gutterDiv === null) {
-                  gutterDiv = window.document.createElement("div");
-                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                  gutterDiv.style.position = 'absolute';
-                  const codeCell = window.document.getElementById(targetCell);
-                  const gutter = codeCell.querySelector('.code-annotation-gutter');
-                  gutter.appendChild(gutterDiv);
-                }
-                gutterDiv.style.top = top - 2 + "px";
-                gutterDiv.style.height = height + 4 + "px";
-              }
-              selectedAnnoteEl = annoteEl;
-            }
-          };
-          const unselectCodeLines = () => {
-            const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-            elementsIds.forEach((elId) => {
-              const div = window.document.getElementById(elId);
-              if (div) {
-                div.remove();
-              }
-            });
-            selectedAnnoteEl = undefined;
-          };
-            // Handle positioning of the toggle
-        window.addEventListener(
-          "resize",
-          throttle(() => {
-            elRect = undefined;
-            if (selectedAnnoteEl) {
-              selectCodeLines(selectedAnnoteEl);
-            }
-          }, 10)
-        );
-        function throttle(fn, ms) {
-        let throttle = false;
-        let timer;
-          return (...args) => {
-            if(!throttle) { // first call gets through
-                fn.apply(this, args);
-                throttle = true;
-            } else { // all the others get throttled
-                if(timer) clearTimeout(timer); // cancel #2
-                timer = setTimeout(() => {
-                  fn.apply(this, args);
-                  timer = throttle = false;
-                }, ms);
-            }
-          };
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
         }
-          const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-          for (let i=0; i<annoteTargets.length; i++) {
-            const annoteTarget = annoteTargets[i];
-            const targetCell = annoteTarget.getAttribute("data-target-cell");
-            const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-            const contentFn = () => {
-              const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-              if (content) {
-                const tipContent = content.cloneNode(true);
-                tipContent.classList.add("code-annotation-tip-content");
-                return tipContent.outerHTML;
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/madfudolig\.quarto\.pub\/introtobiostats");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
               }
             }
-            const config = {
-              allowHTML: true,
-              content: contentFn,
-              onShow: (instance) => {
-                selectCodeLines(instance.reference);
-                instance.reference.classList.add('code-annotation-active');
-                window.tippy.hideAll();
-              },
-              onHide: (instance) => {
-                unselectCodeLines();
-                instance.reference.classList.remove('code-annotation-active');
-              },
-              maxWidth: 300,
-              delay: [50, 0],
-              duration: [200, 0],
-              offset: [5, 10],
-              arrow: true,
-              appendTo: function(el) {
-                return el.parentElement.parentElement.parentElement;
-              },
-              interactive: true,
-              interactiveBorder: 10,
-              theme: 'light-border',
-              placement: 'right',
-              popperOptions: {
-                modifiers: [
-                {
-                  name: 'flip',
-                  options: {
-                    flipVariations: false, // true by default
-                    allowedAutoPlacements: ['right'],
-                    fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
-                  },
-                },
-                {
-                  name: 'preventOverflow',
-                  options: {
-                    mainAxis: false,
-                    altAxis: false
-                  }
-                }
-                ]        
-              }      
-            };
-            window.tippy(annoteTarget, config); 
           }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        } else {
-          return undefined;
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+            for (let i=0; i<annoteTargets.length; i++) {
+              const annoteTarget = annoteTargets[i];
+              const targetCell = annoteTarget.getAttribute("data-target-cell");
+              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+              const contentFn = () => {
+                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+                if (content) {
+                  const tipContent = content.cloneNode(true);
+                  tipContent.classList.add("code-annotation-tip-content");
+                  return tipContent.outerHTML;
+                }
+              }
+              const config = {
+                allowHTML: true,
+                content: contentFn,
+                onShow: (instance) => {
+                  selectCodeLines(instance.reference);
+                  instance.reference.classList.add('code-annotation-active');
+                  window.tippy.hideAll();
+                },
+                onHide: (instance) => {
+                  unselectCodeLines();
+                  instance.reference.classList.remove('code-annotation-active');
+                },
+                maxWidth: 300,
+                delay: [50, 0],
+                duration: [200, 0],
+                offset: [5, 10],
+                arrow: true,
+                appendTo: function(el) {
+                  return el.parentElement.parentElement.parentElement;
+                },
+                interactive: true,
+                interactiveBorder: 10,
+                theme: 'light-border',
+                placement: 'right',
+                popperOptions: {
+                  modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      flipVariations: false, // true by default
+                      allowedAutoPlacements: ['right'],
+                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      mainAxis: false,
+                      altAxis: false
+                    }
+                  }
+                  ]        
+                }      
+              };
+              window.tippy(annoteTarget, config); 
+            }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>
