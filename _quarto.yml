@@ -26,6 +26,10 @@ website:
             text: Supplementary Material - Data Transformation in R
           - href: lecture6.qmd
             text: Lecture 6 - Estimation
+          - href: lecture7.qmd
+            text: Lecture 7 - Hypothesis Testing
+          - href: lecture7-1.qmd
+            text: Lecture 7.1 - Tests Involving Variances
       - section: "Problem Sets"
         href: problemsets.qmd
         contents:

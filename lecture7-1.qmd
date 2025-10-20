@@ -1,0 +1,92 @@
+---
+title: "Hypothesis Testing: Tests Involving Variances"
+subtitle: Lecture 7.1
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 7.1 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+# Outline
+
+
+
+## Hypothesis Test: Ratio of Population Variances
+
+ Unlike the comparisons done in this chapter, comparing two population variances are usually based on the ratio of the variances ($\sigma_1^2/\sigma_2^2$).
+
+::: callout-note
+When $\sigma_1^2/\sigma_2^2=1$, the variances are equal. However, this ratio can not be negative, which is not consistent with the distributions we have considered (standard normal distribution and t-distribution)
+:::
+
+## F-distribution
+
+The F-distribution is a distribution that has the following characteristics:
+
+- Defined in the range 0 < X < $\infty$
+- Defined by two degrees of freedom: the numerator degrees of freedom, $df_{num}$ or $df_1$, and the denominator degrees of freedom, $df_{den}$ or $df_2$.
+
+In `R`, the following functions can be used to generate the properties of the *central* F-distribution.
+
+- `df(x,df1,df2)`: PDF
+- `pf(x,df1,df2)`: CDF
+- `qf(p,df1,df2)`: Calculates F value for a given probability
+- `rf(n,df1,df2)`: Generates $n$ samples from the F-distribution
+
+## Hypothesis Test: Ratio of Population Variances
+
+If we are interested in testing the null hypothesis $H_0: \sigma_1/\sigma_2 = 1$, the alternative hypothesis can be one of the following:
+
+-   One-sided hypotheses: $H_a: \sigma_1/\sigma_2 < 1$ or $H_a: \sigma_1/\sigma_2 > 1$.
+-   Two-sided hypotheses: $H_a: \sigma_1/\sigma_2 \neq 1$
+
+The problem dictates which alternative is appropriate.
+
+## Test Statistic
+
+Assuming the following assumptions hold: $s_1^2$ and $s_2^2$ are computed from independent samples of size $n_1$ and $n_2$, respectively drawn from two normally distributed populations. 
+
+The quantity $\frac{s_1^2/\sigma_1^2}{s_2^2/\sigma_2^2}$ follows the F-distribution with degrees of freedom $(df_1,df_2) = (n_1-1,n_2-1)$. Under the null hypothesis, $\sigma_1^2/\sigma_2^2 = 1$. Hence, our test statistic is expressed as:
+
+$$
+F=S_1^2/S_2^2 \sim F(n_1-1,n_2-1)
+$$
+
+## Rejection Region and p-values
+
+We will use the F-distribution to define the rejection region and the corresponding p-values.
+
+::: panel-tabset
+### Rejection Region
+
+For one-sided tests, the rejection region is defined by the range:
+
+$$
+F < F_{1-\alpha}(n_1-1,n_2-1)
+$$
+
+As much as possible, we set the group with the expected larger variance to be in the numerator to avoid complications in calculating the rejection region. 
+
+For two-sided tests, the rejection region is defined by the ranges:
+
+$$
+F < F_{\alpha/2}(n_1-1,n_2-1)~ or~ F > F_{1-\alpha/2}(n_1-1,n_2-1)
+$$
+
+
+:::
