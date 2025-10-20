@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Sampling Distributions</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5225a0b03738627c8390147651eb7bbf.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Sampling Distributions</h1>
+  <p class="subtitle">Lecture 5</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="outline" class="title-slide slide level1 center">
+<h1>Outline</h1>
+<ul>
+<li>Importance of Sampling Distributions</li>
+<li>Distributions of the Sample Mean</li>
+<li>Distributions of the Difference Between Two Sample Means</li>
+<li>Distributions of the Sample Proportion</li>
+<li>Distributions of the Difference Between Two Proportions</li>
+</ul>
+</section>
+
+<section>
+<section id="importance-of-sampling-distributions" class="title-slide slide level1 center">
+<h1>Importance of Sampling Distributions</h1>
+
+</section>
+<section id="activity" class="slide level2">
+<h2>Activity</h2>
+<p>Let us use the “Sampling Words” applet through this <a href="https://www.isi-stats.com/isi2nd/ISIapplets2021.html">link</a>. Suppose we are interested in calculating the average word length of different samples of 10 words from Beyonce’s Crazy in Love.</p>
+<ul>
+<li>Did we get the same average length for all samples?</li>
+</ul>
+</section>
+<section id="sampling-distributions" class="slide level2">
+<h2>Sampling Distributions</h2>
+<p>Repeated samples will yield different values for the statistics.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>We have to view statistics as the sample mean <span class="math inline">\(\bar{x}\)</span> and sample proportion <span class="math inline">\(\hat{p}\)</span> as random variables. The probability distribution of these statistics are called sampling distributions. These distributions enable us to:</p>
+<ul>
+<li>Answer probability questions about sample statistics</li>
+<li>Provide the necessary theory for some statistical inference tests.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="sampling-distributions-1" class="slide level2">
+<h2>Sampling Distributions</h2>
+<p>The sampling distribution of a statistic is the distribution of <em>all possible values</em> that can be assumed by some statistic computed from samples of the same size from the population.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>We are usually interested in knowing the functional form (refer to distributions discussed in Chapter 4), mean, and variance.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="distributions-of-the-sample-mean" class="title-slide slide level1 center">
+<h1>Distributions of the Sample Mean</h1>
+
+</section>
+<section id="sampling-from-gaussian-distributed-populations" class="slide level2">
+<h2>Sampling from Gaussian-distributed populations</h2>
+<p>For a sample with size <span class="math inline">\(n\)</span> that comes from a Gaussian-distributed population with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, i.e.&nbsp;the samples <span class="math inline">\(X_1,X_2,...,X_n\)</span> are all independent and identically distributed such that <span class="math inline">\(X_i \sim N(\mu,\sigma^2)\)</span>, the sample mean can be defined as:</p>
+<p><span class="math display">\[
+\bar{X} = \frac{X_1 + X_2 + ... + X_n}{n}
+\]</span></p>
+<p>The probability distribution of the sample mean, also known as the sampling distribution of the sample mean can be expressed as:</p>
+<p><span class="math display">\[
+\bar{X} \sim N(\mu, \frac{\sigma^2}{n})
+\]</span></p>
+</section>
+<section id="implications" class="slide level2">
+<h2>Implications</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The mean of the sampling distribution, <span class="math inline">\(\mu_{\bar{X}}\)</span> is equal to the population mean, while the variance, <span class="math inline">\(\sigma^2_{\bar{X}}\)</span> is reduced by a factor of the sample size <span class="math inline">\(n\)</span>.</p>
+<p>The standard deviation of the sampling distribution can be calculated by taking the square root of the variance of the distribution, <span class="math inline">\(\sqrt{\frac{\sigma^2}{n}} = \frac{\sigma}{\sqrt{n}}\)</span>. This is referred to as the <strong>standard error</strong> of the sample mean.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="standardization" class="slide level2">
+<h2>Standardization</h2>
+<p>The sample mean can also be standardized based on the properties of the sampling distribution. The sample mean <span class="math inline">\(\bar{X}\)</span> can be transformed into a random variable <span class="math inline">\(Z\)</span> such that <span class="math inline">\(Z \sim N(0,1)\)</span>.</p>
+<p><span class="math display">\[
+Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}
+\]</span> In addition,</p>
+<p><span class="math display">\[
+P(\bar{X} \leq \bar{x}) = P(Z \leq \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}) = P(Z \leq z)
+\]</span></p>
+</section>
+<section id="sampling-from-non-gaussian-populations" class="slide level2">
+<h2>Sampling from Non-Gaussian Populations</h2>
+<p>The sampling distribution previously derived could also apply to samples from non-Gaussian populations under certain conditions. These conditions are provided by the <strong>central limit theorem</strong>.</p>
+<div title="Central Limit Theorem (CLT)">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Central Limit Theorem (CLT)</strong></p>
+</div>
+<div class="callout-content">
+<p>Given a population of any non-Gaussian functional form with a mean <span class="math inline">\(\mu\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span>, the sampling distribution of <span class="math inline">\(\bar{x}\)</span> computed from samples of size <span class="math inline">\(n\)</span> from this population, will have mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2/n\)</span> and will be approximately Gaussian distributed <strong>when the sample size is large</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>The rule of thumb for sample means is that a sample size of 30 is satisfactory for the central limit theorem, but this maybe too small for skewed distributions. The Gaussian approximation provided by the CLT becomes better as the sample size increases.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>Suppose it is known that in a certain large human population cranial length is approximately Gaussian distributed with a mean of 185.6 mm and a standard deviation of 12.7 mm.</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Question</a></li><li><a href="#tabset-1-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>What is the probability that a random sample of size 10 from this population will have a mean greater than 190?</p>
+</div>
+<div id="tabset-1-2">
+<p>We can use the sampling distribution because we know the sample is from a Gaussian population. The mean of the sampling distribution, <span class="math inline">\(\mu_{\bar{X}}\)</span>, should be equal to the population mean. Hence, <span class="math inline">\(\mu_{\bar{X}} = 185.6\)</span>.</p>
+<p>The standard error, <span class="math inline">\(\sigma_{\bar{X}}\)</span>, can be calculated using the following formula: <span class="math inline">\(\sigma_{\bar{X}} = \sigma/\sqrt{n} = 12.7/\sqrt{10} =\)</span> 4.0161</p>
+<p>Using the knowledge that <span class="math inline">\(\bar{X} \sim N(185.6, 12.7/\sqrt{10})\)</span>, we can use <code>pnorm</code> to calculate the probability that the sample mean is greater than 190.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">pnorm</span>(<span class="dv">190</span>,<span class="at">mean=</span><span class="fl">185.6</span>,<span class="at">sd=</span><span class="fl">12.7</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">10</span>),<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1366286</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>z <span class="ot">&lt;-</span> (<span class="dv">190</span><span class="fl">-185.6</span>)<span class="sc">/</span>(<span class="fl">12.7</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">10</span>))</span>
+<span id="cb3-2"><a></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1366286</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example 2</h2>
+<p>Suppose the hourly number of customer arrivals at a hospital ED has a Poisson distribution with rate parameter <span class="math inline">\(\lambda=6\)</span>. Every hour for 48 hours, the number of customer arrivals is counted and recorded.</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Question</a></li><li><a href="#tabset-2-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>Use the CLT to approximate the probability that the average number of arrivals is between 5 and 8.</p>
+</div>
+<div id="tabset-2-2">
+<p>The data is non-Gaussian, but we will assume that the CLT holds. Recall that for a Poisson distribution, the mean is equal to the variance. Specifically, <span class="math inline">\(\mu=6\)</span>, <span class="math inline">\(\sigma^2 = 6\)</span>, <span class="math inline">\(n=48\)</span>. Hence, the mean and the standard error can be expressed as:</p>
+<p><span class="math display">\[
+\mu_{\bar{X}} = 6; \sigma_{\bar{X}} = \sqrt{6/48}
+\]</span> The probability that the average number of arrivals in the 48-hour period is between 5 and 8 is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">pnorm</span>(<span class="dv">8</span>,<span class="dv">6</span>,<span class="fu">sqrt</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">48</span>)) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="fu">sqrt</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">48</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9976611</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<p>The daily average screen time of elementary school students is assumed to follow a non-Gaussian distribution with 2.6 hours with a standard deviation of 5.3.</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Question</a></li><li><a href="#tabset-3-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>Use the central limit theorem to calculate the probability that a sample of 250 elementary school students will yield an average screen time between 1.5 hours and 2 hours?</p>
+</div>
+<div id="tabset-3-2">
+<p>The mean of the sampling distribution is 2.6 hours and the standard error of the mean is <span class="math inline">\(5.3/\sqrt{250} =\)</span> 0.3352014.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">pnorm</span>(<span class="dv">2</span>,<span class="fl">2.6</span>,<span class="fl">5.3</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">250</span>)) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">1.5</span>,<span class="fl">2.6</span>,<span class="fl">5.3</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">250</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03621341</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="finite-population-correction" class="slide level2">
+<h2>Finite Population Correction</h2>
+<p>The resulting sampling distribution assumes that sampling was done with replacement (those who were sampled can be sampled again) or sampling was done from an infinite population.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>When dealing with smaller populations, it is possible for these assumptions to be broken. We need to account for the type of sampling and the finiteness of the population.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>This correction is often ignored when the sample size is less than 5% of the population.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="finite-population-correction-formula" class="slide level2">
+<h2>Finite Population Correction Formula</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>When sampling is without replacement from a finite population, the sampling distribution of <span class="math inline">\(\bar{x}\)</span> will have mean <span class="math inline">\(\mu\)</span> and variance</p>
+<p><span class="math display">\[
+\sigma^2_{\bar{X}} = \frac{\sigma^2}{n} \left(\frac{N-n}{N-1}\right)
+\]</span></p>
+<p>The standard error can be expressed as the square root of this variance.</p>
+<p><span class="math display">\[
+\sigma_{\bar{X}} = \sqrt{\frac{\sigma^2}{n} \left(\frac{N-n}{N-1}\right)}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>It also follows that the standardization with the finite population correction can be expressed as</p>
+<p><span class="math display">\[
+Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}\sqrt{\left(\frac{N-n}{N-1}\right)}}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>Suppose 30 prototypes of a newly invented suture thread have a mean tensile strength of 140 psi and standard deviation of 10.5 psi. Assuming the tensile strengths are normally distributed,</p>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Question</a></li><li><a href="#tabset-4-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>What is the probability that a sample of 7 prototypes will have a mean tensile strength lower than 137 psi?</p>
+<ul>
+<li>Assuming sampling with replacement + infinite populations</li>
+<li>Using the finite population correction</li>
+</ul>
+</div>
+<div id="tabset-4-2">
+<ul>
+<li>Infinite population: standard error = <span class="math inline">\(\sqrt{\sigma^2/n}=\sqrt{10.5^2/7}\)</span> = 3.968627</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>mu <span class="ot">&lt;-</span> <span class="dv">140</span></span>
+<span id="cb9-2"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fl">10.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">7</span>)</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="fu">pnorm</span>(<span class="dv">137</span>,mu,se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2248459</code></pre>
+</div>
+</div>
+<ul>
+<li>Finite Population Correction</li>
+</ul>
+<p>standard error = <span class="math inline">\(\sqrt{\sigma^2/n}\sqrt{\left(\frac{N-n}{N-1}\right)}=\sqrt{10.5^2/7}\sqrt{\frac{30-7}{30-1}}\)</span> = 7.7701351</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mu <span class="ot">&lt;-</span> <span class="dv">140</span></span>
+<span id="cb11-2"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fl">10.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">7</span>)<span class="sc">*</span><span class="fu">sqrt</span>((<span class="dv">30-7</span>)<span class="sc">/</span>(<span class="dv">30-1</span>))</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="fu">pnorm</span>(<span class="dv">137</span>,mu,se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1979905</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise</h2>
+<p>Suppose <strong>300</strong> prototypes of a newly invented suture thread have a mean tensile strength of 140 psi and standard deviation of 10.5 psi. Assuming the tensile strengths are normally distributed,</p>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Question</a></li><li><a href="#tabset-5-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<p>What is the probability that a sample of 7 prototypes will have a mean tensile strength lower than 137 psi?</p>
+<ul>
+<li>Assuming sampling with replacement + infinite populations</li>
+<li>Using the finite population correction</li>
+</ul>
+</div>
+<div id="tabset-5-2">
+<ul>
+<li>Infinite population: standard error = <span class="math inline">\(\sqrt{\sigma^2/n}=\sqrt{10.5^2/7}\)</span> = 3.968627</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>mu <span class="ot">&lt;-</span> <span class="dv">140</span></span>
+<span id="cb13-2"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fl">10.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">7</span>)</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a><span class="fu">pnorm</span>(<span class="dv">137</span>,mu,se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2248459</code></pre>
+</div>
+</div>
+<ul>
+<li>Finite Population Correction</li>
+</ul>
+<p>standard error = <span class="math inline">\(\sqrt{\sigma^2/n}\sqrt{\left(\frac{N-n}{N-1}\right)}=\sqrt{10.5^2/7}\sqrt{\frac{300-7}{300-1}}\)</span> = 3.9286062</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>mu <span class="ot">&lt;-</span> <span class="dv">140</span></span>
+<span id="cb15-2"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fl">10.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">7</span>)<span class="sc">*</span><span class="fu">sqrt</span>((<span class="dv">300-7</span>)<span class="sc">/</span>(<span class="dv">300-1</span>))</span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a><span class="fu">pnorm</span>(<span class="dv">137</span>,mu,se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.222544</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="distribution-of-the-difference-between-two-sample-means" class="title-slide slide level1 center">
+<h1>Distribution of the Difference Between Two Sample Means</h1>
+
+</section>
+<section id="sample-mean-vs.-difference-between-two-sample-means" class="slide level2">
+<h2>Sample Mean vs.&nbsp;Difference Between Two Sample Means</h2>
+<p>Consider Populations A and B with the following possible measurements:</p>
+<p>A: {0,1,2}; B:{1,2,3}.</p>
+<p>If we take a sample with size 2, we can have the following scenario:</p>
+<p>Sample A: {0,2}; Sample B: {1,2}</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>The sample mean of Sample A is 1, and the mean of Sample B is 1.5. However, the difference between the sample means is -0.5, which is not a possible value for the sample means of A and B.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sampling-from-gaussian-distributed-populations-1" class="slide level2">
+<h2>Sampling from Gaussian-distributed populations</h2>
+<p>When sampling from two Gaussian-distributed populations <span class="math inline">\(N(\mu_1,\sigma_1^2)\)</span> and <span class="math inline">\(N(\mu_2,\sigma_2^2)\)</span>, the distribution of the difference between sample means <span class="math inline">\(\bar{X}_1 - \bar{X}_2\)</span> is a Gaussian distribution with mean <span class="math inline">\(\mu_1-\mu_2\)</span> and variance <span class="math inline">\(\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\)</span>. Mathematically,</p>
+<p><span class="math display">\[
+\bar{X}_1 - \bar{X}_2 \sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2})
+\]</span></p>
+</section>
+<section id="sampling-from-non-gaussian-distributed-populations" class="slide level2">
+<h2>Sampling from non Gaussian-distributed populations</h2>
+<p>When sampling from two Gaussian-distributed populations with finite means and variances, we can impose the Central Limit Theorem such that the distribution of the difference between sample means <span class="math inline">\(\bar{X}_1 - \bar{X}_2\)</span> can be approximated by the following Gaussian distribution.</p>
+<p><span class="math display">\[
+\bar{X}_1 - \bar{X}_2 \sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2})
+\]</span></p>
+</section>
+<section id="standardization-1" class="slide level2">
+<h2>Standardization</h2>
+<p>Similar to the sample mean, the difference of the sample means can also be standardized.</p>
+<p><span class="math display">\[
+Z = \frac{(\bar{X}_1 - \bar{X}_2) - (\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}
+\]</span></p>
+<p>In addition,</p>
+<p><span class="math display">\[
+P((\bar{X}_1 - \bar{X}_2) \leq (\bar{x}_1 - \bar{x}_2)) = P\left(Z \leq \frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}\right)
+\]</span></p>
+</section>
+<section id="example-3" class="slide level2">
+<h2>Example</h2>
+<p>Suppose it has been established that for a certain type of client the average length of a home visit by a public health nurse is 45 minutes with a standard deviation of 15 minutes, and that for a second type of client the average home visit is 30 minutes long with a standard deviation of 20 minutes.</p>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Question</a></li><li><a href="#tabset-6-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<p>If a nurse randomly visits 35 clients from the first and 40 from the second population, what is the probability that the average length of home visit will differ between client type one and client type two by 20 or more minutes?</p>
+</div>
+<div id="tabset-6-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1"></a><span class="co"># Calculate the mean and variance of the sampling distribution first.</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2"></a>diff_means <span class="ot">&lt;-</span> <span class="dv">45-30</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3"></a>diff_var <span class="ot">&lt;-</span> <span class="dv">15</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">35</span> <span class="sc">+</span> <span class="dv">20</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">40</span></span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4"></a></span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5"></a><span class="fu">pnorm</span>(<span class="dv">20</span>,diff_means,<span class="fu">sqrt</span>(diff_var),<span class="at">lower.tail=</span>F)</span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6"></a></span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7"></a><span class="co"># OR An alternative solution</span></span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3">3</button><span id="annotated-cell-17-9" class="code-annotation-target"><a href="#annotated-cell-17-9"></a>z <span class="ot">&lt;-</span> (<span class="dv">20</span> <span class="sc">-</span> diff_means)<span class="sc">/</span><span class="fu">sqrt</span>(diff_var)</span>
+<span id="annotated-cell-17-10"><a href="#annotated-cell-17-10"></a></span>
+<span id="annotated-cell-17-11"><a href="#annotated-cell-17-11"></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">lower.tail=</span>F)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="2" data-code-annotation="1">mu_1-mu_2</span>
+</dd>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="2">sigma_1^2/n1 + sigma_2^2/n2</span>
+</dd>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="9" data-code-annotation="3">Standardization method</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1086783
+[1] 0.1086783</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise</h2>
+<p>Suppose the age of two student organizations were normally distributed. Organization A has an average age of 20.5 and a standard deviation of 3.7, while Organization B has an average of 19.7 and a standard deviation of 4.5.</p>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Question</a></li><li><a href="#tabset-7-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<p>If 50 students were sampled from each organization, what is the probability that the sample from Organization A is older than Organization B by a value between one and two years?</p>
+</div>
+<div id="tabset-7-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>diff_means <span class="ot">&lt;-</span> <span class="fl">20.5-19.7</span></span>
+<span id="cb18-2"><a></a>diff_var <span class="ot">&lt;-</span> <span class="fl">4.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">50</span> <span class="sc">+</span> <span class="fl">3.7</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">50</span></span>
+<span id="cb18-3"><a></a></span>
+<span id="cb18-4"><a></a><span class="fu">pnorm</span>(<span class="dv">2</span>,diff_means,<span class="fu">sqrt</span>(diff_var))<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">1</span>,diff_means,<span class="fu">sqrt</span>(diff_var))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3314723</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># OR An alternative solution</span></span>
+<span id="cb20-2"><a></a></span>
+<span id="cb20-3"><a></a>z1 <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">-</span> diff_means)<span class="sc">/</span><span class="fu">sqrt</span>(diff_var) </span>
+<span id="cb20-4"><a></a>z2 <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> diff_means)<span class="sc">/</span><span class="fu">sqrt</span>(diff_var) </span>
+<span id="cb20-5"><a></a></span>
+<span id="cb20-6"><a></a><span class="fu">pnorm</span>(z1,<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(z2,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3314723</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="distribution-of-the-sample-proportion" class="title-slide slide level1 center">
+<h1>Distribution of the Sample Proportion</h1>
+
+</section>
+<section id="sampling-distribution-for-the-sample-proportion" class="slide level2">
+<h2>Sampling Distribution for the Sample Proportion</h2>
+<p>Oftentimes, we are interested in the distribution of the sample proportion when dealing with frequency data.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Unlike the means where we measure values, we create the sampling distribution for sample proportions by taking all possible samples of a given size and calculating the proportion of the variable of interest for each sample. The variable is usually dichotomous (yes/no, 0/1)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sampling-distribution-for-the-sample-proportion-1" class="slide level2">
+<h2>Sampling Distribution for the Sample Proportion</h2>
+<p>Suppose the true population/long-run proportion is <span class="math inline">\(\pi\)</span>. Invoking the Central Limit Theorem, the sampling distribution of the sample proportion, <span class="math inline">\(\hat{P}\)</span> when the sample size is large follows a Gaussian distribution with mean <span class="math inline">\(\pi\)</span> and variance <span class="math inline">\(\frac{\pi(1-\pi)}{n}\)</span>.</p>
+<p>Formally,</p>
+<p><span class="math display">\[
+\hat{P} \sim N\left(\pi,\frac{\pi(1-\pi)}{n}\right)
+\]</span></p>
+<p>It follows that the standard error of the sample proportion is <span class="math inline">\(\sigma_{\hat{p}} = \sqrt{\frac{\pi(1-\pi)}{n}}\)</span>.</p>
+</section>
+<section id="standardization-2" class="slide level2">
+<h2>Standardization</h2>
+<p>The sample proportion can also be standardized based on the properties of the sampling distribution. The sample proportion <span class="math inline">\(\hat{P}\)</span> can be transformed into a random variable <span class="math inline">\(Z\)</span> such that <span class="math inline">\(Z \sim N(0,1)\)</span>.</p>
+<p><span class="math display">\[
+Z = \frac{\hat{p}-\pi}{\sqrt{\frac{\pi(1-\pi)}{n}}}
+\]</span> In addition,</p>
+<p><span class="math display">\[
+P(\hat{P} \leq \hat{p}) = P\left(Z \leq \frac{\hat{p}-\pi}{\sqrt{\frac{\pi(1-\pi)}{n}}}\right) = P(Z \leq z)
+\]</span></p>
+</section>
+<section id="example-4" class="slide level2">
+<h2>Example</h2>
+<p>In a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps.</p>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Questions</a></li><li><a href="#tabset-8-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<p>What is the probability that in a random sample of 200, less than 125 will be against the new proposed zoning maps?</p>
+</div>
+<div id="tabset-8-2">
+<p>The population proportion is <span class="math inline">\(\pi=0.637=\mu\)</span>, the sample size <span class="math inline">\(n=200\)</span>. The variance can be calculated using the formula <span class="math inline">\(\pi(1-\pi)/n = (0.637)(1-0.637)/200 =\)</span> 0.0011562.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">125</span><span class="sc">/</span><span class="dv">200</span></span>
+<span id="cb22-2"><a></a>pi <span class="ot">&lt;-</span> <span class="fl">0.637</span></span>
+<span id="cb22-3"><a></a>variance <span class="ot">&lt;-</span> <span class="fl">0.637</span> <span class="sc">*</span> (<span class="dv">1</span><span class="fl">-0.637</span>)<span class="sc">/</span><span class="dv">200</span></span>
+<span id="cb22-4"><a></a></span>
+<span id="cb22-5"><a></a><span class="fu">pnorm</span>(phat,pi,<span class="fu">sqrt</span>(variance))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3620751</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3" class="slide level2">
+<h2>Exercise</h2>
+<p>According to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States.</p>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Question</a></li><li><a href="#tabset-9-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<p>What is the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?</p>
+</div>
+<div id="tabset-9-2">
+<p>The population proportion is <span class="math inline">\(\pi=1/31=\mu\)</span>, the sample size <span class="math inline">\(n=1000\)</span>. The variance can be calculated using the formula <span class="math inline">\(\pi(1-\pi)/n = (1/31)(1-1/31)/1000 =\)</span> 3.1217482^{-5}.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">50</span><span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb24-2"><a></a>pi <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">31</span></span>
+<span id="cb24-3"><a></a>variance <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">31</span>) <span class="sc">*</span> (<span class="dv">1-1</span><span class="sc">/</span><span class="dv">31</span>) <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb24-4"><a></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(phat,pi,<span class="fu">sqrt</span>(variance))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0007480821</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">pnorm</span>(phat,pi,<span class="fu">sqrt</span>(variance),<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0007480821</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="continuity-correction" class="slide level2">
+<h2>Continuity Correction</h2>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Recall that proportions often come from discrete distributions such as the binomial distribution. However, we’re using the Gaussian distribution, which is continuous, to approximate a discrete distribution.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>We can employ a continuity correction to account for the adjustment from discrete to continuous distributions. The correction is implemented during the standardization of the sample proportion. Given the sample proportion <span class="math inline">\(\hat{p}\)</span>, sample size <span class="math inline">\(n\)</span>, and the population proportion <span class="math inline">\(\pi\)</span>,</p>
+<p><span class="math display">\[
+z=\begin{cases}
+      \frac{\hat{p}+(0.5/n) - \pi}{\sqrt{\frac{\pi(1-\pi)}{n}}},~ \hat{p} &lt; \pi \\
+      \frac{\hat{p}-(0.5/n) - \pi}{\sqrt{\frac{\pi(1-\pi)}{n}}},~ \hat{p} &gt; \pi
+   \end{cases}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The effect of the continuity correction on the resulting standardized z-score is lower for high sample sizes.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-5" class="slide level2">
+<h2>Example</h2>
+<p>In a town with 23,673 adult residents, 63.7% of the adult residents were against the new proposed zoning maps.</p>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Questions</a></li><li><a href="#tabset-10-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<p>Use the continuity correction to calculate the probability that in a random sample of 20, less than 12 will be against the new proposed zoning maps?</p>
+</div>
+<div id="tabset-10-2">
+<p>The population proportion is <span class="math inline">\(\pi=0.637=\mu\)</span>, the sample size <span class="math inline">\(n=20\)</span>. The variance can be calculated using the formula <span class="math inline">\(\pi(1-\pi)/n = (0.637)(1-0.637)/20 =\)</span> 0.0115616. Note that <span class="math inline">\(\hat{p} = 12/20=\)</span> 0.6 is less than <span class="math inline">\(\pi=0.637\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">12</span><span class="sc">/</span><span class="dv">20</span></span>
+<span id="cb28-2"><a></a>pi <span class="ot">&lt;-</span> <span class="fl">0.637</span></span>
+<span id="cb28-3"><a></a>variance <span class="ot">&lt;-</span> <span class="fl">0.637</span> <span class="sc">*</span> (<span class="dv">1</span><span class="fl">-0.637</span>)<span class="sc">/</span><span class="dv">20</span></span>
+<span id="cb28-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb28-5"><a></a></span>
+<span id="cb28-6"><a></a>z <span class="ot">&lt;-</span> (phat <span class="sc">+</span> (<span class="fl">0.5</span><span class="sc">/</span>sampsize) <span class="sc">-</span>pi)<span class="sc">/</span><span class="fu">sqrt</span>(variance)</span>
+<span id="cb28-7"><a></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4555694</code></pre>
+</div>
+</div>
+<p>Without continuity correction:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">12</span><span class="sc">/</span><span class="dv">20</span></span>
+<span id="cb30-2"><a></a>pi <span class="ot">&lt;-</span> <span class="fl">0.637</span></span>
+<span id="cb30-3"><a></a>variance <span class="ot">&lt;-</span> <span class="fl">0.637</span> <span class="sc">*</span> (<span class="dv">1</span><span class="fl">-0.637</span>)<span class="sc">/</span><span class="dv">20</span></span>
+<span id="cb30-4"><a></a></span>
+<span id="cb30-5"><a></a><span class="fu">pnorm</span>(phat,pi,<span class="fu">sqrt</span>(variance))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3653829</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4" class="slide level2">
+<h2>Exercise</h2>
+<p>According to the CDC, 1 in 31 children aged 8 years has been identified with Autism Spectrum Disorder (ASD) in the United States.</p>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Question</a></li><li><a href="#tabset-11-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<p>Use the continuity correction to calculate the probability that more than 50 out of 1000 randomly sampled children aged 8 years old were identified with ASD?</p>
+</div>
+<div id="tabset-11-2">
+<p>The population proportion is <span class="math inline">\(\pi=1/31=\mu\)</span>, the sample size <span class="math inline">\(n=1000\)</span>. The variance can be calculated using the formula <span class="math inline">\(\pi(1-\pi)/n = (1/31)(1-1/31)/1000 =\)</span> 3.1217482^{-5}. Note that <span class="math inline">\(\hat{p}\)</span> &gt; <span class="math inline">\(\pi\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">50</span><span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb32-2"><a></a>pi <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">31</span></span>
+<span id="cb32-3"><a></a>variance <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">31</span>) <span class="sc">*</span> (<span class="dv">1-1</span><span class="sc">/</span><span class="dv">31</span>) <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb32-4"><a></a>sampsize<span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb32-5"><a></a></span>
+<span id="cb32-6"><a></a>z <span class="ot">&lt;-</span> (phat <span class="sc">-</span> (<span class="fl">0.5</span><span class="sc">/</span>sampsize) <span class="sc">-</span>pi)<span class="sc">/</span><span class="fu">sqrt</span>(variance)</span>
+<span id="cb32-7"><a></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001014558</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001014558</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="distribution-of-the-difference-between-two-sample-proportions" class="title-slide slide level1 center">
+<h1>Distribution of the Difference Between Two Sample Proportions</h1>
+
+</section>
+<section id="difference-between-two-sample-proportions" class="slide level2">
+<h2>Difference Between Two Sample Proportions</h2>
+<p>Similar to the difference between two sample means, some values of the difference in proportions cannot be found in the sampling distribution of single proportions from two different groups.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>For instance, it is possible to get a negative difference between proportions, but not a negative proportion.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sampling-distribution-of-the-difference-between-two-sample-proportions" class="slide level2">
+<h2>Sampling Distribution of the Difference Between Two Sample Proportions</h2>
+<p>Suppose the respective true population/long-run proportion for groups 1 and 2 are <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span> and the respective samples from these groups are <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>. Invoking the Central Limit Theorem, the sampling distribution of the difference in sample proportions, <span class="math inline">\(\hat{P}_1 - \hat{P}_2\)</span> when the sample size is large follows a Gaussian distribution with mean <span class="math inline">\(\pi_1-\pi_2\)</span> and variance <span class="math inline">\(\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}\)</span>.</p>
+<p>Formally,</p>
+<p><span class="math display">\[
+\hat{P}_1 - \hat{P}_2 \sim N\left(\pi_1-\pi_2,\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}\right)
+\]</span></p>
+<p>It follows that the standard error of the sample proportion is <span class="math inline">\(\sigma_{\hat{P}_1 - \hat{P}_2} = \sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}\)</span>.</p>
+</section>
+<section id="standardization-3" class="slide level2">
+<h2>Standardization</h2>
+<p>Similar to the single proportion case, the difference of two proportions can also be standardized to <span class="math inline">\(Z \sim N(0,1)\)</span>.</p>
+<p><span class="math display">\[
+Z = \frac{\hat{P}_1 - \hat{P}_2- (\pi_1-\pi_2)}{\sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}}
+\]</span></p>
+<p>In addition,</p>
+<p><span class="math display">\[
+P((\hat{P}_1 - \hat{P}_2) \leq \hat{p}_1 - \hat{p}_2) = P\left(Z \leq \frac{\hat{p}_1 - \hat{p}_2- (\pi_1-\pi_2)}{\sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}}\right) = P(Z \leq z)
+\]</span></p>
+</section>
+<section id="example-6" class="slide level2">
+<h2>Example</h2>
+<p>Researchers investigated food insecurity in the urban and rural areas of their country. It was previously reported by the country’s census that the proportion of adults who experienced food insecurity in the past year was 33% in rural areas and 23% in urban areas. The researchers sampled 450 adults from urban areas and 300 adults from rural areas.</p>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Question</a></li><li><a href="#tabset-12-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
+<p>What is the probability that the samples will yield a result such that the proportion of food insecure adults from the rural sample was <strong>at least</strong> 5% higher than that of the urban sample?</p>
+</div>
+<div id="tabset-12-2">
+<p>Remember that <span class="math inline">\(\pi_{rural}-\pi_{urban} = .10, \pi_{rural} = 0.33, \pi_{urban}=0.23\)</span>. We are interested in <span class="math inline">\(P((\hat{P}_1 - \hat{P}_2) \geq 0.05)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>pi_1 <span class="ot">&lt;-</span> <span class="fl">0.33</span></span>
+<span id="cb36-2"><a></a>n_1 <span class="ot">&lt;-</span> <span class="dv">300</span></span>
+<span id="cb36-3"><a></a>pi_2 <span class="ot">&lt;-</span> <span class="fl">0.23</span></span>
+<span id="cb36-4"><a></a>n_2 <span class="ot">&lt;-</span> <span class="dv">450</span></span>
+<span id="cb36-5"><a></a>variance <span class="ot">&lt;-</span> (pi_1 <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_1))<span class="sc">/</span>n_1 <span class="sc">+</span> (pi_2 <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_2))<span class="sc">/</span>n_2</span>
+<span id="cb36-6"><a></a></span>
+<span id="cb36-7"><a></a><span class="fu">pnorm</span>(<span class="fl">0.05</span>,pi_1<span class="sc">-</span>pi_2,<span class="fu">sqrt</span>(variance),<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9314985</code></pre>
+</div>
+</div>
+<p>OR through standardization</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>z <span class="ot">&lt;-</span> (<span class="fl">0.05</span><span class="sc">-</span>(pi_1<span class="sc">-</span>pi_2))<span class="sc">/</span><span class="fu">sqrt</span>(variance)</span>
+<span id="cb38-2"><a></a></span>
+<span id="cb38-3"><a></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9314985</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5" class="slide level2">
+<h2>Exercise</h2>
+<p>The prevalence of the Influenza virus in State A was reported to be 30%, while the prevalence of Influenza in State B is 24%.</p>
+<div class="panel-tabset">
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">Question</a></li><li><a href="#tabset-13-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1">
+<p>If we randomly sample 100 constituents from each state, what is the probability that there will be a higher proportion of individuals infected with Influenza in State B compared to State A?</p>
+</div>
+<div id="tabset-13-2">
+<p>We are interested in <span class="math inline">\(P(\hat{P}_A - \hat{P}_B &lt; 0)\)</span>, where <span class="math inline">\(\hat{P}_A\)</span> is the sample proportion of infected individuals in State A and <span class="math inline">\(\hat{P}_B\)</span> is the sample proportion for State B. It follows that <span class="math inline">\(\pi_A=0.30\)</span>, <span class="math inline">\(\pi_B=0.24\)</span>, and <span class="math inline">\(n_1 = n_2 = 100\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>pi_1 <span class="ot">&lt;-</span> <span class="fl">0.30</span></span>
+<span id="cb40-2"><a></a>n_1 <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb40-3"><a></a>pi_2 <span class="ot">&lt;-</span> <span class="fl">0.24</span></span>
+<span id="cb40-4"><a></a>n_2 <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb40-5"><a></a>variance <span class="ot">&lt;-</span> (pi_1 <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_1))<span class="sc">/</span>n_1 <span class="sc">+</span> (pi_2 <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_2))<span class="sc">/</span>n_2</span>
+<span id="cb40-6"><a></a></span>
+<span id="cb40-7"><a></a><span class="fu">pnorm</span>(<span class="dv">0</span>,pi_1<span class="sc">-</span>pi_2,<span class="fu">sqrt</span>(variance))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1690752</code></pre>
+</div>
+</div>
+<p>OR through standardization</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>z <span class="ot">&lt;-</span> (<span class="dv">0</span><span class="sc">-</span>(pi_1<span class="sc">-</span>pi_2))<span class="sc">/</span><span class="fu">sqrt</span>(variance)</span>
+<span id="cb42-2"><a></a></span>
+<span id="cb42-3"><a></a><span class="fu">pnorm</span>(z,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1690752</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Lecture 5 - <a href="https://madfudolig.quarto.pub/introtobiostats/">Back to home</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+          let selectedAnnoteEl;
+          const selectorForAnnotation = ( cell, annotation) => {
+            let cellAttr = 'data-code-cell="' + cell + '"';
+            let lineAttr = 'data-code-annotation="' +  annotation + '"';
+            const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+            return selector;
+          }
+          const selectCodeLines = (annoteEl) => {
+            const doc = window.document;
+            const targetCell = annoteEl.getAttribute("data-target-cell");
+            const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+            const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+            const lineIds = lines.map((line) => {
+              return targetCell + "-" + line;
+            })
+            let top = null;
+            let height = null;
+            let parent = null;
+            if (lineIds.length > 0) {
+                //compute the position of the single el (top and bottom and make a div)
+                const el = window.document.getElementById(lineIds[0]);
+                top = el.offsetTop;
+                height = el.offsetHeight;
+                parent = el.parentElement.parentElement;
+              if (lineIds.length > 1) {
+                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                height = bottom - top;
+              }
+              if (top !== null && height !== null && parent !== null) {
+                // cook up a div (if necessary) and position it 
+                let div = window.document.getElementById("code-annotation-line-highlight");
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = 'absolute';
+                  parent.appendChild(div);
+                }
+                div.style.top = top - 2 + "px";
+                div.style.height = height + 4 + "px";
+                div.style.left = 0;
+                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                  gutterDiv.style.position = 'absolute';
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector('.code-annotation-gutter');
+                  gutter.appendChild(gutterDiv);
+                }
+                gutterDiv.style.top = top - 2 + "px";
+                gutterDiv.style.height = height + 4 + "px";
+              }
+              selectedAnnoteEl = annoteEl;
+            }
+          };
+          const unselectCodeLines = () => {
+            const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+            elementsIds.forEach((elId) => {
+              const div = window.document.getElementById(elId);
+              if (div) {
+                div.remove();
+              }
+            });
+            selectedAnnoteEl = undefined;
+          };
+            // Handle positioning of the toggle
+        window.addEventListener(
+          "resize",
+          throttle(() => {
+            elRect = undefined;
+            if (selectedAnnoteEl) {
+              selectCodeLines(selectedAnnoteEl);
+            }
+          }, 10)
+        );
+        function throttle(fn, ms) {
+        let throttle = false;
+        let timer;
+          return (...args) => {
+            if(!throttle) { // first call gets through
+                fn.apply(this, args);
+                throttle = true;
+            } else { // all the others get throttled
+                if(timer) clearTimeout(timer); // cancel #2
+                timer = setTimeout(() => {
+                  fn.apply(this, args);
+                  timer = throttle = false;
+                }, ms);
+            }
+          };
+        }
+          const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+          for (let i=0; i<annoteTargets.length; i++) {
+            const annoteTarget = annoteTargets[i];
+            const targetCell = annoteTarget.getAttribute("data-target-cell");
+            const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+            const contentFn = () => {
+              const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              if (content) {
+                const tipContent = content.cloneNode(true);
+                tipContent.classList.add("code-annotation-tip-content");
+                return tipContent.outerHTML;
+              }
+            }
+            const config = {
+              allowHTML: true,
+              content: contentFn,
+              onShow: (instance) => {
+                selectCodeLines(instance.reference);
+                instance.reference.classList.add('code-annotation-active');
+                window.tippy.hideAll();
+              },
+              onHide: (instance) => {
+                unselectCodeLines();
+                instance.reference.classList.remove('code-annotation-active');
+              },
+              maxWidth: 300,
+              delay: [50, 0],
+              duration: [200, 0],
+              offset: [5, 10],
+              arrow: true,
+              appendTo: function(el) {
+                return el.parentElement.parentElement.parentElement;
+              },
+              interactive: true,
+              interactiveBorder: 10,
+              theme: 'light-border',
+              placement: 'right',
+              popperOptions: {
+                modifiers: [
+                {
+                  name: 'flip',
+                  options: {
+                    flipVariations: false, // true by default
+                    allowedAutoPlacements: ['right'],
+                    fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                  },
+                },
+                {
+                  name: 'preventOverflow',
+                  options: {
+                    mainAxis: false,
+                    altAxis: false
+                  }
+                }
+                ]        
+              }      
+            };
+            window.tippy(annoteTarget, config); 
+          }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

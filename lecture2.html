@@ -1,0 +1,3167 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Descriptive Statistics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5225a0b03738627c8390147651eb7bbf.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Descriptive Statistics</h1>
+  <p class="subtitle">Lecture 2</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="outline" class="title-slide slide level1 center">
+<h1>Outline</h1>
+<ul>
+<li>Data Organization</li>
+<li>Measures of Central Tendency</li>
+<li>Measures of Dispersion</li>
+<li>Measure of Location</li>
+<li>Skewness and Kurtosis</li>
+<li>Basic Data Visualization using R</li>
+</ul>
+</section>
+
+<section>
+<section id="data-organization" class="title-slide slide level1 center">
+<h1>Data Organization</h1>
+
+</section>
+<section id="data-exploration" class="slide level2">
+<h2>Data Exploration</h2>
+<p>In order to explore the underlying nature of the provided information, we need to explore the data. This exploration is made much easier if the data are organized and summarized.</p>
+<div title="Raw Data">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Raw Data</strong></p>
+</div>
+<div class="callout-content">
+<p>Raw data are measurements that have not been organized, summarized, or otherwise manipulated. As a biostatistician, it is common to be provided the raw data for any analysis.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ordered-lists" class="slide level2">
+<h2>Ordered Lists</h2>
+<p>The easiest step in organizing data is simply to order the data.</p>
+<div title="Ordered Lists/Arrays">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Ordered Lists/Arrays</strong></p>
+</div>
+<div class="callout-content">
+<p>An ordered list is a list of values that are arranged from the smallest to largest value (or largest to smallest).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ordered-lists-in-r" class="slide level2 scrollable">
+<h2>Ordered Lists in <code>R</code></h2>
+<p>There are different ways to create an ordered list in <code>R</code>. Let us use the <code>iris</code> dataset in <code>R</code> and the <code>tidyverse()</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a><span class="fu">glimpse</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 150
+Columns: 5
+$ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…
+$ Sepal.Width  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…
+$ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…
+$ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…
+$ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…</code></pre>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>sort()</code></a></li><li><a href="#tabset-1-2"><code>arrange()</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p><code>sort(vector)</code> can arrange a vector in ascending or descending order. This works for both numeric and character vectors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sort</span>(iris<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9 4.9
+ [19] 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1 5.1 5.1
+ [37] 5.1 5.1 5.1 5.1 5.1 5.2 5.2 5.2 5.2 5.3 5.4 5.4 5.4 5.4 5.4 5.4 5.5 5.5
+ [55] 5.5 5.5 5.5 5.5 5.5 5.6 5.6 5.6 5.6 5.6 5.6 5.7 5.7 5.7 5.7 5.7 5.7 5.7
+ [73] 5.7 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.9 5.9 5.9 6.0 6.0 6.0 6.0 6.0 6.0 6.1
+ [91] 6.1 6.1 6.1 6.1 6.1 6.2 6.2 6.2 6.2 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3
+[109] 6.4 6.4 6.4 6.4 6.4 6.4 6.4 6.5 6.5 6.5 6.5 6.5 6.6 6.6 6.7 6.7 6.7 6.7
+[127] 6.7 6.7 6.7 6.7 6.8 6.8 6.8 6.9 6.9 6.9 6.9 7.0 7.1 7.2 7.2 7.2 7.3 7.4
+[145] 7.6 7.7 7.7 7.7 7.7 7.9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">sort</span>(iris<span class="sc">$</span>Sepal.Length,<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 7.9 7.7 7.7 7.7 7.7 7.6 7.4 7.3 7.2 7.2 7.2 7.1 7.0 6.9 6.9 6.9 6.9 6.8
+ [19] 6.8 6.8 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.6 6.6 6.5 6.5 6.5 6.5 6.5 6.4
+ [37] 6.4 6.4 6.4 6.4 6.4 6.4 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.2 6.2 6.2
+ [55] 6.2 6.1 6.1 6.1 6.1 6.1 6.1 6.0 6.0 6.0 6.0 6.0 6.0 5.9 5.9 5.9 5.8 5.8
+ [73] 5.8 5.8 5.8 5.8 5.8 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.6 5.6 5.6 5.6 5.6
+ [91] 5.6 5.5 5.5 5.5 5.5 5.5 5.5 5.5 5.4 5.4 5.4 5.4 5.4 5.4 5.3 5.2 5.2 5.2
+[109] 5.2 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0
+[127] 5.0 5.0 4.9 4.9 4.9 4.9 4.9 4.9 4.8 4.8 4.8 4.8 4.8 4.7 4.7 4.6 4.6 4.6
+[145] 4.6 4.5 4.4 4.4 4.4 4.3</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<p><code>arrange(dataframe,variable)</code> can sort a column in a data frame. This function is from the <code>dplyr</code> package, which is a part of tidyverse.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">arrange</span>(iris,Sepal.Length)</span>
+<span id="cb7-2"><a></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 150
+Columns: 5
+$ Sepal.Length &lt;dbl&gt; 4.3, 4.4, 4.4, 4.4, 4.5, 4.6, 4.6, 4.6, 4.6, 4.7, 4.7, 4.…
+$ Sepal.Width  &lt;dbl&gt; 3.0, 2.9, 3.0, 3.2, 2.3, 3.1, 3.4, 3.6, 3.2, 3.2, 3.2, 3.…
+$ Petal.Length &lt;dbl&gt; 1.1, 1.4, 1.3, 1.3, 1.3, 1.5, 1.4, 1.0, 1.4, 1.3, 1.6, 1.…
+$ Petal.Width  &lt;dbl&gt; 0.1, 0.2, 0.2, 0.2, 0.3, 0.2, 0.3, 0.2, 0.2, 0.2, 0.2, 0.…
+$ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>df<span class="sc">$</span>Sepal.Length</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9 4.9
+ [19] 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1 5.1 5.1
+ [37] 5.1 5.1 5.1 5.1 5.1 5.2 5.2 5.2 5.2 5.3 5.4 5.4 5.4 5.4 5.4 5.4 5.5 5.5
+ [55] 5.5 5.5 5.5 5.5 5.5 5.6 5.6 5.6 5.6 5.6 5.6 5.7 5.7 5.7 5.7 5.7 5.7 5.7
+ [73] 5.7 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.9 5.9 5.9 6.0 6.0 6.0 6.0 6.0 6.0 6.1
+ [91] 6.1 6.1 6.1 6.1 6.1 6.2 6.2 6.2 6.2 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3
+[109] 6.4 6.4 6.4 6.4 6.4 6.4 6.4 6.5 6.5 6.5 6.5 6.5 6.6 6.6 6.7 6.7 6.7 6.7
+[127] 6.7 6.7 6.7 6.7 6.8 6.8 6.8 6.9 6.9 6.9 6.9 7.0 7.1 7.2 7.2 7.2 7.3 7.4
+[145] 7.6 7.7 7.7 7.7 7.7 7.9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">arrange</span>(iris,<span class="fu">desc</span>(Sepal.Length))</span>
+<span id="cb11-2"><a></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 150
+Columns: 5
+$ Sepal.Length &lt;dbl&gt; 7.9, 7.7, 7.7, 7.7, 7.7, 7.6, 7.4, 7.3, 7.2, 7.2, 7.2, 7.…
+$ Sepal.Width  &lt;dbl&gt; 3.8, 3.8, 2.6, 2.8, 3.0, 3.0, 2.8, 2.9, 3.6, 3.2, 3.0, 3.…
+$ Petal.Length &lt;dbl&gt; 6.4, 6.7, 6.9, 6.7, 6.1, 6.6, 6.1, 6.3, 6.1, 6.0, 5.8, 5.…
+$ Petal.Width  &lt;dbl&gt; 2.0, 2.2, 2.3, 2.0, 2.3, 2.1, 1.9, 1.8, 2.5, 1.8, 1.6, 2.…
+$ Species      &lt;fct&gt; virginica, virginica, virginica, virginica, virginica, vi…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>df<span class="sc">$</span>Sepal.Length</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 7.9 7.7 7.7 7.7 7.7 7.6 7.4 7.3 7.2 7.2 7.2 7.1 7.0 6.9 6.9 6.9 6.9 6.8
+ [19] 6.8 6.8 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.6 6.6 6.5 6.5 6.5 6.5 6.5 6.4
+ [37] 6.4 6.4 6.4 6.4 6.4 6.4 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.2 6.2 6.2
+ [55] 6.2 6.1 6.1 6.1 6.1 6.1 6.1 6.0 6.0 6.0 6.0 6.0 6.0 5.9 5.9 5.9 5.8 5.8
+ [73] 5.8 5.8 5.8 5.8 5.8 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.6 5.6 5.6 5.6 5.6
+ [91] 5.6 5.5 5.5 5.5 5.5 5.5 5.5 5.5 5.4 5.4 5.4 5.4 5.4 5.4 5.3 5.2 5.2 5.2
+[109] 5.2 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0
+[127] 5.0 5.0 4.9 4.9 4.9 4.9 4.9 4.9 4.8 4.8 4.8 4.8 4.8 4.7 4.7 4.6 4.6 4.6
+[145] 4.6 4.5 4.4 4.4 4.4 4.3</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ordered-lists-pros-and-cons" class="slide level2">
+<h2>Ordered Lists: Pros and Cons</h2>
+<p>The ordered list makes it easier to see the data sorted by a specific variable. However, it may be impractical to use for large data sets.</p>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<p>The data set <code>USArrests</code> contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973.</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Exercise</a></li><li><a href="#tabset-2-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>Create an ordered list for the <code>Assault</code> variable in <code>USArrests</code>. Which state had the highest rate for assault per 100,000 residents?</p>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">sort</span>(USArrests<span class="sc">$</span>Assault,<span class="at">decreasing =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 337 335 300 294 285 279 276 263 259 255 254 252 249 249 238 236 211 204 201
+[20] 190 188 178 174 161 159 159 156 151 149 145 120 120 120 115 113 110 109 109
+[39] 106 102  86  83  81  72  57  56  53  48  46  45</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">arrange</span>(USArrests,<span class="fu">desc</span>(Assault))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Murder Assault UrbanPop Rape
+North Carolina   13.0     337       45 16.1
+Florida          15.4     335       80 31.9
+Maryland         11.3     300       67 27.8
+Arizona           8.1     294       80 31.0
+New Mexico       11.4     285       70 32.1
+South Carolina   14.4     279       48 22.5
+California        9.0     276       91 40.6
+Alaska           10.0     263       48 44.5
+Mississippi      16.1     259       44 17.1
+Michigan         12.1     255       74 35.1
+New York         11.1     254       86 26.1
+Nevada           12.2     252       81 46.0
+Illinois         10.4     249       83 24.0
+Louisiana        15.4     249       66 22.2
+Delaware          5.9     238       72 15.8
+Alabama          13.2     236       58 21.2
+Georgia          17.4     211       60 25.8
+Colorado          7.9     204       78 38.7
+Texas            12.7     201       80 25.5
+Arkansas          8.8     190       50 19.5
+Tennessee        13.2     188       59 26.9
+Missouri          9.0     178       70 28.2
+Rhode Island      3.4     174       87  8.3
+Wyoming           6.8     161       60 15.6
+New Jersey        7.4     159       89 18.8
+Oregon            4.9     159       67 29.3
+Virginia          8.5     156       63 20.7
+Oklahoma          6.6     151       68 20.0
+Massachusetts     4.4     149       85 16.3
+Washington        4.0     145       73 26.2
+Idaho             2.6     120       54 14.2
+Ohio              7.3     120       75 21.4
+Utah              3.2     120       80 22.9
+Kansas            6.0     115       66 18.0
+Indiana           7.2     113       65 21.0
+Connecticut       3.3     110       77 11.1
+Kentucky          9.7     109       52 16.3
+Montana           6.0     109       53 16.4
+Pennsylvania      6.3     106       72 14.9
+Nebraska          4.3     102       62 16.5
+South Dakota      3.8      86       45 12.8
+Maine             2.1      83       51  7.8
+West Virginia     5.7      81       39  9.3
+Minnesota         2.7      72       66 14.9
+New Hampshire     2.1      57       56  9.5
+Iowa              2.2      56       57 11.3
+Wisconsin         2.6      53       66 10.8
+Vermont           2.2      48       32 11.2
+Hawaii            5.3      46       83 20.2
+North Dakota      0.8      45       44  7.3</code></pre>
+</div>
+</div>
+<p>North Carolina had the highest rate of Assault arrests per 100,000 residents with 337.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="frequency-tables-categorical-variables" class="slide level2">
+<h2>Frequency Tables: Categorical Variables</h2>
+<p>One way to summarize a data set is through frequency tables, which counts the frequency of occurrence of values in the data set. To group a set of observations, we select a set of contiguous, nonoverlapping intervals such that each value in the set of observations can be placed in one, and only one, of the intervals.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>For categorical variables, these intervals can be defined by the categories in the variable.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Frequency tables are also referred to as frequency distributions.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="frequency-tables-categorical-variables-1" class="slide level2 scrollable">
+<h2>Frequency Tables: Categorical Variables</h2>
+<p>Here is an example of a frequency table. The data set <code>flights</code> in the <code>nycflights23</code> package includes data for all flights that departed from airports in New York city. Recall that this data set has 435,452 rows. If we wished to determine where most flights originated from (column <code>origin</code>), we can count the number of rows that mentioned each of the airports.</p>
+<p>To create a basic frequency table, we can use the function <code>count(dataframe,variable)</code> in the <code>dplyr</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">library</span>(nycflights23)</span>
+<span id="cb19-2"><a></a><span class="fu">count</span>(flights,origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  origin      n
+  &lt;chr&gt;   &lt;int&gt;
+1 EWR    138578
+2 JFK    133048
+3 LGA    163726</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise</h2>
+<p>For the following exercise, use the <code>infert</code> data set, which has data on education level, age, parity (previous pregnancies), and the incidence of infertility after spontaneous and induced abortion.</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Exercise</a></li><li><a href="#tabset-3-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>After examining the data set using <code>glimpse</code>, create a frequency table for the education level of the subjects given by the variable <code>education</code>.</p>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">count</span>(infert,education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  education   n
+1    0-5yrs  12
+2   6-11yrs 120
+3   12+ yrs 116</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-frequency" class="slide level2">
+<h2>Relative Frequency</h2>
+<p>It may be useful at times to know the proportion, rather than the number, of values falling within a particular class interval. We obtain this information by dividing the number of values in the particular class interval by the total number of values. For an interval with <span class="math inline">\(k\)</span> occurrences out of a total of <span class="math inline">\(N\)</span> events, the relative frequency can be calculated by:</p>
+<p><span class="math display">\[
+Rel. Freq. = n/N
+\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The relative frequency can be reported as a decimal or as a percentage (<span class="math inline">\(\times 100\%\)</span>).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cumulative-relative-frequency" class="slide level2">
+<h2>Cumulative Relative Frequency</h2>
+<p>We may sum, or cumulate, the relative frequencies to facilitate obtaining information regarding the relative frequency of values within two or more contiguous class intervals.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The sum of <em>relative</em> frequencies is referred to as the <strong>cumulative relative frequency</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-relative-and-cumulative-frequencies" class="slide level2 scrollable">
+<h2>Calculating Relative and Cumulative Frequencies</h2>
+<p>Let’s try to calculate these frequencies by hand using the <code>origin</code> frequency distribution example from <code>nycflights</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="jbmnhnbnrp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jbmnhnbnrp table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jbmnhnbnrp thead, #jbmnhnbnrp tbody, #jbmnhnbnrp tfoot, #jbmnhnbnrp tr, #jbmnhnbnrp td, #jbmnhnbnrp th {
+  border-style: none;
+}
+
+#jbmnhnbnrp p {
+  margin: 0;
+  padding: 0;
+}
+
+#jbmnhnbnrp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jbmnhnbnrp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jbmnhnbnrp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jbmnhnbnrp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jbmnhnbnrp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jbmnhnbnrp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jbmnhnbnrp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jbmnhnbnrp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jbmnhnbnrp .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jbmnhnbnrp .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jbmnhnbnrp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jbmnhnbnrp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jbmnhnbnrp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jbmnhnbnrp .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jbmnhnbnrp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jbmnhnbnrp .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jbmnhnbnrp .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jbmnhnbnrp .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jbmnhnbnrp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jbmnhnbnrp .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jbmnhnbnrp .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jbmnhnbnrp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jbmnhnbnrp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jbmnhnbnrp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jbmnhnbnrp .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jbmnhnbnrp .gt_left {
+  text-align: left;
+}
+
+#jbmnhnbnrp .gt_center {
+  text-align: center;
+}
+
+#jbmnhnbnrp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jbmnhnbnrp .gt_font_normal {
+  font-weight: normal;
+}
+
+#jbmnhnbnrp .gt_font_bold {
+  font-weight: bold;
+}
+
+#jbmnhnbnrp .gt_font_italic {
+  font-style: italic;
+}
+
+#jbmnhnbnrp .gt_super {
+  font-size: 65%;
+}
+
+#jbmnhnbnrp .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jbmnhnbnrp .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jbmnhnbnrp .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jbmnhnbnrp .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jbmnhnbnrp .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jbmnhnbnrp .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jbmnhnbnrp .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#jbmnhnbnrp .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jbmnhnbnrp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="origin" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">origin</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="origin">EWR</td>
+<td class="gt_row gt_right" headers="n">138578</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="origin">JFK</td>
+<td class="gt_row gt_right" headers="n">133048</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="origin">LGA</td>
+<td class="gt_row gt_right" headers="n">163726</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Relative Freq.</a></li><li><a href="#tabset-4-2">Cumulative Freq.</a></li><li><a href="#tabset-4-3">Cumulative Rel. Freq.</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>For EWR: <span class="math inline">\(\frac{138578}{(138578 + 133048 + 163726)}=\)</span> 0.3183125</p>
+<p>For JFK: <span class="math inline">\(\frac{133048}{(138578 + 133048 + 163726)}=\)</span> 0.3056102</p>
+<p>For LGA: <span class="math inline">\(\frac{163726}{(138578 + 133048 + 163726)}=\)</span> 0.3760773</p>
+</div>
+<div id="tabset-4-2">
+<p>For EWR: 138578</p>
+<p>For EWR + JFK: <span class="math inline">\(138578+133048=\)</span> 271626</p>
+<p>For EWR+JFK + LGA: <span class="math inline">\((138578 + 133048 + 163726)=\)</span> 435352</p>
+</div>
+<div id="tabset-4-3">
+<p>For EWR: <span class="math inline">\(\frac{138578}{(138578 + 133048 + 163726)}=\)</span> 0.3183125</p>
+<p>For EWR + JFK: <span class="math inline">\(\frac{138578+133048}{(138578 + 133048 + 163726)}=\)</span> 0.6239227</p>
+<p>For EWR+JFK + LGA: <span class="math inline">\(\frac{133048+138578 + 163726}{(138578 + 133048 + 163726)}=\)</span> 1</p>
+</div>
+</div>
+</div>
+</section>
+<section id="frequency-tables-in-r" class="slide level2">
+<h2>Frequency Tables in <code>R</code></h2>
+<p>There are a lot of ways to create frequency tables in <code>R</code>. One of the easiest and most complete ways is to use the function <code>freq</code> in the package <code>summarytools</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># install.packages("summarytools") # if you have not installed summarytools yet.</span></span>
+<span id="cb23-2"><a></a></span>
+<span id="cb23-3"><a></a><span class="fu">library</span>(summarytools)</span>
+<span id="cb23-4"><a></a><span class="fu">freq</span>(flights<span class="sc">$</span>origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frequencies  
+flights$origin  
+Type: Character  
+
+                Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+----------- -------- --------- -------------- --------- --------------
+        EWR   138578     31.83          31.83     31.83          31.83
+        JFK   133048     30.56          62.39     30.56          62.39
+        LGA   163726     37.61         100.00     37.61         100.00
+       &lt;NA&gt;        0                               0.00         100.00
+      Total   435352    100.00         100.00    100.00         100.00</code></pre>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The <code>&lt;NA&gt;</code> row also counts rows that have missing values. The <code>%Valid</code> column only counts non-missing data, while the <code>% Total</code> column counts missing data in calculating relative and cumulative frequencies. In this example, there are no missing rows, hence the columns are the same.</p>
+<p>The function also does not output cumulative frequencies, but usually cumulative relative frequencies suffice.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="frequency-tables-quantitative-variables" class="slide level2">
+<h2>Frequency Tables: Quantitative Variables</h2>
+<p>These intervals are usually referred to as <strong>class intervals</strong>.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Too few intervals are undesirable because of the resulting loss of information. On the other hand, if too many intervals are used, the objective of summarization will not be met.</p>
+<p>A commonly followed rule of thumb states that there should be no fewer than 5 intervals and no more than 15. However, if the number of intervals fall outside this range, it should be based on theoretical/foundational concepts that could justify the choice of intervals.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="frequency-tables-in-r-qv" class="slide level2">
+<h2>Frequency Tables in <code>R</code>: QV</h2>
+<p>Like categorical variables, there are a lot of ways to create a frequency tables for quantitative variables. However, using <code>freq()</code> directly on a quantitative variable could lead to trivial frequency tables.</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>What happens if you run the following code?</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">freq</span>(iris<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frequency-tables-in-r-hist" class="slide level2">
+<h2>Frequency Tables in <code>R</code>: <code>hist()</code></h2>
+<h3 id="histvector"><code>hist(vector)</code></h3>
+<p>The function <code>hist()</code> creates both a histogram or a vector of frequencies. To show the vector of frequencies, the plotting mechanism must be turned off. This can be done by setting <code>plot=F</code>. For example,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">hist</span>(iris<span class="sc">$</span>Sepal.Length,<span class="at">plot=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$breaks
+[1] 4.0 4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0
+
+$counts
+[1]  5 27 27 30 31 18  6  6
+
+$density
+[1] 0.06666667 0.36000000 0.36000000 0.40000000 0.41333333 0.24000000 0.08000000
+[8] 0.08000000
+
+$mids
+[1] 4.25 4.75 5.25 5.75 6.25 6.75 7.25 7.75
+
+$xname
+[1] "iris$Sepal.Length"
+
+$equidist
+[1] TRUE
+
+attr(,"class")
+[1] "histogram"</code></pre>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>In this output:</p>
+<ul>
+<li><code>Breaks</code> are the endpoints of the intervals used to create the frequency table.</li>
+<li><code>counts</code> are the frequencies for each interval.</li>
+<li><code>mids</code> are the midpoints of each interval, which is commonly used as the representative numbers of each interval.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="frequency-tables-in-rcutvectorbreaks-and-freqvector" class="slide level2">
+<h2>Frequency Tables in <code>R</code>:<code>cut(vector,breaks)</code> and <code>freq(vector)</code></h2>
+<p><code>cut()</code> creates a factor including the intervals for the quantitative variable based on the breaks you provide it. You can provide the breaks using the <code>seq()</code> function or the <code>c()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a><span class="co"># We must first create a vector of intervals for our frequency table.</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>ranges <span class="ot">&lt;-</span> <span class="fu">cut</span>(iris<span class="sc">$</span>Sepal.Length,<span class="at">breaks=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">4</span>,<span class="at">to=</span><span class="dv">8</span>,<span class="at">by=</span><span class="fl">0.5</span>))</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3"></a><span class="fu">head</span>(ranges)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="1"><code>seq(from=4,to=8,by=0.5)</code> provides a vector of numbers from 4 to 8 in increments of 0.5.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="2">The “(x,y]” notation in the output means that the interval includes y, but not x. The <code>head()</code> function only shows the first 6 elements of ranges.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] (5,5.5] (4.5,5] (4.5,5] (4.5,5] (4.5,5] (5,5.5]
+Levels: (4,4.5] (4.5,5] (5,5.5] (5.5,6] (6,6.5] (6.5,7] (7,7.5] (7.5,8]</code></pre>
+</div>
+</div>
+<p>We can now make a frequency table out of the intervals provided by <code>cut()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">freq</span>(ranges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frequencies  
+ranges  
+Type: Factor  
+
+                Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+------------- ------ --------- -------------- --------- --------------
+      (4,4.5]      5      3.33           3.33      3.33           3.33
+      (4.5,5]     27     18.00          21.33     18.00          21.33
+      (5,5.5]     27     18.00          39.33     18.00          39.33
+      (5.5,6]     30     20.00          59.33     20.00          59.33
+      (6,6.5]     31     20.67          80.00     20.67          80.00
+      (6.5,7]     18     12.00          92.00     12.00          92.00
+      (7,7.5]      6      4.00          96.00      4.00          96.00
+      (7.5,8]      6      4.00         100.00      4.00         100.00
+         &lt;NA&gt;      0                               0.00         100.00
+        Total    150    100.00         100.00    100.00         100.00</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-4" class="slide level2">
+<h2>Exercise</h2>
+<p>Use the <code>infert</code> data set, which has data on education level, age, parity (previous pregnancies), and the incidence of infertility after spontaneous and induced abortion.</p>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Exercise</a></li><li><a href="#tabset-5-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<p>Create a frequency distribution table with relative and cumulative relative frequencies for the education level of the subjects given by the variable <code>education</code>.</p>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">freq</span>(infert<span class="sc">$</span>education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frequencies  
+infert$education  
+Type: Factor  
+
+                Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+------------- ------ --------- -------------- --------- --------------
+       0-5yrs     12      4.84           4.84      4.84           4.84
+      6-11yrs    120     48.39          53.23     48.39          53.23
+      12+ yrs    116     46.77         100.00     46.77         100.00
+         &lt;NA&gt;      0                               0.00         100.00
+        Total    248    100.00         100.00    100.00         100.00</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="measures-of-central-tendency" class="title-slide slide level1 center">
+<h1>Measures of Central Tendency</h1>
+
+</section>
+<section id="descriptive-measures" class="slide level2">
+<h2>Descriptive Measures</h2>
+<p>Although frequency distributions serve useful purposes, there are many situations that require other types of data summarization. What we need in many instances is the ability to summarize the data by means of a single number called a <strong>descriptive measure</strong>. Descriptive measures may be computed from the data of a sample or the data of a population.</p>
+<div title="Statistic vs. Parameter">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Statistic vs.&nbsp;Parameter</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Statistics</strong> are descriptive measures computed from a sample. Statistics are typically represented by standard alphabet symbols (<span class="math inline">\(\bar{x},p,r\)</span>).</p>
+<p><strong>Parameters</strong> are descriptive measures computed from a population. Parameters are typically represented by Greek letters (<span class="math inline">\(\mu,\pi,\rho\)</span>).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="measures-of-central-tendency-1" class="slide level2">
+<h2>Measures of Central Tendency</h2>
+<p>Measures of central tendency provides information on where the central point of the data is. The most common measures of central tendency are:</p>
+<ul>
+<li>Mean</li>
+<li>Median</li>
+<li>Mode</li>
+</ul>
+</section>
+<section id="mean" class="slide level2">
+<h2>Mean</h2>
+<p>The mean, specifically the <em>arithmetic mean</em>, is the most familiar measure of central tendency.</p>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Population Mean</a></li><li><a href="#tabset-6-2">Sample Mean</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<div title="Population Mean">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Population Mean</strong></p>
+</div>
+<div class="callout-content">
+<p>The population mean is calculated by adding all the values in the population and dividing by the population size <span class="math inline">\(N\)</span>. Formally, for a vector of values given by <span class="math inline">\((X_1,X_2,X_3,..., X_N)\)</span> defining the population, the mean <span class="math inline">\(\mu\)</span> can be calculated using the following equation:</p>
+<p><span class="math display">\[
+\mu = \frac{(X_1+X_2+X_3+...+X_N)}{N} = \frac{\sum_{i=1}^N X_i}{N}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2">
+<div title="Sample Mean">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Sample Mean</strong></p>
+</div>
+<div class="callout-content">
+<p>The sample mean is calculated by adding all the values in the sample and dividing by the sample size <span class="math inline">\(k\)</span>. Formally, for a vector of values given by <span class="math inline">\((X_1,X_2,X_3,..., X_k)\)</span> defining the population, the mean <span class="math inline">\(\bar{x}\)</span> can be calculated using the following equation:</p>
+<p><span class="math display">\[
+\bar{x} = \frac{(X_1+X_2+X_3+...+X_k)}{k} = \frac{\sum_{i=1}^k X_i}{k}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-example" class="slide level2">
+<h2>Mean: Example</h2>
+<p>What is the mean of the following numbers: 5, 27, 26, 30, 31?</p>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Math Method</a></li><li><a href="#tabset-7-2"><code>R</code> method</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<p>The mean can be calculated using the formula <span class="math inline">\((5+27+26+30+31)/5=\)</span> 23.8</p>
+</div>
+<div id="tabset-7-2">
+<p>The function <code>mean()</code> outputs the mean of a vector of numbers. Remember to always put the numbers inside the <code>c()</code> function to form a vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">31</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.8</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-example-1" class="slide level2">
+<h2>Mean: Example</h2>
+<p>The function <code>mean()</code> can also be used to calculate means of quantitative variables in data frames.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.843333</code></pre>
+</div>
+</div>
+</section>
+<section id="mean-exercise" class="slide level2">
+<h2>Mean: Exercise</h2>
+<p>The data set <code>cars</code> include the speed (<code>speed</code>,in mph) and stopping distance (<code>dist</code>,in ft) of 50 cars recorded in the 1920s.</p>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Exercise</a></li><li><a href="#tabset-8-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<p>Find the mean stopping distance for these 50 cars.</p>
+</div>
+<div id="tabset-8-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">mean</span>(cars<span class="sc">$</span>dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42.98</code></pre>
+</div>
+</div>
+<p>The mean stopping distance is 42.98 ft.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-advantages-and-disadvantages" class="slide level2">
+<h2>Mean: Advantages and Disadvantages</h2>
+<div title="Advantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The mean is unique to a specific set of values, i.e.&nbsp;there is only one mean for every data set. The mean is also relatively easy to calculate and is a well-known summary statistic.</p>
+</div>
+</div>
+</div>
+</div>
+<div title="Disadvantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Disadvantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The mean is easily influenced by extreme values. As an example. recall the mean of the following numbers:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">31</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.8</code></pre>
+</div>
+</div>
+<p>Now, if 31 was replaced by an extreme number, say 310, the new mean would be very different.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">310</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 79.6</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="median" class="slide level2">
+<h2>Median</h2>
+<p>The median is the middle value of ordered data.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>If there is an odd number of observations, the median is a value in the middle of the data.</p>
+<p>If there is an even number of observations, the median is the average of the two middle values.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="median-example" class="slide level2">
+<h2>Median: Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Example 1: Odd</a></li><li><a href="#tabset-9-2">Example 2: Even</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<p>What is the median of the following numbers? 83.07 72.15 89.61 81.68 87.26</p>
+<ul>
+<li>Sort the values first in ascending order: 72.15, 81.68, 83.07, 87.26, 89.61</li>
+<li>There are five values, which means there is a middle value (83.07). Hence, the median is <strong>83.07</strong>.</li>
+</ul>
+</div>
+<div id="tabset-9-2">
+<p>What is the median of the following numbers? 100 3 7 5 8 2</p>
+<ul>
+<li>Sort the values first in ascending order: 2 3 5 7 8 100</li>
+<li>There are six values, which means there is no middle value. We need to take the average of the two middle values (5,7). Hence, the median is (5+7)/2 = <strong>6</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="median-r" class="slide level2">
+<h2>Median: <code>R</code></h2>
+<p>In <code>R</code>, we can use the <code>median(vector)</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="fl">83.07</span>, <span class="fl">72.15</span>, <span class="fl">89.61</span>, <span class="fl">81.68</span>, <span class="fl">87.26</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 83.07</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>This works for variables in data frames.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.8</code></pre>
+</div>
+</div>
+</section>
+<section id="median-exercise-in-r." class="slide level2">
+<h2>Median: Exercise in <code>R</code>.</h2>
+<p>The data set <code>USArrests</code> contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973.</p>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Exercise</a></li><li><a href="#tabset-10-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<p>Create an ordered list for the <code>Assault</code> variable in <code>USArrests</code>. What is the median rate for assault per 100,000 residents?</p>
+</div>
+<div id="tabset-10-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">median</span>(USArrests<span class="sc">$</span>Assault)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 159</code></pre>
+</div>
+</div>
+<p>The median arrest rate per 100,000 residents in the US in 1973 was 159.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="median-advantages-and-disadvantages" class="slide level2">
+<h2>Median: Advantages and Disadvantages</h2>
+<div title="Advantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The median is unique to a specific set of values, i.e.&nbsp;there is only one median for every data set. The median is also relatively easy to calculate once the data is ordered. Unlike the mean, the median is <strong>NOT</strong> influenced by extreme values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">31</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27</code></pre>
+</div>
+</div>
+<p>Now, if 31 was replaced by an extreme number, say 310, the new median would be the same because the middle part of the data did not change.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">27</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">310</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="Disadvantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Disadvantages</strong></p>
+</div>
+<div class="callout-content">
+<p>While the median is a well-known summary statistic, it is limited in the area of inferential statistics. The mean is more versatile as an estimator when it comes to statistical tests compared to the median.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mode" class="slide level2">
+<h2>Mode</h2>
+<p>For a sample of quantitative/qualitative data, the mode is the value that occurs most frequently.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>If all values occurred with the same frequency, then the data does not have a mode.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="mode-example" class="slide level2">
+<h2>Mode: Example</h2>
+<p>What is the mode of the following values? 33, 35, 35, 46, 21, 56, 390.</p>
+<ul>
+<li>The mode is 35 because it occurred the most times.</li>
+</ul>
+<p>What is the mode of the following values? 21, 35, 35, 46, 21, 56, 390.</p>
+<ul>
+<li>The modes are 21 and 35 because these values occurred twice, which was the highest frequency across the values.</li>
+</ul>
+<p>What is the mode of the following values? 33, 34, 35, 46, 21, 56, 390.</p>
+<ul>
+<li>There is <strong>NO</strong> mode because all values occurred only once.</li>
+</ul>
+</section>
+<section id="mode-r" class="slide level2">
+<h2>Mode: <code>R</code></h2>
+<p>We can use the <code>freq()</code> or <code>hist()</code> functions in <code>R</code> to create a frequency table for the data set, but we often only need the frequency distribution. One function that we can use is the <code>table</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>freq_table <span class="ot">&lt;-</span> <span class="fu">table</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb55-2"><a></a><span class="fu">sort</span>(freq_table,<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  5 5.1 6.3 5.7 6.7 5.5 5.8 6.4 4.9 5.4 5.6   6 6.1 4.8 6.5 4.6 5.2 6.2 6.9 7.7 
+ 10   9   9   8   8   7   7   7   6   6   6   6   6   5   5   4   4   4   4   4 
+4.4 5.9 6.8 7.2 4.7 6.6 4.3 4.5 5.3   7 7.1 7.3 7.4 7.6 7.9 
+  3   3   3   3   2   2   1   1   1   1   1   1   1   1   1 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>freq_table <span class="ot">&lt;-</span> <span class="fu">table</span>(iris<span class="sc">$</span>Species)</span>
+<span id="cb57-2"><a></a><span class="fu">sort</span>(freq_table,<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    setosa versicolor  virginica 
+        50         50         50 </code></pre>
+</div>
+</div>
+<p>The mode sepal length in the <code>iris</code> data set is 5. There is no mode for the species variable as all species occurred 50 times.</p>
+</section>
+<section id="mode-advantages-and-disadvantages" class="slide level2">
+<h2>Mode: Advantages and Disadvantages</h2>
+<div title="Advantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The mode is easily calculable using frequency tables. Unlike the mean and median, it can be calculated for qualitative variables.</p>
+</div>
+</div>
+</div>
+</div>
+<div title="Disadvantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Disadvantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The mode is not unique as data sets can have more than one mode. Modes are not used in inferential statistics for quantitative variables.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="measures-of-dispersion" class="title-slide slide level1 center">
+<h1>Measures of Dispersion</h1>
+
+</section>
+<section id="dispersion" class="slide level2">
+<h2>Dispersion</h2>
+<p>The dispersion of a set of observations refers to the variability they exhibit. Measures of dispersion convey information on the spread of a data set.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Smaller values of measures of dispersion indicate lower amount of dispersion.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="dispersion-example" class="slide level2">
+<h2>Dispersion Example</h2>
+<p>Consider populations A and B shown below.</p>
+
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"><p>Where are the population of values centered? Which population of values has a higher amount of dispersion?</p>
+</section>
+<section id="measures-of-dispersion-1" class="slide level2">
+<h2>Measures of Dispersion</h2>
+<p>Commonly used measures of dispersion include:</p>
+<ul>
+<li>Range</li>
+<li>Variance</li>
+<li>Standard Deviation</li>
+<li>Coefficient of Variation</li>
+<li>Interquartile Range</li>
+</ul>
+</section>
+<section id="range" class="slide level2">
+<h2>Range</h2>
+<p>The range is the difference between the largest and smallest values in a set of observations.</p>
+<p><span class="math display">\[
+R = x_L - x_S
+\]</span></p>
+<p>where <span class="math inline">\(x_L\)</span> and <span class="math inline">\(x_S\)</span> are the largest and smallest values, respectively.</p>
+</section>
+<section id="range-example" class="slide level2">
+<h2>Range: Example</h2>
+<p>What is the range of the following values: 254, 281, 192, 260, 212, 179?</p>
+<ul>
+<li>The maximum value is 281, minimum value is 179. The range can be calculated as 281-179 = 102.</li>
+</ul>
+</section>
+<section id="range-r" class="slide level2">
+<h2>Range: <code>R</code></h2>
+<p>The <code>diff(range(vector))</code> function calculates the range of a set of values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">range</span>(<span class="fu">c</span>(<span class="dv">254</span>, <span class="dv">281</span>, <span class="dv">192</span>, <span class="dv">260</span>, <span class="dv">212</span>, <span class="dv">179</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 179 281</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="fu">diff</span>(<span class="fu">range</span>(<span class="fu">c</span>(<span class="dv">254</span>, <span class="dv">281</span>, <span class="dv">192</span>, <span class="dv">260</span>, <span class="dv">212</span>, <span class="dv">179</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 102</code></pre>
+</div>
+</div>
+<p>We can also use <code>max()</code> and <code>min()</code> to identify the maximum and minimum values. We can take the difference between the two values to calculate the range.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">max</span>(<span class="fu">c</span>(<span class="dv">254</span>, <span class="dv">281</span>, <span class="dv">192</span>, <span class="dv">260</span>, <span class="dv">212</span>, <span class="dv">179</span>))<span class="sc">-</span><span class="fu">min</span>(<span class="fu">c</span>(<span class="dv">254</span>, <span class="dv">281</span>, <span class="dv">192</span>, <span class="dv">260</span>, <span class="dv">212</span>, <span class="dv">179</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 102</code></pre>
+</div>
+</div>
+</section>
+<section id="range-r-example" class="slide level2">
+<h2>Range: <code>R</code> Example</h2>
+<p>Consider the <code>flights</code> data set from the package <code>nycflights23</code>. The <code>distance</code> column contains the distance in miles between origin and destination airport for each flight. Calculate the range of the distances between origin and destination airports.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="fu">max</span>(flights<span class="sc">$</span>distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4983</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">min</span>(flights<span class="sc">$</span>distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 80</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a><span class="fu">max</span>(flights<span class="sc">$</span>distance) <span class="sc">-</span> <span class="fu">min</span>(flights<span class="sc">$</span>distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4903</code></pre>
+</div>
+</div>
+<p>The range is 4,903 miles.</p>
+</section>
+<section id="exercise-8" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider the <code>iris</code> data set that gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris.</p>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Exercise</a></li><li><a href="#tabset-11-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<ul>
+<li>What is the longest petal length in this data set?</li>
+<li>What is the shortest petal length in this data set?</li>
+<li>What is the range of the petal lengths?</li>
+</ul>
+</div>
+<div id="tabset-11-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="fu">max</span>(iris<span class="sc">$</span>Petal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a><span class="fu">min</span>(iris<span class="sc">$</span>Petal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">max</span>(iris<span class="sc">$</span>Petal.Length)<span class="sc">-</span><span class="fu">min</span>(iris<span class="sc">$</span>Petal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.9</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="range-advantages-and-disadvantages" class="slide level2">
+<h2>Range: Advantages and Disadvantages</h2>
+<div title="Advantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The main advantage in using the range is the simplicity of its computation. It also provides information on the span of the set of values.</p>
+</div>
+</div>
+</div>
+</div>
+<div title="Disadvantages">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Disadvantages</strong></p>
+</div>
+<div class="callout-content">
+<p>The usefulness of the range is limited. The fact that it takes into account only two values causes it to be a poor measure of dispersion. It is often preferable to express the range as a number pair <span class="math inline">\([x_S,x_L]\)</span>, as is seen in some demographic tables in research papers.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variance" class="slide level2">
+<h2>Variance</h2>
+<p>The variance is a measure of how far the values are from the mean.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The calculation for <em>population</em> and <em>sample</em> variances are slightly different. However, both involve taking the <strong>squared difference</strong> of each value and the mean of the data set.</p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Sample Variance</a></li><li><a href="#tabset-12-2">Population Variance</a></li><li><a href="#tabset-12-3"><span class="math inline">\(s^2\)</span> vs.&nbsp;<span class="math inline">\(\sigma^2\)</span></a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
+<p>The sample variance is denoted by <span class="math inline">\(s^2\)</span>.</p>
+<p><span class="math display">\[
+s^2 = \frac{1}{(n-1)}\sum_{i=1}^n (x_i-\bar{x})^2
+\]</span></p>
+</div>
+<div id="tabset-12-2">
+<p>The population variance is denoted by <span class="math inline">\(\sigma^2\)</span>.For a population of size <span class="math inline">\(N\)</span></p>
+<p><span class="math display">\[
+\sigma^2 = \frac{1}{(N)}\sum_{i=1}^N (x_i-\mu)^2
+\]</span></p>
+</div>
+<div id="tabset-12-3">
+<p>The main difference between these two expressions is the denominator term (<span class="math inline">\(n-1\)</span> vs.&nbsp;<span class="math inline">\(N\)</span>). This discrepancy is due to a concept of <em>degrees of freedom</em>.</p>
+<p>The assumption is that if the sample mean is known, we only need to know <span class="math inline">\(n-1\)</span> values to fully define all the values in the data set. Hence, the denominator for the sample variance is <span class="math inline">\(n-1\)</span>.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>In most realistic situations, we work with samples. Thus, we usually work with the sample variance.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="standard-deviation" class="slide level2">
+<h2>Standard Deviation</h2>
+<p>Since the variance involves squared differences, it does not have the same unit as the actual measurements. Hence, we typically use the <strong>standard deviation</strong> to measure the variability in a data set.</p>
+<p>The standard deviation can be calculated by taking the square root of the variance.</p>
+<p><span class="math display">\[
+s = \sqrt{s^2}~~; ~~ \sigma = \sqrt{\sigma^2}
+\]</span></p>
+</section>
+<section id="standard-deviation-and-variance-r" class="slide level2">
+<h2>Standard Deviation and Variance: <code>R</code></h2>
+<p>The respective functions <code>sd(vector)</code> and <code>var(vector)</code> calculates the sample standard deviation and variance for a set of values.</p>
+<div class="panel-tabset">
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">Example 1 (Manual)</a></li><li><a href="#tabset-13-2">Example 2 (R)</a></li><li><a href="#tabset-13-3">Example 3</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1">
+<p>Calculate the sample variance and standard deviation for the following numbers: 16, 10, 49, 15, 6.</p>
+<p>Note that the mean of the numbers is <code>r mean(c(16, 10, 49, 15, 6))</code></p>
+<p><span class="math display">\[
+s^2 = \frac{1}{5-1}[(16-16)^2 + (10-16)^2 + (49-16)^2 + (15-16)^2 + (6-16)^2] = 293.7
+\]</span></p>
+<p><span class="math display">\[
+s = \sqrt{s^2} = 17.1
+\]</span></p>
+</div>
+<div id="tabset-13-2">
+<p>Using R functions, calculate the sample variance and standard deviation for the following numbers: 16, 10, 49, 15, 6.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a><span class="fu">var</span>(<span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">49</span>, <span class="dv">15</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 293.7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a><span class="fu">sd</span>(<span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">49</span>, <span class="dv">15</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17.13768</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-13-3">
+<p>Using R functions, calculate the standard deviation and variance of the murder rates across the 50 US states in 1973. The rates are found in the dataset <code>USArrests</code> under the column <code>Murder</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a></a><span class="fu">sd</span>(USArrests<span class="sc">$</span>Murder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.35551</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a></a><span class="fu">var</span>(USArrests<span class="sc">$</span>Murder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18.97047</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-10" class="slide level2">
+<h2>Exercise</h2>
+<p>The <code>faithful</code> data set includes data on a sample of 272 eruptions of the Old Faithful geyser in Yellowstone National Park. The column <code>eruptions</code> contains the eruption time in minutes.</p>
+<div class="panel-tabset">
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">Exercise</a></li><li><a href="#tabset-14-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1">
+<p>Calculate the following using <code>R</code> functions:</p>
+<ul>
+<li>Mean eruption time</li>
+<li>Eruption time variance</li>
+<li>Eruption time standard deviation</li>
+</ul>
+</div>
+<div id="tabset-14-2">
+<p>Mean:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a><span class="fu">mean</span>(faithful<span class="sc">$</span>eruptions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.487783</code></pre>
+</div>
+</div>
+<p>Standard Deviation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a><span class="fu">sd</span>(faithful<span class="sc">$</span>eruptions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.141371</code></pre>
+</div>
+</div>
+<p>Variance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a><span class="fu">var</span>(faithful<span class="sc">$</span>eruptions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.302728</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="measure-of-location" class="title-slide slide level1 center">
+<h1>Measure of Location</h1>
+
+</section>
+<section id="percentiles" class="slide level2">
+<h2>Percentiles</h2>
+<div title="Percentiles">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Percentiles</strong></p>
+</div>
+<div class="callout-content">
+<p>The <span class="math inline">\(p\)</span>th percentile is the value <span class="math inline">\(x\)</span> such that <span class="math inline">\(p\)</span>% of the data are less than <span class="math inline">\(x\)</span>. For example, the 10th percentile is the value such that 10% of the data is below this number.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The 50th percentile is the median because half of the data (50%) is below the median. The maximum value is the 100th percentile, while the minimum value is the 0th percentile.</p>
+</div>
+</div>
+</div>
+<div title="Quartiles">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Quartiles</strong></p>
+</div>
+<div class="callout-content">
+<p>The 25th percentile is also known as the first quartile and denoted as <span class="math inline">\(Q_1\)</span>. The 75th percentile is known as the third quartile (<span class="math inline">\(Q_3\)</span>). The median is also known as the middle/second quartile (<span class="math inline">\(Q_2\)</span>). These numbers are important in describing the variability and skewness in the data.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="interquartile-range-measure-of-dispersion" class="slide level2">
+<h2>Interquartile Range (Measure of Dispersion)</h2>
+<p>The interquartile range (IQR) is a measure of variation based on the measures of location. The IQR can be calculated by taking the difference between <span class="math inline">\(Q_3\)</span> and <span class="math inline">\(Q_1\)</span>.</p>
+<p><span class="math display">\[
+IQR = Q_3 - Q_1
+\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The main advantage of using IQR is its robustness to extreme values.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="percentiles-and-iqr-r" class="slide level2">
+<h2>Percentiles and IQR: <code>R</code></h2>
+<p>You can calculate the <span class="math inline">\(p\)</span>th percentile of a set of values using the <code>quantile(vector,p/100)</code> function. The IQR can be calculated using the <code>IQR(vector)</code> function.</p>
+<div class="panel-tabset">
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">Example 1</a></li><li><a href="#tabset-15-2">Example 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1">
+<p>calculate the 25th percentile and 75th percentile of the eruption times (<code>eruptions</code>) of Old Faithful using the <code>faithful</code> data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a><span class="fu">quantile</span>(faithful<span class="sc">$</span>eruptions,<span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    25% 
+2.16275 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a></a><span class="fu">quantile</span>(faithful<span class="sc">$</span>eruptions,<span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    75% 
+4.45425 </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-15-2">
+<p>Calculate the IQR of the eruption times (<code>eruptions</code>) of Old Faithful using the <code>faithful</code> data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a><span class="fu">IQR</span>(faithful<span class="sc">$</span>eruptions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.2915</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-12" class="slide level2">
+<h2>Exercise</h2>
+<p>The <code>infert</code> data set includes data from a case-control study that investigates infertillity after spontaneous and induced abortion.</p>
+<div class="panel-tabset">
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">Exercise</a></li><li><a href="#tabset-16-2">Answers</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1">
+<ul>
+<li>Use <code>glimpse()</code> to determine the variables in the data set.</li>
+<li>Calculate the mean age for the entire sample.</li>
+<li>Calculate the standard deviation of the age for the entire sample.</li>
+<li>Calculate the variance of the age for the entire sample.</li>
+<li>Calculate the 90th percentile of the age for the entire sample.</li>
+<li>Calculate the IQR of the age for the entire sample.</li>
+</ul>
+</div>
+<div id="tabset-16-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a></a><span class="fu">glimpse</span>(infert)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 248
+Columns: 8
+$ education      &lt;fct&gt; 0-5yrs, 0-5yrs, 0-5yrs, 0-5yrs, 6-11yrs, 6-11yrs, 6-11y…
+$ age            &lt;dbl&gt; 26, 42, 39, 34, 35, 36, 23, 32, 21, 28, 29, 37, 31, 29,…
+$ parity         &lt;dbl&gt; 6, 1, 6, 4, 3, 4, 1, 2, 1, 2, 2, 4, 1, 3, 2, 2, 5, 1, 3…
+$ induced        &lt;dbl&gt; 1, 1, 2, 2, 1, 2, 0, 0, 0, 0, 1, 2, 1, 2, 1, 2, 2, 0, 2…
+$ case           &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ spontaneous    &lt;dbl&gt; 2, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1…
+$ stratum        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …
+$ pooled.stratum &lt;dbl&gt; 3, 1, 4, 2, 32, 36, 6, 22, 5, 19, 20, 37, 9, 29, 21, 18…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a></a><span class="fu">mean</span>(infert<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31.50403</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a></a><span class="fu">sd</span>(infert<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.251565</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a></a><span class="fu">var</span>(infert<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27.57893</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a></a><span class="fu">quantile</span>(infert<span class="sc">$</span>age,<span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>90% 
+ 39 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a></a><span class="fu">IQR</span>(infert<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.25</code></pre>
+</div>
+</div>
+<p>Mean: 31.5, Standard Deviation: 5.25, Variance: 27.58, 90th percentile: 39, IQR: 7.25</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="skewness" class="title-slide slide level1 center">
+<h1>Skewness</h1>
+
+</section>
+<section id="skewness-1" class="slide level2">
+<h2>Skewness</h2>
+<p>The skewness provides information on the symmetry of data. If asymmetric, the data is said to be skewed.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The direction of skewness depends on where the “tail” of the data is located.</p>
+</div>
+</div>
+</div>
+
+<img data-src="figs/2-skewness.png" class="r-stretch"></section>
+<section id="kurtosis" class="slide level2">
+<h2>Kurtosis</h2>
+<p>Measures how flat/peaked a distribution is compared to a bell-shaped curve.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Bell-shaped distributions are referred to as mesokurtic. Peaked distributions are referred to as leptokurtic. Flatter distributions are referred to as platykurtic.</p>
+</div>
+</div>
+</div>
+
+<img data-src="figs/2-kurtosis.jpg" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<section>
+<section id="data-visualization" class="title-slide slide level1 center">
+<h1>Data Visualization</h1>
+
+</section>
+<section id="grammar-of-graphics" class="slide level2 scrollable">
+<h2>Grammar of Graphics</h2>
+<p>The “grammar of graphics” defines a set of rules for constructing statistical graphics by combining different types of layers.</p>
+<p>We can break a graphic into the following essential components:</p>
+<ol type="1">
+<li><code>data</code>: dataset containing the variables of interest</li>
+<li><code>geom</code>: the geometric object in question, related to the type of plot we want to make</li>
+<li><code>aes</code>: the aesthetic attributes of the geometric object, such as color, shape, size, fill, etc.</li>
+<li><code>facet</code>: breaks up a plot into subplots as defined by the values of another variable</li>
+</ol>
+</section>
+<section id="ggplot2-package" class="slide level2">
+<h2><code>ggplot2</code> package</h2>
+<p>The <code>ggplot2</code> package includes the various components of the grammar of graphics.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The <code>ggplot()</code> function is used to create a base for the plot which includes the following:</p>
+<ul>
+<li>The data frame where the variables to be plotted belong (<code>data</code>)</li>
+<li>The mapping of the <code>aes</code>thetic attributes of the plot.</li>
+</ul>
+<p>The geometry and type of plot will be added as layers to the <code>ggplot()</code> function using the <code>+</code> symbol.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="common-graphs" class="slide level2">
+<h2>Common Graphs</h2>
+<p>Here are common plots used in exploring data:</p>
+<ul>
+<li>histograms</li>
+<li>bar plots</li>
+<li>boxplots</li>
+</ul>
+</section>
+<section id="histograms" class="slide level2">
+<h2>Histograms</h2>
+<p>Histograms are plots that visualize the distribution of a numerical value.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Histograms are graphical representations of the frequency table/distribution.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="histograms-in-ggplot" class="slide level2">
+<h2>Histograms in <code>ggplot()</code></h2>
+<div class="panel-tabset">
+<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">Example</a></li><li><a href="#tabset-17-2">Notes</a></li></ul>
+<div class="tab-content">
+<div id="tabset-17-1">
+<p>Consider the <code>infert</code> data set in <code>R</code>. Suppose we want to visualize the distribution of the participant age in the case-control study.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-112"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-112-1"><a href="#annotated-cell-112-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#includes ggplot2</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-112" data-target-annotation="1">1</button><span id="annotated-cell-112-2" class="code-annotation-target"><a href="#annotated-cell-112-2"></a><span class="fu">ggplot</span>(<span class="at">data=</span>infert, <span class="fu">aes</span>(<span class="at">x=</span>age)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-112" data-target-annotation="2">2</button><span id="annotated-cell-112-3" class="code-annotation-target"><a href="#annotated-cell-112-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">40</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-112" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-112" data-code-lines="2" data-code-annotation="1">Base layer defining what the source data set is (<code>data=infert</code>) and the aesthetic <code>aes(x=age)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-112" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-112" data-code-lines="3" data-code-annotation="2"><code>geom_histogram()</code> adds the layer of a histogram on the base layer, using 40 bins.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-17-2">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The <code>geom_histogram()</code> function creates a histogram layer on top of the base created by <code>ggplot()</code>. You can add other modifications to the histogram (e.g.&nbsp;color, fill, etc.) in the <code>geom_histogram()</code> function.</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>infert, <span class="fu">aes</span>(<span class="at">x=</span>age)) <span class="sc">+</span></span>
+<span id="cb109-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">40</span>, <span class="at">color=</span><span class="st">"white"</span>, <span class="at">fill=</span><span class="st">"blue"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="bar-plots-in-ggplot" class="slide level2">
+<h2>Bar plots in <code>ggplot()</code></h2>
+<p>Bar plots are typically used to visualize the frequency distribution for a categorical variable.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><code>geom_bar()</code> is used to create bar plots in the <code>ggplot2</code> package.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="bar-plots-in-ggplot-1" class="slide level2">
+<h2>Bar plots in <code>ggplot()</code></h2>
+<div class="panel-tabset">
+<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">Example</a></li><li><a href="#tabset-18-2">Notes 1</a></li><li><a href="#tabset-18-3">Notes 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-18-1">
+<p>Consider the <code>infert</code> data set in <code>R</code>. Suppose we want to visualize the distribution of the education level (in years) in the case-control study.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-114"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-114-1"><a href="#annotated-cell-114-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#includes ggplot2</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-114" data-target-annotation="1">1</button><span id="annotated-cell-114-2" class="code-annotation-target"><a href="#annotated-cell-114-2"></a><span class="fu">ggplot</span>(<span class="at">data=</span>infert, <span class="fu">aes</span>(<span class="at">x=</span>education)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-114" data-target-annotation="2">2</button><span id="annotated-cell-114-3" class="code-annotation-target"><a href="#annotated-cell-114-3"></a>  <span class="fu">geom_bar</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-114" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-114" data-code-lines="2" data-code-annotation="1">Base layer defining what the source data set is (<code>data=infert</code>) and the aesthetic <code>aes(x=education)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-114" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-114" data-code-lines="3" data-code-annotation="2"><code>geom_bar()</code> adds the layer of a bar plot on the base layer.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-18-2">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Like <code>geom_histogram()</code>, you can add other modifications to the histogram (e.g.&nbsp;color, fill, etc.) in the <code>geom_bar()</code> function.</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>infert, <span class="fu">aes</span>(<span class="at">x=</span>education)) <span class="sc">+</span> </span>
+<span id="cb110-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">color=</span><span class="st">"white"</span>, <span class="at">fill=</span><span class="st">"blue"</span>, <span class="at">width=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-18-3">
+<p>You can create side-by-side bar plots by facetting. <code>facet_wrap</code> allows you to create bar plots across the levels of another variable of interest. Suppose we want to visualize the distribution of education level for the case (1) and control (0) groups.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>infert, <span class="fu">aes</span>(<span class="at">x=</span>education)) <span class="sc">+</span> </span>
+<span id="cb111-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">color=</span><span class="st">"white"</span>, <span class="at">fill=</span><span class="st">"blue"</span>, <span class="at">width=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb111-3"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>case)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-43-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplots" class="slide level2">
+<h2>Boxplots</h2>
+<p>Boxplots are another way to visualize the distribution of a numerical value. Boxplots are constructed from the information provided in the five-number summary.</p>
+<div title="Five-Number Summary">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Five-Number Summary</strong></p>
+</div>
+<div class="callout-content">
+<p>The five-number summary of a set of values include the following statistics:</p>
+<ul>
+<li>Minimum</li>
+<li>First Quartile</li>
+<li>Median</li>
+<li>Third Quartile</li>
+<li>Maximum</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplots-in-ggplot" class="slide level2">
+<h2>Boxplots in <code>ggplot()</code></h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The function <code>geom_boxplot()</code> is used to create boxplots in the <code>ggplot2</code> package.</p>
+</div>
+</div>
+</div>
+<p>Boxplots can also provide information on how skewed the data distribution is by the location of the median with respect to the “box”.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>If the median is closer to the first quartile, the data is right-skewed. If the median is closer to the third quartile, the data is left-skewed. If the median is in the middle, then the data is symmetric/unskewed.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplots-in-ggplot-1" class="slide level2">
+<h2>Boxplots in <code>ggplot()</code></h2>
+<div class="panel-tabset">
+<ul id="tabset-19" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-19-1">Example</a></li><li><a href="#tabset-19-2">Notes 1</a></li><li><a href="#tabset-19-3">Notes 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-19-1">
+<p>Consider the <code>USArrests</code> data set. Create a box plot for the arrest rate for assault as given by the <code>Assault</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>USArrests, <span class="fu">aes</span>(<span class="at">x=</span><span class="st">"Assault"</span>,<span class="at">y=</span>Assault)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-44-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The data appears to be slightly right-skewed because the median is closer to <span class="math inline">\(Q_1\)</span> than <span class="math inline">\(Q_3\)</span>.</p>
+</div>
+<div id="tabset-19-2">
+<p>You can also orient boxplots horizontally and overlay the data points using <code>geom_point()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>USArrests, <span class="fu">aes</span>(<span class="at">y=</span><span class="st">"Assault"</span>,<span class="at">x=</span>Assault)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-45-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-19-3">
+<p>You can also create separate boxplots for different groups as dictated by a separate variable. Consider the <code>iris</code> data set. I can create side-by-side boxplots of petal lengths corresponding to each species.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>iris,<span class="fu">aes</span>(<span class="at">x=</span>Species,<span class="at">y=</span>Petal.Length)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-46-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="importing-files" class="slide level2">
+<h2>Importing files</h2>
+<p>There are multiple ways to import files into <code>R</code>. The most common data set format is the <code>.csv</code> file. You can import CSV files using the <code>read.csv(filename)</code> function.</p>
+<p>First, download the file <code>SleepHealthData.csv</code> from Canvas in the same folder as your R source code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a></a><span class="fu">getwd</span>() <span class="co"># save your data in this folder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/fudolig/Documents/GitHub/EAB703-Slides-2025"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>) <span class="co"># or use a specific path to your folder</span></span>
+<span id="cb117-2"><a></a><span class="fu">glimpse</span>(sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 374
+Columns: 13
+$ person_id               &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…
+$ gender                  &lt;chr&gt; "Male", "Male", "Male", "Male", "Male", "Male"…
+$ age                     &lt;int&gt; 27, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29…
+$ occupation              &lt;chr&gt; "Software Engineer", "Doctor", "Doctor", "Sale…
+$ sleep_duration          &lt;dbl&gt; 6.1, 6.2, 6.2, 5.9, 5.9, 5.9, 6.3, 7.8, 7.8, 7…
+$ quality_of_sleep        &lt;int&gt; 6, 6, 6, 4, 4, 4, 6, 7, 7, 7, 6, 7, 6, 6, 6, 6…
+$ physical_activity_level &lt;int&gt; 42, 60, 60, 30, 30, 30, 40, 75, 75, 75, 30, 75…
+$ stress_level            &lt;int&gt; 6, 8, 8, 8, 8, 8, 7, 6, 6, 6, 8, 6, 8, 8, 8, 8…
+$ bmi_category            &lt;chr&gt; "Overweight", "Normal", "Normal", "Obese", "Ob…
+$ blood_pressure          &lt;chr&gt; "126/83", "125/80", "125/80", "140/90", "140/9…
+$ heart_rate              &lt;int&gt; 77, 75, 75, 85, 85, 85, 82, 70, 70, 70, 70, 70…
+$ daily_steps             &lt;int&gt; 4200, 10000, 10000, 3000, 3000, 3000, 3500, 80…
+$ sleep_disorder          &lt;chr&gt; "None", "None", "None", "Sleep Apnea", "Sleep …</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-14" class="slide level2">
+<h2>Exercise</h2>
+<p>We will use the <code>sleep</code> data set we just imported into <code>R</code> from the <code>csv</code> file.</p>
+<div class="panel-tabset">
+<ul id="tabset-20" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-20-1">Exercise</a></li><li><a href="#tabset-20-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-20-1">
+<p>Create a plot that shows the distribution of sleep duration (<code>sleep_duration</code>) for different sleep disorders (<code>sleep_disorder</code>).</p>
+</div>
+<div id="tabset-20-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>sleep_disorder,<span class="at">y=</span>sleep_duration)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture2_files/figure-revealjs/unnamed-chunk-48-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Lecture 2 - <a href="https://madfudolig.quarto.pub/introtobiostats/">Back to home</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+          let selectedAnnoteEl;
+          const selectorForAnnotation = ( cell, annotation) => {
+            let cellAttr = 'data-code-cell="' + cell + '"';
+            let lineAttr = 'data-code-annotation="' +  annotation + '"';
+            const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+            return selector;
+          }
+          const selectCodeLines = (annoteEl) => {
+            const doc = window.document;
+            const targetCell = annoteEl.getAttribute("data-target-cell");
+            const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+            const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+            const lineIds = lines.map((line) => {
+              return targetCell + "-" + line;
+            })
+            let top = null;
+            let height = null;
+            let parent = null;
+            if (lineIds.length > 0) {
+                //compute the position of the single el (top and bottom and make a div)
+                const el = window.document.getElementById(lineIds[0]);
+                top = el.offsetTop;
+                height = el.offsetHeight;
+                parent = el.parentElement.parentElement;
+              if (lineIds.length > 1) {
+                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                height = bottom - top;
+              }
+              if (top !== null && height !== null && parent !== null) {
+                // cook up a div (if necessary) and position it 
+                let div = window.document.getElementById("code-annotation-line-highlight");
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = 'absolute';
+                  parent.appendChild(div);
+                }
+                div.style.top = top - 2 + "px";
+                div.style.height = height + 4 + "px";
+                div.style.left = 0;
+                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                  gutterDiv.style.position = 'absolute';
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector('.code-annotation-gutter');
+                  gutter.appendChild(gutterDiv);
+                }
+                gutterDiv.style.top = top - 2 + "px";
+                gutterDiv.style.height = height + 4 + "px";
+              }
+              selectedAnnoteEl = annoteEl;
+            }
+          };
+          const unselectCodeLines = () => {
+            const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+            elementsIds.forEach((elId) => {
+              const div = window.document.getElementById(elId);
+              if (div) {
+                div.remove();
+              }
+            });
+            selectedAnnoteEl = undefined;
+          };
+            // Handle positioning of the toggle
+        window.addEventListener(
+          "resize",
+          throttle(() => {
+            elRect = undefined;
+            if (selectedAnnoteEl) {
+              selectCodeLines(selectedAnnoteEl);
+            }
+          }, 10)
+        );
+        function throttle(fn, ms) {
+        let throttle = false;
+        let timer;
+          return (...args) => {
+            if(!throttle) { // first call gets through
+                fn.apply(this, args);
+                throttle = true;
+            } else { // all the others get throttled
+                if(timer) clearTimeout(timer); // cancel #2
+                timer = setTimeout(() => {
+                  fn.apply(this, args);
+                  timer = throttle = false;
+                }, ms);
+            }
+          };
+        }
+          const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+          for (let i=0; i<annoteTargets.length; i++) {
+            const annoteTarget = annoteTargets[i];
+            const targetCell = annoteTarget.getAttribute("data-target-cell");
+            const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+            const contentFn = () => {
+              const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              if (content) {
+                const tipContent = content.cloneNode(true);
+                tipContent.classList.add("code-annotation-tip-content");
+                return tipContent.outerHTML;
+              }
+            }
+            const config = {
+              allowHTML: true,
+              content: contentFn,
+              onShow: (instance) => {
+                selectCodeLines(instance.reference);
+                instance.reference.classList.add('code-annotation-active');
+                window.tippy.hideAll();
+              },
+              onHide: (instance) => {
+                unselectCodeLines();
+                instance.reference.classList.remove('code-annotation-active');
+              },
+              maxWidth: 300,
+              delay: [50, 0],
+              duration: [200, 0],
+              offset: [5, 10],
+              arrow: true,
+              appendTo: function(el) {
+                return el.parentElement.parentElement.parentElement;
+              },
+              interactive: true,
+              interactiveBorder: 10,
+              theme: 'light-border',
+              placement: 'right',
+              popperOptions: {
+                modifiers: [
+                {
+                  name: 'flip',
+                  options: {
+                    flipVariations: false, // true by default
+                    allowedAutoPlacements: ['right'],
+                    fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                  },
+                },
+                {
+                  name: 'preventOverflow',
+                  options: {
+                    mainAxis: false,
+                    altAxis: false
+                  }
+                }
+                ]        
+              }      
+            };
+            window.tippy(annoteTarget, config); 
+          }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
