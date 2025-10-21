@@ -24,6 +24,8 @@ bibliography: references.bib
 
 # Outline
 
+- Ratio of Population Variance Tests
+- Association vs. Causation
 
 
 ## Hypothesis Test: Ratio of Population Variances
