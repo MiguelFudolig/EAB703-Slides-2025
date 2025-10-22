@@ -4400,5 +4400,60 @@
       "Problem Sets",
       "Problem Set 3 Key"
     ]
+  },
+  {
+    "objectID": "lecture7-1.html#rejection-region",
+    "href": "lecture7-1.html#rejection-region",
+    "title": "Hypothesis Testing: Tests Involving Variances",
+    "section": "Rejection Region",
+    "text": "Rejection Region\nWe will use the F-distribution to define the rejection region and the corresponding p-values.\nFor one-sided tests, the rejection region is defined by the range:\n\\[\nF &lt; F_{1-\\alpha}(n_1-1,n_2-1)\n\\]\nAs much as possible, we set the group with the expected larger variance to be in the numerator to avoid complications in calculating the rejection region.\nFor two-sided tests, the rejection region is defined by the ranges:\n\\[\nF &lt; F_{\\alpha/2}(n_1-1,n_2-1)~ or~ F &gt; F_{1-\\alpha/2}(n_1-1,n_2-1)\n\\]\n\n\n\n\n\n\nNote\n\n\nThe p-values can be calculated using statistical software like R and follows the same rejection rules as the previous tests (reject \\(H_0\\) when \\(p &lt; \\alpha\\))",
+    "crumbs": [
+      "Lectures",
+      "Lecture 7.1 - Tests Involving Variances"
+    ]
+  },
+  {
+    "objectID": "lecture7-1.html#hypothesis-testing-r",
+    "href": "lecture7-1.html#hypothesis-testing-r",
+    "title": "Hypothesis Testing: Tests Involving Variances",
+    "section": "Hypothesis Testing: R",
+    "text": "Hypothesis Testing: R\nThe function var.test() provides the test statistic and the corresponding p-values for testing the ratio between population variances. Typically, we are interested in the null hypothesis of equality or \\(H_0: \\sigma_1^2/\\sigma_2^2 = 1\\).\nThe function can be implemented in two ways. If the data is stored in a data frame df,\n\n\n\n\n\n\nNote\n\n\nvar.test(formula,data=df,ratio=1,alternative) can be used if the groups are defined by a column in df and the response variable is defined by another column in df. The formula can be expressed as response~group. alternative can take on the following values: \"two.sided\", \"less\", or \"greater\"\n\n\n\n\n\n\n\n\n\nNote\n\n\nvar.test(x,y,ratio=1,alternative) can be used if the responses/measurements from each group are found in different columns in df. Suppose the measurements are in the columns group1 and group2. The groups x and y can be expressed as x=df$group1,y=df$group2. alternative can take on the following values: \"two.sided\", \"less\", or \"greater\".\n\n\n\n\n\n\n\n\n\nNote\n\n\nTo determine the rejection region for the \\(F\\) statistic, we can use the qf() function.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 7.1 - Tests Involving Variances"
+    ]
+  },
+  {
+    "objectID": "lecture7-1.html#example",
+    "href": "lecture7-1.html#example",
+    "title": "Hypothesis Testing: Tests Involving Variances",
+    "section": "Example",
+    "text": "Example\nConsider the sleep health data set from SleepHealthData.csv.\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nQuestionAnswer\n\n\nPerform a hypothesis test to determine if there is evidence of unequal variances between the average sleep duration of males and females. Assume equal variances and a significance level of 0.05.\n\n\nThe parameter of interest is the ratio of the variances in sleep duration between females and males. The corresponding hypotheses are:\n\\[\nH_0: \\sigma_f^2/\\sigma_m^2 = 1;H_0: \\sigma_f^2/\\sigma_m^2 \\neq 1\n\\] We can now use the var.test() function to solve for the test statistic and p-value. Note that the groups are defined by the gender variable and the response is defined by the sleep_duration variable.\n\nftest &lt;- var.test(sleep_duration~gender,\n         data=sleep,\n         ratio=1,\n         alternative=\"two.sided\"\n         )\n\nftest\n\n\n    F test to compare two variances\n\ndata:  sleep_duration by gender\nF = 1.6095, num df = 184, denom df = 188, p-value = 0.001242\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 1.206633 2.147875\nsample estimates:\nratio of variances \n           1.60951 \n\n\nThe test statistic value is 1.6095104 corresponding to a p-value of 0.0012421. The rejection region can be calculated using the qf() function.\n\nalpha&lt;- 0.05\nlower_bound &lt;- qf(alpha/2,df1=184,df2=188)\nlower_bound\n\n[1] 0.74935\n\nupper_bound&lt;- qf(1-alpha/2,df1=184,df2=188)\nupper_bound\n\n[1] 1.333886\n\n\nThe rejection region is defined as: F&lt;0.74935 or F&gt;1.3338859. The test statistic is in this rejection region, hence, we reject the null hypothesis. There is sufficient evidence that the ratio of the two population variances is not equal to one, implying that the population variances are unequal.\n\n\n\n\n\n\nNote\n\n\nThe same decision and conclusion is reached when the p-value is used.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 7.1 - Tests Involving Variances"
+    ]
+  },
+  {
+    "objectID": "lecture7-1.html#exercise",
+    "href": "lecture7-1.html#exercise",
+    "title": "Hypothesis Testing: Tests Involving Variances",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the sleep health data set from SleepHealthData.csv.\n\nQuestionAnswer\n\n\nRecall that you were asked to assume equal variances in testing for a difference between the average heart rate of males and females in the previous lecture. Perform a hypothesis test to determine if there is sufficient evidence to claim that the population variances of the heart rate of males and females are different. Use a significance level of 0.001.\n\n\nThe parameter of interest is the ratio of the variances between females and males. The corresponding hypotheses are:\n\\[\nH_0: \\sigma_f^2/\\sigma_m^2 = 1;H_0: \\sigma_f^2/\\sigma_m^2 \\neq 1\n\\] We can now use the var.test() function to solve for the test statistic and p-value. Note that the groups are defined by the gender variable and the response is defined by the heart_rate variable.\n\nftest &lt;- var.test(heart_rate~gender,\n         data=sleep,\n         ratio=1,\n         alternative=\"two.sided\"\n         )\n\nftest\n\n\n    F test to compare two variances\n\ndata:  heart_rate by gender\nF = 1.4975, num df = 184, denom df = 188, p-value = 0.006088\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 1.122678 1.998430\nsample estimates:\nratio of variances \n          1.497524 \n\n\nThe test statistic value is 1.4975238 corresponding to a p-value of 0.0060876. The rejection region can be calculated using the qf() function.\n\nalpha&lt;- 0.001\nlower_bound &lt;- qf(alpha/2,df1=184,df2=188)\nlower_bound\n\n[1] 0.6150367\n\nupper_bound&lt;- qf(1-alpha/2,df1=184,df2=188)\nupper_bound\n\n[1] 1.624297\n\n\nThe rejection region is defined as: F&lt;0.6150367 or F&gt;1.6242974. The test statistic is NOT in this rejection region, hence, we fail to reject the null hypothesis. There is insufficient evidence that the ratio of the two population variances is not equal to one.\n\n\n\n\n\n\nNote\n\n\nThe same decision and conclusion is reached when the p-value is used.\n\n\n\n\nAssociation vs. Causation\n\n\n\nAssociation vs. Causation\nWhen comparing two groups, it is important to be mindful of how to interpret the conclusion. Suppose we are comparing two groups.When we reject the null hypothesis and conclude that there is sufficient evidence supporting the alternative hypothesis, there is an implied association between the groups and the response variable.\n\n\n\n\n\n\nWarning\n\n\nHowever, this does not necessarily mean that the group variable was the reason why there was a significant difference. There might be other variables in play, also known as confounding variables, that could be associated with both groups and response variable and contributed to this significant differences. The hypothesis tests discussed do not account for this, hence causation cannot be claimed.\nIn experiments, the effects of these confounding variables can be mitigated by performing random assignment of participants to the treatment groups. In observational and retrospective studies, the process to prove causation is much harder. There is a whole field that addresses this problem called causal inference, which we will not discuss in this class.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 7.1 - Tests Involving Variances"
+    ]
+  },
+  {
+    "objectID": "lecture7-1.html#association-vs.-causation-1",
+    "href": "lecture7-1.html#association-vs.-causation-1",
+    "title": "Hypothesis Testing: Tests Involving Variances",
+    "section": "Association vs. Causation",
+    "text": "Association vs. Causation\nWhen comparing two groups, it is important to be mindful of how to interpret the conclusion. Suppose we are comparing two groups.When we reject the null hypothesis and conclude that there is sufficient evidence supporting the alternative hypothesis, there is an implied association between the groups and the response variable.\n\n\n\n\n\n\nWarning\n\n\nHowever, this does not necessarily mean that the group variable was the reason why there was a significant difference. There might be other variables in play, also known as confounding variables, that could be associated with both groups and response variable and contributed to this significant differences. The hypothesis tests discussed do not account for this, hence causation cannot be claimed.\nIn experiments, the effects of these confounding variables can be mitigated by performing random assignment of participants to the treatment groups. In observational and retrospective studies, the process to prove causation is much harder. There is a whole field that addresses this problem called causal inference, which we will not discuss in this class.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 7.1 - Tests Involving Variances"
+    ]
   }
 ]

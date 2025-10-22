@@ -1,6 +1,7 @@
 project:
   type: website
-
+execute: 
+  freeze: auto
 website:
   title: "EAB 703-1002: Biostatistical Methods for the Health Sciences"
   navbar: 

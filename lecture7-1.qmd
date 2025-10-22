@@ -69,12 +69,10 @@ $$
 F=S_1^2/S_2^2 \sim F(n_1-1,n_2-1)
 $$
 
-## Rejection Region and p-values
+## Rejection Region 
 
 We will use the F-distribution to define the rejection region and the corresponding p-values.
 
-::: panel-tabset
-### Rejection Region
 
 For one-sided tests, the rejection region is defined by the range:
 
@@ -90,5 +88,133 @@ $$
 F < F_{\alpha/2}(n_1-1,n_2-1)~ or~ F > F_{1-\alpha/2}(n_1-1,n_2-1)
 $$
 
+::: callout-note
+The p-values can be calculated using statistical software like `R` and follows the same rejection rules as the previous tests (reject $H_0$ when $p < \alpha$)
+:::
 
+## Hypothesis Testing: `R`
+
+The function `var.test()` provides the test statistic and the corresponding p-values for testing the ratio between population variances. Typically, we are interested in the null hypothesis of equality or $H_0: \sigma_1^2/\sigma_2^2 = 1$. 
+
+The function can be implemented in two ways. If the data is stored in a data frame `df`,
+
+::: callout-note
+`var.test(formula,data=df,ratio=1,alternative)` can be used if the groups are defined by a column in `df` and the response variable is defined by another column in `df`. The formula can be expressed as `response~group`. `alternative` can take on the following values: `"two.sided"`, `"less"`, or `"greater"`
+:::
+
+::: callout-note
+`var.test(x,y,ratio=1,alternative)` can be used if the responses/measurements from each group are found in different columns in `df`. Suppose the measurements are in the columns `group1` and `group2`. The groups `x` and `y` can be expressed as `x=df$group1,y=df$group2`. `alternative` can take on the following values: `"two.sided"`, `"less"`, or `"greater"`.
+:::
+
+::: callout-note
+To determine the rejection region for the $F$ statistic, we can use the `qf()` function.
+:::
+
+## Example
+
+Consider the sleep health data set from `SleepHealthData.csv`.
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+```
+
+
+::: panel-tabset
+### Question
+
+Perform a hypothesis test to determine if there is evidence of unequal variances between the average sleep duration of males and females. Assume equal variances and a significance level of 0.05.
+
+### Answer
+
+The parameter of interest is the ratio of the variances in sleep duration between females and males. The corresponding hypotheses are:
+
+$$
+H_0: \sigma_f^2/\sigma_m^2 = 1;H_0: \sigma_f^2/\sigma_m^2 \neq 1
+$$
+We can now use the `var.test()` function to solve for the test statistic and p-value. Note that the groups are defined by the `gender` variable and the response is defined by the `sleep_duration` variable.
+
+```{r}
+ftest <- var.test(sleep_duration~gender,
+         data=sleep,
+         ratio=1,
+         alternative="two.sided"
+         )
+
+ftest
+```
+
+The test statistic value is `r ftest$statistic` corresponding to a p-value of `r ftest$p.value`. The rejection region can be calculated using the `qf()` function.
+
+```{r}
+alpha<- 0.05
+lower_bound <- qf(alpha/2,df1=184,df2=188)
+lower_bound
+upper_bound<- qf(1-alpha/2,df1=184,df2=188)
+upper_bound
+```
+
+The rejection region is defined as: F<`r lower_bound` or F>`r upper_bound`. The test statistic is in this rejection region, hence, we reject the null hypothesis. There is sufficient evidence that the ratio of the two population variances is not equal to one, implying that the population variances are unequal.
+
+::: callout-note
+The same decision and conclusion is reached when the p-value is used.
+:::
+
+:::
+
+## Exercise
+
+Consider the sleep health data set from `SleepHealthData.csv`.
+
+:::: panel-tabset
+### Question
+
+Recall that you were asked to assume equal variances in testing for a difference between the average heart rate of males and females in the previous lecture. Perform a hypothesis test to determine if there is sufficient evidence to claim that the population variances of the heart rate of males and females are different. Use a significance level of 0.001.
+
+### Answer
+
+The parameter of interest is the ratio of the variances between females and males. The corresponding hypotheses are:
+
+$$
+H_0: \sigma_f^2/\sigma_m^2 = 1;H_0: \sigma_f^2/\sigma_m^2 \neq 1
+$$
+We can now use the `var.test()` function to solve for the test statistic and p-value. Note that the groups are defined by the `gender` variable and the response is defined by the `heart_rate` variable.
+
+
+
+```{r}
+ftest <- var.test(heart_rate~gender,
+         data=sleep,
+         ratio=1,
+         alternative="two.sided"
+         )
+
+ftest
+```
+
+The test statistic value is `r ftest$statistic` corresponding to a p-value of `r ftest$p.value`. The rejection region can be calculated using the `qf()` function.
+
+```{r}
+alpha<- 0.001
+lower_bound <- qf(alpha/2,df1=184,df2=188)
+lower_bound
+upper_bound<- qf(1-alpha/2,df1=184,df2=188)
+upper_bound
+```
+
+The rejection region is defined as: F<`r lower_bound` or F>`r upper_bound`. The test statistic is NOT in this rejection region, hence, we fail to reject the null hypothesis. There is insufficient evidence that the ratio of the two population variances is not equal to one.
+
+::: callout-note
+The same decision and conclusion is reached when the p-value is used.
+:::
+
+# Association vs. Causation
+
+## Association vs. Causation
+
+When comparing two groups, it is important to be mindful of how to interpret the conclusion. Suppose we are comparing two groups.When we reject the null hypothesis and conclude that there is sufficient evidence supporting the alternative hypothesis, there is an implied *association* between the groups and the response variable. 
+
+::: callout-warning
+**However, this does not necessarily mean that the group variable was the reason why there was a significant difference.** There might be other variables in play, also known as confounding variables, that could be associated with both groups and response variable and contributed to this significant differences. The hypothesis tests discussed do not account for this, hence causation cannot be claimed.
+
+In experiments, the effects of these confounding variables can be mitigated by performing random assignment of participants to the treatment groups. In observational and retrospective studies, the process to prove causation is much harder. There is a whole field that addresses this problem called *causal inference*, which we will not discuss in this class.
 :::

@@ -246,7 +246,7 @@ There is no error when the null hypothesis is rejected when it is false and when
 A Type I error occurs when the null hypothesis is rejected when it is true.
 :::
 
-::: {.callout-note title="Type I error"}
+::: {.callout-note title="Type II error"}
 A Type II error occurs when the null hypothesis is not rejected when it is false.
 :::
 

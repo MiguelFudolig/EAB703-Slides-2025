@@ -1,0 +1,45 @@
+---
+title: "Analysis of Variance"
+subtitle: Lecture 8
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 8 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+# Outline
+
+
+- Single Factor Analysis of Variance (ANOVA)
+
+  - Hypotheses
+  - Test Statistic
+
+- Two Factor ANOVA
+
+  - Interaction Term
+  
+# Analysis of Variance
+
+
+
+
+
+
+
+
