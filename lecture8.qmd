@@ -24,22 +24,588 @@ bibliography: references.bib
 
 # Outline
 
+-   Linear Models
 
-- Single Factor Analysis of Variance (ANOVA)
+-   Single Factor Analysis of Variance (ANOVA)
 
-  - Hypotheses
-  - Test Statistic
+    -   Hypotheses
+    -   Test Statistic
 
-- Two Factor ANOVA
+-   Two Factor ANOVA
 
-  - Interaction Term
-  
-# Analysis of Variance
+    -   Interaction Term
+
+# Linear Models
+
+## What are Linear Models?
+
+Linear models are very generalized models that allow us to investigate phenomena from many perspectives.
+
+::: callout-note
+In this course we will focus on three important applications of linear models:
+
+-   Analysis of Variance (ANOVA)
+-   Linear Regression
+-   Correlation
+:::
+
+## Definition of Terms
+
+::: callout-important
+The dependent variable is also referred to as the response variable, outcome variable, or measured variable.
+:::
+
+::: callout-important
+The independent variable is also referred to as the explanatory variable, predictor variable, or *factor*
+:::
+
+## General Form of Linear Models
+
+The general form of the linear model is given by
+
+$$
+Y_j = \beta_0 + \beta_1X_{1j} + \beta_2X_{2j} +... + \beta_k X_{kj} + \varepsilon_j
+$$
+
+::: callout-important
+The \beta terms are coefficients, with $\beta_0$ known as the intercept of the model. $X_{1j}$ are predictor variables or covariates, also known as confounding variables. These terms constitute a partition that estimates the mean of $Y_j$.
+:::
+
+::: callout-important
+The term $\varepsilon_j$ corresponds to the noise term of the model. This term does not contribute to the mean, rather this partition captures the variability in the data.
+:::
+
+# Analysis of Variance (ANOVA)
+
+## Single Factor ANOVA
+
+In Chapter 7, we compared the statistics of samples from two populations. Often, we want to compare more than two groups.
+
+::: callout-note
+Suppose we want to compare more than two species or more than two treatment groups.
+:::
+
+## Statistical Hypotheses
+
+In single-factor ANOVAs (also referred to as one-way ANOVAs), we would like to compare **the means of multiple groups**. Suppose we have $k$ groups defined by an explanatory variable. The null and alternative hypotheses can be expressed as:
+
+$$
+H_0: \mu_1 = \mu_2 = ... = \mu_k
+$$
+
+$H_a:$ At least one group mean is not equal to others.
+
+## One-way ANOVA: Linear Model
+
+The linear model for the ANOVA can be written as:
+
+$$
+Y_{ij} = \mu_{i} + \varepsilon_{ij}
+$$ where $Y_{ij}$ is the value of the response variable for the $j^{th}$ subject in the $i^{th}$ group, $\mu_i$ is the group mean of the $i^{th}$ group, and $\varepsilon_{ij}$ is the error term.
+
+::: callout-note
+The group mean of the $i^{th}$ group can be decomposed into $\mu_i = \mu + \tau_i$ where $\mu$ is referred to as the grand mean, and $\tau_i$ is the treatment effect.
+:::
+
+## Why ANOVA?
+
+While it is referred to as an analysis of variance, it can be used to compare group means.
+
+![Compare the purple squares to the yellow squares.](figs/8-anova-squares-graph.png)
+
+::: callout-tip
+We need to estimate the variability within groups and between groups. If the variability between groups is larger than the variability within groups, then there is evidence that the group means are different from each other.
+:::
+
+## Sum of Squares
+
+The areas of the squares in the previous slide can be calculated using the *sum of squares*.
+
+::::::: panel-tabset
+### Terms
+
+::: {.callout-note title="Group Means"}
+The mean of group $i$ with size $n_i$ is expressed as $\bar{y}_{i\cdot}$ which can be written as:
+
+$$
+\bar{y}_{i\cdot} = \sum_{j=1}^{n_i}y_{ij}/n_i
+$$
+:::
+
+::: {.callout-note title="Overall Mean"}
+The overall mean $\bar{y}_{\cdot\cdot}$ can be expressed as:
+
+$$
+\bar{y}_{i\cdot} = \left(\frac{1}{N}\right) \sum_{i=1}^k\sum_{j=1}^{n_i}y_{ij}
+$$
+:::
+
+where $N$ is the total sample size (sum of all $n_i$).
+
+### Factor Sum of Squares
+
+::: {.callout-note title="Sum of Squares due to Factor A"}
+Suppose the groups are dictated by a factor $A$ with $k$ levels. We define the sum of squares due to the factor $A$ as $SSA$ given by,
+
+$$
+SSA = \sum_{i=1}^k n_i(y_{i\cdot} - \bar{y}_{\cdot \cdot})^2
+$$
+
+This sum of squares measures the variability of the sample means from the overall mean.
+:::
+
+### Error Sum of Squares
+
+::: {.callout-note title="Sum of Squares due to Error"}
+The sum of squares due to error, denoted as SSE can be expressed as:
+
+$$
+SSE = \sum_{i=1}^k \sum_{j=1}^{n_i} (y_{ij} - \bar{y}_{i\cdot})^2
+$$
+
+This sum of squares measures the variability of each measurement to their respective group mean.
+:::
+:::::::
+
+## Total Sum of Squares
+
+The total sum of squares, $SST$ can then be expressed as:
+
+$$
+SST = SSA + SSE
+$$
+
+## Mean Squares
+
+::: panel-tabset
+
+### Factor Mean Squares
+
+::: {.callout-note title="Mean Squares due to Factor A"} 
+
+Suppose the groups are dictated by a factor $A$ with $k$ levels. We define the mean squares of factor $A$ as $MSA$ given by,
+
+$$
+MSA = \frac{SSA}{k-1}
+$$
+
+This sum of squares is an estimate of the variance between groups.
+:::
+
+### Error Sum of Squares
+
+::: {.callout-note title="Mean Squares due to Error"}
+
+We define the mean squares error as $MSE$ as,
+
+$$
+MSE = \frac{SSE}{N-k}
+$$
+
+where $N$ is the total number of samples. 
+
+:::
+
+:::
+
+## Variance Ratio
+
+Recall that we want to compare the variability between groups and within groups. We do this by computing the following variance ratio, which we will use as our test statistic.
+
+$$
+VR = F = MSA/MSW
+$$
+
+This test statistic follows an F-distribution where the numerator degrees of freedom $df_1 = k-1$ and denominator degrees of freedom $df_2 = N-k$.
+
+## ANOVA table
+
+The Analysis of Variance metrics can be summarized in an ANOVA table:
+
+| Source of Variation | Sum of Squares | Degrees of Freedom | Mean Square | Variance Ratio or F |
+|----|----|----|----|----|
+| Factor A | SSA | (k-1) | MSA = SSA/(k-1) | MSA/MSE |
+| Error | SSE | (N-k) | MSE = SSE/(N-k) |  |
+| Total | SST | (N-1) |  |  |
+
+## `R` implementation
+
+The rejection region can be determined using the F-statistic. In `R`, we can use the following functions to perform hypothesis testing, estimating linear model coefficients, and estimate group means.
+
+::: panel-tabset
+### `aov()`
+
+The package `aov(formula,data)` in `R` works with the `summary` function to perform the single-factor ANOVA. For a response variable in column `y` and group variable in column `x` in a data set `df`.
+
+```{.r}
+mod1 <- aov(y~x,data=df)
+summary(mod1)
+```
+
+::: callout-note
+It is recommended that the group variable $x$ is expressed as a factor.
+:::
+
+### `lm()` 
+
+To view the estimates of the coefficients of the corresponding linear model, we use `lm(formula,data)` to estimate the linear model. These coefficients can be viewed using the `summary` function.
+
+```{.r}
+mod1 <- lm(y~x,data=df)
+summary(mod1)
+```
+
+::: callout-note
+It is recommended that the group variable $x$ is expressed as a factor.
+:::
+
+### `emmeans()`
+
+The package `emmeans` contains the function `emmeans()` that calculates the group means based on the estimates of the linear models in `lm()`
+
+```{.r}
+library(emmeans)
+mod1 <- lm(y~x,data=df)
+emmeans(mod1,~x)
+```
+
+:::
+
+## Interpretation of Null Hypothesis Rejection
+
+The rejection of the null hypothesis implies sufficient evidence that not all population means are equal. However, there is no information on which groups have the different means. 
+
+Failure to reject the null hypothesis implies insufficient evidence that not all population means are equal.
+
+## Assumptions of ANOVA
+
+ANOVA assumes the following:
+
+- The data follows the Gaussian distribution
+- Groups have equal variances
+- Observations are independent of each other
+
+## Effect Size
+
+A commonly reported effect size for ANOVA is the partial eta-squared ($\eta^2_p$).
+
+$$
+\eta^2 = \frac{SSA}{SSA+SSE}
+$$
+
+This could also be calculated using the `effectsize` function in the `lsr` package in `R`.
+
+:::callout-important
+$\eta^2_p=0.01$ is considered small, 0.06 is considered medium, and 0.14 is large.
+:::
+
+## Example
+
+Consider the `iris` data set loaded in `R`.
+
+```{r}
+library(tidyverse)
+glimpse(iris)
+```
+
+::: panel-tabset
+### Question
+Use ANOVA to test if three species have different population average sepal length. Use a significance level of 0.05. Calculate the partial eta-squared value for the species effect.
+
+### Answer
+
+There are three species ("setosa", "versicolor", and "virginica"). The hypotheses are $H_0:$ The population average sepal length is equal for all three species. and $H_a:$ At least one population has a different average sepal length.
+
+We now implement the ANOVA using `R`. To calculate the ANOVA table, we use `aov()`
+
+```{.r}
+install.packages("lsr")
+```
+
+```{r}
+library(lsr)
+mod_aov <-aov(Sepal.Length~Species,data=iris)
+summary(mod_aov)
+etaSquared(mod_aov)
+```
+The p-value is <2e-16, which is less than 0.05. We reject the null hypothesis and therefore there is sufficient evidence that at least one species has a different population average sepal length compared to the others. The effect size is `r etaSquared(mod_aov)[2]` 
+
+We examine the group means to see how much the group means differ using `emmeans()`. To use `emmeans()`, we need to create a linear model for the problem using `lm()`
+
+```{r}
+#install emmeans first if not installed yet: 
+#install.packages("emmeans")
+library(emmeans)
+
+mod_lm <-lm(Sepal.Length~Species,data=iris)
+summary(mod_lm)
+emmeans(mod_lm,~Species)
+```
+We see that Setosa has the lowest average sepal length and Virginica has the highest average sepal length.
+
+:::
+
+## Exercise
+
+The data set `penguins` from the `datasets` package in `R` includes data on adult penguins covering three species found on three islands in the Palmer Archipelago, Antarctica.
+
+```{r}
+library(datasets)
+glimpse(penguins)
+
+# disregard missing data:
+
+penguins <- drop_na(penguins,bill_len)
+```
+
+::: panel-tabset
+### Question
+
+Test for a difference in average bill length (bill_len) between the species. Use a significance level of 0.05. Calculate the partial eta-squared for the species effect.
+
+### Answer
+
+The hypotheses are $H_0:$ The population average bill length is equal for all three species. and $H_a:$ At least one population has a different average bill length.
+
+We now implement the ANOVA using `R`. To calculate the ANOVA table, we use `aov()`
+
+```{r}
+library(lsr)
+mod_aov <-aov(bill_len~species,data=penguins)
+summary(mod_aov)
+etaSquared(mod_aov)
+```
+The p-value is <2e-16, which is less than 0.05. We reject the null hypothesis and therefore there is sufficient evidence that at least one species has a different population average bill length compared to the others. The effect size is `r etaSquared(mod_aov)[2]` 
+
+We examine the group means to see how much the group means differ using `emmeans()`. To use `emmeans()`, we need to create a linear model for the problem using `lm()`
+
+```{r}
+#install emmeans first if not installed yet: 
+#install.packages("emmeans")
+library(emmeans)
+
+mod_lm <-lm(bill_len~species,data=penguins)
+summary(mod_lm)
+emmeans(mod_lm,~species)
+```
+We see that Adelie has the shortest average bill length, while Chinstrap and Gentoo have comparable average bill lengths.
+:::
+
+## Pairwise Comparisons and Post-hoc Analysis
+
+Suppose we want to examine the means further to determine which groups are different when compared pairwise, i.e. A vs. B, A vs. C, B vs. C, etc. after rejecting the null hypothesis in ANOVA. This analysis is considered a post-hoc analysis.
+
+::: callout-warning
+Performing multiple pairwise t-tests and making inferences simultaneously can lead to multiplicity, which increases the chance of making a Type I error. We have to control for this when performing comparisons across the groups.
+:::
+
+## Multiplicity corrections
+
+Two of the popular corrections to account for the Type I error inflation are:
+
+- Bonferroni correction: for planned comparisons, i.e. These comparisons are planned before the study was implemented.
+- Tukey correction: for post-hoc comparisons, i.e. Comparisons done to examine which groups are different from each other after the rejection of an ANOVA hypothesis.
+
+## `R` implementation
+
+The function `contrast` is applied to the `emmeans` function to estimate pairwise comparisons. Using previous examples,
+
+```{.r}
+library(emmeans)
+mod1 <- lm(y~x,data=df)
+em_mod1 <- emmeans(mod1,~x)
+contrast(em_mod1,method="pairwise",adjust="tukey")
+```
+
+::: callout-note
+The Tukey correction can be applied by setting `adjust=tukey`, while the Bonferroni correction can be applied by setting `adjust="bon"`.
+:::
 
 
 
+## Example
+
+Consider the `iris` data set loaded in `R`.
+
+```{r}
+library(tidyverse)
+glimpse(iris)
+```
+
+::: panel-tabset
 
 
+### Question
+Recall that you rejected the null hypothesis after performing ANOVA. Perform pairwise comparisons to determine which groups have different sepal lengths. Use a significance level of 0.05 and the Tukey correction.
+
+### Answer
+
+```{r}
+mod_lm <- lm(Sepal.Length~Species,data=iris)
+em_mod_lm <- emmeans(mod_lm,~Species)
+contrast(em_mod_lm,method="pairwise",adjust="tukey")
+```
+
+The p-values are all less than 0.0001, which means we have sufficient evidence that all means are different from each other. Setosa sepal length was estimated to be 0.930 units lower than Versicolor and 1.58 units lower than Virginica. Versicolor sepal length was estimated to be 0.65 units lower than Virginica.
+:::
+
+## Exercise
+
+The data set `penguins` from the `datasets` package in `R` includes data on adult penguins covering three species found on three islands in the Palmer Archipelago, Antarctica.
+
+```{r}
+library(datasets)
+glimpse(penguins)
+
+# disregard missing data:
+
+penguins <- drop_na(penguins,bill_len)
+```
+
+::: panel-tabset
+### Question
+
+Perform pairwise comparisons of average bill length (in mm) across the three species. Use the Bonferroni correction and a significance level of 0.001.
+
+### Answer
+
+```{r}
+#install emmeans first if not installed yet: 
+#install.packages("emmeans")
+library(emmeans)
+
+mod_lm <-lm(bill_len~species,data=penguins)
+
+em_mod_lm <- emmeans(mod_lm,~species)
+contrast(em_mod_lm,method="pairwise")
+```
+At significance level of 0.001, we have sufficient evidence that the average bill length of Adelie penguins is different from Chinstrap and Gentoo penguins by 10 mm and 8.7 mm, respectively. The difference between the average bill length of Chinstrap and Gentoo is 1.33, where we have insufficient evidence of a difference with p=0.0089.
+:::
+
+## Two-Way ANOVA
+
+Suppose we want to study the effect of two factors.
+
+::: callout-note
+Suppose we want to investigate the interplay of pain relief and blood thinners on patient comfort level, We can perform separate analyses using single factor (or one-way) ANOVAs, but it will fail to capture the interplay between the two groups.
+:::
+
+## Interaction Effect
+
+Aside from the factor effects, we have to consider the interaction effect.
+
+::: callout-note
+The interaction effect is defined as the difference in effect of one factor between the levels of the other factor. Consider two factors $A$ (levels: $A_1$ and $A_2$) and $B$ (levels: $B_1$ and $B_2$). The interaction effect can be interpreted as:
+
+$$
+\mu_{A1B1} - \mu_{A1B2} -(\mu_{A2B1} - \mu_{A2B2})
+$$
+
+:::
+
+## Linear Model
+
+The linear model of the two-way ANOVA can be written as:
+
+$$
+Y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \varepsilon_{ijk}
+$$
+where $\alpha$ is the main effect of Factor A, $\beta$ is the main effect of Factor B, and $(\alpha\beta)$ is the interaction effect between Factors A and B.
+
+## ANOVA Table
+
+If Factor A has $a$ levels and Factor B has $b$ levels and total sample size $N$, the ANOVA table can be expressed as:
+
+| Source of Variation | Sum of Squares | Degrees of Freedom | Mean Square | Variance Ratio or F |
+|----|----|----|----|----|
+| Factor A | SSA | (a-1) | MSA = SSA/(a-1) | MSA/MSE |
+| Factor B | SSB | (b-1) | MSA = SSB/(b-1) | MSB/MSE |
+| Interaction A*B | SSAB | (a-1)(b-1) | MSA = SSAB/((a-1)(b-1)) | MSAB/MSE |
+| Error | SSE | N-ab | MSE = SSE/(N-k) |  |
+| Total | SST | N-1 |  |  |
+
+## Analysis
+
+Here is a guide on how to perform a two-way ANOVA:
+
+- Check if we have sufficient evidence of an interaction effect.
+
+::: callout-warning
+If there is evidence of an interaction effect, the main effects are NOT interpretable. You must compare the levels of A under all levels of B and vice versa. Interaction effects are slightly different from effect modification analysis, where we are only concerned with the effect of one factor in the levels of the other, e.g. effect of drugs for all levels of sex.
+:::
+
+::: callout-note
+If there is no evidence of an interaction effect, the main effects can be interpreted similar to the result of a one-way/single-factor ANOVA.
+:::
+
+## `R` implementation
+
+The same functions used in the single factor ANOVA are used to perform a two-way ANOVA. However, the model specification is slightly different.
+
+```{.r}
+library(emmeans)
+mod1 <- lm(y~A+B+A:B,data=df)
+emmeans(mod1,~A*B)
+```
+
+## Example
+
+The data set `lec8_example.csv` includes simulated data from a study that randomly sampled 20 individuals with and without family history of hypertension. These individuals were randomly assigned to two treatments for hypertension, A and B. The systolic blood pressure was measured for each participant.
+
+```{r}
+systolic <- read.csv("lec8_example.csv")
+glimpse(systolic)
+```
 
 
+::: panel-tabset
+### Question
+Test for an interaction effect between family history and hypertension. Provide the estimated group means for each group.
 
+### Answer
+
+The null hypothesis is $H_0:$ there is no interaction between family history and hypertension and the alternative hypothesis is $H_a$: there is an interaction between family history and hypertension.
+
+```{r}
+mod_aov <- aov(Systolic~Treatment + History + Treatment:History,data=systolic)
+summary(mod_aov)
+etaSquared(mod_aov)
+library(emmeans)
+mod1 <- lm(Systolic~Treatment + History + Treatment:History,data=systolic)
+emmeans(mod1,~Treatment:History)
+plot(emmeans(mod1,~Treatment|History))
+```
+There is evidence of an interaction between treatment and family history ($\eta^2_p=`r round(etaSquared(mod_aov)[3,2],2)`,p=0.0002). Based on the calculated means, the difference between the treatments was higher for those with family history of hypertension compared to those without.
+:::
+
+## Exercise
+
+The data set `COVID-Zinc-AscorbicAcid.csv` contains data from a clinical trial that tested the efficacy of using high doses of zinc and/or ascorbic acid (vitamin C) on the recovery time for COVID-19. They studied a number of outcome variables, including the time to 50% reduction in symptoms. Those marked with `1` for Zinc and Ascorbic Acid received the treatment, while those marked with `-1` did not.
+
+```{r}
+covid <- read.csv("COVID-Zinc-AscorbicAcid.csv")
+glimpse(covid)
+```
+
+::: panel-tabset
+### Question
+
+- Test for an interaction between the Ascorbic Acid and Zinc factors.
+- Is there evidence of efficacy of the two treatments?
+
+### Answer
+
+The null hypothesis is $H_0:$ there is no interaction between Ascorbic Acid and Zinc treatments and the alternative hypothesis is $H_a$: there is an interaction between between Ascorbic Acid and Zinc treatments.
+
+```{r}
+mod_aov <- aov(DaysUntil50PctReduction~AscorbicAcid + Zinc + AscorbicAcid:Zinc,data=covid)
+summary(mod_aov)
+etaSquared(mod_aov)
+library(emmeans)
+mod1 <- lm(DaysUntil50PctReduction~AscorbicAcid + Zinc + AscorbicAcid:Zinc,data=covid)
+emmeans(mod1,~AscorbicAcid:Zinc)
+plot(emmeans(mod1,~AscorbicAcid|Zinc))
+```
+
+There is no evidence of an interaction between Ascorbic Acid and Zinc ($\eta^2_p$=`r round(etaSquared(mod_aov)[3,2],2)`, p=0.84). There is also no evidence of efficacy for Ascorbic Acid ($\eta^2_p$=`r round(etaSquared(mod_aov)[1,2],2)`, p=0.67) and Zinc ($\eta^2_p$=`r round(etaSquared(mod_aov)[2,2],2)`, p=0.83)
+:::
