@@ -44,6 +44,8 @@ website:
             text: Problem Set 3 Key
           - href: PS4_key.qmd
             text: Problem Set 4 Key
+          - href: PS5_key.qmd
+            text: Problem Set 5 Key
 format:
   html:
     theme:

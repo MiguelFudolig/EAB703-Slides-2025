@@ -1,0 +1,184 @@
+---
+title: "Problem Set 5 Key"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+## Problem 1
+
+The weights of 15 randomly selected girls at birth from a single hospital in New York recorded an average of 3.09 kg and standard deviation of 0.29 kg. 
+
+a. Which distribution should we use for the reliability coefficient of the confidence interval, the standard normal distribution or the t-distribution? [1pt.]
+
+::: callout-note
+The t-distribution should be used to calculate the reliability coefficient of the confidence interval because the population variance is unknown.
+:::
+
+b.	Construct a 95% confidence interval for the mean birth weight of girls in the population represented by this sample, assuming that the population is Gaussian/normally distributed. [2pts.]
+
+The confidence interval can be calculated using $\bar{x} \pm t_{1-\alpha/2} s/\sqrt{n}$.
+
+```{r}
+xbar <- 3.09
+stdev <- 0.29
+sampsize <- 15
+df <- sampsize-1
+alpha <- 1-0.95
+relcoeff <- qt(p=1-alpha/2,df=df)
+
+lower <- xbar - relcoeff*stdev/sqrt(sampsize)
+lower
+upper <- xbar + relcoeff*stdev/sqrt(sampsize)
+upper
+```
+
+The 95% confidence interval for the mean birth weight of girls in the population represented by this sample is (`r round(lower,2)` kg, `r round(upper,2)` kg)
+
+
+c.	Is 3 kg a plausible value for the population mean? [1pt.]
+
+::: callout-note
+Because 3 kg can be found in the interval, it is a plausible value for the population mean.
+:::
+
+
+d.	Is this result generalizable to all girls born in the United States? Why or why not? [2 pts.]
+
+::: callout-note
+No, the sample was from a single hospital in New York city, which might not be representative of all girls born in the entire country
+:::
+
+## Problem 2
+
+The Wechsler’s Adult Intelligence Scale was designed such that the population standard deviation of all IQ scores was maintained at 15.
+
+a.	A random sample of 30 sophomores from a community college recorded an average Wechsler IQ score of 109.5. Construct a 90% confidence interval for the average Wechsler IQ score for the corresponding population. [2 pts.]
+
+```{r}
+xbar <- 109.5
+stdev <- 15
+sampsize <- 30
+alpha <- 1-0.9
+relcoeff <- qnorm(p=1-alpha/2,mean=0,sd=1)
+
+lower <- xbar - relcoeff*stdev/sqrt(sampsize)
+lower
+upper <- xbar + relcoeff*stdev/sqrt(sampsize)
+upper
+```
+
+The 95% confidence interval for the mean Wechsler IQ score for the sophomores in the community college is (`r round(lower,2)`, `r round(upper,2)`)
+
+b.	Suppose you want to extend your study to calculate the average IQ of all the students from the community college such that the resulting 95% confidence interval has a margin of error of 2 points. How many students do you need to sample from the community college? [2 pts.]
+
+
+```{r}
+E <- 2
+alpha <- 1-0.95
+sigma <- 15
+z <- qnorm(p=1-alpha/2)
+
+sampsize <- z^2*sigma^2/E^2
+sampsize
+```
+
+We need to sample `r ceiling(sampsize)` students from the community college to achieve a margin of error of 2 points in our 95% confidence interval for the average IQ of all the students from the community college
+
+
+
+
+
+## Problem 3
+
+The file HINTS subset.csv contains a subset of the Health information National Trends Survey 6 (HINTS 6). The households were asked if they used health or wellness apps on their tablet or smartphone (column UsedHealthWellnessApps2) and the type of community they lived in (column PR_RUCA_2010).
+
+a.	Construct a 95% confidence interval for the long run proportion of individuals who use health or wellness apps on their portable devices based on the whole sample. [2 pts.]
+
+```{r}
+library(tidyverse)
+hints <- read.csv("datasets/HINTS subset.csv")
+glimpse(hints)
+```
+
+We need the proportion of those who reported using health or wellness apps on their portable devices.
+
+```{r}
+library(summarytools)
+freq(hints$UsedHealthWellnessApps2)
+```
+
+```{r}
+sampsize <- 500
+phat <- 314/sampsize
+
+alpha <- 1-0.95
+relcoeff <- qnorm(p=1-alpha/2)
+se <- sqrt((phat*(1-phat))/sampsize)
+
+lower <- phat - relcoeff*se
+lower
+
+upper <- phat + relcoeff*se
+upper
+```
+The 95% confidence interval for the long-run proportion of individuals who use health or wellness apps on their portable devices is (`r round(lower,2)`, `r round(upper,2)`).
+
+
+b.	Construct a 95% confidence interval with continuity correction to compare the long run proportion of individuals who use health or wellness apps on their portable devices in the metropolitan and micropolitan areas. (Hint: Use count(dataset, PR_RUCA_2010, UsedHealthWellnessApps2) to get conditional counts for each area.) [3pts.]
+
+```{r}
+
+count(hints, PR_RUCA_2010, UsedHealthWellnessApps2)
+```
+
+In the metropolitan areas, 289 out of `r 289+153` used the apps, while in the micropolitan areas, 13 out of 33 used the apps.
+
+::: callout-warning
+The `prop.test()` can be used to implement the continuity correction. While the `prop.test()` can calculate the confidence intervals, it uses the pooled variance method in confidence intervals. It also uses a different distribution to calculate the reliability coefficient.
+:::
+
+For this problem, I will use `prop.test()` to implement the continuity correction.
+
+```{r}
+ptest <- prop.test(x=c(289,13), n=c(289+153,33),conf.level=0.95, correct=TRUE)
+ptest
+```
+
+The resulting 95% confidence interval for the long-run difference in proportion of individuals who use health or wellness apps on their portable devices between the metropolitan and micropolitan areas with the continuity correction is (`r x <- ptest$conf.int |> as.numeric() |> round(4); x[1]`, `r x <- ptest$conf.int |> as.numeric() |> round(4); x[2]`).
+
+## Problem 4
+
+The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. Construct a 95% confidence interval that estimates the difference in average baseline follicle-stimulating hormone (FSH; column: fsh) measurements between those who did and did not experience hotflashes (column: hotflash). Assume unequal variances. [3pts.]
+
+```{r}
+hflashes <- read.csv("datasets/hflashes.csv")
+glimpse(hflashes)
+
+ttest <-t.test(hflashes$fsh~hflashes$hotflash,
+       data=hflashes,
+       var.equal=F)
+ttest
+```
+
+The 95% confidence interval for the difference in average baseline FSH measurements between those who did and did not experience hot flashes is (`r x <- ttest$conf.int |> as.numeric() |> round(4); x[1]`, `r x <- ttest$conf.int |> as.numeric() |> round(4); x[2]`)
+
+## Problem 5
+
+
+A prior study found that approximately 14.4% of the global population experiences carpal tunnel syndrome. Using this measurement, calculate how many participants you should recruit if you want to estimate the prevalence rate of carpal tunnel syndrome among hospitality workers in Nevada such that the margin of error of a 99% confidence interval estimate is 1%. [2pts.] 
+
+```{r}
+E <- 0.01
+pi_hat <-0.144
+alpha <- 1-0.99
+z <- qnorm(p=1-alpha/2)
+
+sampsize <- z^2*pi_hat*(1-pi_hat)/E^2
+sampsize
+```
+
+It would be recommended to recruit `r ceiling(sampsize)` for the study so that the margin of error of a 99% confidence interval estimate will be approximately 1%.

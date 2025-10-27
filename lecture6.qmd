@@ -856,8 +856,8 @@ prop.test(x=c(x1,x2), n=c(n1,n2),conf.level=0.95, correct=FALSE)
 
 For the resulting CI with the continuity correction, set `correct=TRUE`.
 
-::: callout-note
-The confidence interval by `prop.test()` differs from the formula provided in the previous slide slightly, because it uses a different distribution to calculate the reliability coefficient.
+::: callout-warning
+The `prop.test()` can be used to implement the continuity correction. While the `prop.test()` can calculate the confidence intervals, it uses the pooled variance method in confidence intervals. It also uses a different distribution to calculate the reliability coefficient.
 :::
 
 ## Example
