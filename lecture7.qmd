@@ -418,7 +418,9 @@ For two-sided tests with a significance level $\alpha$, we need to account for r
 
 $$
 z < z_{\alpha/2}~OR~ z > z_{1-\alpha/2}
-$$ \### p-value
+$$ 
+
+### p-value
 
 The p-value can be calculated using the following equation:
 
@@ -534,7 +536,7 @@ The resulting p-value `r round(pnorm(z,lower.tail=F),2)` is greater than the sig
 
 ## Hypothesis Test: Single Mean, Unknown Variance
 
-When the population variance is unknown, we can use the $t-distribution$ to define our test statistic.
+When the population variance is unknown, we can use the t-distribution to define our test statistic.
 
 ::: callout-note
 Recall Chapter 6: We can substitute the sample variance for the population variance and use the t-distribution instead of the standard normal distribution to account for the additional variability due to the variance estimation.
@@ -573,7 +575,7 @@ If we are provided a data set, we can use the `t.test(vector,mu=mu_null,alternat
 ::: callout-important
 -   The `vector` includes the data that we want to use the t-test on.
 -   The `mu_null` placeholder is the mean according to the null hypothesis.
--   `alternative` can be `"less"` or `"greater"` for one-sided tests and `two.sided` for two-sided tests.
+-   `alternative` can be `"less"` or `"greater"` for one-sided tests and `"two.sided"` for two-sided tests.
 :::
 ::::
 
@@ -643,7 +645,7 @@ $$
 We can use the `t.test()` function to implement the one-sample t-test.
 
 ```{r}
-ttest <- t.test(Salaries$salary,
+ttest <- t.test(asstprof$salary,
        mu=75000,
        alternative="greater")
 
@@ -671,12 +673,12 @@ sleep <- read.csv("SleepHealthData.csv")
 The parameter of interest is the population average sleep duration. The hypotheses are:
 
 $$
-H_0: \mu=7; H_a: \mu \neq 7
+H_0: \mu=7.5; H_a: \mu \neq 7.5
 $$
 
 ```{r}
 ttest <- t.test(sleep$sleep_duration,
-       mu=7,
+       mu=7.5,
        alternative="two.sided")
 
 ttest
@@ -793,7 +795,9 @@ The parameter of interest is the **true difference** in average sleep duration o
 
 $$
 H_0: \mu_f - \mu_m = 0; H_a: \mu_f - \mu_m \neq 0
-$$ The alternative is two-sided because we did not specify a direction of the difference between the two groups.
+$$ 
+
+The alternative is two-sided because we did not specify a direction of the difference between the two groups.
 
 The groups are defined by the variable `gender` and the response variable is defined by the variable `sleep_duration`. The t-test can be implemented using the following code:
 
@@ -867,7 +871,9 @@ The parameter of interest is the **true difference** in average heart rate betwe
 
 $$
 H_0: \mu_f - \mu_m = 0; H_a: \mu_f - \mu_m < 0
-$$ The alternative is one-sided, "less", because we specified the direction where males have a higher average heart rate than females.
+$$ 
+
+The alternative is one-sided, "less", because we specified the direction where males have a higher average heart rate than females.
 
 The groups are defined by the variable `gender` and the response variable is defined by the variable `heart_rate`. The t-test can be implemented using the following code:
 
