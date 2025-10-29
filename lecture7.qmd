@@ -612,10 +612,10 @@ The t-statistic is `r round(t,3)`. To calculate the p-value,
 
 ```{r}
 df <- sampsize - 1
-dt(t,df=df)
+pt(t,df=df)
 ```
 
-The p-value is `r round(dt(t,df=df),2)`, which is less than $\alpha$. We reject the null hypothesis and conclude that there is sufficient evidence that the true mean daily caloric intake for boys who receive free lunches from the school district is lower than the recommended amount of 1,200 calories.
+The p-value is `r round(pt(t,df=df),2)`, which is less than $\alpha$. We reject the null hypothesis and conclude that there is sufficient evidence that the true mean daily caloric intake for boys who receive free lunches from the school district is lower than the recommended amount of 1,200 calories.
 :::
 
 ## Example: Data Set
