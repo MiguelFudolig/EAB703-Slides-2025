@@ -136,7 +136,7 @@ $$
 The overall mean $\bar{y}_{\cdot\cdot}$ can be expressed as:
 
 $$
-\bar{y}_{i\cdot} = \left(\frac{1}{N}\right) \sum_{i=1}^k\sum_{j=1}^{n_i}y_{ij}
+\bar{y}_{\cdot\cdot} = \left(\frac{1}{N}\right) \sum_{i=1}^k\sum_{j=1}^{n_i}y_{ij}
 $$
 :::
 
@@ -213,7 +213,7 @@ where $N$ is the total number of samples.
 Recall that we want to compare the variability between groups and within groups. We do this by computing the following variance ratio, which we will use as our test statistic.
 
 $$
-VR = F = MSA/MSW
+VR = F = MSA/MSE
 $$
 
 This test statistic follows an F-distribution where the numerator degrees of freedom $df_1 = k-1$ and denominator degrees of freedom $df_2 = N-k$.
@@ -477,9 +477,9 @@ library(emmeans)
 mod_lm <-lm(bill_len~species,data=penguins)
 
 em_mod_lm <- emmeans(mod_lm,~species)
-contrast(em_mod_lm,method="pairwise")
+contrast(em_mod_lm,method="pairwise",adjust="bon")
 ```
-At significance level of 0.001, we have sufficient evidence that the average bill length of Adelie penguins is different from Chinstrap and Gentoo penguins by 10 mm and 8.7 mm, respectively. The difference between the average bill length of Chinstrap and Gentoo is 1.33, where we have insufficient evidence of a difference with p=0.0089.
+At significance level of 0.001, we have sufficient evidence that the average bill length of Adelie penguins is different from Chinstrap and Gentoo penguins by 10 mm and 8.7 mm, respectively. The difference between the average bill length of Chinstrap and Gentoo is 1.33, where we have insufficient evidence of a difference with p=0.0095.
 :::
 
 ## Two-Way ANOVA
@@ -575,7 +575,7 @@ mod1 <- lm(Systolic~Treatment + History + Treatment:History,data=systolic)
 emmeans(mod1,~Treatment:History)
 plot(emmeans(mod1,~Treatment|History))
 ```
-There is evidence of an interaction between treatment and family history ($\eta^2_p=`r round(etaSquared(mod_aov)[3,2],2)`,p=0.0002). Based on the calculated means, the difference between the treatments was higher for those with family history of hypertension compared to those without.
+There is evidence of an interaction between treatment and family history ($\eta^2_p$=`r round(etaSquared(mod_aov)[3,2],2)`,p=0.0002). Based on the calculated means, the difference between the treatments was higher for those with family history of hypertension compared to those without.
 :::
 
 ## Exercise
@@ -606,6 +606,11 @@ mod1 <- lm(DaysUntil50PctReduction~AscorbicAcid + Zinc + AscorbicAcid:Zinc,data=
 emmeans(mod1,~AscorbicAcid:Zinc)
 plot(emmeans(mod1,~AscorbicAcid|Zinc))
 ```
+
+::: callout-tip
+If the `plot(emmeans(mod1,~AscorbicAcid|Zinc))` outputs an error, you might need to reinstall `ggplot2`. Try reinstalling this package using`install.packages("ggplot2")` or `install.packages("tidyverse")` and reload it with `library(tidyverse)`.
+:::
+
 
 There is no evidence of an interaction between Ascorbic Acid and Zinc ($\eta^2_p$=`r round(etaSquared(mod_aov)[3,2],2)`, p=0.84). There is also no evidence of efficacy for Ascorbic Acid ($\eta^2_p$=`r round(etaSquared(mod_aov)[1,2],2)`, p=0.67) and Zinc ($\eta^2_p$=`r round(etaSquared(mod_aov)[2,2],2)`, p=0.83)
 :::

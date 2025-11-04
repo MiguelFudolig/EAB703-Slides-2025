@@ -122,14 +122,14 @@ sleep <- read.csv("SleepHealthData.csv")
 ::: panel-tabset
 ### Question
 
-Perform a hypothesis test to determine if there is evidence of unequal variances between the average sleep duration of males and females. Assume equal variances and a significance level of 0.05.
+Perform a hypothesis test to determine if there is evidence of unequal variances between the average sleep duration of males and females. Assume a significance level of 0.05.
 
 ### Answer
 
 The parameter of interest is the ratio of the variances in sleep duration between females and males. The corresponding hypotheses are:
 
 $$
-H_0: \sigma_f^2/\sigma_m^2 = 1;H_0: \sigma_f^2/\sigma_m^2 \neq 1
+H_0: \sigma_f^2/\sigma_m^2 = 1;H_a: \sigma_f^2/\sigma_m^2 \neq 1
 $$
 We can now use the `var.test()` function to solve for the test statistic and p-value. Note that the groups are defined by the `gender` variable and the response is defined by the `sleep_duration` variable.
 
@@ -175,7 +175,7 @@ Recall that you were asked to assume equal variances in testing for a difference
 The parameter of interest is the ratio of the variances between females and males. The corresponding hypotheses are:
 
 $$
-H_0: \sigma_f^2/\sigma_m^2 = 1;H_0: \sigma_f^2/\sigma_m^2 \neq 1
+H_0: \sigma_f^2/\sigma_m^2 = 1;H_a: \sigma_f^2/\sigma_m^2 \neq 1
 $$
 We can now use the `var.test()` function to solve for the test statistic and p-value. Note that the groups are defined by the `gender` variable and the response is defined by the `heart_rate` variable.
 
@@ -205,6 +205,8 @@ The rejection region is defined as: F<`r lower_bound` or F>`r upper_bound`. The 
 
 ::: callout-note
 The same decision and conclusion is reached when the p-value is used.
+:::
+
 :::
 
 # Association vs. Causation

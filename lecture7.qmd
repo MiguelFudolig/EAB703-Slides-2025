@@ -1249,7 +1249,7 @@ The corresponding p-value should be calculated as P(Z > `r z`)
 p <- pnorm(z,lower.tail=F)
 p
 ```
-The resulting p-value is `r pnorm(p)`, which is lower than the significance level of 0.05. We reject the null hypothesis. We have sufficient evidence to claim that the true difference in proportion of participants who experience hot flashes between smokers and non-smokers is greater than zero.
+The resulting p-value is `r p`, which is lower than the significance level of 0.05. We reject the null hypothesis. We have sufficient evidence to claim that the true difference in proportion of participants who experience hot flashes between smokers and non-smokers is greater than zero.
 :::
 
 ## Exercise
@@ -1302,7 +1302,7 @@ The corresponding p-value should be calculated as P(Z > `r z`)
 p <- pnorm(z,lower.tail=F)
 p
 ```
-The resulting p-value is `r pnorm(p)`, which is higher than the significance level of 0.05. We fail to reject the null hypothesis. We have insufficient evidence to claim that the true difference in proportion of subjects with Noonan syndrome who fall below the third percentile of adult height between males and females is greater than zero.
+The resulting p-value is `r p`, which is higher than the significance level of 0.05. We fail to reject the null hypothesis. We have insufficient evidence to claim that the true difference in proportion of subjects with Noonan syndrome who fall below the third percentile of adult height between males and females is greater than zero.
 
 :::
 
