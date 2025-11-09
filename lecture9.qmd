@@ -1,0 +1,343 @@
+---
+title: "Regression Analysis"
+subtitle: Lecture 9
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 9 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+# Outline
+
+-   Definition of Terms
+-   Simple Linear Regression
+-   Multiple Linear Regression
+-   Diagnostics
+-   Correlation
+
+# Definition of Terms
+
+## Prediction vs. Explanation
+
+::: callout-note
+In a prediction problem, the investigators do not necessarily need to know the rule used to predict the outcome. Attention is focused on accuracy.
+
+In an explanation problem, the investigators will often assume a functional form for the dependent variable, similar to the [linear model](https://madfudolig.quarto.pub/introtobiostats/lecture8.html#/general-form-of-linear-models) in Lecture 8.
+:::
+
+::: callout-important
+Prediction problems do not need a functional form, hence functional relations between independent and dependent variables will not be identified.
+:::
+
+## Correlation vs. Regression
+
+::: {.callout-note title="Regression Analysis"}
+Regression analysis is helpful in assessing specific forms of the relationship between variables, and the ultimate objective when this method of analysis is employed usually is to predict or estimate the value of one variable corresponding to a given value of another variable.
+:::
+
+::: {.callout-note title="Correlation Analysis"}
+Correlation analysis is concerned with measuring the strength of the relationship between variables. It cannot predict or estimate unlike regression.
+:::
+
+# Simple Linear Regression
+
+## Linear Regression
+
+We are often interested in how one or more predictor/independent variables are associated with an outcome/response/dependent variable. In linear regression, we assume this association is defined by a linear function.
+
+::: callout-important
+Linear regression models are used when the independent and dependent variables are both **continuous**.
+:::
+
+::: callout-important
+It is important to keep in mind that our linear assumption is rarely met in practice. We may never know the true model, but information obtained from the linear model can still yield useful results, especially with exploratory data analysis.
+:::
+
+## Simple Linear Regression Model
+
+Recall Lecture 8: Linear regression models are a part of general linear models. In linear regression, a linear relationship is assumed between the independent variable $X$ and the dependent variable $Y$. For the $i^{th}$ observation ($X_i$,$Y_i$)
+
+$$
+Y_i = \beta_0 + \beta_1X_i+ \varepsilon_i
+$$
+
+::: callout-important
+The error term $\varepsilon_i$ are independent and identically distributed Gaussian errors (mean 0 and variance $\sigma^2$). Recall that the error term contributes solely to the variance and not the mean of $Y$.
+:::
+
+## Example
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+
+iris |> ggplot(aes(x=Sepal.Length,y=Petal.Length,group=Species,color=Species)) + 
+  geom_smooth(method="lm",formula=y~x,se=F) +
+  geom_point() + 
+  theme_bw() +
+  labs(title="Iris Data Set: Sepal Length vs. Petal Length",
+       y="Petal Length",
+       x="Sepal Length")
+
+```
+
+## Method of Least Squares
+
+To define the linear regression model, we need to estimate the following terms: the intercept, $\beta_0$; the slope $\beta_1$, and the variance $\sigma^2$. The intercept and the slope can be estimated using the **method of least squares**.
+
+::: callout-note
+The method of least squares can be visualized using the following [link](https://www.rossmanchance.com/applets/2021/regshuffle/regshuffle.htm).
+:::
+
+## Estimation
+
+Suppose we have an estimate of the intercept $\hat{\beta}_0$ and the slope $\hat{\beta}_1$. The estimated value of the dependent variable $\hat{Y}_i$ for a value of the independent variable $X_i$ can be expressed as:
+
+$$
+\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i
+$$
+
+## Assumptions of Linear Regression
+
+-   The means of the subpopulations of $Y$ all lie on the same straight line, also known as the linearity assumption.
+-   The values of $Y$ are statistically independent.
+-   For each value of $X$ there is a subpopulation of $Y$ values. For the usual inferential procedures of estimation and hypothesis testing to be valid, these subpopulations must be normally distributed.
+-   The variances of the subpopulations of $Y$ are all equal to $\sigma^2$.
+-   The independent variable can be measured without error or with negligible error.
+
+::: callout-important
+The first four assumptions are also known as the LINE assumptions: **Linearity, Independence, Normality, Equal Variances**
+:::
+
+## Hypothesis Testing: Linear Regression
+
+In examining the association between $X$ and $Y$, the important parameter for inference is the slope $\beta_1$.
+
+:::: panel-tabset
+### Slope and Association
+
+::: callout-important
+When $\beta_1=0$, the best fit line resembles a horizontal line, indicating a lack of association between $X$ and $Y$.
+
+If $\beta_1 > 0$, the slope of the best fit line is positive, indicating a positive direct association between $X$ and $Y$.
+
+If $\beta_1<0$, the slope of the best fit line is negative, indicating a negative direct association between $X$ and $Y$.
+
+Simply put, $\beta_1 \neq 0$ indicates that there is an association between $X$ and $Y$.
+:::
+
+### Statistical Hypotheses
+
+The null hypothesis of no association can be expressed as $H_0: \beta_1=0$. The alternatives can be expressed as one-sided or two-sided.
+
+-   One-sided: $\beta_1 >0$ or $\beta_1 < 0$
+-   Two-sided: $\beta_1 \neq 0$
+::::
+
+## Test Statistic: $t$
+
+Suppose the estimated value of $\beta_1$ is $\hat{\beta}_1$. The test statistic when testing the hypotheses for $\beta_1$ can be expressed as:
+
+$$
+t = \frac{\hat{\beta}_1}{\sqrt{S^2/S_{XX}^2}}
+$$
+
+::: callout-note
+$S^2$ is given by the following equation:
+
+$$
+S^2 = \frac{\sum_i (Y_i-\hat{Y}_i)^2}{(n-2)}
+$$
+
+The term $(Y_i-\hat{Y}_i)$ is also called the *residual* of the model. On the other hand, $S_{XX}^2$ is defined as the sum of squares of the independent variable.
+
+$$
+S_{XX}^2 = \sum_i (X_i-\bar{X})^2
+$$
+:::
+
+## Test Statistic: $F$
+
+An analysis of variance (ANOVA) table can also be constructed from the regression model. This framework separates the source of variation accounted by the model and the error.
+
+| Source of Variation | Sum of Squares (SS) | Degrees of Freedom (DF) | Mean Squares (MS) | Variance Ratio (F) |
+|----|----|----|----|----|
+| Regression | SSR | 1 | MSR = SSR | MSR/MSE |
+| Error | SSE | n-2 | MSE = SSE/(n-2) |  |
+| Total | SST | n-1 |  |  |
+
+The test statistic $F = MSR/MSE$ follows an F-distribution with degrees of freedom $(df_1,df_2) = (1,n-2)$.
+
+
+::: callout-note
+
+This tests the following hypotheses: $H_0: \beta_1=0$ and $H_a: \beta_1 \neq 0$.
+:::
+
+## `R` Implementation: `lm()`
+
+The function `lm()` can perform calculations for linear regression. The function `summary()` is used with `lm()` to provide estimates for the intercept, slope, and residual variance. The `summary()` output also includes the results of the tests involving the slopes (both $t$ and $F$).
+
+Sample code should follow how we used `lm()` in Lecture 8:
+
+```{.r}
+mod1 <- lm(DepVar~IndepVar,data=df)
+summary(mod1)
+```
+
+
+
+
+## `R` implementation: Visualization
+
+The `ggplot2` package is primarily used for data visualization. This package is included in the `tidyverse` package. 
+
+::: callout-note
+The `geom_point()` is used to plot the observed data points, while `geom_smooth(method,formula)` is used to overlay the best fit line on the observed data points.
+:::
+
+
+
+### Sample code 
+
+```{.r}
+ggplot(data=df,aes(x=IndepVar,y=DepVar)) +
+geom_point() + 
+geom_smooth(method="lm", formula=y~x)
+```
+
+
+## Framework for Analysis
+
+Here are the recommended steps in performing regression analysis:
+
+- Visualize the data using `ggplot2()`. Is there a discernible linear trend?
+- Obtain the equation of the best fit line using `lm()` and `summary()`.
+- Evaluate the equation to obtain a measure of the strength of association between the indepedent and dependent variables (hypothesis tests).
+- Use `geom_smooth()` as a litmus test of model fit.
+
+## Example
+
+The data set `trees` (loaded in `R`) includes the measurements of the diameter (inches), height (ft), and volume (cubic ft) of timber in 31 felled black cherry trees. The diameter, labeled as Girth, is measured at 4'6" above the ground.
+
+::: panel-tabset
+### Question
+
+Test the hypothesis that there is an association between the diameter and height of the cherry trees. Use simple linear regression to estimate the best fit line that estimates the height of the cherry trees based on its diameter.
+
+### Plot before Fit
+
+```{r}
+library(tidyverse)
+glimpse(trees)
+ggplot(data=trees,aes(x=Girth,y=Height)) + 
+  geom_point()  + 
+  theme_bw() + 
+  labs(x="Diameter (in)", y="Height (ft)")
+```
+
+### Fit
+
+```{r}
+mod1 <- lm(Height~Girth,data=trees)
+summary(mod1)
+```
+
+
+The estimated equation for the tree height is $\hat{height} = 1.0544*Diameter + 62.0313$.
+
+The p-value of the coefficient is `r sum_mod <-summary(mod1);round(sum_mod$coefficients[2,4],4)`, and the test statistic $t$ is `r sum_mod <-summary(mod1);round(sum_mod$coefficients[2,3],2)` There is sufficient evidence of an association between diameter and height.
+
+### Plot after Fit
+
+```{r}
+library(tidyverse)
+glimpse(trees)
+ggplot(data=trees,aes(x=Girth,y=Height)) + 
+  geom_point() + 
+  geom_smooth(method="lm", formula=y~x,se=F) + 
+  theme_bw() + 
+  labs(x="Diameter (in)", y="Height (ft)")
+```
+
+:::
+
+
+## `R` implementation: Estimation/Prediction
+
+Recall that we can estimate the value  of the dependent variable using our best fit line. Recall that for a value of the independent variable $X$, the estimated value of the dependent variable $\hat{Y}$ is:
+
+$$
+\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 * X 
+$$
+
+In `R`, we can use the `predict` function with `lm()` to calculate predicted values for one or more values of the independent variable.
+
+::: panel-tabset
+
+### Extrapolation
+
+::: callout-warning
+Estimation/Prediction using linear regression works best if the considered value of the independent variable is within the range of the data used to fit the regression line (interpolation). Estimation outside this range is referred to as extrapolation, which is not a recommended practice.
+:::
+
+### Intercept
+
+The intercept is the estimated value of the dependent variable when the independent variable is equal to 0. Interpreting the intercept can be considered as extrapolation if 0 is not within the range of the independent variable. It might also be trivial to interpret the intercept if the case of $X=0$ is trivial.
+
+### Sample Code
+
+```{.r}
+mod1 <- lm(DepVar~IndepVar,data=df)
+newdata <- data.frame(IndepVar=c(X)) # substitute X with the value of the independent variable you want to estimate the value of the predictor for.
+
+newdata$prediction <- predict(mod1,newdata)
+newdata
+```
+
+:::
+
+## Example
+
+The data set `trees` (loaded in `R`) includes the measurements of the diameter, height, and volume of timber in 31 felled black cherry trees. The diameter, labeled as Girth, is measured at 4'6" above the ground.
+
+::: panel-tabset
+
+### Question
+
+- Calculate the estimated height of the black cherry trees with the following diameters: 10 inches, 15 inches, 20 inches.
+- Is it advisable to interpret the intercept? Explain.
+- Is it advisable to use this regression line to estimate the height of a black cherry tree with a 25-inch diameter? Explain.
+
+### Answer
+
+```{r}
+mod1 <- lm(Height~Girth,data=trees)
+newdata <- data.frame(Girth=c(10,15,20))
+newdata$prediction <- predict(mod1,newdata=newdata)
+newdata
+```
+It is not advisable to interpret the intercept because it is trivial to examine the case when the tree diameter is equal to zero. It is also outside the range of diameters considered in the study. Specifically, the range shown below does not include zero.
+
+```{r}
+range(trees$Girth)
+```
+
+Similarly, X=25 is not in the range of diameters considered in the study and would lead to extrapolation if used in estimation. Hence, estimating the height of a tree with a 25-inch diameter using our best fit line is not recommended.
+:::
