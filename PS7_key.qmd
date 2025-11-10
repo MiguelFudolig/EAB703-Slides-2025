@@ -1,0 +1,130 @@
+---
+title: "Problem Set 7 Key"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+```{r setup}
+library(tidyverse)
+library(summarytools)
+library(emmeans)
+library(lsr)
+```
+
+## Problem 1
+
+1.	The data set “acupuncture.csv” includes data from the control group of a randomized controlled trial investigating the effect of acupuncture therapy on headache severity. Each participant was identified using an ID number in the id column. The headache severity was measured for each participant before receiving the treatment and at a 3-month follow-up. The column pk1 includes the baseline headache severity score of the participants while the column pk2 includes the headache severity score after 3 months.
+
+```{r}
+acu <- read.csv("datasets/acupuncture.csv")
+glimpse(acu)
+```
+
+
+a.	What test is the most appropriate to test whether there is a difference between the average headache severity scores of the participants before receiving the treatment and the 3-month follow-up? [1pt.]
+
+Paired t-test because these scores were measured from the same participant.
+
+b.	What are the statistical hypotheses for testing whether the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [2pts.]
+
+$$
+H_0: \mu_d = 0; H_a: \mu_d < 0
+$$
+
+c.	What is the value of the test statistic and the corresponding number of degrees of freedom? [2pts.]
+
+```{r}
+ttest <- t.test(acu$pk1,acu$pk2,paired=T)
+ttest
+```
+
+d.	What is the p-value? [1pt.]
+
+The p-value is `r ttest$p.value`.
+
+e.	At a significance level of 0.001, do we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [1pt.]
+
+Yes, we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline.
+
+2.	The file aaqol_subset.csv includes data from the 2015 Asian American Quality of Life survey implemented in Austin, TX. We are interested to test whether there is a difference in average age across the different Asian ethnicities represented in the study.
+
+```{r}
+aaqol <- read.csv("datasets/aaqol_subset.csv")
+glimpse(aaqol)
+```
+
+a.	What are the statistical hypotheses for testing whether there is a difference in average age across the different Asian ethnicities represented in the study? [2 pts.]
+
+The null hypothesis is that the average age across the different Asian ethnicities are equal. The alternative hypothesis is that there is at least one Asian ethnic group with a different average age.
+
+b.	What is the value of the test statistic and the corresponding number of degrees of freedom? Hint: We might need more than one type of degrees of freedom. [3pts.]
+
+```{r}
+mod_aov<- aov(Age~Ethnicity,data=aaqol)
+summary(mod_aov)
+```
+
+
+c.	What is the resulting p-value? [1 pt.]
+
+The p-value is 0.0057.
+
+d.	Comment on the sufficiency of evidence based on the alternative hypothesis using a significance level of 0.05. Account for the context of the problem. [1 pt.]
+
+At a significance level of 0.05, there is sufficient evidence that at least one Asian ethnic group has a different average age compared to the others.
+
+e.	Perform a post-hoc test involving pairwise comparisons between the average age of each Asian ethnic group. Apply the Tukey correction. Which pair/s of Asian ethnic groups yielded evidence of pairwise difference in average ages? Use a significance level of 0.05. [2pts.]
+
+```{r}
+mod_lm <- lm(Age~Ethnicity,data=aaqol)
+em_mod_lm <- emmeans(mod_lm,~Ethnicity)
+em_mod_lm
+contrast(em_mod_lm,method="pairwise",adjust="tukey")
+```
+
+At a significance level of 0.05, Asian Indian (39.6) and Korean (45.4) participants yielded evidence of a pairwise difference in average ages, with an estimated difference of -5.82, test statistic of 3.483, and p-value of 0.0047. Other comparisons did not yield any evidence of a difference.
+
+3.	The data set socmed.csv includes the PHQ-9 scores of freshman and senior students. The students were also asked about their social media use (socmed, levels = low, high) and gaming habits (levels =yes,no) on their electronic devices.
+
+```{r}
+socmed <- read.csv("datasets/socmed.csv")
+glimpse(socmed)
+```
+
+
+a.	Test whether there is an interaction between social media use and gaming time on their electronic devices. Use a significance level of 0.05. [2pts.]
+
+```{r}
+
+mod_aov <- aov(y~socmed + gaming + socmed:gaming,data=socmed)
+summary(mod_aov)
+
+```
+
+There is sufficient evidence of an interaction effect between social media use and gaming habits at the 0.05 significance level. The test statistic was F(1,28)=6.391, and a p-value of 0.0174.
+
+::: callout-note
+Optional: We can also report the partial eta-squared as an effect size.
+
+```{r}
+etaSquared(mod_aov)
+```
+
+The partial eta-square for the interaction effect is 0.186.
+
+:::
+
+b.	Provide the estimate of the group means for each social media*gaming level combination. [2pts.]
+
+```{r}
+
+mod_lm <- lm(y~socmed + gaming + socmed:gaming,data=socmed)
+em_mod_lm <- emmeans(mod_lm,~socmed|gaming)
+em_mod_lm
+plot(em_mod_lm)
+```
+

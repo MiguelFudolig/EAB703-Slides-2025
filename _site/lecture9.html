@@ -363,6 +363,19 @@ Y_i = \beta_0 + \beta_1X_i+ \varepsilon_i
 <p><span class="math display">\[
 \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i
 \]</span></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The slope estimate <span class="math inline">\(\hat{\beta}_1\)</span> is the expected change in the dependent variable for a 1-unit increase in <span class="math inline">\(X_i\)</span>. Generally, for a <span class="math inline">\(d\)</span> unit increase in <span class="math inline">\(X_i\)</span>, the dependent variable is expected to change by <span class="math inline">\(d\hat{\beta}_1\)</span>.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="assumptions-of-linear-regression" class="slide level2">
 <h2>Assumptions of Linear Regression</h2>
@@ -507,12 +520,46 @@ S_{XX}^2 = \sum_i (X_i-\bar{X})^2
 </div>
 </div>
 </section>
+<section id="goodness-of-fit-r2" class="slide level2">
+<h2>Goodness of Fit: <span class="math inline">\(R^2\)</span></h2>
+<p>We define the coefficient of determination, also known as <span class="math inline">\(R^2\)</span>, as the following ratio:</p>
+<p><span class="math display">\[
+R^2 = SSR/(SSR + SSE)
+\]</span></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(R^2\)</span> is non-negative and cannot exceed 1. The <span class="math inline">\(R^2\)</span> measures the proportion of the variability explained by the predictor in the model. The higher the value of <span class="math inline">\(R^2\)</span>, the closer the fit of the data to the model.</p>
+<p><span class="math inline">\(R^2 = 1\)</span> indicates a perfect fit, but is almost always not observed in real-life situations.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="r-implementation-lm" class="slide level2">
 <h2><code>R</code> Implementation: <code>lm()</code></h2>
 <p>The function <code>lm()</code> can perform calculations for linear regression. The function <code>summary()</code> is used with <code>lm()</code> to provide estimates for the intercept, slope, and residual variance. The <code>summary()</code> output also includes the results of the tests involving the slopes (both <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span>).</p>
 <p>Sample code should follow how we used <code>lm()</code> in Lecture 8:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DepVar<span class="sc">~</span>IndepVar,<span class="at">data=</span>df)</span>
 <span id="cb1-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>The <code>summary()</code> function also provides the <span class="math inline">\(R^2\)</span> value of the model.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="r-implementation-visualization" class="slide level2">
 <h2><code>R</code> implementation: Visualization</h2>
@@ -541,7 +588,7 @@ S_{XX}^2 = \sum_i (X_i-\bar{X})^2
 <ul>
 <li>Visualize the data using <code>ggplot2()</code>. Is there a discernible linear trend?</li>
 <li>Obtain the equation of the best fit line using <code>lm()</code> and <code>summary()</code>.</li>
-<li>Evaluate the equation to obtain a measure of the strength of association between the indepedent and dependent variables (hypothesis tests).</li>
+<li>Evaluate the equation to obtain a measure of the strength of association between the independent and dependent variables (hypothesis tests).</li>
 <li>Use <code>geom_smooth()</code> as a litmus test of model fit.</li>
 </ul>
 </section>
@@ -552,7 +599,7 @@ S_{XX}^2 = \sum_i (X_i-\bar{X})^2
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Question</a></li><li><a href="#tabset-2-2">Plot before Fit</a></li><li><a href="#tabset-2-3">Fit</a></li><li><a href="#tabset-2-4">Plot after Fit</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<p>Test the hypothesis that there is an association between the diameter and height of the cherry trees. Use simple linear regression to estimate the best fit line that estimates the height of the cherry trees based on its diameter.</p>
+<p>Test the hypothesis that there is an association between the diameter and height of the cherry trees. Use simple linear regression to estimate the best fit line that estimates the height of the cherry trees based on its diameter. What is the <span class="math inline">\(R^2\)</span> value?</p>
 </div>
 <div id="tabset-2-2">
 <div class="cell">
@@ -604,7 +651,7 @@ F-statistic: 10.71 on 1 and 29 DF,  p-value: 0.002758</code></pre>
 </div>
 </div>
 <p>The estimated equation for the tree height is <span class="math inline">\(\hat{height} = 1.0544*Diameter + 62.0313\)</span>.</p>
-<p>The p-value of the coefficient is 0.0028, and the test statistic <span class="math inline">\(t\)</span> is 3.27 There is sufficient evidence of an association between diameter and height.</p>
+<p>The p-value of the coefficient is 0.0028, and the test statistic <span class="math inline">\(t\)</span> is 3.27. There is sufficient evidence of an association between diameter and height. The value of <span class="math inline">\(R^2\)</span> is 0.27.</p>
 </div>
 <div id="tabset-2-4">
 <div class="cell">
@@ -640,9 +687,9 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 <p><span class="math display">\[
 \hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 * X
 \]</span></p>
-<p>In <code>R</code>, we can use the <code>predict</code> function with <code>lm()</code> to calculate predicted values for one or more values of the independent variable.</p>
+<p>In <code>R</code>, we can use the <code>predict</code> function with <code>lm()</code> to calculate predicted values for one or more values of the independent variable. It can also output confidence and prediction intervals</p>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Extrapolation</a></li><li><a href="#tabset-3-2">Intercept</a></li><li><a href="#tabset-3-3">Sample Code</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Extrapolation</a></li><li><a href="#tabset-3-2">Intercept</a></li><li><a href="#tabset-3-3">Confidence vs.&nbsp;Prediction Intervals</a></li><li><a href="#tabset-3-4">Sample Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -663,11 +710,28 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 <p>The intercept is the estimated value of the dependent variable when the independent variable is equal to 0. Interpreting the intercept can be considered as extrapolation if 0 is not within the range of the independent variable. It might also be trivial to interpret the intercept if the case of <span class="math inline">\(X=0\)</span> is trivial.</p>
 </div>
 <div id="tabset-3-3">
+<p><strong>Confidence intervals</strong> are made for parameters, whereas an interval for random variables are called <strong>prediction intervals</strong>. Prediction interval are generally wider than confidence intervals.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>For example, if we want to determine an interval estimate for the mean height of a tree with girth <span class="math inline">\(X\)</span>, then we use a confidence interval. If we want to estimate the height of a particular tree with girth <span class="math inline">\(X\)</span>, then we use a prediction interval</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-4">
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DepVar<span class="sc">~</span>IndepVar,<span class="at">data=</span>df)</span>
 <span id="cb11-2"><a></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">IndepVar=</span><span class="fu">c</span>(X)) <span class="co"># substitute X with the value of the independent variable you want to estimate the value of the predictor for.</span></span>
 <span id="cb11-3"><a></a></span>
-<span id="cb11-4"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,newdata)</span>
-<span id="cb11-5"><a></a>newdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,newdata,<span class="at">interval =</span> <span class="st">"confidence"</span>,<span class="at">level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb11-5"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,newdata,<span class="at">interval =</span> <span class="st">"prediction"</span>,<span class="at">level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb11-6"><a></a>newdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -680,7 +744,7 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 <div class="tab-content">
 <div id="tabset-4-1">
 <ul>
-<li>Calculate the estimated height of the black cherry trees with the following diameters: 10 inches, 15 inches, 20 inches.</li>
+<li>Calculate the estimated height of the black cherry trees with the following diameters: 10 inches, 15 inches, 20 inches with the corresponding prediction intervals.</li>
 <li>Is it advisable to interpret the intercept? Explain.</li>
 <li>Is it advisable to use this regression line to estimate the height of a black cherry tree with a 25-inch diameter? Explain.</li>
 </ul>
@@ -689,13 +753,13 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Height<span class="sc">~</span>Girth,<span class="at">data=</span>trees)</span>
 <span id="cb12-2"><a></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Girth=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>))</span>
-<span id="cb12-3"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,<span class="at">newdata=</span>newdata)</span>
+<span id="cb12-3"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,<span class="at">newdata=</span>newdata,<span class="at">interval =</span> <span class="st">"prediction"</span>,<span class="at">level =</span> <span class="fl">0.95</span>)</span>
 <span id="cb12-4"><a></a>newdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Girth prediction
-1    10   72.57500
-2    15   77.84685
-3    20   83.11869</code></pre>
+<pre><code>  Girth prediction.fit prediction.lwr prediction.upr
+1    10       72.57500       60.86890       84.28110
+2    15       77.84685       66.28041       89.41328
+3    20       83.11869       70.77983       95.45755</code></pre>
 </div>
 </div>
 <p>It is not advisable to interpret the intercept because it is trivial to examine the case when the tree diameter is equal to zero. It is also outside the range of diameters considered in the study. Specifically, the range shown below does not include zero.</p>
@@ -706,6 +770,632 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 </div>
 </div>
 <p>Similarly, X=25 is not in the range of diameters considered in the study and would lead to extrapolation if used in estimation. Hence, estimating the height of a tree with a 25-inch diameter using our best fit line is not recommended.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider the liver steatosis data set <code>Liver_Steatosis.csv</code>. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Question</a></li><li><a href="#tabset-5-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<p>Suppose we want to investigate whether we can use an individual’s weight in kg (variable weight) to estimate their LDL levels (variable LDL).</p>
+<ul>
+<li>Estimate the best fit line using regression methods.</li>
+<li>Test for an association between weight and LDL values.</li>
+<li>Predict the LDL value for an individual weighing 120 kg. Provide a 95% prediction interval.</li>
+<li>Provide the value of <span class="math inline">\(R^2\)</span>.</li>
+<li>Create a scatter plot with the regression line overlayed using <code>ggplot</code>.</li>
+</ul>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>liver,<span class="fu">aes</span>(<span class="at">x=</span>Weight,<span class="at">y=</span>LDL))<span class="sc">+</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb17-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">formula=</span>y<span class="sc">~</span>x,<span class="at">se=</span>F) <span class="sc">+</span> </span>
+<span id="cb17-4"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There appears to be a weak association between LDL and weight.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(LDL<span class="sc">~</span>Weight,<span class="at">data=</span>liver)</span>
+<span id="cb18-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = LDL ~ Weight, data = liver)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-94.282 -22.991  -0.458  19.363 138.310 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 108.89842    7.68701  14.167   &lt;2e-16 ***
+Weight       -0.02319    0.05618  -0.413     0.68    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 33 on 393 degrees of freedom
+  (48 observations deleted due to missingness)
+Multiple R-squared:  0.0004335, Adjusted R-squared:  -0.00211 
+F-statistic: 0.1704 on 1 and 393 DF,  p-value: 0.68</code></pre>
+</div>
+</div>
+<p>The best fit line is <span class="math inline">\(\hat{LDL} = 108.90 - 0.02*Weight\)</span>. The p-value of the coefficient is 0.68, and the test statistic <span class="math inline">\(t\)</span> is -0.41. There is no evidence of an association between weight and LDL levels. The <span class="math inline">\(R^2\)</span> value is 4^{-4}. Note that <strong>there are 48 observations deleted due to missingness</strong>. These variables were excluded from the analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Weight=</span><span class="fu">c</span>(<span class="dv">120</span>))</span>
+<span id="cb20-2"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,<span class="at">newdata=</span>newdata,<span class="at">interval =</span> <span class="st">"prediction"</span>,<span class="at">level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb20-3"><a></a>newdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Weight prediction.fit prediction.lwr prediction.upr
+1    120      106.11543       41.13065      171.10020</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="multiple-linear-regression" class="title-slide slide level1 center">
+<h1>Multiple Linear Regression</h1>
+
+</section>
+<section id="multiple-linear-regression-1" class="slide level2">
+<h2>Multiple Linear Regression</h2>
+<p>Often, we want to consider the effect of multiple predictors on the dependent variable. The simple linear regression can be extended to any number of predictor variables. We define <span class="math inline">\(X_{ij}\)</span> as the value of predictor <span class="math inline">\(j\)</span> on unit <span class="math inline">\(i\)</span>.</p>
+<p>The multiple linear regression model extended to <span class="math inline">\(p\)</span> predictors is then:</p>
+<p><span class="math display">\[
+Y_i = \beta_0 + \beta_1X_{1i} + \beta_2X_{2i} + ... + \beta_pX_{ip} + \varepsilon_i
+\]</span></p>
+<p>The estimated best fit line can be written as:</p>
+<p><span class="math display">\[
+\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1X_{1i} + \hat{\beta}_2X_{2i} + ... + \hat{\beta}_pX_{ip}
+\]</span></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The slope estimate <span class="math inline">\(\hat{\beta}_k\)</span> is the expected change in the dependent variable for a 1-unit increase in <span class="math inline">\(X_ki\)</span> assuming all other variables remain constant. Generally, for a <span class="math inline">\(d\)</span> unit increase in <span class="math inline">\(X_ki\)</span>, the dependent variable is expected to change by <span class="math inline">\(d\hat{\beta}_1\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-tests-significance-of-regression" class="slide level2">
+<h2>Hypothesis Tests: Significance of Regression</h2>
+<p>The testing of significance of regression involves the null hypothesis <span class="math inline">\(H_0: \beta_1=\beta_2=...=\beta_p=0\)</span>, assuming that there is a total of <span class="math inline">\(p\)</span> predictors. The alternative hypothesis that at least one coefficient is non-zero. The test of significance of regression is used to test if there are any predictors with a non-zero coefficient. This test uses the F-statistic similar to what was discussed for simple linear regression.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><code>R</code> provides this information in the <code>summary()</code> output of <code>lm()</code> with the F-statistic and the corresponding p-value. The corresponding degrees of freedom are (p,N-p-1).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-tests-individual-coefficients" class="slide level2">
+<h2>Hypothesis Tests: Individual Coefficients</h2>
+<p>When the null hypothesis of the significance of regression is rejected, we can perform hypothesis tests for each coefficient estimated.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><code>R</code> provides this information in the <code>summary()</code> output of <code>lm()</code> with the t-statistic and the corresponding p-value.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="discrete-variables-as-predictors" class="slide level2">
+<h2>Discrete Variables as Predictors</h2>
+<p>It is possible that we have a categorical independent variable that we want to consider for the regression model.</p>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Dichotomous Variables</a></li><li><a href="#tabset-6-2">Multi-level</a></li><li><a href="#tabset-6-3"><code>R</code> Implementation</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<p>For a <em>dichotomous</em> variable, we can introduce a variable such that a “Yes” condition is assigned to <code>1</code> and <code>0</code> otherwise.</p>
+</div>
+<div id="tabset-6-2">
+<p>For a categorical predictor variable with <span class="math inline">\(k\)</span> levels, we can introduce a <span class="math inline">\(k-1\)</span> <strong>dichotomous dummy variables</strong> to describe each level of the categorical predictor variable.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>For example, blood type (A, B, AB, O) has four levels. This means we need three dummy variables <span class="math inline">\((X_1,X_2,X_3)\)</span> to account for blood type. We define these dummy variables as:</p>
+<p><span class="math display">\[
+X_1 =
+\begin{cases}
+1, BloodType=A\\
+0, otherwise
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+X_2 =
+\begin{cases}
+1, BloodType=B\\
+0, otherwise
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+X_3 =
+\begin{cases}
+1, BloodType=AB\\
+0, otherwise
+\end{cases}
+\]</span></p>
+<p>For an individual with blood type <span class="math inline">\(A\)</span>, the dummy variable values are <span class="math inline">\((X_1,X_2,X_3)=(1,0,0)\)</span>. Similarly, <span class="math inline">\(B\)</span> corresponds to <span class="math inline">\((X_1,X_2,X_3)=(0,1,0)\)</span>. For blood type O, <span class="math inline">\((X_1,X_2,X_3)=(0,0,0)\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-3">
+<p><code>lm()</code> creates dummy variables for character/factor variables. If the variable as a numeric variable, we need to use <code>as.factor()</code> for <code>R</code> to recognize its categorical nature.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="adjusted-r2" class="slide level2">
+<h2>Adjusted <span class="math inline">\(R^2\)</span></h2>
+<p>When we add more predictor variables to a model, the <span class="math inline">\(R^2\)</span> can only go up or stay the same. It is tempting to add more predictor variables to increase <span class="math inline">\(R^2\)</span> even if these variables have little to no effect.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>The adjusted <span class="math inline">\(R^2\)</span> value, also known as <span class="math inline">\(R_{adj}^2\)</span>, is used to penalize models with more parameters. One form of the adjusted <span class="math inline">\(R^2\)</span> is given by:</p>
+<p><span class="math display">\[
+R_{adj}^2 = 1-\frac{(N-1)}{(N-p-1)}(1-R^2)
+\]</span></p>
+<p>where <span class="math inline">\(N\)</span> is the total number of samples. This is also provided in the <code>summary()</code> output of <code>lm()</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="model-checking" class="slide level2">
+<h2>Model Checking</h2>
+<p>Recall: The residual is defined as the difference between the observed and predicted responses, specifically <span class="math inline">\(r_i = y_i-\hat{y}_i\)</span>. The residuals can be used to test the normality, equal variance, and independence assumptions. What is of interest to us are the <strong>residual plots</strong>.</p>
+<p>The following tabs explain the plots shown when plotting an <code>lm()</code> object using <code>plot()</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2,<span class="at">data=</span>df)</span>
+<span id="cb22-2"><a></a><span class="fu">plot</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Residual v. Fitted</a></li><li><a href="#tabset-7-2">Q-Q Residuals</a></li><li><a href="#tabset-7-3">Scale-Location</a></li><li><a href="#tabset-7-4">Residuals v. Leverage</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<p>This plot shows the fitted values of the predictor data to the residuals. If the results can be confined in a horizontal band, there are no obvious model defects.</p>
+</div>
+<div id="tabset-7-2">
+<p>The normal probability plot of residuals, also known as the QQ plot, plots the theoretical quantiles of the normal distribution to the residuals. A good plot shows the points coinciding with the dashed line, defined as the expected behavior of the residuals if they follow a normal distribution.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Small deviations from this line is not a major source of concern. Visual inspection of the QQ plot is more recommended than formal statistical tests for normality, as these residuals are not independent. The non-independence of the residuals breaks the independence assumptions of most normality tests.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-3">
+<p>The Scale-Location plot is a plot of the fitted values against the square root of the standardized residuals. Ideally, the red line should be generally horizontal with no upward trend, sharp angles, or slope.</p>
+</div>
+<div id="tabset-7-4">
+<p>The residuals vs.&nbsp;leverage plot provides information on highly influential points in the model. Highly influential data points might lead to a skewed model. If the points are within the dashed lines, then there are no highly influential points in the model.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-3" class="slide level2">
+<h2>Example</h2>
+<p>Consider the sleep health data set in <code>SleepHealthData.csv</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Question</a></li><li><a href="#tabset-8-2">Answer</a></li><li><a href="#tabset-8-3">Plots</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<p>Suppose researchers are interested in estimating sleep duration based on heart rate, age, and gender.</p>
+<ul>
+<li>Estimate the best fit line using multiple regression</li>
+<li>Comment on the results of the test of significance of regression. Is there evidence of non-zero coefficients?</li>
+<li>Comment on the results of the hypothesis tests for each coefficient. Which predictors do we have evidence of an association with sleep duration?</li>
+<li>Provide the <span class="math inline">\(R^2\)</span> and the adjusted <span class="math inline">\(R^2\)</span> for this model.</li>
+<li>Comment on the plots used for model checking. Are there major model defects?</li>
+</ul>
+</div>
+<div id="tabset-8-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sleep_duration<span class="sc">~</span>gender <span class="sc">+</span> age <span class="sc">+</span> heart_rate,<span class="at">data=</span>sleep)</span>
+<span id="cb24-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = sleep_duration ~ gender + age + heart_rate, data = sleep)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.0447 -0.6814  0.1215  0.5053  2.0566 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 12.084352   0.650015  18.591  &lt; 2e-16 ***
+genderMale   0.304680   0.083770   3.637 0.000315 ***
+age          0.032200   0.004845   6.646 1.08e-10 ***
+heart_rate  -0.092133   0.008356 -11.027  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.6465 on 370 degrees of freedom
+Multiple R-squared:  0.345, Adjusted R-squared:  0.3397 
+F-statistic: 64.96 on 3 and 370 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The best fit line to estimate sleep duration is <span class="math inline">\(\hat{y} = 12.08 +  0.305*X_{male} +0.03*Age - 0.09*HeartRate\)</span>, where <span class="math inline">\(X_{male}=1\)</span> if the individual is male and 0 otherwise.</p>
+<p>The overall test of significance of regression yielded an F-statistic of F(3,370) = 64.96 corresponding to a p-value &lt;2.2e-16, indicating there is sufficient evidence that there is at least one non-zero coefficient in the assumed model.</p>
+<p>The individual hypothesis tests show that there is evidence of associations between sleep duration and gender (<span class="math inline">\(\beta\)</span> = 0.30, p=0.0003), age (<span class="math inline">\(\beta\)</span>=0.03, p=1.08e-10), and heart rate (<span class="math inline">\(\beta\)</span>=-0.09,p&lt;2.2e-16).</p>
+<p>The corresponding <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> values are 0.345 and 0.3397.</p>
+</div>
+<div id="tabset-8-3">
+<p>The plots show major defects on the normality assumption of the residuals, which we must keep in mind when we are interpreting our results. We can also see that the residuals vs.&nbsp;fitted values cannot be enclosed in two horizontal bands, implying evidence of unequal variances.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">plot</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-13-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-13-3.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-13-4.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider the liver steatosis data set <code>Liver_Steatosis.csv</code>. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Question</a></li><li><a href="#tabset-9-2">Answer</a></li><li><a href="#tabset-9-3">Plots</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<p>Suppose researchers are interested in estimating a person’s total cholesterol levels (variable CHOL) based on their BMI (variable BMI), age (variable Age), history of metabolic syndrome (variable MET_Syndrome, equal to 1 means patient has history), and plasma triglycerides (variable TG).</p>
+<ul>
+<li>Estimate the best fit line using multiple regression.</li>
+<li>Comment on the results of the test of significance of regression. Is there evidence of non-zero coefficients?</li>
+<li>Comment on the results of the hypothesis tests for each coefficient. Which predictors do we have evidence of an association with total cholesterol levels?</li>
+<li>Provide the <span class="math inline">\(R^2\)</span> and the adjusted <span class="math inline">\(R^2\)</span> for this model.</li>
+<li>Comment on the plots used for model checking. Are there major model defects?</li>
+</ul>
+</div>
+<div id="tabset-9-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(CHOL<span class="sc">~</span>BMI<span class="sc">+</span> Age <span class="sc">+</span> MET_Syndrome<span class="sc">+</span>TG,<span class="at">data=</span>liver)</span>
+<span id="cb28-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = CHOL ~ BMI + Age + MET_Syndrome + TG, data = liver)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-142.490  -25.349   -1.504   22.242  134.882 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  152.18618   12.46599  12.208   &lt;2e-16 ***
+BMI            0.09060    0.17538   0.517   0.6057    
+Age            0.19541    0.17158   1.139   0.2554    
+MET_Syndrome  -9.98380    4.36471  -2.287   0.0227 *  
+TG             0.15812    0.01478  10.699   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 37.59 on 406 degrees of freedom
+  (32 observations deleted due to missingness)
+Multiple R-squared:  0.2233,    Adjusted R-squared:  0.2157 
+F-statistic: 29.19 on 4 and 406 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The best fit line to estimate total cholesterol levels is <span class="math inline">\(\hat{y} = 152.19 +  0.091*BMI + 0.195*Age -9.98*X_{MetSyndrome} + 0.158*TG\)</span>. where <span class="math inline">\(X_{MetSyndrome}=1\)</span> when patient has history of metabolic syndrome.</p>
+<p>The overall test of significance of regression yielded an F-statistic of F(4,406) = 29.19 corresponding to a p-value &lt;2.2e-16, indicating there is sufficient evidence that there is at least one non-zero coefficient in the assumed model.</p>
+<p>The individual hypothesis tests show that there is evidence of associations between total cholesterol and Metabolic Syndrome history (<span class="math inline">\(\beta\)</span> = -9.98, p=0.0003) and triglycerides (<span class="math inline">\(\beta\)</span>=0.158,p&lt;2.2e-16). There is no evidence of association between total cholesterol and BMI (<span class="math inline">\(\beta\)</span> = 0.09, p=0.61) and Age (<span class="math inline">\(\beta\)</span> = 0.195, p=0.25).</p>
+<p>The corresponding <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> values are 0.2233 and 0.2157.</p>
+</div>
+<div id="tabset-9-3">
+<p>A sharp curve in the residuals vs.&nbsp;fitted plot could be indicative of unequal variances. Normality assumption appears to hold well.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">plot</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-16-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-16-3.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture9_files/figure-revealjs/unnamed-chunk-16-4.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="correlation" class="title-slide slide level1 center">
+<h1>Correlation</h1>
+
+</section>
+<section id="correlation-1" class="slide level2">
+<h2>Correlation</h2>
+<p>In regression analysis, we assumed that the predictor variables were constant and the only random variable was the response or outcome. Often, we encounter scenarios where both response and predictor variables are random. This is when we use a <em>correlation model</em>.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>In the previous exercise, cholesterol and triglycerides can be treated as random if they are measured at the same time.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Although correlation analysis cannot be carried out meaningfully under the classic regression model, regression analysis can be carried out under the correlation model.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="correlation-coefficient" class="slide level2">
+<h2>Correlation Coefficient</h2>
+<p>The population correlation coefficient <span class="math inline">\(\rho\)</span> measures the strength of linear relationship between the predictor <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. On the other hand, The sample correlation coefficient, <span class="math inline">\(r\)</span>, describes the linear relationship between the sample observations on two variables in the same way that <span class="math inline">\(\rho\)</span> describes the relationship in a population.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(\rho\)</span> and <span class="math inline">\(r\)</span> can take on values between -1 and 1. Negative values of the correlation coefficient indicate a negative/inverse association, while positive values of the correlation coefficient indicate a positive/direct association.</p>
+<p>A value of the correlation coefficient equal to 1 indicates perfect positive linear association, i.e.&nbsp;all data points fit in a line with a positive slope.</p>
+<p>A value of the correlation coefficient equal to -1 indicates perfect negative linear association, i.e.&nbsp;all data points fit in a line with a negative slope.</p>
+<p>A value of the correlation coefficient equal to 0 indicates no association.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="types-of-correlation-coefficients" class="slide level2">
+<h2>Types of Correlation Coefficients</h2>
+<p>There are two main types of correlation coefficients: Pearson and Spearman correlation coefficients.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Pearson correlation coefficients measures the strength of <strong>linear relationship</strong>. This is typically used in most studies.</p>
+<p>Spearman correlation coefficients measures the strength of monotonic relationship using non-parametric methods. It is used to measure association that might not be linear, or in the presence of outliers.</p>
+</div>
+</div>
+</div>
+<p>We will focus on Pearson correlation coefficients in this chapter.</p>
+</section>
+<section id="a-stern-warning" class="slide level2">
+<h2>A Stern Warning</h2>
+<p>Always remember: <strong>CORRELATION DOES NOT MEAN CAUSATION</strong>. No matter how high the correlation coefficient values are, this is not evidence that <span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span> or vice versa.</p>
+<p>Examples of spurious correlation can be found <a href="https://www.tylervigen.com/spurious-correlations">here</a></p>
+</section>
+<section id="hypothesis-test-correlation-coefficient-rho" class="slide level2">
+<h2>Hypothesis Test: Correlation Coefficient <span class="math inline">\(\rho\)</span></h2>
+<p>We can perform a test on the correlation coefficient <span class="math inline">\(\rho\)</span> to determine if we have evidence of linear association between the two variables. We use the null hypothesis of no association <span class="math inline">\(H_0: \rho=0\)</span>. The alternative hypotheses can be one-sided (<span class="math inline">\(\rho &lt; 0\)</span> or <span class="math inline">\(\rho &gt; 0\)</span>), or two-sided (<span class="math inline">\(\rho \neq 0\)</span>).</p>
+<p>The test statistic can be calculated from the sample correlation coefficient <span class="math inline">\(r\)</span>.</p>
+<p><span class="math display">\[
+t = r \sqrt{\frac{(n-2)}{(1-r^2)}}
+\]</span></p>
+<p>This test statistic follows a t-distribution with <span class="math inline">\(n-2\)</span> degrees of freedom, where <span class="math inline">\(n\)</span> is the total sample size.</p>
+</section>
+<section id="r-implementation-1" class="slide level2">
+<h2><code>R</code> implementation</h2>
+<p>The function <code>cor.test(x,y)</code> can be used to estimate the sample correlation coefficient <span class="math inline">\(r\)</span>, as well as perform the hypothesis test of no association and estimate confidence interval for <span class="math inline">\(\rho\)</span>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">cor.test</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
+<span id="cb31-2"><a></a></span>
+<span id="cb31-3"><a></a><span class="co"># OR</span></span>
+<span id="cb31-4"><a></a></span>
+<span id="cb31-5"><a></a><span class="fu">cor.test</span>(<span class="sc">~</span>x<span class="sc">+</span>y, <span class="at">data=</span>df,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Note that the formula is slightly different from <code>lm()</code> and <code>aov()</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-4" class="slide level2">
+<h2>Example</h2>
+<p>Consider the sleep health data <code>SleepHealthData.csv</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Question</a></li><li><a href="#tabset-10-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<p>Test for an association between stress level and sleep duration using correlation analysis.</p>
+</div>
+<div id="tabset-10-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>cortest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(sleep<span class="sc">$</span>sleep_duration,sleep<span class="sc">$</span>stress_level,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
+<span id="cb33-2"><a></a></span>
+<span id="cb33-3"><a></a>cortest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  sleep$sleep_duration and sleep$stress_level
+t = -26.739, df = 372, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.8430912 -0.7732074
+sample estimates:
+      cor 
+-0.811023 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">cor.test</span>(<span class="sc">~</span>sleep_duration<span class="sc">+</span>stress_level,<span class="at">data=</span>sleep,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  sleep_duration and stress_level
+t = -26.739, df = 372, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.8430912 -0.7732074
+sample estimates:
+      cor 
+-0.811023 </code></pre>
+</div>
+</div>
+<p>The estimated correlation coefficient between sleep duration and stress level is -0.811 with a 95% confidence interval of -0.843, -0.773.</p>
+<p>The hypothesis test shows that the test statistic is -26.739 with 372 degrees of freedom. This corresponds to a p-value &lt;2.2e-16, indicating we have sufficient evidence of a correlation between sleep duration and stress level.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise</h2>
+<p>Consider the liver steatosis data set <code>Liver_Steatosis.csv</code>. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Question</a></li><li><a href="#tabset-11-2">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<p>Test for an association between BMI (variable BMI) and cholesterol (variable CHOL) using correlation analysis.</p>
+</div>
+<div id="tabset-11-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>cortest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(liver<span class="sc">$</span>BMI,liver<span class="sc">$</span>CHOL,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
+<span id="cb38-2"><a></a></span>
+<span id="cb38-3"><a></a>cortest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  liver$BMI and liver$CHOL
+t = -0.13162, df = 409, p-value = 0.8954
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.10317221  0.09027825
+sample estimates:
+        cor 
+-0.00650787 </code></pre>
+</div>
+</div>
+<p>The estimated correlation coefficient between BMI and cholesterol is -0.007 with a 95% confidence interval of -0.103, 0.09.</p>
+<p>The hypothesis test shows that the test statistic is -0.132 with 409 degrees of freedom. This corresponds to a p-value of 0.8953525, indicating we have insufficient evidence of a correlation between BMI and cholesterol.</p>
 </div>
 </div>
 </div>
@@ -1074,7 +1764,7 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/madfudolig\.quarto\.pub\/introtobiostats");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

@@ -1,0 +1,206 @@
+---
+title: "Problem Set6 Key"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+```{r setup}
+library(tidyverse)
+library(summarytools)
+```
+
+## Problem 1
+The weights of 15 randomly selected girls at birth from a single hospital in New York recorded an average of 3.09 kg and standard deviation of 0.29 kg. Suppose the hospital claimed that the average weight of girls at birth is higher than 3 kg.
+
+a.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
+
+The parameter of interest is the population/long-run average weight of girls at birth. The hypotheses are:
+
+$$
+H_0: \mu = 3; H_a: \mu>3
+$$
+
+b.	Calculate the test statistic. [1pt.]
+
+```{r}
+xbar <- 3.09
+mu_null <- 3
+sdsamp <- 0.29
+sampsize <- 15
+
+t<- (xbar-mu_null)/(sdsamp/sqrt(sampsize))
+t
+```
+
+
+c.	Calculate the p-value. [1 pt.]
+
+```{r}
+df <- sampsize - 1
+pt(t,df=df,lower.tail=F)
+```
+
+d.	Do we reject or fail to reject the null hypothesis? [1 pt.]
+
+Since significance level is not provided, use 0.05 as the significance level. We fail to reject the null hypothesis.
+
+e.	Do we have sufficient evidence to support the hospital’s claim? [1pt.]
+
+No, we have insufficient evidence to support the local hospital's claim.
+
+## Problem 2
+
+The file HINTS subset.csv contains a subset of the Health information National Trends Survey 6 (HINTS 6). The households were asked if they used health or wellness apps on their tablet or smartphone (column UsedHealthWellnessApps2) and the type of community they lived in (column PR_RUCA_2010). Suppose you want to test the claim that more than 60% of the US population have used health or wellness apps on their mobile devices.
+
+```{r}
+
+hints<- read.csv("datasets/HINTS subset.csv")
+glimpse(hints)
+```
+
+a.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
+
+
+The parameter of interest is the proportion of the US population who have used health or wellness apps on their mobile devices. The hypotheses are:
+
+$$
+H_0: \pi=0.6; H_a: \pi > 0.6
+$$
+
+b.	Calculate the test statistic. [1pt.]
+
+```{r}
+freq(hints$UsedHealthWellnessApps2)
+
+sampsize <-500
+phat <- 314/sampsize
+pi_null <- 0.6
+se <- sqrt(pi_null*(1-pi_null)/sampsize)
+
+z <- (phat-pi_null)/se
+z
+```
+
+c.	Calculate the p-value. [1 pt.]
+
+```{r}
+pnorm(z,lower.tail=F)
+```
+
+d.	Do we reject or fail to reject the null hypothesis? [1 pt.]
+
+At a 0.05 significance level, we fail to reject the null hypothesis. 
+e.	Do we have sufficient evidence to support the claim regarding health and wellness app use? [1pt]
+
+No, we have insufficient evidence to support the claim.
+
+3.	The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. Suppose you want to test if there is a difference between the variance of the baseline estradiol measurements (column estra) for current smokers and non-current smokers (column f1a). 
+
+```{r}
+hflashes <- read.csv("datasets/hflashes.csv")
+glimpse(hflashes)
+```
+
+a.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
+
+
+The parameter of interest is the long-run difference in the variance of estradiol levels between smokers and non-smokers. The hypotheses are:
+
+$$
+H_0: \sigma^2_{ns}/ \sigma^2_{s} = 1; H_a: \sigma^2_{ns}/ \sigma^2_{s} \neq 1
+$$
+b.	Calculate the test statistic. [1pt.]
+
+```{r}
+vartest <- var.test(estra~f1a,data=hflashes)
+vartest
+```
+
+The test statistic value is t=`r vartest$statistic`.
+
+c.	Calculate the p-value. [1 pt.]
+
+The p-value is t=`r vartest$p.value`.
+
+d.	Do we reject or fail to reject the null hypothesis? [1 pt.]
+We fail to reject the null hypothesis.
+
+e.	Comment on the strength/sufficiency of evidence against the null hypothesis. [1pt]
+There is insufficient evidence to claim that there is a difference in the variance of the estradiol levels between smokers and non-smokers.
+
+4.	The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. Suppose you want to test if there is a difference between the long-run average of the baseline estradiol measurements (column estra) for current smokers and non-current smokers. 
+a.	Based on your answer in (3d) and (3e), is it recommended to assume equal variances between the two groups? [1 pt.]
+
+It is recommended to assume equal variances.
+
+b.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
+
+
+The parameter of interest is the population/long-run difference in estradiol levels between smokers and non-smokers, The hypotheses are:
+
+$$
+H_0: \mu_{ns}-\mu_{s} = 0; H_a: \mu_{ns}-\mu_{s} \neq 0
+$$
+c.	Calculate the p-value. [1 pt.]
+```{r}
+ttest <- t.test(estra~f1a,data=hflashes,var.equal=T)
+ttest
+```
+
+d.	Do we reject or pt. to reject the null hypothesis? [1 pt.]
+
+We fail to reject the null hypothesis.
+
+e.	Comment on the strength/sufficiency of evidence against the null hypothesis. [1pt]
+
+There is insufficient evidence to support the hypothesis that there is a difference in estradiol levels between smokers and non-smokers in this population.
+
+5.	A study was performed to investigate the association between acetaminophen use during pregnancy and the children’s risk of neurodevelopmental disorders. In a retrospective study that included 2,480,797 children, 185,909 children were exposed to acetaminophen and 2,294,888 were not. 5,912 children exposed to acetaminophen were diagnosed with autism, while 62,672 children were not exposed to acetaminophen. Suppose we were interested in whether there is a difference in proportion of children diagnosed with autism between the different exposures to acetaminophen.
+
+a.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
+
+The parameter of interest is the long-run difference in proportion of children diagnosed with autism between the different exposures to acetaminophen. The hypotheses are:
+
+$$
+H_0: \mu_{exposed}-\mu_{notexposed}=0;H_a: \mu_{exposed}-\mu_{notexposed}\neq 0
+$$
+b.	Calculate the p-value. [1 pt.]
+
+```{r}
+x1 <- 5912
+x2 <- 62672
+sampsize1 <- 185909
+sampsize2 <- 2294888
+p_pool <- (x1+x2)/(sampsize1+sampsize2)
+
+se <- sqrt(p_pool*(1-p_pool)*(1/sampsize1+1/sampsize2))
+
+pi1 <- x1/sampsize1
+pi2 <- x2/sampsize2
+
+
+
+z <- (pi1-pi2)/se
+z
+
+p <- pnorm(z,lower.tail=F)
+p
+```
+The p-value is `r p`.
+
+c.	Do we reject or fail to reject the null hypothesis? [1 pt.]
+
+We reject the null hypothesis.
+
+d.	Comment on the strength/sufficiency of evidence against the null hypothesis. [1pt]
+
+We have sufficient evidence to support that the proportion of children diagnosed with autism after exposure to acetaminophen is not equal to the proportion of children diagnosed with autism without exposure to acetaminophen.
+
+e.	Is our result indicative of a causal relationship between acetaminophen exposure and autism prevalence in children? Why or why not? (Hint: Did we consider ALL variables that could affect both variables considered in this test?) [1pt]
+
+**NO**, we cannot conclude a causal relationship between acetaminophen exposure and autism prevalence. Other possible confounding variables such as family history, social factors, and other environmental factors were not considered in the analysis that could have affected both exposure and autism diagnosis.
+

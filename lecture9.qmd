@@ -113,6 +113,11 @@ $$
 \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i
 $$
 
+::: callout-important
+The slope estimate $\hat{\beta}_1$ is the expected change in the dependent variable for a 1-unit increase in $X_i$. Generally, for a $d$ unit increase in $X_i$, the dependent variable is expected to change by $d\hat{\beta}_1$.
+:::
+
+
 ## Assumptions of Linear Regression
 
 -   The means of the subpopulations of $Y$ all lie on the same straight line, also known as the linearity assumption.
@@ -190,6 +195,21 @@ The test statistic $F = MSR/MSE$ follows an F-distribution with degrees of freed
 This tests the following hypotheses: $H_0: \beta_1=0$ and $H_a: \beta_1 \neq 0$.
 :::
 
+## Goodness of Fit: $R^2$
+
+We define the coefficient of determination, also known as $R^2$, as the following ratio:
+
+$$
+R^2 = SSR/(SSR + SSE)
+$$
+
+::: callout-important
+$R^2$ is non-negative and cannot exceed 1. The $R^2$ measures the proportion of the variability explained by the predictor in the model. The higher the value of $R^2$, the closer the fit of the data to the model.
+
+$R^2 = 1$ indicates a perfect fit, but is almost always not observed in real-life situations.
+:::
+
+
 ## `R` Implementation: `lm()`
 
 The function `lm()` can perform calculations for linear regression. The function `summary()` is used with `lm()` to provide estimates for the intercept, slope, and residual variance. The `summary()` output also includes the results of the tests involving the slopes (both $t$ and $F$).
@@ -201,7 +221,9 @@ mod1 <- lm(DepVar~IndepVar,data=df)
 summary(mod1)
 ```
 
-
+::: callout-tip
+The `summary()` function also provides the $R^2$ value of the model.
+:::
 
 
 ## `R` implementation: Visualization
@@ -229,7 +251,7 @@ Here are the recommended steps in performing regression analysis:
 
 - Visualize the data using `ggplot2()`. Is there a discernible linear trend?
 - Obtain the equation of the best fit line using `lm()` and `summary()`.
-- Evaluate the equation to obtain a measure of the strength of association between the indepedent and dependent variables (hypothesis tests).
+- Evaluate the equation to obtain a measure of the strength of association between the independent and dependent variables (hypothesis tests).
 - Use `geom_smooth()` as a litmus test of model fit.
 
 ## Example
@@ -239,7 +261,7 @@ The data set `trees` (loaded in `R`) includes the measurements of the diameter (
 ::: panel-tabset
 ### Question
 
-Test the hypothesis that there is an association between the diameter and height of the cherry trees. Use simple linear regression to estimate the best fit line that estimates the height of the cherry trees based on its diameter.
+Test the hypothesis that there is an association between the diameter and height of the cherry trees. Use simple linear regression to estimate the best fit line that estimates the height of the cherry trees based on its diameter. What is the $R^2$ value?
 
 ### Plot before Fit
 
@@ -262,7 +284,7 @@ summary(mod1)
 
 The estimated equation for the tree height is $\hat{height} = 1.0544*Diameter + 62.0313$.
 
-The p-value of the coefficient is `r sum_mod <-summary(mod1);round(sum_mod$coefficients[2,4],4)`, and the test statistic $t$ is `r sum_mod <-summary(mod1);round(sum_mod$coefficients[2,3],2)` There is sufficient evidence of an association between diameter and height.
+The p-value of the coefficient is `r sum_mod <-summary(mod1);round(sum_mod$coefficients[2,4],4)`, and the test statistic $t$ is `r sum_mod <-summary(mod1);round(sum_mod$coefficients[2,3],2)`. There is sufficient evidence of an association between diameter and height. The value of $R^2$ is `r sum_mod <-summary(mod1);round(sum_mod$r.squared,2)`.
 
 ### Plot after Fit
 
@@ -287,7 +309,7 @@ $$
 \hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 * X 
 $$
 
-In `R`, we can use the `predict` function with `lm()` to calculate predicted values for one or more values of the independent variable.
+In `R`, we can use the `predict` function with `lm()` to calculate predicted values for one or more values of the independent variable. It can also output confidence and prediction intervals
 
 ::: panel-tabset
 
@@ -301,13 +323,22 @@ Estimation/Prediction using linear regression works best if the considered value
 
 The intercept is the estimated value of the dependent variable when the independent variable is equal to 0. Interpreting the intercept can be considered as extrapolation if 0 is not within the range of the independent variable. It might also be trivial to interpret the intercept if the case of $X=0$ is trivial.
 
+### Confidence vs. Prediction Intervals
+
+**Confidence intervals** are made for parameters, whereas an interval for random variables are called  **prediction intervals**. Prediction interval are generally wider than confidence intervals.
+
+::: callout-important
+For example, if we want to determine an interval estimate for the mean height of a tree with girth $X$, then we use a confidence interval. If we want to estimate the height of a particular tree with girth $X$, then we use a prediction interval
+:::
+
 ### Sample Code
 
 ```{.r}
 mod1 <- lm(DepVar~IndepVar,data=df)
 newdata <- data.frame(IndepVar=c(X)) # substitute X with the value of the independent variable you want to estimate the value of the predictor for.
 
-newdata$prediction <- predict(mod1,newdata)
+newdata$prediction <- predict(mod1,newdata,interval = "confidence",level = 0.95)
+newdata$prediction <- predict(mod1,newdata,interval = "prediction",level = 0.95)
 newdata
 ```
 
@@ -321,7 +352,7 @@ The data set `trees` (loaded in `R`) includes the measurements of the diameter, 
 
 ### Question
 
-- Calculate the estimated height of the black cherry trees with the following diameters: 10 inches, 15 inches, 20 inches.
+- Calculate the estimated height of the black cherry trees with the following diameters: 10 inches, 15 inches, 20 inches with the corresponding prediction intervals.
 - Is it advisable to interpret the intercept? Explain.
 - Is it advisable to use this regression line to estimate the height of a black cherry tree with a 25-inch diameter? Explain.
 
@@ -330,7 +361,7 @@ The data set `trees` (loaded in `R`) includes the measurements of the diameter, 
 ```{r}
 mod1 <- lm(Height~Girth,data=trees)
 newdata <- data.frame(Girth=c(10,15,20))
-newdata$prediction <- predict(mod1,newdata=newdata)
+newdata$prediction <- predict(mod1,newdata=newdata,interval = "prediction",level = 0.95)
 newdata
 ```
 It is not advisable to interpret the intercept because it is trivial to examine the case when the tree diameter is equal to zero. It is also outside the range of diameters considered in the study. Specifically, the range shown below does not include zero.
@@ -341,3 +372,421 @@ range(trees$Girth)
 
 Similarly, X=25 is not in the range of diameters considered in the study and would lead to extrapolation if used in estimation. Hence, estimating the height of a tree with a 25-inch diameter using our best fit line is not recommended.
 :::
+
+## Exercise
+
+Consider the liver steatosis data set `Liver_Steatosis.csv`. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.
+
+```{r}
+liver <- read.csv("Liver_Steatosis.csv")
+```
+
+
+::: panel-tabset
+
+
+
+### Question
+
+Suppose we want to investigate whether we can use an individual's weight in kg (variable weight) to estimate their LDL levels (variable LDL). 
+
+- Estimate the best fit line using regression methods.
+- Test for an association between weight and LDL values.
+- Predict the LDL value for an individual weighing 120 kg. Provide a 95% prediction interval.
+- Provide the value of $R^2$.
+- Create a scatter plot with the regression line overlayed using `ggplot`.
+
+### Answer
+
+```{r}
+ggplot(data=liver,aes(x=Weight,y=LDL))+
+  geom_point() + 
+  geom_smooth(method="lm", formula=y~x,se=F) + 
+  theme_bw()
+```
+
+There appears to be a weak association between LDL and weight.
+
+```{r}
+mod1 <- lm(LDL~Weight,data=liver)
+summary(mod1)
+```
+
+The best fit line is $\hat{LDL} = 108.90 - 0.02*Weight$. The p-value of the coefficient is `r sum_mod <-summary(mod1);round(sum_mod$coefficients[2,4],4)`, and the test statistic $t$ is `r sum_mod <-summary(mod1);round(sum_mod$coefficients[2,3],2)`. There is no evidence of an association between weight and LDL levels. The $R^2$ value is `r sum_mod <-summary(mod1);round(sum_mod$r.squared,4)`. Note that **there are 48 observations deleted due to missingness**. These variables were excluded from the analysis.
+
+
+```{r}
+newdata <- data.frame(Weight=c(120))
+newdata$prediction <- predict(mod1,newdata=newdata,interval = "prediction",level = 0.95)
+newdata
+```
+
+
+
+:::
+
+
+# Multiple Linear Regression
+
+## Multiple Linear Regression
+
+Often, we want to consider the effect of multiple predictors on the dependent variable. The simple linear regression can be extended to any number of predictor variables. We define $X_{ij}$ as the value of predictor $j$ on unit $i$.
+
+The multiple linear regression model extended to $p$ predictors is then:
+
+$$
+Y_i = \beta_0 + \beta_1X_{1i} + \beta_2X_{2i} + ... + \beta_pX_{ip} + \varepsilon_i
+$$
+
+The estimated best fit line can be written as:
+
+$$
+\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1X_{1i} + \hat{\beta}_2X_{2i} + ... + \hat{\beta}_pX_{ip} 
+$$
+
+::: callout-important
+The slope estimate $\hat{\beta}_k$ is the expected change in the dependent variable for a 1-unit increase in $X_ki$ assuming all other variables remain constant. Generally, for a $d$ unit increase in $X_ki$, the dependent variable is expected to change by $d\hat{\beta}_1$.
+:::
+
+## Hypothesis Tests: Significance of Regression
+
+The testing of significance of regression involves the null hypothesis $H_0: \beta_1=\beta_2=...=\beta_p=0$, assuming that there is a total of $p$ predictors. The alternative hypothesis that at least one coefficient is non-zero. The test of significance of regression is used to test if there are any predictors with a non-zero coefficient. This test uses the F-statistic similar to what was discussed for simple linear regression.
+
+::: callout-note
+`R` provides this information in the `summary()` output of `lm()` with the F-statistic and the corresponding p-value. The corresponding degrees of freedom are (p,N-p-1).
+:::
+
+## Hypothesis Tests: Individual Coefficients
+
+When the null hypothesis of the significance of regression is rejected, we can perform hypothesis tests for each coefficient estimated.
+
+::: callout-note
+`R` provides this information in the `summary()` output of `lm()` with the t-statistic and the corresponding p-value. 
+:::
+
+## Discrete Variables as Predictors
+
+It is possible that we have a categorical independent variable that we want to consider for the regression model. 
+
+::: panel-tabset
+### Dichotomous Variables
+
+For a *dichotomous* variable, we can introduce a variable such that a "Yes" condition is assigned to `1` and `0` otherwise.
+
+### Multi-level
+
+For a categorical predictor variable with $k$ levels, we can introduce a $k-1$ **dichotomous dummy variables** to describe each level of the categorical predictor variable. 
+
+::: callout-note
+
+For example, blood type (A, B, AB, O) has four levels. This means we need three dummy variables $(X_1,X_2,X_3)$ to account for blood type. We define these dummy variables as:
+
+$$
+X_1 = 
+\begin{cases}
+1, BloodType=A\\
+0, otherwise
+\end{cases}
+$$
+
+$$
+X_2 = 
+\begin{cases}
+1, BloodType=B\\
+0, otherwise
+\end{cases}
+$$
+
+$$
+X_3 = 
+\begin{cases}
+1, BloodType=AB\\
+0, otherwise
+\end{cases}
+$$
+
+For an individual with blood type $A$, the dummy variable values are $(X_1,X_2,X_3)=(1,0,0)$. Similarly, $B$ corresponds to $(X_1,X_2,X_3)=(0,1,0)$. For blood type O, $(X_1,X_2,X_3)=(0,0,0)$.
+:::
+
+### `R` Implementation
+
+`lm()` creates dummy variables for character/factor variables. If the variable as a numeric variable, we need to use `as.factor()` for `R` to recognize its categorical nature.
+:::
+
+## Adjusted $R^2$
+
+When we add more predictor variables to a model, the $R^2$ can only go up or stay the same. It is tempting to add more predictor variables to increase $R^2$ even if these variables have little to no effect.
+
+::: callout-tip
+The adjusted $R^2$ value, also known as $R_{adj}^2$, is used to penalize models with more parameters. One form of the adjusted $R^2$ is given by:
+
+$$
+R_{adj}^2 = 1-\frac{(N-1)}{(N-p-1)}(1-R^2)
+$$
+
+where $N$ is the total number of samples. This is also provided in the `summary()` output of `lm()`. 
+
+:::
+
+## Model Checking
+
+Recall: The residual is defined as the difference between the observed and predicted responses, specifically $r_i = y_i-\hat{y}_i$. The residuals can be used to test the normality, equal variance, and independence assumptions. What is of interest to us are the **residual plots**.
+
+The following tabs explain the plots shown when plotting an `lm()` object using `plot()`.
+
+```{.r}
+mod1 <- lm(y~x1+x2,data=df)
+plot(mod1)
+```
+
+::: panel-tabset
+
+### Residual v. Fitted
+
+This plot shows the fitted values of the predictor data to the residuals. If the results can be confined in a horizontal band, there are no obvious model defects.
+
+### Q-Q Residuals
+
+The normal probability plot of residuals, also known as the QQ plot, plots the theoretical quantiles of the normal distribution to the residuals. A good plot shows the points coinciding with the dashed line, defined as the expected behavior of the residuals if they follow a normal distribution.
+
+::: callout-important
+Small deviations from this line is not a major source of concern. Visual inspection of the QQ plot is more recommended than formal statistical tests for normality, as these residuals are not independent. The non-independence of the residuals breaks the independence assumptions of most normality tests.
+:::
+
+### Scale-Location
+
+The Scale-Location plot is a plot of the fitted values against the square root of the standardized residuals. Ideally, the red line should be generally horizontal with no upward trend, sharp angles, or slope.
+
+### Residuals v. Leverage
+
+The residuals vs. leverage plot provides information on highly influential points in the model. Highly influential data points might lead to a skewed model. If the points are within the dashed lines, then there are no highly influential points in the model.
+
+::: 
+
+## Example
+
+Consider the sleep health data set in `SleepHealthData.csv`.
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+```
+
+::: panel-tabset
+### Question
+
+Suppose researchers are interested in estimating sleep duration based on heart rate, age, and gender.
+
+- Estimate the best fit line using multiple regression
+- Comment on the results of the test of significance of regression. Is there evidence of non-zero coefficients?
+- Comment on the results of the hypothesis tests for each coefficient. Which predictors do we have evidence of an association with sleep duration?
+- Provide the $R^2$ and the adjusted $R^2$ for this model.
+- Comment on the plots used for model checking. Are there major model defects?
+
+### Answer
+
+```{r}
+mod1 <- lm(sleep_duration~gender + age + heart_rate,data=sleep)
+summary(mod1)
+```
+
+The best fit line to estimate sleep duration is $\hat{y} = 12.08 +  0.305*X_{male} +0.03*Age - 0.09*HeartRate$, where $X_{male}=1$ if the individual is male and 0 otherwise. 
+
+The overall test of significance of regression yielded an F-statistic of F(3,370) = 64.96 corresponding to a p-value <2.2e-16, indicating there is sufficient evidence that there is at least one non-zero coefficient in the assumed model. 
+
+The individual hypothesis tests show that there is evidence of associations between sleep duration and gender ($\beta$ = 0.30, p=0.0003), age ($\beta$=0.03, p=1.08e-10), and heart rate ($\beta$=-0.09,p<2.2e-16).
+
+The corresponding $R^2$ and adjusted $R^2$ values are 0.345 and 0.3397.
+
+### Plots
+
+The plots show major defects on the normality assumption of the residuals, which we must keep in mind when we are interpreting our results. We can also see that the residuals vs. fitted values cannot be enclosed in two horizontal bands, implying evidence of unequal variances.
+
+```{r}
+plot(mod1)
+```
+
+:::
+
+
+## Exercise
+
+Consider the liver steatosis data set `Liver_Steatosis.csv`. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.
+
+```{r}
+liver <- read.csv("Liver_Steatosis.csv")
+```
+
+::: panel-tabset
+### Question
+
+Suppose researchers are interested in estimating a person's total cholesterol levels (variable CHOL) based on their BMI (variable BMI), age (variable Age), history of metabolic syndrome (variable MET_Syndrome, equal to 1 means patient has history), and plasma triglycerides (variable TG).
+
+- Estimate the best fit line using multiple regression.
+- Comment on the results of the test of significance of regression. Is there evidence of non-zero coefficients?
+- Comment on the results of the hypothesis tests for each coefficient. Which predictors do we have evidence of an association with total cholesterol levels?
+- Provide the $R^2$ and the adjusted $R^2$ for this model.
+- Comment on the plots used for model checking. Are there major model defects?
+
+### Answer
+
+```{r}
+mod1 <- lm(CHOL~BMI+ Age + MET_Syndrome+TG,data=liver)
+summary(mod1)
+```
+The best fit line to estimate total cholesterol levels is $\hat{y} = 152.19 +  0.091*BMI + 0.195*Age -9.98*X_{MetSyndrome} + 0.158*TG$. where $X_{MetSyndrome}=1$ when patient has history of metabolic syndrome. 
+
+The overall test of significance of regression yielded an F-statistic of F(4,406) = 29.19 corresponding to a p-value <2.2e-16, indicating there is sufficient evidence that there is at least one non-zero coefficient in the assumed model. 
+
+The individual hypothesis tests show that there is evidence of associations between total cholesterol and Metabolic Syndrome history ($\beta$ = -9.98, p=0.0003) and triglycerides ($\beta$=0.158,p<2.2e-16). There is no evidence of association between total cholesterol and BMI ($\beta$ = 0.09, p=0.61) and Age ($\beta$ = 0.195, p=0.25).
+
+The corresponding $R^2$ and adjusted $R^2$ values are 0.2233 and 0.2157.
+
+### Plots
+
+A sharp curve in the residuals vs. fitted plot could be indicative of unequal variances. Normality assumption appears to hold well.
+
+```{r}
+plot(mod1)
+```
+
+
+:::
+
+# Correlation
+
+## Correlation
+
+In regression analysis, we assumed that the predictor variables were constant and the only random variable was the response or outcome. Often, we encounter scenarios where both response and predictor variables are random. This is when we use a *correlation model*.
+
+::: callout-note
+In the previous exercise, cholesterol and triglycerides can be treated as random if they are measured at the same time.
+:::
+
+::: callout-important
+Although correlation analysis cannot be carried out meaningfully under the classic regression model, regression analysis can be carried out under the correlation model.
+:::
+
+## Correlation Coefficient
+
+The population correlation coefficient $\rho$ measures the strength of linear relationship between the predictor $X$ and $Y$. On the other hand, The sample correlation coefficient, $r$, describes the linear relationship between the sample observations on two variables in the same way that $\rho$ describes the relationship in a population. 
+
+::: callout-important
+$\rho$ and $r$ can take on values between -1 and 1. Negative values of the correlation coefficient indicate a negative/inverse association, while positive values of the correlation coefficient indicate a positive/direct association.
+
+A value of the correlation coefficient equal to 1 indicates perfect positive linear association, i.e. all data points fit in a line with a positive slope.
+
+A value of the correlation coefficient equal to -1 indicates perfect negative linear association, i.e. all data points fit in a line with a negative slope.
+
+A value of the correlation coefficient equal to 0 indicates no association.
+:::
+
+
+## Types of Correlation Coefficients
+
+There are two main types of correlation coefficients: Pearson and Spearman correlation coefficients.
+
+::: callout-note
+Pearson correlation coefficients measures the strength of **linear relationship**. This is typically used in most studies.
+
+Spearman correlation coefficients measures the strength of monotonic relationship using non-parametric methods. It is used to measure association that might not be linear, or in the presence of outliers.
+:::
+
+We will focus on Pearson correlation coefficients in this chapter.
+
+## A Stern Warning
+
+Always remember: **CORRELATION DOES NOT MEAN CAUSATION**. No matter how high the correlation coefficient values are, this is not evidence that $X$ causes $Y$ or vice versa.
+
+Examples of spurious correlation can be found [here](https://www.tylervigen.com/spurious-correlations)
+
+## Hypothesis Test: Correlation Coefficient $\rho$
+
+We can perform a test on the correlation coefficient $\rho$ to determine if we have evidence of linear association between the two variables. We use the null hypothesis of no association $H_0: \rho=0$. The alternative hypotheses can be one-sided ($\rho < 0$ or $\rho > 0$), or two-sided ($\rho \neq 0$).
+
+The test statistic can be calculated from the sample correlation coefficient $r$.
+
+$$
+t = r \sqrt{\frac{(n-2)}{(1-r^2)}}
+$$
+
+This test statistic follows a t-distribution with $n-2$ degrees of freedom, where $n$ is the total sample size.
+
+## `R` implementation
+
+The function `cor.test(x,y)` can be used to estimate the sample correlation coefficient $r$, as well as perform the hypothesis test of no association and estimate confidence interval for $\rho$.
+
+```{.r}
+cor.test(df$x,df$y,conf.level=0.95)
+
+# OR
+
+cor.test(~x+y, data=df,conf.level=0.95)
+```
+
+::: callout-important
+Note that the formula is slightly different from `lm()` and `aov()`.
+:::
+
+## Example
+
+Consider the sleep health data `SleepHealthData.csv`.
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+```
+
+
+::: panel-tabset
+### Question
+
+Test for an association between stress level and sleep duration using correlation analysis.
+
+### Answer
+
+```{r}
+cortest <- cor.test(sleep$sleep_duration,sleep$stress_level,conf.level=0.95)
+
+cortest
+```
+
+```{r}
+cor.test(~sleep_duration+stress_level,data=sleep,conf.level=0.95)
+```
+
+The estimated correlation coefficient between sleep duration and stress level is `r round(cortest$estimate,3)` with a 95% confidence interval of  `r round(cortest$conf.int, 3)`. 
+
+The hypothesis test shows that the test statistic is `r round(cortest$statistic,3)` with `r cortest$parameter` degrees of freedom. This corresponds to a p-value <2.2e-16, indicating we have sufficient evidence of a correlation between sleep duration and stress level.
+:::
+
+
+
+## Exercise
+
+Consider the liver steatosis data set `Liver_Steatosis.csv`. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.
+
+```{r}
+liver <- read.csv("Liver_Steatosis.csv")
+```
+
+
+::: panel-tabset
+### Question
+
+Test for an association between BMI (variable BMI) and cholesterol (variable CHOL) using correlation analysis.
+
+### Answer
+
+```{r}
+cortest <- cor.test(liver$BMI,liver$CHOL,conf.level=0.95)
+
+cortest
+```
+
+
+The estimated correlation coefficient between BMI and cholesterol is `r round(cortest$estimate,3)` with a 95% confidence interval of  `r round(cortest$conf.int, 3)`. 
+
+The hypothesis test shows that the test statistic is `r round(cortest$statistic,3)` with `r cortest$parameter` degrees of freedom. This corresponds to a p-value of `r cortest$p.value`, indicating we have insufficient evidence of a correlation between BMI and cholesterol.
+:::
+
+
+
