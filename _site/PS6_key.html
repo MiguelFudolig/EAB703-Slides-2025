@@ -4444,13 +4444,14 @@ H_0: \mu_{exposed}-\mu_{notexposed}=0;H_a: \mu_{exposed}-\mu_{notexposed}\neq 0
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11.35955</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two-sided p-value</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z),<span class="at">lower.tail=</span>F) <span class="sc">+</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(z)) </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.324332e-30</code></pre>
+<pre><code>[1] 6.648664e-30</code></pre>
 </div>
 </div>
-<p>The p-value is 3.3243321^{-30}.</p>
+<p>The p-value is 6.6486643^{-30}.</p>
 <ol start="3" type="a">
 <li>Do we reject or fail to reject the null hypothesis? [1 pt.]</li>
 </ol>

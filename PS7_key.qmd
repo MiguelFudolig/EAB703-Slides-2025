@@ -32,13 +32,24 @@ Paired t-test because these scores were measured from the same participant.
 b.	What are the statistical hypotheses for testing whether the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [2pts.]
 
 $$
+H_0: \mu_d = 0; H_a: \mu_d > 0
+$$
+
+where $\mu_d$ is defined as the average difference between baseline and 3-month follow-up. 
+
+::: callout-important
+If \mu_d is the difference between the treatment between 3-month baseline and follow-up, then the hypothesis should be:
+
+$$
 H_0: \mu_d = 0; H_a: \mu_d < 0
 $$
+:::
+
 
 c.	What is the value of the test statistic and the corresponding number of degrees of freedom? [2pts.]
 
 ```{r}
-ttest <- t.test(acu$pk1,acu$pk2,paired=T)
+ttest <- t.test(acu$pk1,acu$pk2,paired=T,alternative="greater")
 ttest
 ```
 

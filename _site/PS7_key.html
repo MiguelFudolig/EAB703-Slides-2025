@@ -4242,23 +4242,40 @@ $ pk2   &lt;dbl&gt; 4.75, 34.50, 16.25, 2.00, 20.00, 11.25, 70.50, 5.75, 9.75, 8
 <li>What are the statistical hypotheses for testing whether the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [2pts.]</li>
 </ol>
 <p><span class="math display">\[
+H_0: \mu_d = 0; H_a: \mu_d &gt; 0
+\]</span></p>
+<p>where <span class="math inline">\(\mu_d\)</span> is defined as the average difference between baseline and 3-month follow-up.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If _d is the difference between the treatment between 3-month baseline and follow-up, then the hypothesis should be:</p>
+<p><span class="math display">\[
 H_0: \mu_d = 0; H_a: \mu_d &lt; 0
 \]</span></p>
+</div>
+</div>
 <ol start="3" type="a">
 <li>What is the value of the test statistic and the corresponding number of degrees of freedom? [2pts.]</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(acu<span class="sc">$</span>pk1,acu<span class="sc">$</span>pk2,<span class="at">paired=</span>T)</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(acu<span class="sc">$</span>pk1,acu<span class="sc">$</span>pk2,<span class="at">paired=</span>T,<span class="at">alternative=</span><span class="st">&quot;greater&quot;</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
 
 data:  acu$pk1 and acu$pk2
-t = 6.9415, df = 172, p-value = 7.598e-11
-alternative hypothesis: true mean difference is not equal to 0
+t = 6.9415, df = 172, p-value = 3.799e-11
+alternative hypothesis: true mean difference is greater than 0
 95 percent confidence interval:
- 4.618605 8.288910
+ 4.916204      Inf
 sample estimates:
 mean difference 
        6.453757 </code></pre>
@@ -4267,7 +4284,7 @@ mean difference
 <ol start="4" type="a">
 <li>What is the p-value? [1pt.]</li>
 </ol>
-<p>The p-value is 7.5983259^{-11}.</p>
+<p>The p-value is 3.7991629^{-11}.</p>
 <ol start="5" type="a">
 <li>At a significance level of 0.001, do we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [1pt.]</li>
 </ol>

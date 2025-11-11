@@ -187,7 +187,8 @@ pi2 <- x2/sampsize2
 z <- (pi1-pi2)/se
 z
 
-p <- pnorm(z,lower.tail=F)
+# two-sided p-value
+p <- pnorm(abs(z),lower.tail=F) + pnorm(-abs(z)) 
 p
 ```
 The p-value is `r p`.
