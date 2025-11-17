@@ -1,0 +1,15 @@
+{
+  "hash": "613067d1856ba1f6b54689fc247c5125",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Untitled\"\n---\n\n\n## Example\n\nConsider the sleep health data, `SleepHealthData.csv`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsleep <- read.csv(\"SleepHealthData.csv\")\n```\n:::\n\n\n::: panel-tabset\n### Question\n\nTest whether gender (variable `gender`) is associated with reported sleep disorders. Use a significance level of 0.01.\n\n### Answer\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nchisqtest <- chisq.test(sleep$gender,sleep$sleep_disorder)\nchisqtest\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n\n\tPearson's Chi-squared test\n\ndata:  sleep$gender and sleep$sleep_disorder\nX-squared = 54.306, df = 2, p-value = 1.613e-12\n```\n\n\n:::\n\n```{.r .cell-code}\nchisqtest$expected\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n            sleep$sleep_disorder\nsleep$gender Insomnia     None Sleep Apnea\n      Female 38.08824 108.3289    38.58289\n      Male   38.91176 110.6711    39.41711\n```\n\n\n:::\n:::\n\n\nAll expected values are above 5, which means the chi-squared assumption is valid. The p-value is 1.6128634\\times 10^{-12}, the test statistic is 54.3060201 with 2 degrees of freedom. At a significance level of 0.01, we reject the null hypothesis. We have sufficient evidence to conclude that the gender and occurrence of sleep disorder are not independent.\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

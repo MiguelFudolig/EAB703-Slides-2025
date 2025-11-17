@@ -5291,5 +5291,526 @@
       "Problem Sets",
       "Problem Set 6 Key"
     ]
+  },
+  {
+    "objectID": "lecture9-1.html#generalized-linear-models-1",
+    "href": "lecture9-1.html#generalized-linear-models-1",
+    "title": "Other Regression Analyses",
+    "section": "Generalized Linear Models",
+    "text": "Generalized Linear Models\nThe theory of linear models can be expanded to generalized linear models (GLM). The form of the generalized linear model involves introducing a link function \\(\\eta(Y_j)\\) such that\n\\[\n\\eta(Y_j) = \\beta_0 + \\beta_1X_{1j} + \\beta_2X_{2j} +... + \\beta_k X_{kj} + \\varepsilon_j\n\\]\n\n\n\n\n\n\nImportant\n\n\nThe terms are coefficients, with \\(\\beta_0\\) known as the intercept of the model. \\(X_{1j}\\) are predictor variables or covariates, also known as confounding variables. The term \\(\\varepsilon_j\\) corresponds to the noise term of the model. This term does not contribute to the mean, rather this partition captures the variability in the data.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe function \\(\\eta(Y_j)\\) is referred to as a link function. A link function is slightly different from a transformation: Link functions are applied to the expected value, while a transformation function is applied to each data point."
+  },
+  {
+    "objectID": "lecture9-1.html#link-function-examples",
+    "href": "lecture9-1.html#link-function-examples",
+    "title": "Other Regression Analyses",
+    "section": "Link Function Examples",
+    "text": "Link Function Examples\nSome examples of link functions include:\n\nLogit function \\(\\eta(p_j) = \\log(\\frac{p_j}{1-p_j})\\)\nProbit function \\(\\eta(p_j) = \\Phi(p_j)\\), \\(\\Phi(p_j)\\) being the cumulative distribution function of the standard normal distribution.\nLogarithmic function \\(\\eta(Y_j) = \\log Y_j\\)"
+  },
+  {
+    "objectID": "lecture9-1.html#logistic-regression-1",
+    "href": "lecture9-1.html#logistic-regression-1",
+    "title": "Other Regression Analyses",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nLogistic regression methods are used when the response variable is dichotomous (Yes/No, 0/1).\n\n\n\n\n\n\nNote\n\n\nLogistic regression can be used for prediction and explanation of trends in the data. In explanatory analysis for dichotomous variables, the parameter of interest is the probability of success, \\(p\\).\nLogistic regression uses a logit link function such that:\n\\[\n\\eta(p) = \\log\\left(\\frac{p}{1-p}\\right) = \\beta_0 + \\beta_1X_1 + ... + \\beta_pX_p\n\\]"
+  },
+  {
+    "objectID": "lecture9-1.html#effect-sizes",
+    "href": "lecture9-1.html#effect-sizes",
+    "title": "Other Regression Analyses",
+    "section": "Effect Sizes",
+    "text": "Effect Sizes\nThe coefficient \\(\\beta_k\\) for the \\(k^{th}\\) predictor in the linear model can be interpreted as the natural logarithm of the odds ratios.\n\n\n\n\n\n\nOdds Ratios\n\n\nThe odds of an event is the ratio of the probability of success and the probability of failure. Specifically, the odds of an event with a success probability \\(p\\) is:\n\\[\nodds = p/(1-p)\n\\]\nThe odds ratio compares the odds of an event for different groups or values of the predictor.\n\\[\nOR = odds_1/odds_2 = \\frac{p_1/(1-p_1)}{p_2/(1-p_2)} = e^{\\beta_k}\n\\]"
+  },
+  {
+    "objectID": "lecture9-1.html#r-implementation",
+    "href": "lecture9-1.html#r-implementation",
+    "title": "Other Regression Analyses",
+    "section": "R implementation",
+    "text": "R implementation\nThe function glm() in R can be used to perform logistic regression.\n\n\n\n\n\n\nNote\n\n\nglm() can be used for different distributions (Poisson, Negative Binomial, etc.) The argument family=\"binomial\" needs to be added in glm() to specify logistic regression.\n\n\n\n\nEstimated Probabilities and Odds RatiosSample Code\n\n\nThe emmeans() function from the emmeans package can provide estimated probabilities for different groups.\nOdds ratios can be calculated using the contrast() function in emmeans().\n\n\nmod1 &lt;- glm(y~x, data=df,family=\"binomial\")\nsummary(mod1) # outputs coefficients\n\nlibrary(emmeans)\nem_mod_glm &lt;- emmeans(mod1,~x,type=\"response\")\nsummary(em_mod_lm,infer=T)\n\ncon_mod_glm &lt;- contrast(em_mod_lm,method=\"pairwise\",type=\"response\")\nsummary(con_mod_glm,infer=T)"
+  },
+  {
+    "objectID": "lecture9-1.html#poisson-regression-1",
+    "href": "lecture9-1.html#poisson-regression-1",
+    "title": "Other Regression Analyses",
+    "section": "Poisson Regression",
+    "text": "Poisson Regression\nPoisson regression is used primarily for modeling count data. Examples include bacterial counts, animal counts, number of patients who recovered/died.\n\n\n\n\n\n\nNote\n\n\nRecall: Poisson distribution. In explanatory analysis for dichotomous variables, the parameter of interest is the expected number of events for a unit of time and space, \\(\\lambda\\).\nPoisson regression uses a logarithmic link function such that:\n\\[\n\\eta(\\lambda) = \\log\\left(\\lambda\\right) = \\beta_0 + \\beta_1X_1 + ... + \\beta_pX_p\n\\]"
+  },
+  {
+    "objectID": "lecture9-1.html#effect-size",
+    "href": "lecture9-1.html#effect-size",
+    "title": "Other Regression Analyses",
+    "section": "Effect Size",
+    "text": "Effect Size\nThe coefficient \\(\\beta_k\\) for the \\(k^{th}\\) predictor in the linear model can be interpreted as the natural logarithm of the incidence rate ratios.\n\n\n\n\n\n\nNote\n\n\n\\(\\lambda\\) is also known as the incidence rate in public health contexts.\nThe odds ratio compares the incidence rate for different groups or values of the predictor.\n\\[\nIRR = \\lambda_1/\\lambda_2  = e^{\\beta_k}\n\\]"
+  },
+  {
+    "objectID": "lecture9-1.html#r-implementation-1",
+    "href": "lecture9-1.html#r-implementation-1",
+    "title": "Other Regression Analyses",
+    "section": "R implementation",
+    "text": "R implementation\nThe function glm() in R can be used to perform Poisson regression.\n\n\n\n\n\n\nNote\n\n\nThe argument family=\"Poisson\" needs to be added in glm() to specify Poisson regression.\n\n\n\n\nIncidence Rates and Incidence Rate RatiosSample Code\n\n\nThe emmeans() function from the emmeans package can provide estimates for \\(\\lambda\\).\nIncidence rate ratios can be calculated using the contrast() function in emmeans().\n\n\nmod1 &lt;- glm(y~x, data=df,family=\"poisson\")\nsummary(mod1) # outputs coefficients\n\nlibrary(emmeans)\nem_mod_glm &lt;- emmeans(mod1,~x,type=\"response\")\nsummary(em_mod_lm,infer=T)\n\ncon_mod_glm &lt;- contrast(em_mod_lm,method=\"pairwise\",type=\"response\")\nsummary(con_mod_glm,infer=T)"
+  },
+  {
+    "objectID": "lecture10.html#associations-between-categorical-data",
+    "href": "lecture10.html#associations-between-categorical-data",
+    "title": "Analysis of Frequencies",
+    "section": "Associations between Categorical Data",
+    "text": "Associations between Categorical Data\nOften, we are interested in testing for association between categorical data. These variables can be nominal or ordinal.\n\n\n\n\n\n\nNote\n\n\nSuppose we want to test whether there is an association between the type of hospital a patient is admitted to and their diagnosed conditions.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#contingency-tables",
+    "href": "lecture10.html#contingency-tables",
+    "title": "Analysis of Frequencies",
+    "section": "Contingency Tables",
+    "text": "Contingency Tables\nA contingency table is a table of frequencies or counts for each possible combination of the variables.\n\n\n\n\n\n\nExample\n\n\nThe hair and eye color of male statistics students were measured. The findings were summarized in the following contingency table.\n\n\n       Eye\nHair    Brown Blue Hazel Green\n  Black    32   11    10     3\n  Brown    53   50    25    15\n  Red      10   10     7     7\n  Blond     3   30     5     8",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#contingency-tables-in-r",
+    "href": "lecture10.html#contingency-tables-in-r",
+    "title": "Analysis of Frequencies",
+    "section": "Contingency tables in R",
+    "text": "Contingency tables in R\nYou can use xtabs() to produce contingency tables in R. The data should be formatted such that the two variables are defined by two columns. If these columns are x and y from a data frame df, the sample code would look like:\nxtabs(~x+y,data=df)\nx will be assigned as the row variable, y will be assigned as the column variable.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#example-1",
+    "href": "lecture10.html#example-1",
+    "title": "Analysis of Frequencies",
+    "section": "Example",
+    "text": "Example\nThe data set penguins preloaded in R includes data from penguins at the Palmer Archipelago in Antarctica.\n\nQuestionAnswer\n\n\nCreate a contingency table for this data that summarizes the number of penguins belonging to each species and sex.\n\n\n\nxtabs(~species+sex,data=penguins)\n\n           sex\nspecies     female male\n  Adelie        73   73\n  Chinstrap     34   34\n  Gentoo        58   61",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#chi-squared-distribution",
+    "href": "lecture10.html#chi-squared-distribution",
+    "title": "Analysis of Frequencies",
+    "section": "Chi-Squared Distribution",
+    "text": "Chi-Squared Distribution\nTests involving categorical data use the chi-squared distribution to approximate the distribution of the test statistics.\n\nSupportParameterRelation to Gaussian DistributionMean and Variance\n\n\nThe chi-squared distribution is defined for non-negative values \\((0,\\infty)\\).\n\n\nThe chi-squared distribution can be defined by the degrees of freedom \\(\\nu\\) or \\(df\\).\nLike the t-distribution, we only need one value for the degree of freedom.\n\n\nSuppose \\(Z\\) follows the standard Gaussian distribution N(0,1). Then \\(Z^2\\) follows a chi-square distribution with 1 degree of freedom.\n\n\nThe mean of the chi-squared distribution is \\(k\\), and the variance of the chi-squared distribution is \\(2k\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#goodness-of-fit",
+    "href": "lecture10.html#goodness-of-fit",
+    "title": "Analysis of Frequencies",
+    "section": "Goodness of Fit",
+    "text": "Goodness of Fit\nSuppose we want to test if the data follows a specified distribution.\n\n\n\n\n\n\nExample\n\n\nSuppose we want to know if a six-sided die is fair. We would expect to roll the numbers uniformly after a large number of throws. However, there will be variability due to randomness. The goodness-of-fit test will provide information if we have evidence of deviating from the pre-specified uniform distribution.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#test-statistic",
+    "href": "lecture10.html#test-statistic",
+    "title": "Analysis of Frequencies",
+    "section": "Test Statistic",
+    "text": "Test Statistic\nSuppose there are \\(k\\) bins separating the data and that the distribution provides an expected number/counts of events \\(E_i\\) for \\(i=1,2,...k\\). If the observed number/counts in the data is \\(O_i\\), we define the test statistics \\(Q\\) such that\n\\[\nQ = \\sum_{i=1}^k \\frac{(O_i - E_i)^2}{E_i}\n\\]\n\n\n\n\n\n\nImportant\n\n\nQ approximately follows the chi-squared distribution with \\(k-1\\) degrees of freedom, denoted by \\(\\chi^2_{k-1}\\).\nFor the chi-squared distribution assumption to be valid, the expected value of each bin should be greater than 5.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#hypothesis-test",
+    "href": "lecture10.html#hypothesis-test",
+    "title": "Analysis of Frequencies",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nThe null hypothesis of the goodness-of-fit test is that the observed data follows the specified distribution, while the alternative is that it does not follow the specified distribution.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#p-value-calculation",
+    "href": "lecture10.html#p-value-calculation",
+    "title": "Analysis of Frequencies",
+    "section": "p-value calculation",
+    "text": "p-value calculation\nThe p-values can be calculated using the chi-squared distribution such that:\n\\[\np-value = P(\\chi^2_{k-1} \\geq Q)\n\\]",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#r-implementation",
+    "href": "lecture10.html#r-implementation",
+    "title": "Analysis of Frequencies",
+    "section": "R implementation",
+    "text": "R implementation\nThere are two ways to check for goodness of fit: formal statistical analysis and exploratory data visualization.\n\nExpected ValuesFormal Statistical AnalysisVisualization\n\n\nFor discrete distributions, the expected values can be calculated using the PDF functions ( dpois, dbinom) for discrete distributions, and CDF functions (pnorm,punif, pt).\n\n\nThe chisq.test function performs the chi-squared test of goodness of fit. The function needs a vector of the observed variables, x_observed and a vector of probabilities p.\nchisq.test(x=x_observed, p=p)\n\n\n\n\n\n\nImportant\n\n\nThe chisq.test() function includes a continuity correction in calculating the test statistic and the corresponding p-value. If we want the uncorrected statistic and p-value, we need to specify correct=FALSE.\n\n\n\n\n\nOnce the expected values are calculated, we can plot these values using ggplot().",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#example-3",
+    "href": "lecture10.html#example-3",
+    "title": "Analysis of Frequencies",
+    "section": "Example",
+    "text": "Example\nElectronic integrated circuits are produced from thin wafers that are cut from some material. The wafers produced sometimes have tiny flaws on them that make part of the wafer unusable. Suppose we produce 1000 wafers and for each we determine the number of flaws.\n\nDataQuestionAnswerPlot\n\n\n\n\n\nNumber of Flaws\nObserved Frequency\n\n\n\n\n0\n10\n\n\n1\n220\n\n\n2\n130\n\n\n3\n80\n\n\n4\n60\n\n\n5 or more\n90\n\n\n\n\n\nTest whether these data follow a Poisson distribution with \\(\\lambda=1.44\\). Visualize the observed and expected counts to support the results of the test.\n\n\nWe specify the observed variable.\n\nobserved &lt;- c(10,220,130,80,60,90)\nobserved\n\n[1]  10 220 130  80  60  90\n\ntotal &lt;- sum(observed)\ntotal\n\n[1] 590\n\n\nThe specified distribution is the Poisson distribution. We can then calculate the expected probabilities using dpois and ppois.\n\nexpected &lt;- c(\ndpois(0,lambda=1.44),\ndpois(1,lambda=1.44),\ndpois(2,lambda=1.44),\ndpois(3,lambda=1.44),\ndpois(4,lambda=1.44),\n1-ppois(4,lambda=1.44)\n)\nexpected\n\n[1] 0.23692776 0.34117597 0.24564670 0.11791042 0.04244775 0.01589140\n\nsum(expected) # must be 1\n\n[1] 1\n\ntotal*expected # there should not be more than 1.5 bins that have less than 5 expected counts\n\n[1] 139.787378 201.293824 144.931553  69.567145  25.044172   9.375928\n\n\nAll expected counts are above 5. We can now use the chi-square approximation for the p-value.\n\nchisqtest &lt;- chisq.test(x=observed,p=expected)\nchisqtest\n\n\n    Chi-squared test for given probabilities\n\ndata:  observed\nX-squared = 867.42, df = 5, p-value &lt; 2.2e-16\n\n\nThe test statistic is 867.4246622 with a p-value &lt; 2.2e-16. We reject the null hypothesis. We have sufficient evidence to conclude that the observed data does not follow the Poisson distribution.\n\n\nThe function bind_rows appends the expected data frame to the observed data frame.\n\nlibrary(tidyverse)\ndf_observed &lt;- data.frame(bin = c(0,1,2,3,4,\"5 or more\"),y=observed,type=\"Observed\")\ndf_expected &lt;- data.frame(bin = c(0,1,2,3,4,\"5 or more\"),y=total*expected,type=\"Expected\")\ndf &lt;- bind_rows(df_observed,df_expected)\n\nggplot(df,aes(x=bin,y=y,group=type,fill=type)) +\n  geom_bar(position=\"dodge\",stat=\"identity\") + \n  theme_bw() + \n  labs(x=\"Number of failures\", y=\"Count\",fill=\"Observed vs. Expected\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#exercise",
+    "href": "lecture10.html#exercise",
+    "title": "Analysis of Frequencies",
+    "section": "Exercise",
+    "text": "Exercise\nIn the “nighttime” lottery run by the state of Texas, three numbers are selected from the digits 0 through 9. The frequencies of the first digit selected over a period of almost 30 years (from 1993 to 2023) are shown below for each of the 9,215 days.\n\nData SetQuestionAnswerPlot\n\n\n\n\n\nDigit\nFrequency\n\n\n\n\n0\n918\n\n\n1\n905\n\n\n2\n908\n\n\n3\n916\n\n\n4\n900\n\n\n5\n911\n\n\n6\n963\n\n\n7\n948\n\n\n8\n937\n\n\n9\n909\n\n\n\n\n\nTest whether each digit is equally likely to have been selected in the Texas “nighttime” lottery.\n\n\nWe specify the observed variable.\n\nobserved &lt;- c(918,905,908,916,900,911,963,948,937,909)\nobserved\n\n [1] 918 905 908 916 900 911 963 948 937 909\n\ntotal &lt;- sum(observed)\ntotal\n\n[1] 9215\n\n\nThe specified distribution is the discrete uniform distribution. We can then calculate the uniform probabilities as 1/10 (10 bins).\n\nexpected &lt;- c(1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10,1/10\n)\nexpected\n\n [1] 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1\n\nsum(expected) # must be 1\n\n[1] 1\n\ntotal*expected # there should not be more than 1.5 bins that have less than 5 expected counts\n\n [1] 921.5 921.5 921.5 921.5 921.5 921.5 921.5 921.5 921.5 921.5\n\n\nAll expected counts are above 5. We can now use the chi-square approximation for the p-value.\n\nchisqtest &lt;- chisq.test(x=observed,p=expected)\nchisqtest\n\n\n    Chi-squared test for given probabilities\n\ndata:  observed\nX-squared = 4.2219, df = 9, p-value = 0.8962\n\n\nThe test statistic is 4.2219208 with a p-value 0.8962084. We fail to reject the null hypothesis. We have insufficient evidence to conclude that the digits are not equally likely to be chosen for the “nighttime” lottery.\n\n\n\nlibrary(tidyverse)\ndf_observed &lt;- data.frame(bin = 0:9,y=observed,type=\"Observed\")\ndf_expected &lt;- data.frame(bin = 0:9,y=total*expected,type=\"Expected\")\ndf &lt;- bind_rows(df_observed,df_expected)\n\nggplot(df,aes(x=as.factor(bin),y=y,group=type,fill=type)) +\n  geom_bar(position=\"dodge\",stat=\"identity\") + \n  theme_bw() + \n  labs(x=\"Number of failures\", y=\"Count\",fill=\"Observed vs. Expected\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#test-of-independence-1",
+    "href": "lecture10.html#test-of-independence-1",
+    "title": "Analysis of Frequencies",
+    "section": "Test of Independence",
+    "text": "Test of Independence\nSuppose we are interested in a contingency table made from two distinct categorical variables.\n\n\n\n\n\n\nAssumptions\n\n\nSuppose the row variables has \\(r\\) levels and the column variables has \\(c\\) levels. This implies that any unit/subject can fall in any of the \\(rc\\) categories.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#hypothesis-test-1",
+    "href": "lecture10.html#hypothesis-test-1",
+    "title": "Analysis of Frequencies",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nThe null hypothesis for the test of independence is that the row and column variables are independent of each other, while the alternative hypothesis is that the row and column variables are not independent.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#null-hypothesis-assumption",
+    "href": "lecture10.html#null-hypothesis-assumption",
+    "title": "Analysis of Frequencies",
+    "section": "Null Hypothesis Assumption",
+    "text": "Null Hypothesis Assumption\nSuppose we define \\(p_{ij}\\) as the probability of a unit to be found at row \\(i\\) and column \\(j\\), denoted by \\((i,j)\\). We also define \\(p_{i\\cdot}\\) and \\(p_{\\cdot j}\\) as the respective probabilities of finding the unit at row \\(i\\) and finding the unit at row \\(j\\). The assumption of independence implies that for all \\(i\\) and \\(j\\),\n\\[\np_{ij} = p_{i\\cdot} p_{\\cdot j}\n\\]\n\n\n\n\n\n\nNote\n\n\nUnder the assumption that the null hypothesis is true, the expected counts for each cell can be calculated as:\n\\[\nE_{ij} = r_ic_j/n\n\\]\nwhere \\(r_i\\) is the row total for row \\(i\\), \\(c_j\\) is the column total for column \\(j\\), and \\(n\\) is the total sample size.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#test-statistic-1",
+    "href": "lecture10.html#test-statistic-1",
+    "title": "Analysis of Frequencies",
+    "section": "Test Statistic",
+    "text": "Test Statistic\nThe test statistic compares the deviation of the observed data to the expected data similar to the goodness-of-fit.\n\\[\nQ = \\sum_{i=1}^r \\sum_{j=1}^c \\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\n\\]\nThe test statistic approximately follows a chi-squared distribution with degrees of freedom \\((r-1)(c-1)\\), \\(\\chi^2_{(r-1)(c-1)}\\) where \\(r\\) and \\(c\\) are the total numbers of rows and columns, respectively.\n\n\n\n\n\n\nImportant\n\n\nIt is important to check the expected number of events for each cell. If the expected number of events is less than 5 for 25% of the cells, the chi-square distribution does not hold.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "test.html",
+    "href": "test.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "Consider the sleep health data, SleepHealthData.csv.\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nQuestionAnswer\n\n\nTest whether gender (variable gender) is associated with reported sleep disorders. Use a significance level of 0.01.\n\n\n\nchisqtest &lt;- chisq.test(sleep$gender,sleep$sleep_disorder)\nchisqtest\n\n\n    Pearson's Chi-squared test\n\ndata:  sleep$gender and sleep$sleep_disorder\nX-squared = 54.306, df = 2, p-value = 1.613e-12\n\nchisqtest$expected\n\n            sleep$sleep_disorder\nsleep$gender Insomnia     None Sleep Apnea\n      Female 38.08824 108.3289    38.58289\n      Male   38.91176 110.6711    39.41711\n\n\nAll expected values are above 5, which means the chi-squared assumption is valid. The p-value is 1.6128634^{-12}, the test statistic is 54.3060201 with 2 degrees of freedom. At a significance level of 0.01, we reject the null hypothesis. We have sufficient evidence to conclude that the gender and occurrence of sleep disorder are not independent."
+  },
+  {
+    "objectID": "test.html#example",
+    "href": "test.html#example",
+    "title": "Untitled",
+    "section": "",
+    "text": "Consider the sleep health data, SleepHealthData.csv.\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nQuestionAnswer\n\n\nTest whether gender (variable gender) is associated with reported sleep disorders. Use a significance level of 0.01.\n\n\n\nchisqtest &lt;- chisq.test(sleep$gender,sleep$sleep_disorder)\nchisqtest\n\n\n    Pearson's Chi-squared test\n\ndata:  sleep$gender and sleep$sleep_disorder\nX-squared = 54.306, df = 2, p-value = 1.613e-12\n\nchisqtest$expected\n\n            sleep$sleep_disorder\nsleep$gender Insomnia     None Sleep Apnea\n      Female 38.08824 108.3289    38.58289\n      Male   38.91176 110.6711    39.41711\n\n\nAll expected values are above 5, which means the chi-squared assumption is valid. The p-value is 1.6128634^{-12}, the test statistic is 54.3060201 with 2 degrees of freedom. At a significance level of 0.01, we reject the null hypothesis. We have sufficient evidence to conclude that the gender and occurrence of sleep disorder are not independent."
+  },
+  {
+    "objectID": "lecture10.html#p-value",
+    "href": "lecture10.html#p-value",
+    "title": "Analysis of Frequencies",
+    "section": "p-value",
+    "text": "p-value\nThe p-value can be calculated using the probability \\(P(\\chi^2_{(r-1)(c-1)} \\geq Q)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#r-implementation-1",
+    "href": "lecture10.html#r-implementation-1",
+    "title": "Analysis of Frequencies",
+    "section": "R implementation",
+    "text": "R implementation\nThe chisq.test() can also be used to perform tests of independence.\n\n\n\n\n\n\nNote\n\n\nWhen dealing with data sets, it would be beneficial to create a contingency table with xtabs() first to check for data sparsity (low cell counts) before using it as an input in chisq.test().\n\n\n\nxtabs(~x+y, data=df)\nchisq &lt;-chisq.test(df$x,df$y)\nchisq\n\n\n\n\n\n\nTip\n\n\nchisq.test() calculates the expected values using the chisq$expected option.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#example-4",
+    "href": "lecture10.html#example-4",
+    "title": "Analysis of Frequencies",
+    "section": "Example",
+    "text": "Example\nConsider the sleep health data, SleepHealthData.csv.\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nQuestionAnswer\n\n\nTest whether gender (variable gender) is associated with reported sleep disorders (variable sleep_disorder. Use a significance level of 0.01.\n\n\nCheck for sparsity of data first.\n\nxtabs(~gender+sleep_disorder,data=sleep)\n\n        sleep_disorder\ngender   Insomnia None Sleep Apnea\n  Female       36   82          67\n  Male         41  137          11\n\n\n\nchisqtest &lt;- chisq.test(sleep$gender,sleep$sleep_disorder)\nchisqtest\n\n\n    Pearson's Chi-squared test\n\ndata:  sleep$gender and sleep$sleep_disorder\nX-squared = 54.306, df = 2, p-value = 1.613e-12\n\nchisqtest$expected\n\n            sleep$sleep_disorder\nsleep$gender Insomnia     None Sleep Apnea\n      Female 38.08824 108.3289    38.58289\n      Male   38.91176 110.6711    39.41711\n\n\nAll expected values are above 5, which means the chi-squared assumption is valid. The p-value is 1.6128634^{-12}, the test statistic is 54.3060201 with 2 degrees of freedom. At a significance level of 0.01, we reject the null hypothesis. We have sufficient evidence to conclude that the gender and occurrence of sleep disorder are not independent.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#exercise-1",
+    "href": "lecture10.html#exercise-1",
+    "title": "Analysis of Frequencies",
+    "section": "Exercise",
+    "text": "Exercise\nConsider the sleep health data, SleepHealthData.csv.\n\nsleep &lt;- read.csv(\"SleepHealthData.csv\")\n\n\nQuestionAnswer\n\n\nTest whether stress level (variable stress_level) is associated with reported sleep disorders (variable sleep_disorder). Treat stress level as an ordinal categorical variable. Use a significance level of 0.01.\n\n\nCheck for sparsity of data first.\n\nxtabs(~stress_level+sleep_disorder,data=sleep)\n\n            sleep_disorder\nstress_level Insomnia None Sleep Apnea\n           3        1   40          30\n           4       24   43           3\n           5        6   57           4\n           6        2   43           1\n           7       41    3           6\n           8        3   33          34\n\n\n\nchisqtest &lt;- chisq.test(sleep$stress_level,sleep$sleep_disorder)\nchisqtest\n\n\n    Pearson's Chi-squared test\n\ndata:  sleep$stress_level and sleep$sleep_disorder\nX-squared = 240.2, df = 10, p-value &lt; 2.2e-16\n\nchisqtest$expected\n\n                  sleep$sleep_disorder\nsleep$stress_level  Insomnia     None Sleep Apnea\n                 3 14.617647 41.57487   14.807487\n                 4 14.411765 40.98930   14.598930\n                 5 13.794118 39.23262   13.973262\n                 6  9.470588 26.93583    9.593583\n                 7 10.294118 29.27807   10.427807\n                 8 14.411765 40.98930   14.598930\n\n\nAll expected values are above 5, which means the chi-squared assumption is valid. The p-value is 6.2217174^{-46}, the test statistic is 240.1993685 with 10 degrees of freedom. At a significance level of 0.01, we reject the null hypothesis. We have sufficient evidence to conclude that the stress level and occurrence of sleep disorder are not independent.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#test-of-homogeneity-1",
+    "href": "lecture10.html#test-of-homogeneity-1",
+    "title": "Analysis of Frequencies",
+    "section": "Test of Homogeneity",
+    "text": "Test of Homogeneity\nSuppose the sampling strategy was to select a fixed sample size per group, and measure the response for each unit/individual.\n\n\n\n\n\n\nNote\n\n\nIf the samples are stratified per group, the groups are not random. The response remains random. The margins for the grouping variable, typically assigned in the rows, are fixed in advance.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#homogeneity-vs.-independence",
+    "href": "lecture10.html#homogeneity-vs.-independence",
+    "title": "Analysis of Frequencies",
+    "section": "Homogeneity vs. Independence",
+    "text": "Homogeneity vs. Independence\n\n\n\n\n\n\nImportant\n\n\nBecause people assigned to/sampled from groups are no longer random, there is no sense to test for independence. Instead, we test whether the probability of being in each of the outcome groups is the same across all treatments.\nHence, the test is referred to as the test of homogeneity.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#hypothesis-test-2",
+    "href": "lecture10.html#hypothesis-test-2",
+    "title": "Analysis of Frequencies",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nThe null hypothesis is that the marginal probability of the outcome variable is the same across all the groups/populations/treatments considered in the study.\nThe alternative hypothesis is that at least one marginal probability is not equal to the others.\n\n\n\n\n\n\nNote\n\n\nThis test is similar to comparing the difference of two proportions for a 2x2 contingency table.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#null-hypothesis-assumption-1",
+    "href": "lecture10.html#null-hypothesis-assumption-1",
+    "title": "Analysis of Frequencies",
+    "section": "Null Hypothesis Assumption",
+    "text": "Null Hypothesis Assumption\nSuppose we define \\(p_{ij}\\) as the probability of a unit to be found at row \\(i\\) and column \\(j\\), denoted by \\((i,j)\\). The assumption of homogeneity assumes that the marginal probability across the columns are the same. Hence,\n\\[\np_{ij} = c_j/n\n\\]\n\n\n\n\n\n\nNote\n\n\nUnder the assumption that the null hypothesis is true, the expected counts for each cell can be calculated as:\n\\[\nE_{ij} = r_ip_{ij} = r_i(c_j/n)\n\\]\nwhere \\(r_i\\) is the row total for row \\(i\\), \\(c_j\\) is the column total for column \\(j\\), and \\(n\\) is the total sample size.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#test-statistic-2",
+    "href": "lecture10.html#test-statistic-2",
+    "title": "Analysis of Frequencies",
+    "section": "Test Statistic",
+    "text": "Test Statistic\nThe test statistic compares the deviation of the observed data to the expected data similar to the goodness-of-fit.\n\\[\nQ = \\sum_{i=1}^r \\sum_{j=1}^c \\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\n\\]\nThe test statistic approximately follows a chi-squared distribution with degrees of freedom \\((r-1)(c-1)\\), \\(\\chi^2_{(r-1)(c-1)}\\) where \\(r\\) and \\(c\\) are the total numbers of rows and columns, respectively.\n\n\n\n\n\n\nImportant\n\n\nNote that the test statistic is the same for independence and homogeneity tests, but the assumptions and hypotheses are different.\nIt is important to check the expected number of events for each cell. If the expected number of events is less than 5 for 25% of the cells, the chi-square distribution does not hold.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#p-value-calculation-1",
+    "href": "lecture10.html#p-value-calculation-1",
+    "title": "Analysis of Frequencies",
+    "section": "p-value Calculation",
+    "text": "p-value Calculation\nThe p-value can be calculated using the probability \\(P(\\chi^2_{(r-1)(c-1)} \\geq Q)\\).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#r-implementation-2",
+    "href": "lecture10.html#r-implementation-2",
+    "title": "Analysis of Frequencies",
+    "section": "R Implementation",
+    "text": "R Implementation\nThe R implementation of the homogeneity test is similar to that of the independence test.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#example-5",
+    "href": "lecture10.html#example-5",
+    "title": "Analysis of Frequencies",
+    "section": "Example",
+    "text": "Example\nThe data set covid.csv includes data from a clinical trial for treatments of COVID-19. Suppose that subjects are randomly assigned to one of two treatments: an experimental drug and a placebo (best available treatment).\n\nlibrary(tidyverse)\ncovid &lt;- read.csv(\"datasets/covid.csv\")\nglimpse(covid)\n\nRows: 1,297\nColumns: 3\n$ ID        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…\n$ Treatment &lt;chr&gt; \"Experimental\", \"Experimental\", \"Experimental\", \"Experimenta…\n$ Outcome   &lt;chr&gt; \"Not Hospitalized\", \"Not Hospitalized\", \"Not Hospitalized\", …\n\n\n\nQuestionAnswer\n\n\nWe want to test whether the marginal probabilities of each outcome (not hospitalized, hospitalized, and died) are the same across each treatment. Use a significance level of 0.05.\n\n\nCreate a contingency table first to test whether there are sparse counts.\n\ncontingency &lt;- xtabs(~Treatment+Outcome,data=covid)\ncontingency\n\n              Outcome\nTreatment      Died Hospitalized Not Hospitalized\n  Experimental   11           67              572\n  Placebo        23           81              543\n\n\nWe implement the chi-squared test using chisq.test().\n\nchisqtest &lt;- chisq.test(covid$Treatment,covid$Outcome)\nchisqtest\n\n\n    Pearson's Chi-squared test\n\ndata:  covid$Treatment and covid$Outcome\nX-squared = 6.307, df = 2, p-value = 0.0427\n\nchisqtest$expected\n\n               covid$Outcome\ncovid$Treatment     Died Hospitalized Not Hospitalized\n   Experimental 17.03932     74.17116         558.7895\n   Placebo      16.96068     73.82884         556.2105\n\n# OR\n\nchisqtest &lt;- chisq.test(contingency)\nchisqtest\n\n\n    Pearson's Chi-squared test\n\ndata:  contingency\nX-squared = 6.307, df = 2, p-value = 0.0427\n\n\nAll expected values are above 5, which means the chi-squared assumption is valid. The p-value is 0.042703, the test statistic is 6.3069732 with 2 degrees of freedom. At a significance level of 0.05, we reject the null hypothesis. We have sufficient evidence to conclude that the marginal probabilities of the outcome variable differ across treatments.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#exercise-2",
+    "href": "lecture10.html#exercise-2",
+    "title": "Analysis of Frequencies",
+    "section": "Exercise",
+    "text": "Exercise\nThe following data is from a study investigating the sources of health information from 200 urban young adults and 150 rural young adults.\n\nDataQuestionAnswer\n\n\nThis is how to input aggregated data in R.\n\nsource_data &lt;- data.frame(\n  Location = c(\"Urban\", \"Urban\",\"Urban\", \"Rural\", \"Rural\",\"Rural\"),\n  Source = c(\"Social Media\", \"Medical Professionals\", \"Others\", \"Social Media\", \"Medical Professionals\", \"Others\"),\n  Count = c(84,96,20,17,31,53)\n)\n\n# Create a cross-table using xtabs\ncross_table_xtabs &lt;- xtabs(Count ~ Location + Source, data = source_data)\ncross_table_xtabs\n\n        Source\nLocation Medical Professionals Others Social Media\n   Rural                    31     53           17\n   Urban                    96     20           84\n\n\n\n\nTest whether the marginal probabilities are homogeneous across the urban and rural participants.\n\n\nWe can use the contingency table cross_table_xtabs in the function chisq.test().\n\nchisqtest&lt;- chisq.test(cross_table_xtabs)\nchisqtest\n\n\n    Pearson's Chi-squared test\n\ndata:  cross_table_xtabs\nX-squared = 67.356, df = 2, p-value = 2.365e-15\n\nchisqtest$expected\n\n        Source\nLocation Medical Professionals   Others Social Media\n   Rural              42.61462 24.49502     33.89037\n   Urban              84.38538 48.50498     67.10963\n\n\nAll expected counts are above 5, hence we can use the chi-squared assumption. All expected values are above 5, which means the chi-squared assumption is valid. The p-value is 2.3649711^{-15}, the test statistic is 67.3560212 with 2 degrees of freedom. At a significance level of 0.05, we reject the null hypothesis. We have sufficient evidence to conclude that the marginal probabilities are not homogeneous across the rurality of residence of the participants.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#chi-squared-tests-small-sample-size",
+    "href": "lecture10.html#chi-squared-tests-small-sample-size",
+    "title": "Analysis of Frequencies",
+    "section": "Chi-Squared Tests: Small Sample Size",
+    "text": "Chi-Squared Tests: Small Sample Size\nFor small sample sizes, the expected values for the cells might be less than 5 for most cells. The chi-squared assumption might not be valid for these cases.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#fisher-exact-test-1",
+    "href": "lecture10.html#fisher-exact-test-1",
+    "title": "Analysis of Frequencies",
+    "section": "Fisher Exact Test",
+    "text": "Fisher Exact Test\nThe Fisher Exact Test calculates an exact p-value using the hypergeometric distribution.\n\n\n\n\n\n\nImportant\n\n\nBecause the Fisher Exact Test does not rely on any asymptotic (long-run) behavior of the random variables, there is no requirement for a minimum sample size.\nThe Fisher Exact Test is used primarily for 2x2 tables with small cell counts.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#hypothesis-test-3",
+    "href": "lecture10.html#hypothesis-test-3",
+    "title": "Analysis of Frequencies",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nThe hypothesis tests for the test of independence and homogeneity still hold.\n\n\n\n\n\n\nNote\n\n\nUnlike the chi-squared tests, the alternative hypothesis can be one-sided.\n\nOne sided \\(H_a\\): There is a positive/negative association between the row and column variables. OR One combination of the row and column variable levels is more favored compared to the others.\nTwo-sided \\(H_a\\): there is an association between the row and column variables.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#test-statistic-and-p-value",
+    "href": "lecture10.html#test-statistic-and-p-value",
+    "title": "Analysis of Frequencies",
+    "section": "Test statistic and p-value",
+    "text": "Test statistic and p-value\nThe p-value is calculated based on the probability of the configuration of the contingency table. The test assumes that the row and column totals are fixed.\n\n\n\n\n\n\nNote\n\n\nThe test statistic used is the upper left cell of the contingency table, \\(X\\).\nThe hypergeometric distribution is used to determine which numbers are more extreme than what was observed.\nOnce the values are established, we sum the probabilities of all the values that are as extreme or more extreme than what was observed.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#r-implementation-3",
+    "href": "lecture10.html#r-implementation-3",
+    "title": "Analysis of Frequencies",
+    "section": "R implementation",
+    "text": "R implementation\nThe function fisher.test() can be used to perform the Fisher Exact Test. It can use the data frame or a cross table to calculate the exact p-values.\nSample Code\nfisher.test(df,alternative=\"greater\")\n\n# OR\n\nfisher.test(contingency,alternative=\"two.sided\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#example-6",
+    "href": "lecture10.html#example-6",
+    "title": "Analysis of Frequencies",
+    "section": "Example",
+    "text": "Example\nThe table shown shows data from a study on treatments for healing severe infections.\n\nDataQuestionAnswer\n\n\n\naggregated_data &lt;- data.frame(\n  Treatment = c(\"A_Test\", \"A_Test\", \"B_Control\", \"B_Control\"),\n  Outcome = c(\"Favorable\", \"Unfavorable\", \"Favorable\", \"Unfavorable\"),\n  Count = c(10,2,2, 4)\n)\n\n# Create a cross-table using xtabs\ncross_table_xtabs &lt;- xtabs(Count ~ Treatment + Outcome, data = aggregated_data)\ncross_table_xtabs\n\n           Outcome\nTreatment   Favorable Unfavorable\n  A_Test           10           2\n  B_Control         2           4\n\n\n\n\nUse the Fisher’s Exact Test to see if there is a positive association between the presence of the test treatment and the outcome. Use a significance level of 0.10.\n\n\n\nfisher&lt;- fisher.test(cross_table_xtabs,alternative=\"greater\")\nfisher\n\n\n    Fisher's Exact Test for Count Data\n\ndata:  cross_table_xtabs\np-value = 0.05726\nalternative hypothesis: true odds ratio is greater than 1\n95 percent confidence interval:\n 0.9374086       Inf\nsample estimates:\nodds ratio \n  8.457238 \n\n\nCompare the result to asymptotic chi-squared tests.\n\nchisq.test(cross_table_xtabs)\n\n\n    Pearson's Chi-squared test with Yates' continuity correction\n\ndata:  cross_table_xtabs\nX-squared = 2.5312, df = 1, p-value = 0.1116\n\n\nThe resulting p-value from the Fisher exact test is 0.0572614. At a significance level of 0.10, we reject the null hypothesis. We have sufficient evidence to claim that there is a positive association between the treatment and the outcome.\n\n\n\n\n\n\nImportant\n\n\nNote that the chi-squared assumption will yield a different decision for the hypothesis test, but this should be discarded because the chi-squared assumption does not hold (expected value less than 5).",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#mcnemars-test",
+    "href": "lecture10.html#mcnemars-test",
+    "title": "Analysis of Frequencies",
+    "section": "McNemar’s Test",
+    "text": "McNemar’s Test\nMcNemar’s test is a nonparametric test for homogeneity between two paired dichotomous variables.\n\n\n\n\n\n\nNote\n\n\nThe usual test of homogeneity assumes each cell count is independent, which would not be the case when the column and row variables are paired.\nThe McNemar’s test is designed for a 2x2 contingency table. For larger nxn tables, we use the McNemar-Bowker Test.\n\n\n\n\n\n\n\n\n\nExample\n\n\nSuppose we are interested in the racial identity concordance of provider and patients at a certain region. The column variable could be assigned to describe the provider identity, while the row column could be assigned to describe the patient identity. The counts will not be independent of each other.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#r-implementation-4",
+    "href": "lecture10.html#r-implementation-4",
+    "title": "Analysis of Frequencies",
+    "section": "R implementation",
+    "text": "R implementation\nThe McNemar’s test can be performed using mcnemar.test() in R. Like chisq.test() and fisher.test(), it can take individual columns or a contingency table as input.\n\n\n\n\n\n\nNote\n\n\nThe chi-squared distribution is used as the distribution of the test-statistic.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#example-8",
+    "href": "lecture10.html#example-8",
+    "title": "Analysis of Frequencies",
+    "section": "Example",
+    "text": "Example\nConsider the data in this table where patients were observed at Time 1 for the presence of a rash and then were observed at Time 2 for the presence of the rash. Each patient with a rash was provided a homeopathic treatment between Time 1 and Time 2.\n\nDataQuestionAnswer\n\n\n\nsource_data&lt;- data.frame(\n  T1_Presence= c(\"T1_Presence\", \"T1_Presence\", \"T1_Absence\", \"T1_Absence\"),\n  T2_Presence = c(\"T2_Presence\", \"T2_Absence\", \"T2_Presence\", \"T2_Absence\"),\n  Count = c(38, 12, 5, 45)\n)\n\n# Create a cross-table using xtabs\ncross_table_xtabs &lt;- xtabs(Count ~ T1_Presence+T2_Presence, data = source_data)\ncross_table_xtabs\n\n             T2_Presence\nT1_Presence   T2_Absence T2_Presence\n  T1_Absence          45           5\n  T1_Presence         12          38\n\n\n\n\nUse McNemar’s test to see if there is a difference in proportion for those with the rash and without the rash before and after treatment. Use a significance level of 0.05.\n\n\n\nmcn &lt;- mcnemar.test(cross_table_xtabs)\nmcn\n\n\n    McNemar's Chi-squared test with continuity correction\n\ndata:  cross_table_xtabs\nMcNemar's chi-squared = 2.1176, df = 1, p-value = 0.1456\n\n\nThe resulting p-value is 0.1456101. At a significance level of 0.05, we fail to reject the null hypothesis. We have insufficient evidence to claim that there is a difference in proportion for those with the rash and without the rash before and after treatment.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#epidemiological-concepts",
+    "href": "lecture10.html#epidemiological-concepts",
+    "title": "Analysis of Frequencies",
+    "section": "Epidemiological Concepts",
+    "text": "Epidemiological Concepts\n\n\n\n\n\n\nObservational Study\n\n\nA research method where researchers observe and collect information without manipulation.\n\n\n\n\n\n\n\n\n\nRisk Factor\n\n\nA variable that is thought to be related to some outcome variable.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#prospective-vs.-retrospective-study",
+    "href": "lecture10.html#prospective-vs.-retrospective-study",
+    "title": "Analysis of Frequencies",
+    "section": "Prospective vs. Retrospective Study",
+    "text": "Prospective vs. Retrospective Study\n\n\n\n\n\n\nProspective Study\n\n\nIn a prospective study, two samples of subjects are selected: a group with the risk factor, and a group without the risk factor. These subjects are followed prospectively and outcomes are observed in the future.\n\n\n\n\n\n\n\n\n\nRetrospective Study\n\n\nIn a retrospective study, two samples of subjects are selected: a group with the outcome of interest(cases), and a group without (control). These subjects are examined retrospectively to check if they have the risk factor.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
+  },
+  {
+    "objectID": "lecture10.html#measures-of-association-1",
+    "href": "lecture10.html#measures-of-association-1",
+    "title": "Analysis of Frequencies",
+    "section": "Measures of Association",
+    "text": "Measures of Association\nFor prospective studies, the measure of association between the risk factor and outcome is the relative risk.\nFor retrospective studies, the measure of association between the risk factor and outcome is the odds ratio.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 10 - Analysis of Frequencies"
+    ]
   }
 ]

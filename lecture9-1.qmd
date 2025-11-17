@@ -1,0 +1,185 @@
+---
+title: "Other Regression Analyses"
+subtitle: Lecture 9-1
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 9.1 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+# Outline
+
+-   Generalized Linear Models
+-   Logistic Regression
+-   Poisson Regression
+
+# Generalized Linear Models
+
+## Generalized Linear Models
+
+The theory of linear models can be expanded to *generalized linear models* (GLM). The form of the generalized linear model involves introducing a link function $\eta(Y_j)$ such that 
+
+$$
+\eta(Y_j) = \beta_0 + \beta_1X_{1j} + \beta_2X_{2j} +... + \beta_k X_{kj} + \varepsilon_j
+$$
+
+::: callout-important
+The \beta terms are coefficients, with $\beta_0$ known as the intercept of the model. $X_{1j}$ are predictor variables or covariates, also known as confounding variables. The term $\varepsilon_j$ corresponds to the noise term of the model. This term does not contribute to the mean, rather this partition captures the variability in the data.
+:::
+
+::: callout-important
+
+The function $\eta(Y_j)$ is referred to as a link function. A link function is slightly different from a transformation: Link functions are applied to the expected value, while a transformation function is applied to each data point.
+:::
+
+## Link Function Examples
+
+Some examples of link functions include:
+
+- Logit function $\eta(p_j) = \log(\frac{p_j}{1-p_j})$
+- Probit function $\eta(p_j) = \Phi(p_j)$, $\Phi(p_j)$ being the cumulative distribution function of the standard normal distribution.
+- Logarithmic function $\eta(Y_j) = \log Y_j$
+
+# Logistic Regression
+
+## Logistic Regression
+
+Logistic regression methods are used when the response variable is dichotomous (Yes/No, 0/1). 
+
+::: callout-note
+Logistic regression can be used for prediction and explanation of trends in the data. In explanatory analysis for dichotomous variables, the parameter of interest is the *probability of success*, $p$.
+
+Logistic regression uses a logit link function such that:
+
+$$
+\eta(p) = \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1X_1 + ... + \beta_pX_p
+$$
+:::
+
+## Effect Sizes
+
+The coefficient $\beta_k$ for the $k^{th}$ predictor in the linear model can be interpreted as the *natural logarithm of the odds ratios*.
+
+::: callout-note
+## Odds Ratios
+
+The odds of an event is the ratio of the probability of success and the probability of failure. Specifically, the odds of an event with a success probability $p$ is:
+
+$$
+odds = p/(1-p)
+$$
+
+The odds ratio compares the odds of an event for different groups or values of the predictor.
+
+$$
+OR = odds_1/odds_2 = \frac{p_1/(1-p_1)}{p_2/(1-p_2)} = e^{\beta_k}
+$$
+:::
+
+## `R` implementation
+
+The function `glm()` in `R` can be used to perform logistic regression. 
+
+::: callout-note
+`glm()` can be used for different distributions (Poisson, Negative Binomial, etc.) The argument `family="binomial"` needs to be added in `glm()` to specify logistic regression.
+:::
+
+::: panel-tabset
+### Estimated Probabilities and Odds Ratios
+
+The `emmeans()` function from the `emmeans` package can provide estimated probabilities for different groups.
+
+Odds ratios can be calculated using the `contrast()` function in `emmeans()`.
+
+### Sample Code
+
+```{.r}
+mod1 <- glm(y~x, data=df,family="binomial")
+summary(mod1) # outputs coefficients
+
+library(emmeans)
+em_mod_glm <- emmeans(mod1,~x,type="response")
+summary(em_mod_lm,infer=T)
+
+con_mod_glm <- contrast(em_mod_lm,method="pairwise",type="response")
+summary(con_mod_glm,infer=T)
+```
+
+:::
+
+# Poisson Regression
+
+## Poisson Regression
+
+Poisson regression is used primarily for modeling count data. Examples include bacterial counts, animal counts, number of patients who recovered/died.
+
+::: callout-note
+Recall: Poisson distribution. In explanatory analysis for dichotomous variables, the parameter of interest is the *expected number of events for a unit of time and space*, $\lambda$.
+
+Poisson regression uses a logarithmic link function such that:
+
+$$
+\eta(\lambda) = \log\left(\lambda\right) = \beta_0 + \beta_1X_1 + ... + \beta_pX_p
+$$
+:::
+
+## Effect Size
+
+The coefficient $\beta_k$ for the $k^{th}$ predictor in the linear model can be interpreted as the *natural logarithm of the incidence rate ratios*.
+
+::: callout-note
+$\lambda$ is also known as the incidence rate in public health contexts. 
+
+The odds ratio compares the incidence rate for different groups or values of the predictor.
+
+$$
+IRR = \lambda_1/\lambda_2  = e^{\beta_k}
+$$
+
+:::
+
+## `R` implementation
+
+The function `glm()` in `R` can be used to perform Poisson regression. 
+
+::: callout-note
+The argument `family="Poisson"` needs to be added in `glm()` to specify Poisson regression.
+:::
+
+::: panel-tabset
+### Incidence Rates and Incidence Rate Ratios
+
+The `emmeans()` function from the `emmeans` package can provide estimates for $\lambda$.
+
+Incidence rate ratios can be calculated using the `contrast()` function in `emmeans()`.
+
+### Sample Code
+
+```{.r}
+mod1 <- glm(y~x, data=df,family="poisson")
+summary(mod1) # outputs coefficients
+
+library(emmeans)
+em_mod_glm <- emmeans(mod1,~x,type="response")
+summary(em_mod_lm,infer=T)
+
+con_mod_glm <- contrast(em_mod_lm,method="pairwise",type="response")
+summary(con_mod_glm,infer=T)
+```
+
+:::

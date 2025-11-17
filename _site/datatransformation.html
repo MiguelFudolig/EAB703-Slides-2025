@@ -1,235 +1,447 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Miguel Fudolig">
+
+<title>Data Transformation – EAB 703-1002: Biostatistical Methods for the Health Sciences</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
-  <meta name="author" content="Miguel Fudolig">
-  <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Data Transformation</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
       }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Data Transformation</h1>
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Miguel Fudolig 
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./UNLV-186.jpg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">EAB 703-1002: Biostatistical Methods for the Health Sciences</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
 </div>
-</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lectures.html">Lectures</a></li><li class="breadcrumb-item"><a href="./datatransformation.html">Supplementary Material - Data Transformation in R</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./lectures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 1- Intro to Biostatistics and R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 2- Descriptive Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 3- Intro to Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 4- Probability Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 5- Sampling Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datatransformation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Supplementary Material - Data Transformation in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 6 - Estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 7 - Hypothesis Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture7-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 7.1 - Tests Involving Variances</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 8 - Analysis of Variance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 9 - Regression and Correlation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture9-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 9.1 - Other Regression Techniques</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 10 - Analysis of Frequencies</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./problemsets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Sets</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS1_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 1 Key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS2_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 2 Key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS3_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 3 Key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS4_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 4 Key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS5_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 5 Key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS6_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 6 Key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS7_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 7 Key</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link active" data-scroll-target="#data-frames">Data Frames</a>
+  <ul class="collapse">
+  <li><a href="#data-frames-1" id="toc-data-frames-1" class="nav-link" data-scroll-target="#data-frames-1">Data Frames</a></li>
+  <li><a href="#data-frame-properties" id="toc-data-frame-properties" class="nav-link" data-scroll-target="#data-frame-properties">Data Frame Properties</a></li>
+  </ul></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a>
+  <ul class="collapse">
+  <li><a href="#importing-data-1" id="toc-importing-data-1" class="nav-link" data-scroll-target="#importing-data-1">Importing Data</a></li>
+  <li><a href="#importing-csv-files" id="toc-importing-csv-files" class="nav-link" data-scroll-target="#importing-csv-files">Importing CSV files</a></li>
+  <li><a href="#importing-data-frames-from-packages" id="toc-importing-data-frames-from-packages" class="nav-link" data-scroll-target="#importing-data-frames-from-packages">Importing Data Frames from packages</a></li>
+  </ul></li>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr"><code>dplyr</code></a>
+  <ul class="collapse">
+  <li><a href="#dplyr-1" id="toc-dplyr-1" class="nav-link" data-scroll-target="#dplyr-1"><code>dplyr</code></a></li>
+  </ul></li>
+  <li><a href="#row-operations" id="toc-row-operations" class="nav-link" data-scroll-target="#row-operations">Row Operations</a>
+  <ul class="collapse">
+  <li><a href="#rows" id="toc-rows" class="nav-link" data-scroll-target="#rows">Rows</a></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"><code>filter()</code></a></li>
+  <li><a href="#boolean-operators" id="toc-boolean-operators" class="nav-link" data-scroll-target="#boolean-operators">Boolean Operators</a></li>
+  <li><a href="#filtering-rows" id="toc-filtering-rows" class="nav-link" data-scroll-target="#filtering-rows">Filtering Rows</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange"><code>arrange()</code></a></li>
+  <li><a href="#sorting-rows" id="toc-sorting-rows" class="nav-link" data-scroll-target="#sorting-rows">Sorting Rows</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise</a></li>
+  <li><a href="#distinct" id="toc-distinct" class="nav-link" data-scroll-target="#distinct"><code>distinct()</code></a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise</a></li>
+  </ul></li>
+  <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping">Piping <code>|&gt;</code></a>
+  <ul class="collapse">
+  <li><a href="#importance-of-piping-in-the-tidyverse" id="toc-importance-of-piping-in-the-tidyverse" class="nav-link" data-scroll-target="#importance-of-piping-in-the-tidyverse">Importance of Piping in the <code>tidyverse</code></a></li>
+  <li><a href="#piping-2" id="toc-piping-2" class="nav-link" data-scroll-target="#piping-2">Piping</a></li>
+  <li><a href="#piping-in-sequences" id="toc-piping-in-sequences" class="nav-link" data-scroll-target="#piping-in-sequences">Piping in Sequences</a></li>
+  <li><a href="#piping-uses" id="toc-piping-uses" class="nav-link" data-scroll-target="#piping-uses">Piping Uses</a></li>
+  </ul></li>
+  <li><a href="#column-operations" id="toc-column-operations" class="nav-link" data-scroll-target="#column-operations">Column Operations</a>
+  <ul class="collapse">
+  <li><a href="#columns" id="toc-columns" class="nav-link" data-scroll-target="#columns">Columns</a></li>
+  <li><a href="#rename" id="toc-rename" class="nav-link" data-scroll-target="#rename"><code>rename()</code></a></li>
+  <li><a href="#examples-1" id="toc-examples-1" class="nav-link" data-scroll-target="#examples-1">Examples</a></li>
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"><code>mutate()</code></a></li>
+  <li><a href="#examples-2" id="toc-examples-2" class="nav-link" data-scroll-target="#examples-2">Examples</a></li>
+  <li><a href="#example-5" id="toc-example-5" class="nav-link" data-scroll-target="#example-5">Example</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise</a></li>
+  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"><code>select()</code></a></li>
+  </ul></li>
+  <li><a href="#group-operations" id="toc-group-operations" class="nav-link" data-scroll-target="#group-operations">Group Operations</a>
+  <ul class="collapse">
+  <li><a href="#groups" id="toc-groups" class="nav-link" data-scroll-target="#groups">Groups</a></li>
+  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><code>group_by()</code></a></li>
+  <li><a href="#ungroup" id="toc-ungroup" class="nav-link" data-scroll-target="#ungroup"><code>ungroup()</code></a></li>
+  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><code>summarize()</code></a></li>
+  <li><a href="#example-1-3" id="toc-example-1-3" class="nav-link" data-scroll-target="#example-1-3">Example 1</a></li>
+  <li><a href="#example-2-3" id="toc-example-2-3" class="nav-link" data-scroll-target="#example-2-3">Example 2</a></li>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise</a></li>
+  </ul></li>
+  <li><a href="#chapter-done-click-here-to-go-back-to-the-home-page" id="toc-chapter-done-click-here-to-go-back-to-the-home-page" class="nav-link" data-scroll-target="#chapter-done-click-here-to-go-back-to-the-home-page">Chapter Done! Click here to go back to the home page!</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="datatransformation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="datatransformation.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lectures.html">Lectures</a></li><li class="breadcrumb-item"><a href="./datatransformation.html">Supplementary Material - Data Transformation in R</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Data Transformation</h1>
 </div>
 
-</section>
-<section>
-<section id="data-frames" class="title-slide slide level1 center">
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Miguel Fudolig </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="data-frames" class="level1">
 <h1>Data Frames</h1>
-
-</section>
-<section id="data-frames-1" class="slide level2">
-<h2>Data Frames</h2>
+<section id="data-frames-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-frames-1">Data Frames</h2>
 <p>Data frames are the two-dimensional version of a list. They are far and away the most useful storage structure for data analysis.</p>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<div class="callout-title-container flex-fill">
+Tip
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>You can think of a data frame as R’s equivalent to the Excel spreadsheet because it stores data in a similar format.</p>
-</div>
 </div>
 </div>
 <p>You can create a data frame using the <code>data.frame()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ex_dataframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">Animal=</span><span class="fu">c</span>(<span class="st">"dog"</span>,<span class="st">"cat"</span>))</span>
-<span id="cb1-2"><a></a>ex_dataframe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ex_dataframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">Animal=</span><span class="fu">c</span>(<span class="st">"dog"</span>,<span class="st">"cat"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ex_dataframe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  ID Animal
 1  1    dog
@@ -237,24 +449,24 @@ Miguel Fudolig
 </div>
 </div>
 </section>
-<section id="data-frame-properties" class="slide level2">
-<h2>Data Frame Properties</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Column Names</a></li><li><a href="#tabset-1-2">Details</a></li><li><a href="#tabset-1-3">Column Vectors</a></li><li><a href="#tabset-1-4">Dimensions</a></li></ul>
+<section id="data-frame-properties" class="level2">
+<h2 class="anchored" data-anchor-id="data-frame-properties">Data Frame Properties</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Column Names</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Details</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Column Vectors</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Dimensions</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>You can access the names of a data frame using the snippet <code>names([DATA FRAME NAME])</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">names</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ID"     "Animal"</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-1-2">
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>You can determine the type of vectors for each column using the snippet <code>str([DATA FRAME NAME])</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   2 obs. of  2 variables:
  $ ID    : num  1 2
@@ -262,27 +474,27 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-1-3">
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>You can call a single column using the <code>$</code> argument in the following format: <code>DATAFRAME_NAME$COLUMN_NAME</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>ex_dataframe<span class="sc">$</span>ID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ex_dataframe<span class="sc">$</span>ID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>ex_dataframe<span class="sc">$</span>Animal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ex_dataframe<span class="sc">$</span>Animal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "dog" "cat"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>ex_dataframe<span class="sc">$</span>ID <span class="sc">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ex_dataframe<span class="sc">$</span>ID <span class="sc">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  5 10</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-1-4">
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p>The dimensions of the data frame can be calculated using the snippet: <code>dim([INSERT DATA FRAME NAME HERE])</code> command.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">dim</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 2</code></pre>
 </div>
@@ -290,54 +502,52 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="importing-data" class="title-slide slide level1 center">
-<h1>Importing Data</h1>
-
 </section>
-<section id="importing-data-1" class="slide level2">
-<h2>Importing Data</h2>
+</section>
+<section id="importing-data" class="level1">
+<h1>Importing Data</h1>
+<section id="importing-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="importing-data-1">Importing Data</h2>
 <p>Data can be imported from external files, URLs, or from existing <code>R</code> packages.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p><code>R</code> can input a wide variety of data files with the help of some packages. Some commonly used data file extensions are <code>.csv</code> (most recommended), <code>.xlsx</code>, <code>.sav</code>, <code>.sas7bdat</code>, <code>.xml</code>, etc.</p>
-</div>
 </div>
 </div>
 <p>We will focus on importing CSVs or existing data from packages in this workshop.</p>
 </section>
-<section id="importing-csv-files" class="slide level2">
-<h2>Importing CSV files</h2>
+<section id="importing-csv-files" class="level2">
+<h2 class="anchored" data-anchor-id="importing-csv-files">Importing CSV files</h2>
 <p>The function <code>read.csv()</code> imports CSV files into R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>case_information<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Case_Information.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>case_information<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Case_Information.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="fu">View</span>(case_information)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(case_information)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1"><code>View()</code> displays the data in a more interactive setting on R Studio.</span>
 </dd>
 </dl>
 </section>
-<section id="importing-data-frames-from-packages" class="slide level2">
-<h2>Importing Data Frames from packages</h2>
+<section id="importing-data-frames-from-packages" class="level2">
+<h2 class="anchored" data-anchor-id="importing-data-frames-from-packages">Importing Data Frames from packages</h2>
 <p>Some packages have pre-loaded data sets. For example, the package <code>nycflights13</code> has multiple data sets such as <code>flights</code>. This dataset contains all 336,776 flights that departed from New York City in 2013. These could be accessed after installing the package.</p>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Method 1</a></li><li><a href="#tabset-2-2">Method 2</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Method 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Method 2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>We can access any function/file in a package using the <code>::</code> argument. For example, if we want to access <code>flights</code> in the <code>nycflights13</code> package without loading the package, we can use the following syntax:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>nycflights13<span class="sc">::</span>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>nycflights13<span class="sc">::</span>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -359,11 +569,11 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>We can load <code>nycflights13</code> first, which gives us access to the <code>flights</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb18-2"><a></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -384,57 +594,53 @@ Miguel Fudolig
 #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
 </div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<div class="callout-title-container flex-fill">
+Warning
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Sometimes, two packages share the same names for functions with different purposes, leading to an event called <em>aliasing</em>. To avoid confusion, more experienced programmers use the <code>::</code> argument. For basic users, Method 2 should suffice.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</section></section>
-<section>
-<section id="dplyr" class="title-slide slide level1 center">
-<h1><code>dplyr</code></h1>
-
 </section>
-<section id="dplyr-1" class="slide level2">
-<h2><code>dplyr</code></h2>
+</section>
+<section id="dplyr" class="level1">
+<h1><code>dplyr</code></h1>
+<section id="dplyr-1" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr-1"><code>dplyr</code></h2>
 <p>The <code>dplyr</code> package, which is included in the <code>tidyverse</code>, includes functions that can greatly help you with data manipulation. In this package, you can operate on data rows, data columns, groups, or entire data frames.</p>
 <p>To use dplyr, we need to import the <code>tidyverse</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section>
-<section>
-<section id="row-operations" class="title-slide slide level1 center">
-<h1>Row Operations</h1>
-
 </section>
-<section id="rows" class="slide level2">
-<h2>Rows</h2>
+</section>
+<section id="row-operations" class="level1">
+<h1>Row Operations</h1>
+<section id="rows" class="level2">
+<h2 class="anchored" data-anchor-id="rows">Rows</h2>
 <p>Some of the most important <code>dplyr</code> functions that involve rows are the following: <code>filter()</code>, <code>arrange()</code>, and <code>distinct()</code>.</p>
 </section>
-<section id="filter" class="slide level2">
-<h2><code>filter()</code></h2>
+<section id="filter" class="level2">
+<h2 class="anchored" data-anchor-id="filter"><code>filter()</code></h2>
 <p><code>filter()</code> allows you to keep rows based on the values of the columns. The syntax of <code>filter()</code> follows the format:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">filter</span>(DATAFRAME_NAME,BOOLEAN_CONDITION)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(DATAFRAME_NAME,BOOLEAN_CONDITION)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="boolean-operators" class="slide level2">
-<h2>Boolean Operators</h2>
+<section id="boolean-operators" class="level2">
+<h2 class="anchored" data-anchor-id="boolean-operators">Boolean Operators</h2>
 <p>Boolean operations, are a system of logic that result in a <code>TRUE</code> or <code>FALSE</code> outcome. These operations combine operators like <code>AND (&amp;)</code>, <code>OR (|)</code>, and <code>NOT (!)</code> to combine or modify search terms, expressions, or values, resulting in a true or false outcome.</p>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Commonly used operators</a></li><li><a href="#tabset-3-2">Examples</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Commonly used operators</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Examples</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>Other commonly used operators include:</p>
 <ul>
 <li>The equality boolean operator <code>==</code>,</li>
@@ -444,31 +650,31 @@ Miguel Fudolig
 <li><code>grepl</code> which looks for a pattern within character vectors.</li>
 </ul>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb22-2"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb22-3"><a></a></span>
-<span id="cb22-4"><a></a>x <span class="sc">&lt;</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>x <span class="sc">&gt;</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="sc">==</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>cats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alice"</span>,<span class="st">"Bob"</span>)</span>
-<span id="cb28-2"><a></a><span class="st">"Alice"</span> <span class="sc">%in%</span> cats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alice"</span>,<span class="st">"Bob"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Alice"</span> <span class="sc">%in%</span> cats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">grepl</span>(<span class="st">"Al"</span>,cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">"Al"</span>,cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE</code></pre>
 </div>
@@ -477,17 +683,17 @@ Miguel Fudolig
 </div>
 </div>
 </section>
-<section id="filtering-rows" class="slide level2">
-<h2>Filtering Rows</h2>
+<section id="filtering-rows" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-rows">Filtering Rows</h2>
 <p>We can filter rows of interest using one or a combination of boolean operations. Let’s examine the <code>flights</code> data set.</p>
-<div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Example 1</a></li><li><a href="#tabset-4-2">Example 2</a></li><li><a href="#tabset-4-3">Example 3</a></li><li><a href="#tabset-4-4">Example 4</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Example 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Example 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Example 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false">Example 4</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>Suppose we want to find the flights that departed more than 120 minutes (two hours) late:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb32-2"><a></a><span class="fu">names</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "year"           "month"          "day"            "dep_time"      
  [5] "sched_dep_time" "dep_delay"      "arr_time"       "sched_arr_time"
@@ -495,7 +701,7 @@ Miguel Fudolig
 [13] "origin"         "dest"           "air_time"       "distance"      
 [17] "hour"           "minute"         "time_hour"     </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a> <span class="fu">filter</span>(flights, dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>(flights, dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,723 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -517,10 +723,10 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <p>Suppose we want to examine the flights by carrier AA (American Airlines).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a> <span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 32,729 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -542,10 +748,10 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-4-3">
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
 <p>Suppose we want to examine the flights by carrier AA (American Airlines) and are delayed by more than 120 minutes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a> <span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span> <span class="sc">&amp;</span>  dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span> <span class="sc">&amp;</span>  dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 720 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -567,10 +773,10 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-4-4">
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
 <p>Suppose we want to examine the flights by carrier AA (American Airlines) OR flights that took off from the JFK airport.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span> <span class="sc">|</span>  origin<span class="sc">==</span><span class="st">"JFK"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span> <span class="sc">|</span>  origin<span class="sc">==</span><span class="st">"JFK"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 130,225 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -595,19 +801,19 @@ Miguel Fudolig
 </div>
 </div>
 </section>
-<section id="exercise" class="slide level2">
-<h2>Exercise</h2>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
 <p>Perform the following filters on the <code>case_information</code> data set.</p>
-<div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Exercise 1</a></li><li><a href="#tabset-5-2">Answer 1</a></li><li><a href="#tabset-5-3">Exercise 2</a></li><li><a href="#tabset-5-4">Answer 2</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Exercise 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Answer 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">Exercise 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false">Answer 2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p>Create a data set “older” defined by all the cases aged 60 and above (&gt;=60).</p>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>older <span class="ot">&lt;-</span> <span class="fu">filter</span>(case_information,age <span class="sc">&gt;=</span><span class="dv">60</span>)</span>
-<span id="cb42-2"><a></a><span class="fu">head</span>(older)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>older <span class="ot">&lt;-</span> <span class="fu">filter</span>(case_information,age <span class="sc">&gt;=</span><span class="dv">60</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(older)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  case_id age age_group    sex date_announced date_recovered date_of_death
 1 C387710  60  60 to 64 Female     2020-02-05     2020-01-31          &lt;NA&gt;
@@ -640,43 +846,43 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-5-3">
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
 <p>Create a data set “young_males” defined by all the male cases aged 40 and below (&lt;= 40)</p>
 </div>
-<div id="tabset-5-4">
+<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>young_males <span class="ot">&lt;-</span> <span class="fu">filter</span>(case_information, age <span class="sc">&lt;=</span><span class="dv">40</span> <span class="sc">&amp;</span> sex <span class="sc">==</span> <span class="st">"Male"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>young_males <span class="ot">&lt;-</span> <span class="fu">filter</span>(case_information, age <span class="sc">&lt;=</span><span class="dv">40</span> <span class="sc">&amp;</span> sex <span class="sc">==</span> <span class="st">"Male"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="arrange" class="slide level2">
-<h2><code>arrange()</code></h2>
+<section id="arrange" class="level2">
+<h2 class="anchored" data-anchor-id="arrange"><code>arrange()</code></h2>
 <p><code>arrange()</code> changes the order of the rows based on the value of the columns.</p>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<div class="callout-title-container flex-fill">
+Tip
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p><code>arrange()</code> by default arranges in increasing order. The <code>desc()</code> can be used to arrange in descending order.</p>
 </div>
 </div>
-</div>
 </section>
-<section id="sorting-rows" class="slide level2">
-<h2>Sorting Rows</h2>
-<div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Example 1</a></li><li><a href="#tabset-6-2">Example 2</a></li><li><a href="#tabset-6-3">Example 3</a></li></ul>
+<section id="sorting-rows" class="level2">
+<h2 class="anchored" data-anchor-id="sorting-rows">Sorting Rows</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Example 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Example 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">Example 3</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <p>We can get a sorted data frame based on month, day, and departure time in the data set <code>flights</code>, which we can assign as a separate variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">head</span>(<span class="fu">arrange</span>(flights,month,day,dep_time))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">arrange</span>(flights,month,day,dep_time))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 19
    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -691,8 +897,8 @@ Miguel Fudolig
 #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>sorted_flights <span class="ot">&lt;-</span> <span class="fu">arrange</span>(flights,month,day,dep_time)</span>
-<span id="cb47-2"><a></a><span class="fu">head</span>(sorted_flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sorted_flights <span class="ot">&lt;-</span> <span class="fu">arrange</span>(flights,month,day,dep_time)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sorted_flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 19
    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -709,11 +915,11 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-6-2">
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <p>We can also sort different columns in different orders (ascending/descending)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>latebirds <span class="ot">&lt;-</span> <span class="fu">arrange</span>(flights,carrier,<span class="fu">desc</span>(dep_delay))</span>
-<span id="cb49-2"><a></a><span class="fu">head</span>(latebirds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>latebirds <span class="ot">&lt;-</span> <span class="fu">arrange</span>(flights,carrier,<span class="fu">desc</span>(dep_delay))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(latebirds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 19
    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -730,11 +936,11 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-6-3">
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
 <p>We can use both <code>filter()</code> and <code>arrange()</code> sequentially. Suppose we want to filter out delay times higher than 120 minutes then sort the flights in increasing order.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>filterfirst <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights,dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span>
-<span id="cb51-2"><a></a><span class="fu">arrange</span>(filterfirst,dep_delay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>filterfirst <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights,dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(filterfirst,dep_delay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,723 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -759,19 +965,19 @@ Miguel Fudolig
 </div>
 </div>
 </section>
-<section id="exercise-3" class="slide level2">
-<h2>Exercise</h2>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise</h2>
 <p>Use the <code>case_information</code> data set to perform the following exercises.</p>
-<div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Exercise 1</a></li><li><a href="#tabset-7-2">Answer 1</a></li><li><a href="#tabset-7-3">Exercise 2</a></li><li><a href="#tabset-7-4">Answer 2</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Exercise 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Answer 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Exercise 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false">Answer 2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <p>Suppose we want to create a data set that includes cases who were female and listed as recovered and assign it to a variable named <code>fem_rec</code>.</p>
 </div>
-<div id="tabset-7-2">
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>fem_rec <span class="ot">&lt;-</span><span class="fu">filter</span>(case_information,sex<span class="sc">==</span><span class="st">"Female"</span> <span class="sc">&amp;</span> status<span class="sc">==</span><span class="st">"Recovered"</span>)</span>
-<span id="cb53-2"><a></a>fem_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>fem_rec <span class="ot">&lt;-</span><span class="fu">filter</span>(case_information,sex<span class="sc">==</span><span class="st">"Female"</span> <span class="sc">&amp;</span> status<span class="sc">==</span><span class="st">"Recovered"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>fem_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     case_id age age_group    sex date_announced date_recovered date_of_death
 1    C404174  38  35 to 39 Female     2020-01-30           &lt;NA&gt;          &lt;NA&gt;
@@ -6436,12 +6642,12 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-7-3">
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
 <p>Provide data from the six oldest members of <code>fem_rec</code>.</p>
 </div>
-<div id="tabset-7-4">
+<div id="tabset-7-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-4-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">head</span>(<span class="fu">arrange</span>(fem_rec,<span class="fu">desc</span>(age)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">arrange</span>(fem_rec,<span class="fu">desc</span>(age)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  case_id age age_group    sex date_announced date_recovered date_of_death
 1 C719189  90       80+ Female     2020-03-21           &lt;NA&gt;          &lt;NA&gt;
@@ -6477,22 +6683,22 @@ Miguel Fudolig
 </div>
 </div>
 </section>
-<section id="distinct" class="slide level2">
-<h2><code>distinct()</code></h2>
+<section id="distinct" class="level2">
+<h2 class="anchored" data-anchor-id="distinct"><code>distinct()</code></h2>
 <p><code>distinct()</code> finds all the unique rows in a dataset. Most of the time, you’ll want the distinct combination of some variables, so you can also optionally supply column names.</p>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Example 1</a></li><li><a href="#tabset-8-2">Example 2</a></li></ul>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Example 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Example 2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <p>Suppose we want to determine the specific flights (origin, destination) in the <code>flights</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-66"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-66-1"><a href="#annotated-cell-66-1"></a><span class="fu">distinct</span>(flights,origin,dest)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-66" data-target-annotation="1">1</button><span id="annotated-cell-66-2" class="code-annotation-target"><a href="#annotated-cell-66-2"></a><span class="fu">distinct</span>(flights,origin,dest,<span class="at">.keep_all=</span>T)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-66"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-66-1"><a href="#annotated-cell-66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(flights,origin,dest)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-66" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-66-2" class="code-annotation-target"><a href="#annotated-cell-66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(flights,origin,dest,<span class="at">.keep_all=</span>T)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-66" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-66" data-code-lines="2" data-code-annotation="1">This row keeps the other variables in the data set.</span>
@@ -6534,12 +6740,12 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <p>We can create a data set that includes the unique trips serviced by American Airlines.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>unique_AA<span class="ot">&lt;-</span>  <span class="fu">filter</span>(flights,carrier<span class="sc">==</span><span class="st">"AA"</span>)</span>
-<span id="cb58-2"><a></a>unique_dest_AA <span class="ot">&lt;-</span> <span class="fu">distinct</span>(unique_AA,origin, dest)</span>
-<span id="cb58-3"><a></a>unique_dest_AA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>unique_AA<span class="ot">&lt;-</span>  <span class="fu">filter</span>(flights,carrier<span class="sc">==</span><span class="st">"AA"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>unique_dest_AA <span class="ot">&lt;-</span> <span class="fu">distinct</span>(unique_AA,origin, dest)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>unique_dest_AA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 25 × 2
    origin dest 
@@ -6559,7 +6765,7 @@ Miguel Fudolig
 </div>
 <p>We can use <code>count()</code> to count the number of distinct combinations of columns. To count the number of unique American Airlines (carrier==“AA”) flight destinations,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">count</span>(unique_AA,origin,dest,<span class="at">sort=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(unique_AA,origin,dest,<span class="at">sort=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 25 × 3
    origin dest      n
@@ -6581,18 +6787,18 @@ Miguel Fudolig
 </div>
 </div>
 </section>
-<section id="exercise-4" class="slide level2">
-<h2>Exercise</h2>
-<div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Exercise 1</a></li><li><a href="#tabset-9-2">Answer 1</a></li></ul>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Exercise 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Answer 1</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <p>Create a data set that includes the distinct province (<code>province</code>) and municipality (<code>muni_city</code>) in the <code>case_information</code> data set. Arrange this data set in alphabetical order.</p>
 </div>
-<div id="tabset-9-2">
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>target <span class="ot">&lt;-</span> <span class="fu">distinct</span>(case_information,province,muni_city)</span>
-<span id="cb62-2"><a></a><span class="fu">arrange</span>(target,province,muni_city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>target <span class="ot">&lt;-</span> <span class="fu">distinct</span>(case_information,province,muni_city)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(target,province,muni_city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               province                 muni_city
 1                  Abra                    Manabo
@@ -6986,23 +7192,21 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="piping" class="title-slide slide level1 center">
-<h1>Piping <code>|&gt;</code></h1>
-
 </section>
-<section id="importance-of-piping-in-the-tidyverse" class="slide level2">
-<h2>Importance of Piping in the <code>tidyverse</code></h2>
+</section>
+<section id="piping" class="level1">
+<h1>Piping <code>|&gt;</code></h1>
+<section id="importance-of-piping-in-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="importance-of-piping-in-the-tidyverse">Importance of Piping in the <code>tidyverse</code></h2>
 <p>Suppose we want to perform multiple sequential filtering, counting, and sorting processes for our data.</p>
 <p>As an example, what if we want to create a data frame that includes all delayed flights (dep_delay &gt; 0) coming out of the JFK airport arranged by the time of delay in descending order?</p>
-<div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Current Methods</a></li><li><a href="#tabset-10-2">Piping</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Current Methods</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Piping</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights,dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>)</span>
-<span id="cb64-2"><a></a><span class="fu">arrange</span>(filtered,<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights,dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(filtered,<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 42,031 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7025,7 +7229,7 @@ Miguel Fudolig
 </div>
 <p>OR</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a><span class="fu">arrange</span>(<span class="fu">filter</span>(flights,dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>),<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(<span class="fu">filter</span>(flights,dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>),<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 42,031 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7047,11 +7251,11 @@ Miguel Fudolig
 </div>
 </div>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb68-2"><a></a>  <span class="fu">filter</span>(dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb68-3"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 42,031 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7076,76 +7280,70 @@ Miguel Fudolig
 </div>
 </div>
 </section>
-<section id="piping-2" class="slide level2">
-<h2>Piping</h2>
+<section id="piping-2" class="level2">
+<h2 class="anchored" data-anchor-id="piping-2">Piping</h2>
 <p>Piping makes coding more efficient when manipulating data.</p>
-<div title="Mechanism">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled" title="Mechanism">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Mechanism</strong></p>
+<div class="callout-title-container flex-fill">
+Mechanism
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>If we have a data set A that we want to perform operations on, the following lines are equivalent to each other</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="fu">filter</span>(A, [BOOLEAN OPERATION])</span>
-<span id="cb70-2"><a></a>A <span class="sc">|&gt;</span> <span class="fu">filter</span>([BOOLEAN OPERATION])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(A, [BOOLEAN OPERATION])</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">|&gt;</span> <span class="fu">filter</span>([BOOLEAN OPERATION])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="piping-in-sequences" class="slide level2">
-<h2>Piping in Sequences</h2>
-<div title="Mechanism">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<section id="piping-in-sequences" class="level2">
+<h2 class="anchored" data-anchor-id="piping-in-sequences">Piping in Sequences</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Mechanism">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Mechanism</strong></p>
+<div class="callout-title-container flex-fill">
+Mechanism
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>We can also apply this to sequence of functions.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a>B <span class="ot">&lt;-</span> <span class="fu">filter</span>(A, [BOOLEAN OPERATION])</span>
-<span id="cb71-2"><a></a>C <span class="ot">&lt;-</span> <span class="fu">distinct</span>(B,Col1,Col2)</span>
-<span id="cb71-3"><a></a>count_C <span class="ot">&lt;-</span> <span class="fu">count</span>(C,Col1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">filter</span>(A, [BOOLEAN OPERATION])</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">distinct</span>(B,Col1,Col2)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>count_C <span class="ot">&lt;-</span> <span class="fu">count</span>(C,Col1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>With pipes,</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>A <span class="sc">|&gt;</span> </span>
-<span id="cb72-2"><a></a><span class="fu">filter</span>([BOOLEAN OPERATION]) <span class="sc">|&gt;</span> </span>
-<span id="cb72-3"><a></a><span class="fu">distinct</span>(Col1,Col2) <span class="sc">|&gt;</span> </span>
-<span id="cb72-4"><a></a><span class="fu">count</span>(Col1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">|&gt;</span> </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>([BOOLEAN OPERATION]) <span class="sc">|&gt;</span> </span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(Col1,Col2) <span class="sc">|&gt;</span> </span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(Col1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="piping-uses" class="slide level2">
-<h2>Piping Uses</h2>
+<section id="piping-uses" class="level2">
+<h2 class="anchored" data-anchor-id="piping-uses">Piping Uses</h2>
 <p>I will be using pipes for the rest of the workshop, but you don’t need to.</p>
-</section></section>
-<section>
-<section id="column-operations" class="title-slide slide level1 center">
-<h1>Column Operations</h1>
-
 </section>
-<section id="columns" class="slide level2">
-<h2>Columns</h2>
+</section>
+<section id="column-operations" class="level1">
+<h1>Column Operations</h1>
+<section id="columns" class="level2">
+<h2 class="anchored" data-anchor-id="columns">Columns</h2>
 <p>We will discuss three different column specific operations: <code>rename()</code>, <code>select()</code>, <code>mutate()</code></p>
 </section>
-<section id="rename" class="slide level2">
-<h2><code>rename()</code></h2>
+<section id="rename" class="level2">
+<h2 class="anchored" data-anchor-id="rename"><code>rename()</code></h2>
 <p><code>rename()</code> changes the column names and keeps all existing variables.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a><span class="fu">rename</span>(data,[<span class="at">NEWNAME =</span> OLDNAME])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(data,[<span class="at">NEWNAME =</span> OLDNAME])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="examples-1" class="slide level2">
-<h2>Examples</h2>
+<section id="examples-1" class="level2">
+<h2 class="anchored" data-anchor-id="examples-1">Examples</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb74-2"><a></a>  <span class="fu">rename</span>(<span class="at">tail_number =</span> tailnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">tail_number =</span> tailnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7167,9 +7365,9 @@ Miguel Fudolig
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb76-2"><a></a>  <span class="fu">rename</span>(<span class="at">destination_airport =</span> dest,</span>
-<span id="cb76-3"><a></a>         <span class="at">origin_airport =</span> origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">destination_airport =</span> dest,</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">origin_airport =</span> origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7189,7 +7387,7 @@ Miguel Fudolig
 #   tailnum &lt;chr&gt;, origin_airport &lt;chr&gt;, destination_airport &lt;chr&gt;,
 #   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">names</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "year"           "month"          "day"            "dep_time"      
  [5] "sched_dep_time" "dep_delay"      "arr_time"       "sched_arr_time"
@@ -7199,20 +7397,20 @@ Miguel Fudolig
 </div>
 </div>
 </section>
-<section id="mutate" class="slide level2">
-<h2><code>mutate()</code></h2>
+<section id="mutate" class="level2">
+<h2 class="anchored" data-anchor-id="mutate"><code>mutate()</code></h2>
 <p><code>mutate()</code> adds new columns that are calculated from the existing columns.</p>
 </section>
-<section id="examples-2" class="slide level2">
-<h2>Examples</h2>
+<section id="examples-2" class="level2">
+<h2 class="anchored" data-anchor-id="examples-2">Examples</h2>
 <p>As an example, we can calculate the average speed of the planes (mph) using the following equation:</p>
 <p><span class="math display">\[
 speed = distance/air time * 60
 \]</span></p>
 <p>We can create a new variable called speed using the <code>mutate()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb80-2"><a></a><span class="fu">mutate</span>(<span class="at">speed =</span> distance<span class="sc">/</span>air_time<span class="sc">*</span><span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">speed =</span> distance<span class="sc">/</span>air_time<span class="sc">*</span><span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 20
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7234,12 +7432,12 @@ speed = distance/air time * 60
 </div>
 </div>
 </section>
-<section id="example-5" class="slide level2">
-<h2>Example</h2>
+<section id="example-5" class="level2">
+<h2 class="anchored" data-anchor-id="example-5">Example</h2>
 <p>Suppose we want to create a variable <code>late</code> such that flights that have a positive delay is labeled “Late”, while those with no or negative delay is “NotLate”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb82-2"><a></a>  <span class="fu">mutate</span>(<span class="at">late =</span> <span class="fu">ifelse</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Late"</span>,<span class="st">"NotLate"</span>),<span class="at">.keep=</span><span class="st">"used"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">late =</span> <span class="fu">ifelse</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Late"</span>,<span class="st">"NotLate"</span>),<span class="at">.keep=</span><span class="st">"used"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 2
    dep_delay late   
@@ -7257,33 +7455,33 @@ speed = distance/air time * 60
 # ℹ 336,766 more rows</code></pre>
 </div>
 </div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p><code>ifelse</code> produces an if-else statement based on the condition.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a><span class="fu">ifelse</span>([CONDITION],[CONDITION IF <span class="cn">TRUE</span>],[CONDITION IF <span class="cn">FALSE</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>([CONDITION],[CONDITION IF <span class="cn">TRUE</span>],[CONDITION IF <span class="cn">FALSE</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="exercise-5" class="slide level2">
-<h2>Exercise</h2>
-<div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Exercise 1</a></li><li><a href="#tabset-11-2">Answer 1</a></li></ul>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Exercise 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer 1</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <p>Using the <code>case_information</code> data set, create a variable <code>OlderAdult</code> that has a value “yes” for individuals above 60 years of age, and “no” otherwise. Use</p>
 </div>
-<div id="tabset-11-2">
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
-<span id="cb85-2"><a></a>  <span class="fu">mutate</span>(<span class="at">OlderAdult =</span> <span class="fu">ifelse</span>(age<span class="sc">&gt;</span><span class="dv">60</span>,<span class="st">"yes"</span>,<span class="st">"no"</span>),<span class="at">.keep=</span><span class="st">"used"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>case_information <span class="sc">|&gt;</span> </span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OlderAdult =</span> <span class="fu">ifelse</span>(age<span class="sc">&gt;</span><span class="dv">60</span>,<span class="st">"yes"</span>,<span class="st">"no"</span>),<span class="at">.keep=</span><span class="st">"used"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      age OlderAdult
 1      38         no
@@ -19383,16 +19581,16 @@ speed = distance/air time * 60
 </div>
 </div>
 </section>
-<section id="select" class="slide level2">
-<h2><code>select()</code></h2>
+<section id="select" class="level2">
+<h2 class="anchored" data-anchor-id="select"><code>select()</code></h2>
 <p><code>select()</code> allows you to rapidly zoom in on a useful subset using operations based on the names of the variables. This is helpful when the datasets have hundreds of columns.</p>
-<div class="panel-tabset">
-<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">By Name</a></li><li><a href="#tabset-12-2">By Range</a></li><li><a href="#tabset-12-3">By Exclusion</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">By Name</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false">By Range</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-3" role="tab" aria-controls="tabset-12-3" aria-selected="false">By Exclusion</a></li></ul>
 <div class="tab-content">
-<div id="tabset-12-1">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb87-2"><a></a>  <span class="fu">select</span>(carrier,dep_delay,month,day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(carrier,dep_delay,month,day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 4
    carrier dep_delay month   day
@@ -19411,10 +19609,10 @@ speed = distance/air time * 60
 </div>
 </div>
 </div>
-<div id="tabset-12-2">
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb89-2"><a></a>  <span class="fu">select</span>(year<span class="sc">:</span>carrier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year<span class="sc">:</span>carrier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 10
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -19434,10 +19632,10 @@ speed = distance/air time * 60
 </div>
 </div>
 </div>
-<div id="tabset-12-3">
+<div id="tabset-12-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-3-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb91-2"><a></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(year,month,day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(year,month,day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 16
    dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
@@ -19460,22 +19658,20 @@ speed = distance/air time * 60
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="group-operations" class="title-slide slide level1 center">
-<h1>Group Operations</h1>
-
 </section>
-<section id="groups" class="slide level2">
-<h2>Groups</h2>
+</section>
+<section id="group-operations" class="level1">
+<h1>Group Operations</h1>
+<section id="groups" class="level2">
+<h2 class="anchored" data-anchor-id="groups">Groups</h2>
 <p>The <code>tidyverse</code> also enables us to work in groups. Commonly used functions include <code>group_by()</code> and <code>summarize()</code>.</p>
 </section>
-<section id="group_by" class="slide level2">
-<h2><code>group_by()</code></h2>
+<section id="group_by" class="level2">
+<h2 class="anchored" data-anchor-id="group_by"><code>group_by()</code></h2>
 <p><code>group_by()</code> divides the dataset into groups useful for your analysis. These are commonly used in conjunction with other functions.</p>
 <p>The <code>R</code> output indicates whether your data frame is grouped.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a></a>flights <span class="sc">|&gt;</span> <span class="fu">group_by</span>(carrier) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">group_by</span>(carrier) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
 # Groups:   carrier [16]
@@ -19498,29 +19694,29 @@ speed = distance/air time * 60
 </div>
 </div>
 </section>
-<section id="ungroup" class="slide level2">
-<h2><code>ungroup()</code></h2>
+<section id="ungroup" class="level2">
+<h2 class="anchored" data-anchor-id="ungroup"><code>ungroup()</code></h2>
 <p><code>ungroup()</code> removes the grouping set by group-by(). This is helpful when calculating</p>
 </section>
-<section id="summarize" class="slide level2">
-<h2><code>summarize()</code></h2>
+<section id="summarize" class="level2">
+<h2 class="anchored" data-anchor-id="summarize"><code>summarize()</code></h2>
 <p>When calculating summary statistics from the data frame, we want to reduce the frame to a single row for each group. This can be done using <code>summarize()</code> or <code>summarise()</code>.</p>
 <p>These summary statistics can be calculated for the entire data frame, or by group.</p>
 </section>
-<section id="example-1-3" class="slide level2">
-<h2>Example 1</h2>
+<section id="example-1-3" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-3">Example 1</h2>
 <p>Suppose we want to calculate the average and standard deviation of the departure delay time.</p>
-<div class="panel-tabset">
-<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">All Flights</a></li><li><a href="#tabset-13-2">By Carrier</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true">All Flights</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false">By Carrier</a></li></ul>
 <div class="tab-content">
-<div id="tabset-13-1">
+<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb95-2"><a></a><span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
-<span id="cb95-3"><a></a>          <span class="at">sd =</span> <span class="fu">sd</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
-<span id="cb95-4"><a></a>          <span class="at">median =</span> <span class="fu">quantile</span>(dep_delay,<span class="fl">0.5</span>,<span class="at">na.rm=</span>T), </span>
-<span id="cb95-5"><a></a>          <span class="at">minimum =</span> <span class="fu">min</span>(dep_delay,<span class="at">na.rm=</span>T),</span>
-<span id="cb95-6"><a></a>          <span class="at">maximum =</span> <span class="fu">max</span>(dep_delay,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd =</span> <span class="fu">sd</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">median =</span> <span class="fu">quantile</span>(dep_delay,<span class="fl">0.5</span>,<span class="at">na.rm=</span>T), </span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">minimum =</span> <span class="fu">min</span>(dep_delay,<span class="at">na.rm=</span>T),</span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">maximum =</span> <span class="fu">max</span>(dep_delay,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
    mean    sd median minimum maximum
@@ -19529,15 +19725,15 @@ speed = distance/air time * 60
 </div>
 </div>
 </div>
-<div id="tabset-13-2">
+<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb97-2"><a></a>  <span class="fu">group_by</span>(carrier) <span class="sc">|&gt;</span> </span>
-<span id="cb97-3"><a></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
-<span id="cb97-4"><a></a>          <span class="at">sd =</span> <span class="fu">sd</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
-<span id="cb97-5"><a></a>          <span class="at">median =</span> <span class="fu">quantile</span>(dep_delay,<span class="fl">0.5</span>,<span class="at">na.rm=</span>T), </span>
-<span id="cb97-6"><a></a>          <span class="at">minimum =</span> <span class="fu">min</span>(dep_delay,<span class="at">na.rm=</span>T),</span>
-<span id="cb97-7"><a></a>          <span class="at">maximum =</span> <span class="fu">max</span>(dep_delay,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">|&gt;</span> </span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd =</span> <span class="fu">sd</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">median =</span> <span class="fu">quantile</span>(dep_delay,<span class="fl">0.5</span>,<span class="at">na.rm=</span>T), </span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">minimum =</span> <span class="fu">min</span>(dep_delay,<span class="at">na.rm=</span>T),</span>
+<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">maximum =</span> <span class="fu">max</span>(dep_delay,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 6
    carrier  mean    sd median minimum maximum
@@ -19564,14 +19760,14 @@ speed = distance/air time * 60
 </div>
 </div>
 </section>
-<section id="example-2-3" class="slide level2">
-<h2>Example 2</h2>
+<section id="example-2-3" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-3">Example 2</h2>
 <p>Suppose we want to count how many times a carrier’s flight was delayed in each month.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb99-2"><a></a>  <span class="fu">mutate</span>(<span class="at">late =</span> <span class="fu">ifelse</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Late"</span>,<span class="st">"NotLate"</span>),<span class="at">.keep=</span><span class="st">"all"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb99-3"><a></a>  <span class="fu">group_by</span>(carrier,month,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
-<span id="cb99-4"><a></a>  <span class="fu">count</span>(late)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">late =</span> <span class="fu">ifelse</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Late"</span>,<span class="st">"NotLate"</span>),<span class="at">.keep=</span><span class="st">"all"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier,month,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(late)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 508 × 4
 # Groups:   carrier, month [185]
@@ -19591,19 +19787,19 @@ speed = distance/air time * 60
 </div>
 </div>
 </section>
-<section id="exercise-6" class="slide level2">
-<h2>Exercise</h2>
-<div class="panel-tabset">
-<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">Exercise 1</a></li><li><a href="#tabset-14-2">Answer 1</a></li><li><a href="#tabset-14-3">Exercise 2</a></li><li><a href="#tabset-14-4">Answer 2</a></li></ul>
+<section id="exercise-6" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6">Exercise</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true">Exercise 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false">Answer 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-3" role="tab" aria-controls="tabset-14-3" aria-selected="false">Exercise 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-4" role="tab" aria-controls="tabset-14-4" aria-selected="false">Answer 2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-14-1">
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
 <p>Using the case_information data set, calculate the average and standard deviation of age for each status category.</p>
 </div>
-<div id="tabset-14-2">
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
-<span id="cb101-2"><a></a><span class="fu">group_by</span>(status,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
-<span id="cb101-3"><a></a><span class="fu">summarize</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(age,<span class="at">na.rm=</span>T), <span class="at">SD =</span> <span class="fu">sd</span>(age,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>case_information <span class="sc">|&gt;</span> </span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(status,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(age,<span class="at">na.rm=</span>T), <span class="at">SD =</span> <span class="fu">sd</span>(age,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   status            Mean    SD
@@ -19616,14 +19812,14 @@ speed = distance/air time * 60
 </div>
 </div>
 </div>
-<div id="tabset-14-3">
+<div id="tabset-14-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-3-tab">
 <p>Using the case_information data set, count the number of each status category for each age group and sex. Calculate the relative proportion within each agegroup/sex group.</p>
 </div>
-<div id="tabset-14-4">
+<div id="tabset-14-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-4-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
-<span id="cb103-2"><a></a><span class="fu">group_by</span>(age_group,sex,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
-<span id="cb103-3"><a></a><span class="fu">count</span>(status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>case_information <span class="sc">|&gt;</span> </span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(age_group,sex,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 173 × 4
 # Groups:   age_group, sex [36]
@@ -19645,622 +19841,493 @@ speed = distance/air time * 60
 </div>
 </div>
 </div>
-</section></section>
-<section id="chapter-done-click-here-to-go-back-to-the-home-page" class="title-slide slide level1 center">
+</section>
+</section>
+<section id="chapter-done-click-here-to-go-back-to-the-home-page" class="level1">
 <h1>Chapter Done! Click here to go back to the <a href="https://madfudolig.quarto.pub/rtraining/">home page</a>!</h1>
 
 
 </section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
-<p>R Training-Data Transformation</p>
-</div>
-</div></div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
+</main> <!-- /main -->
 
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
-  <script>
+<script>
 
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: false,
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
 
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
 
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
+  // slide changes (different for each slide format).
 
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
+  (function () {
 
-        // Display a presentation progress bar
-        progress: true,
+    // dispatch for htmlwidgets
 
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
+    function fireSlideEnter() {
 
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
+      const event = window.document.createEvent("Event");
 
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
+      event.initEvent("slideenter", true, true);
 
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
+      window.document.dispatchEvent(event);
 
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
+    }
 
-        // Push each slide change to the browser history
-        history: true,
 
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
 
-        // Enable the slide overview mode
-        overview: true,
+    function fireSlideChanged(previousSlide, currentSlide) {
 
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
+      fireSlideEnter();
 
-        // Vertical centering of slides
-        center: false,
 
-        // Enables touch navigation on devices with touch input
-        touch: true,
 
-        // Loop the presentation
-        loop: false,
+      // dispatch for shiny
 
-        // Change the presentation direction to be RTL
-        rtl: false,
+      if (window.jQuery) {
 
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
+        if (previousSlide) {
 
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
+          window.jQuery(previousSlide).trigger("hidden");
 
-        // Turns fragments on and off globally
-        fragments: true,
+        }
 
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
+        if (currentSlide) {
 
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
+          window.jQuery(currentSlide).trigger("shown");
 
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
+        }
 
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
+      }
 
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
+    }
 
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
 
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
 
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
+    // hookup for slidy
 
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
+    if (window.w3c_slidy) {
 
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
+      window.w3c_slidy.add_observer(function (slide_num) {
 
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
+        // slide_num starts at position 1
 
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
 
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
       });
-    </script>
-    
 
-    <script>
+    }
 
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
 
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
 
-      // slide changes (different for each slide format).
+  })();
 
-      (function () {
+</script>
 
-        // dispatch for htmlwidgets
 
-        function fireSlideEnter() {
 
-          const event = window.document.createEvent("Event");
-
-          event.initEvent("slideenter", true, true);
-
-          window.document.dispatchEvent(event);
-
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
-
-    
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          fireSlideEnter();
-
-    
-
-          // dispatch for shiny
-
-          if (window.jQuery) {
-
-            if (previousSlide) {
-
-              window.jQuery(previousSlide).trigger("hidden");
-
-            }
-
-            if (currentSlide) {
-
-              window.jQuery(currentSlide).trigger("shown");
-
-            }
-
-          }
-
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
         }
-
-    
-
-        // hookup for slidy
-
-        if (window.w3c_slidy) {
-
-          window.w3c_slidy.add_observer(function (slide_num) {
-
-            // slide_num starts at position 1
-
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
-          });
-
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-
-    
-
-      })();
-
-    </script>
-
-    
-
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          return false;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
-            }
-            return codeEl.innerText;
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
         }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/madfudolig\.quarto\.pub\/introtobiostats");
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
-        }
-            let selectedAnnoteEl;
-            const selectorForAnnotation = ( cell, annotation) => {
-              let cellAttr = 'data-code-cell="' + cell + '"';
-              let lineAttr = 'data-code-annotation="' +  annotation + '"';
-              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-              return selector;
-            }
-            const selectCodeLines = (annoteEl) => {
-              const doc = window.document;
-              const targetCell = annoteEl.getAttribute("data-target-cell");
-              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-              const lineIds = lines.map((line) => {
-                return targetCell + "-" + line;
-              })
-              let top = null;
-              let height = null;
-              let parent = null;
-              if (lineIds.length > 0) {
-                  //compute the position of the single el (top and bottom and make a div)
-                  const el = window.document.getElementById(lineIds[0]);
-                  top = el.offsetTop;
-                  height = el.offsetHeight;
-                  parent = el.parentElement.parentElement;
-                if (lineIds.length > 1) {
-                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-                  height = bottom - top;
-                }
-                if (top !== null && height !== null && parent !== null) {
-                  // cook up a div (if necessary) and position it 
-                  let div = window.document.getElementById("code-annotation-line-highlight");
-                  if (div === null) {
-                    div = window.document.createElement("div");
-                    div.setAttribute("id", "code-annotation-line-highlight");
-                    div.style.position = 'absolute';
-                    parent.appendChild(div);
-                  }
-                  div.style.top = top - 2 + "px";
-                  div.style.height = height + 4 + "px";
-                  div.style.left = 0;
-                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-                  if (gutterDiv === null) {
-                    gutterDiv = window.document.createElement("div");
-                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                    gutterDiv.style.position = 'absolute';
-                    const codeCell = window.document.getElementById(targetCell);
-                    const gutter = codeCell.querySelector('.code-annotation-gutter');
-                    gutter.appendChild(gutterDiv);
-                  }
-                  gutterDiv.style.top = top - 2 + "px";
-                  gutterDiv.style.height = height + 4 + "px";
-                }
-                selectedAnnoteEl = annoteEl;
-              }
-            };
-            const unselectCodeLines = () => {
-              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-              elementsIds.forEach((elId) => {
-                const div = window.document.getElementById(elId);
-                if (div) {
-                  div.remove();
-                }
-              });
-              selectedAnnoteEl = undefined;
-            };
-              // Handle positioning of the toggle
-          window.addEventListener(
-            "resize",
-            throttle(() => {
-              elRect = undefined;
-              if (selectedAnnoteEl) {
-                selectCodeLines(selectedAnnoteEl);
-              }
-            }, 10)
-          );
-          function throttle(fn, ms) {
-          let throttle = false;
-          let timer;
-            return (...args) => {
-              if(!throttle) { // first call gets through
-                  fn.apply(this, args);
-                  throttle = true;
-              } else { // all the others get throttled
-                  if(timer) clearTimeout(timer); // cancel #2
-                  timer = setTimeout(() => {
-                    fn.apply(this, args);
-                    timer = throttle = false;
-                  }, ms);
-              }
-            };
           }
-            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-            for (let i=0; i<annoteTargets.length; i++) {
-              const annoteTarget = annoteTargets[i];
-              const targetCell = annoteTarget.getAttribute("data-target-cell");
-              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-              const contentFn = () => {
-                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-                if (content) {
-                  const tipContent = content.cloneNode(true);
-                  tipContent.classList.add("code-annotation-tip-content");
-                  return tipContent.outerHTML;
-                }
-              }
-              const config = {
-                allowHTML: true,
-                content: contentFn,
-                onShow: (instance) => {
-                  selectCodeLines(instance.reference);
-                  instance.reference.classList.add('code-annotation-active');
-                  window.tippy.hideAll();
-                },
-                onHide: (instance) => {
-                  unselectCodeLines();
-                  instance.reference.classList.remove('code-annotation-active');
-                },
-                maxWidth: 300,
-                delay: [50, 0],
-                duration: [200, 0],
-                offset: [5, 10],
-                arrow: true,
-                appendTo: function(el) {
-                  return el.parentElement.parentElement.parentElement;
-                },
-                interactive: true,
-                interactiveBorder: 10,
-                theme: 'light-border',
-                placement: 'right',
-                popperOptions: {
-                  modifiers: [
-                  {
-                    name: 'flip',
-                    options: {
-                      flipVariations: false, // true by default
-                      allowedAutoPlacements: ['right'],
-                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
-                    },
-                  },
-                  {
-                    name: 'preventOverflow',
-                    options: {
-                      mainAxis: false,
-                      altAxis: false
-                    }
-                  }
-                  ]        
-                }      
-              };
-              window.tippy(annoteTarget, config); 
-            }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
 
 </body></html>

@@ -35,6 +35,10 @@ website:
             text: Lecture 8 - Analysis of Variance
           - href: lecture9.qmd
             text: Lecture 9 - Regression and Correlation
+          - href: lecture9-1.qmd
+            text: Lecture 9.1 - Other Regression Techniques
+          - href: lecture10.qmd
+            text: Lecture 10 - Analysis of Frequencies
       - section: "Problem Sets"
         href: problemsets.qmd
         contents:

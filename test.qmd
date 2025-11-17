@@ -1,0 +1,31 @@
+---
+title: "Untitled"
+---
+
+
+## Example
+
+Consider the sleep health data, `SleepHealthData.csv`.
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+```
+
+::: panel-tabset
+### Question
+
+Test whether gender (variable `gender`) is associated with reported sleep disorders. Use a significance level of 0.01.
+
+### Answer
+
+
+
+
+```{r}
+chisqtest <- chisq.test(sleep$gender,sleep$sleep_disorder)
+chisqtest
+chisqtest$expected
+```
+
+All expected values are above 5, which means the chi-squared assumption is valid. The p-value is `r chisqtest$p.value`, the test statistic is `r chisqtest$statistic` with `r chisqtest$parameter` degrees of freedom. At a significance level of 0.01, we reject the null hypothesis. We have sufficient evidence to conclude that the gender and occurrence of sleep disorder are not independent.
+:::
