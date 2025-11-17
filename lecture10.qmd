@@ -31,7 +31,6 @@ bibliography: references.bib
 -   Fisher's Exact Test
 -   Symmetry Tests
 -   Measures of Association
--   Mantel-Haenszel Statistic
 
 # Categorical Data
 
@@ -820,4 +819,115 @@ For prospective studies, the measure of association between the risk factor and 
 
 For retrospective studies, the measure of association between the risk factor and outcome is the **odds ratio**.
 
+## Relative Risk
 
+![](figs/10-contingency.png){width=5in}
+
+The relative risk (RR) is the ratio of the risk of being a case among subjects with the risk factor to the risk of developing the disease among subjects without the risk factor. The RR can be calculated using the following equation:
+
+$$
+RR = \frac{a/(a+b)}{c/(c+d)}
+$$
+
+## Odds Ratio
+
+Recall: Logistic Regression. The odds ratio is the ratio of the odds of developing into a case between those with and without the risk factor.
+
+$$
+OR = \frac{a/b}{c/d}=ad/bc
+$$
+
+## `R` implementation
+
+While the best estimate of the odds ratios and relative risk can easily be calculated using the values in the contingency table, the package `epitools` contains the `epitab()` function that calculates both relative risk/odds ratio and their corresponding intervals.
+
+### Sample Code
+
+```{.r}
+#install.packages("epitools")
+library(epitools)
+epitab(contingency,method="oddsratio")
+
+# OR
+
+epitab(contingency,method="riskratio",pvalue="chi2")
+
+```
+
+
+::: callout-important
+The contingency table should be given in this particular format:
+
+```{.r}
+                 Disease
+  Exposure       No (ref)  Yes
+   Level 1 (ref)  a         b
+   Level 2        c         d
+   Level 3        e         f 
+```
+
+:::
+
+## Example
+
+The data below includes data from a prospective study on low-risk pregnant women. A group of 217 women did no voluntary or mandatory exercise during the pregnancy while 238 exercised extensively. One outcome variable of interest was experiencing preterm labor.
+
+::: panel-tabset
+
+### Data
+
+```{r}
+source_data<- data.frame(
+  Risk= c("Treatment","Treatment","Control","Control"),
+  Outcome = c("Case", "Control", "Case", "Control"),
+  Count = c(22,216,18,199)
+)
+
+# Create a cross-table using xtabs
+cross_table_xtabs <- xtabs(Count ~ Risk+Outcome, data = source_data)
+cross_table_xtabs
+```
+
+### Question
+
+Calculate the relevant measure of association and provide a 95% confidence interval.
+
+### Answer
+
+```{r}
+library(epitools)
+epitab(cross_table_xtabs,method="riskratio",pvalue="chi2",rev="columns")
+```
+
+The relative risk is 1.114 with a 95% confidence interval: (0.615,2.021). The resulting p-value from the chi-squared approximation is 0.72. At a significance level of 0.05, we fail to reject the null hypothesis. We have insufficient evidence to conclude that there is a difference in risk of experiencing preterm labor between those who exercise extensively and those who did not.
+
+:::
+
+## Exercise
+
+The table shows 3970 subjects classified as cases or noncases of obesity and also classified according to smoking status of the mother during pregnancy (the risk factor).
+
+```{r}
+source_data<- data.frame(
+  Risk= c("Present","Present","Absent","Absent"),
+  Outcome = c("Case", "Control", "Case", "Control"),
+  Count = c(64,342,68,3496)
+)
+
+# Create a cross-table using xtabs
+cross_table_xtabs <- xtabs(Count ~ Risk+Outcome, data = source_data)
+cross_table_xtabs
+```
+
+### Question
+
+- Is this study a prospective or a retrospective study?
+- Calculate the appropriate measure of association to report for this study. Provide a 95% confidence interval.
+
+### Answer
+
+```{r}
+epitab(cross_table_xtabs,method="oddsratio",rev="columns")
+```
+
+This is a retrospective study. The appropriate measure of association is the odds ratio. The estimated odds ratio is 9.62, with a 95% confidence interval: (6.72,13.78). The confidence interval shows that children with obesity are more likely to have had mothers who smoked than those without obesity.

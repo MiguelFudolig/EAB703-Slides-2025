@@ -212,7 +212,6 @@
 <li>Fisher’s Exact Test</li>
 <li>Symmetry Tests</li>
 <li>Measures of Association</li>
-<li>Mantel-Haenszel Statistic</li>
 </ul>
 </section>
 
@@ -1410,6 +1409,160 @@ McNemar's chi-squared = 2.1176, df = 1, p-value = 0.1456</code></pre>
 <h2>Measures of Association</h2>
 <p>For prospective studies, the measure of association between the risk factor and outcome is the <strong>relative risk</strong>.</p>
 <p>For retrospective studies, the measure of association between the risk factor and outcome is the <strong>odds ratio</strong>.</p>
+</section>
+<section id="relative-risk" class="slide level2">
+<h2>Relative Risk</h2>
+
+<img data-src="figs/10-contingency.png" style="width:5in" class="r-stretch"><p>The relative risk (RR) is the ratio of the risk of being a case among subjects with the risk factor to the risk of developing the disease among subjects without the risk factor. The RR can be calculated using the following equation:</p>
+<p><span class="math display">\[
+RR = \frac{a/(a+b)}{c/(c+d)}
+\]</span></p>
+</section>
+<section id="odds-ratio" class="slide level2">
+<h2>Odds Ratio</h2>
+<p>Recall: Logistic Regression. The odds ratio is the ratio of the odds of developing into a case between those with and without the risk factor.</p>
+<p><span class="math display">\[
+OR = \frac{a/b}{c/d}=ad/bc
+\]</span></p>
+</section>
+<section id="r-implementation-5" class="slide level2">
+<h2><code>R</code> implementation</h2>
+<p>While the best estimate of the odds ratios and relative risk can easily be calculated using the values in the contingency table, the package <code>epitools</code> contains the <code>epitab()</code> function that calculates both relative risk/odds ratio and their corresponding intervals.</p>
+<h3 id="sample-code-1">Sample Code</h3>
+<div class="sourceCode" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a><span class="co">#install.packages("epitools")</span></span>
+<span id="cb74-2"><a></a><span class="fu">library</span>(epitools)</span>
+<span id="cb74-3"><a></a><span class="fu">epitab</span>(contingency,<span class="at">method=</span><span class="st">"oddsratio"</span>)</span>
+<span id="cb74-4"><a></a></span>
+<span id="cb74-5"><a></a><span class="co"># OR</span></span>
+<span id="cb74-6"><a></a></span>
+<span id="cb74-7"><a></a><span class="fu">epitab</span>(contingency,<span class="at">method=</span><span class="st">"riskratio"</span>,<span class="at">pvalue=</span><span class="st">"chi2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The contingency table should be given in this particular format:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a>                 Disease</span>
+<span id="cb75-2"><a></a>  Exposure       <span class="fu">No</span> (ref)  Yes</span>
+<span id="cb75-3"><a></a>   Level <span class="dv">1</span> (ref)  a         b</span>
+<span id="cb75-4"><a></a>   Level <span class="dv">2</span>        c         d</span>
+<span id="cb75-5"><a></a>   Level <span class="dv">3</span>        e         f </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-9" class="slide level2">
+<h2>Example</h2>
+<p>The data below includes data from a prospective study on low-risk pregnant women. A group of 217 women did no voluntary or mandatory exercise during the pregnancy while 238 exercised extensively. One outcome variable of interest was experiencing preterm labor.</p>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Data</a></li><li><a href="#tabset-12-2">Question</a></li><li><a href="#tabset-12-3">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>source_data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb76-2"><a></a>  <span class="at">Risk=</span> <span class="fu">c</span>(<span class="st">"Treatment"</span>,<span class="st">"Treatment"</span>,<span class="st">"Control"</span>,<span class="st">"Control"</span>),</span>
+<span id="cb76-3"><a></a>  <span class="at">Outcome =</span> <span class="fu">c</span>(<span class="st">"Case"</span>, <span class="st">"Control"</span>, <span class="st">"Case"</span>, <span class="st">"Control"</span>),</span>
+<span id="cb76-4"><a></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">22</span>,<span class="dv">216</span>,<span class="dv">18</span>,<span class="dv">199</span>)</span>
+<span id="cb76-5"><a></a>)</span>
+<span id="cb76-6"><a></a></span>
+<span id="cb76-7"><a></a><span class="co"># Create a cross-table using xtabs</span></span>
+<span id="cb76-8"><a></a>cross_table_xtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count <span class="sc">~</span> Risk<span class="sc">+</span>Outcome, <span class="at">data =</span> source_data)</span>
+<span id="cb76-9"><a></a>cross_table_xtabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Outcome
+Risk        Case Control
+  Control     18     199
+  Treatment   22     216</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-12-2">
+<p>Calculate the relevant measure of association and provide a 95% confidence interval.</p>
+</div>
+<div id="tabset-12-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">library</span>(epitools)</span>
+<span id="cb78-2"><a></a><span class="fu">epitab</span>(cross_table_xtabs,<span class="at">method=</span><span class="st">"riskratio"</span>,<span class="at">pvalue=</span><span class="st">"chi2"</span>,<span class="at">rev=</span><span class="st">"columns"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$tab
+           Outcome
+Risk        Control        p0 Case         p1 riskratio     lower    upper
+  Control       199 0.9170507   18 0.08294931  1.000000        NA       NA
+  Treatment     216 0.9075630   22 0.09243697  1.114379 0.6145682 2.020672
+           Outcome
+Risk          p.value
+  Control          NA
+  Treatment 0.7211157
+
+$measure
+[1] "wald"
+
+$conf.level
+[1] 0.95
+
+$pvalue
+[1] "chi2"</code></pre>
+</div>
+</div>
+<p>The relative risk is 1.114 with a 95% confidence interval: (0.615,2.021). The resulting p-value from the chi-squared approximation is 0.72. At a significance level of 0.05, we fail to reject the null hypothesis. We have insufficient evidence to conclude that there is a difference in risk of experiencing preterm labor between those who exercise extensively and those who did not.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3" class="slide level2">
+<h2>Exercise</h2>
+<p>The table shows 3970 subjects classified as cases or noncases of obesity and also classified according to smoking status of the mother during pregnancy (the risk factor).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a>source_data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb80-2"><a></a>  <span class="at">Risk=</span> <span class="fu">c</span>(<span class="st">"Present"</span>,<span class="st">"Present"</span>,<span class="st">"Absent"</span>,<span class="st">"Absent"</span>),</span>
+<span id="cb80-3"><a></a>  <span class="at">Outcome =</span> <span class="fu">c</span>(<span class="st">"Case"</span>, <span class="st">"Control"</span>, <span class="st">"Case"</span>, <span class="st">"Control"</span>),</span>
+<span id="cb80-4"><a></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">64</span>,<span class="dv">342</span>,<span class="dv">68</span>,<span class="dv">3496</span>)</span>
+<span id="cb80-5"><a></a>)</span>
+<span id="cb80-6"><a></a></span>
+<span id="cb80-7"><a></a><span class="co"># Create a cross-table using xtabs</span></span>
+<span id="cb80-8"><a></a>cross_table_xtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count <span class="sc">~</span> Risk<span class="sc">+</span>Outcome, <span class="at">data =</span> source_data)</span>
+<span id="cb80-9"><a></a>cross_table_xtabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Outcome
+Risk      Case Control
+  Absent    68    3496
+  Present   64     342</code></pre>
+</div>
+</div>
+<h3 id="question-10">Question</h3>
+<ul>
+<li>Is this study a prospective or a retrospective study?</li>
+<li>Calculate the appropriate measure of association to report for this study. Provide a 95% confidence interval.</li>
+</ul>
+<h3 id="answer-10">Answer</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a><span class="fu">epitab</span>(cross_table_xtabs,<span class="at">method=</span><span class="st">"oddsratio"</span>,<span class="at">rev=</span><span class="st">"columns"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$tab
+         Outcome
+Risk      Control         p0 Case        p1 oddsratio    lower    upper
+  Absent     3496 0.91089109   68 0.5151515  1.000000       NA       NA
+  Present     342 0.08910891   64 0.4848485  9.620915 6.719328 13.77549
+         Outcome
+Risk           p.value
+  Absent            NA
+  Present 2.709464e-30
+
+$measure
+[1] "wald"
+
+$conf.level
+[1] 0.95
+
+$pvalue
+[1] "fisher.exact"</code></pre>
+</div>
+</div>
+<p>This is a retrospective study. The appropriate measure of association is the odds ratio. The estimated odds ratio is 9.62, with a 95% confidence interval: (6.72,13.78). The confidence interval shows that children with obesity are more likely to have had mothers who smoked than those without obesity.</p>
 
 
 </section></section>
@@ -1775,7 +1928,7 @@ McNemar's chi-squared = 2.1176, df = 1, p-value = 0.1456</code></pre>
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/madfudolig\.quarto\.pub\/introtobiostats");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
