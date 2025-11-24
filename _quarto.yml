@@ -39,6 +39,8 @@ website:
             text: Lecture 9.1 - Other Regression Techniques
           - href: lecture10.qmd
             text: Lecture 10 - Analysis of Frequencies
+          - href: lecture11.qmd
+            text: Lecture 11 - Selected Nonparametric Methods
       - section: "Problem Sets"
         href: problemsets.qmd
         contents:

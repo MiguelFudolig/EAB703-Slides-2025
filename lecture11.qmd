@@ -1,0 +1,700 @@
+---
+title: "Selected Nonparametric Methods"
+subtitle: Lecture 11
+format:
+  revealjs:
+    theme: clean.scss
+    scrollable: true
+    footer: "Lecture 11 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    menu: true
+    code-annotations: hover
+    chalkboard: true
+    engine: knitr
+    echo: true
+    code-fold: false
+    
+  pdf: 
+    number-sections: true
+    engine: knitr
+bibliography: references.bib
+---
+
+# Outline
+
+- Nonparametric Statistics
+- Test for Normality
+- One-Sample Wilcoxon Test
+- Paired-Sample Test
+- Two-Sample  Test
+- Kruskal-Wallis Test
+- Spearman Correlation
+
+# Nonparametric Statistics
+
+## What is Non-Parametric Statistics?
+
+Most of the inferential statistical procedures we have discussed so far can be classified as *parametric methods*.
+
+::: callout-note
+Parametric methods are based on statistical parameters like the mean, proportion, or variance.
+
+An examle of a test that did not use any statistical parameter assumption are the chi-square tests.
+:::
+
+## Nonparametric Tests
+
+:::: panel-tabset
+### Advantages
+
+::: callout-note
+## Unknown form of sampled population
+Nonparametric tests allow us to develop tests that do not involve parameters. Hence, they may be used when the form of the sampled population is unknown.
+:::
+
+::: callout-note
+## Small Sample Size
+Nonparametric tests can be applied to small data sets and are generally easy to do computationally.
+:::
+
+### Disadvantages
+
+::: callout-note
+## Lower power
+Nonparametric tests may have less power compared to some parametric tests.
+:::
+
+::: callout-note
+## Economics of Scale
+Nonparametric tests may be tedious to apply to large data sets.
+:::
+
+::: callout-note
+## Ties
+For rank-based tests, some methods assume that there are no "ties" in ranking, hence adjustments need to be performed if ties are present.
+:::
+::::
+
+# Tests for Normality
+
+## Formal Tests for Normality
+
+There are nonparametric tests that can be used to test if a variable measured in a data set follow a Gaussian distribution.
+
+::: callout-note
+The Shapiro-Wilks test is a common test for normality. 
+
+The Kolgomorov-Smirnov (K-S),Anderson-Darling and Lilliefors tests are also used.
+:::
+
+::: panel-tabset
+### Notes about K-S
+
+The K-S test can be used for any given reference probability distribution or to compare if two samples came from the same distribution.
+
+### Lilliefors Test
+
+The Lilliefors test is an improvement on the K-S test for the normality assumption.
+:::
+
+
+## Statistical Hypotheses
+::: callout-important
+
+For all these tests, the null hypothesis is that the data follow the normal distribution. The alternative hypothesis is that the data does not follow the normal distribution.
+
+Rejecting the null hypothesis means we have sufficient evidence of a deviation from the normal distribution.
+:::
+
+## `R` implementation
+
+The Kolgomorov-Smirnov test can be implemented using the `ks.test()` function in `R`.
+
+# One-Sample tests
+
+## Wilcoxon Signed-Rank Test for Location
+
+The Wilcoxon Signed-Rank Test for Location is used when we want to test a mean, but neither $z$ or $t$ are appropriate.
+
+::: callout-note
+## Assumptions
+
+The Wilcoxon test assumes the following about the data:
+
+- The sample is random
+- The random variable is continuous
+- The population is symmetric about its mean.
+- The measurement scale is at least interval.
+:::
+
+## Statistical Hypotheses
+
+Unlike the one-sample t-test or z-test that hypothesize about the mean, the hypothesis of the one-sample Wilcoxon test involves the median (assuming the symmetry assumption holds).
+
+The null hypothesis is that the median of the data set, $\tilde{\mu}$ is equal to a null value $\tilde{\mu}_0$.
+
+$$
+H_0: \tilde{\mu}=\tilde{\mu}_0
+$$
+
+The alternative can be one-sided ($\tilde{\mu}> \tilde{\mu}_0$ or $\tilde{\mu}< \tilde{\mu}_0$) or two-sided ($\tilde{\mu}\neq \tilde{\mu}_0$).
+
+## How it Works
+
+- The difference between the data points and the null value are calculated
+- These differences are then ranked from highest to lowest. If the difference is zero, it is ignored.
+- Reapply the original signs to these ranks
+- Sum the positive and negative ranks to obtain the test statistic.
+- The test statistic is the lower value between the absolute value of the sums of the positive and negative ranks.
+
+## `R` Implementation
+
+The `wilcox.test()` function can be used to perform a one-sample Wilcoxon-test in `R`. For a vector x in a data frame `df` and a null value `m0`, an example code of a two-sided test can be written as
+
+
+```{.r}
+wilcox.test(df$x,mu=mu0,alternative="two.sided")
+```
+
+## Example
+
+Consider the sleep health data set in `SleepHealthData.csv`.
+
+```{r}
+library(tidyverse)
+sleep <- read.csv("SleepHealthData.csv")
+glimpse(sleep)
+```
+::: panel-tabset
+### Question
+Use the one-sample Wilcoxon test to test whether the median 
+stress level for the sampled population is higher than 4.5. 
+
+### Answer
+
+The statistical hypothesis can be written as:
+
+$$
+H_0: \tilde{\mu}=4.5; H_a: \tilde{\mu}> 4.5
+$$
+
+```{r}
+wtest <- wilcox.test(sleep$stress_level,mu=4.5,alternative = "greater")
+wtest
+```
+The p-value is `r wtest$p.value`, which is less than 0.05. We reject the null hypothesis. We have sufficient evidence that the median stress level of the sampled population is greater than 4.5.
+
+We can also visually check if this makes sense using a box plot
+
+```{r}
+ggplot(data=sleep,aes(x=NULL,y=stress_level)) + 
+  geom_boxplot() + 
+  geom_hline(aes(yintercept=4.5),color="red")+
+  theme_bw() + 
+  labs(y="Stress Level")
+```
+
+:::
+
+## Notes
+
+If the assumption about the symmetry of the data set is not satisfied, the Wilcoxon test might have faulty results about the inference involving medians.
+
+:::: panel-tabset
+### Warning
+::: callout-warning
+Note that the test statistic is based on the ranked differences and that zero differences are ignored. This means that if the data is asymmetric and the assumed median is part of the data set, it might lead to a significant result even if the medians are the same.
+
+If we are interested in a pure test of medians for a skewed sample, the **sign test** might be a better alternative.
+:::
+### Sign test
+
+The `BSDA` package includes the `SIGN.test()` function that can be used to run the sign test.
+::::
+
+## Exercise
+
+Consider the sleep health data set in `SleepHealthData.csv`.
+
+```{r}
+library(tidyverse)
+sleep <- read.csv("SleepHealthData.csv")
+glimpse(sleep)
+```
+::: panel-tabset
+### Question
+Use the one-sample Wilcoxon test to test whether the median 
+physical activity level for the sampled population is not equal to 60.
+
+### Answer
+
+The statistical hypothesis can be written as:
+
+$$
+H_0: \tilde{\mu}=60; H_a: \tilde{\mu}\neq 60
+$$
+
+```{r}
+wtest <- wilcox.test(sleep$physical_activity_level,mu=60,alternative = "two.sided")
+wtest
+```
+We can also visually check if this makes sense using a box plot
+
+```{r}
+ggplot(data=sleep,aes(x=NULL,y=physical_activity_level)) + 
+  geom_boxplot() + 
+  geom_hline(aes(yintercept=60),color="red")+
+  theme_bw() +
+  labs(y="Physical Activity Level")
+```
+:::
+
+# Paired-Samples Test
+
+## Paired-Samples Test
+
+the Wilcoxon signed-rank test can be used to test for a difference between paired samples. 
+
+::: callout-note
+This is the non-parametric equivalent of a paired t-test.
+:::
+
+## Statistical Hypotheses
+
+The hypothesis of the paired-sample Wilcoxon signed rank test involves the median of the paired difference.
+
+The null hypothesis is that the median of the data set, $\tilde{\mu}_d$ is equal to a null value $\tilde{\mu}_{d,0}$.
+
+$$
+H_0: \tilde{\mu}_d=\tilde{\mu}_{d,0}
+$$
+
+The alternative can be one-sided ($\tilde{\mu}_d>\tilde{\mu}_{d,0}$ or $\tilde{\mu}_d<\tilde{\mu}_{d,0}$) or two-sided ($\tilde{\mu}_d\neq\tilde{\mu}_{d,0}$).
+
+::: callout-tip
+The null value commonly used is 0 (null hypothesis of equality).
+:::
+
+## `R` Implementation
+
+The `wilcox.test()` can also be used for paired data. For a data frame `df` with paired data `x1` and `x2` and a one-sided "less" alternative hypothesis , the sample code would look like:
+
+```{.r}
+wilcox.test(x=df$x1,y=df$x2,paired=T,alternative="less")
+```
+
+## Example
+
+The following data set `example` shows data from research that investigated the possible beneficial effects of singing on wellbeing during a single singing lesson. One of the variables of interest was the change in cortisol as a result of the singing lesson. 
+
+```{r}
+example <- data.frame(
+  before=c(214,362,202,158,403,219,307,331),
+  after=c(232,276,224,412,562,203,340,313)
+)
+glimpse(example)
+```
+
+::: panel-tabset
+### Question
+
+Use the Wilcoxon Signed-Rank Test to test whether the cortisol levels increased after singing.
+
+### Answer
+
+The alternative hypothesis is one-sided because of the direction assumed in the problem. We assume that $\tilde{\mu}_d$ is calculated as `before`-`after` Hence, the hypotheses can be written as:
+
+$$
+H_0: \tilde{\mu}_d=0;H_0: \tilde{\mu}_d>0
+$$
+
+```{r}
+wtest <- wilcox.test(x=example$before,y=example$after,paired=T,alternative="less",correct=TRUE)
+wtest
+```
+The resulting Wilcoxon test p-value is `r wtest$p.value`. We fail to reject the null hypothesis at the significance level of 0.05. We have insufficient evidence to claim that the cortisol levels increased after singing.
+
+
+:::
+
+## Exercise
+
+The data set `anorexia` from the package `MASS` contains weight change data for young female anorexia patients.
+
+```{r}
+library(MASS)
+library(tidyverse)
+glimpse(anorexia)
+```
+
+::: panel-tabset
+### Question
+
+Perform a paired-sample non-parametric test to test whether there is a difference between the preweight `prewt` and `postwt` for all patients, disregarding the type of treatment. Use a significance level of 0.05.
+
+### Answer
+
+The alternative hypothesis is two-sided. We assume that $\tilde{\mu}_d$ is calculated as `Postwt`-`Prewt` Hence, the hypotheses can be written as:
+
+$$
+H_0: \tilde{\mu}_d=0;H_0: \tilde{\mu}_d\neq 0
+$$
+
+```{r}
+wtest <- wilcox.test(x=anorexia$Postwt,y=anorexia$Prewt,paired=T,alternative="two.sided")
+wtest
+```
+
+The p-value is `r wtest$p.value`. We reject the null hypothesis at the 0.05 level of significance. There is sufficient evidence to conclude that there is a difference in post-weight and pre-weight scores across the sample.
+:::
+
+
+# Two-Sample Test
+
+## Mann-Whitney U Test
+
+The Mann-Whitney U Test is equivalent to the two-sample Wilcoxon test. 
+
+::: callout-note
+## Assumptions
+
+The Mann-Whitney test assumes the following:
+
+- The two samples are independent and randomly drawn from their respective populations
+- The measurement scale is at least ordinal
+- The variable of interest is continuous
+- If the populations differ at all, they differ only with respect to their medians.
+:::
+
+## Statistical Hypotheses
+
+The null hypothesis for the Mann-Whitney U test is that there is no difference between the distribution of the two independent groups. 
+
+::: callout-note
+The distribution can be measured using the median or sometimes, the mean of the ranks.
+
+:::
+
+The alternative hypotheses can be:
+
+- One-sided: One group tends to have higher or lower values than the other
+- Two-sided: There is a difference between the distributions of the two groups.
+
+## The $U$ Statistic
+
+To calculate the test statistic: 
+
+- Assign ranks to the values from the two groups pooled together in order from smallest to largest.
+- Sum the ranks of each group.
+- Calculate the $U_j$ value as:
+
+$$
+U_1 = n_1n_2 + n_1(n_1+1)/2 - \sum_iR_{i1}
+$$
+
+$$
+U_2 = n_1n_2 + n_2(n_2+1)/2 - \sum_iR_{i2}
+$$
+
+- The test statistic is the lower value between $U_1$ and $U_2$.
+
+## `R` implementation
+
+The `wilcox.test()` function can implement the Mann-Whitney U test for independent groups. The syntax is similar to the paired-samples test but specifying that `paired=FALSE`.
+
+```{.r}
+wilcox.test(x=df$x1,y=df$x2,alternative="less")
+```
+
+If the grouping variable and the response variables are defined as two distinct columns, we can use the formula notation as well.
+
+```{.r}
+wilcox.test(response~grouping,data=df,alternative="less")
+```
+
+## Example
+
+Consider the data set `SleepHealthData.csv`.
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+glimpse(sleep)
+```
+::: panel-tabset
+### Question
+
+Use the Mann-Whitney U test to determine if there is a difference in quality of sleep between males and females.
+
+### Answer
+
+The alternative hypothesis should be two-sided because of the lack of directionality specified in the difference that we want to detect.
+
+The null hypothesis is that there is no difference in quality of sleep between males and females, while the alternative hypothesis is that there is a difference in quality of sleep between males and females.
+
+```{r}
+wtest<- wilcox.test(quality_of_sleep~gender,data=sleep,alternative="two.sided")
+wtest 
+```
+The resulting p-value is `r wtest$p.value`. We reject the null hypothesis. We have sufficient evidence to conclude that there is a difference in quality of sleep between males and females.
+
+```{r}
+ggplot(data=sleep,aes(x=gender,y=quality_of_sleep))+
+  geom_boxplot() + 
+  theme_bw() + 
+  labs(y="Quality of Sleep",x="Gender")
+```
+
+
+### Violin Plot
+
+```{r}
+ggplot(data=sleep,aes(x=gender,y=quality_of_sleep))+
+  geom_violin() + 
+  theme_bw() + 
+  labs(y="Quality of Sleep",x="Gender")
+```
+
+:::
+
+## Exercise
+
+Consider the sleep health data set `SleepHealthData.csv`.
+
+```{r}
+sleep <- read.csv("SleepHealthData.csv")
+glimpse(sleep)
+```
+
+::: panel-tabset
+### Question
+
+Use the Mann-Whitney U test to determine if there is a difference in daily steps between males and females.
+
+### Answer
+
+The alternative hypothesis should be two-sided because of the lack of directionality specified in the difference that we want to detect.
+
+The null hypothesis is that there is no difference in daily number of steps between males and females, while the alternative hypothesis is that there is a difference in daily number of steps between males and females.
+
+```{r}
+wtest<- wilcox.test(daily_steps~gender,data=sleep,alternative="two.sided")
+wtest 
+```
+
+The resulting p-value is `r wtest$p.value`. We fail to reject the null hypothesis at the 0.05 level of significance. We have insufficient evidence to conclude that there is a difference in number of daily steps between males and females.
+
+```{r}
+ggplot(data=sleep,aes(x=gender,y=daily_steps))+
+  geom_boxplot() + 
+  theme_bw() + 
+  labs(y="Number of Steps (Daily)",x="Gender")
+```
+
+
+### Violin Plot
+
+```{r}
+ggplot(data=sleep,aes(x=gender,y=daily_steps))+
+  geom_violin() + 
+  theme_bw() + 
+  labs(y="Number of Steps (Daily)",x="Gender")
+```
+
+:::
+
+# ANOVA-like Tests
+
+## ANOVA-like tests
+
+There are non-parametric tests that compare the distributions of more than two groups.
+
+::: callout-important
+The Kruskal-Wallis Rank Sum test works similarly to the one-way ANOVA, while the Friedman's test works similarly to the two-way ANOVA. Both use assumptions that are the same as the Mann-Whitney test for two independent samples.
+:::
+
+## Statistical Hypotheses: Kruskal-Wallis Test
+
+The null hypothesis of the Kruskal-Wallis Rank Sum Test states that there is no difference in the distribution of the response variable across the different groups. 
+
+The alternative hypothesis states that there is at least one group that has a different distribution of the response variable across the different groups.
+
+::: callout-note
+This can be stated in terms of medians, similar to how ANOVA was stated in terms of means.
+:::
+
+## `R` implementation
+
+The `kruskal.test()` function implements the Kruskal-Wallis test. The function works best with the formula notation.
+
+```{.r}
+kruskal.test(response~group,data=df)
+```
+
+## Example
+
+Consider the `penguins` data set in `R`.
+
+```{r}
+library(tidyverse)
+glimpse(penguins)
+```
+
+::: panel-tabset
+### Question
+
+Use the Kruskal-Wallis test to test for a difference between the body mass across the different years (2007,2008,2009).
+
+### Answer
+
+The null hypothesis is that there is no difference in the distribution of body mass of the penguins across the different years. The alternative is that at least one year is different from the others.
+
+```{r}
+ktest <- kruskal.test(body_mass~as.factor(year),data=penguins)
+ktest
+```
+The resulting p-value is `r ktest$p.value`. At 0.05 level of significance, we fail to reject the null hypothesis. We have insufficient evidence that there is at least one year with a different distribution of body mass compared to the others.
+
+```{r}
+ggplot(data=penguins,aes(x=as.factor(year),y=body_mass)) + 
+  geom_boxplot() + 
+  theme_bw() + 
+  labs(x="Year",y="Body Mass of Penguins")
+```
+
+### Violin Plot
+
+```{r}
+ggplot(data=penguins,aes(x=as.factor(year),y=body_mass)) + 
+  geom_boxplot() +
+  geom_violin(aes(fill=as.factor(year)),alpha=0.5) + 
+  theme_bw() + 
+  labs(x="Year",y="Body Mass of Penguins",fill="Year")
+```
+:::
+
+## Exercise
+
+Consider the `iris` data set in `R`.
+
+```{r}
+glimpse(iris)
+```
+::: panel-tabset
+### Question
+
+Use the Kruskal-Wallis test to test for a difference between the petal widths of the species of iris.
+
+### Answer
+
+The null hypothesis is that there is no difference in petal widths of the species of iris. the alternative hypothesis is that there is at least one species that has a different distribution of petal widths compared to the others.
+
+```{r}
+ktest <- kruskal.test(Petal.Width~Species,data=iris)
+ktest
+```
+
+The p-value is `r ktest$p.value`. At the 0.05 level of significance, we reject the null hypothesis. We have sufficient evidence that at least one species has a different distribution of petal widths compared to the others.
+
+```{r}
+ggplot(data=iris,aes(x=Species,y=Petal.Width)) + 
+  geom_boxplot() + 
+  theme_bw() + 
+  labs(x="Species",y="Petal Width")
+```
+
+### Violin Plot
+
+```{r}
+ggplot(data=iris,aes(x=Species,y=Petal.Width)) + 
+  geom_boxplot() +
+  geom_violin(aes(fill=Species),alpha=0.5) + 
+  scale_fill_discrete(palette="viridis") +
+  theme_bw() + 
+  labs(x="Species",y="Petal Width",fill="Species")
+```
+:::
+
+# Non-Parametric Correlation Tests
+
+## Spearman Correlation
+
+Recall Lecture 9: The Spearman correlation coefficient is a measure of association that measures monotonic correlation between the two variables.
+
+::: callout-important
+The Spearman correlation coefficient is based on the data ranks, and can be used if the Pearson correlation assumptions are not met.
+:::
+
+## Statistical Hypotheses
+
+The null hypothesis is that there is no association between the two variables. The alternative hypothesis can be one-sided (negative or positive association) or two-sided (there is an association).
+
+## `R` Implementation
+
+The function `cor.test()` can perform a test for the Spearman correlation, as long as the method is specified.
+
+::: callout-warning
+If the method (`method="spearman"`) is unspecified, `cor.test()` defaults to the Pearson correlation coefficient.
+:::
+
+```{.r}
+cor.test(df$x,df$y,alternative="two.sided",method="spearman")
+```
+
+## Example
+
+Consider the sleep health data set `SleepHealthData.csv`.
+
+```{r}
+library(tidyverse)
+sleep <- read.csv("SleepHealthData.csv")
+glimpse(sleep)
+```
+
+::: panel-tabset
+### Question
+
+Calculate the Spearman correlation coefficient between the daily steps and sleep duration. Test for an association at the 0.01 level of significance.
+
+### Answer
+
+The null hypothesis is that there is no association between daily steps and sleep duration, while the alternative hypothesis is that there is an association between daily steps and sleep duration.
+
+```{r}
+ctest <- cor.test(sleep$daily_steps,sleep$sleep_duration,alternative="two.sided",method="spearman")
+ctest
+```
+
+The estimate of the Spearman correlation coefficient is `r round(ctest$estimate,4)`, corresponding to a p-value of `r ctest$p.value`. We fail to reject the null hypothesis. There is insufficient evidence of an association between the daily number of steps and sleep duration.
+
+:::
+
+## Exercise
+
+Consider the sleep health data set `SleepHealthData.csv`.
+
+```{r}
+library(tidyverse)
+sleep <- read.csv("SleepHealthData.csv")
+glimpse(sleep)
+```
+
+
+::: panel-tabset
+### Question
+
+Calculate the Spearman correlation coefficient between the daily steps and quality of sleep. Test for an association at the 0.01 level of significance.
+
+### Answer
+
+
+The null hypothesis is that there is no association between daily steps and quality of sleep, while the alternative hypothesis is that there is an association between daily steps and quality of sleep
+
+```{r}
+ctest <- cor.test(sleep$daily_steps,sleep$quality_of_sleep,alternative="two.sided",method="spearman")
+ctest
+```
+
+The estimate of the Spearman correlation coefficient is `r round(ctest$estimate,4)`, corresponding to a p-value of `r ctest$p.value`. We fail to reject the null hypothesis. There is insufficient evidence of an association between the daily number of steps and quality of sleep.
+:::
