@@ -61,7 +61,10 @@ e.	At a significance level of 0.001, do we have sufficient evidence that the ave
 
 Yes, we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline.
 
-2.	The file aaqol_subset.csv includes data from the 2015 Asian American Quality of Life survey implemented in Austin, TX. We are interested to test whether there is a difference in average age across the different Asian ethnicities represented in the study.
+
+## Problem 2
+
+The file aaqol_subset.csv includes data from the 2015 Asian American Quality of Life survey implemented in Austin, TX. We are interested to test whether there is a difference in average age across the different Asian ethnicities represented in the study.
 
 ```{r}
 aaqol <- read.csv("datasets/aaqol_subset.csv")
@@ -99,7 +102,10 @@ contrast(em_mod_lm,method="pairwise",adjust="tukey")
 
 At a significance level of 0.05, Asian Indian (39.6) and Korean (45.4) participants yielded evidence of a pairwise difference in average ages, with an estimated difference of -5.82, test statistic of 3.483, and p-value of 0.0047. Other comparisons did not yield any evidence of a difference.
 
-3.	The data set socmed.csv includes the PHQ-9 scores of freshman and senior students. The students were also asked about their social media use (socmed, levels = low, high) and gaming habits (levels =yes,no) on their electronic devices.
+
+## Problem 3
+
+The data set socmed.csv includes the PHQ-9 scores of freshman and senior students. The students were also asked about their social media use (socmed, levels = low, high) and gaming habits (levels =yes,no) on their electronic devices.
 
 ```{r}
 socmed <- read.csv("datasets/socmed.csv")

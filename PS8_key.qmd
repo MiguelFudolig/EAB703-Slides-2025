@@ -1,0 +1,144 @@
+---
+title: "Problem Set 8 Key"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## Problem 1
+
+The dataset penguins preloaded in R includes data on the size and sex of adult penguins in the Palmer Archipelago. Suppose we are interested in testing for a correlation between body mass and flipper length.
+
+```{r}
+glimpse(penguins)
+```
+
+a.	Estimate the correlation coefficient for the sample and provide 95% confidence interval. [2 pts.]
+
+```{r}
+ctest <- cor.test(penguins$body_mass,penguins$flipper_len)
+ctest
+```
+
+b.	Perform a hypothesis test that tests whether there is a correlation between body mass and flipper length. What is the value of the test statistic? What is the p-value? [2pts.]
+
+```{r}
+ctest$statistic
+ctest$p.value
+```
+
+Or <2.2e-16
+
+c.	Is there evidence of a correlation between body mass and flipper length? Use a significance level of 0.01. [1 pt.]
+
+::: callout-note
+We reject the null hypothesis at the significance level of 0.01. There is sufficiet evidence of a correlation between body mass and flipper length.
+:::
+
+## Problem 2
+
+The Pima Indian Diabetes Dataset, uploaded as PimaIndiansDiabetes.csv on Canvas, contains information of 768 women from a population of Pima Indians near Phoenix, Arizona. Suppose we want to estimate the glucose levels based on BMI levels.
+
+```{r}
+pima <- read.csv("datasets/PimaIndiansDiabetes.csv")
+glimpse(pima)
+```
+
+
+a.	Estimate the best fit line using regression methods. What is the equation of the best fit line? [1pt.]
+
+```{r}
+mod1 <- lm(Glucose~BMI,data=pima)
+summary(mod1)
+```
+
+The equation of the best fit line is $\hat{y} = 88.5775 + 1.028*BMI$.
+
+
+b.	Create a scatter plot of the data using ggplot2. Include an overlay of the best fit line using geom_smooth(). Comment on the fit of the regression line on the data. [1pt.]
+
+```{r}
+ggplot(data=pima,aes(x=BMI,y=Glucose)) + 
+  geom_point() + 
+  geom_smooth(method="lm",se=F) + 
+  theme_bw()
+```
+
+c.	Is there evidence of an association between the glucose levels and BMI? Provide the value of the test statistic, p-value, and coefficient estimate. [2 pts.]
+`t=6.555`, p=1.04e-10, estimate $\beta=1.028$.
+
+$H_0:$ There is no association between glucose and BMI OR the coefficient of BMI in the regression model is zero. ($\beta=0$)
+
+$H_a:$ There is an association between glucose and BMI OR the coefficient of BMI in the regression model is not zero. ($\beta\neq 0$)
+
+At significance level of 0.05, we reject the null hypothesis. We have sufficient evidence that there is an association between glucose levels and BMI.
+
+d.	What is the coefficient of determination? [1 pt.]
+
+Coefficient of determination is the $R^2$. Based on the summary output, $R^2 = 0.05418$.
+
+e.	What is the predicted glucose level of an individual with a BMI of 25? Provide the 95% prediction interval. [2pts.]
+
+```{r}
+newdata <- data.frame(BMI=c(25))
+
+ predict(mod1,newdata,interval="prediction",level=0.95)
+
+
+```
+Predicted glucose level is 114.28, 95% prediction confidence interval: (55.7,172.8)
+
+## Problem 3
+
+The file FirstYearGPA.csv includes data from 219 first year students from a university in the United States. Suppose we want to predict the first-year GPA in college (variable GPA) based on gender (variable Male; 1=Male), if the student is FirstGen (1 = student is first in family to attend college), SAT verbal score (variable SATV), and SAT math score (variable SATM).
+
+```{r}
+first <- read.csv("datasets/FirstYearGPA.csv")
+glimpse(first)
+```
+
+a.	Estimate the best fit line using multiple linear regression. What is the equation of the best fit line? [1pt.]
+
+```{r}
+mod1 <- lm(GPA~Male+FirstGen+SATV + SATM,data=first)
+sum_mod <- summary(mod1)
+sum_mod
+```
+
+The best fit line is: $\hat{y} = 2.055-0.0077 \times Male - 0.1202 \times FirstGen + 0.0014 \times SATV + 0.0003 \times SATM$.
+
+
+
+b.	What is the result of the test of significance of regression? Is there evidence that at least one of the coefficients is non-zero? Use a significance level of 0.05. Provide the test statistic and the p-value [2 pts.]
+
+```{r}
+sum_mod$fstatistic
+```
+
+The p-value is 0.00014. We reject the null hypothesis. There is sufficient evidence that at least one of the coefficients is non-zero.
+
+
+c.	 If applicable, which predictors are associated with first year GPA? Use a significance level of 0.05. [2pts.]
+
+Only SATV yielded sufficient evidence of an association with first year GPA ($\beta=0.0014$, p=0.0010).
+
+d.	What is the adjusted coefficient of determination (adjusted R2) value? [ 1pt.]
+Adjusted $R^2$ is 0.08373.
+
+e.	Comment on the model fit based on model diagnostic plots. [2 pts.]
+
+```{r}
+plot(mod1)
+```
+
+Adjusted $R^2$ is low, indicative of poor model fit. Model assumptions seem to hold (no influential points, not a big deviation from normality, no evidence of unequal variance and nonlinearity).
+
+
+

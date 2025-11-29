@@ -1,0 +1,206 @@
+---
+title: "Problem Set 9 Key"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+```{r setup}
+library(tidyverse)
+library(epitools)
+```
+
+## Problem 1
+
+Suppose a newly developed statistics class was implemented across the different teaching modalities: asynchronous online, web-based, hybrid, and in-person. A researcher claims that the expected number of students who will fail the class when taught as an asynchronous online course is double that of other modalities, which are assumed to have similar failing rates. 2680 students were randomly assigned to the different class modalities (n=670 each).  90 students failed the asynchronous online course, 45 failed the web-based course, 30 students failed the hybrid course, and 38 failed the in-person course. Use the goodness-of-fit to test the researcher’s claim.
+
+a.	What are the expected probabilities of failure for each modality? [1pt.]
+
+If $p$ is the probability of failure for other modalities, asynchronous online course is $2p$. The expected probabilities can then be calculated as $2p + p + p + p = 1$, $p=0.2, 2p=0.4$.
+
+```{r}
+p <- c(0.4,0.2,0.2,0.2)
+```
+
+b.	What are the null and alternative hypotheses for this problem? [1pt.]
+
+Null hypothesis: The observed distribution of the number of failed students follows the expected distribution (twice as much for asynchronous online course compared to others).
+
+Alternative hypothesis: The observed distribution of the number of failed students does not follow the expected distribution (twice as much for asynchronous online course compared to others).
+
+c.	Implement the goodness-of-fit test. What is the value of the test statistic and the number of degrees of freedom for the corresponding chi-squared distribution? [1 pt.]
+
+```{r}
+ctest <- chisq.test(c(90,45,30,38),p=p)
+ctest
+```
+
+
+d.	Using 0.05 as the significance level, do we reject or fail to reject the null hypothesis? [1pt.]
+
+Fail to reject the null hypothesis.
+
+e.	Comment on the sufficiency of evidence against the null hypothesis. [1 pt.]
+
+We have insufficient evidence to claim that the observed distribution of the number of failed students does not follow the expected distribution.
+
+
+f.	Does the chi-squared assumption hold for this problem? [1pt.]
+
+```{r}
+ctest$expected
+```
+
+The expected number for each cell is above 5, hence the chi-squared assumption holds.
+
+## Problem 2
+
+The data set HINTS_smoking.csv contains a subset of the HINTS 6 data set. The columns included are the reported feelings about the participant’s household income (variable IncomeFeelings) and current e-cigarette use for those who have history reporting e-cigarette use (variable UseECigNow).
+
+```{r}
+smoke <- read.csv("datasets/HINTS_smoking.csv")
+glimpse(smoke)
+```
+
+a.	Use the test of independence to determine whether there is evidence that income feelings and current e-cigarette use are not independent. What are the null and alternative hypotheses? [1pt.]
+
+Null hypothesis: Income feelings and current e-cigarette use are independent.
+
+Alternative hypothesis: Income feelings and current e-cigarette use are not independent.
+
+b.	Implement the test of independence. What is the value of the test statistic and the number of degrees of freedom for the corresponding chi-squared distribution? [1 pt.]
+
+```{r}
+ctest <- chisq.test(smoke$IncomeFeelings,smoke$UseECigNow)
+ctest
+```
+
+The test statistic is $\chi^2=$ `r ctest$statistic` with `r ctest$parameter` degrees of freedom.
+
+c.	Using 0.05 as the significance level, do we reject or fail to reject the null hypothesis?
+
+The p-value is `r ctest$p.value`. We fail to reject the null hypothesis.
+
+
+d.	Comment on the sufficiency of evidence against the null hypothesis. [1pt.]
+
+Insufficient evidence that the income feelings and current e-cigarette use is not independent.
+
+e.	Does the chi-squared assumption hold for this problem? Why? [1pt.]
+
+```{r}
+ctest$expected
+```
+
+The chi-squared assumption holds (expected numbers all greater than 5).
+
+## Problem 3
+
+Suppose researchers wanted to investigate the prospective careers of graduating seniors from three different high schools. 200 graduating seniors were sampled from each school, and the results of the survey are given below.
+
+```{r}
+seniors <- data.frame(School= rep(c("A","B","C"),each=6),
+                      Track = rep(c("STEM","Trade","Healthcare","Business", "SS","Others"),times=3),
+                      Count=c(57,42,17,21,13,50,45,29,30,30,23,43,50,35,25,34,26,30))
+```
+
+```{r}
+crosstabs <- xtabs(Count~School+Track,data=seniors)
+crosstabs
+```
+
+a.	Use the test of homogeneity to determine whether the probabilities of pursuing a prospective track is homogeneous across the different schools. What are the null and alternative hypotheses? [1pt.]
+
+Null hypothesis: The marginal probabilities are homogeneous across the different schools.
+
+Alternative hypothesis: The marginal probabilities are not homogeneous across the different schools.
+
+b.	Implement the test of independence. What is the value of the test statistic and the number of degrees of freedom for the corresponding chi-squared distribution? [1 pt.]
+
+```{r}
+ctest <- chisq.test(crosstabs)
+ctest
+```
+
+c.	Using 0.05 as the significance level, do we reject or fail to reject the null hypothesis? [1pt.]
+
+Reject the null hypothesis.
+
+d.	Comment on the sufficiency of evidence against the null hypothesis. [1pt.]
+
+There is sufficient evidence that the marginal probabilities of being chosen as prospective career tracks are not homogeneous.
+
+e.	Does the chi-squared assumption hold for this problem? Why? [1pt.]
+
+```{r}
+ctest$expected
+```
+
+Chi-squared assumption holds (all expected counts > 5)
+
+4.	A randomized controlled trial was used to test the efficacy of a novel intervention to curb excessive recreational cannabis use. 100 participants were randomly assigned equally to two groups (n=50 each group): the treatment group that will receive the newly developed intervention, and a control group that will receive a knowledge-based intervention. The participants received treatment and were evaluated at the midpoint of the study. At this time, 19 participants in the treatment group and 7 participants in the control group reported improvement in controlling the urge to use cannabis recreationally.
+
+```{r}
+rct <- expand.grid(Treatment = c("Control","Intervention"),Outcome=c("Improvement","NoImprovement"))
+
+rct$Count <- c(7,19,50-7,50-19)
+
+crosstabs <- xtabs(Count~Treatment+Outcome,data=rct)
+crosstabs
+```
+
+
+
+a.	Is this a retrospective study or a prospective study? Why? [2pts.]
+
+
+Prospective study. The risk was assigned at the start of the study. The two cohorts were followed up to the outcome measurement.
+
+b.	Calculate the appropriate measure of association with the 95% confidence interval. [2pts.]
+
+::: callout-note
+The appropriate measure of association is the relative risk.
+:::
+
+```{r}
+epitab(crosstabs,method="riskratio",rev="columns")
+```
+
+The risk ratio is 2.71, with 95% CI: (1.24, 5.88).
+
+5.	Researchers studied the effect of cranberry juice in the treatment and prevention of Helicobacter pylori infection in mice. Researchers compared treatment with cranberry juice to “triple therapy (amoxicillin, bismuth subcitrate, and metronidazole) in mice infected with Helicobacter pylori. After 4 weeks, they examined the mice to determine the frequency of eradication of the bacterium in the two treatment groups.
+
+```{r}
+rct <- expand.grid(Treatment = c("Triple","Cranberry"),Outcome=c("Yes","No"))
+
+rct$Count <- c(8,2,2,8)
+
+crosstabs <- xtabs(Count~Treatment+Outcome,data=rct)
+crosstabs
+```
+
+ 
+a.	Calculate the expected values based on the assumption of homogeneity. [2pts.]
+
+```{r}
+ctest <- chisq.test(crosstabs)
+ctest$expected
+```
+
+b.	Does the chi-squared assumption hold? [1pt.]
+
+The expected values are not greater than 5, hence the chi-squared distribution assumption might not hold.
+
+c.	Perform the appropriate test to test for an association between treatment and the outcome. [2pts.] Hint: Exact tests are used for small expected counts.
+
+```{r}
+fishtest <- fisher.test(crosstabs)
+fishtest
+```
+The p-value is `r fishtest$p.value`, which is lower than 0.05. We reject the null hypothesis. There is sufficient evidence of an association between treatment and eradication of *H. pylori*.
+
+
+

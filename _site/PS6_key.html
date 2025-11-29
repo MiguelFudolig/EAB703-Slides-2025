@@ -4165,6 +4165,18 @@ window.Quarto = {
  <span class="menu-text">Problem Set 7 Key</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS8_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 8 Key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS9_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 9 Key</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -4179,6 +4191,9 @@ window.Quarto = {
   <ul>
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="PS6_key.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -4336,9 +4351,10 @@ Type: Character
 </ol>
 <p>At a 0.05 significance level, we fail to reject the null hypothesis. e. Do we have sufficient evidence to support the claim regarding health and wellness app use? [1pt]</p>
 <p>No, we have insufficient evidence to support the claim.</p>
-<ol start="3" type="1">
-<li>The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. Suppose you want to test if there is a difference between the variance of the baseline estradiol measurements (column estra) for current smokers and non-current smokers (column f1a).</li>
-</ol>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. Suppose you want to test if there is a difference between the variance of the baseline estradiol measurements (column estra) for current smokers and non-current smokers (column f1a).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>hflashes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;datasets/hflashes.csv&quot;</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hflashes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4394,12 +4410,10 @@ ratio of variances
 <li><p>Do we reject or fail to reject the null hypothesis? [1 pt.] We fail to reject the null hypothesis.</p></li>
 <li><p>Comment on the strength/sufficiency of evidence against the null hypothesis. [1pt] There is insufficient evidence to claim that there is a difference in the variance of the estradiol levels between smokers and non-smokers.</p></li>
 </ol>
-<ol start="4" type="1">
-<li>The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. Suppose you want to test if there is a difference between the long-run average of the baseline estradiol measurements (column estra) for current smokers and non-current smokers.</li>
-</ol>
-<ol type="a">
-<li>Based on your answer in (3d) and (3e), is it recommended to assume equal variances between the two groups? [1 pt.]</li>
-</ol>
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. Suppose you want to test if there is a difference between the long-run average of the baseline estradiol measurements (column estra) for current smokers and non-current smokers. a. Based on your answer in (3d) and (3e), is it recommended to assume equal variances between the two groups? [1 pt.]</p>
 <p>It is recommended to assume equal variances.</p>
 <ol start="2" type="a">
 <li>List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]</li>
@@ -4433,9 +4447,10 @@ mean in group 0 mean in group 1
 <li>Comment on the strength/sufficiency of evidence against the null hypothesis. [1pt]</li>
 </ol>
 <p>There is insufficient evidence to support the hypothesis that there is a difference in estradiol levels between smokers and non-smokers in this population.</p>
-<ol start="5" type="1">
-<li>A study was performed to investigate the association between acetaminophen use during pregnancy and the children’s risk of neurodevelopmental disorders. In a retrospective study that included 2,480,797 children, 185,909 children were exposed to acetaminophen and 2,294,888 were not. 5,912 children exposed to acetaminophen were diagnosed with autism, while 62,672 children were not exposed to acetaminophen. Suppose we were interested in whether there is a difference in proportion of children diagnosed with autism between the different exposures to acetaminophen.</li>
-</ol>
+</section>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>A study was performed to investigate the association between acetaminophen use during pregnancy and the children’s risk of neurodevelopmental disorders. In a retrospective study that included 2,480,797 children, 185,909 children were exposed to acetaminophen and 2,294,888 were not. 5,912 children exposed to acetaminophen were diagnosed with autism, while 62,672 children were not exposed to acetaminophen. Suppose we were interested in whether there is a difference in proportion of children diagnosed with autism between the different exposures to acetaminophen.</p>
 <ol type="a">
 <li>List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]</li>
 </ol>

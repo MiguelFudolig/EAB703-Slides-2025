@@ -4165,6 +4165,18 @@ window.Quarto = {
  <span class="menu-text">Problem Set 7 Key</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS8_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 8 Key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS9_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 9 Key</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -4178,6 +4190,8 @@ window.Quarto = {
    
   <ul>
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="PS7_key.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -4307,9 +4321,10 @@ mean difference
 <li>At a significance level of 0.001, do we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [1pt.]</li>
 </ol>
 <p>Yes, we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline.</p>
-<ol start="2" type="1">
-<li>The file aaqol_subset.csv includes data from the 2015 Asian American Quality of Life survey implemented in Austin, TX. We are interested to test whether there is a difference in average age across the different Asian ethnicities represented in the study.</li>
-</ol>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>The file aaqol_subset.csv includes data from the 2015 Asian American Quality of Life survey implemented in Austin, TX. We are interested to test whether there is a difference in average age across the different Asian ethnicities represented in the study.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>aaqol <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;datasets/aaqol_subset.csv&quot;</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(aaqol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4382,9 +4397,10 @@ P value adjustment: tukey method for comparing a family of 5 estimates </code></
 </div>
 </div>
 <p>At a significance level of 0.05, Asian Indian (39.6) and Korean (45.4) participants yielded evidence of a pairwise difference in average ages, with an estimated difference of -5.82, test statistic of 3.483, and p-value of 0.0047. Other comparisons did not yield any evidence of a difference.</p>
-<ol start="3" type="1">
-<li>The data set socmed.csv includes the PHQ-9 scores of freshman and senior students. The students were also asked about their social media use (socmed, levels = low, high) and gaming habits (levels =yes,no) on their electronic devices.</li>
-</ol>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>The data set socmed.csv includes the PHQ-9 scores of freshman and senior students. The students were also asked about their social media use (socmed, levels = low, high) and gaming habits (levels =yes,no) on their electronic devices.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>socmed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;datasets/socmed.csv&quot;</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(socmed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

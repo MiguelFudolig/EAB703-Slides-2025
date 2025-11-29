@@ -58,6 +58,10 @@ website:
             text: Problem Set 6 Key
           - href: PS7_key.qmd
             text: Problem Set 7 Key
+          - href: PS8_key.qmd
+            text: Problem Set 8 Key
+          - href: PS9_key.qmd
+            text: Problem Set 9 Key
 format:
   html:
     theme:
