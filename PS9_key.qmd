@@ -118,7 +118,7 @@ Null hypothesis: The marginal probabilities are homogeneous across the different
 
 Alternative hypothesis: The marginal probabilities are not homogeneous across the different schools.
 
-b.	Implement the test of independence. What is the value of the test statistic and the number of degrees of freedom for the corresponding chi-squared distribution? [1 pt.]
+b.	Implement the test of homogeneity. What is the value of the test statistic and the number of degrees of freedom for the corresponding chi-squared distribution? [1 pt.]
 
 ```{r}
 ctest <- chisq.test(crosstabs)
@@ -192,7 +192,7 @@ ctest$expected
 
 b.	Does the chi-squared assumption hold? [1pt.]
 
-The expected values are not greater than 5, hence the chi-squared distribution assumption might not hold.
+The expected values of each cell is equal to 5, which is a boundary case. The expected values are not greater than 5, hence the chi-squared distribution assumption might not hold. 
 
 c.	Perform the appropriate test to test for an association between treatment and the outcome. [2pts.] Hint: Exact tests are used for small expected counts.
 
