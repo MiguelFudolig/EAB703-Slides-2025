@@ -1,0 +1,102 @@
+---
+title: "Problem Set 10 Key"
+format: 
+  html: 
+    engine: knitr
+    embed-resources: true
+  pdf:
+    number-sections: true
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## Problem 1
+
+The dataset penguins preloaded in R includes data on the size and sex of adult penguins in the Palmer Archipelago. Suppose we are interested in testing for a correlation between body mass and flipper length.
+
+```{r}
+glimpse(penguins)
+```
+
+
+a.	Estimate the Spearman correlation coefficient for the sample. [2 pts.]
+
+```{r}
+ctest <- cor.test(penguins$body_mass,penguins$flipper_len,method = "spearman")
+ctest
+```
+
+The Spearman correlation coefficient is `r ctest$estimate`.
+
+b.	Perform a hypothesis test that tests whether there is a correlation between body mass and flipper length based on the Spearman correlation coefficient. What is the p-value? [2pts.]
+
+The p-value is <2.2e-16.
+
+c.	Is there evidence of a correlation between body mass and flipper length? Use a significance level of 0.01. [1 pt.]
+
+We reject the null hypothesis. There is sufficient evidence of a correlation between body mass and flipper length.
+
+## Problem 2
+
+The data set “acupuncture.csv” includes data from the control group of a randomized controlled trial investigating the effect of acupuncture therapy on headache severity. Each participant was identified using an ID number in the id column. The headache severity was measured for each participant before receiving the treatment and at a 3-month follow-up. The column pk1 includes the baseline headache severity score of the participants while the column pk2 includes the headache severity score after 3 months.
+
+```{r}
+acupuncture <- read.csv("datasets/acupuncture.csv")
+glimpse(acupuncture)
+```
+
+
+a.	Use a nonparametric test to test whether there is a difference between the average headache severity scores of the participants before receiving the treatment and the 3-month follow-up? Is the alternative hypothesis one-sided or two-sided? [3pt.]
+
+The alternative hypothesis is two-sided.
+
+$H_0:$ The median of the paired difference of headache scores is zero./ The distribution of the paired difference of headache scores is centered at zero.
+
+$H_a:$ The median of the paired difference of headache scores is not zero./ The distribution of the paired difference of headache scores is notcentered at zero.
+
+
+b.	What is the p-value? [1pt.]
+
+```{r}
+wtest <- wilcox.test(x=acupuncture$pk1,y=acupuncture$pk2,paired=T)
+wtest
+```
+
+The p-value is `r wtest$p.value`.
+
+c.	At a significance level of 0.001, do we have sufficient evidence that the average headache severity score in this cohort differs at the 3-month follow-up compared to the baseline? [1pt.]
+
+We reject the null hypothesis at 0.001 level of significance. We have sufficient evidence that the average headache seveiry score differs at the 3-month follow-up compared to the baseline.
+
+## Problem 3
+
+The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. 
+
+```{r}
+hflash <- read.csv("datasets/hflashes.csv")
+glimpse(hflash)
+```
+
+
+a.	Use a non-parametric test to determine if there is a difference in the distribution of baseline estradiol measurements (Variable estra) between current (Variable f1a=1) and non-current smokers (Variable f1a=0). [3 pts.]
+
+We use the independent 2-sample Wilcoxon test, also known as the Mann-Whitney U test. The hypotheses are:
+
+$H_0:$ The distribution/median of baseline estradiol measurements for current and non-current smokers are the same.
+$H_a:$ The distribution/median of baseline estradiol measurements for current and non-current smokers are not the same.
+
+
+```{r}
+wtest <- wilcox.test(estra~f1a,data=hflash)
+wtest
+```
+
+
+b.	What is the resulting p-value? [1 pt.]
+The p-value is `r wtest$p.value`.
+
+c.	Comment on the strength/sufficiency of evidence against the null hypothesis. [1pt]
+
+We fail to reject the null hypothesis. There is insufficient evidence that the distribution/median of baseline estradiol measurements for current and non-current smokers are not the same.
