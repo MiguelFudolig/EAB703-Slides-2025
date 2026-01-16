@@ -68,7 +68,7 @@ The p-value is `r wtest$p.value`.
 
 c.	At a significance level of 0.001, do we have sufficient evidence that the average headache severity score in this cohort differs at the 3-month follow-up compared to the baseline? [1pt.]
 
-We reject the null hypothesis at 0.001 level of significance. We have sufficient evidence that the average headache seveiry score differs at the 3-month follow-up compared to the baseline.
+We reject the null hypothesis at 0.001 level of significance. We have sufficient evidence that the average headache severity score differs at the 3-month follow-up compared to the baseline.
 
 ## Problem 3
 

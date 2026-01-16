@@ -169,7 +169,7 @@ The appropriate measure of association is the relative risk.
 epitab(crosstabs,method="riskratio",rev="columns")
 ```
 
-The risk ratio is 2.71, with 95% CI: (1.24, 5.88).
+The risk ratio is 2.71, with 95% CI: (1.25, 5.88).
 
 5.	Researchers studied the effect of cranberry juice in the treatment and prevention of Helicobacter pylori infection in mice. Researchers compared treatment with cranberry juice to “triple therapy (amoxicillin, bismuth subcitrate, and metronidazole) in mice infected with Helicobacter pylori. After 4 weeks, they examined the mice to determine the frequency of eradication of the bacterium in the two treatment groups.
 

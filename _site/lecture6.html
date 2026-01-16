@@ -975,12 +975,9 @@ precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
 <div id="tabset-6-2">
 <p>We need to calculate the proportion of patients reported to have metabolic syndrome.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">library</span>(summarytools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'summarytools' was built under R version 4.5.1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/Liver_Steatosis.csv"</span>)</span>
-<span id="cb27-2"><a></a>summarytools<span class="sc">::</span><span class="fu">freq</span>(liver<span class="sc">$</span>MET_Syndrome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">library</span>(summarytools)</span>
+<span id="cb25-2"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/Liver_Steatosis.csv"</span>)</span>
+<span id="cb25-3"><a></a>summarytools<span class="sc">::</span><span class="fu">freq</span>(liver<span class="sc">$</span>MET_Syndrome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 liver$MET_Syndrome  
@@ -996,19 +993,19 @@ Type: Integer
 </div>
 <p>Based on <code>freq</code>, the proportion of those with metabolic syndrome is 0.6735 out of a sample size of 441 (removed two missing). We now have everything we need to calculate the confidence interval.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">297</span><span class="sc">/</span><span class="dv">443</span></span>
-<span id="cb29-2"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">441</span></span>
-<span id="cb29-3"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
-<span id="cb29-4"><a></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)</span>
-<span id="cb29-5"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((phat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat)<span class="sc">/</span>sampsize))</span>
-<span id="cb29-6"><a></a></span>
-<span id="cb29-7"><a></a>lower <span class="ot">&lt;-</span> phat <span class="sc">-</span> relcoeff<span class="sc">*</span>se</span>
-<span id="cb29-8"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">297</span><span class="sc">/</span><span class="dv">443</span></span>
+<span id="cb27-2"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">441</span></span>
+<span id="cb27-3"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
+<span id="cb27-4"><a></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb27-5"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((phat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat)<span class="sc">/</span>sampsize))</span>
+<span id="cb27-6"><a></a></span>
+<span id="cb27-7"><a></a>lower <span class="ot">&lt;-</span> phat <span class="sc">-</span> relcoeff<span class="sc">*</span>se</span>
+<span id="cb27-8"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6265577</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>upper <span class="ot">&lt;-</span> phat <span class="sc">+</span> relcoeff<span class="sc">*</span>se</span>
-<span id="cb31-2"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>upper <span class="ot">&lt;-</span> phat <span class="sc">+</span> relcoeff<span class="sc">*</span>se</span>
+<span id="cb29-2"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7143001</code></pre>
 </div>
@@ -1046,7 +1043,7 @@ Type: Integer
 </div>
 <div id="tabset-7-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">freq</span>(sleep<span class="sc">$</span>sleep_disorder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">freq</span>(sleep<span class="sc">$</span>sleep_disorder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 sleep$_disorder  
@@ -1063,19 +1060,19 @@ Type: Character
 </div>
 <p>The proportion of participants who reported sleep apnea is 0.2086. The sample size is 374. We can now calculate a 90% confidence interval for the prevalence rate of sleep apnea based on this sample.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">78</span><span class="sc">/</span><span class="dv">374</span></span>
-<span id="cb35-2"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">374</span></span>
-<span id="cb35-3"><a></a>alpha <span class="ot">=</span> <span class="dv">1</span><span class="fl">-0.9</span></span>
-<span id="cb35-4"><a></a>relcoeff <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)</span>
-<span id="cb35-5"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((phat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat)<span class="sc">/</span>sampsize))</span>
-<span id="cb35-6"><a></a></span>
-<span id="cb35-7"><a></a>lower <span class="ot">&lt;-</span> phat <span class="sc">-</span> relcoeff<span class="sc">*</span>se</span>
-<span id="cb35-8"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">78</span><span class="sc">/</span><span class="dv">374</span></span>
+<span id="cb33-2"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">374</span></span>
+<span id="cb33-3"><a></a>alpha <span class="ot">=</span> <span class="dv">1</span><span class="fl">-0.9</span></span>
+<span id="cb33-4"><a></a>relcoeff <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb33-5"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((phat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat)<span class="sc">/</span>sampsize))</span>
+<span id="cb33-6"><a></a></span>
+<span id="cb33-7"><a></a>lower <span class="ot">&lt;-</span> phat <span class="sc">-</span> relcoeff<span class="sc">*</span>se</span>
+<span id="cb33-8"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.174001</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>upper <span class="ot">&lt;-</span> phat <span class="sc">+</span> relcoeff<span class="sc">*</span>se</span>
-<span id="cb37-2"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>upper <span class="ot">&lt;-</span> phat <span class="sc">+</span> relcoeff<span class="sc">*</span>se</span>
+<span id="cb35-2"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2431113</code></pre>
 </div>
@@ -1138,13 +1135,13 @@ n = z^2_{1-\alpha/2} \frac{ \hat{\pi}(1-\hat{\pi})}{E^2}
 </div>
 <div id="tabset-8-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>E <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb39-2"><a></a>pi_hat <span class="ot">&lt;-</span><span class="fl">0.5</span></span>
-<span id="cb39-3"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
-<span id="cb39-4"><a></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb39-5"><a></a></span>
-<span id="cb39-6"><a></a>sampsize <span class="ot">&lt;-</span> z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>pi_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_hat)<span class="sc">/</span>E<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb39-7"><a></a>sampsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>E <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb37-2"><a></a>pi_hat <span class="ot">&lt;-</span><span class="fl">0.5</span></span>
+<span id="cb37-3"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
+<span id="cb37-4"><a></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb37-5"><a></a></span>
+<span id="cb37-6"><a></a>sampsize <span class="ot">&lt;-</span> z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>pi_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_hat)<span class="sc">/</span>E<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb37-7"><a></a>sampsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 384.1459</code></pre>
 </div>
@@ -1177,13 +1174,13 @@ n = z^2_{1-\alpha/2} \frac{ \hat{\pi}(1-\hat{\pi})}{E^2}
 </div>
 <div id="tabset-9-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>E <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
-<span id="cb41-2"><a></a>pi_hat <span class="ot">&lt;-</span><span class="fl">0.32</span></span>
-<span id="cb41-3"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
-<span id="cb41-4"><a></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb41-5"><a></a></span>
-<span id="cb41-6"><a></a>sampsize <span class="ot">&lt;-</span> z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>pi_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_hat)<span class="sc">/</span>E<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb41-7"><a></a>sampsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>E <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
+<span id="cb39-2"><a></a>pi_hat <span class="ot">&lt;-</span><span class="fl">0.32</span></span>
+<span id="cb39-3"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
+<span id="cb39-4"><a></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb39-5"><a></a></span>
+<span id="cb39-6"><a></a>sampsize <span class="ot">&lt;-</span> z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>pi_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_hat)<span class="sc">/</span>E<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb39-7"><a></a>sampsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8359.014</code></pre>
 </div>
@@ -1237,12 +1234,12 @@ n = z^2_{1-\alpha/2} \frac{\hat{\sigma}^2}{E^2}
 </div>
 <div id="tabset-10-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.99</span></span>
-<span id="cb43-2"><a></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb43-3"><a></a>sigma <span class="ot">&lt;-</span> <span class="dv">300000</span><span class="sc">/</span><span class="dv">6</span></span>
-<span id="cb43-4"><a></a>E <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb43-5"><a></a>sampsize <span class="ot">&lt;-</span>z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>sigma<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb43-6"><a></a>sampsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.99</span></span>
+<span id="cb41-2"><a></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb41-3"><a></a>sigma <span class="ot">&lt;-</span> <span class="dv">300000</span><span class="sc">/</span><span class="dv">6</span></span>
+<span id="cb41-4"><a></a>E <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb41-5"><a></a>sampsize <span class="ot">&lt;-</span>z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>sigma<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb41-6"><a></a>sampsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 165.8724</code></pre>
 </div>
@@ -1263,12 +1260,12 @@ n = z^2_{1-\alpha/2} \frac{\hat{\sigma}^2}{E^2}
 </div>
 <div id="tabset-11-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.99</span></span>
-<span id="cb45-2"><a></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb45-3"><a></a>sigma <span class="ot">&lt;-</span> <span class="dv">300000</span><span class="sc">/</span><span class="dv">6</span></span>
-<span id="cb45-4"><a></a>E <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb45-5"><a></a>sampsize <span class="ot">&lt;-</span>z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>sigma<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb45-6"><a></a>sampsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.99</span></span>
+<span id="cb43-2"><a></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb43-3"><a></a>sigma <span class="ot">&lt;-</span> <span class="dv">300000</span><span class="sc">/</span><span class="dv">6</span></span>
+<span id="cb43-4"><a></a>E <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb43-5"><a></a>sampsize <span class="ot">&lt;-</span>z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>sigma<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb43-6"><a></a>sampsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 66348.97</code></pre>
 </div>
@@ -1380,12 +1377,12 @@ df = \frac{(s_1^2/n_1 + s_2^2/n_2)^2}{\left(\frac{s_1^2}{n_1}\right)^2/(n_1-1) +
 <div id="tabset-13-2">
 <p>The groups are not presented as two separate columns, but rather defined by another column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>confidence_int <span class="ot">&lt;-</span> <span class="fu">t.test</span>(age<span class="sc">~</span>gender,</span>
-<span id="cb47-2"><a></a>       <span class="at">data=</span>sleep,</span>
-<span id="cb47-3"><a></a>       <span class="at">var.equal=</span>T,</span>
-<span id="cb47-4"><a></a>       <span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
-<span id="cb47-5"><a></a></span>
-<span id="cb47-6"><a></a>confidence_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>confidence_int <span class="ot">&lt;-</span> <span class="fu">t.test</span>(age<span class="sc">~</span>gender,</span>
+<span id="cb45-2"><a></a>       <span class="at">data=</span>sleep,</span>
+<span id="cb45-3"><a></a>       <span class="at">var.equal=</span>T,</span>
+<span id="cb45-4"><a></a>       <span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
+<span id="cb45-5"><a></a></span>
+<span id="cb45-6"><a></a>confidence_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two Sample t-test
@@ -1417,12 +1414,12 @@ mean in group Female   mean in group Male
 <div id="tabset-14-2">
 <p>The groups are presented as two separate columns, hence we cannot use the formula notation. We have to define <code>x</code> and <code>y</code> in <code>t.test</code> to estimate the difference of averages in <code>x</code> and <code>y</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>yard<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"40yarddash.csv"</span>)</span>
-<span id="cb49-2"><a></a>confidence_int <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>yard<span class="sc">$</span>D1,<span class="at">y=</span>yard<span class="sc">$</span>D3,</span>
-<span id="cb49-3"><a></a>       <span class="at">var.equal=</span>F,</span>
-<span id="cb49-4"><a></a>       <span class="at">conf.level=</span><span class="fl">0.9</span>)</span>
-<span id="cb49-5"><a></a></span>
-<span id="cb49-6"><a></a>confidence_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>yard<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"40yarddash.csv"</span>)</span>
+<span id="cb47-2"><a></a>confidence_int <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>yard<span class="sc">$</span>D1,<span class="at">y=</span>yard<span class="sc">$</span>D3,</span>
+<span id="cb47-3"><a></a>       <span class="at">var.equal=</span>F,</span>
+<span id="cb47-4"><a></a>       <span class="at">conf.level=</span><span class="fl">0.9</span>)</span>
+<span id="cb47-5"><a></a></span>
+<span id="cb47-6"><a></a>confidence_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1453,12 +1450,12 @@ mean of x mean of y
 </div>
 <div id="tabset-15-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>confidence_int <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sleep_duration<span class="sc">~</span>gender,</span>
-<span id="cb51-2"><a></a>       <span class="at">data=</span>sleep,</span>
-<span id="cb51-3"><a></a>       <span class="at">var.equal=</span>T,</span>
-<span id="cb51-4"><a></a>       <span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
-<span id="cb51-5"><a></a></span>
-<span id="cb51-6"><a></a>confidence_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>confidence_int <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sleep_duration<span class="sc">~</span>gender,</span>
+<span id="cb49-2"><a></a>       <span class="at">data=</span>sleep,</span>
+<span id="cb49-3"><a></a>       <span class="at">var.equal=</span>T,</span>
+<span id="cb49-4"><a></a>       <span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
+<span id="cb49-5"><a></a></span>
+<span id="cb49-6"><a></a>confidence_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two Sample t-test
@@ -1502,7 +1499,7 @@ mean in group Female   mean in group Male
 <section id="r-implementation-1" class="slide level2">
 <h2><code>R</code> implementation</h2>
 <p>The function <code>prop.test()</code> can calculate the confidence intervals for the difference in proportions, even adding the continuity correction. Suppose the successes for each group are denoted by <code>x1</code> and <code>x2</code>, while the totals for each group are <code>n1</code> and <code>n2</code>.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">prop.test</span>(<span class="at">x=</span><span class="fu">c</span>(x1,x2), <span class="at">n=</span><span class="fu">c</span>(n1,n2),<span class="at">conf.level=</span><span class="fl">0.95</span>, <span class="at">correct=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">prop.test</span>(<span class="at">x=</span><span class="fu">c</span>(x1,x2), <span class="at">n=</span><span class="fu">c</span>(n1,n2),<span class="at">conf.level=</span><span class="fl">0.95</span>, <span class="at">correct=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For the resulting CI with the continuity correction, set <code>correct=TRUE</code>.</p>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -1522,7 +1519,7 @@ mean in group Female   mean in group Male
 <h2>Example</h2>
 <p>Consider the liver steatosis data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">Question</a></li><li><a href="#tabset-16-2">Answer</a></li></ul>
@@ -1532,8 +1529,8 @@ mean in group Female   mean in group Male
 </div>
 <div id="tabset-16-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">library</span>(summarytools)</span>
-<span id="cb55-2"><a></a><span class="fu">freq</span>(liver<span class="sc">$</span>LS_US)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">library</span>(summarytools)</span>
+<span id="cb53-2"><a></a><span class="fu">freq</span>(liver<span class="sc">$</span>LS_US)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 liver$LS_US  
@@ -1547,7 +1544,7 @@ Type: Numeric
        &lt;NA&gt;     22                               4.97         100.00
       Total    443    100.00         100.00    100.00         100.00</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">freq</span>(liver<span class="sc">$</span>LS_Biopsy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">freq</span>(liver<span class="sc">$</span>LS_Biopsy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 liver$LS_Biopsy  
@@ -1564,12 +1561,12 @@ Type: Numeric
 </div>
 <p>There are 295/421 positive diagnoses for the ultrasound group and 311/443 for the biopsy group.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>ptest<span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">295</span>,<span class="dv">311</span>),</span>
-<span id="cb59-2"><a></a>          <span class="at">n=</span><span class="fu">c</span>(<span class="dv">443-22</span>,<span class="dv">443</span>),</span>
-<span id="cb59-3"><a></a>          <span class="at">conf.level=</span><span class="fl">0.95</span>,</span>
-<span id="cb59-4"><a></a>          <span class="at">correct=</span><span class="cn">TRUE</span>)</span>
-<span id="cb59-5"><a></a></span>
-<span id="cb59-6"><a></a>ptest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>ptest<span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">295</span>,<span class="dv">311</span>),</span>
+<span id="cb57-2"><a></a>          <span class="at">n=</span><span class="fu">c</span>(<span class="dv">443-22</span>,<span class="dv">443</span>),</span>
+<span id="cb57-3"><a></a>          <span class="at">conf.level=</span><span class="fl">0.95</span>,</span>
+<span id="cb57-4"><a></a>          <span class="at">correct=</span><span class="cn">TRUE</span>)</span>
+<span id="cb57-5"><a></a></span>
+<span id="cb57-6"><a></a>ptest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     2-sample test for equality of proportions with continuity correction
@@ -1601,12 +1598,12 @@ sample estimates:
 <div id="tabset-17-2">
 <p>Without continuity correction,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>ptest<span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">23</span>,<span class="dv">14</span>),</span>
-<span id="cb61-2"><a></a>          <span class="at">n=</span><span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">35</span>),</span>
-<span id="cb61-3"><a></a>          <span class="at">conf.level=</span><span class="fl">0.99</span>,</span>
-<span id="cb61-4"><a></a>          <span class="at">correct=</span><span class="cn">FALSE</span>)</span>
-<span id="cb61-5"><a></a></span>
-<span id="cb61-6"><a></a>ptest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>ptest<span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">23</span>,<span class="dv">14</span>),</span>
+<span id="cb59-2"><a></a>          <span class="at">n=</span><span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">35</span>),</span>
+<span id="cb59-3"><a></a>          <span class="at">conf.level=</span><span class="fl">0.99</span>,</span>
+<span id="cb59-4"><a></a>          <span class="at">correct=</span><span class="cn">FALSE</span>)</span>
+<span id="cb59-5"><a></a></span>
+<span id="cb59-6"><a></a>ptest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     2-sample test for equality of proportions without continuity correction
@@ -1623,12 +1620,12 @@ prop 1 prop 2
 </div>
 <p>With the continuity correction,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>ptest<span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">23</span>,<span class="dv">14</span>),</span>
-<span id="cb63-2"><a></a>          <span class="at">n=</span><span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">35</span>),</span>
-<span id="cb63-3"><a></a>          <span class="at">conf.level=</span><span class="fl">0.99</span>,</span>
-<span id="cb63-4"><a></a>          <span class="at">correct=</span><span class="cn">TRUE</span>)</span>
-<span id="cb63-5"><a></a></span>
-<span id="cb63-6"><a></a>ptest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>ptest<span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">23</span>,<span class="dv">14</span>),</span>
+<span id="cb61-2"><a></a>          <span class="at">n=</span><span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">35</span>),</span>
+<span id="cb61-3"><a></a>          <span class="at">conf.level=</span><span class="fl">0.99</span>,</span>
+<span id="cb61-4"><a></a>          <span class="at">correct=</span><span class="cn">TRUE</span>)</span>
+<span id="cb61-5"><a></a></span>
+<span id="cb61-6"><a></a>ptest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     2-sample test for equality of proportions with continuity correction
@@ -1867,6 +1864,82 @@ prop 1 prop 2
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

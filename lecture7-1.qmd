@@ -18,7 +18,25 @@ format:
     
   pdf: 
     number-sections: true
-    engine: knitr
+    geometry:
+      - landscape
+      - margin=1in
+    include-in-header:
+      text: |
+        \usepackage{titlesec}
+        \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+        \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+        \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+        
+        % Syntax: \titlespacing{command}{left-sep}{before-sep}{after-sep}
+        \titlespacing{\section}{0pt}{12pt}{12pt}
+        % \titlespacing{\subsection}{0pt}{3in}{12pt}
+        \titlespacing{\subsubsection}{0pt}{3in}{10pt}
+        
+        % This forces a clearpage before every subsection
+        \let\oldsubsection\subsection
+        \renewcommand{\subsection}{\clearpage\oldsubsection}
+        
 bibliography: references.bib
 ---
 

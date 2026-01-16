@@ -3973,7 +3973,8 @@ window.Quarto = {
 };
 </script>
 
-<style type="text/css"></style>
+<style type="text/css">
+</style>
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light">
@@ -4176,6 +4177,12 @@ window.Quarto = {
  <span class="menu-text">Problem Set 9 Key</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PS10_key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 10 Key</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -4219,21 +4226,18 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package &#39;ggplot2&#39; was built under R version 4.5.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   4.0.0     ✔ tibble    3.2.1
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epitools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epitools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="problem-1" class="level2">
 <h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
@@ -4243,7 +4247,7 @@ window.Quarto = {
 </ol>
 <p>If <span class="math inline">\(p\)</span> is the probability of failure for other modalities, asynchronous online course is <span class="math inline">\(2p\)</span>. The expected probabilities can then be calculated as <span class="math inline">\(2p + p + p + p = 1\)</span>, <span class="math inline">\(p=0.2, 2p=0.4\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.4</span>,<span class="fl">0.2</span>,<span class="fl">0.2</span>,<span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.4</span>,<span class="fl">0.2</span>,<span class="fl">0.2</span>,<span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="a">
 <li>What are the null and alternative hypotheses for this problem? [1pt.]</li>
@@ -4254,8 +4258,8 @@ window.Quarto = {
 <li>Implement the goodness-of-fit test. What is the value of the test statistic and the number of degrees of freedom for the corresponding chi-squared distribution? [1 pt.]</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="fu">c</span>(<span class="dv">90</span>,<span class="dv">45</span>,<span class="dv">30</span>,<span class="dv">38</span>),<span class="at">p=</span>p)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ctest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="fu">c</span>(<span class="dv">90</span>,<span class="dv">45</span>,<span class="dv">30</span>,<span class="dv">38</span>),<span class="at">p=</span>p)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ctest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Chi-squared test for given probabilities
@@ -4276,7 +4280,7 @@ X-squared = 4.3645, df = 3, p-value = 0.2247</code></pre>
 <li>Does the chi-squared assumption hold for this problem? [1pt.]</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 81.2 40.6 40.6 40.6</code></pre>
 </div>
@@ -4287,8 +4291,8 @@ X-squared = 4.3645, df = 3, p-value = 0.2247</code></pre>
 <h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
 <p>The data set HINTS_smoking.csv contains a subset of the HINTS 6 data set. The columns included are the reported feelings about the participant’s household income (variable IncomeFeelings) and current e-cigarette use for those who have history reporting e-cigarette use (variable UseECigNow).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>smoke <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;datasets/HINTS_smoking.csv&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(smoke)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>smoke <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;datasets/HINTS_smoking.csv&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(smoke)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 814
 Columns: 2
@@ -4305,8 +4309,8 @@ $ UseECigNow     &lt;chr&gt; &quot;Not at all&quot;, &quot;Not at all&quot;, &qu
 <li>Implement the test of independence. What is the value of the test statistic and the number of degrees of freedom for the corresponding chi-squared distribution? [1 pt.]</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(smoke<span class="sc">$</span>IncomeFeelings,smoke<span class="sc">$</span>UseECigNow)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ctest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(smoke<span class="sc">$</span>IncomeFeelings,smoke<span class="sc">$</span>UseECigNow)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ctest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson&#39;s Chi-squared test
@@ -4328,7 +4332,7 @@ X-squared = 8.4758, df = 6, p-value = 0.2053</code></pre>
 <li>Does the chi-squared assumption hold for this problem? Why? [1pt.]</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                             smoke$UseECigNow
 smoke$IncomeFeelings                           Everyday Not at all Some days
@@ -4344,13 +4348,13 @@ smoke$IncomeFeelings                           Everyday Not at all Some days
 <h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
 <p>Suppose researchers wanted to investigate the prospective careers of graduating seniors from three different high schools. 200 graduating seniors were sampled from each school, and the results of the survey are given below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>seniors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">School=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>),<span class="at">each=</span><span class="dv">6</span>),</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Track =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;STEM&quot;</span>,<span class="st">&quot;Trade&quot;</span>,<span class="st">&quot;Healthcare&quot;</span>,<span class="st">&quot;Business&quot;</span>, <span class="st">&quot;SS&quot;</span>,<span class="st">&quot;Others&quot;</span>),<span class="at">times=</span><span class="dv">3</span>),</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Count=</span><span class="fu">c</span>(<span class="dv">57</span>,<span class="dv">42</span>,<span class="dv">17</span>,<span class="dv">21</span>,<span class="dv">13</span>,<span class="dv">50</span>,<span class="dv">45</span>,<span class="dv">29</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">23</span>,<span class="dv">43</span>,<span class="dv">50</span>,<span class="dv">35</span>,<span class="dv">25</span>,<span class="dv">34</span>,<span class="dv">26</span>,<span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>seniors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">School=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>),<span class="at">each=</span><span class="dv">6</span>),</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Track =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;STEM&quot;</span>,<span class="st">&quot;Trade&quot;</span>,<span class="st">&quot;Healthcare&quot;</span>,<span class="st">&quot;Business&quot;</span>, <span class="st">&quot;SS&quot;</span>,<span class="st">&quot;Others&quot;</span>),<span class="at">times=</span><span class="dv">3</span>),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Count=</span><span class="fu">c</span>(<span class="dv">57</span>,<span class="dv">42</span>,<span class="dv">17</span>,<span class="dv">21</span>,<span class="dv">13</span>,<span class="dv">50</span>,<span class="dv">45</span>,<span class="dv">29</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">23</span>,<span class="dv">43</span>,<span class="dv">50</span>,<span class="dv">35</span>,<span class="dv">25</span>,<span class="dv">34</span>,<span class="dv">26</span>,<span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>crosstabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count<span class="sc">~</span>School<span class="sc">+</span>Track,<span class="at">data=</span>seniors)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>crosstabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>crosstabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count<span class="sc">~</span>School<span class="sc">+</span>Track,<span class="at">data=</span>seniors)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>crosstabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      Track
 School Business Healthcare Others SS STEM Trade
@@ -4368,8 +4372,8 @@ School Business Healthcare Others SS STEM Trade
 <li>Implement the test of homogeneity. What is the value of the test statistic and the number of degrees of freedom for the corresponding chi-squared distribution? [1 pt.]</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(crosstabs)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ctest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(crosstabs)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ctest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson&#39;s Chi-squared test
@@ -4390,7 +4394,7 @@ X-squared = 20.051, df = 10, p-value = 0.02877</code></pre>
 <li>Does the chi-squared assumption hold for this problem? Why? [1pt.]</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      Track
 School Business Healthcare Others       SS     STEM    Trade
@@ -4404,12 +4408,12 @@ School Business Healthcare Others       SS     STEM    Trade
 <li>A randomized controlled trial was used to test the efficacy of a novel intervention to curb excessive recreational cannabis use. 100 participants were randomly assigned equally to two groups (n=50 each group): the treatment group that will receive the newly developed intervention, and a control group that will receive a knowledge-based intervention. The participants received treatment and were evaluated at the midpoint of the study. At this time, 19 participants in the treatment group and 7 participants in the control group reported improvement in controlling the urge to use cannabis recreationally.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rct <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Treatment =</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>,<span class="st">&quot;Intervention&quot;</span>),<span class="at">Outcome=</span><span class="fu">c</span>(<span class="st">&quot;Improvement&quot;</span>,<span class="st">&quot;NoImprovement&quot;</span>))</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>rct<span class="sc">$</span>Count <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">19</span>,<span class="dv">50-7</span>,<span class="dv">50-19</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>crosstabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count<span class="sc">~</span>Treatment<span class="sc">+</span>Outcome,<span class="at">data=</span>rct)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>crosstabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rct <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Treatment =</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>,<span class="st">&quot;Intervention&quot;</span>),<span class="at">Outcome=</span><span class="fu">c</span>(<span class="st">&quot;Improvement&quot;</span>,<span class="st">&quot;NoImprovement&quot;</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>rct<span class="sc">$</span>Count <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">19</span>,<span class="dv">50-7</span>,<span class="dv">50-19</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>crosstabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count<span class="sc">~</span>Treatment<span class="sc">+</span>Outcome,<span class="at">data=</span>rct)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>crosstabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Outcome
 Treatment      Improvement NoImprovement
@@ -4438,7 +4442,7 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epitab</span>(crosstabs,<span class="at">method=</span><span class="st">&quot;riskratio&quot;</span>,<span class="at">rev=</span><span class="st">&quot;columns&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epitab</span>(crosstabs,<span class="at">method=</span><span class="st">&quot;riskratio&quot;</span>,<span class="at">rev=</span><span class="st">&quot;columns&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$tab
               Outcome
@@ -4460,17 +4464,17 @@ $pvalue
 [1] &quot;fisher.exact&quot;</code></pre>
 </div>
 </div>
-<p>The risk ratio is 2.71, with 95% CI: (1.24, 5.88).</p>
+<p>The risk ratio is 2.71, with 95% CI: (1.25, 5.88).</p>
 <ol start="5" type="1">
 <li>Researchers studied the effect of cranberry juice in the treatment and prevention of Helicobacter pylori infection in mice. Researchers compared treatment with cranberry juice to “triple therapy (amoxicillin, bismuth subcitrate, and metronidazole) in mice infected with Helicobacter pylori. After 4 weeks, they examined the mice to determine the frequency of eradication of the bacterium in the two treatment groups.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rct <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Treatment =</span> <span class="fu">c</span>(<span class="st">&quot;Triple&quot;</span>,<span class="st">&quot;Cranberry&quot;</span>),<span class="at">Outcome=</span><span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>,<span class="st">&quot;No&quot;</span>))</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>rct<span class="sc">$</span>Count <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">8</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>crosstabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count<span class="sc">~</span>Treatment<span class="sc">+</span>Outcome,<span class="at">data=</span>rct)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>crosstabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rct <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Treatment =</span> <span class="fu">c</span>(<span class="st">&quot;Triple&quot;</span>,<span class="st">&quot;Cranberry&quot;</span>),<span class="at">Outcome=</span><span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>,<span class="st">&quot;No&quot;</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>rct<span class="sc">$</span>Count <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">8</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>crosstabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count<span class="sc">~</span>Treatment<span class="sc">+</span>Outcome,<span class="at">data=</span>rct)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>crosstabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Outcome
 Treatment   Yes No
@@ -4482,8 +4486,8 @@ Treatment   Yes No
 <li>Calculate the expected values based on the assumption of homogeneity. [2pts.]</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(crosstabs)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(crosstabs)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Outcome
 Treatment   Yes No
@@ -4499,8 +4503,8 @@ Treatment   Yes No
 <li>Perform the appropriate test to test for an association between treatment and the outcome. [2pts.] Hint: Exact tests are used for small expected counts.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fishtest <span class="ot">&lt;-</span> <span class="fu">fisher.test</span>(crosstabs)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>fishtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fishtest <span class="ot">&lt;-</span> <span class="fu">fisher.test</span>(crosstabs)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>fishtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher&#39;s Exact Test for Count Data

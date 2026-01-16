@@ -15,9 +15,30 @@ format:
     engine: knitr
     echo: true
     code-fold: false
+    show-notes: true
+    pdf-separate-fragments: true
     
   pdf: 
     number-sections: true
+    geometry:
+      - landscape
+      - margin=1in
+    include-in-header:
+      text: |
+        \usepackage{titlesec}
+        \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+        \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+        \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+        
+        % Syntax: \titlespacing{command}{left-sep}{before-sep}{after-sep}
+        \titlespacing{\section}{0pt}{12pt}{12pt}
+        % \titlespacing{\subsection}{0pt}{3in}{12pt}
+        \titlespacing{\subsubsection}{0pt}{3in}{10pt}
+        
+        % This forces a clearpage before every subsection
+        \let\oldsubsection\subsection
+        \renewcommand{\subsection}{\clearpage\oldsubsection}
+
 ---
 
 # Outline
@@ -36,6 +57,8 @@ The field of statistics has grown in recent years primarily due to the *datafica
 98% of all stored information is digital. Collected data is increasing even at this very moment.
 :::
 
+
+
 ## Why statistics?
 
 ::: {.callout-note title="Statistics"}
@@ -47,6 +70,8 @@ Statistics is a field of study concerned with:
 
 Data $\to$ Numbers $\to$ Information $\to$ Investigation $\to$ Communication
 
+
+
 ## Statistical Thinking
 
 How is statistical thinking different from mathematical thinking?
@@ -56,6 +81,8 @@ How is statistical thinking different from mathematical thinking?
 Statistical thinking involves understanding and analyzing data while accounting for uncertainty!
 :::
 
+
+
 ## Activity
 
 Flip a coin 10 times. If you don't have a coin, search "coin flip" on Google.
@@ -63,6 +90,8 @@ Flip a coin 10 times. If you don't have a coin, search "coin flip" on Google.
 ::: callout-note
 How many times did you get heads? Do you think the coin you flipped was fair?
 :::
+
+
 
 ## Extensions of Statistics
 
@@ -72,9 +101,13 @@ How many times did you get heads? Do you think the coin you flipped was fair?
 
 Biostatistics involves applying statistical concepts to data from the biological sciences, health sciences, and medicine.
 
+
+
 ### Data Science
 
 Data science is the study of how to extract useful information from data using quantitative methods and theories from many fields. The field focuses on large data sets that were not originally designed or collected to address the question of interest.
+
+
 
 :::
 
@@ -88,6 +121,8 @@ Available data usually come from the following sources:
 - Data Banks
 - Prior Literature
 
+
+
 ## Categories of Statistics
 
 :::{.panel-tabset}
@@ -96,9 +131,13 @@ Available data usually come from the following sources:
 
 Descriptive statistics are used to describe properties of complex sets of numbers. Summary statistics are a good example of descriptive statistics.
 
+
+
 ### Inferential Statistics
 
 Inferential statistics are used to infer information from a smaller group (sample) to a more general group (population). 
+
+
 :::
 
 ## Random Variables
@@ -108,6 +147,8 @@ Random variables have values obtained arise as a result of chance factors, so th
 ::: callout-note
 Random variables could be classified as qualitative or quantitative.
 :::
+
+
 
 ## Random Variable Types
 :::{.panel-tabset}
