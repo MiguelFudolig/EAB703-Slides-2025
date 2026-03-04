@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Miguel Fudolig">
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Data Transformation</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -228,8 +228,8 @@ Miguel Fudolig
 </div>
 <p>You can create a data frame using the <code>data.frame()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ex_dataframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">Animal=</span><span class="fu">c</span>(<span class="st">"dog"</span>,<span class="st">"cat"</span>))</span>
-<span id="cb1-2"><a></a>ex_dataframe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ex_dataframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">Animal=</span><span class="fu">c</span>(<span class="st">"dog"</span>,<span class="st">"cat"</span>))</span>
+<span id="cb1-2"><a></a>ex_dataframe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  ID Animal
 1  1    dog
@@ -245,7 +245,7 @@ Miguel Fudolig
 <div id="tabset-1-1">
 <p>You can access the names of a data frame using the snippet <code>names([DATA FRAME NAME])</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">names</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">names</span>(ex_dataframe)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ID"     "Animal"</code></pre>
 </div>
@@ -254,7 +254,7 @@ Miguel Fudolig
 <div id="tabset-1-2">
 <p>You can determine the type of vectors for each column using the snippet <code>str([DATA FRAME NAME])</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str</span>(ex_dataframe)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   2 obs. of  2 variables:
  $ ID    : num  1 2
@@ -265,15 +265,15 @@ Miguel Fudolig
 <div id="tabset-1-3">
 <p>You can call a single column using the <code>$</code> argument in the following format: <code>DATAFRAME_NAME$COLUMN_NAME</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>ex_dataframe<span class="sc">$</span>ID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>ex_dataframe<span class="sc">$</span>ID</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>ex_dataframe<span class="sc">$</span>Animal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>ex_dataframe<span class="sc">$</span>Animal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "dog" "cat"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>ex_dataframe<span class="sc">$</span>ID <span class="sc">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>ex_dataframe<span class="sc">$</span>ID <span class="sc">*</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  5 10</code></pre>
 </div>
@@ -282,7 +282,7 @@ Miguel Fudolig
 <div id="tabset-1-4">
 <p>The dimensions of the data frame can be calculated using the snippet: <code>dim([INSERT DATA FRAME NAME HERE])</code> command.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">dim</span>(ex_dataframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">dim</span>(ex_dataframe)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 2</code></pre>
 </div>
@@ -318,9 +318,9 @@ Miguel Fudolig
 <h2>Importing CSV files</h2>
 <p>The function <code>read.csv()</code> imports CSV files into R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>case_information<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Case_Information.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>case_information<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Case_Information.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="fu">View</span>(case_information)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="fu">View</span>(case_information)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
@@ -337,7 +337,7 @@ Miguel Fudolig
 <div id="tabset-2-1">
 <p>We can access any function/file in a package using the <code>::</code> argument. For example, if we want to access <code>flights</code> in the <code>nycflights13</code> package without loading the package, we can use the following syntax:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>nycflights13<span class="sc">::</span>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>nycflights13<span class="sc">::</span>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -362,8 +362,8 @@ Miguel Fudolig
 <div id="tabset-2-2">
 <p>We can load <code>nycflights13</code> first, which gives us access to the <code>flights</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb18-2"><a></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb18-2"><a></a>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -411,7 +411,7 @@ Miguel Fudolig
 <p>The <code>dplyr</code> package, which is included in the <code>tidyverse</code>, includes functions that can greatly help you with data manipulation. In this package, you can operate on data rows, data columns, groups, or entire data frames.</p>
 <p>To use dplyr, we need to import the <code>tidyverse</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -426,7 +426,7 @@ Miguel Fudolig
 <section id="filter" class="slide level2">
 <h2><code>filter()</code></h2>
 <p><code>filter()</code> allows you to keep rows based on the values of the columns. The syntax of <code>filter()</code> follows the format:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">filter</span>(DATAFRAME_NAME,BOOLEAN_CONDITION)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">filter</span>(DATAFRAME_NAME,BOOLEAN_CONDITION)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="boolean-operators" class="slide level2">
 <h2>Boolean Operators</h2>
@@ -446,29 +446,29 @@ Miguel Fudolig
 </div>
 <div id="tabset-3-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb22-2"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb22-3"><a></a></span>
-<span id="cb22-4"><a></a>x <span class="sc">&lt;</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a></a>x <span class="sc">&lt;</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>x <span class="sc">&gt;</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>x <span class="sc">&gt;</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="sc">==</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="sc">==</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>cats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alice"</span>,<span class="st">"Bob"</span>)</span>
-<span id="cb28-2"><a></a><span class="st">"Alice"</span> <span class="sc">%in%</span> cats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>cats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alice"</span>,<span class="st">"Bob"</span>)</span>
+<span id="cb28-2"><a></a><span class="st">"Alice"</span> <span class="sc">%in%</span> cats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">grepl</span>(<span class="st">"Al"</span>,cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">grepl</span>(<span class="st">"Al"</span>,cats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE</code></pre>
 </div>
@@ -486,8 +486,8 @@ Miguel Fudolig
 <div id="tabset-4-1">
 <p>Suppose we want to find the flights that departed more than 120 minutes (two hours) late:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb32-2"><a></a><span class="fu">names</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb32-2"><a></a><span class="fu">names</span>(flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "year"           "month"          "day"            "dep_time"      
  [5] "sched_dep_time" "dep_delay"      "arr_time"       "sched_arr_time"
@@ -495,7 +495,7 @@ Miguel Fudolig
 [13] "origin"         "dest"           "air_time"       "distance"      
 [17] "hour"           "minute"         "time_hour"     </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a> <span class="fu">filter</span>(flights, dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a> <span class="fu">filter</span>(flights, dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,723 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -520,7 +520,7 @@ Miguel Fudolig
 <div id="tabset-4-2">
 <p>Suppose we want to examine the flights by carrier AA (American Airlines).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a> <span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a> <span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 32,729 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -545,7 +545,7 @@ Miguel Fudolig
 <div id="tabset-4-3">
 <p>Suppose we want to examine the flights by carrier AA (American Airlines) and are delayed by more than 120 minutes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a> <span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span> <span class="sc">&amp;</span>  dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a> <span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span> <span class="sc">&amp;</span>  dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 720 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -570,7 +570,7 @@ Miguel Fudolig
 <div id="tabset-4-4">
 <p>Suppose we want to examine the flights by carrier AA (American Airlines) OR flights that took off from the JFK airport.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span> <span class="sc">|</span>  origin<span class="sc">==</span><span class="st">"JFK"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">filter</span>(flights, carrier<span class="sc">==</span><span class="st">"AA"</span> <span class="sc">|</span>  origin<span class="sc">==</span><span class="st">"JFK"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 130,225 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -606,8 +606,8 @@ Miguel Fudolig
 </div>
 <div id="tabset-5-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>older <span class="ot">&lt;-</span> <span class="fu">filter</span>(case_information,age <span class="sc">&gt;=</span><span class="dv">60</span>)</span>
-<span id="cb42-2"><a></a><span class="fu">head</span>(older)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>older <span class="ot">&lt;-</span> <span class="fu">filter</span>(case_information,age <span class="sc">&gt;=</span><span class="dv">60</span>)</span>
+<span id="cb42-2"><a></a><span class="fu">head</span>(older)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  case_id age age_group    sex date_announced date_recovered date_of_death
 1 C387710  60  60 to 64 Female     2020-02-05     2020-01-31          &lt;NA&gt;
@@ -645,7 +645,7 @@ Miguel Fudolig
 </div>
 <div id="tabset-5-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>young_males <span class="ot">&lt;-</span> <span class="fu">filter</span>(case_information, age <span class="sc">&lt;=</span><span class="dv">40</span> <span class="sc">&amp;</span> sex <span class="sc">==</span> <span class="st">"Male"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>young_males <span class="ot">&lt;-</span> <span class="fu">filter</span>(case_information, age <span class="sc">&lt;=</span><span class="dv">40</span> <span class="sc">&amp;</span> sex <span class="sc">==</span> <span class="st">"Male"</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -676,7 +676,7 @@ Miguel Fudolig
 <div id="tabset-6-1">
 <p>We can get a sorted data frame based on month, day, and departure time in the data set <code>flights</code>, which we can assign as a separate variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">head</span>(<span class="fu">arrange</span>(flights,month,day,dep_time))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">head</span>(<span class="fu">arrange</span>(flights,month,day,dep_time))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 19
    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -691,8 +691,8 @@ Miguel Fudolig
 #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>sorted_flights <span class="ot">&lt;-</span> <span class="fu">arrange</span>(flights,month,day,dep_time)</span>
-<span id="cb47-2"><a></a><span class="fu">head</span>(sorted_flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>sorted_flights <span class="ot">&lt;-</span> <span class="fu">arrange</span>(flights,month,day,dep_time)</span>
+<span id="cb47-2"><a></a><span class="fu">head</span>(sorted_flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 19
    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -712,8 +712,8 @@ Miguel Fudolig
 <div id="tabset-6-2">
 <p>We can also sort different columns in different orders (ascending/descending)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>latebirds <span class="ot">&lt;-</span> <span class="fu">arrange</span>(flights,carrier,<span class="fu">desc</span>(dep_delay))</span>
-<span id="cb49-2"><a></a><span class="fu">head</span>(latebirds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>latebirds <span class="ot">&lt;-</span> <span class="fu">arrange</span>(flights,carrier,<span class="fu">desc</span>(dep_delay))</span>
+<span id="cb49-2"><a></a><span class="fu">head</span>(latebirds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 19
    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -733,8 +733,8 @@ Miguel Fudolig
 <div id="tabset-6-3">
 <p>We can use both <code>filter()</code> and <code>arrange()</code> sequentially. Suppose we want to filter out delay times higher than 120 minutes then sort the flights in increasing order.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>filterfirst <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights,dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span>
-<span id="cb51-2"><a></a><span class="fu">arrange</span>(filterfirst,dep_delay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>filterfirst <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights,dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span>
+<span id="cb51-2"><a></a><span class="fu">arrange</span>(filterfirst,dep_delay)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9,723 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -770,8 +770,8 @@ Miguel Fudolig
 </div>
 <div id="tabset-7-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>fem_rec <span class="ot">&lt;-</span><span class="fu">filter</span>(case_information,sex<span class="sc">==</span><span class="st">"Female"</span> <span class="sc">&amp;</span> status<span class="sc">==</span><span class="st">"Recovered"</span>)</span>
-<span id="cb53-2"><a></a>fem_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>fem_rec <span class="ot">&lt;-</span><span class="fu">filter</span>(case_information,sex<span class="sc">==</span><span class="st">"Female"</span> <span class="sc">&amp;</span> status<span class="sc">==</span><span class="st">"Recovered"</span>)</span>
+<span id="cb53-2"><a></a>fem_rec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     case_id age age_group    sex date_announced date_recovered date_of_death
 1    C404174  38  35 to 39 Female     2020-01-30           &lt;NA&gt;          &lt;NA&gt;
@@ -6441,7 +6441,7 @@ Miguel Fudolig
 </div>
 <div id="tabset-7-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">head</span>(<span class="fu">arrange</span>(fem_rec,<span class="fu">desc</span>(age)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">head</span>(<span class="fu">arrange</span>(fem_rec,<span class="fu">desc</span>(age)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  case_id age age_group    sex date_announced date_recovered date_of_death
 1 C719189  90       80+ Female     2020-03-21           &lt;NA&gt;          &lt;NA&gt;
@@ -6489,8 +6489,8 @@ Miguel Fudolig
 <div id="tabset-8-1">
 <p>Suppose we want to determine the specific flights (origin, destination) in the <code>flights</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-66"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-66-1"><a href="#annotated-cell-66-1"></a><span class="fu">distinct</span>(flights,origin,dest)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-66" data-target-annotation="1">1</button><span id="annotated-cell-66-2" class="code-annotation-target"><a href="#annotated-cell-66-2"></a><span class="fu">distinct</span>(flights,origin,dest,<span class="at">.keep_all=</span>T)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-66"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-66-1"><a href="#annotated-cell-66-1"></a><span class="fu">distinct</span>(flights,origin,dest)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-66" data-target-annotation="1">1</button><span id="annotated-cell-66-2" class="code-annotation-target"><a href="#annotated-cell-66-2"></a><span class="fu">distinct</span>(flights,origin,dest,<span class="at">.keep_all=</span>T)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-66" data-target-annotation="1">1</dt>
@@ -6537,9 +6537,9 @@ Miguel Fudolig
 <div id="tabset-8-2">
 <p>We can create a data set that includes the unique trips serviced by American Airlines.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>unique_AA<span class="ot">&lt;-</span>  <span class="fu">filter</span>(flights,carrier<span class="sc">==</span><span class="st">"AA"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>unique_AA<span class="ot">&lt;-</span>  <span class="fu">filter</span>(flights,carrier<span class="sc">==</span><span class="st">"AA"</span>)</span>
 <span id="cb58-2"><a></a>unique_dest_AA <span class="ot">&lt;-</span> <span class="fu">distinct</span>(unique_AA,origin, dest)</span>
-<span id="cb58-3"><a></a>unique_dest_AA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-3"><a></a>unique_dest_AA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 25 × 2
    origin dest 
@@ -6559,7 +6559,7 @@ Miguel Fudolig
 </div>
 <p>We can use <code>count()</code> to count the number of distinct combinations of columns. To count the number of unique American Airlines (carrier==“AA”) flight destinations,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">count</span>(unique_AA,origin,dest,<span class="at">sort=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">count</span>(unique_AA,origin,dest,<span class="at">sort=</span>T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 25 × 3
    origin dest      n
@@ -6591,8 +6591,8 @@ Miguel Fudolig
 </div>
 <div id="tabset-9-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>target <span class="ot">&lt;-</span> <span class="fu">distinct</span>(case_information,province,muni_city)</span>
-<span id="cb62-2"><a></a><span class="fu">arrange</span>(target,province,muni_city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>target <span class="ot">&lt;-</span> <span class="fu">distinct</span>(case_information,province,muni_city)</span>
+<span id="cb62-2"><a></a><span class="fu">arrange</span>(target,province,muni_city)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               province                 muni_city
 1                  Abra                    Manabo
@@ -7001,8 +7001,8 @@ Miguel Fudolig
 <div class="tab-content">
 <div id="tabset-10-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights,dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>)</span>
-<span id="cb64-2"><a></a><span class="fu">arrange</span>(filtered,<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(flights,dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>)</span>
+<span id="cb64-2"><a></a><span class="fu">arrange</span>(filtered,<span class="fu">desc</span>(dep_delay))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 42,031 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7025,7 +7025,7 @@ Miguel Fudolig
 </div>
 <p>OR</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a><span class="fu">arrange</span>(<span class="fu">filter</span>(flights,dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>),<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a><span class="fu">arrange</span>(<span class="fu">filter</span>(flights,dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>),<span class="fu">desc</span>(dep_delay))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 42,031 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7049,9 +7049,9 @@ Miguel Fudolig
 </div>
 <div id="tabset-10-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>flights <span class="sc">|&gt;</span> </span>
 <span id="cb68-2"><a></a>  <span class="fu">filter</span>(dep_delay<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> origin<span class="sc">==</span><span class="st">"JFK"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb68-3"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(dep_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-3"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(dep_delay))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 42,031 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7090,8 +7090,8 @@ Miguel Fudolig
 </div>
 <div class="callout-content">
 <p>If we have a data set A that we want to perform operations on, the following lines are equivalent to each other</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="fu">filter</span>(A, [BOOLEAN OPERATION])</span>
-<span id="cb70-2"><a></a>A <span class="sc">|&gt;</span> <span class="fu">filter</span>([BOOLEAN OPERATION])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="fu">filter</span>(A, [BOOLEAN OPERATION])</span>
+<span id="cb70-2"><a></a>A <span class="sc">|&gt;</span> <span class="fu">filter</span>([BOOLEAN OPERATION])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -7110,14 +7110,14 @@ Miguel Fudolig
 </div>
 <div class="callout-content">
 <p>We can also apply this to sequence of functions.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a>B <span class="ot">&lt;-</span> <span class="fu">filter</span>(A, [BOOLEAN OPERATION])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a>B <span class="ot">&lt;-</span> <span class="fu">filter</span>(A, [BOOLEAN OPERATION])</span>
 <span id="cb71-2"><a></a>C <span class="ot">&lt;-</span> <span class="fu">distinct</span>(B,Col1,Col2)</span>
-<span id="cb71-3"><a></a>count_C <span class="ot">&lt;-</span> <span class="fu">count</span>(C,Col1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb71-3"><a></a>count_C <span class="ot">&lt;-</span> <span class="fu">count</span>(C,Col1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With pipes,</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>A <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>A <span class="sc">|&gt;</span> </span>
 <span id="cb72-2"><a></a><span class="fu">filter</span>([BOOLEAN OPERATION]) <span class="sc">|&gt;</span> </span>
 <span id="cb72-3"><a></a><span class="fu">distinct</span>(Col1,Col2) <span class="sc">|&gt;</span> </span>
-<span id="cb72-4"><a></a><span class="fu">count</span>(Col1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb72-4"><a></a><span class="fu">count</span>(Col1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -7139,13 +7139,13 @@ Miguel Fudolig
 <section id="rename" class="slide level2">
 <h2><code>rename()</code></h2>
 <p><code>rename()</code> changes the column names and keeps all existing variables.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a><span class="fu">rename</span>(data,[<span class="at">NEWNAME =</span> OLDNAME])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a><span class="fu">rename</span>(data,[<span class="at">NEWNAME =</span> OLDNAME])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="examples-1" class="slide level2">
 <h2>Examples</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb74-2"><a></a>  <span class="fu">rename</span>(<span class="at">tail_number =</span> tailnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb74-2"><a></a>  <span class="fu">rename</span>(<span class="at">tail_number =</span> tailnum)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7167,9 +7167,9 @@ Miguel Fudolig
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>flights <span class="sc">|&gt;</span> </span>
 <span id="cb76-2"><a></a>  <span class="fu">rename</span>(<span class="at">destination_airport =</span> dest,</span>
-<span id="cb76-3"><a></a>         <span class="at">origin_airport =</span> origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb76-3"><a></a>         <span class="at">origin_airport =</span> origin)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7189,7 +7189,7 @@ Miguel Fudolig
 #   tailnum &lt;chr&gt;, origin_airport &lt;chr&gt;, destination_airport &lt;chr&gt;,
 #   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">names</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">names</span>(flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "year"           "month"          "day"            "dep_time"      
  [5] "sched_dep_time" "dep_delay"      "arr_time"       "sched_arr_time"
@@ -7211,8 +7211,8 @@ speed = distance/air time * 60
 \]</span></p>
 <p>We can create a new variable called speed using the <code>mutate()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb80-2"><a></a><span class="fu">mutate</span>(<span class="at">speed =</span> distance<span class="sc">/</span>air_time<span class="sc">*</span><span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb80-2"><a></a><span class="fu">mutate</span>(<span class="at">speed =</span> distance<span class="sc">/</span>air_time<span class="sc">*</span><span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 20
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -7238,8 +7238,8 @@ speed = distance/air time * 60
 <h2>Example</h2>
 <p>Suppose we want to create a variable <code>late</code> such that flights that have a positive delay is labeled “Late”, while those with no or negative delay is “NotLate”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb82-2"><a></a>  <span class="fu">mutate</span>(<span class="at">late =</span> <span class="fu">ifelse</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Late"</span>,<span class="st">"NotLate"</span>),<span class="at">.keep=</span><span class="st">"used"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb82-2"><a></a>  <span class="fu">mutate</span>(<span class="at">late =</span> <span class="fu">ifelse</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Late"</span>,<span class="st">"NotLate"</span>),<span class="at">.keep=</span><span class="st">"used"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 2
    dep_delay late   
@@ -7267,7 +7267,7 @@ speed = distance/air time * 60
 </div>
 <div class="callout-content">
 <p><code>ifelse</code> produces an if-else statement based on the condition.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a><span class="fu">ifelse</span>([CONDITION],[CONDITION IF <span class="cn">TRUE</span>],[CONDITION IF <span class="cn">FALSE</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a><span class="fu">ifelse</span>([CONDITION],[CONDITION IF <span class="cn">TRUE</span>],[CONDITION IF <span class="cn">FALSE</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -7282,8 +7282,8 @@ speed = distance/air time * 60
 </div>
 <div id="tabset-11-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
-<span id="cb85-2"><a></a>  <span class="fu">mutate</span>(<span class="at">OlderAdult =</span> <span class="fu">ifelse</span>(age<span class="sc">&gt;</span><span class="dv">60</span>,<span class="st">"yes"</span>,<span class="st">"no"</span>),<span class="at">.keep=</span><span class="st">"used"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
+<span id="cb85-2"><a></a>  <span class="fu">mutate</span>(<span class="at">OlderAdult =</span> <span class="fu">ifelse</span>(age<span class="sc">&gt;</span><span class="dv">60</span>,<span class="st">"yes"</span>,<span class="st">"no"</span>),<span class="at">.keep=</span><span class="st">"used"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      age OlderAdult
 1      38         no
@@ -19391,8 +19391,8 @@ speed = distance/air time * 60
 <div class="tab-content">
 <div id="tabset-12-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb87-2"><a></a>  <span class="fu">select</span>(carrier,dep_delay,month,day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb87-2"><a></a>  <span class="fu">select</span>(carrier,dep_delay,month,day)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 4
    carrier dep_delay month   day
@@ -19413,8 +19413,8 @@ speed = distance/air time * 60
 </div>
 <div id="tabset-12-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb89-2"><a></a>  <span class="fu">select</span>(year<span class="sc">:</span>carrier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb89-2"><a></a>  <span class="fu">select</span>(year<span class="sc">:</span>carrier)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 10
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -19436,8 +19436,8 @@ speed = distance/air time * 60
 </div>
 <div id="tabset-12-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb91-2"><a></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(year,month,day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb91-2"><a></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(year,month,day))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 16
    dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
@@ -19475,7 +19475,7 @@ speed = distance/air time * 60
 <p><code>group_by()</code> divides the dataset into groups useful for your analysis. These are commonly used in conjunction with other functions.</p>
 <p>The <code>R</code> output indicates whether your data frame is grouped.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a></a>flights <span class="sc">|&gt;</span> <span class="fu">group_by</span>(carrier) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a></a>flights <span class="sc">|&gt;</span> <span class="fu">group_by</span>(carrier) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
 # Groups:   carrier [16]
@@ -19515,12 +19515,12 @@ speed = distance/air time * 60
 <div class="tab-content">
 <div id="tabset-13-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a>flights <span class="sc">|&gt;</span> </span>
 <span id="cb95-2"><a></a><span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
 <span id="cb95-3"><a></a>          <span class="at">sd =</span> <span class="fu">sd</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
 <span id="cb95-4"><a></a>          <span class="at">median =</span> <span class="fu">quantile</span>(dep_delay,<span class="fl">0.5</span>,<span class="at">na.rm=</span>T), </span>
 <span id="cb95-5"><a></a>          <span class="at">minimum =</span> <span class="fu">min</span>(dep_delay,<span class="at">na.rm=</span>T),</span>
-<span id="cb95-6"><a></a>          <span class="at">maximum =</span> <span class="fu">max</span>(dep_delay,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb95-6"><a></a>          <span class="at">maximum =</span> <span class="fu">max</span>(dep_delay,<span class="at">na.rm=</span>T))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
    mean    sd median minimum maximum
@@ -19531,13 +19531,13 @@ speed = distance/air time * 60
 </div>
 <div id="tabset-13-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a></a>flights <span class="sc">|&gt;</span> </span>
 <span id="cb97-2"><a></a>  <span class="fu">group_by</span>(carrier) <span class="sc">|&gt;</span> </span>
 <span id="cb97-3"><a></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
 <span id="cb97-4"><a></a>          <span class="at">sd =</span> <span class="fu">sd</span>(dep_delay,<span class="at">na.rm=</span>T), </span>
 <span id="cb97-5"><a></a>          <span class="at">median =</span> <span class="fu">quantile</span>(dep_delay,<span class="fl">0.5</span>,<span class="at">na.rm=</span>T), </span>
 <span id="cb97-6"><a></a>          <span class="at">minimum =</span> <span class="fu">min</span>(dep_delay,<span class="at">na.rm=</span>T),</span>
-<span id="cb97-7"><a></a>          <span class="at">maximum =</span> <span class="fu">max</span>(dep_delay,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb97-7"><a></a>          <span class="at">maximum =</span> <span class="fu">max</span>(dep_delay,<span class="at">na.rm=</span>T))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 6
    carrier  mean    sd median minimum maximum
@@ -19568,10 +19568,10 @@ speed = distance/air time * 60
 <h2>Example 2</h2>
 <p>Suppose we want to count how many times a carrier’s flight was delayed in each month.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a></a>flights <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a></a>flights <span class="sc">|&gt;</span></span>
 <span id="cb99-2"><a></a>  <span class="fu">mutate</span>(<span class="at">late =</span> <span class="fu">ifelse</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Late"</span>,<span class="st">"NotLate"</span>),<span class="at">.keep=</span><span class="st">"all"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb99-3"><a></a>  <span class="fu">group_by</span>(carrier,month,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
-<span id="cb99-4"><a></a>  <span class="fu">count</span>(late)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb99-4"><a></a>  <span class="fu">count</span>(late)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 508 × 4
 # Groups:   carrier, month [185]
@@ -19601,9 +19601,9 @@ speed = distance/air time * 60
 </div>
 <div id="tabset-14-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
 <span id="cb101-2"><a></a><span class="fu">group_by</span>(status,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
-<span id="cb101-3"><a></a><span class="fu">summarize</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(age,<span class="at">na.rm=</span>T), <span class="at">SD =</span> <span class="fu">sd</span>(age,<span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb101-3"><a></a><span class="fu">summarize</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(age,<span class="at">na.rm=</span>T), <span class="at">SD =</span> <span class="fu">sd</span>(age,<span class="at">na.rm=</span>T))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   status            Mean    SD
@@ -19621,9 +19621,9 @@ speed = distance/air time * 60
 </div>
 <div id="tabset-14-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a></a>case_information <span class="sc">|&gt;</span> </span>
 <span id="cb103-2"><a></a><span class="fu">group_by</span>(age_group,sex,<span class="at">.drop=</span>F) <span class="sc">|&gt;</span> </span>
-<span id="cb103-3"><a></a><span class="fu">count</span>(status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb103-3"><a></a><span class="fu">count</span>(status)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 173 × 4
 # Groups:   age_group, sex [36]
@@ -19840,7 +19840,7 @@ speed = distance/air time * 60
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -19990,13 +19990,14 @@ speed = distance/air time * 60
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

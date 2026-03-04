@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Selected Nonparametric Methods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -420,15 +420,15 @@ H_0: \tilde{\mu}=\tilde{\mu}_0
 <section id="r-implementation-1" class="slide level2">
 <h2><code>R</code> Implementation</h2>
 <p>The <code>wilcox.test()</code> function can be used to perform a one-sample Wilcoxon-test in <code>R</code>. For a vector x in a data frame <code>df</code> and a null value <code>m0</code>, an example code of a two-sided test can be written as</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">wilcox.test</span>(df<span class="sc">$</span>x,<span class="at">mu=</span>mu0,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">wilcox.test</span>(df<span class="sc">$</span>x,<span class="at">mu=</span>mu0,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
 <p>Consider the sleep health data set in <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
-<span id="cb2-3"><a></a><span class="fu">glimpse</span>(sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a></a><span class="fu">glimpse</span>(sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 374
 Columns: 13
@@ -459,8 +459,8 @@ $ sleep_disorder          &lt;chr&gt; "None", "None", "None", "Sleep Apnea", "Sl
 H_0: \tilde{\mu}=4.5; H_a: \tilde{\mu}&gt; 4.5
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>wtest <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(sleep<span class="sc">$</span>stress_level,<span class="at">mu=</span><span class="fl">4.5</span>,<span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
-<span id="cb4-2"><a></a>wtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>wtest <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(sleep<span class="sc">$</span>stress_level,<span class="at">mu=</span><span class="fl">4.5</span>,<span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
+<span id="cb4-2"><a></a>wtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank test with continuity correction
@@ -473,11 +473,11 @@ alternative hypothesis: true location is greater than 4.5</code></pre>
 <p>The p-value is 1.5555249^{-15}, which is less than 0.05. We reject the null hypothesis. We have sufficient evidence that the median stress level of the sampled population is greater than 4.5.</p>
 <p>We can also visually check if this makes sense using a box plot</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span>stress_level)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span>stress_level)) <span class="sc">+</span> </span>
 <span id="cb6-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
 <span id="cb6-3"><a></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="fl">4.5</span>),<span class="at">color=</span><span class="st">"red"</span>)<span class="sc">+</span></span>
 <span id="cb6-4"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb6-5"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Stress Level"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Stress Level"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -522,9 +522,9 @@ alternative hypothesis: true location is greater than 4.5</code></pre>
 <h2>Exercise</h2>
 <p>Consider the sleep health data set in <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb7-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
-<span id="cb7-3"><a></a><span class="fu">glimpse</span>(sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a></a><span class="fu">glimpse</span>(sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 374
 Columns: 13
@@ -555,8 +555,8 @@ $ sleep_disorder          &lt;chr&gt; "None", "None", "None", "Sleep Apnea", "Sl
 H_0: \tilde{\mu}=60; H_a: \tilde{\mu}\neq 60
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>wtest <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(sleep<span class="sc">$</span>physical_activity_level,<span class="at">mu=</span><span class="dv">60</span>,<span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
-<span id="cb9-2"><a></a>wtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>wtest <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(sleep<span class="sc">$</span>physical_activity_level,<span class="at">mu=</span><span class="dv">60</span>,<span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
+<span id="cb9-2"><a></a>wtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank test with continuity correction
@@ -568,11 +568,11 @@ alternative hypothesis: true location is not equal to 60</code></pre>
 </div>
 <p>We can also visually check if this makes sense using a box plot</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span>physical_activity_level)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span>physical_activity_level)) <span class="sc">+</span> </span>
 <span id="cb11-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
 <span id="cb11-3"><a></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">60</span>),<span class="at">color=</span><span class="st">"red"</span>)<span class="sc">+</span></span>
 <span id="cb11-4"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb11-5"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Physical Activity Level"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Physical Activity Level"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -632,17 +632,17 @@ H_0: \tilde{\mu}_d=\tilde{\mu}_{d,0}
 <section id="r-implementation-2" class="slide level2">
 <h2><code>R</code> Implementation</h2>
 <p>The <code>wilcox.test()</code> can also be used for paired data. For a data frame <code>df</code> with paired data <code>x1</code> and <code>x2</code> and a one-sided “less” alternative hypothesis , the sample code would look like:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">wilcox.test</span>(<span class="at">x=</span>df<span class="sc">$</span>x1,<span class="at">y=</span>df<span class="sc">$</span>x2,<span class="at">paired=</span>T,<span class="at">alternative=</span><span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">wilcox.test</span>(<span class="at">x=</span>df<span class="sc">$</span>x1,<span class="at">y=</span>df<span class="sc">$</span>x2,<span class="at">paired=</span>T,<span class="at">alternative=</span><span class="st">"less"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
 <p>The following data set <code>example</code> shows data from research that investigated the possible beneficial effects of singing on wellbeing during a single singing lesson. One of the variables of interest was the change in cortisol as a result of the singing lesson.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>example <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>example <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb13-2"><a></a>  <span class="at">before=</span><span class="fu">c</span>(<span class="dv">214</span>,<span class="dv">362</span>,<span class="dv">202</span>,<span class="dv">158</span>,<span class="dv">403</span>,<span class="dv">219</span>,<span class="dv">307</span>,<span class="dv">331</span>),</span>
 <span id="cb13-3"><a></a>  <span class="at">after=</span><span class="fu">c</span>(<span class="dv">232</span>,<span class="dv">276</span>,<span class="dv">224</span>,<span class="dv">412</span>,<span class="dv">562</span>,<span class="dv">203</span>,<span class="dv">340</span>,<span class="dv">313</span>)</span>
 <span id="cb13-4"><a></a>)</span>
-<span id="cb13-5"><a></a><span class="fu">glimpse</span>(example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-5"><a></a><span class="fu">glimpse</span>(example)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 8
 Columns: 2
@@ -662,8 +662,8 @@ $ after  &lt;dbl&gt; 232, 276, 224, 412, 562, 203, 340, 313</code></pre>
 H_0: \tilde{\mu}_d=0;H_0: \tilde{\mu}_d&gt;0
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>wtest <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(<span class="at">x=</span>example<span class="sc">$</span>before,<span class="at">y=</span>example<span class="sc">$</span>after,<span class="at">paired=</span>T,<span class="at">alternative=</span><span class="st">"less"</span>,<span class="at">correct=</span><span class="cn">TRUE</span>)</span>
-<span id="cb15-2"><a></a>wtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>wtest <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(<span class="at">x=</span>example<span class="sc">$</span>before,<span class="at">y=</span>example<span class="sc">$</span>after,<span class="at">paired=</span>T,<span class="at">alternative=</span><span class="st">"less"</span>,<span class="at">correct=</span><span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a></a>wtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank test with continuity correction
@@ -682,9 +682,9 @@ alternative hypothesis: true location shift is less than 0</code></pre>
 <h2>Exercise</h2>
 <p>The data set <code>anorexia</code> from the package <code>MASS</code> contains weight change data for young female anorexia patients.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(MASS)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(MASS)</span>
 <span id="cb17-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb17-3"><a></a><span class="fu">glimpse</span>(anorexia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a></a><span class="fu">glimpse</span>(anorexia)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 72
 Columns: 3
@@ -705,8 +705,8 @@ $ Postwt &lt;dbl&gt; 80.2, 80.1, 86.4, 86.3, 76.1, 78.1, 75.1, 86.7, 73.5, 84.6,
 H_0: \tilde{\mu}_d=0;H_0: \tilde{\mu}_d\neq 0
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>wtest <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(<span class="at">x=</span>anorexia<span class="sc">$</span>Postwt,<span class="at">y=</span>anorexia<span class="sc">$</span>Prewt,<span class="at">paired=</span>T,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span>
-<span id="cb19-2"><a></a>wtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>wtest <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(<span class="at">x=</span>anorexia<span class="sc">$</span>Postwt,<span class="at">y=</span>anorexia<span class="sc">$</span>Prewt,<span class="at">paired=</span>T,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span>
+<span id="cb19-2"><a></a>wtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank test with continuity correction
@@ -792,16 +792,16 @@ U_2 = n_1n_2 + n_2(n_2+1)/2 - \sum_iR_{i2}
 <section id="r-implementation-3" class="slide level2">
 <h2><code>R</code> implementation</h2>
 <p>The <code>wilcox.test()</code> function can implement the Mann-Whitney U test for independent groups. The syntax is similar to the paired-samples test but specifying that <code>paired=FALSE</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">wilcox.test</span>(<span class="at">x=</span>df<span class="sc">$</span>x1,<span class="at">y=</span>df<span class="sc">$</span>x2,<span class="at">alternative=</span><span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">wilcox.test</span>(<span class="at">x=</span>df<span class="sc">$</span>x1,<span class="at">y=</span>df<span class="sc">$</span>x2,<span class="at">alternative=</span><span class="st">"less"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If the grouping variable and the response variables are defined as two distinct columns, we can use the formula notation as well.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">wilcox.test</span>(response<span class="sc">~</span>grouping,<span class="at">data=</span>df,<span class="at">alternative=</span><span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">wilcox.test</span>(response<span class="sc">~</span>grouping,<span class="at">data=</span>df,<span class="at">alternative=</span><span class="st">"less"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
 <p>Consider the data set <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
-<span id="cb23-2"><a></a><span class="fu">glimpse</span>(sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
+<span id="cb23-2"><a></a><span class="fu">glimpse</span>(sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 374
 Columns: 13
@@ -830,8 +830,8 @@ $ sleep_disorder          &lt;chr&gt; "None", "None", "None", "Sleep Apnea", "Sl
 <p>The alternative hypothesis should be two-sided because of the lack of directionality specified in the difference that we want to detect.</p>
 <p>The null hypothesis is that there is no difference in quality of sleep between males and females, while the alternative hypothesis is that there is a difference in quality of sleep between males and females.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>wtest<span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(quality_of_sleep<span class="sc">~</span>gender,<span class="at">data=</span>sleep,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span>
-<span id="cb25-2"><a></a>wtest </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>wtest<span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(quality_of_sleep<span class="sc">~</span>gender,<span class="at">data=</span>sleep,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span>
+<span id="cb25-2"><a></a>wtest </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum test with continuity correction
@@ -843,10 +843,10 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 <p>The resulting p-value is 6.0476062^{-9}. We reject the null hypothesis. We have sufficient evidence to conclude that there is a difference in quality of sleep between males and females.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>gender,<span class="at">y=</span>quality_of_sleep))<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>gender,<span class="at">y=</span>quality_of_sleep))<span class="sc">+</span></span>
 <span id="cb27-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
 <span id="cb27-3"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb27-4"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Quality of Sleep"</span>,<span class="at">x=</span><span class="st">"Gender"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-4"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Quality of Sleep"</span>,<span class="at">x=</span><span class="st">"Gender"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -858,10 +858,10 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 <div id="tabset-8-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>gender,<span class="at">y=</span>quality_of_sleep))<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>gender,<span class="at">y=</span>quality_of_sleep))<span class="sc">+</span></span>
 <span id="cb28-2"><a></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
 <span id="cb28-3"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb28-4"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Quality of Sleep"</span>,<span class="at">x=</span><span class="st">"Gender"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-4"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Quality of Sleep"</span>,<span class="at">x=</span><span class="st">"Gender"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -878,8 +878,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h2>Exercise</h2>
 <p>Consider the sleep health data set <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
-<span id="cb29-2"><a></a><span class="fu">glimpse</span>(sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
+<span id="cb29-2"><a></a><span class="fu">glimpse</span>(sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 374
 Columns: 13
@@ -908,8 +908,8 @@ $ sleep_disorder          &lt;chr&gt; "None", "None", "None", "Sleep Apnea", "Sl
 <p>The alternative hypothesis should be two-sided because of the lack of directionality specified in the difference that we want to detect.</p>
 <p>The null hypothesis is that there is no difference in daily number of steps between males and females, while the alternative hypothesis is that there is a difference in daily number of steps between males and females.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>wtest<span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(daily_steps<span class="sc">~</span>gender,<span class="at">data=</span>sleep,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span>
-<span id="cb31-2"><a></a>wtest </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>wtest<span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(daily_steps<span class="sc">~</span>gender,<span class="at">data=</span>sleep,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span>
+<span id="cb31-2"><a></a>wtest </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum test with continuity correction
@@ -921,10 +921,10 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 <p>The resulting p-value is 0.1203365. We fail to reject the null hypothesis at the 0.05 level of significance. We have insufficient evidence to conclude that there is a difference in number of daily steps between males and females.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>gender,<span class="at">y=</span>daily_steps))<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>gender,<span class="at">y=</span>daily_steps))<span class="sc">+</span></span>
 <span id="cb33-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
 <span id="cb33-3"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb33-4"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Number of Steps (Daily)"</span>,<span class="at">x=</span><span class="st">"Gender"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-4"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Number of Steps (Daily)"</span>,<span class="at">x=</span><span class="st">"Gender"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -936,10 +936,10 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 <div id="tabset-9-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>gender,<span class="at">y=</span>daily_steps))<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>sleep,<span class="fu">aes</span>(<span class="at">x=</span>gender,<span class="at">y=</span>daily_steps))<span class="sc">+</span></span>
 <span id="cb34-2"><a></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
 <span id="cb34-3"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb34-4"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Number of Steps (Daily)"</span>,<span class="at">x=</span><span class="st">"Gender"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-4"><a></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Number of Steps (Daily)"</span>,<span class="at">x=</span><span class="st">"Gender"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -995,14 +995,14 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <section id="r-implementation-4" class="slide level2">
 <h2><code>R</code> implementation</h2>
 <p>The <code>kruskal.test()</code> function implements the Kruskal-Wallis test. The function works best with the formula notation.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">kruskal.test</span>(response<span class="sc">~</span>group,<span class="at">data=</span>df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">kruskal.test</span>(response<span class="sc">~</span>group,<span class="at">data=</span>df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="example-3" class="slide level2">
 <h2>Example</h2>
 <p>Consider the <code>penguins</code> data set in <code>R</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb36-2"><a></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb36-2"><a></a><span class="fu">glimpse</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 8
@@ -1025,8 +1025,8 @@ $ year        &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div id="tabset-10-2">
 <p>The null hypothesis is that there is no difference in the distribution of body mass of the penguins across the different years. The alternative is that at least one year is different from the others.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>ktest <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(body_mass<span class="sc">~</span><span class="fu">as.factor</span>(year),<span class="at">data=</span>penguins)</span>
-<span id="cb38-2"><a></a>ktest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>ktest <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(body_mass<span class="sc">~</span><span class="fu">as.factor</span>(year),<span class="at">data=</span>penguins)</span>
+<span id="cb38-2"><a></a>ktest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Kruskal-Wallis rank sum test
@@ -1037,10 +1037,10 @@ Kruskal-Wallis chi-squared = 2.5523, df = 2, p-value = 0.2791</code></pre>
 </div>
 <p>The resulting p-value is 0.279111. At 0.05 level of significance, we fail to reject the null hypothesis. We have insufficient evidence that there is at least one year with a different distribution of body mass compared to the others.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>penguins,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.factor</span>(year),<span class="at">y=</span>body_mass)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>penguins,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.factor</span>(year),<span class="at">y=</span>body_mass)) <span class="sc">+</span> </span>
 <span id="cb40-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
 <span id="cb40-3"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb40-4"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Year"</span>,<span class="at">y=</span><span class="st">"Body Mass of Penguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-4"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Year"</span>,<span class="at">y=</span><span class="st">"Body Mass of Penguins"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1052,11 +1052,11 @@ Kruskal-Wallis chi-squared = 2.5523, df = 2, p-value = 0.2791</code></pre>
 </div>
 <div id="tabset-10-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>penguins,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.factor</span>(year),<span class="at">y=</span>body_mass)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>penguins,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.factor</span>(year),<span class="at">y=</span>body_mass)) <span class="sc">+</span> </span>
 <span id="cb41-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb41-3"><a></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">as.factor</span>(year)),<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
 <span id="cb41-4"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb41-5"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Year"</span>,<span class="at">y=</span><span class="st">"Body Mass of Penguins"</span>,<span class="at">fill=</span><span class="st">"Year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-5"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Year"</span>,<span class="at">y=</span><span class="st">"Body Mass of Penguins"</span>,<span class="at">fill=</span><span class="st">"Year"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1073,7 +1073,7 @@ Kruskal-Wallis chi-squared = 2.5523, df = 2, p-value = 0.2791</code></pre>
 <h2>Exercise</h2>
 <p>Consider the <code>iris</code> data set in <code>R</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">glimpse</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">glimpse</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
@@ -1093,8 +1093,8 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <div id="tabset-11-2">
 <p>The null hypothesis is that there is no difference in petal widths of the species of iris. the alternative hypothesis is that there is at least one species that has a different distribution of petal widths compared to the others.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>ktest <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(Petal.Width<span class="sc">~</span>Species,<span class="at">data=</span>iris)</span>
-<span id="cb44-2"><a></a>ktest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>ktest <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(Petal.Width<span class="sc">~</span>Species,<span class="at">data=</span>iris)</span>
+<span id="cb44-2"><a></a>ktest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Kruskal-Wallis rank sum test
@@ -1105,10 +1105,10 @@ Kruskal-Wallis chi-squared = 131.19, df = 2, p-value &lt; 2.2e-16</code></pre>
 </div>
 <p>The p-value is 3.2617956^{-29}. At the 0.05 level of significance, we reject the null hypothesis. We have sufficient evidence that at least one species has a different distribution of petal widths compared to the others.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>iris,<span class="fu">aes</span>(<span class="at">x=</span>Species,<span class="at">y=</span>Petal.Width)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>iris,<span class="fu">aes</span>(<span class="at">x=</span>Species,<span class="at">y=</span>Petal.Width)) <span class="sc">+</span> </span>
 <span id="cb46-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
 <span id="cb46-3"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb46-4"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Species"</span>,<span class="at">y=</span><span class="st">"Petal Width"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-4"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Species"</span>,<span class="at">y=</span><span class="st">"Petal Width"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1120,12 +1120,12 @@ Kruskal-Wallis chi-squared = 131.19, df = 2, p-value &lt; 2.2e-16</code></pre>
 </div>
 <div id="tabset-11-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>iris,<span class="fu">aes</span>(<span class="at">x=</span>Species,<span class="at">y=</span>Petal.Width)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>iris,<span class="fu">aes</span>(<span class="at">x=</span>Species,<span class="at">y=</span>Petal.Width)) <span class="sc">+</span> </span>
 <span id="cb47-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb47-3"><a></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species),<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
 <span id="cb47-4"><a></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">palette=</span><span class="st">"viridis"</span>) <span class="sc">+</span></span>
 <span id="cb47-5"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb47-6"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Species"</span>,<span class="at">y=</span><span class="st">"Petal Width"</span>,<span class="at">fill=</span><span class="st">"Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-6"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Species"</span>,<span class="at">y=</span><span class="st">"Petal Width"</span>,<span class="at">fill=</span><span class="st">"Species"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1180,15 +1180,15 @@ Kruskal-Wallis chi-squared = 131.19, df = 2, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">cor.test</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y,<span class="at">alternative=</span><span class="st">"two.sided"</span>,<span class="at">method=</span><span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">cor.test</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y,<span class="at">alternative=</span><span class="st">"two.sided"</span>,<span class="at">method=</span><span class="st">"spearman"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="example-4" class="slide level2">
 <h2>Example</h2>
 <p>Consider the sleep health data set <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb49-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
-<span id="cb49-3"><a></a><span class="fu">glimpse</span>(sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-3"><a></a><span class="fu">glimpse</span>(sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 374
 Columns: 13
@@ -1216,8 +1216,8 @@ $ sleep_disorder          &lt;chr&gt; "None", "None", "None", "Sleep Apnea", "Sl
 <div id="tabset-12-2">
 <p>The null hypothesis is that there is no association between daily steps and sleep duration, while the alternative hypothesis is that there is an association between daily steps and sleep duration.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(sleep<span class="sc">$</span>daily_steps,sleep<span class="sc">$</span>sleep_duration,<span class="at">alternative=</span><span class="st">"two.sided"</span>,<span class="at">method=</span><span class="st">"spearman"</span>)</span>
-<span id="cb51-2"><a></a>ctest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(sleep<span class="sc">$</span>daily_steps,sleep<span class="sc">$</span>sleep_duration,<span class="at">alternative=</span><span class="st">"two.sided"</span>,<span class="at">method=</span><span class="st">"spearman"</span>)</span>
+<span id="cb51-2"><a></a>ctest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Spearman's rank correlation rho
@@ -1239,9 +1239,9 @@ sample estimates:
 <h2>Exercise</h2>
 <p>Consider the sleep health data set <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb53-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
-<span id="cb53-3"><a></a><span class="fu">glimpse</span>(sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-3"><a></a><span class="fu">glimpse</span>(sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 374
 Columns: 13
@@ -1269,8 +1269,8 @@ $ sleep_disorder          &lt;chr&gt; "None", "None", "None", "Sleep Apnea", "Sl
 <div id="tabset-13-2">
 <p>The null hypothesis is that there is no association between daily steps and quality of sleep, while the alternative hypothesis is that there is an association between daily steps and quality of sleep</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(sleep<span class="sc">$</span>daily_steps,sleep<span class="sc">$</span>quality_of_sleep,<span class="at">alternative=</span><span class="st">"two.sided"</span>,<span class="at">method=</span><span class="st">"spearman"</span>)</span>
-<span id="cb55-2"><a></a>ctest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(sleep<span class="sc">$</span>daily_steps,sleep<span class="sc">$</span>quality_of_sleep,<span class="at">alternative=</span><span class="st">"two.sided"</span>,<span class="at">method=</span><span class="st">"spearman"</span>)</span>
+<span id="cb55-2"><a></a>ctest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Spearman's rank correlation rho
@@ -1481,7 +1481,7 @@ sample estimates:
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1631,13 +1631,14 @@ sample estimates:
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

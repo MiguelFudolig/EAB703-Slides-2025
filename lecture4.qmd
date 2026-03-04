@@ -734,7 +734,7 @@ pbinom(60,250,0.089) - pbinom(29,250,0.089)
 ### Simulation
 
 ```{r}
-Nsim<- 100 # Simulating 10 times
+Nsim<- 100 # Simulating 100 times
 set.seed(12) # <1>
 sims <- rbinom(Nsim,250,0.089)
 df <- data.frame(simulations=sims)
@@ -940,7 +940,7 @@ ppois(10,14)
 ### Simulations
 
 ```{r}
-Nsim<- 150 # Simulating 10 times
+Nsim<- 150 # Simulating 150 times
 set.seed(12345) # <1>
 sims <- rpois(Nsim,14)
 df <- data.frame(simulations=sims)
@@ -979,7 +979,7 @@ dpois(7,7)
 ### Simulations/Random Draws
 
 ```{r}
-Nsim<- 1000 # Simulating 10 times
+Nsim<- 1000 # Simulating 1000 times
 set.seed(12) # <1>
 sims <- rpois(Nsim,7)
 df <- data.frame(simulations=sims)
@@ -1481,10 +1481,12 @@ pnorm((92-78.5)/sqrt(120),0,1,lower.tail=F)
 ### Simulation/Generation
 
 ```{r}
+Nsims <- 1000
 set.seed(12345)
-df <- data.frame(x=rnorm(1000,mean=78.5,sd=sqrt(120)))
+sims <- rnorm(Nsims,mean=78.5,sd=sqrt(120))
+df <- data.frame(simulations=sims)
 
-ggplot(df,aes(x=x)) + 
+ggplot(df,aes(x=simulations)) + 
   geom_histogram(binwidth=1) +
   theme_bw() + 
   labs(x="Generated Scores",

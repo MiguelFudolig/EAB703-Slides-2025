@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Other Regression Analyses</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -332,7 +332,7 @@ OR = odds_1/odds_2 = \frac{p_1/(1-p_1)}{p_2/(1-p_2)} = e^{\beta_k}
 <p>Odds ratios can be calculated using the <code>contrast()</code> function in <code>emmeans()</code>.</p>
 </div>
 <div id="tabset-1-2">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y<span class="sc">~</span>x, <span class="at">data=</span>df,<span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y<span class="sc">~</span>x, <span class="at">data=</span>df,<span class="at">family=</span><span class="st">"binomial"</span>)</span>
 <span id="cb1-2"><a></a><span class="fu">summary</span>(mod1) <span class="co"># outputs coefficients</span></span>
 <span id="cb1-3"><a></a></span>
 <span id="cb1-4"><a></a><span class="fu">library</span>(emmeans)</span>
@@ -340,7 +340,7 @@ OR = odds_1/odds_2 = \frac{p_1/(1-p_1)}{p_2/(1-p_2)} = e^{\beta_k}
 <span id="cb1-6"><a></a><span class="fu">summary</span>(em_mod_lm,<span class="at">infer=</span>T)</span>
 <span id="cb1-7"><a></a></span>
 <span id="cb1-8"><a></a>con_mod_glm <span class="ot">&lt;-</span> <span class="fu">contrast</span>(em_mod_lm,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb1-9"><a></a><span class="fu">summary</span>(con_mod_glm,<span class="at">infer=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a></a><span class="fu">summary</span>(con_mod_glm,<span class="at">infer=</span>T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -416,7 +416,7 @@ IRR = \lambda_1/\lambda_2  = e^{\beta_k}
 <p>Incidence rate ratios can be calculated using the <code>contrast()</code> function in <code>emmeans()</code>.</p>
 </div>
 <div id="tabset-2-2">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y<span class="sc">~</span>x, <span class="at">data=</span>df,<span class="at">family=</span><span class="st">"poisson"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y<span class="sc">~</span>x, <span class="at">data=</span>df,<span class="at">family=</span><span class="st">"poisson"</span>)</span>
 <span id="cb2-2"><a></a><span class="fu">summary</span>(mod1) <span class="co"># outputs coefficients</span></span>
 <span id="cb2-3"><a></a></span>
 <span id="cb2-4"><a></a><span class="fu">library</span>(emmeans)</span>
@@ -424,7 +424,7 @@ IRR = \lambda_1/\lambda_2  = e^{\beta_k}
 <span id="cb2-6"><a></a><span class="fu">summary</span>(em_mod_lm,<span class="at">infer=</span>T)</span>
 <span id="cb2-7"><a></a></span>
 <span id="cb2-8"><a></a>con_mod_glm <span class="ot">&lt;-</span> <span class="fu">contrast</span>(em_mod_lm,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb2-9"><a></a><span class="fu">summary</span>(con_mod_glm,<span class="at">infer=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a></a><span class="fu">summary</span>(con_mod_glm,<span class="at">infer=</span>T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -622,7 +622,7 @@ IRR = \lambda_1/\lambda_2  = e^{\beta_k}
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -696,13 +696,14 @@ IRR = \lambda_1/\lambda_2  = e^{\beta_k}
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

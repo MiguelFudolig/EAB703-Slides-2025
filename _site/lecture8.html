@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Analysis of Variance</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -583,8 +583,8 @@ VR = F = MSA/MSE
 <div class="tab-content">
 <div id="tabset-3-1">
 <p>The package <code>aov(formula,data)</code> in <code>R</code> works with the <code>summary</code> function to perform the single-factor ANOVA. For a response variable in column <code>y</code> and group variable in column <code>x</code> in a data set <code>df</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(y<span class="sc">~</span>x,<span class="at">data=</span>df)</span>
-<span id="cb1-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(y<span class="sc">~</span>x,<span class="at">data=</span>df)</span>
+<span id="cb1-2"><a></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -601,8 +601,8 @@ VR = F = MSA/MSE
 </div>
 <div id="tabset-3-2">
 <p>To view the estimates of the coefficients of the corresponding linear model, we use <code>lm(formula,data)</code> to estimate the linear model. These coefficients can be viewed using the <code>summary</code> function.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x,<span class="at">data=</span>df)</span>
-<span id="cb2-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x,<span class="at">data=</span>df)</span>
+<span id="cb2-2"><a></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -619,9 +619,9 @@ VR = F = MSA/MSE
 </div>
 <div id="tabset-3-3">
 <p>The package <code>emmeans</code> contains the function <code>emmeans()</code> that calculates the group means based on the estimates of the linear models in <code>lm()</code></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(emmeans)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(emmeans)</span>
 <span id="cb3-2"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x,<span class="at">data=</span>df)</span>
-<span id="cb3-3"><a></a><span class="fu">emmeans</span>(mod1,<span class="sc">~</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a></a><span class="fu">emmeans</span>(mod1,<span class="sc">~</span>x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -665,8 +665,8 @@ VR = F = MSA/MSE
 <h2>Example</h2>
 <p>Consider the <code>iris</code> data set loaded in <code>R</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a></a><span class="fu">glimpse</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a></a><span class="fu">glimpse</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
@@ -686,11 +686,11 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <div id="tabset-4-2">
 <p>There are three species (“setosa”, “versicolor”, and “virginica”). The hypotheses are <span class="math inline">\(H_0:\)</span> The population average sepal length is equal for all three species. and <span class="math inline">\(H_a:\)</span> At least one population has a different average sepal length.</p>
 <p>We now implement the ANOVA using <code>R</code>. To calculate the ANOVA table, we use <code>aov()</code></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">install.packages</span>(<span class="st">"lsr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">install.packages</span>(<span class="st">"lsr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(lsr)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(lsr)</span>
 <span id="cb7-2"><a></a>mod_aov <span class="ot">&lt;-</span><span class="fu">aov</span>(Sepal.Length<span class="sc">~</span>Species,<span class="at">data=</span>iris)</span>
-<span id="cb7-3"><a></a><span class="fu">summary</span>(mod_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a></a><span class="fu">summary</span>(mod_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
 Species       2  63.21  31.606   119.3 &lt;2e-16 ***
@@ -698,7 +698,7 @@ Residuals   147  38.96   0.265
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">etaSquared</span>(mod_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">etaSquared</span>(mod_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           eta.sq eta.sq.part
 Species 0.6187057   0.6187057</code></pre>
@@ -707,12 +707,12 @@ Species 0.6187057   0.6187057</code></pre>
 <p>The p-value is &lt;2e-16, which is less than 0.05. We reject the null hypothesis and therefore there is sufficient evidence that at least one species has a different population average sepal length compared to the others. The effect size is 0.6187057</p>
 <p>We examine the group means to see how much the group means differ using <code>emmeans()</code>. To use <code>emmeans()</code>, we need to create a linear model for the problem using <code>lm()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co">#install emmeans first if not installed yet: </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co">#install emmeans first if not installed yet: </span></span>
 <span id="cb11-2"><a></a><span class="co">#install.packages("emmeans")</span></span>
 <span id="cb11-3"><a></a><span class="fu">library</span>(emmeans)</span>
 <span id="cb11-4"><a></a></span>
 <span id="cb11-5"><a></a>mod_lm <span class="ot">&lt;-</span><span class="fu">lm</span>(Sepal.Length<span class="sc">~</span>Species,<span class="at">data=</span>iris)</span>
-<span id="cb11-6"><a></a><span class="fu">summary</span>(mod_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a></a><span class="fu">summary</span>(mod_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -734,7 +734,7 @@ Residual standard error: 0.5148 on 147 degrees of freedom
 Multiple R-squared:  0.6187,    Adjusted R-squared:  0.6135 
 F-statistic: 119.3 on 2 and 147 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">emmeans</span>(mod_lm,<span class="sc">~</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">emmeans</span>(mod_lm,<span class="sc">~</span>Species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Species    emmean     SE  df lower.CL upper.CL
  setosa       5.01 0.0728 147     4.86     5.15
@@ -753,8 +753,8 @@ Confidence level used: 0.95 </code></pre>
 <h2>Exercise</h2>
 <p>The data set <code>penguins</code> from the <code>datasets</code> package in <code>R</code> includes data on adult penguins covering three species found on three islands in the Palmer Archipelago, Antarctica.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(datasets)</span>
-<span id="cb15-2"><a></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(datasets)</span>
+<span id="cb15-2"><a></a><span class="fu">glimpse</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 8
@@ -767,9 +767,9 @@ $ body_mass   &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, 42
 $ sex         &lt;fct&gt; male, female, female, NA, female, male, female, male, NA, …
 $ year        &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># disregard missing data:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># disregard missing data:</span></span>
 <span id="cb17-2"><a></a></span>
-<span id="cb17-3"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(penguins,bill_len)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(penguins,bill_len)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Question</a></li><li><a href="#tabset-5-2">Answer</a></li></ul>
@@ -781,9 +781,9 @@ $ year        &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>The hypotheses are <span class="math inline">\(H_0:\)</span> The population average bill length is equal for all three species. and <span class="math inline">\(H_a:\)</span> At least one population has a different average bill length.</p>
 <p>We now implement the ANOVA using <code>R</code>. To calculate the ANOVA table, we use <code>aov()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(lsr)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(lsr)</span>
 <span id="cb18-2"><a></a>mod_aov <span class="ot">&lt;-</span><span class="fu">aov</span>(bill_len<span class="sc">~</span>species,<span class="at">data=</span>penguins)</span>
-<span id="cb18-3"><a></a><span class="fu">summary</span>(mod_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-3"><a></a><span class="fu">summary</span>(mod_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
 species       2   7194    3597   410.6 &lt;2e-16 ***
@@ -791,7 +791,7 @@ Residuals   339   2970       9
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">etaSquared</span>(mod_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">etaSquared</span>(mod_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           eta.sq eta.sq.part
 species 0.7078091   0.7078091</code></pre>
@@ -800,12 +800,12 @@ species 0.7078091   0.7078091</code></pre>
 <p>The p-value is &lt;2e-16, which is less than 0.05. We reject the null hypothesis and therefore there is sufficient evidence that at least one species has a different population average bill length compared to the others. The effect size is 0.7078091</p>
 <p>We examine the group means to see how much the group means differ using <code>emmeans()</code>. To use <code>emmeans()</code>, we need to create a linear model for the problem using <code>lm()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co">#install emmeans first if not installed yet: </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co">#install emmeans first if not installed yet: </span></span>
 <span id="cb22-2"><a></a><span class="co">#install.packages("emmeans")</span></span>
 <span id="cb22-3"><a></a><span class="fu">library</span>(emmeans)</span>
 <span id="cb22-4"><a></a></span>
 <span id="cb22-5"><a></a>mod_lm <span class="ot">&lt;-</span><span class="fu">lm</span>(bill_len<span class="sc">~</span>species,<span class="at">data=</span>penguins)</span>
-<span id="cb22-6"><a></a><span class="fu">summary</span>(mod_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-6"><a></a><span class="fu">summary</span>(mod_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -827,7 +827,7 @@ Residual standard error: 2.96 on 339 degrees of freedom
 Multiple R-squared:  0.7078,    Adjusted R-squared:  0.7061 
 F-statistic: 410.6 on 2 and 339 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">emmeans</span>(mod_lm,<span class="sc">~</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">emmeans</span>(mod_lm,<span class="sc">~</span>species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> species   emmean    SE  df lower.CL upper.CL
  Adelie      38.8 0.241 339     38.3     39.3
@@ -870,10 +870,10 @@ Confidence level used: 0.95 </code></pre>
 <section id="r-implementation-1" class="slide level2">
 <h2><code>R</code> implementation</h2>
 <p>The function <code>contrast</code> is applied to the <code>emmeans</code> function to estimate pairwise comparisons. Using previous examples,</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">library</span>(emmeans)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">library</span>(emmeans)</span>
 <span id="cb26-2"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x,<span class="at">data=</span>df)</span>
 <span id="cb26-3"><a></a>em_mod1 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(mod1,<span class="sc">~</span>x)</span>
-<span id="cb26-4"><a></a><span class="fu">contrast</span>(em_mod1,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">adjust=</span><span class="st">"tukey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-4"><a></a><span class="fu">contrast</span>(em_mod1,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">adjust=</span><span class="st">"tukey"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -892,8 +892,8 @@ Confidence level used: 0.95 </code></pre>
 <h2>Example</h2>
 <p>Consider the <code>iris</code> data set loaded in <code>R</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb27-2"><a></a><span class="fu">glimpse</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb27-2"><a></a><span class="fu">glimpse</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 150
 Columns: 5
@@ -912,9 +912,9 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 </div>
 <div id="tabset-6-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>mod_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length<span class="sc">~</span>Species,<span class="at">data=</span>iris)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>mod_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length<span class="sc">~</span>Species,<span class="at">data=</span>iris)</span>
 <span id="cb29-2"><a></a>em_mod_lm <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(mod_lm,<span class="sc">~</span>Species)</span>
-<span id="cb29-3"><a></a><span class="fu">contrast</span>(em_mod_lm,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">adjust=</span><span class="st">"tukey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a></a><span class="fu">contrast</span>(em_mod_lm,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">adjust=</span><span class="st">"tukey"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast               estimate    SE  df t.ratio p.value
  setosa - versicolor      -0.930 0.103 147  -9.033  &lt;.0001
@@ -933,8 +933,8 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <h2>Exercise</h2>
 <p>The data set <code>penguins</code> from the <code>datasets</code> package in <code>R</code> includes data on adult penguins covering three species found on three islands in the Palmer Archipelago, Antarctica.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(datasets)</span>
-<span id="cb31-2"><a></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(datasets)</span>
+<span id="cb31-2"><a></a><span class="fu">glimpse</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 342
 Columns: 8
@@ -947,9 +947,9 @@ $ body_mass   &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3475, 4250, 
 $ sex         &lt;fct&gt; male, female, female, female, male, female, male, NA, NA, …
 $ year        &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># disregard missing data:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># disregard missing data:</span></span>
 <span id="cb33-2"><a></a></span>
-<span id="cb33-3"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(penguins,bill_len)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-3"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(penguins,bill_len)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Question</a></li><li><a href="#tabset-7-2">Answer</a></li></ul>
@@ -959,14 +959,14 @@ $ year        &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 <div id="tabset-7-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="co">#install emmeans first if not installed yet: </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="co">#install emmeans first if not installed yet: </span></span>
 <span id="cb34-2"><a></a><span class="co">#install.packages("emmeans")</span></span>
 <span id="cb34-3"><a></a><span class="fu">library</span>(emmeans)</span>
 <span id="cb34-4"><a></a></span>
 <span id="cb34-5"><a></a>mod_lm <span class="ot">&lt;-</span><span class="fu">lm</span>(bill_len<span class="sc">~</span>species,<span class="at">data=</span>penguins)</span>
 <span id="cb34-6"><a></a></span>
 <span id="cb34-7"><a></a>em_mod_lm <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(mod_lm,<span class="sc">~</span>species)</span>
-<span id="cb34-8"><a></a><span class="fu">contrast</span>(em_mod_lm,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">adjust=</span><span class="st">"bon"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-8"><a></a><span class="fu">contrast</span>(em_mod_lm,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">adjust=</span><span class="st">"bon"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast           estimate    SE  df t.ratio p.value
  Adelie - Chinstrap   -10.04 0.432 339 -23.232  &lt;.0001
@@ -1120,16 +1120,16 @@ Y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \varepsilon_{ijk}
 <section id="r-implementation-2" class="slide level2">
 <h2><code>R</code> implementation</h2>
 <p>The same functions used in the single factor ANOVA are used to perform a two-way ANOVA. However, the model specification is slightly different.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">library</span>(emmeans)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">library</span>(emmeans)</span>
 <span id="cb36-2"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>A<span class="sc">+</span>B<span class="sc">+</span>A<span class="sc">:</span>B,<span class="at">data=</span>df)</span>
-<span id="cb36-3"><a></a><span class="fu">emmeans</span>(mod1,<span class="sc">~</span>A<span class="sc">*</span>B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-3"><a></a><span class="fu">emmeans</span>(mod1,<span class="sc">~</span>A<span class="sc">*</span>B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
 <p>The data set <code>lec8_example.csv</code> includes simulated data from a study that randomly sampled 20 individuals with and without family history of hypertension. These individuals were randomly assigned to two treatments for hypertension, A and B. The systolic blood pressure was measured for each participant.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>systolic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"lec8_example.csv"</span>)</span>
-<span id="cb37-2"><a></a><span class="fu">glimpse</span>(systolic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>systolic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"lec8_example.csv"</span>)</span>
+<span id="cb37-2"><a></a><span class="fu">glimpse</span>(systolic)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 40
 Columns: 3
@@ -1147,8 +1147,8 @@ $ Systolic  &lt;int&gt; 141, 137, 136, 131, 133, 141, 129, 134, 134, 141, 132, 1
 <div id="tabset-8-2">
 <p>The null hypothesis is <span class="math inline">\(H_0:\)</span> there is no interaction between family history and hypertension and the alternative hypothesis is <span class="math inline">\(H_a\)</span>: there is an interaction between family history and hypertension.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>mod_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Systolic<span class="sc">~</span>Treatment <span class="sc">+</span> History <span class="sc">+</span> Treatment<span class="sc">:</span>History,<span class="at">data=</span>systolic)</span>
-<span id="cb39-2"><a></a><span class="fu">summary</span>(mod_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>mod_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Systolic<span class="sc">~</span>Treatment <span class="sc">+</span> History <span class="sc">+</span> Treatment<span class="sc">:</span>History,<span class="at">data=</span>systolic)</span>
+<span id="cb39-2"><a></a><span class="fu">summary</span>(mod_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 Treatment          1  330.6   330.6   13.27 0.000841 ***
@@ -1158,16 +1158,16 @@ Residuals         36  896.7    24.9
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">etaSquared</span>(mod_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">etaSquared</span>(mod_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     eta.sq eta.sq.part
 Treatment         0.0972777   0.2693867
 History           0.5087789   0.6585203
 Treatment:History 0.1301131   0.3302836</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">library</span>(emmeans)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">library</span>(emmeans)</span>
 <span id="cb43-2"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Systolic<span class="sc">~</span>Treatment <span class="sc">+</span> History <span class="sc">+</span> Treatment<span class="sc">:</span>History,<span class="at">data=</span>systolic)</span>
-<span id="cb43-3"><a></a><span class="fu">emmeans</span>(mod1,<span class="sc">~</span>Treatment<span class="sc">:</span>History)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a></a><span class="fu">emmeans</span>(mod1,<span class="sc">~</span>Treatment<span class="sc">:</span>History)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Treatment History emmean   SE df lower.CL upper.CL
  A         No         116 1.58 36      113      119
@@ -1177,7 +1177,7 @@ Treatment:History 0.1301131   0.3302836</code></pre>
 
 Confidence level used: 0.95 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">plot</span>(<span class="fu">emmeans</span>(mod1,<span class="sc">~</span>Treatment<span class="sc">|</span>History))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">plot</span>(<span class="fu">emmeans</span>(mod1,<span class="sc">~</span>Treatment<span class="sc">|</span>History))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1195,8 +1195,8 @@ Confidence level used: 0.95 </code></pre>
 <h2>Exercise</h2>
 <p>The data set <code>COVID-Zinc-AscorbicAcid.csv</code> contains data from a clinical trial that tested the efficacy of using high doses of zinc and/or ascorbic acid (vitamin C) on the recovery time for COVID-19. They studied a number of outcome variables, including the time to 50% reduction in symptoms. Those marked with <code>1</code> for Zinc and Ascorbic Acid received the treatment, while those marked with <code>-1</code> did not.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>covid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"COVID-Zinc-AscorbicAcid.csv"</span>)</span>
-<span id="cb46-2"><a></a><span class="fu">glimpse</span>(covid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>covid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"COVID-Zinc-AscorbicAcid.csv"</span>)</span>
+<span id="cb46-2"><a></a><span class="fu">glimpse</span>(covid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 4
@@ -1218,8 +1218,8 @@ $ DaysUntil50PctReduction &lt;dbl&gt; 2.6, 4.4, 14.1, 6.0, 6.4, 13.3, 8.0, 0.8, 
 <div id="tabset-9-2">
 <p>The null hypothesis is <span class="math inline">\(H_0:\)</span> there is no interaction between Ascorbic Acid and Zinc treatments and the alternative hypothesis is <span class="math inline">\(H_a\)</span>: there is an interaction between between Ascorbic Acid and Zinc treatments.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>mod_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(DaysUntil50PctReduction<span class="sc">~</span>AscorbicAcid <span class="sc">+</span> Zinc <span class="sc">+</span> AscorbicAcid<span class="sc">:</span>Zinc,<span class="at">data=</span>covid)</span>
-<span id="cb48-2"><a></a><span class="fu">summary</span>(mod_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>mod_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(DaysUntil50PctReduction<span class="sc">~</span>AscorbicAcid <span class="sc">+</span> Zinc <span class="sc">+</span> AscorbicAcid<span class="sc">:</span>Zinc,<span class="at">data=</span>covid)</span>
+<span id="cb48-2"><a></a><span class="fu">summary</span>(mod_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  Df Sum Sq Mean Sq F value Pr(&gt;F)
 AscorbicAcid       1   3.28   3.281   0.192  0.667
@@ -1227,16 +1227,16 @@ Zinc               1   0.84   0.840   0.049  0.827
 AscorbicAcid:Zinc  1   0.76   0.760   0.045  0.836
 Residuals         16 273.17  17.073               </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">etaSquared</span>(mod_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">etaSquared</span>(mod_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                       eta.sq eta.sq.part
 AscorbicAcid      0.011798259 0.011866586
 Zinc              0.003022843 0.003067423
 AscorbicAcid:Zinc 0.002735125 0.002776272</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">library</span>(emmeans)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">library</span>(emmeans)</span>
 <span id="cb52-2"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DaysUntil50PctReduction<span class="sc">~</span>AscorbicAcid <span class="sc">+</span> Zinc <span class="sc">+</span> AscorbicAcid<span class="sc">:</span>Zinc,<span class="at">data=</span>covid)</span>
-<span id="cb52-3"><a></a><span class="fu">emmeans</span>(mod1,<span class="sc">~</span>AscorbicAcid<span class="sc">:</span>Zinc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-3"><a></a><span class="fu">emmeans</span>(mod1,<span class="sc">~</span>AscorbicAcid<span class="sc">:</span>Zinc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> AscorbicAcid Zinc emmean   SE df lower.CL upper.CL
            -1   -1   6.70 1.85 16     2.78    10.62
@@ -1246,7 +1246,7 @@ AscorbicAcid:Zinc 0.002735125 0.002776272</code></pre>
 
 Confidence level used: 0.95 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">plot</span>(<span class="fu">emmeans</span>(mod1,<span class="sc">~</span>AscorbicAcid<span class="sc">|</span>Zinc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">plot</span>(<span class="fu">emmeans</span>(mod1,<span class="sc">~</span>AscorbicAcid<span class="sc">|</span>Zinc))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1466,7 +1466,7 @@ Confidence level used: 0.95 </code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1616,13 +1616,14 @@ Confidence level used: 0.95 </code></pre>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

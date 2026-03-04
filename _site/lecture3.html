@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Introduction to Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,7 +114,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -466,8 +466,8 @@ P(E) = \frac{532}{1325}
 <div id="tabset-1-1">
 <p>What is the probability of selecting a participant of the survey at random who is not a US citizen in 2008? Use the <code>count</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(carData)</span>
-<span id="cb1-2"><a></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(carData)</span>
+<span id="cb1-2"><a></a>AMSsurvey</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    type    sex citizen count count11
 1  I(Pu)   Male      US   132     148
@@ -500,14 +500,14 @@ P(E) = \frac{532}{1325}
 <div id="tabset-1-2">
 <p>The total counts can be calculated using the <code>sum</code> function. Or simple addition.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sum</span>(AMSsurvey<span class="sc">$</span>count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sum</span>(AMSsurvey<span class="sc">$</span>count)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1430</code></pre>
 </div>
 </div>
 <p>We can also count the total number of non-US citizens in the data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">130</span><span class="sc">+</span><span class="dv">29</span><span class="sc">+</span><span class="dv">79</span><span class="sc">+</span><span class="dv">25</span><span class="sc">+</span><span class="dv">89</span><span class="sc">+</span><span class="dv">50</span><span class="sc">+</span><span class="dv">53</span><span class="sc">+</span><span class="dv">39</span><span class="sc">+</span><span class="dv">122</span><span class="sc">+</span><span class="dv">105</span><span class="sc">+</span><span class="dv">28</span><span class="sc">+</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">130</span><span class="sc">+</span><span class="dv">29</span><span class="sc">+</span><span class="dv">79</span><span class="sc">+</span><span class="dv">25</span><span class="sc">+</span><span class="dv">89</span><span class="sc">+</span><span class="dv">50</span><span class="sc">+</span><span class="dv">53</span><span class="sc">+</span><span class="dv">39</span><span class="sc">+</span><span class="dv">122</span><span class="sc">+</span><span class="dv">105</span><span class="sc">+</span><span class="dv">28</span><span class="sc">+</span><span class="dv">12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 761</code></pre>
 </div>
@@ -862,8 +862,8 @@ P(NoCollege) = 1-(0.107+0.234+0.152+0.039)
 <div id="tabset-6-1">
 <p>What is the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(<code>type=IV</code>) in 2008 (<code>count</code> variable) given that they are known to be a US citizen?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(carData)</span>
-<span id="cb7-2"><a></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(carData)</span>
+<span id="cb7-2"><a></a>AMSsurvey</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    type    sex citizen count count11
 1  I(Pu)   Male      US   132     148
@@ -931,8 +931,8 @@ P(Acc \cap Fail) = P(Acc|Fail) P(Fail)
 <div id="tabset-7-1">
 <p>Use the multiplication rule to calculate the probability that a randomly selected participant is enrolled in a statistics/biostatistics program(<code>type=IV</code>) in 2008 (<code>count</code> variable) given that they are known to be a US citizen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(carData)</span>
-<span id="cb9-2"><a></a>AMSsurvey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(carData)</span>
+<span id="cb9-2"><a></a>AMSsurvey</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    type    sex citizen count count11
 1  I(Pu)   Male      US   132     148
@@ -1220,11 +1220,11 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>NPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
 <span id="cb11-2"><a></a>spec <span class="ot">&lt;-</span> <span class="fl">0.98</span></span>
 <span id="cb11-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
 <span id="cb11-4"><a></a></span>
-<span id="cb11-5"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9992644</code></pre>
 </div>
@@ -1233,7 +1233,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>PPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.06026365</code></pre>
 </div>
@@ -1261,11 +1261,11 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>NPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>sens <span class="ot">&lt;-</span> <span class="fl">0.64</span></span>
 <span id="cb15-2"><a></a>spec <span class="ot">&lt;-</span> <span class="fl">0.98</span></span>
 <span id="cb15-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.002</span></span>
 <span id="cb15-4"><a></a></span>
-<span id="cb15-5"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-5"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9992644</code></pre>
 </div>
@@ -1274,7 +1274,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>PPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.06026365</code></pre>
 </div>
@@ -1323,7 +1323,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>What is the sensitivity of the test?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7861635</code></pre>
 </div>
@@ -1332,7 +1332,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>What is the specificity of the test?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9607843</code></pre>
 </div>
@@ -1341,11 +1341,11 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>What is the probability that a randomly screened adolescent has anorexia nervosa given they tested positive? <span class="math inline">\(\to\)</span> PPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sens <span class="ot">&lt;-</span> <span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sens <span class="ot">&lt;-</span> <span class="dv">250</span><span class="sc">/</span>(<span class="dv">250</span><span class="sc">+</span><span class="dv">68</span>)</span>
 <span id="cb23-2"><a></a>spec <span class="ot">&lt;-</span> <span class="dv">784</span><span class="sc">/</span>(<span class="dv">784</span><span class="sc">+</span><span class="dv">32</span>)</span>
 <span id="cb23-3"><a></a>br <span class="ot">&lt;-</span> <span class="fl">0.07</span></span>
 <span id="cb23-4"><a></a></span>
-<span id="cb23-5"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a></a>(sens<span class="sc">*</span>br)<span class="sc">/</span>(sens<span class="sc">*</span>br <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6014232</code></pre>
 </div>
@@ -1354,7 +1354,7 @@ P(ND|NT) = \frac{P(NT|ND)P(ND)}{P(NT)} = \frac{spec*(1-BR)}{spec*(1-BR) + (1-sen
 <li>What is the probability that a randomly screened adolescent does not have anorexia nervosa given they tested negative? <span class="math inline">\(\to\)</span> NPV</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br))<span class="sc">/</span>(spec<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>br) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>sens)<span class="sc">*</span>br)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9835238</code></pre>
 </div>
@@ -1594,7 +1594,7 @@ Do, Vuong Van, Van My Ta Park, Nhung Nguyen, Pamela May Ling, Marian Tzuang, Bor
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1744,13 +1744,14 @@ Do, Vuong Van, Van My Ta Park, Nhung Nguyen, Pamela May Ling, Marian Tzuang, Bor
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

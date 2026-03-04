@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Analysis of Frequencies</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -267,7 +267,7 @@ Hair    Brown Blue Hazel Green
 <section id="contingency-tables-in-r" class="slide level2">
 <h2>Contingency tables in <code>R</code></h2>
 <p>You can use <code>xtabs()</code> to produce contingency tables in <code>R</code>. The data should be formatted such that the two variables are defined by two columns. If these columns are <code>x</code> and <code>y</code> from a data frame <code>df</code>, the sample code would look like:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>x<span class="sc">+</span>y,<span class="at">data=</span>df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>x<span class="sc">+</span>y,<span class="at">data=</span>df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>x</code> will be assigned as the row variable, <code>y</code> will be assigned as the column variable.</p>
 </section>
 <section id="example-1" class="slide level2">
@@ -281,7 +281,7 @@ Hair    Brown Blue Hazel Green
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>species<span class="sc">+</span>sex,<span class="at">data=</span>penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>species<span class="sc">+</span>sex,<span class="at">data=</span>penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           sex
 species     female male
@@ -381,7 +381,7 @@ p-value = P(\chi^2_{k-1} \geq Q)
 </div>
 <div id="tabset-3-2">
 <p>The <code>chisq.test</code> function performs the chi-squared test of goodness of fit. The function needs a vector of the observed variables, <code>x_observed</code> and a vector of probabilities <code>p</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">chisq.test</span>(<span class="at">x=</span>x_observed, <span class="at">p=</span>p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">chisq.test</span>(<span class="at">x=</span>x_observed, <span class="at">p=</span>p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -450,20 +450,20 @@ p-value = P(\chi^2_{k-1} \geq Q)
 <div id="tabset-4-3">
 <p>We specify the observed variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">220</span>,<span class="dv">130</span>,<span class="dv">80</span>,<span class="dv">60</span>,<span class="dv">90</span>)</span>
-<span id="cb6-2"><a></a>observed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">220</span>,<span class="dv">130</span>,<span class="dv">80</span>,<span class="dv">60</span>,<span class="dv">90</span>)</span>
+<span id="cb6-2"><a></a>observed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  10 220 130  80  60  90</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(observed)</span>
-<span id="cb8-2"><a></a>total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(observed)</span>
+<span id="cb8-2"><a></a>total</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 590</code></pre>
 </div>
 </div>
 <p>The specified distribution is the Poisson distribution. We can then calculate the expected probabilities using <code>dpois</code> and <code>ppois</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb10-2"><a></a><span class="fu">dpois</span>(<span class="dv">0</span>,<span class="at">lambda=</span><span class="fl">1.44</span>),</span>
 <span id="cb10-3"><a></a><span class="fu">dpois</span>(<span class="dv">1</span>,<span class="at">lambda=</span><span class="fl">1.44</span>),</span>
 <span id="cb10-4"><a></a><span class="fu">dpois</span>(<span class="dv">2</span>,<span class="at">lambda=</span><span class="fl">1.44</span>),</span>
@@ -471,23 +471,23 @@ p-value = P(\chi^2_{k-1} \geq Q)
 <span id="cb10-6"><a></a><span class="fu">dpois</span>(<span class="dv">4</span>,<span class="at">lambda=</span><span class="fl">1.44</span>),</span>
 <span id="cb10-7"><a></a><span class="dv">1</span><span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">4</span>,<span class="at">lambda=</span><span class="fl">1.44</span>)</span>
 <span id="cb10-8"><a></a>)</span>
-<span id="cb10-9"><a></a>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-9"><a></a>expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.23692776 0.34117597 0.24564670 0.11791042 0.04244775 0.01589140</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">sum</span>(expected) <span class="co"># must be 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">sum</span>(expected) <span class="co"># must be 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>total<span class="sc">*</span>expected <span class="co"># there should not be more than 1.5 bins that have less than 5 expected counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>total<span class="sc">*</span>expected <span class="co"># there should not be more than 1.5 bins that have less than 5 expected counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 139.787378 201.293824 144.931553  69.567145  25.044172   9.375928</code></pre>
 </div>
 </div>
 <p>All expected counts are above 5. We can now use the chi-square approximation for the p-value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x=</span>observed,<span class="at">p=</span>expected)</span>
-<span id="cb16-2"><a></a>chisqtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x=</span>observed,<span class="at">p=</span>expected)</span>
+<span id="cb16-2"><a></a>chisqtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Chi-squared test for given probabilities
@@ -501,7 +501,7 @@ X-squared = 867.42, df = 5, p-value &lt; 2.2e-16</code></pre>
 <div id="tabset-4-4">
 <p>The function <code>bind_rows</code> appends the expected data frame to the observed data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb18-2"><a></a>df_observed <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">bin =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">"5 or more"</span>),<span class="at">y=</span>observed,<span class="at">type=</span><span class="st">"Observed"</span>)</span>
 <span id="cb18-3"><a></a>df_expected <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">bin =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">"5 or more"</span>),<span class="at">y=</span>total<span class="sc">*</span>expected,<span class="at">type=</span><span class="st">"Expected"</span>)</span>
 <span id="cb18-4"><a></a>df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_observed,df_expected)</span>
@@ -509,7 +509,7 @@ X-squared = 867.42, df = 5, p-value &lt; 2.2e-16</code></pre>
 <span id="cb18-6"><a></a><span class="fu">ggplot</span>(df,<span class="fu">aes</span>(<span class="at">x=</span>bin,<span class="at">y=</span>y,<span class="at">group=</span>type,<span class="at">fill=</span>type)) <span class="sc">+</span></span>
 <span id="cb18-7"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">"dodge"</span>,<span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span> </span>
 <span id="cb18-8"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb18-9"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Number of failures"</span>, <span class="at">y=</span><span class="st">"Count"</span>,<span class="at">fill=</span><span class="st">"Observed vs. Expected"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-9"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Number of failures"</span>, <span class="at">y=</span><span class="st">"Count"</span>,<span class="at">fill=</span><span class="st">"Observed vs. Expected"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -586,38 +586,38 @@ X-squared = 867.42, df = 5, p-value &lt; 2.2e-16</code></pre>
 <div id="tabset-5-3">
 <p>We specify the observed variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">918</span>,<span class="dv">905</span>,<span class="dv">908</span>,<span class="dv">916</span>,<span class="dv">900</span>,<span class="dv">911</span>,<span class="dv">963</span>,<span class="dv">948</span>,<span class="dv">937</span>,<span class="dv">909</span>)</span>
-<span id="cb19-2"><a></a>observed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">918</span>,<span class="dv">905</span>,<span class="dv">908</span>,<span class="dv">916</span>,<span class="dv">900</span>,<span class="dv">911</span>,<span class="dv">963</span>,<span class="dv">948</span>,<span class="dv">937</span>,<span class="dv">909</span>)</span>
+<span id="cb19-2"><a></a>observed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 918 905 908 916 900 911 963 948 937 909</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(observed)</span>
-<span id="cb21-2"><a></a>total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(observed)</span>
+<span id="cb21-2"><a></a>total</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9215</code></pre>
 </div>
 </div>
 <p>The specified distribution is the discrete uniform distribution. We can then calculate the uniform probabilities as 1/10 (10 bins).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">10</span></span>
 <span id="cb23-2"><a></a>)</span>
-<span id="cb23-3"><a></a>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3"><a></a>expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">sum</span>(expected) <span class="co"># must be 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">sum</span>(expected) <span class="co"># must be 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>total<span class="sc">*</span>expected <span class="co"># there should not be more than 1.5 bins that have less than 5 expected counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>total<span class="sc">*</span>expected <span class="co"># there should not be more than 1.5 bins that have less than 5 expected counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 921.5 921.5 921.5 921.5 921.5 921.5 921.5 921.5 921.5 921.5</code></pre>
 </div>
 </div>
 <p>All expected counts are above 5. We can now use the chi-square approximation for the p-value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x=</span>observed,<span class="at">p=</span>expected)</span>
-<span id="cb29-2"><a></a>chisqtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x=</span>observed,<span class="at">p=</span>expected)</span>
+<span id="cb29-2"><a></a>chisqtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Chi-squared test for given probabilities
@@ -630,7 +630,7 @@ X-squared = 4.2219, df = 9, p-value = 0.8962</code></pre>
 </div>
 <div id="tabset-5-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb31-2"><a></a>df_observed <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">bin =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>,<span class="at">y=</span>observed,<span class="at">type=</span><span class="st">"Observed"</span>)</span>
 <span id="cb31-3"><a></a>df_expected <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">bin =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>,<span class="at">y=</span>total<span class="sc">*</span>expected,<span class="at">type=</span><span class="st">"Expected"</span>)</span>
 <span id="cb31-4"><a></a>df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_observed,df_expected)</span>
@@ -638,7 +638,7 @@ X-squared = 4.2219, df = 9, p-value = 0.8962</code></pre>
 <span id="cb31-6"><a></a><span class="fu">ggplot</span>(df,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.factor</span>(bin),<span class="at">y=</span>y,<span class="at">group=</span>type,<span class="at">fill=</span>type)) <span class="sc">+</span></span>
 <span id="cb31-7"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">"dodge"</span>,<span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span> </span>
 <span id="cb31-8"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb31-9"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Number of failures"</span>, <span class="at">y=</span><span class="st">"Count"</span>,<span class="at">fill=</span><span class="st">"Observed vs. Expected"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-9"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Number of failures"</span>, <span class="at">y=</span><span class="st">"Count"</span>,<span class="at">fill=</span><span class="st">"Observed vs. Expected"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -742,9 +742,9 @@ Q = \sum_{i=1}^r \sum_{j=1}^c \frac{(O_{ij}-E_{ij})^2}{E_{ij}}
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>x<span class="sc">+</span>y, <span class="at">data=</span>df)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>x<span class="sc">+</span>y, <span class="at">data=</span>df)</span>
 <span id="cb32-2"><a></a>chisq <span class="ot">&lt;-</span><span class="fu">chisq.test</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y)</span>
-<span id="cb32-3"><a></a>chisq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-3"><a></a>chisq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -763,7 +763,7 @@ Q = \sum_{i=1}^r \sum_{j=1}^c \frac{(O_{ij}-E_{ij})^2}{E_{ij}}
 <h2>Example</h2>
 <p>Consider the sleep health data, <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Question</a></li><li><a href="#tabset-6-2">Answer</a></li></ul>
@@ -774,7 +774,7 @@ Q = \sum_{i=1}^r \sum_{j=1}^c \frac{(O_{ij}-E_{ij})^2}{E_{ij}}
 <div id="tabset-6-2">
 <p>Check for sparsity of data first.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>gender<span class="sc">+</span>sleep_disorder,<span class="at">data=</span>sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>gender<span class="sc">+</span>sleep_disorder,<span class="at">data=</span>sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        sleep_disorder
 gender   Insomnia None Sleep Apnea
@@ -783,8 +783,8 @@ gender   Insomnia None Sleep Apnea
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(sleep<span class="sc">$</span>gender,sleep<span class="sc">$</span>sleep_disorder)</span>
-<span id="cb36-2"><a></a>chisqtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(sleep<span class="sc">$</span>gender,sleep<span class="sc">$</span>sleep_disorder)</span>
+<span id="cb36-2"><a></a>chisqtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -792,7 +792,7 @@ gender   Insomnia None Sleep Apnea
 data:  sleep$gender and sleep$sleep_disorder
 X-squared = 54.306, df = 2, p-value = 1.613e-12</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>chisqtest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>chisqtest<span class="sc">$</span>expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            sleep$sleep_disorder
 sleep$gender Insomnia     None Sleep Apnea
@@ -809,7 +809,7 @@ sleep$gender Insomnia     None Sleep Apnea
 <h2>Exercise</h2>
 <p>Consider the sleep health data, <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Question</a></li><li><a href="#tabset-7-2">Answer</a></li></ul>
@@ -820,7 +820,7 @@ sleep$gender Insomnia     None Sleep Apnea
 <div id="tabset-7-2">
 <p>Check for sparsity of data first.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>stress_level<span class="sc">+</span>sleep_disorder,<span class="at">data=</span>sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">xtabs</span>(<span class="sc">~</span>stress_level<span class="sc">+</span>sleep_disorder,<span class="at">data=</span>sleep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            sleep_disorder
 stress_level Insomnia None Sleep Apnea
@@ -833,8 +833,8 @@ stress_level Insomnia None Sleep Apnea
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(sleep<span class="sc">$</span>stress_level,sleep<span class="sc">$</span>sleep_disorder)</span>
-<span id="cb43-2"><a></a>chisqtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(sleep<span class="sc">$</span>stress_level,sleep<span class="sc">$</span>sleep_disorder)</span>
+<span id="cb43-2"><a></a>chisqtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -842,7 +842,7 @@ stress_level Insomnia None Sleep Apnea
 data:  sleep$stress_level and sleep$sleep_disorder
 X-squared = 240.2, df = 10, p-value &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>chisqtest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>chisqtest<span class="sc">$</span>expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  sleep$sleep_disorder
 sleep$stress_level  Insomnia     None Sleep Apnea
@@ -974,9 +974,9 @@ Q = \sum_{i=1}^r \sum_{j=1}^c \frac{(O_{ij}-E_{ij})^2}{E_{ij}}
 <h2>Example</h2>
 <p>The data set <code>covid.csv</code> includes data from a clinical trial for treatments of COVID-19. Suppose that subjects are randomly assigned to one of two treatments: an experimental drug and a placebo (best available treatment).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb47-2"><a></a>covid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/covid.csv"</span>)</span>
-<span id="cb47-3"><a></a><span class="fu">glimpse</span>(covid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-3"><a></a><span class="fu">glimpse</span>(covid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,297
 Columns: 3
@@ -994,8 +994,8 @@ $ Outcome   &lt;chr&gt; "Not Hospitalized", "Not Hospitalized", "Not Hospitalize
 <div id="tabset-8-2">
 <p>Create a contingency table first to test whether there are sparse counts.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>contingency <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span>Treatment<span class="sc">+</span>Outcome,<span class="at">data=</span>covid)</span>
-<span id="cb49-2"><a></a>contingency</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>contingency <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span>Treatment<span class="sc">+</span>Outcome,<span class="at">data=</span>covid)</span>
+<span id="cb49-2"><a></a>contingency</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Outcome
 Treatment      Died Hospitalized Not Hospitalized
@@ -1005,8 +1005,8 @@ Treatment      Died Hospitalized Not Hospitalized
 </div>
 <p>We implement the chi-squared test using <code>chisq.test()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(covid<span class="sc">$</span>Treatment,covid<span class="sc">$</span>Outcome)</span>
-<span id="cb51-2"><a></a>chisqtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(covid<span class="sc">$</span>Treatment,covid<span class="sc">$</span>Outcome)</span>
+<span id="cb51-2"><a></a>chisqtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1014,17 +1014,17 @@ Treatment      Died Hospitalized Not Hospitalized
 data:  covid$Treatment and covid$Outcome
 X-squared = 6.307, df = 2, p-value = 0.0427</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>chisqtest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>chisqtest<span class="sc">$</span>expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               covid$Outcome
 covid$Treatment     Died Hospitalized Not Hospitalized
    Experimental 17.03932     74.17116         558.7895
    Placebo      16.96068     73.82884         556.2105</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="co"># OR</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="co"># OR</span></span>
 <span id="cb55-2"><a></a></span>
 <span id="cb55-3"><a></a>chisqtest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(contingency)</span>
-<span id="cb55-4"><a></a>chisqtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb55-4"><a></a>chisqtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1047,7 +1047,7 @@ X-squared = 6.307, df = 2, p-value = 0.0427</code></pre>
 <div id="tabset-9-1">
 <p>This is how to input aggregated data in <code>R</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>source_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>source_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb57-2"><a></a>  <span class="at">Location =</span> <span class="fu">c</span>(<span class="st">"Urban"</span>, <span class="st">"Urban"</span>,<span class="st">"Urban"</span>, <span class="st">"Rural"</span>, <span class="st">"Rural"</span>,<span class="st">"Rural"</span>),</span>
 <span id="cb57-3"><a></a>  <span class="at">Source =</span> <span class="fu">c</span>(<span class="st">"Social Media"</span>, <span class="st">"Medical Professionals"</span>, <span class="st">"Others"</span>, <span class="st">"Social Media"</span>, <span class="st">"Medical Professionals"</span>, <span class="st">"Others"</span>),</span>
 <span id="cb57-4"><a></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">84</span>,<span class="dv">96</span>,<span class="dv">20</span>,<span class="dv">17</span>,<span class="dv">31</span>,<span class="dv">53</span>)</span>
@@ -1055,7 +1055,7 @@ X-squared = 6.307, df = 2, p-value = 0.0427</code></pre>
 <span id="cb57-6"><a></a></span>
 <span id="cb57-7"><a></a><span class="co"># Create a cross-table using xtabs</span></span>
 <span id="cb57-8"><a></a>cross_table_xtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count <span class="sc">~</span> Location <span class="sc">+</span> Source, <span class="at">data =</span> source_data)</span>
-<span id="cb57-9"><a></a>cross_table_xtabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-9"><a></a>cross_table_xtabs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Source
 Location Medical Professionals Others Social Media
@@ -1070,8 +1070,8 @@ Location Medical Professionals Others Social Media
 <div id="tabset-9-3">
 <p>We can use the contingency table <code>cross_table_xtabs</code> in the function <code>chisq.test()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>chisqtest<span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(cross_table_xtabs)</span>
-<span id="cb59-2"><a></a>chisqtest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>chisqtest<span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(cross_table_xtabs)</span>
+<span id="cb59-2"><a></a>chisqtest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1079,7 +1079,7 @@ Location Medical Professionals Others Social Media
 data:  cross_table_xtabs
 X-squared = 67.356, df = 2, p-value = 2.365e-15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>chisqtest<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>chisqtest<span class="sc">$</span>expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Source
 Location Medical Professionals   Others Social Media
@@ -1163,11 +1163,11 @@ Location Medical Professionals   Others Social Media
 <h2><code>R</code> implementation</h2>
 <p>The function <code>fisher.test()</code> can be used to perform the Fisher Exact Test. It can use the data frame or a cross table to calculate the exact p-values.</p>
 <h3 id="sample-code">Sample Code</h3>
-<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">fisher.test</span>(df,<span class="at">alternative=</span><span class="st">"greater"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">fisher.test</span>(df,<span class="at">alternative=</span><span class="st">"greater"</span>)</span>
 <span id="cb63-2"><a></a></span>
 <span id="cb63-3"><a></a><span class="co"># OR</span></span>
 <span id="cb63-4"><a></a></span>
-<span id="cb63-5"><a></a><span class="fu">fisher.test</span>(contingency,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb63-5"><a></a><span class="fu">fisher.test</span>(contingency,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="example-6" class="slide level2">
 <h2>Example</h2>
@@ -1177,7 +1177,7 @@ Location Medical Professionals   Others Social Media
 <div class="tab-content">
 <div id="tabset-10-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>aggregated_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>aggregated_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb64-2"><a></a>  <span class="at">Treatment =</span> <span class="fu">c</span>(<span class="st">"A_Test"</span>, <span class="st">"A_Test"</span>, <span class="st">"B_Control"</span>, <span class="st">"B_Control"</span>),</span>
 <span id="cb64-3"><a></a>  <span class="at">Outcome =</span> <span class="fu">c</span>(<span class="st">"Favorable"</span>, <span class="st">"Unfavorable"</span>, <span class="st">"Favorable"</span>, <span class="st">"Unfavorable"</span>),</span>
 <span id="cb64-4"><a></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">2</span>,<span class="dv">2</span>, <span class="dv">4</span>)</span>
@@ -1185,7 +1185,7 @@ Location Medical Professionals   Others Social Media
 <span id="cb64-6"><a></a></span>
 <span id="cb64-7"><a></a><span class="co"># Create a cross-table using xtabs</span></span>
 <span id="cb64-8"><a></a>cross_table_xtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count <span class="sc">~</span> Treatment <span class="sc">+</span> Outcome, <span class="at">data =</span> aggregated_data)</span>
-<span id="cb64-9"><a></a>cross_table_xtabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-9"><a></a>cross_table_xtabs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Outcome
 Treatment   Favorable Unfavorable
@@ -1199,8 +1199,8 @@ Treatment   Favorable Unfavorable
 </div>
 <div id="tabset-10-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>fisher<span class="ot">&lt;-</span> <span class="fu">fisher.test</span>(cross_table_xtabs,<span class="at">alternative=</span><span class="st">"greater"</span>)</span>
-<span id="cb66-2"><a></a>fisher</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>fisher<span class="ot">&lt;-</span> <span class="fu">fisher.test</span>(cross_table_xtabs,<span class="at">alternative=</span><span class="st">"greater"</span>)</span>
+<span id="cb66-2"><a></a>fisher</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -1217,7 +1217,7 @@ odds ratio
 </div>
 <p>Compare the result to asymptotic chi-squared tests.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a><span class="fu">chisq.test</span>(cross_table_xtabs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a><span class="fu">chisq.test</span>(cross_table_xtabs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with Yates' continuity correction
@@ -1305,7 +1305,7 @@ X-squared = 2.5312, df = 1, p-value = 0.1116</code></pre>
 <div class="tab-content">
 <div id="tabset-11-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a>source_data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a>source_data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb70-2"><a></a>  <span class="at">T1_Presence=</span> <span class="fu">c</span>(<span class="st">"T1_Presence"</span>, <span class="st">"T1_Presence"</span>, <span class="st">"T1_Absence"</span>, <span class="st">"T1_Absence"</span>),</span>
 <span id="cb70-3"><a></a>  <span class="at">T2_Presence =</span> <span class="fu">c</span>(<span class="st">"T2_Presence"</span>, <span class="st">"T2_Absence"</span>, <span class="st">"T2_Presence"</span>, <span class="st">"T2_Absence"</span>),</span>
 <span id="cb70-4"><a></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">45</span>)</span>
@@ -1313,7 +1313,7 @@ X-squared = 2.5312, df = 1, p-value = 0.1116</code></pre>
 <span id="cb70-6"><a></a></span>
 <span id="cb70-7"><a></a><span class="co"># Create a cross-table using xtabs</span></span>
 <span id="cb70-8"><a></a>cross_table_xtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count <span class="sc">~</span> T1_Presence<span class="sc">+</span>T2_Presence, <span class="at">data =</span> source_data)</span>
-<span id="cb70-9"><a></a>cross_table_xtabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-9"><a></a>cross_table_xtabs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             T2_Presence
 T1_Presence   T2_Absence T2_Presence
@@ -1327,8 +1327,8 @@ T1_Presence   T2_Absence T2_Presence
 </div>
 <div id="tabset-11-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>mcn <span class="ot">&lt;-</span> <span class="fu">mcnemar.test</span>(cross_table_xtabs)</span>
-<span id="cb72-2"><a></a>mcn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>mcn <span class="ot">&lt;-</span> <span class="fu">mcnemar.test</span>(cross_table_xtabs)</span>
+<span id="cb72-2"><a></a>mcn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     McNemar's Chi-squared test with continuity correction
@@ -1429,13 +1429,13 @@ OR = \frac{a/b}{c/d}=ad/bc
 <h2><code>R</code> implementation</h2>
 <p>While the best estimate of the odds ratios and relative risk can easily be calculated using the values in the contingency table, the package <code>epitools</code> contains the <code>epitab()</code> function that calculates both relative risk/odds ratio and their corresponding intervals.</p>
 <h3 id="sample-code-1">Sample Code</h3>
-<div class="sourceCode" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a><span class="co">#install.packages("epitools")</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a><span class="co">#install.packages("epitools")</span></span>
 <span id="cb74-2"><a></a><span class="fu">library</span>(epitools)</span>
 <span id="cb74-3"><a></a><span class="fu">epitab</span>(contingency,<span class="at">method=</span><span class="st">"oddsratio"</span>)</span>
 <span id="cb74-4"><a></a></span>
 <span id="cb74-5"><a></a><span class="co"># OR</span></span>
 <span id="cb74-6"><a></a></span>
-<span id="cb74-7"><a></a><span class="fu">epitab</span>(contingency,<span class="at">method=</span><span class="st">"riskratio"</span>,<span class="at">pvalue=</span><span class="st">"chi2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb74-7"><a></a><span class="fu">epitab</span>(contingency,<span class="at">method=</span><span class="st">"riskratio"</span>,<span class="at">pvalue=</span><span class="st">"chi2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1446,11 +1446,11 @@ OR = \frac{a/b}{c/d}=ad/bc
 </div>
 <div class="callout-content">
 <p>The contingency table should be given in this particular format:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a>                 Disease</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a>                 Disease</span>
 <span id="cb75-2"><a></a>  Exposure       <span class="fu">No</span> (ref)  Yes</span>
 <span id="cb75-3"><a></a>   Level <span class="dv">1</span> (ref)  a         b</span>
 <span id="cb75-4"><a></a>   Level <span class="dv">2</span>        c         d</span>
-<span id="cb75-5"><a></a>   Level <span class="dv">3</span>        e         f </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb75-5"><a></a>   Level <span class="dv">3</span>        e         f </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1463,7 +1463,7 @@ OR = \frac{a/b}{c/d}=ad/bc
 <div class="tab-content">
 <div id="tabset-12-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>source_data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>source_data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb76-2"><a></a>  <span class="at">Risk=</span> <span class="fu">c</span>(<span class="st">"Treatment"</span>,<span class="st">"Treatment"</span>,<span class="st">"Control"</span>,<span class="st">"Control"</span>),</span>
 <span id="cb76-3"><a></a>  <span class="at">Outcome =</span> <span class="fu">c</span>(<span class="st">"Case"</span>, <span class="st">"Control"</span>, <span class="st">"Case"</span>, <span class="st">"Control"</span>),</span>
 <span id="cb76-4"><a></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">22</span>,<span class="dv">216</span>,<span class="dv">18</span>,<span class="dv">199</span>)</span>
@@ -1471,7 +1471,7 @@ OR = \frac{a/b}{c/d}=ad/bc
 <span id="cb76-6"><a></a></span>
 <span id="cb76-7"><a></a><span class="co"># Create a cross-table using xtabs</span></span>
 <span id="cb76-8"><a></a>cross_table_xtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count <span class="sc">~</span> Risk<span class="sc">+</span>Outcome, <span class="at">data =</span> source_data)</span>
-<span id="cb76-9"><a></a>cross_table_xtabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb76-9"><a></a>cross_table_xtabs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Outcome
 Risk        Case Control
@@ -1485,8 +1485,8 @@ Risk        Case Control
 </div>
 <div id="tabset-12-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">library</span>(epitools)</span>
-<span id="cb78-2"><a></a><span class="fu">epitab</span>(cross_table_xtabs,<span class="at">method=</span><span class="st">"riskratio"</span>,<span class="at">pvalue=</span><span class="st">"chi2"</span>,<span class="at">rev=</span><span class="st">"columns"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">library</span>(epitools)</span>
+<span id="cb78-2"><a></a><span class="fu">epitab</span>(cross_table_xtabs,<span class="at">method=</span><span class="st">"riskratio"</span>,<span class="at">pvalue=</span><span class="st">"chi2"</span>,<span class="at">rev=</span><span class="st">"columns"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$tab
            Outcome
@@ -1517,7 +1517,7 @@ $pvalue
 <h2>Exercise</h2>
 <p>The table shows 3970 subjects classified as cases or noncases of obesity and also classified according to smoking status of the mother during pregnancy (the risk factor).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a>source_data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a>source_data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb80-2"><a></a>  <span class="at">Risk=</span> <span class="fu">c</span>(<span class="st">"Present"</span>,<span class="st">"Present"</span>,<span class="st">"Absent"</span>,<span class="st">"Absent"</span>),</span>
 <span id="cb80-3"><a></a>  <span class="at">Outcome =</span> <span class="fu">c</span>(<span class="st">"Case"</span>, <span class="st">"Control"</span>, <span class="st">"Case"</span>, <span class="st">"Control"</span>),</span>
 <span id="cb80-4"><a></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">64</span>,<span class="dv">342</span>,<span class="dv">68</span>,<span class="dv">3496</span>)</span>
@@ -1525,7 +1525,7 @@ $pvalue
 <span id="cb80-6"><a></a></span>
 <span id="cb80-7"><a></a><span class="co"># Create a cross-table using xtabs</span></span>
 <span id="cb80-8"><a></a>cross_table_xtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(Count <span class="sc">~</span> Risk<span class="sc">+</span>Outcome, <span class="at">data =</span> source_data)</span>
-<span id="cb80-9"><a></a>cross_table_xtabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb80-9"><a></a>cross_table_xtabs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         Outcome
 Risk      Case Control
@@ -1540,7 +1540,7 @@ Risk      Case Control
 </ul>
 <h3 id="answer-10">Answer</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a><span class="fu">epitab</span>(cross_table_xtabs,<span class="at">method=</span><span class="st">"oddsratio"</span>,<span class="at">rev=</span><span class="st">"columns"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a><span class="fu">epitab</span>(cross_table_xtabs,<span class="at">method=</span><span class="st">"oddsratio"</span>,<span class="at">rev=</span><span class="st">"columns"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$tab
          Outcome
@@ -1757,7 +1757,7 @@ $pvalue
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1907,13 +1907,14 @@ $pvalue
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

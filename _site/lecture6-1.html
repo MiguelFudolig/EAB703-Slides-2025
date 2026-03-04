@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Lecture 6 calculations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -273,8 +273,8 @@ P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2
 <div class="callout-content">
 <p>Recall that <span class="math inline">\(Z\)</span> follows the standard normal distribution. <span class="math inline">\(z_{1-\alpha/2}\)</span> can be calculated using <code>qnorm(1-alpha/2,mean=0,sd=1).</code> For a 95% confidence interval, <span class="math inline">\(\alpha = 0.05\)</span>, then it follows that <span class="math inline">\(1-\alpha/2 = 1-0.05/2 = 0.975\)</span>. Therefore, the reliability coefficient for a 95% confidence interval can be calculated as:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>alpha<span class="ot">=</span><span class="fl">0.05</span></span>
-<span id="cb1-2"><a></a><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>alpha<span class="ot">=</span><span class="fl">0.05</span></span>
+<span id="cb1-2"><a></a><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.959964</code></pre>
 </div>
@@ -294,16 +294,16 @@ P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># setwd("where your file is")</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># setwd("where your file is")</span></span>
 <span id="cb3-2"><a></a>example <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/lec6example.csv"</span>)</span>
-<span id="cb3-3"><a></a>sdpop <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a></a>sdpop <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We need to calculate the sample mean of the <code>Sims</code> column, the sample size, and the reliability coefficient.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(example<span class="sc">$</span>Sims)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(example<span class="sc">$</span>Sims)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>sampsize <span class="ot">&lt;-</span> <span class="fu">nrow</span>(example)</span>
 <span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
-<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
@@ -315,13 +315,13 @@ P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2
 </div>
 <p>We can now calculate the 95% confidence interval limits.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>lower <span class="ot">&lt;-</span> xbar <span class="sc">-</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>lower <span class="ot">&lt;-</span> xbar <span class="sc">-</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
 <span id="cb4-2"><a></a>upper <span class="ot">&lt;-</span> xbar <span class="sc">+</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
-<span id="cb4-3"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a></a>lower</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6637448</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>upper</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.303866</code></pre>
 </div>
@@ -342,7 +342,7 @@ P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
 <span id="cb8-2"><a></a>sdpop <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fl">0.5</span>)</span>
 <span id="cb8-3"><a></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>sleep_duration)</span>
 <span id="cb8-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="fu">nrow</span>(sleep)</span>
@@ -351,12 +351,12 @@ P(Z \leq z_{1-\alpha/2}) = 1-\alpha/2
 <span id="cb8-7"><a></a><span class="co"># not specifying the mean and sd in qnorm assumes standard normal</span></span>
 <span id="cb8-8"><a></a></span>
 <span id="cb8-9"><a></a>lower <span class="ot">&lt;-</span> xbar <span class="sc">-</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
-<span id="cb8-10"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-10"><a></a>lower</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7.060422</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>upper <span class="ot">&lt;-</span> xbar <span class="sc">+</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
-<span id="cb10-2"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>upper <span class="ot">&lt;-</span> xbar <span class="sc">+</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
+<span id="cb10-2"><a></a>upper</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7.203749</code></pre>
 </div>
@@ -512,17 +512,17 @@ precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
 </div>
 <div id="tabset-3-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># setwd("where your file is")</span></span>
-<span id="cb12-2"><a></a>example <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/lec6example.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># setwd("where your file is")</span></span>
+<span id="cb12-2"><a></a>example <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/lec6example.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We need to calculate the sample mean of the <code>Sims</code> column, the sample size, and the reliability coefficient.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(example<span class="sc">$</span>Sims)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(example<span class="sc">$</span>Sims)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>sampsize <span class="ot">&lt;-</span> <span class="fu">nrow</span>(example)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a>stdev <span class="ot">&lt;-</span> <span class="fu">sd</span>(example<span class="sc">$</span>Sims)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3">3</button><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a>df <span class="ot">&lt;-</span> sampsize<span class="dv">-1</span></span>
 <span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df=</span>df) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df=</span>df) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
@@ -542,13 +542,13 @@ precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
 </div>
 <p>We can now calculate the 95% confidence interval limits.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>lower <span class="ot">&lt;-</span> xbar <span class="sc">-</span> relcoeff<span class="sc">*</span>stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>lower <span class="ot">&lt;-</span> xbar <span class="sc">-</span> relcoeff<span class="sc">*</span>stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
 <span id="cb13-2"><a></a>upper <span class="ot">&lt;-</span> xbar <span class="sc">+</span> relcoeff<span class="sc">*</span>stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
-<span id="cb13-3"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a></a>lower</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6642442</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>upper</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.303367</code></pre>
 </div>
@@ -569,7 +569,7 @@ precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
 </div>
 <div id="tabset-4-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
 <span id="cb17-2"><a></a>sdpop <span class="ot">&lt;-</span> <span class="fu">sd</span>(sleep<span class="sc">$</span>heart_rate)</span>
 <span id="cb17-3"><a></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>heart_rate)</span>
 <span id="cb17-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="fu">nrow</span>(sleep)</span>
@@ -578,12 +578,12 @@ precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
 <span id="cb17-7"><a></a><span class="co"># not specifying the mean and sd in qnorm assumes standard normal</span></span>
 <span id="cb17-8"><a></a></span>
 <span id="cb17-9"><a></a>lower <span class="ot">&lt;-</span> xbar <span class="sc">-</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
-<span id="cb17-10"><a></a>lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-10"><a></a>lower</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 69.6121</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>upper <span class="ot">&lt;-</span> xbar <span class="sc">+</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
-<span id="cb19-2"><a></a>upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>upper <span class="ot">&lt;-</span> xbar <span class="sc">+</span> relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span>
+<span id="cb19-2"><a></a>upper</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70.71945</code></pre>
 </div>
@@ -591,11 +591,11 @@ precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
 <p>The 95% confidence interval is (69.61,70.72). 65 is not a plausible value for the average heart rate of the population.</p>
 <p>The margin of error can be calculated as:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>relcoeff<span class="sc">*</span>sdpop<span class="sc">/</span><span class="fu">sqrt</span>(sampsize)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5536753</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>(upper<span class="sc">-</span>lower)<span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>(upper<span class="sc">-</span>lower)<span class="sc">/</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5536753</code></pre>
 </div>
@@ -797,7 +797,7 @@ precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -947,13 +947,14 @@ precision = t_{\nu,1-\alpha/2} \frac{s}{\sqrt{n}}= \frac{upper-lower}{2}
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

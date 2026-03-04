@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Hypothesis Testing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -628,10 +628,10 @@ H_0: \pi_A - \pi_B = 0; H_a: \pi_A-\pi_B \neq 0
 H_0: \lambda=6; H_a: \lambda &gt; 6
 \]</span> where <span class="math inline">\(\lambda\)</span> is the average daily count of ILI cases. To find the rejection region, we need to find the critical value <span class="math inline">\(x_c\)</span> such that <span class="math inline">\(P(X \geq x_c) &lt;= 0.05\)</span> (choose the value with the highest probability to fit this criteria).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">xc=</span><span class="dv">6</span><span class="sc">:</span><span class="dv">15</span>)</span>
 <span id="cb1-3"><a></a>df2 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">probs =</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">ppois</span>(xc,<span class="at">lambda=</span><span class="dv">6</span>))</span>
-<span id="cb1-4"><a></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a>df2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   xc        probs
 1   6 0.3936972176
@@ -715,8 +715,8 @@ H_0: \lambda = 6; H_a: \lambda &gt; 6
 <div id="tabset-7-2">
 <p>Assuming the null hypothesis is true, we assume <span class="math inline">\(\lambda =6\)</span>. We need to calculate the probability of getting a count as extreme or more extreme than 6, i.e.&nbsp;further away from 6. Therefore, we need to calculate the <span class="math inline">\(P(X \geq 12)\)</span> using a Poisson distribution with <span class="math inline">\(\lambda=6\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>prob <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">11</span>,<span class="at">lambda=</span><span class="dv">6</span>)</span>
-<span id="cb3-2"><a></a>prob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>prob <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">11</span>,<span class="at">lambda=</span><span class="dv">6</span>)</span>
+<span id="cb3-2"><a></a>prob</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02009196</code></pre>
 </div>
@@ -825,21 +825,21 @@ H_0: \mu = 23.5; H_a: \mu \neq 23.5
 \]</span></p>
 <p>We first calculate the z-score, i.e.&nbsp;the standardized statistic</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>xbar <span class="ot">&lt;-</span> <span class="fl">22.9</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>xbar <span class="ot">&lt;-</span> <span class="fl">22.9</span></span>
 <span id="cb5-2"><a></a>mu_null <span class="ot">&lt;-</span> <span class="fl">23.5</span></span>
 <span id="cb5-3"><a></a>stdev <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb5-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">200</span></span>
 <span id="cb5-5"><a></a></span>
 <span id="cb5-6"><a></a>z <span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu_null)<span class="sc">/</span>(stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize))</span>
-<span id="cb5-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-7"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.697056</code></pre>
 </div>
 </div>
 <p>To calculate the p-value, we use <code>pnorm</code>. We can use <code>abs(z)</code> to get the absolute value of <code>z</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>pval <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(z)) <span class="sc">+</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z),<span class="at">lower.tail=</span>F)</span>
-<span id="cb7-2"><a></a>pval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>pval <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(z)) <span class="sc">+</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z),<span class="at">lower.tail=</span>F)</span>
+<span id="cb7-2"><a></a>pval</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.08968602</code></pre>
 </div>
@@ -850,15 +850,15 @@ H_0: \mu = 23.5; H_a: \mu \neq 23.5
 <p>To calculate the rejection region, we need $ z &lt; z_{/2}<sub>OR</sub> z &gt; z_{1-/2}$.</p>
 <p>The critical regions are then calculated as:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># limit 1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># limit 1</span></span>
 <span id="cb9-2"><a></a>alpha<span class="ot">=</span><span class="fl">0.05</span></span>
-<span id="cb9-3"><a></a><span class="fu">qnorm</span>(<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a></a><span class="fu">qnorm</span>(<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.959964</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># limit 2</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># limit 2</span></span>
 <span id="cb11-2"><a></a></span>
-<span id="cb11-3"><a></a><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a></a><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.959964</code></pre>
 </div>
@@ -899,20 +899,20 @@ H_0: \mu = 131; H_a: \mu &gt; 131
 \]</span></p>
 <p>Calculating our test statistic <span class="math inline">\(z\)</span>,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>xbar <span class="ot">&lt;-</span> <span class="fl">133.5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>xbar <span class="ot">&lt;-</span> <span class="fl">133.5</span></span>
 <span id="cb13-2"><a></a>mu_null <span class="ot">&lt;-</span> <span class="dv">131</span></span>
 <span id="cb13-3"><a></a>stdev <span class="ot">&lt;-</span> <span class="dv">15</span></span>
 <span id="cb13-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">40</span></span>
 <span id="cb13-5"><a></a></span>
 <span id="cb13-6"><a></a>z <span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu_null)<span class="sc">/</span>(stdev<span class="sc">/</span><span class="fu">sqrt</span>(sampsize))</span>
-<span id="cb13-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.054093</code></pre>
 </div>
 </div>
 <p>The resulting p-value for this one-sided test is: <span class="math inline">\(P(Z &gt; z)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1459203</code></pre>
 </div>
@@ -1001,21 +1001,21 @@ H_0: \mu = 1200; H_a: \mu &lt; 1200
 \]</span></p>
 <p>The summary statistics are provided, hence we need to calculate the t-statistic manually.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>xbar <span class="ot">&lt;-</span> <span class="dv">1100</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>xbar <span class="ot">&lt;-</span> <span class="dv">1100</span></span>
 <span id="cb17-2"><a></a>mu_null <span class="ot">&lt;-</span> <span class="dv">1200</span></span>
 <span id="cb17-3"><a></a>sdsamp <span class="ot">&lt;-</span> <span class="dv">200</span></span>
 <span id="cb17-4"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">30</span></span>
 <span id="cb17-5"><a></a></span>
 <span id="cb17-6"><a></a>t<span class="ot">&lt;-</span> (xbar<span class="sc">-</span>mu_null)<span class="sc">/</span>(sdsamp<span class="sc">/</span><span class="fu">sqrt</span>(sampsize))</span>
-<span id="cb17-7"><a></a>t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-7"><a></a>t</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.738613</code></pre>
 </div>
 </div>
 <p>The t-statistic is -2.739. To calculate the p-value,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>df <span class="ot">&lt;-</span> sampsize <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb19-2"><a></a><span class="fu">pt</span>(t,<span class="at">df=</span>df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>df <span class="ot">&lt;-</span> sampsize <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb19-2"><a></a><span class="fu">pt</span>(t,<span class="at">df=</span>df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.005218695</code></pre>
 </div>
@@ -1034,8 +1034,8 @@ H_0: \mu = 1200; H_a: \mu &lt; 1200
 <div id="tabset-14-1">
 <p>Using the following code, we can isolate the salaries of the Assistant Professors.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(carData)</span>
-<span id="cb21-2"><a></a>asstprof <span class="ot">&lt;-</span> <span class="fu">filter</span>(Salaries, rank<span class="sc">==</span><span class="st">"AsstProf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(carData)</span>
+<span id="cb21-2"><a></a>asstprof <span class="ot">&lt;-</span> <span class="fu">filter</span>(Salaries, rank<span class="sc">==</span><span class="st">"AsstProf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Do we have sufficient evidence that the average salary of the Assistant Professors are above $ 75,000? Use a significance level of 0.01.</p>
 </div>
@@ -1046,11 +1046,11 @@ H_0: \mu=75,000; H_a: \mu &gt; 75,000
 \]</span></p>
 <p>We can use the <code>t.test()</code> function to implement the one-sample t-test.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(asstprof<span class="sc">$</span>salary,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(asstprof<span class="sc">$</span>salary,</span>
 <span id="cb22-2"><a></a>       <span class="at">mu=</span><span class="dv">75000</span>,</span>
 <span id="cb22-3"><a></a>       <span class="at">alternative=</span><span class="st">"greater"</span>)</span>
 <span id="cb22-4"><a></a></span>
-<span id="cb22-5"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-5"><a></a>ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1079,7 +1079,7 @@ mean of x
 <div id="tabset-15-1">
 <p>Test the hypothesis that the average sleep duration for the population this sample represents is not equal to 7.5 hours. Use a significance level of 0.05.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-15-2">
@@ -1088,11 +1088,11 @@ mean of x
 H_0: \mu=7.5; H_a: \mu \neq 7.5
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sleep<span class="sc">$</span>sleep_duration,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sleep<span class="sc">$</span>sleep_duration,</span>
 <span id="cb25-2"><a></a>       <span class="at">mu=</span><span class="fl">7.5</span>,</span>
 <span id="cb25-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>)</span>
 <span id="cb25-4"><a></a></span>
-<span id="cb25-5"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-5"><a></a>ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1196,21 +1196,21 @@ df = \frac{(s_1^2/n_1 + s_2^2/n_2)^2}{\left(\frac{s_1^2}{n_1}\right)^2/(n_1-1) +
 <div class="tab-content">
 <div id="tabset-16-1">
 <p>Suppose your data is assigned to the data frame <code>df</code> and the measurements from the samples you want to compare are in different columns: <code>col1</code> and <code>col2</code>. Suppose you have a null hypothesis of equality, have a two-sided alternative, and assume equal population variances. Then the t-test function can be coded as:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">t.test</span>(<span class="at">x=</span>df<span class="sc">$</span>col1,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">t.test</span>(<span class="at">x=</span>df<span class="sc">$</span>col1,</span>
 <span id="cb27-2"><a></a>       <span class="at">y=</span>df<span class="sc">$</span>col2,</span>
 <span id="cb27-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
 <span id="cb27-4"><a></a>       <span class="at">mu=</span><span class="dv">0</span>,</span>
 <span id="cb27-5"><a></a>       <span class="at">var.equal=</span><span class="cn">TRUE</span></span>
-<span id="cb27-6"><a></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-6"><a></a>       )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="tabset-16-2">
 <p>Suppose your data is assigned to the data frame <code>df</code>, the response measurements from the samples are in one column <code>response</code>, and the groups are defined by a variable <code>group</code>. Suppose you have a null hypothesis of equality, have a two-sided alternative, and assume <em>unequal</em> population variances. We have to use the <strong>formula</strong> syntax in defining the groups. The t-test function can be coded as:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">t.test</span>(response<span class="sc">~</span>group,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">t.test</span>(response<span class="sc">~</span>group,</span>
 <span id="cb28-2"><a></a>       <span class="at">data=</span>df,</span>
 <span id="cb28-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
 <span id="cb28-4"><a></a>       <span class="at">mu=</span><span class="dv">0</span>,</span>
 <span id="cb28-5"><a></a>       <span class="at">var.equal=</span><span class="cn">FALSE</span></span>
-<span id="cb28-6"><a></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-6"><a></a>       )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1245,7 +1245,7 @@ H_0: \mu_f - \mu_m = 0; H_a: \mu_f - \mu_m \neq 0
 <p>The alternative is two-sided because we did not specify a direction of the difference between the two groups.</p>
 <p>The groups are defined by the variable <code>gender</code> and the response variable is defined by the variable <code>sleep_duration</code>. The t-test can be implemented using the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
 <span id="cb29-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span>
 <span id="cb29-3"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sleep_duration<span class="sc">~</span>gender,</span>
 <span id="cb29-4"><a></a>                <span class="at">data=</span>sleep,</span>
@@ -1253,7 +1253,7 @@ H_0: \mu_f - \mu_m = 0; H_a: \mu_f - \mu_m \neq 0
 <span id="cb29-6"><a></a>                <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
 <span id="cb29-7"><a></a>                <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
 <span id="cb29-8"><a></a></span>
-<span id="cb29-9"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-9"><a></a>ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two Sample t-test
@@ -1289,7 +1289,7 @@ H_0: \mu_h - \mu_n = 0; H_a: \mu_h - \mu_n \neq 0
 \]</span> The alternative is two-sided because we did not specify a direction of the difference between the two groups.</p>
 <p>The groups are defined by the columns: <code>YesHotFlash</code> and <code>NoHotFlash</code>. The t-test can be implemented using the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
 <span id="cb31-2"><a></a>fsh <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"hflashes_subset.csv"</span>)</span>
 <span id="cb31-3"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>fsh<span class="sc">$</span>YesHotFlash,</span>
 <span id="cb31-4"><a></a>                <span class="at">y=</span>fsh<span class="sc">$</span>NoHotFlash,</span>
@@ -1297,7 +1297,7 @@ H_0: \mu_h - \mu_n = 0; H_a: \mu_h - \mu_n \neq 0
 <span id="cb31-6"><a></a>                <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
 <span id="cb31-7"><a></a>                <span class="at">var.equal=</span><span class="cn">FALSE</span>)</span>
 <span id="cb31-8"><a></a></span>
-<span id="cb31-9"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-9"><a></a>ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1347,7 +1347,7 @@ H_0: \mu_f - \mu_m = 0; H_a: \mu_f - \mu_m &lt; 0
 <p>The alternative is one-sided, “less”, because we specified the direction where males have a higher average heart rate than females.</p>
 <p>The groups are defined by the variable <code>gender</code> and the response variable is defined by the variable <code>heart_rate</code>. The t-test can be implemented using the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># Set working directory where the Sleep Health Data is saved.</span></span>
 <span id="cb33-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>) <span class="co"># if not already loaded</span></span>
 <span id="cb33-3"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(heart_rate<span class="sc">~</span>gender,</span>
 <span id="cb33-4"><a></a>                <span class="at">data=</span>sleep,</span>
@@ -1355,7 +1355,7 @@ H_0: \mu_f - \mu_m = 0; H_a: \mu_f - \mu_m &lt; 0
 <span id="cb33-6"><a></a>                <span class="at">alternative=</span><span class="st">"less"</span>,</span>
 <span id="cb33-7"><a></a>                <span class="at">var.equal=</span><span class="cn">TRUE</span>)</span>
 <span id="cb33-8"><a></a></span>
-<span id="cb33-9"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-9"><a></a>ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two Sample t-test
@@ -1470,12 +1470,12 @@ t = \frac{\bar{x}_d-d_0}{s_d/\sqrt{n}}
 </div>
 <div id="tabset-20-2">
 <p>Suppose your data is assigned to the data frame <code>df</code> and the measurements from the samples you want to compare are in different columns: <code>col1</code> and <code>col2</code>. Suppose you have a null hypothesis <span class="math inline">\(H_0: \mu_d=d_0\)</span>, have a two-sided alternative, and assume equal population variances. Then the t-test function can be coded as:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">t.test</span>(<span class="at">x=</span>df<span class="sc">$</span>col1,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">t.test</span>(<span class="at">x=</span>df<span class="sc">$</span>col1,</span>
 <span id="cb35-2"><a></a>       <span class="at">y=</span>df<span class="sc">$</span>col2,</span>
 <span id="cb35-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
 <span id="cb35-4"><a></a>       <span class="at">mu=</span>d_0,</span>
 <span id="cb35-5"><a></a>       <span class="at">paired=</span><span class="cn">TRUE</span></span>
-<span id="cb35-6"><a></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-6"><a></a>       )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1497,9 +1497,9 @@ t = \frac{\bar{x}_d-d_0}{s_d/\sqrt{n}}
 <h2>Example</h2>
 <p>The data set <code>anorexia</code> from the package <code>MASS</code> contains weight change data for young female anorexia patients.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">library</span>(MASS)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">library</span>(MASS)</span>
 <span id="cb36-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb36-3"><a></a><span class="fu">glimpse</span>(anorexia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-3"><a></a><span class="fu">glimpse</span>(anorexia)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 72
 Columns: 3
@@ -1520,13 +1520,13 @@ $ Postwt &lt;dbl&gt; 80.2, 80.1, 86.4, 86.3, 76.1, 78.1, 75.1, 86.7, 73.5, 84.6,
 H_0: \mu_d = 0; H_a: \mu_d \neq 0
 \]</span> We can use <code>t.test()</code> to perform the t-test.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>anorexia<span class="sc">$</span>Postwt,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>anorexia<span class="sc">$</span>Postwt,</span>
 <span id="cb38-2"><a></a>       <span class="at">y=</span>anorexia<span class="sc">$</span>Prewt,</span>
 <span id="cb38-3"><a></a>       <span class="at">alternative=</span><span class="st">"two.sided"</span>,</span>
 <span id="cb38-4"><a></a>       <span class="at">mu=</span><span class="dv">0</span>,</span>
 <span id="cb38-5"><a></a>       <span class="at">paired=</span><span class="cn">TRUE</span></span>
 <span id="cb38-6"><a></a>       )</span>
-<span id="cb38-7"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-7"><a></a>ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -1550,9 +1550,9 @@ mean difference
 <h2>Exercise</h2>
 <p>The data set <code>ChickWeight.csv</code> contains 10 paired data corresponding to weights of chicks in ounces, two from 10 families, reared in confinement or on open range.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="co"># Remember to save ChickWeight to your working directory</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="co"># Remember to save ChickWeight to your working directory</span></span>
 <span id="cb40-2"><a></a>chick <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ChickWeight.csv"</span>)</span>
-<span id="cb40-3"><a></a><span class="fu">glimpse</span>(chick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-3"><a></a><span class="fu">glimpse</span>(chick)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 10
 Columns: 3
@@ -1573,13 +1573,13 @@ $ OpenRange   &lt;int&gt; 8, 15, 11, 11, 9, 12, 11, 10, 9, 14</code></pre>
 H_0: \mu_d = 1.5; H_a: \mu_d &gt; 1.5
 \]</span> Define the difference as <code>Confinement-OpenRange</code>. We can now implement the t-test using the <code>t.test()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>chick<span class="sc">$</span>Confinement,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x=</span>chick<span class="sc">$</span>Confinement,</span>
 <span id="cb42-2"><a></a>       <span class="at">y=</span>chick<span class="sc">$</span>OpenRange,</span>
 <span id="cb42-3"><a></a>       <span class="at">alternative=</span><span class="st">"greater"</span>,</span>
 <span id="cb42-4"><a></a>       <span class="at">mu=</span><span class="fl">1.5</span>,</span>
 <span id="cb42-5"><a></a>       <span class="at">paired=</span><span class="cn">TRUE</span></span>
 <span id="cb42-6"><a></a>       )</span>
-<span id="cb42-7"><a></a>ttest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-7"><a></a>ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -1652,20 +1652,20 @@ H_0: \pi = 0.5; H_a: \pi &gt; 0.5
 \]</span></p>
 <p>Our sample proportion is 357/700 with a sample size of 700. We can now calculate the z-statistic</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">700</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">700</span></span>
 <span id="cb44-2"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">357</span><span class="sc">/</span>sampsize</span>
 <span id="cb44-3"><a></a>pi_null <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
 <span id="cb44-4"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pi_null<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_null)<span class="sc">/</span>sampsize)</span>
 <span id="cb44-5"><a></a></span>
 <span id="cb44-6"><a></a>z <span class="ot">&lt;-</span> (phat<span class="sc">-</span>pi_null)<span class="sc">/</span>se</span>
-<span id="cb44-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-7"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5291503</code></pre>
 </div>
 </div>
 <p>The corresponding p-value should be calculated as P(Z &gt; 0.5291503)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2983506</code></pre>
 </div>
@@ -1679,7 +1679,7 @@ H_0: \pi = 0.5; H_a: \pi &gt; 0.5
 <h2>Exercise</h2>
 <p>Consider the sleep health data <code>SleepHealthData.csv</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-24" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-24-1">Question</a></li><li><a href="#tabset-24-2">Answer</a></li></ul>
@@ -1694,8 +1694,8 @@ H_0: \pi = 0.25; H_a: \pi &lt; 0.25
 \]</span></p>
 <p>We can calculate the sample proportion using the frequency table provided by <code>freq()</code> from the <code>summarytools</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">library</span>(summarytools)</span>
-<span id="cb49-2"><a></a><span class="fu">freq</span>(sleep<span class="sc">$</span>sleep_disorder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">library</span>(summarytools)</span>
+<span id="cb49-2"><a></a><span class="fu">freq</span>(sleep<span class="sc">$</span>sleep_disorder)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 sleep$_disorder  
@@ -1712,20 +1712,20 @@ Type: Character
 </div>
 <p>We can now calculate the z-statistic</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">374</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">374</span></span>
 <span id="cb51-2"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">78</span><span class="sc">/</span>sampsize</span>
 <span id="cb51-3"><a></a>pi_null <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
 <span id="cb51-4"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pi_null<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_null)<span class="sc">/</span>sampsize)</span>
 <span id="cb51-5"><a></a></span>
 <span id="cb51-6"><a></a>z <span class="ot">&lt;-</span> (phat<span class="sc">-</span>pi_null)<span class="sc">/</span>se</span>
-<span id="cb51-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-7"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.850952</code></pre>
 </div>
 </div>
 <p>The corresponding p-value should be calculated as P(Z &lt; -1.8509524)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">pnorm</span>(z)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0320882</code></pre>
 </div>
@@ -1759,8 +1759,8 @@ z = \frac{\hat{p}_1 -\hat{p}_2}{\sqrt{\bar{p}(1-\bar{p})\left(\frac{1}{n_1} + \f
 <h2>Example</h2>
 <p>Consider the hotflash data set <code>hflashes.csv</code>. The variable <code>f1a</code> has a value of 1 if the participant currently smokes and 0 otherwise.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>hflashes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/hflashes.csv"</span>)</span>
-<span id="cb55-2"><a></a><span class="fu">glimpse</span>(hflashes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>hflashes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datasets/hflashes.csv"</span>)</span>
+<span id="cb55-2"><a></a><span class="fu">glimpse</span>(hflashes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 375
 Columns: 14
@@ -1792,10 +1792,10 @@ $ dheas    &lt;dbl&gt; 61.225, 104.920, 117.450, 36.850, 11.165, 100.360, 76.780
 H_0: \pi_s-\pi_n = 0; H_a: \pi_s-\pi_n &gt; 0
 \]</span> Calculating the proportions would be slightly more complicated with two groups. We will use the <code>filter(data,condition)</code> function to separate the smokers and the non-smokers based on the <code>f1a</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>smokers <span class="ot">&lt;-</span> <span class="fu">filter</span>(hflashes,f1a<span class="sc">==</span><span class="dv">1</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>smokers <span class="ot">&lt;-</span> <span class="fu">filter</span>(hflashes,f1a<span class="sc">==</span><span class="dv">1</span>)</span>
 <span id="cb57-2"><a></a>nonsmokers <span class="ot">&lt;-</span> <span class="fu">filter</span>(hflashes,f1a<span class="sc">==</span><span class="dv">0</span>)</span>
 <span id="cb57-3"><a></a></span>
-<span id="cb57-4"><a></a><span class="fu">freq</span>(smokers<span class="sc">$</span>hotflash)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-4"><a></a><span class="fu">freq</span>(smokers<span class="sc">$</span>hotflash)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 smokers$hotflash  
@@ -1808,7 +1808,7 @@ Type: Integer
        &lt;NA&gt;      0                               0.00         100.00
       Total    138    100.00         100.00    100.00         100.00</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">freq</span>(nonsmokers<span class="sc">$</span>hotflash)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">freq</span>(nonsmokers<span class="sc">$</span>hotflash)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Frequencies  
 nonsmokers$hotflash  
@@ -1824,31 +1824,31 @@ Type: Integer
 </div>
 <p>53 out of 138 experienced hot flashes in the smokers group and 65 out 237 experienced hot flashes in the nonsmoker group. We can now calculate the pooled proportion and standard error.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="dv">53</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="dv">53</span></span>
 <span id="cb61-2"><a></a>x2 <span class="ot">&lt;-</span> <span class="dv">65</span></span>
 <span id="cb61-3"><a></a>sampsize1 <span class="ot">&lt;-</span> <span class="dv">138</span></span>
 <span id="cb61-4"><a></a>sampsize2 <span class="ot">&lt;-</span> <span class="dv">237</span></span>
 <span id="cb61-5"><a></a>p_pool <span class="ot">&lt;-</span> (x1<span class="sc">+</span>x2)<span class="sc">/</span>(sampsize1<span class="sc">+</span>sampsize2)</span>
 <span id="cb61-6"><a></a></span>
-<span id="cb61-7"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_pool<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_pool)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>sampsize1<span class="sc">+</span><span class="dv">1</span><span class="sc">/</span>sampsize2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-7"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_pool<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_pool)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>sampsize1<span class="sc">+</span><span class="dv">1</span><span class="sc">/</span>sampsize2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now calculate the z-statistic</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>pi1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>sampsize1</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>pi1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>sampsize1</span>
 <span id="cb62-2"><a></a>pi2 <span class="ot">&lt;-</span> x2<span class="sc">/</span>sampsize2</span>
 <span id="cb62-3"><a></a></span>
 <span id="cb62-4"><a></a></span>
 <span id="cb62-5"><a></a></span>
 <span id="cb62-6"><a></a>z <span class="ot">&lt;-</span> (pi1<span class="sc">-</span>pi2)<span class="sc">/</span>se</span>
-<span id="cb62-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-7"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.208054</code></pre>
 </div>
 </div>
 <p>The corresponding p-value should be calculated as P(Z &gt; 2.2080543)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span>
-<span id="cb64-2"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span>
+<span id="cb64-2"><a></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.01362024</code></pre>
 </div>
@@ -1874,31 +1874,31 @@ H_0: \pi_f-\pi_m = 0; H_a: \pi_f-\pi_m &gt; 0
 \]</span></p>
 <p>We first calculate the pooled proportion used for the standard error. Note that the number of successes for females and males is 24 and 11, respectively.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="dv">24</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="dv">24</span></span>
 <span id="cb66-2"><a></a>x2 <span class="ot">&lt;-</span> <span class="dv">11</span></span>
 <span id="cb66-3"><a></a>sampsize1 <span class="ot">&lt;-</span> <span class="dv">44</span></span>
 <span id="cb66-4"><a></a>sampsize2 <span class="ot">&lt;-</span> <span class="dv">29</span></span>
 <span id="cb66-5"><a></a>p_pool <span class="ot">&lt;-</span> (x1<span class="sc">+</span>x2)<span class="sc">/</span>(sampsize1<span class="sc">+</span>sampsize2)</span>
 <span id="cb66-6"><a></a></span>
-<span id="cb66-7"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_pool<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_pool)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>sampsize1<span class="sc">+</span><span class="dv">1</span><span class="sc">/</span>sampsize2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb66-7"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_pool<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_pool)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>sampsize1<span class="sc">+</span><span class="dv">1</span><span class="sc">/</span>sampsize2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now calculate the z-statistic</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>pi1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>sampsize1</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>pi1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>sampsize1</span>
 <span id="cb67-2"><a></a>pi2 <span class="ot">&lt;-</span> x2<span class="sc">/</span>sampsize2</span>
 <span id="cb67-3"><a></a></span>
 <span id="cb67-4"><a></a></span>
 <span id="cb67-5"><a></a></span>
 <span id="cb67-6"><a></a>z <span class="ot">&lt;-</span> (pi1<span class="sc">-</span>pi2)<span class="sc">/</span>se</span>
-<span id="cb67-7"><a></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb67-7"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.39042</code></pre>
 </div>
 </div>
 <p>The corresponding p-value should be calculated as P(Z &gt; 1.3904204)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span>
-<span id="cb69-2"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z,<span class="at">lower.tail=</span>F)</span>
+<span id="cb69-2"><a></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.08220063</code></pre>
 </div>
@@ -2101,7 +2101,7 @@ H_0: \pi_f-\pi_m = 0; H_a: \pi_f-\pi_m &gt; 0
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -2251,13 +2251,14 @@ H_0: \pi_f-\pi_m = 0; H_a: \pi_f-\pi_m &gt; 0
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

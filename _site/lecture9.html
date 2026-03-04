@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Regression Analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-12873a65cf666e61daa4b3cf91a98e13.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -545,8 +545,8 @@ R^2 = SSR/(SSR + SSE)
 <h2><code>R</code> Implementation: <code>lm()</code></h2>
 <p>The function <code>lm()</code> can perform calculations for linear regression. The function <code>summary()</code> is used with <code>lm()</code> to provide estimates for the intercept, slope, and residual variance. The <code>summary()</code> output also includes the results of the tests involving the slopes (both <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span>).</p>
 <p>Sample code should follow how we used <code>lm()</code> in Lecture 8:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DepVar<span class="sc">~</span>IndepVar,<span class="at">data=</span>df)</span>
-<span id="cb1-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DepVar<span class="sc">~</span>IndepVar,<span class="at">data=</span>df)</span>
+<span id="cb1-2"><a></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -578,9 +578,9 @@ R^2 = SSR/(SSR + SSE)
 </div>
 </div>
 <h3 id="sample-code">Sample code</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>IndepVar,<span class="at">y=</span>DepVar)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>IndepVar,<span class="at">y=</span>DepVar)) <span class="sc">+</span></span>
 <span id="cb2-2"><a></a><span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb2-3"><a></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">formula=</span>y<span class="sc">~</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">formula=</span>y<span class="sc">~</span>x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="framework-for-analysis" class="slide level2">
 <h2>Framework for Analysis</h2>
@@ -603,8 +603,8 @@ R^2 = SSR/(SSR + SSE)
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a></a><span class="fu">glimpse</span>(trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a></a><span class="fu">glimpse</span>(trees)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 31
 Columns: 3
@@ -612,10 +612,10 @@ $ Girth  &lt;dbl&gt; 8.3, 8.6, 8.8, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11
 $ Height &lt;dbl&gt; 70, 65, 63, 72, 81, 83, 66, 75, 80, 75, 79, 76, 76, 69, 75, 74,…
 $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9, 24.…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>trees,<span class="fu">aes</span>(<span class="at">x=</span>Girth,<span class="at">y=</span>Height)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>trees,<span class="fu">aes</span>(<span class="at">x=</span>Girth,<span class="at">y=</span>Height)) <span class="sc">+</span> </span>
 <span id="cb5-2"><a></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
 <span id="cb5-3"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb5-4"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Diameter (in)"</span>, <span class="at">y=</span><span class="st">"Height (ft)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Diameter (in)"</span>, <span class="at">y=</span><span class="st">"Height (ft)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -627,8 +627,8 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 </div>
 <div id="tabset-2-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Height<span class="sc">~</span>Girth,<span class="at">data=</span>trees)</span>
-<span id="cb6-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Height<span class="sc">~</span>Girth,<span class="at">data=</span>trees)</span>
+<span id="cb6-2"><a></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -655,8 +655,8 @@ F-statistic: 10.71 on 1 and 29 DF,  p-value: 0.002758</code></pre>
 </div>
 <div id="tabset-2-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-2"><a></a><span class="fu">glimpse</span>(trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a></a><span class="fu">glimpse</span>(trees)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 31
 Columns: 3
@@ -664,11 +664,11 @@ $ Girth  &lt;dbl&gt; 8.3, 8.6, 8.8, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11
 $ Height &lt;dbl&gt; 70, 65, 63, 72, 81, 83, 66, 75, 80, 75, 79, 76, 76, 69, 75, 74,…
 $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9, 24.…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>trees,<span class="fu">aes</span>(<span class="at">x=</span>Girth,<span class="at">y=</span>Height)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>trees,<span class="fu">aes</span>(<span class="at">x=</span>Girth,<span class="at">y=</span>Height)) <span class="sc">+</span> </span>
 <span id="cb10-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb10-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">formula=</span>y<span class="sc">~</span>x,<span class="at">se=</span>F) <span class="sc">+</span> </span>
 <span id="cb10-4"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb10-5"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Diameter (in)"</span>, <span class="at">y=</span><span class="st">"Height (ft)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-5"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Diameter (in)"</span>, <span class="at">y=</span><span class="st">"Height (ft)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -726,12 +726,12 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 </div>
 </div>
 <div id="tabset-3-4">
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DepVar<span class="sc">~</span>IndepVar,<span class="at">data=</span>df)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(DepVar<span class="sc">~</span>IndepVar,<span class="at">data=</span>df)</span>
 <span id="cb11-2"><a></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">IndepVar=</span><span class="fu">c</span>(X)) <span class="co"># substitute X with the value of the independent variable you want to estimate the value of the predictor for.</span></span>
 <span id="cb11-3"><a></a></span>
 <span id="cb11-4"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,newdata,<span class="at">interval =</span> <span class="st">"confidence"</span>,<span class="at">level =</span> <span class="fl">0.95</span>)</span>
 <span id="cb11-5"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,newdata,<span class="at">interval =</span> <span class="st">"prediction"</span>,<span class="at">level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb11-6"><a></a>newdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a></a>newdata</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -751,10 +751,10 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 </div>
 <div id="tabset-4-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Height<span class="sc">~</span>Girth,<span class="at">data=</span>trees)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Height<span class="sc">~</span>Girth,<span class="at">data=</span>trees)</span>
 <span id="cb12-2"><a></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Girth=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>))</span>
 <span id="cb12-3"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,<span class="at">newdata=</span>newdata,<span class="at">interval =</span> <span class="st">"prediction"</span>,<span class="at">level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb12-4"><a></a>newdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a></a>newdata</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Girth prediction.fit prediction.lwr prediction.upr
 1    10       72.57500       60.86890       84.28110
@@ -764,7 +764,7 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 </div>
 <p>It is not advisable to interpret the intercept because it is trivial to examine the case when the tree diameter is equal to zero. It is also outside the range of diameters considered in the study. Specifically, the range shown below does not include zero.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">range</span>(trees<span class="sc">$</span>Girth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">range</span>(trees<span class="sc">$</span>Girth)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  8.3 20.6</code></pre>
 </div>
@@ -778,7 +778,7 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 <h2>Exercise</h2>
 <p>Consider the liver steatosis data set <code>Liver_Steatosis.csv</code>. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Question</a></li><li><a href="#tabset-5-2">Answer</a></li></ul>
@@ -795,10 +795,10 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 </div>
 <div id="tabset-5-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>liver,<span class="fu">aes</span>(<span class="at">x=</span>Weight,<span class="at">y=</span>LDL))<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>liver,<span class="fu">aes</span>(<span class="at">x=</span>Weight,<span class="at">y=</span>LDL))<span class="sc">+</span></span>
 <span id="cb17-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb17-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">formula=</span>y<span class="sc">~</span>x,<span class="at">se=</span>F) <span class="sc">+</span> </span>
-<span id="cb17-4"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -809,8 +809,8 @@ $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9,
 </div>
 <p>There appears to be a weak association between LDL and weight.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(LDL<span class="sc">~</span>Weight,<span class="at">data=</span>liver)</span>
-<span id="cb18-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(LDL<span class="sc">~</span>Weight,<span class="at">data=</span>liver)</span>
+<span id="cb18-2"><a></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -835,9 +835,9 @@ F-statistic: 0.1704 on 1 and 393 DF,  p-value: 0.68</code></pre>
 </div>
 <p>The best fit line is <span class="math inline">\(\hat{LDL} = 108.90 - 0.02*Weight\)</span>. The p-value of the coefficient is 0.68, and the test statistic <span class="math inline">\(t\)</span> is -0.41. There is no evidence of an association between weight and LDL levels. The <span class="math inline">\(R^2\)</span> value is 4^{-4}. Note that <strong>there are 48 observations deleted due to missingness</strong>. These variables were excluded from the analysis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Weight=</span><span class="fu">c</span>(<span class="dv">120</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Weight=</span><span class="fu">c</span>(<span class="dv">120</span>))</span>
 <span id="cb20-2"><a></a>newdata<span class="sc">$</span>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1,<span class="at">newdata=</span>newdata,<span class="at">interval =</span> <span class="st">"prediction"</span>,<span class="at">level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb20-3"><a></a>newdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a></a>newdata</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Weight prediction.fit prediction.lwr prediction.upr
 1    120      106.11543       41.13065      171.10020</code></pre>
@@ -989,8 +989,8 @@ R_{adj}^2 = 1-\frac{(N-1)}{(N-p-1)}(1-R^2)
 <h2>Model Checking</h2>
 <p>Recall: The residual is defined as the difference between the observed and predicted responses, specifically <span class="math inline">\(r_i = y_i-\hat{y}_i\)</span>. The residuals can be used to test the normality, equal variance, and independence assumptions. What is of interest to us are the <strong>residual plots</strong>.</p>
 <p>The following tabs explain the plots shown when plotting an <code>lm()</code> object using <code>plot()</code>.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2,<span class="at">data=</span>df)</span>
-<span id="cb22-2"><a></a><span class="fu">plot</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x1<span class="sc">+</span>x2,<span class="at">data=</span>df)</span>
+<span id="cb22-2"><a></a><span class="fu">plot</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="panel-tabset">
 <ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Residual v. Fitted</a></li><li><a href="#tabset-7-2">Q-Q Residuals</a></li><li><a href="#tabset-7-3">Scale-Location</a></li><li><a href="#tabset-7-4">Residuals v. Leverage</a></li></ul>
 <div class="tab-content">
@@ -1026,7 +1026,7 @@ R_{adj}^2 = 1-\frac{(N-1)}{(N-p-1)}(1-R^2)
 <h2>Example</h2>
 <p>Consider the sleep health data set in <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Question</a></li><li><a href="#tabset-8-2">Answer</a></li><li><a href="#tabset-8-3">Plots</a></li></ul>
@@ -1043,8 +1043,8 @@ R_{adj}^2 = 1-\frac{(N-1)}{(N-p-1)}(1-R^2)
 </div>
 <div id="tabset-8-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sleep_duration<span class="sc">~</span>gender <span class="sc">+</span> age <span class="sc">+</span> heart_rate,<span class="at">data=</span>sleep)</span>
-<span id="cb24-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sleep_duration<span class="sc">~</span>gender <span class="sc">+</span> age <span class="sc">+</span> heart_rate,<span class="at">data=</span>sleep)</span>
+<span id="cb24-2"><a></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1076,7 +1076,7 @@ F-statistic: 64.96 on 3 and 370 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div id="tabset-8-3">
 <p>The plots show major defects on the normality assumption of the residuals, which we must keep in mind when we are interpreting our results. We can also see that the residuals vs.&nbsp;fitted values cannot be enclosed in two horizontal bands, implying evidence of unequal variances.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">plot</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">plot</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1114,7 +1114,7 @@ F-statistic: 64.96 on 3 and 370 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2>Exercise</h2>
 <p>Consider the liver steatosis data set <code>Liver_Steatosis.csv</code>. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Question</a></li><li><a href="#tabset-9-2">Answer</a></li><li><a href="#tabset-9-3">Plots</a></li></ul>
@@ -1131,8 +1131,8 @@ F-statistic: 64.96 on 3 and 370 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div id="tabset-9-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(CHOL<span class="sc">~</span>BMI<span class="sc">+</span> Age <span class="sc">+</span> MET_Syndrome<span class="sc">+</span>TG,<span class="at">data=</span>liver)</span>
-<span id="cb28-2"><a></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(CHOL<span class="sc">~</span>BMI<span class="sc">+</span> Age <span class="sc">+</span> MET_Syndrome<span class="sc">+</span>TG,<span class="at">data=</span>liver)</span>
+<span id="cb28-2"><a></a><span class="fu">summary</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1166,7 +1166,7 @@ F-statistic: 29.19 on 4 and 406 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div id="tabset-9-3">
 <p>A sharp curve in the residuals vs.&nbsp;fitted plot could be indicative of unequal variances. Normality assumption appears to hold well.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">plot</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">plot</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1291,11 +1291,11 @@ t = r \sqrt{\frac{(n-2)}{(1-r^2)}}
 <section id="r-implementation-1" class="slide level2">
 <h2><code>R</code> implementation</h2>
 <p>The function <code>cor.test(x,y)</code> can be used to estimate the sample correlation coefficient <span class="math inline">\(r\)</span>, as well as perform the hypothesis test of no association and estimate confidence interval for <span class="math inline">\(\rho\)</span>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">cor.test</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">cor.test</span>(df<span class="sc">$</span>x,df<span class="sc">$</span>y,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
 <span id="cb31-2"><a></a></span>
 <span id="cb31-3"><a></a><span class="co"># OR</span></span>
 <span id="cb31-4"><a></a></span>
-<span id="cb31-5"><a></a><span class="fu">cor.test</span>(<span class="sc">~</span>x<span class="sc">+</span>y, <span class="at">data=</span>df,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-5"><a></a><span class="fu">cor.test</span>(<span class="sc">~</span>x<span class="sc">+</span>y, <span class="at">data=</span>df,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1314,7 +1314,7 @@ t = r \sqrt{\frac{(n-2)}{(1-r^2)}}
 <h2>Example</h2>
 <p>Consider the sleep health data <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Question</a></li><li><a href="#tabset-10-2">Answer</a></li></ul>
@@ -1324,9 +1324,9 @@ t = r \sqrt{\frac{(n-2)}{(1-r^2)}}
 </div>
 <div id="tabset-10-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>cortest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(sleep<span class="sc">$</span>sleep_duration,sleep<span class="sc">$</span>stress_level,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>cortest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(sleep<span class="sc">$</span>sleep_duration,sleep<span class="sc">$</span>stress_level,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
 <span id="cb33-2"><a></a></span>
-<span id="cb33-3"><a></a>cortest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-3"><a></a>cortest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -1342,7 +1342,7 @@ sample estimates:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">cor.test</span>(<span class="sc">~</span>sleep_duration<span class="sc">+</span>stress_level,<span class="at">data=</span>sleep,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">cor.test</span>(<span class="sc">~</span>sleep_duration<span class="sc">+</span>stress_level,<span class="at">data=</span>sleep,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -1367,7 +1367,7 @@ sample estimates:
 <h2>Exercise</h2>
 <p>Consider the liver steatosis data set <code>Liver_Steatosis.csv</code>. This dataset contains information on the 443 of 451 patients who had bariatric surgery at the Cleveland Clinic between 2005 and 2009 and underwent livery biopsy.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>liver <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Liver_Steatosis.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Question</a></li><li><a href="#tabset-11-2">Answer</a></li></ul>
@@ -1377,9 +1377,9 @@ sample estimates:
 </div>
 <div id="tabset-11-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>cortest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(liver<span class="sc">$</span>BMI,liver<span class="sc">$</span>CHOL,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>cortest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(liver<span class="sc">$</span>BMI,liver<span class="sc">$</span>CHOL,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span>
 <span id="cb38-2"><a></a></span>
-<span id="cb38-3"><a></a>cortest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-3"><a></a>cortest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -1593,7 +1593,7 @@ sample estimates:
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1743,13 +1743,14 @@ sample estimates:
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
