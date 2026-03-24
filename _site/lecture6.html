@@ -993,7 +993,7 @@ Type: Integer
 </div>
 <p>Based on <code>freq</code>, the proportion of those with metabolic syndrome is 0.6735 out of a sample size of 441 (removed two missing). We now have everything we need to calculate the confidence interval.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">297</span><span class="sc">/</span><span class="dv">443</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>phat <span class="ot">&lt;-</span> <span class="dv">297</span><span class="sc">/</span><span class="dv">441</span></span>
 <span id="cb27-2"><a></a>sampsize <span class="ot">&lt;-</span> <span class="dv">441</span></span>
 <span id="cb27-3"><a></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.95</span></span>
 <span id="cb27-4"><a></a>relcoeff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)</span>
@@ -1002,15 +1002,15 @@ Type: Integer
 <span id="cb27-7"><a></a>lower <span class="ot">&lt;-</span> phat <span class="sc">-</span> relcoeff<span class="sc">*</span>se</span>
 <span id="cb27-8"><a></a>lower</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6265577</code></pre>
+<pre><code>[1] 0.6297021</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>upper <span class="ot">&lt;-</span> phat <span class="sc">+</span> relcoeff<span class="sc">*</span>se</span>
 <span id="cb29-2"><a></a>upper</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7143001</code></pre>
+<pre><code>[1] 0.7172367</code></pre>
 </div>
 </div>
-<p>The 95% confidence interval for the proportion of patients with metabolic syndrome is (0.6266,0.7143).</p>
+<p>The 95% confidence interval for the proportion of patients with metabolic syndrome is (0.6297,0.7172).</p>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1270,7 +1270,7 @@ n = z^2_{1-\alpha/2} \frac{\hat{\sigma}^2}{E^2}
 <pre><code>[1] 66348.97</code></pre>
 </div>
 </div>
-<p>We need to sample 66349 to achieve a margin of error of 500 for our 99% confidence interval.</p>
+<p>We need to sample 66349 pages to achieve a margin of error of 500 for our 99% confidence interval.</p>
 </div>
 </div>
 </div>

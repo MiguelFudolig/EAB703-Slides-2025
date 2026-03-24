@@ -510,7 +510,7 @@ summarytools::freq(liver$MET_Syndrome)
 Based on `freq`, the proportion of those with metabolic syndrome is 0.6735 out of a sample size of 441 (removed two missing). We now have everything we need to calculate the confidence interval.
 
 ```{r}
-phat <- 297/443
+phat <- 297/441
 sampsize <- 441
 alpha <- 1-0.95
 relcoeff <- qnorm(p=1-alpha/2,mean=0,sd=1)
@@ -701,7 +701,7 @@ sampsize <-z^2*sigma^2/E^2
 sampsize
 ```
 
-We need to sample `r format(ceiling(sampsize),scientific=F)` to achieve a margin of error of 500 for our 99% confidence interval.
+We need to sample `r format(ceiling(sampsize),scientific=F)` pages to achieve a margin of error of 500 for our 99% confidence interval.
 
 :::
 
