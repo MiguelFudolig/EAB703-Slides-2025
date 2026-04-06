@@ -212,3 +212,55 @@ e.	Is our result indicative of a causal relationship between acetaminophen expos
 
 **NO**, we cannot conclude a causal relationship between acetaminophen exposure and autism prevalence. Other possible confounding variables such as family history, social factors, and other environmental factors were not considered in the analysis that could have affected both exposure and autism diagnosis.
 
+
+## Problem 6
+
+The data set “acupuncture.csv” includes data from the control group of a randomized controlled trial investigating the effect of acupuncture therapy on headache severity. Each participant was identified using an ID number in the id column. The headache severity was measured for each participant before receiving the treatment and at a 3-month follow-up. The column `pk1` includes the baseline headache severity score of the participants while the column `pk2` includes the headache severity score after 3 months.
+
+```{r}
+acu <- read.csv("datasets/acupuncture.csv")
+glimpse(acu)
+```
+
+
+a.	What test is the most appropriate to test whether there is a difference between the average headache severity scores of the participants before receiving the treatment and the 3-month follow-up? [1pt.]
+
+Paired t-test because these scores were measured from the same participant.
+
+b.	What are the statistical hypotheses for testing whether the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [2pts.]
+
+$$
+H_0: \mu_d = 0; H_a: \mu_d > 0
+$$
+
+where $\mu_d$ is defined as the average difference between baseline and 3-month follow-up.
+
+::: callout-important
+If \mu_d is the difference between the treatment between 3-month follow-up and baseline, then the hypothesis should be:
+
+$$
+H_0: \mu_d = 0; H_a: \mu_d < 0
+$$
+:::
+
+
+c.	What is the value of the test statistic and the corresponding number of degrees of freedom? [2pts.]
+
+```{r}
+ttest <- t.test(acu$pk1,acu$pk2,paired=T,alternative="greater")
+ttest
+
+# OR
+
+ttest <- t.test(acu$pk2,acu$pk1,paired=T,alternative="less")
+ttest
+```
+
+d.	What is the p-value? [1pt.]
+
+The p-value is `r ttest$p.value`.
+
+e.	At a significance level of 0.001, do we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [1pt.]
+
+Yes, we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline.
+

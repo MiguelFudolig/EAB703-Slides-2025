@@ -12,58 +12,11 @@ format:
 library(tidyverse)
 library(summarytools)
 library(emmeans)
-library(lsr)
+library(effectsize)
 ```
+
 
 ## Problem 1
-
-1.	The data set “acupuncture.csv” includes data from the control group of a randomized controlled trial investigating the effect of acupuncture therapy on headache severity. Each participant was identified using an ID number in the id column. The headache severity was measured for each participant before receiving the treatment and at a 3-month follow-up. The column pk1 includes the baseline headache severity score of the participants while the column pk2 includes the headache severity score after 3 months.
-
-```{r}
-acu <- read.csv("datasets/acupuncture.csv")
-glimpse(acu)
-```
-
-
-a.	What test is the most appropriate to test whether there is a difference between the average headache severity scores of the participants before receiving the treatment and the 3-month follow-up? [1pt.]
-
-Paired t-test because these scores were measured from the same participant.
-
-b.	What are the statistical hypotheses for testing whether the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [2pts.]
-
-$$
-H_0: \mu_d = 0; H_a: \mu_d > 0
-$$
-
-where $\mu_d$ is defined as the average difference between baseline and 3-month follow-up. 
-
-::: callout-important
-If \mu_d is the difference between the treatment between 3-month baseline and follow-up, then the hypothesis should be:
-
-$$
-H_0: \mu_d = 0; H_a: \mu_d < 0
-$$
-:::
-
-
-c.	What is the value of the test statistic and the corresponding number of degrees of freedom? [2pts.]
-
-```{r}
-ttest <- t.test(acu$pk1,acu$pk2,paired=T,alternative="greater")
-ttest
-```
-
-d.	What is the p-value? [1pt.]
-
-The p-value is `r ttest$p.value`.
-
-e.	At a significance level of 0.001, do we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline? [1pt.]
-
-Yes, we have sufficient evidence that the average headache severity score in this cohort was lower at the 3-month follow-up compared to the baseline.
-
-
-## Problem 2
-
 The file aaqol_subset.csv includes data from the 2015 Asian American Quality of Life survey implemented in Austin, TX. We are interested to test whether there is a difference in average age across the different Asian ethnicities represented in the study.
 
 ```{r}
@@ -87,11 +40,19 @@ c.	What is the resulting p-value? [1 pt.]
 
 The p-value is 0.0057.
 
-d.	Comment on the sufficiency of evidence based on the alternative hypothesis using a significance level of 0.05. Account for the context of the problem. [1 pt.]
+d.	What is the eta-squared value for the ethnicity effect? [1 pt.]
+
+```{r}
+eta_squared(mod_aov)
+```
+
+The ethnicity effect has an eta squared value of `r round(eta_squared(mod_aov)$Eta2[1],4)`.
+
+e.	Comment on the sufficiency of evidence based on the alternative hypothesis using a significance level of 0.05. Account for the context of the problem. [1 pt.]
 
 At a significance level of 0.05, there is sufficient evidence that at least one Asian ethnic group has a different average age compared to the others.
 
-e.	Perform a post-hoc test involving pairwise comparisons between the average age of each Asian ethnic group. Apply the Tukey correction. Which pair/s of Asian ethnic groups yielded evidence of pairwise difference in average ages? Use a significance level of 0.05. [2pts.]
+f.	Perform a post-hoc test involving pairwise comparisons between the average age of each Asian ethnic group. Apply the Tukey correction. Which pair/s of Asian ethnic groups yielded evidence of pairwise difference in average ages? Use a significance level of 0.05. [2pts.]
 
 ```{r}
 mod_lm <- lm(Age~Ethnicity,data=aaqol)
@@ -101,6 +62,40 @@ contrast(em_mod_lm,method="pairwise",adjust="tukey")
 ```
 
 At a significance level of 0.05, Asian Indian (39.6) and Korean (45.4) participants yielded evidence of a pairwise difference in average ages, with an estimated difference of -5.82, test statistic of 3.483, and p-value of 0.0047. Other comparisons did not yield any evidence of a difference.
+
+## Problem 2
+
+The data set `Salaries` in the package `carData` includes the 2008-09 nine-month academic salary for Assistant Professors, Associate Professors and Professors in a college in the U.S. Discipline A consists of “theoretical departments”, while Discipline B consists of “applied departments”.
+
+```{r}
+library(carData)
+glimpse(Salaries)
+```
+
+
+a.	Test whether there is an interaction between rank (Variable `rank`) and discipline (Variable `discipline`). Use a significance level of 0.05. [2pts.]
+
+```{r}
+mod_aov <- aov(salary~rank*discipline,data=Salaries)
+summary(mod_aov)
+```
+At a significance level of 0.05, there is no evidence of an interaction effect (p=0.639)
+
+b.	What is the partial eta-squared value for the interaction effect? [1 pt.]
+
+
+```{r}
+eta_squared(mod_aov)
+```
+The interaction effect has a partial eta squared value of `r round(eta_squared(mod_aov)$Eta2[3],4)`.
+
+c.	What is the partial eta-squared value for the rank effect? [1 pt.]
+
+The rank effect has a partial eta squared value of `r round(eta_squared(mod_aov)$Eta2[1],4)`.
+
+d.	What is the partial eta-squared value for the discipline effect? [1 pts.]
+
+The discipline effect has a partial eta squared value of `r round(eta_squared(mod_aov)$Eta2[2],4)`.
 
 
 ## Problem 3
@@ -124,18 +119,21 @@ summary(mod_aov)
 
 There is sufficient evidence of an interaction effect between social media use and gaming habits at the 0.05 significance level. The test statistic was F(1,28)=6.391, and a p-value of 0.0174.
 
-::: callout-note
-Optional: We can also report the partial eta-squared as an effect size.
+b.	What is the partial eta-squared value for the interaction effect? [1 pt.]
 
 ```{r}
-etaSquared(mod_aov)
+eta_squared(mod_aov)
 ```
 
-The partial eta-square for the interaction effect is 0.186.
+The partial eta-square for the interaction effect is `r round(eta_squared(mod_aov)$Eta2[3],2)`.
 
-:::
 
-b.	Provide the estimate of the group means for each social media*gaming level combination. [2pts.]
+
+c.	Are the partial eta-squared values for `socmed` and `gaming` interpretable? Why or why not? (Hint: Main effects are not interpretable if the null hypothesis for the interaction hypothesis test is rejected). [3 pts.]
+
+The partial eta-squared for `socmed` and `gaming` represent the main effects. Because we have evidence of an interaction effect, these effect sizes are not interpretable.
+
+d.	Provide the estimate of the group means for each social media*gaming level combination. [2pts.]
 
 ```{r}
 
@@ -144,4 +142,8 @@ em_mod_lm <- emmeans(mod_lm,~socmed|gaming)
 em_mod_lm
 plot(em_mod_lm)
 ```
+
+e.	Comment on how the estimated group means support your result in (a). [2pts.]
+
+The difference between the group means of `socmed` is higher in the `Yes` gaming group compared to the `No` gaming group, which supports the alternative hypothesis that there is an interaction between these two factors.
 

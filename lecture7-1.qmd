@@ -98,13 +98,33 @@ $$
 F < F_{1-\alpha}(n_1-1,n_2-1)
 $$
 
-As much as possible, we set the group with the expected larger variance to be in the numerator to avoid complications in calculating the rejection region. 
+As much as possible, we set the group with the expected larger variance to be in the numerator to avoid complications in calculating the rejection region. In `R`,
+
+```{r}
+#| eval: false
+
+qf(1-alpha,df1=n1-1,df2=n2-1)
+```
+
 
 For two-sided tests, the rejection region is defined by the ranges:
 
 $$
 F < F_{\alpha/2}(n_1-1,n_2-1)~ or~ F > F_{1-\alpha/2}(n_1-1,n_2-1)
 $$
+
+In `R`,
+
+```{r}
+#| eval: false
+
+# limit 1
+qf(alpha/2,df1=n1-1,df2=n2-1)
+
+# limit 2
+
+qf(1-alpha/2,df1=n1-1,df2=n2-1)
+```
 
 ::: callout-note
 The p-values can be calculated using statistical software like `R` and follows the same rejection rules as the previous tests (reject $H_0$ when $p < \alpha$)

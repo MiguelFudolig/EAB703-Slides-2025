@@ -266,11 +266,23 @@ F=S_1^2/S_2^2 \sim F(n_1-1,n_2-1)
 <p><span class="math display">\[
 F &lt; F_{1-\alpha}(n_1-1,n_2-1)
 \]</span></p>
-<p>As much as possible, we set the group with the expected larger variance to be in the numerator to avoid complications in calculating the rejection region.</p>
+<p>As much as possible, we set the group with the expected larger variance to be in the numerator to avoid complications in calculating the rejection region. In <code>R</code>,</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">qf</span>(<span class="dv">1</span><span class="sc">-</span>alpha,<span class="at">df1=</span>n1<span class="dv">-1</span>,<span class="at">df2=</span>n2<span class="dv">-1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>For two-sided tests, the rejection region is defined by the ranges:</p>
 <p><span class="math display">\[
 F &lt; F_{\alpha/2}(n_1-1,n_2-1)~ or~ F &gt; F_{1-\alpha/2}(n_1-1,n_2-1)
 \]</span></p>
+<p>In <code>R</code>,</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># limit 1</span></span>
+<span id="cb2-2"><a></a><span class="fu">qf</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span>n1<span class="dv">-1</span>,<span class="at">df2=</span>n2<span class="dv">-1</span>)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># limit 2</span></span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a><span class="fu">qf</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span>n1<span class="dv">-1</span>,<span class="at">df2=</span>n2<span class="dv">-1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -333,7 +345,7 @@ F &lt; F_{\alpha/2}(n_1-1,n_2-1)~ or~ F &gt; F_{1-\alpha/2}(n_1-1,n_2-1)
 <h2>Example</h2>
 <p>Consider the sleep health data set from <code>SleepHealthData.csv</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SleepHealthData.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Question</a></li><li><a href="#tabset-1-2">Answer</a></li></ul>
@@ -347,13 +359,13 @@ F &lt; F_{\alpha/2}(n_1-1,n_2-1)~ or~ F &gt; F_{1-\alpha/2}(n_1-1,n_2-1)
 H_0: \sigma_f^2/\sigma_m^2 = 1;H_a: \sigma_f^2/\sigma_m^2 \neq 1
 \]</span> We can now use the <code>var.test()</code> function to solve for the test statistic and p-value. Note that the groups are defined by the <code>gender</code> variable and the response is defined by the <code>sleep_duration</code> variable.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ftest <span class="ot">&lt;-</span> <span class="fu">var.test</span>(sleep_duration<span class="sc">~</span>gender,</span>
-<span id="cb2-2"><a></a>         <span class="at">data=</span>sleep,</span>
-<span id="cb2-3"><a></a>         <span class="at">ratio=</span><span class="dv">1</span>,</span>
-<span id="cb2-4"><a></a>         <span class="at">alternative=</span><span class="st">"two.sided"</span></span>
-<span id="cb2-5"><a></a>         )</span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a>ftest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>ftest <span class="ot">&lt;-</span> <span class="fu">var.test</span>(sleep_duration<span class="sc">~</span>gender,</span>
+<span id="cb4-2"><a></a>         <span class="at">data=</span>sleep,</span>
+<span id="cb4-3"><a></a>         <span class="at">ratio=</span><span class="dv">1</span>,</span>
+<span id="cb4-4"><a></a>         <span class="at">alternative=</span><span class="st">"two.sided"</span></span>
+<span id="cb4-5"><a></a>         )</span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a>ftest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     F test to compare two variances
@@ -370,14 +382,14 @@ ratio of variances
 </div>
 <p>The test statistic value is 1.6095104 corresponding to a p-value of 0.0012421. The rejection region can be calculated using the <code>qf()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>alpha<span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb4-2"><a></a>lower_bound <span class="ot">&lt;-</span> <span class="fu">qf</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span><span class="dv">184</span>,<span class="at">df2=</span><span class="dv">188</span>)</span>
-<span id="cb4-3"><a></a>lower_bound</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>alpha<span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb6-2"><a></a>lower_bound <span class="ot">&lt;-</span> <span class="fu">qf</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span><span class="dv">184</span>,<span class="at">df2=</span><span class="dv">188</span>)</span>
+<span id="cb6-3"><a></a>lower_bound</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.74935</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>upper_bound<span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span><span class="dv">184</span>,<span class="at">df2=</span><span class="dv">188</span>)</span>
-<span id="cb6-2"><a></a>upper_bound</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>upper_bound<span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span><span class="dv">184</span>,<span class="at">df2=</span><span class="dv">188</span>)</span>
+<span id="cb8-2"><a></a>upper_bound</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.333886</code></pre>
 </div>
@@ -415,13 +427,13 @@ ratio of variances
 H_0: \sigma_f^2/\sigma_m^2 = 1;H_a: \sigma_f^2/\sigma_m^2 \neq 1
 \]</span> We can now use the <code>var.test()</code> function to solve for the test statistic and p-value. Note that the groups are defined by the <code>gender</code> variable and the response is defined by the <code>heart_rate</code> variable.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ftest <span class="ot">&lt;-</span> <span class="fu">var.test</span>(heart_rate<span class="sc">~</span>gender,</span>
-<span id="cb8-2"><a></a>         <span class="at">data=</span>sleep,</span>
-<span id="cb8-3"><a></a>         <span class="at">ratio=</span><span class="dv">1</span>,</span>
-<span id="cb8-4"><a></a>         <span class="at">alternative=</span><span class="st">"two.sided"</span></span>
-<span id="cb8-5"><a></a>         )</span>
-<span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a>ftest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>ftest <span class="ot">&lt;-</span> <span class="fu">var.test</span>(heart_rate<span class="sc">~</span>gender,</span>
+<span id="cb10-2"><a></a>         <span class="at">data=</span>sleep,</span>
+<span id="cb10-3"><a></a>         <span class="at">ratio=</span><span class="dv">1</span>,</span>
+<span id="cb10-4"><a></a>         <span class="at">alternative=</span><span class="st">"two.sided"</span></span>
+<span id="cb10-5"><a></a>         )</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a>ftest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     F test to compare two variances
@@ -438,14 +450,14 @@ ratio of variances
 </div>
 <p>The test statistic value is 1.4975238 corresponding to a p-value of 0.0060876. The rejection region can be calculated using the <code>qf()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>alpha<span class="ot">&lt;-</span> <span class="fl">0.001</span></span>
-<span id="cb10-2"><a></a>lower_bound <span class="ot">&lt;-</span> <span class="fu">qf</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span><span class="dv">184</span>,<span class="at">df2=</span><span class="dv">188</span>)</span>
-<span id="cb10-3"><a></a>lower_bound</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>alpha<span class="ot">&lt;-</span> <span class="fl">0.001</span></span>
+<span id="cb12-2"><a></a>lower_bound <span class="ot">&lt;-</span> <span class="fu">qf</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span><span class="dv">184</span>,<span class="at">df2=</span><span class="dv">188</span>)</span>
+<span id="cb12-3"><a></a>lower_bound</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6150367</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>upper_bound<span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span><span class="dv">184</span>,<span class="at">df2=</span><span class="dv">188</span>)</span>
-<span id="cb12-2"><a></a>upper_bound</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>upper_bound<span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df1=</span><span class="dv">184</span>,<span class="at">df2=</span><span class="dv">188</span>)</span>
+<span id="cb14-2"><a></a>upper_bound</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.624297</code></pre>
 </div>

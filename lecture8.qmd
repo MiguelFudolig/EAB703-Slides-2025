@@ -311,7 +311,7 @@ $$
 \eta^2 = \frac{SSA}{SSA+SSE}
 $$
 
-This could also be calculated using the `effectsize` function in the `lsr` package in `R`.
+This could also be calculated using the `eta_squared` function in the `effectsize` package in `R`.
 
 :::callout-important
 $\eta^2_p=0.01$ is considered small, 0.06 is considered medium, and 0.14 is large.
@@ -337,16 +337,16 @@ There are three species ("setosa", "versicolor", and "virginica"). The hypothese
 We now implement the ANOVA using `R`. To calculate the ANOVA table, we use `aov()`
 
 ```{.r}
-install.packages("lsr")
+install.packages("effectsize")
 ```
 
 ```{r}
-library(lsr)
+library(effectsize)
 mod_aov <-aov(Sepal.Length~Species,data=iris)
 summary(mod_aov)
-etaSquared(mod_aov)
+eta_squared(mod_aov)
 ```
-The p-value is <2e-16, which is less than 0.05. We reject the null hypothesis and therefore there is sufficient evidence that at least one species has a different population average sepal length compared to the others. The effect size is `r etaSquared(mod_aov)[2]` 
+The p-value is <2e-16, which is less than 0.05. We reject the null hypothesis and therefore there is sufficient evidence that at least one species has a different population average sepal length compared to the others. The effect size is `r round(eta_squared(mod_aov)$Eta2,2)` 
 
 We examine the group means to see how much the group means differ using `emmeans()`. To use `emmeans()`, we need to create a linear model for the problem using `lm()`
 
@@ -388,12 +388,12 @@ The hypotheses are $H_0:$ The population average bill length is equal for all th
 We now implement the ANOVA using `R`. To calculate the ANOVA table, we use `aov()`
 
 ```{r}
-library(lsr)
+library(effectsize)
 mod_aov <-aov(bill_len~species,data=penguins)
 summary(mod_aov)
-etaSquared(mod_aov)
+eta_squared(mod_aov)
 ```
-The p-value is <2e-16, which is less than 0.05. We reject the null hypothesis and therefore there is sufficient evidence that at least one species has a different population average bill length compared to the others. The effect size is `r etaSquared(mod_aov)[2]` 
+The p-value is <2e-16, which is less than 0.05. We reject the null hypothesis and therefore there is sufficient evidence that at least one species has a different population average bill length compared to the others. The effect size is `r round(eta_squared(mod_aov)$Eta2,2)` 
 
 We examine the group means to see how much the group means differ using `emmeans()`. To use `emmeans()`, we need to create a linear model for the problem using `lm()`
 
@@ -587,13 +587,13 @@ The null hypothesis is $H_0:$ there is no interaction between family history and
 ```{r}
 mod_aov <- aov(Systolic~Treatment + History + Treatment:History,data=systolic)
 summary(mod_aov)
-etaSquared(mod_aov)
+eta_squared(mod_aov)
 library(emmeans)
 mod1 <- lm(Systolic~Treatment + History + Treatment:History,data=systolic)
 emmeans(mod1,~Treatment:History)
 plot(emmeans(mod1,~Treatment|History))
 ```
-There is evidence of an interaction between treatment and family history ($\eta^2_p$=`r round(etaSquared(mod_aov)[3,2],2)`,p=0.0002). Based on the calculated means, the difference between the treatments was higher for those with family history of hypertension compared to those without.
+There is evidence of an interaction between treatment and family history ($\eta^2_p$=`r round(eta_squared(mod_aov)$Eta2[3],2)`,p=0.0002). Based on the calculated means, the difference between the treatments was higher for those with family history of hypertension compared to those without.
 :::
 
 ## Exercise
@@ -618,7 +618,7 @@ The null hypothesis is $H_0:$ there is no interaction between Ascorbic Acid and 
 ```{r}
 mod_aov <- aov(DaysUntil50PctReduction~AscorbicAcid + Zinc + AscorbicAcid:Zinc,data=covid)
 summary(mod_aov)
-etaSquared(mod_aov)
+eta_squared(mod_aov)
 library(emmeans)
 mod1 <- lm(DaysUntil50PctReduction~AscorbicAcid + Zinc + AscorbicAcid:Zinc,data=covid)
 emmeans(mod1,~AscorbicAcid:Zinc)
@@ -630,5 +630,5 @@ If the `plot(emmeans(mod1,~AscorbicAcid|Zinc))` outputs an error, you might need
 :::
 
 
-There is no evidence of an interaction between Ascorbic Acid and Zinc ($\eta^2_p$=`r round(etaSquared(mod_aov)[3,2],2)`, p=0.84). There is also no evidence of efficacy for Ascorbic Acid ($\eta^2_p$=`r round(etaSquared(mod_aov)[1,2],2)`, p=0.67) and Zinc ($\eta^2_p$=`r round(etaSquared(mod_aov)[2,2],2)`, p=0.83)
+There is no evidence of an interaction between Ascorbic Acid and Zinc ($\eta^2_p$=`r round(eta_squared(mod_aov)$Eta2[3],2)`, p=0.84). There is also no evidence of efficacy for Ascorbic Acid ($\eta^2_p$=`r round(eta_squared(mod_aov)$Eta2[1],2)`, p=0.67) and Zinc ($\eta^2_p$=`r round(eta_squared(mod_aov)$Eta2[2],2)`, p=0.83)
 :::
