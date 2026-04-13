@@ -65,7 +65,7 @@ glimpse(hints)
 a.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
 
 
-The parameter of interest is the proportion of the US population who have used health or wellness apps on their mobile devices. The hypotheses are:
+The parameter of interest is the proportion of the US population/population proportion who have used health or wellness apps on their mobile devices. The hypotheses are:
 
 $$
 H_0: \pi=0.6; H_a: \pi > 0.6
@@ -94,6 +94,7 @@ pnorm(z,lower.tail=F)
 d.	Do we reject or fail to reject the null hypothesis? [1 pt.]
 
 At a 0.05 significance level, we fail to reject the null hypothesis. 
+
 e.	Do we have sufficient evidence to support the claim regarding health and wellness app use? [1pt]
 
 No, we have insufficient evidence to support the claim.
@@ -110,7 +111,7 @@ glimpse(hflashes)
 a.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
 
 
-The parameter of interest is the long-run difference in the variance of estradiol levels between smokers and non-smokers. The hypotheses are:
+The parameter of interest is the ratio of population variances of estradiol levels between smokers and non-smokers. The hypotheses are:
 
 $$
 H_0: \sigma^2_{ns}/ \sigma^2_{s} = 1; H_a: \sigma^2_{ns}/ \sigma^2_{s} \neq 1
@@ -144,7 +145,7 @@ It is recommended to assume equal variances.
 b.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
 
 
-The parameter of interest is the population/long-run difference in estradiol levels between smokers and non-smokers, The hypotheses are:
+The parameter of interest is the population/long-run difference in average estradiol levels between smokers and non-smokers, The hypotheses are:
 
 $$
 H_0: \mu_{ns}-\mu_{s} = 0; H_a: \mu_{ns}-\mu_{s} \neq 0
@@ -170,7 +171,7 @@ A study was performed to investigate the association between acetaminophen use d
 
 a.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
 
-The parameter of interest is the long-run difference in proportion of children diagnosed with autism between the different exposures to acetaminophen. The hypotheses are:
+The parameter of interest is the long-run difference in proportion/ difference in population proportion of children diagnosed with autism between the different exposures to acetaminophen. The hypotheses are:
 
 $$
 H_0: \mu_{exposed}-\mu_{notexposed}=0;H_a: \mu_{exposed}-\mu_{notexposed}\neq 0
