@@ -174,7 +174,7 @@ a.	List the parameter of interest and null and alternative hypotheses for this p
 The parameter of interest is the long-run difference in proportion/ difference in population proportion of children diagnosed with autism between the different exposures to acetaminophen. The hypotheses are:
 
 $$
-H_0: \mu_{exposed}-\mu_{notexposed}=0;H_a: \mu_{exposed}-\mu_{notexposed}\neq 0
+H_0: \pi_{exposed}-\pi_{notexposed}=0;H_a: \pi_{exposed}-\pi_{notexposed}\neq 0
 $$
 b.	Calculate the p-value. [1 pt.]
 
