@@ -5422,7 +5422,7 @@
     "href": "lecture7-1.html#hypothesis-test-ratio-of-population-variances-1",
     "title": "Hypothesis Testing: Tests Involving Variances",
     "section": "Hypothesis Test: Ratio of Population Variances",
-    "text": "Hypothesis Test: Ratio of Population Variances\nIf we are interested in testing the null hypothesis \\(H_0: \\sigma_1/\\sigma_2 = 1\\), the alternative hypothesis can be one of the following:\n\nOne-sided hypotheses: \\(H_a: \\sigma_1/\\sigma_2 &lt; 1\\) or \\(H_a: \\sigma_1/\\sigma_2 &gt; 1\\).\nTwo-sided hypotheses: \\(H_a: \\sigma_1/\\sigma_2 \\neq 1\\)\n\nThe problem dictates which alternative is appropriate.",
+    "text": "Hypothesis Test: Ratio of Population Variances\nIf we are interested in testing the null hypothesis \\(H_0: \\sigma_1^2/\\sigma_2^2 = 1\\), the alternative hypothesis can be one of the following:\n\nOne-sided hypotheses: \\(H_a: \\sigma_1^2/\\sigma_2^2 &lt; 1\\) or \\(H_a: \\sigma_1^2/\\sigma_2^2 &gt; 1\\).\nTwo-sided hypotheses: \\(H_a: \\sigma_1^2/\\sigma_2^2 \\neq 1\\)\n\nThe problem dictates which alternative is appropriate.",
     "crumbs": [
       "Lectures",
       "Lecture 7.1 - Tests Involving Variances"

@@ -123,11 +123,11 @@ vartest <- var.test(estra~f1a,data=hflashes)
 vartest
 ```
 
-The test statistic value is t=`r vartest$statistic`.
+The test statistic value is F=`r vartest$statistic`.
 
 c.	Calculate the p-value. [1 pt.]
 
-The p-value is t=`r vartest$p.value`.
+The p-value is p=`r vartest$p.value`.
 
 d.	Do we reject or fail to reject the null hypothesis? [1 pt.]
 We fail to reject the null hypothesis.
@@ -138,6 +138,8 @@ There is insufficient evidence to claim that there is a difference in the varian
 ## Problem 4
 
 The data set in hflashes.csv contains data from a 14-year cohort study by Freeman et al (2001) that investigated the occurrence of hot flashes in 375 participants. Suppose you want to test if there is a difference between the long-run average of the baseline estradiol measurements (column estra) for current smokers and non-current smokers. 
+
+
 a.	Based on your answer in (3d) and (3e), is it recommended to assume equal variances between the two groups? [1 pt.]
 
 It is recommended to assume equal variances.
@@ -167,7 +169,7 @@ There is insufficient evidence to support the hypothesis that there is a differe
 
 ## Problem 5
 
-A study was performed to investigate the association between acetaminophen use during pregnancy and the children’s risk of neurodevelopmental disorders. In a retrospective study that included 2,480,797 children, 185,909 children were exposed to acetaminophen and 2,294,888 were not. 5,912 children exposed to acetaminophen were diagnosed with autism, while 62,672 children were not exposed to acetaminophen. Suppose we were interested in whether there is a difference in proportion of children diagnosed with autism between the different exposures to acetaminophen.
+A study was performed to investigate the association between acetaminophen use during pregnancy and the children’s risk of neurodevelopmental disorders. In a retrospective study that included 2,480,797 children, 185,909 children were exposed to acetaminophen and 2,294,888 were not. Out of those who were diagnosed with autism, 5,912 children exposed to acetaminophen, while 62,672 children were not exposed to acetaminophen. Suppose we were interested in whether there is a difference in proportion of children diagnosed with autism between the different exposures to acetaminophen.
 
 a.	List the parameter of interest and null and alternative hypotheses for this problem. [1 pt.]
 
@@ -237,7 +239,7 @@ $$
 where $\mu_d$ is defined as the average difference between baseline and 3-month follow-up.
 
 ::: callout-important
-If \mu_d is the difference between the treatment between 3-month follow-up and baseline, then the hypothesis should be:
+If $\mu_d$ is the difference between the treatment between 3-month follow-up and baseline, then the hypothesis should be:
 
 $$
 H_0: \mu_d = 0; H_a: \mu_d < 0

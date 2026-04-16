@@ -1149,7 +1149,7 @@ We can use `pnorm(z)` to calculate the corresponding probabilities after calcula
 
 -   $H_a: \pi < \pi_0 \to P(Z < z)$ or `pnorm(z,mean=0,sd=1)`
 -   $H_a: \pi > \pi_0 \to P(Z > z)$ or `pnorm(z,mean=0,sd=1,lower.tail=F)`
--   $H_a: \pi \neq \pi_0 \to P(Z < -|z|) + P(Z>|z|)$ or `2*pnorm(z,mean=0,sd=1,lower.tail=F)`
+-   $H_a: \pi \neq \pi_0 \to P(Z < -|z|) + P(Z>|z|)$ or `2*pnorm(abs(z),mean=0,sd=1,lower.tail=F)`
 
 
 ## Example

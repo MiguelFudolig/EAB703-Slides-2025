@@ -70,10 +70,10 @@ In `R`, the following functions can be used to generate the properties of the *c
 
 ## Hypothesis Test: Ratio of Population Variances
 
-If we are interested in testing the null hypothesis $H_0: \sigma_1/\sigma_2 = 1$, the alternative hypothesis can be one of the following:
+If we are interested in testing the null hypothesis $H_0: \sigma_1^2/\sigma_2^2 = 1$, the alternative hypothesis can be one of the following:
 
--   One-sided hypotheses: $H_a: \sigma_1/\sigma_2 < 1$ or $H_a: \sigma_1/\sigma_2 > 1$.
--   Two-sided hypotheses: $H_a: \sigma_1/\sigma_2 \neq 1$
+-   One-sided hypotheses: $H_a: \sigma_1^2/\sigma_2^2 < 1$ or $H_a: \sigma_1^2/\sigma_2^2 > 1$.
+-   Two-sided hypotheses: $H_a: \sigma_1^2/\sigma_2^2 \neq 1$
 
 The problem dictates which alternative is appropriate.
 
