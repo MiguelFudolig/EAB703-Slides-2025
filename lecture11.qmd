@@ -318,7 +318,7 @@ glimpse(example)
 ::: panel-tabset
 ### Question
 
-Use the Wilcoxon Signed-Rank Test to test whether the cortisol levels increased after singing.
+Use the Wilcoxon Signed-Rank Test to test whether the cortisol levels decreased after singing.
 
 ### Answer
 
@@ -329,10 +329,10 @@ H_0: \tilde{\mu}_d=0;H_0: \tilde{\mu}_d>0
 $$
 
 ```{r}
-wtest <- wilcox.test(x=example$before,y=example$after,paired=T,alternative="less",correct=TRUE)
+wtest <- wilcox.test(x=example$before,y=example$after,paired=T,alternative="greater",correct=TRUE)
 wtest
 ```
-The resulting Wilcoxon test p-value is `r wtest$p.value`. We fail to reject the null hypothesis at the significance level of 0.05. We have insufficient evidence to claim that the cortisol levels increased after singing.
+The resulting Wilcoxon test p-value is `r wtest$p.value`. We fail to reject the null hypothesis at the significance level of 0.05. We have insufficient evidence to claim that the cortisol levels decreased after singing.
 
 
 :::
