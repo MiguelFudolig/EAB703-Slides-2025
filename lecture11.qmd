@@ -325,7 +325,7 @@ Use the Wilcoxon Signed-Rank Test to test whether the cortisol levels decreased 
 The alternative hypothesis is one-sided because of the direction assumed in the problem. We assume that $\tilde{\mu}_d$ is calculated as `before`-`after` Hence, the hypotheses can be written as:
 
 $$
-H_0: \tilde{\mu}_d=0;H_0: \tilde{\mu}_d>0
+H_0: \tilde{\mu}_d=0;H_a: \tilde{\mu}_d>0
 $$
 
 ```{r}
@@ -357,7 +357,7 @@ Perform a paired-sample non-parametric test to test whether there is a differenc
 The alternative hypothesis is two-sided. We assume that $\tilde{\mu}_d$ is calculated as `Postwt`-`Prewt` Hence, the hypotheses can be written as:
 
 $$
-H_0: \tilde{\mu}_d=0;H_0: \tilde{\mu}_d\neq 0
+H_0: \tilde{\mu}_d=0;H_a: \tilde{\mu}_d\neq 0
 $$
 
 ```{r}
