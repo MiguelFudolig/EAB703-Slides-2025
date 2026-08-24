@@ -1,0 +1,14 @@
+name: eab703-slides-2025
+title: EAB703-Slides-2025
+username: miguelfudolig
+account: miguelfudolig
+server: connect.posit.cloud
+hostUrl: https://api.connect.posit.cloud/v1
+appId: 01a034ff-c6ec-d539-3272-f1009de445fc
+bundleId:
+url: https://connect.posit.cloud/miguelfudolig/content/01a034ff-c6ec-d539-3272-f1009de445fc
+version: 1
+quarto_version: 1.9.38
+quarto_engines: knitr, markdown
+asMultiple: FALSE
+asStatic: FALSE

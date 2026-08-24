@@ -5,7 +5,7 @@ format:
   revealjs:
     theme: clean.scss
     scrollable: true
-    footer: "Lecture 2 - [Back to home](https://madfudolig.quarto.pub/introtobiostats/)"
+    footer: "Lecture 2 - [Back to home](https://miguelfudolig-eab703-slides.share.connect.posit.cloud)"
     code-block-bg: true
     code-block-border-left: "#31BAE9"
     slide-number: true
@@ -230,6 +230,10 @@ For EWR+JFK + LGA: $\frac{133048+138578 + 163726}{(138578 + 133048 + 163726)}=$ 
 ## Frequency Tables in `R`
 
 There are a lot of ways to create frequency tables in `R`. One of the easiest and most complete ways is to use the  function `freq` in the package `summarytools`.
+
+::: callout-important
+For MAC users, you need to install `XQuartz` first through the following link: <https://www.xquartz.org/> before installing `summarytools`.
+:::
 
 ```{r}
 # install.packages("summarytools") # if you have not installed summarytools yet.

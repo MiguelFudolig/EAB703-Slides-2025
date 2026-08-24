@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>EAB 703-1002: Biostatistical Methods for the Health Sciences – Analysis of Variance</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -930,9 +930,9 @@ $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setos
 <span id="cb29-3"><a></a><span class="fu">contrast</span>(em_mod_lm,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">adjust=</span><span class="st">"tukey"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast               estimate    SE  df t.ratio p.value
- setosa - versicolor      -0.930 0.103 147  -9.033  &lt;.0001
- setosa - virginica       -1.582 0.103 147 -15.366  &lt;.0001
- versicolor - virginica   -0.652 0.103 147  -6.333  &lt;.0001
+ setosa - versicolor      -0.930 0.103 147  -9.033 &lt;0.0001
+ setosa - virginica       -1.582 0.103 147 -15.366 &lt;0.0001
+ versicolor - virginica   -0.652 0.103 147  -6.333 &lt;0.0001
 
 P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
 </div>
@@ -982,8 +982,8 @@ $ year        &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb34-8"><a></a><span class="fu">contrast</span>(em_mod_lm,<span class="at">method=</span><span class="st">"pairwise"</span>,<span class="at">adjust=</span><span class="st">"bon"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast           estimate    SE  df t.ratio p.value
- Adelie - Chinstrap   -10.04 0.432 339 -23.232  &lt;.0001
- Adelie - Gentoo       -8.71 0.360 339 -24.237  &lt;.0001
+ Adelie - Chinstrap   -10.04 0.432 339 -23.232 &lt;0.0001
+ Adelie - Gentoo       -8.71 0.360 339 -24.237 &lt;0.0001
  Chinstrap - Gentoo     1.33 0.447 339   2.971  0.0095
 
 P value adjustment: bonferroni method for 3 tests </code></pre>
@@ -1301,7 +1301,7 @@ Confidence level used: 0.95 </code></pre>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Lecture 8 - <a href="https://madfudolig.quarto.pub/introtobiostats/">Back to home</a></p>
+<p>Lecture 8 - <a href="https://miguelfudolig-eab703-slides.share.connect.posit.cloud">Back to home</a></p>
 </div>
 </div></div>
 
@@ -1661,7 +1661,7 @@ Confidence level used: 0.95 </code></pre>
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/madfudolig\.quarto\.pub\/introtobiostats");
+            var filterRegex = new RegExp("https:\/\/MiguelFudolig\.github\.io\/EAB703-Slides-2025\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
