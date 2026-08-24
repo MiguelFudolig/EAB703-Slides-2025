@@ -1,0 +1,14 @@
+name: eab703-slides-fall2026
+title: EAB703-Slides-Fall2026
+username: miguelfudolig
+account: miguelfudolig
+server: connect.posit.cloud
+hostUrl: https://api.connect.posit.cloud/v1
+appId: 01a035d1-b6f9-9582-147c-bc0acc94a6f0
+bundleId:
+url:
+version: 1
+quarto_version: 1.9.38
+quarto_engines: knitr, markdown
+asMultiple: FALSE
+asStatic: FALSE
