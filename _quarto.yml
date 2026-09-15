@@ -44,26 +44,26 @@ website:
       - section: "Problem Sets"
         href: problemsets.qmd
         contents:
-          - href: PS1_key.qmd
-            text: Problem Set 1 Key
-          - href: PS2_key.qmd
-            text: Problem Set 2 Key
-          - href: PS3_key.qmd
-            text: Problem Set 3 Key
-          - href: PS4_key.qmd
-            text: Problem Set 4 Key
-          - href: PS5_key.qmd
-            text: Problem Set 5 Key
-          - href: PS6_key.qmd
-            text: Problem Set 6 Key
-          - href: PS7_key.qmd
-            text: Problem Set 7 Key
-          - href: PS8_key.qmd
-            text: Problem Set 8 Key
-          - href: PS9_key.qmd
-            text: Problem Set 9 Key
-          - href: PS10_key.qmd
-            text: Problem Set 10 Key
+          # - href: PS1_key.qmd
+          #   text: Problem Set 1 Key
+          # - href: PS2_key.qmd
+          #   text: Problem Set 2 Key
+          # - href: PS3_key.qmd
+          #   text: Problem Set 3 Key
+          # - href: PS4_key.qmd
+          #   text: Problem Set 4 Key
+          # - href: PS5_key.qmd
+          #   text: Problem Set 5 Key
+          # - href: PS6_key.qmd
+          #   text: Problem Set 6 Key
+          # - href: PS7_key.qmd
+          #   text: Problem Set 7 Key
+          # - href: PS8_key.qmd
+          #   text: Problem Set 8 Key
+          # - href: PS9_key.qmd
+          #   text: Problem Set 9 Key
+          # - href: PS10_key.qmd
+          #   text: Problem Set 10 Key
 format:
   html:
     theme:
