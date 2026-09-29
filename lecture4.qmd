@@ -954,7 +954,7 @@ ggplot(df, aes(x=simulations)) +
 
 ## Exercise
 
-The hourly number of pedestrians waiting by a bus stop is estimated to be 7.
+The hourly average number of pedestrians waiting by a bus stop is estimated to be 7.
 
 ::: panel-tabset 
 ### Questions
@@ -1337,7 +1337,7 @@ If we know the value of $F(x)$, we can determine what $x$ is using `qnorm(F(x),m
 
 ## Example
 
-For a random variable $Z~N(0,1)$ following the standard normal distribution
+For a random variable $Z\sim N(0,1)$ following the standard normal distribution
 
 ::: panel-tabset
 ### Question
@@ -1380,7 +1380,7 @@ Consider $X \sim N(3,9)$.
 ### Question
 
 - $P(X \leq 6)$
-- $P(X \geq 3)$
+- $P(X \geq 10.5)$
 - $P(-3 < X < 9)$
 
 ### Answer
